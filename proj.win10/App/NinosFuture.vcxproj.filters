@@ -20,6 +20,9 @@
     <Filter Include="Classes\Game">
       <UniqueIdentifier>{2da7aff4-50b2-4834-acb4-d9d531a522dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\External">
+      <UniqueIdentifier>{b545cf0c-f9a6-46cf-8209-f02b0524d24a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -83,6 +86,9 @@
       <Filter>Classes\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Classes\Windy\SpriteDefinition.cpp">
+      <Filter>Classes\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Input.cpp">
       <Filter>Classes\Windy</Filter>
     </ClCompile>
   </ItemGroup>
@@ -164,6 +170,18 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Game\GameState.h">
       <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\External\Factory.h">
+      <Filter>Classes\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\LabelAction.h">
+      <Filter>Classes\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Input.h">
+      <Filter>Classes\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\InputKeys.h">
+      <Filter>Classes\Windy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

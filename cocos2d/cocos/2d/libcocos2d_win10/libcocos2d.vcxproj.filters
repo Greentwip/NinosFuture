@@ -2041,6 +2041,9 @@
     <ClCompile Include="..\..\..\external\flatbuffers\util.cpp">
       <Filter>external\flatbuffers</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\base\CCController-WinRT.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\cocos2d.h" />

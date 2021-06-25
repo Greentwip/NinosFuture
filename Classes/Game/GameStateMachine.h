@@ -16,7 +16,7 @@ namespace game {
             return instance;
         }
     private:
-        GameStateMachine() {}
+        GameStateMachine();
 
     public:
         GameStateMachine(GameStateMachine const&) = delete;

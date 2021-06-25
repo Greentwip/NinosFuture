@@ -22,11 +22,11 @@ windy::Sounds windy::AudioManager::currentTrack = windy::Sounds::NONE;
 int windy::AudioManager::currentSfxId = -1;
 
 std::map<windy::Sounds, std::string> windy::AudioManager::soundsKeyMap = {
-	{Sounds::Opening, "sounds/sfx_opening.mp3"},
-	{Sounds::GAME, "audio/bgm/gamea.mp3"},
-	{Sounds::WRONG_MOVE, "audio/sfx/wrongmove.mp3"},
-	{Sounds::COMBO_1, "audio/sfx/combo1.mp3"},
-	{Sounds::COMBO_2, "audio/sfx/combo2.mp3"},
+	{Sounds::Intro, "sounds/sfx_opening.mp3"},
+	{Sounds::Abakura, "sounds/sfx_abakura.mp3"},
+	{Sounds::Title, "sounds/bgm_title.mp3"},
+	{Sounds::Select, "sounds/sfx_select.mp3"},
+	{Sounds::Selected, "sounds/sfx_selected.mp3"},
 	{Sounds::COMBO_3, "audio/sfx/combo3.mp3"},
 	{Sounds::COMBO_4, "audio/sfx/combo4.mp3"},
 	{Sounds::COMBO_5, "audio/sfx/combo5.mp3"},
@@ -39,6 +39,8 @@ void windy::AudioManager::playBGM(windy::Sounds resource, bool loop) {
 	//local id = ccexp.AudioEngine:play2d(path, loop, cc.bgm_volume_)
 	//cc.current_bgm_id_ = id
 	//return id
+
+	currentTrack = resource;
 
 	AudioEngine::play2d(soundsKeyMap[resource], loop);
 }
@@ -56,7 +58,7 @@ void windy::AudioManager::playSFX(windy::Sounds resource, bool loop) {
 }
 
 void windy::AudioManager::stopAll() {
-
+	AudioEngine::stopAll();
 }
 
 windy::Sounds windy::AudioManager::getCurrentTrack() {

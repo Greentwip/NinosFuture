@@ -4,10 +4,11 @@
 namespace windy {
 
 	enum class Sounds {
-		Opening,
-		GAME,
-		VICTORY,
-		LOSE,
+		Intro,
+		Abakura,
+		Title,
+		Select,
+		Selected,
 		WRONG_MOVE,
 		COMBO_1,
 		COMBO_2,
@@ -24,7 +25,7 @@ namespace windy {
 		static std::map<Sounds, std::string> soundsKeyMap;
 
 	public:
-		static void playBGM(Sounds, bool loop = false);
+		static void playBGM(Sounds, bool loop = true);
 		static void playSFX(Sounds resource, bool loop = false);
 		static void stopAll();
 		static Sounds getCurrentTrack();

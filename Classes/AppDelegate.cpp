@@ -72,6 +72,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0f / 60);
 
+    director->getOpenGLView()->setCursorVisible(false);
+
     auto frameSize = glview->getFrameSize();
 
     float virtualWidth = 256;

@@ -9,7 +9,7 @@ namespace windy {
 }
 
 namespace game {
-    class IntroScene : public cocos2d::Layer
+    class IntroScene : public cocos2d::LayerColor
     {
     public:
         virtual bool init();
@@ -24,7 +24,7 @@ namespace game {
         CREATE_FUNC(IntroScene);
 
     private:
-        void openingIntroA();
+        void greentwipIntro();
 
         windy::Sprite* greentwipLogo;
     };

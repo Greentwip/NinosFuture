@@ -297,8 +297,6 @@ void Sprite::runAction(const std::string& name, const std::string& baseName) {
     }
 
     this->currentAction = newAction;
-
-
 }
 
 float Sprite::getActionDuration(const std::string& name, const std::string& baseName) {
@@ -312,12 +310,33 @@ float Sprite::getActionDuration(const std::string& name, const std::string& base
 }
 
 void Sprite::reverseAction() {
-    auto currentAction = this->currentAction;
-    currentAction->retain();
+    auto previousAction = this->currentAction;
+    previousAction->retain();
     this->currentAction = this->currentAction->reverse();
     this->stopAllActionsByTag(GameTags::Actions::Animation);
+
+    std::shared_ptr<std::string> foundName = std::make_shared<std::string>();
+
+    for (auto it = actions.begin(); it != actions.end();)
+    {
+        auto element = *it;
+
+        if (element.second == previousAction) {
+            *foundName = element.first;
+            actions.erase(it++);
+            break;
+        }
+        else {
+            (++it);
+        }
+    }
+
+    this->actions.erase(*foundName);
+    this->actions.insert(*foundName, this->currentAction);
+
     cocos2d::Sprite::runAction(this->currentAction);
-    currentAction->release();
+    previousAction->release();
+
 }
 
 void Sprite::pauseActions() {

@@ -26,6 +26,10 @@
 
 #include "Cocos2dRenderer.h"
 
+#include "base/CCEventListenerController.h"
+#include "base/CCEventController.h"
+#include "base/CCController.h"
+
 namespace CocosAppWinRT
 {
     public ref class OpenGLESPage sealed
@@ -52,6 +56,37 @@ namespace CocosAppWinRT
         void StopRenderLoop();
 
         void CreateInput();
+
+
+        ////////// Gamepad ///////////
+
+        void OnGamepadAdded(Platform::Object^, Windows::Gaming::Input::Gamepad^ args);
+        void OnGamepadRemoved(Platform::Object^, Windows::Gaming::Input::Gamepad^ args);
+        Windows::Foundation::EventRegistrationToken                     m_gamepadAddedEventToken;
+        Windows::Foundation::EventRegistrationToken                     m_gamepadRemovedEventToken;
+
+
+        struct GamepadWithButtonState
+        {
+            Windows::Gaming::Input::Gamepad^ gamepad;
+            int id;
+            bool buttonAWasPressedLastFrame = false;
+        };
+        std::vector<GamepadWithButtonState>                             m_gamepads;
+
+        std::pair<bool, Windows::Gaming::Input::GamepadButtons>
+            gamepadReading(GamepadWithButtonState gamepad,
+                Windows::Gaming::Input::GamepadButtons button);
+
+        void submitReading(GamepadWithButtonState gamepad,
+            std::pair<bool, Windows::Gaming::Input::GamepadButtons> reading);
+
+        double axisReading(GamepadWithButtonState gamepad, Windows::Gaming::Input::GamepadButtons button, int axis);
+
+        void setAxisReading(GamepadWithButtonState gamepad, std::pair<cocos2d::Controller::Key, double> reading);
+        void submitAxisReading(GamepadWithButtonState gamepad, Windows::Gaming::Input::GamepadButtons axis);
+
+        //////////////////////////////
 
         OpenGLES* mOpenGLES;
         std::shared_ptr<Cocos2dRenderer> mRenderer;

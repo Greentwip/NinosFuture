@@ -28,17 +28,19 @@ bool IntroScene::init()
 {
     //////////////////////////////
     // 1. super init first
-    if (!Layer::init())
+    if (!LayerColor::initWithColor(cocos2d::Color4B(0, 0, 0, 0)))
     {
         return false;
     }
 
-    this->openingIntroA();
+    setCascadeOpacityEnabled(true);
+
+    this->greentwipIntro();
 
     return true;
 }
 
-void IntroScene::openingIntroA() {
+void IntroScene::greentwipIntro() {
     greentwipLogo =
         windy::Sprite::create("sprites/gameplay/screens/opening/greentwip/greentwip_logo", cocos2d::Point(0, 0));
 
@@ -49,17 +51,22 @@ void IntroScene::openingIntroA() {
 
     greentwipLogo->appendAction(action, false);
 
+    auto fadeIn = cocos2d::FadeIn::create(1.0f);
+
     auto preCallback = cocos2d::CallFunc::create([=]() {
         greentwipLogo->runAction("greentwip_logo");
-        windy::AudioManager::playSFX(windy::Sounds::Opening);
+        windy::AudioManager::playSFX(windy::Sounds::Intro);
         });
 
     auto duration = cocos2d::DelayTime::create(greentwipLogo->getActionDuration("greentwip_logo"));
+
+    auto fadeOut = cocos2d::FadeOut::create(1.0f);
+
     auto postCallback = cocos2d::CallFunc::create([=]() {
         GameStateMachine::getInstance().pushState(GameState::Abakura);
         });
 
-    auto sequence = cocos2d::Sequence::create(preCallback, duration, postCallback, nullptr);
+    auto sequence = cocos2d::Sequence::create(fadeIn, preCallback, duration, fadeOut, postCallback, nullptr);
 
     this->runAction(sequence);
 

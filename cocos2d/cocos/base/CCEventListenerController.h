@@ -1,19 +1,19 @@
 /****************************************************************************
  Copyright (c) 2014 cocos2d-x.org
  Copyright (c) 2014-2017 Chukong Technologies Inc.
- 
+
  http://www.cocos2d-x.org
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,10 +29,10 @@
 #include "platform/CCPlatformMacros.h"
 #include "base/CCEventListener.h"
 
-/**
- * @addtogroup base
- * @{
- */
+ /**
+  * @addtogroup base
+  * @{
+  */
 
 NS_CC_BEGIN
 
@@ -43,31 +43,31 @@ class Controller;
  * @param Controller event listener.
  * @js NA
  */
-class EventListenerController : public EventListener
+class CC_DLL EventListenerController : public EventListener
 {
 public:
     static const std::string LISTENER_ID;
-    
+
     /** Create a controller event listener.
      *
      * @return An autoreleased EventListenerController object.
      */
-	static EventListenerController* create();
-    
+    static EventListenerController* create();
+
     /// Overrides
     virtual bool checkAvailable() override;
     virtual EventListenerController* clone() override;
-    
-	std::function<void(Controller*, Event*)> onConnected;
-	std::function<void(Controller*, Event*)> onDisconnected;
-    
+
+    std::function<void(Controller*, Event*)> onConnected;
+    std::function<void(Controller*, Event*)> onDisconnected;
+
     std::function<void(Controller*, int, Event*)> onKeyDown;
     std::function<void(Controller*, int, Event*)> onKeyUp;
-	std::function<void(Controller*, int, Event*)> onKeyRepeat;
-    
-	std::function<void(Controller*, int, Event*)> onAxisEvent;
-    
-protected:
+    std::function<void(Controller*, int, Event*)> onKeyRepeat;
+
+    std::function<void(Controller*, int, Event*)> onAxisEvent;
+
+public:
     bool init();
 };
 

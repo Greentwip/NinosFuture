@@ -220,6 +220,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\..\Classes\External\Factory.h" />
     <ClInclude Include="..\..\Classes\Game\GameState.h" />
     <ClInclude Include="..\..\Classes\Game\WeaponAcquireScene.h" />
     <ClInclude Include="..\..\Classes\Game\Computer.h" />
@@ -235,6 +236,9 @@
     <ClInclude Include="..\..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\..\Classes\Windy\AnimationAction.h" />
     <ClInclude Include="..\..\Classes\Windy\AudioManager.h" />
+    <ClInclude Include="..\..\Classes\Windy\Input.h" />
+    <ClInclude Include="..\..\Classes\Windy\InputKeys.h" />
+    <ClInclude Include="..\..\Classes\Windy\LabelAction.h" />
     <ClInclude Include="..\..\Classes\Windy\SpriteDefinition.h" />
     <ClInclude Include="..\..\Classes\Windy\Display.h" />
     <ClInclude Include="..\..\Classes\Windy\GameTags.h" />
@@ -278,6 +282,7 @@
     <ClCompile Include="..\..\Classes\Game\SaveScene.cpp" />
     <ClCompile Include="..\..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\..\Classes\Windy\AudioManager.cpp" />
+    <ClCompile Include="..\..\Classes\Windy\Input.cpp" />
     <ClCompile Include="..\..\Classes\Windy\SpriteDefinition.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Label.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Sprite.cpp" />

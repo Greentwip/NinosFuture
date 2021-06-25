@@ -397,6 +397,7 @@
     <ClCompile Include="..\..\base\CCConfiguration.cpp" />
     <ClCompile Include="..\..\base\CCConsole.cpp" />
     <ClCompile Include="..\..\base\CCController-android.cpp" />
+    <ClCompile Include="..\..\base\CCController-WinRT.cpp" />
     <ClCompile Include="..\..\base\CCController.cpp" />
     <ClCompile Include="..\..\base\CCData.cpp" />
     <ClCompile Include="..\..\base\CCDataVisitor.cpp" />

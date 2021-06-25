@@ -4,7 +4,12 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-class AbakuraScene : public cocos2d::Layer
+namespace windy {
+    class Sprite;
+}
+
+
+class AbakuraScene : public cocos2d::LayerColor
 {
 public:
     virtual bool init();
@@ -16,6 +21,11 @@ public:
 
     virtual void update(float dt);
 
+    void abakuraIntro();
+
     CREATE_FUNC(AbakuraScene);
+
+private:
+    windy::Sprite* abakuraLogo;
 };
 #endif

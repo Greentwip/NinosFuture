@@ -71,6 +71,7 @@ THE SOFTWARE.
 #include "base/CCEventFocus.h"
 #include "base/CCEventKeyboard.h"
 #include "base/CCEventListenerAcceleration.h"
+#include "base/CCEventListenerController.h"
 #include "base/CCEventListenerCustom.h"
 #include "base/CCEventListenerFocus.h"
 #include "base/CCEventListenerKeyboard.h"
