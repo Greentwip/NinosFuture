@@ -1,0 +1,587 @@
+{
+    "layers": [
+        {
+            "basename": "layer_0",
+            "order": 0,
+            "tile_x": 256,
+            "tile_y": 256,
+            "tiles": [
+                {
+                    "path": "nightmantest_0_0.png",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_1.png",
+                    "x": 1,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_2.png",
+                    "x": 2,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_3.png",
+                    "x": 3,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_4.png",
+                    "x": 4,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_5.png",
+                    "x": 5,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_6.png",
+                    "x": 6,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_7.png",
+                    "x": 7,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_8.png",
+                    "x": 8,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_9.png",
+                    "x": 9,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_10.png",
+                    "x": 10,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_11.png",
+                    "x": 11,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_12.png",
+                    "x": 12,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_13.png",
+                    "x": 13,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_14.png",
+                    "x": 14,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_15.png",
+                    "x": 15,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_16.png",
+                    "x": 16,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_17.png",
+                    "x": 17,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_18.png",
+                    "x": 18,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_19.png",
+                    "x": 19,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_20.png",
+                    "x": 20,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_21.png",
+                    "x": 21,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_0_22.png",
+                    "x": 22,
+                    "y": 0
+                },
+                {
+                    "path": "nightmantest_1_0.png",
+                    "x": 0,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_1.png",
+                    "x": 1,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_2.png",
+                    "x": 2,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_3.png",
+                    "x": 3,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_4.png",
+                    "x": 4,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_5.png",
+                    "x": 5,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_6.png",
+                    "x": 6,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_7.png",
+                    "x": 7,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_8.png",
+                    "x": 8,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_9.png",
+                    "x": 9,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_10.png",
+                    "x": 10,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_11.png",
+                    "x": 11,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_12.png",
+                    "x": 12,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_13.png",
+                    "x": 13,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_14.png",
+                    "x": 14,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_15.png",
+                    "x": 15,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_16.png",
+                    "x": 16,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_17.png",
+                    "x": 17,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_18.png",
+                    "x": 18,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_19.png",
+                    "x": 19,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_20.png",
+                    "x": 20,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_21.png",
+                    "x": 21,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_1_22.png",
+                    "x": 22,
+                    "y": 1
+                },
+                {
+                    "path": "nightmantest_2_0.png",
+                    "x": 0,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_1.png",
+                    "x": 1,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_2.png",
+                    "x": 2,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_3.png",
+                    "x": 3,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_4.png",
+                    "x": 4,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_5.png",
+                    "x": 5,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_6.png",
+                    "x": 6,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_7.png",
+                    "x": 7,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_8.png",
+                    "x": 8,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_9.png",
+                    "x": 9,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_10.png",
+                    "x": 10,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_11.png",
+                    "x": 11,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_12.png",
+                    "x": 12,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_13.png",
+                    "x": 13,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_14.png",
+                    "x": 14,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_15.png",
+                    "x": 15,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_16.png",
+                    "x": 16,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_17.png",
+                    "x": 17,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_18.png",
+                    "x": 18,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_19.png",
+                    "x": 19,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_20.png",
+                    "x": 20,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_21.png",
+                    "x": 21,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_2_22.png",
+                    "x": 22,
+                    "y": 2
+                },
+                {
+                    "path": "nightmantest_3_0.png",
+                    "x": 0,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_1.png",
+                    "x": 1,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_2.png",
+                    "x": 2,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_3.png",
+                    "x": 3,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_4.png",
+                    "x": 4,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_5.png",
+                    "x": 5,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_6.png",
+                    "x": 6,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_7.png",
+                    "x": 7,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_8.png",
+                    "x": 8,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_9.png",
+                    "x": 9,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_10.png",
+                    "x": 10,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_11.png",
+                    "x": 11,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_12.png",
+                    "x": 12,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_13.png",
+                    "x": 13,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_14.png",
+                    "x": 14,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_15.png",
+                    "x": 15,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_16.png",
+                    "x": 16,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_17.png",
+                    "x": 17,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_18.png",
+                    "x": 18,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_19.png",
+                    "x": 19,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_20.png",
+                    "x": 20,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_21.png",
+                    "x": 21,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_3_22.png",
+                    "x": 22,
+                    "y": 3
+                },
+                {
+                    "path": "nightmantest_4_0.png",
+                    "x": 0,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_1.png",
+                    "x": 1,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_2.png",
+                    "x": 2,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_3.png",
+                    "x": 3,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_4.png",
+                    "x": 4,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_5.png",
+                    "x": 5,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_6.png",
+                    "x": 6,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_7.png",
+                    "x": 7,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_8.png",
+                    "x": 8,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_9.png",
+                    "x": 9,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_10.png",
+                    "x": 10,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_11.png",
+                    "x": 11,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_12.png",
+                    "x": 12,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_13.png",
+                    "x": 13,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_14.png",
+                    "x": 14,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_15.png",
+                    "x": 15,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_16.png",
+                    "x": 16,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_17.png",
+                    "x": 17,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_18.png",
+                    "x": 18,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_19.png",
+                    "x": 19,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_20.png",
+                    "x": 20,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_21.png",
+                    "x": 21,
+                    "y": 4
+                },
+                {
+                    "path": "nightmantest_4_22.png",
+                    "x": 22,
+                    "y": 4
+                }
+            ]
+        }
+    ]
+}

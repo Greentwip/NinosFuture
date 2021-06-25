@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>level_nightman_bank.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{1008,1496}</string>
+                <key>spriteSourceSize</key>
+                <string>{1008,1496}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{1008,1496}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>level_nightman.pvr.ccz</string>
+            <key>size</key>
+            <string>{1010,1498}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:0758908e33f314a738392ee139e426e1:74d406ebf644d453db174a1bffb07cf1:2a8694f2f4a27f82635f2f04161d664d$</string>
+            <key>textureFileName</key>
+            <string>level_nightman.pvr.ccz</string>
+        </dict>
+    </dict>
+</plist>

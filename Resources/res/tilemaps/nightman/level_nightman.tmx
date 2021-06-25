@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="384" height="96" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="29">
+ <tileset firstgid="1" name="level_nightman_bank.png" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="4648" columns="56">
+  <image source="level_nightman_bank.png" width="1008" height="1496"/>
+ </tileset>
+ <objectgroup id="2" name="blocks">
+  <object id="1" x="4.4318" y="838" width="46.6364" height="59.0625"/>
+  <object id="4" x="190.182" y="837.971" width="46.6364" height="59.2046"/>
+  <object id="7" x="378.068" y="710.016" width="46.2046" height="59.0914"/>
+  <object id="8" x="279.116" y="786.067" width="46.2046" height="59.0914"/>
+  <object id="9" x="450.898" y="837.851" width="46.2046" height="59.0914"/>
+  <object id="11" x="3670.48" y="1167.18" width="46.2046" height="59.0914"/>
+  <object id="12" x="5758.02" y="1065.76" width="111.227" height="59.0914"/>
+  <object id="13" x="5504.24" y="1065.88" width="190.511" height="59.9321"/>
+  <object id="14" x="5502.87" y="897.766" width="601.875" height="55.1707"/>
+  <object id="15" x="4342.25" y="898.016" width="1145.1" height="54.9548"/>
+  <object id="16" x="5694.78" y="1096.06" width="63.2051" height="29.9093"/>
+  <object id="17" x="5839.13" y="952.88" width="30.125" height="48.1598"/>
+  <object id="18" x="5869.23" y="1096.06" width="224.925" height="28.879"/>
+  <object id="19" x="6093.05" y="952.898" width="10.6023" height="143.165"/>
+  <object id="20" x="5584.26" y="953" width="30.0299" height="49.0625"/>
+  <object id="21" x="5444.15" y="1083.68" width="51.6023" height="42.3469"/>
+  <object id="22" x="5369.26" y="1082.13" width="51.6023" height="43.753"/>
+  <object id="23" x="5292.12" y="1047.18" width="51.6023" height="79"/>
+  <object id="24" x="5189.09" y="1004.1" width="51.6023" height="122.048"/>
+  <object id="25" x="5114.07" y="1082.01" width="51.6023" height="44.0485"/>
+  <object id="26" x="5037.36" y="1047.09" width="51.6023" height="78.6053"/>
+  <object id="27" x="4933.9" y="1003.61" width="51.6023" height="122.359"/>
+  <object id="28" x="4858.63" y="1081.98" width="51.6023" height="44.2075"/>
+  <object id="29" x="4781.82" y="1047.14" width="51.6023" height="79.0485"/>
+  <object id="30" x="4678" y="1003.94" width="52" height="122.125"/>
+  <object id="31" x="4578.61" y="1066.31" width="100.115" height="277.69"/>
+  <object id="32" x="4563.36" y="1066.31" width="15.2553" height="16.2955"/>
+  <object id="37" x="4268" y="1243" width="46" height="58"/>
+  <object id="40" x="4324.26" y="953.019" width="18.8095" height="116.68"/>
+  <object id="41" x="4324.25" y="1070.18" width="141.5" height="32.6023"/>
+  <object id="49" x="4150.75" y="1126.56" width="49" height="43.25"/>
+  <object id="50" x="393.312" y="769.188" width="15.9375" height="127.75"/>
+  <object id="51" x="294.372" y="845.173" width="15.9375" height="51.9111"/>
+  <object id="53" x="4283.25" y="1301.47" width="16" height="51.0938"/>
+  <object id="54" x="3815" y="1298" width="252" height="53"/>
+  <object id="55" x="3747.25" y="1231.06" width="51.5" height="120.875"/>
+  <object id="56" x="3825.34" y="1126.42" width="50.3636" height="49.4545"/>
+  <object id="57" x="3923.25" y="1218.06" width="51" height="80.0909"/>
+  <object id="58" x="3591.25" y="1231.87" width="51.5" height="120.875"/>
+  <object id="59" x="1164.04" y="550" width="98.2037" height="346.758"/>
+  <object id="60" x="1262.25" y="550" width="97.9961" height="120.54"/>
+  <object id="61" x="1360.26" y="609.985" width="111.74" height="60.8555"/>
+  <object id="63" x="1009.58" y="440.541" width="95.6667" height="119.771"/>
+  <object id="64" x="522.148" y="820.851" width="134.769" height="75.2124"/>
+  <object id="65" x="656.906" y="852.54" width="96.6778" height="43.8556"/>
+  <object id="69" x="1071.63" y="852.813" width="98.196" height="11.9787"/>
+  <object id="70" x="75.5114" y="852.755" width="94.9205" height="44.2159"/>
+  <object id="71" x="4005.78" y="1185.94" width="46.8295" height="58.7614"/>
+  <object id="72" x="4021.34" y="1244.68" width="16.0909" height="53.3828"/>
+  <object id="73" x="3685.24" y="1226.29" width="16.0909" height="125.516"/>
+  <object id="74" x="3589.5" y="1126.31" width="50" height="51.1914"/>
+  <object id="75" x="3462.75" y="1067.06" width="96.25" height="73"/>
+  <object id="76" x="3387.19" y="1283.8" width="94.9375" height="14"/>
+  <object id="77" x="3304.75" y="1298" width="254.5" height="55.5957"/>
+  <object id="78" x="3288.75" y="1131.06" width="16" height="168"/>
+  <object id="79" x="2794.25" y="899.466" width="763.5" height="13.5957"/>
+  <object id="80" x="3542.75" y="912.966" width="16.2273" height="154.096"/>
+  <object id="81" x="3034.24" y="913.062" width="30.0299" height="134.198"/>
+  <object id="82" x="3289.36" y="912.755" width="30.0299" height="134.198"/>
+  <object id="83" x="2540" y="911" width="16" height="213"/>
+  <object id="84" x="2397.9" y="744.63" width="51.3483" height="152.432"/>
+  <object id="85" x="2540" y="838" width="94.9986" height="73"/>
+  <object id="86" x="2635" y="883.062" width="98.25" height="27.9961"/>
+  <object id="87" x="2795.13" y="913.119" width="197.625" height="46.9437"/>
+  <object id="88" x="1424.72" y="337.135" width="94.5275" height="103.428"/>
+  <object id="89" x="1519.25" y="337.137" width="128" height="29.1755"/>
+  <object id="90" x="1519.47" y="366.135" width="112.277" height="60.8555"/>
+  <object id="91" x="1631.89" y="405.396" width="142.055" height="20.6667"/>
+  <object id="92" x="1775.75" y="184" width="193.5" height="56.7"/>
+  <object id="93" x="1722.25" y="184" width="53.5" height="189.698"/>
+  <object id="94" x="1775.78" y="242.635" width="14.8052" height="654.428"/>
+  <object id="95" x="2013.18" y="-8" width="14.8052" height="717.062"/>
+  <object id="96" x="1462.25" y="440.396" width="15.5" height="231.167"/>
+  <object id="97" x="1518.83" y="-7.99967" width="53.4167" height="190.25"/>
+  <object id="98" x="1520.17" y="182.25" width="126" height="28.8125"/>
+  <object id="100" x="2948" y="1108" width="427.257" height="20"/>
+  <object id="101" x="2642" y="1096" width="306" height="32"/>
+  <object id="102" x="2556" y="1112" width="86" height="12"/>
+  <object id="103" x="2698" y="1067" width="192" height="29"/>
+  <object id="105" x="3304.51" y="1127.9" width="70.7415" height="12.1"/>
+  <object id="106" x="2359.26" y="728.076" width="127.057" height="16.5959"/>
+  <object id="107" x="-8" y="669.145" width="12.25" height="227.917"/>
+  <object id="108" x="1790.83" y="380.062" width="51.75" height="59.3334"/>
+  <object id="109" x="1959.58" y="380.019" width="53.5417" height="59.9182"/>
+  <object id="110" x="1907.87" y="411.188" width="51.7188" height="28.875"/>
+  <object id="111" x="1959.57" y="439.916" width="53.5417" height="62.6913"/>
+  <object id="112" x="1815.23" y="503" width="198.021" height="32.0208"/>
+  <object id="113" x="1790.59" y="602.995" width="198" height="32"/>
+  <object id="114" x="2049.13" y="669.336" width="197.317" height="32.7225"/>
+  <object id="115" x="2079" y="868" width="142" height="29"/>
+  <object id="116" x="1790.64" y="879.698" width="142.738" height="17.25"/>
+  <object id="117" x="1973.98" y="826.002" width="32.9348" height="19"/>
+  <object id="120" x="2731.87" y="837.889" width="31.75" height="16.5959"/>
+  <object id="121" x="2700.12" y="837.977" width="15.2553" height="16.2955"/>
+  <object id="122" x="2668.25" y="838.102" width="15.2553" height="16.2955"/>
+  <object id="123" x="2635.01" y="838" width="16.1935" height="16.2955"/>
+  <object id="124" x="2794.26" y="669.038" width="11.1194" height="230.4"/>
+  <object id="125" x="2570.13" y="669.264" width="224.151" height="42.798"/>
+  <object id="128" x="2228.91" y="520" width="17.55" height="149.332"/>
+  <object id="129" x="2449.22" y="879.977" width="16.0967" height="16.2955"/>
+  <object id="130" x="2317.05" y="798.182" width="17" height="19"/>
+  <object id="28" x="2570.13" y="519.919" width="17.55" height="149.332"/>
+  <object id="1" x="2301.02" y="864.182" width="33.0344" height="19"/>
+ </objectgroup>
+ <objectgroup id="3" name="logic">
+  <object id="133" name="scroll" type="left" x="1148" y="768" width="16" height="16"/>
+  <object id="135" name="scroll" type="right" x="100" y="768" width="16" height="16"/>
+  <object id="1" name="ladder" x="1148.04" y="550" width="16" height="258.821"/>
+  <object id="2" name="ladder" x="1336" y="368" width="16" height="139.667"/>
+  <object id="3" name="ladder" x="1651" y="142.948" width="16" height="209.416"/>
+  <object id="4" name="ladder" x="4505" y="1055.91" width="16" height="138.091"/>
+  <object id="5" name="ladder" x="4195" y="1244" width="16" height="66"/>
+  <object id="8" name="scroll" type="right" x="1116" y="550" width="16" height="16"/>
+  <object id="10" name="scroll" type="right" x="1304" y="320" width="16" height="16"/>
+  <object id="11" name="scroll" type="left" x="1651" y="320" width="16" height="16"/>
+  <object id="12" name="hole" x="1968" y="208" width="48" height="24"/>
+  <object id="13" name="hole" x="1840" y="422" width="72" height="24"/>
+  <object id="14" name="scroll" type="left" x="1336" y="550" width="16" height="16"/>
+  <object id="15" name="hole" x="1960" y="632" width="72" height="40"/>
+  <object id="16" name="scroll" type="right" x="2140" y="768" width="16" height="16"/>
+  <object id="18" name="scroll" type="left" x="2672" y="760" width="16" height="16"/>
+  <object id="20" name="scroll" type="left" x="3425" y="1010.5" width="16" height="16"/>
+  <object id="21" name="scroll" type="right" x="3408" y="1220" width="16" height="16"/>
+  <object id="22" name="scroll" type="left" x="4505" y="1224" width="16" height="16"/>
+  <object id="23" name="scroll" type="right" x="4473" y="996" width="16" height="16"/>
+  <object id="24" name="scroll" type="left" x="5478" y="1000" width="16" height="16"/>
+  <object id="25" name="hole" x="2728.73" y="878.545" width="72" height="40"/>
+  <object id="26" name="hole" x="3374.67" y="1104" width="89.3333" height="40"/>
+  <object id="27" name="hole" x="4465.5" y="1071" width="114.5" height="40"/>
+  <object id="38" name="hole" x="1336" y="415.25" width="16" height="40"/>
+  <object id="39" name="hole" x="1148" y="647.333" width="16.182" height="40"/>
+  <object id="40" name="hole" x="1653" y="180" width="12" height="40"/>
+  <object id="19" name="teleporter" x="5719" y="1096" width="16" height="16"/>
+  <object id="18" name="teleporter" x="3424" y="1284" width="16" height="16"/>
+  <object id="25" name="teleporter" x="2552" y="839" width="16" height="16"/>
+  <object id="12" name="teleporter" x="5462" y="1083" width="16" height="16"/>
+  <object id="134" name="teleporter" x="116" y="852" width="16" height="16"/>
+  <object id="17" name="checkpoint" type="boss" x="5718" y="1000" width="16" height="16"/>
+  <object id="13" name="checkpoint" type="third" x="3424" y="1220" width="16" height="16"/>
+  <object id="24" name="checkpoint" type="second" x="2552" y="777" width="16" height="16"/>
+  <object id="132" name="checkpoint" type="first" x="116" y="768" width="16" height="16"/>
+  <object id="26" name="scroll" type="right" x="2536" y="777" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="7" name="subboss">
+  <object id="15" name="teleporter" type="teleporter" x="3253" y="1108" width="16" height="16"/>
+  <object id="27" name="newnightboss" type="subboss" x="3253" y="1092" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="4" name="enemies">
+  <object id="136" name="backpacker" type="night" x="293.737" y="770.066" width="16" height="16"/>
+  <object id="138" name="backpacker" type="night" x="1239.78" y="534.246" width="16" height="16"/>
+  <object id="139" name="backpacker" type="night" x="1592" y="166" width="16" height="16"/>
+  <object id="140" name="backpacker" type="night" x="1809.71" y="364.077" width="16" height="16"/>
+  <object id="141" name="backpacker" type="night" x="3495.49" y="1051.06" width="16" height="16"/>
+  <object id="142" name="batcombat" type="night" x="393.688" y="772.069" width="16" height="16"/>
+  <object id="144" name="batcombat" type="night" x="639" y="740" width="16" height="16"/>
+  <object id="146" name="batcombat" type="night" x="1824.32" y="277.747" width="16" height="16"/>
+  <object id="147" name="batcombat" type="night" x="1904.65" y="286.747" width="16" height="16"/>
+  <object id="148" name="batcombat" type="night" x="1860.65" y="792.08" width="16" height="16"/>
+  <object id="149" name="batcombat" type="night" x="2142.98" y="747.08" width="16" height="16"/>
+  <object id="150" name="batcombat" type="night" x="2480" y="671" width="16" height="16"/>
+  <object id="152" name="batcombat" type="night" x="2728.65" y="732.08" width="16" height="16"/>
+  <object id="153" name="batcombat" type="night" x="2583.65" y="912.83" width="16" height="16"/>
+  <object id="154" name="batcombat" type="night" x="4792.65" y="957.413" width="16" height="16"/>
+  <object id="155" name="batcombat" type="night" x="5066.65" y="958.747" width="16" height="16"/>
+  <object id="156" name="batcombat" type="night" x="5247.98" y="956.747" width="16" height="16"/>
+  <object id="158" name="robot_worm" type="night" x="523.484" y="804.87" width="16" height="16"/>
+  <object id="159" name="robot_worm" type="night" x="641.109" y="804.898" width="16" height="16"/>
+  <object id="160" name="robot_worm" type="night" x="1170.65" y="534.205" width="16" height="16"/>
+  <object id="162" name="robot_worm" type="night" x="1425.4" y="321.08" width="16" height="16"/>
+  <object id="163" name="robot_worm" type="night" x="1502.92" y="321.171" width="16" height="16"/>
+  <object id="164" name="robot_worm" type="night" x="1521.77" y="320.955" width="16" height="16"/>
+  <object id="165" name="robot_worm" type="night" x="1619.83" y="320.989" width="16" height="16"/>
+  <object id="166" name="golem_jumper" type="night" x="586" y="805" width="16" height="16"/>
+  <object id="167" name="golem_jumper" type="night" x="2164" y="852" width="16" height="16"/>
+  <object id="168" name="golem_jumper" type="night" x="3534.95" y="1282" width="16" height="16"/>
+  <object id="169" name="backpacker" type="night" x="4416" y="1054" width="16" height="16"/>
+  <object id="170" name="rip_jumper" type="night" x="725.16" y="836.542" width="16" height="16"/>
+  <object id="171" name="rip_jumper" type="night" x="1337.17" y="534.226" width="16" height="16"/>
+  <object id="173" name="rip_jumper" type="night" x="1888" y="168" width="16" height="16"/>
+  <object id="174" name="rip_jumper" type="night" x="1924.27" y="487" width="16" height="16"/>
+  <object id="175" name="rip_jumper" type="night" x="1965.86" y="587" width="16" height="16"/>
+  <object id="176" name="rip_jumper" type="night" x="1948.58" y="810.006" width="16" height="16"/>
+  <object id="177" name="rip_jumper" type="night" x="2316" y="848" width="16" height="16"/>
+  <object id="178" name="rip_jumper" type="night" x="2650.07" y="1080.96" width="16" height="16"/>
+  <object id="179" name="rip_jumper" type="night" x="2930.59" y="1080" width="16" height="16"/>
+  <object id="180" name="wall_spider" type="night" x="794.987" y="754.747" width="16" height="16"/>
+  <object id="181" name="wall_spider" type="night" x="922.654" y="795.413" width="16" height="16"/>
+  <object id="182" name="wall_spider" type="night" x="1073.32" y="767.413" width="16" height="16"/>
+  <object id="183" name="wall_spider" type="night" x="1310.65" y="462.747" width="16" height="16"/>
+  <object id="184" name="wall_spider" type="night" x="1861.98" y="96.0801" width="16" height="16"/>
+  <object id="186" name="wall_spider" type="night" x="1912.65" y="146.747" width="16" height="16"/>
+  <object id="188" name="wall_spider" type="night" x="4777" y="1010" width="16" height="16"/>
+  <object id="189" name="wall_spider" type="night" x="4836.65" y="1020.08" width="16" height="16"/>
+  <object id="190" name="wall_spider" type="night" x="4915.65" y="1047.08" width="16" height="16"/>
+  <object id="191" name="wall_spider" type="night" x="5033" y="1017" width="16" height="16"/>
+  <object id="192" name="wall_spider" type="night" x="5093.32" y="1060.41" width="16" height="16"/>
+  <object id="193" name="wall_spider" type="night" x="5288" y="1012" width="16" height="16"/>
+  <object id="196" name="wall_skull" type="night" x="1105.65" y="536.122" width="16" height="16"/>
+  <object id="197" name="wall_skull" type="night" x="1572.65" y="104.08" width="16" height="16"/>
+  <object id="198" name="wall_skull" type="night" x="1572.65" y="61.5801" width="16" height="16"/>
+  <object id="199" name="wall_skull" type="night" x="1572.65" y="14.5801" width="16" height="16"/>
+  <object id="200" name="wall_skull" type="night" x="1791.4" y="291.33" width="16" height="16"/>
+  <object id="201" name="wall_skull" type="night" x="1780" y="464" width="16" height="16"/>
+  <object id="202" name="wall_skull" type="night" x="1780" y="560" width="16" height="16"/>
+  <object id="205" name="wall_skull" type="night" x="3018.65" y="1011.33" width="16" height="16"/>
+  <object id="206" name="flash_brain" type="night" x="936.904" y="847.83" width="16" height="16"/>
+  <object id="208" name="flash_brain" type="night" x="2873.79" y="1051" width="16" height="16"/>
+  <object id="209" name="flash_brain" type="night" x="3897.77" y="1282" width="16" height="16"/>
+  <object id="210" name="falling_skull" type="night" x="3646.65" y="1132.08" width="16" height="16"/>
+  <object id="212" name="falling_skull" type="night" x="3724.65" y="1132.08" width="16" height="16"/>
+  <object id="213" name="falling_skull" type="night" x="3898.65" y="1130.08" width="16" height="16"/>
+  <object id="214" name="falling_skull" type="night" x="3978.65" y="1130.08" width="16" height="16"/>
+  <object id="215" name="falling_skull" type="night" x="4074.65" y="1130.08" width="16" height="16"/>
+  <object id="216" name="falling_skull" type="night" x="4210.65" y="1130.08" width="16" height="16"/>
+  <object id="217" name="falling_skull" type="night" x="4358.65" y="1132.08" width="16" height="16"/>
+  <object id="218" name="falling_skull" type="night" x="4480.65" y="1132.08" width="16" height="16"/>
+  <object id="219" name="falling_skull" type="night" x="4534.65" y="1132.08" width="16" height="16"/>
+  <object id="8" name="flash_brain" type="night" x="1094" y="837" width="16" height="16"/>
+  <object id="28" name="batcombat" type="night" x="2414" y="670" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="5" name="special">
+  <object id="3" name="falling_block" type="night" x="2221" y="869" width="17" height="19"/>
+  <object id="4" name="falling_block" type="night" x="2284.01" y="865.185" width="17" height="19"/>
+  <object id="6" name="falling_block" type="night" x="2238" y="869" width="17" height="19"/>
+  <object id="7" name="falling_block" type="night" x="2255" y="869" width="17" height="19"/>
+  <object id="8" name="falling_block" type="night" x="1956.98" y="827" width="17" height="19"/>
+  <object id="9" name="falling_block" type="night" x="1939.94" y="827" width="17" height="19"/>
+  <object id="11" name="falling_block" type="night" x="1054" y="864" width="17" height="19"/>
+  <object id="12" name="falling_block" type="night" x="1037" y="864" width="17" height="19"/>
+  <object id="13" name="falling_block" type="night" x="1020" y="864" width="17" height="19"/>
+  <object id="14" name="falling_block" type="night" x="754" y="864" width="17" height="19"/>
+  <object id="15" name="falling_block" type="night" x="771" y="864" width="17" height="19"/>
+  <object id="16" name="falling_block" type="night" x="788" y="864" width="17" height="19"/>
+  <object id="17" name="falling_block" type="night" x="805" y="864" width="17" height="19"/>
+  <object id="18" name="falling_block" type="night" x="822" y="864" width="17" height="19"/>
+  <object id="19" name="falling_block" type="night" x="839" y="864" width="17" height="19"/>
+  <object id="20" name="falling_block" type="night" x="856" y="864" width="17" height="19"/>
+  <object id="21" name="falling_block" type="night" x="873" y="864" width="17" height="19"/>
+  <object id="22" name="falling_block" type="night" x="890" y="864" width="17" height="19"/>
+  <object id="23" name="falling_block" type="night" x="907" y="864" width="17" height="19"/>
+  <object id="24" name="falling_block" type="night" x="924" y="864" width="17" height="19"/>
+  <object id="25" name="falling_block" type="night" x="941" y="864" width="17" height="19"/>
+  <object id="26" name="falling_block" type="night" x="958" y="864" width="17" height="19"/>
+  <object id="27" name="falling_block" type="night" x="975" y="864" width="17" height="19"/>
+  <object id="28" name="falling_block" type="night" x="2038.98" y="827" width="17" height="19"/>
+  <object id="29" name="falling_block" type="night" x="341" y="744" width="17" height="19"/>
+  <object id="30" name="falling_block" type="night" x="4433" y="1201" width="17" height="19"/>
+  <object id="32" name="falling_block" type="night" x="4450" y="1201" width="17" height="19"/>
+  <object id="33" name="falling_block" type="night" x="4467" y="1201" width="17" height="19"/>
+  <object id="34" name="falling_block" type="night" x="4484" y="1201" width="17" height="19"/>
+  <object id="35" name="falling_block" type="night" x="4416" y="1201" width="17" height="19"/>
+  <object id="37" name="falling_block" type="night" x="1378" y="346.25" width="17" height="19"/>
+  <object id="46" name="falling_block" type="night" x="4067" y="1299" width="17" height="19"/>
+  <object id="47" name="falling_block" type="night" x="4152" y="1299" width="17" height="19"/>
+  <object id="48" name="falling_block" type="night" x="4119" y="1299" width="17" height="19"/>
+  <object id="49" name="falling_block" type="night" x="4169" y="1299" width="17" height="19"/>
+  <object id="50" name="falling_block" type="night" x="4084" y="1299" width="17" height="19"/>
+  <object id="51" name="falling_block" type="night" x="4314" y="1244" width="17" height="19"/>
+  <object id="52" name="falling_block" type="night" x="4331" y="1244" width="17" height="19"/>
+  <object id="53" name="falling_block" type="night" x="4348" y="1244" width="17" height="19"/>
+  <object id="54" name="falling_block" type="night" x="4365" y="1244" width="17" height="19"/>
+  <object id="55" name="falling_block" type="night" x="4382" y="1244" width="17" height="19"/>
+  <object id="56" name="falling_block" type="night" x="4399" y="1244" width="17" height="19"/>
+  <object id="57" name="falling_block" type="night" x="4501" y="1201" width="17" height="19"/>
+  <object id="58" name="falling_block" type="night" x="4518" y="1201" width="17" height="19"/>
+  <object id="59" name="falling_block" type="night" x="4535" y="1201" width="17" height="19"/>
+  <object id="60" name="falling_block" type="night" x="4552" y="1201" width="17" height="19"/>
+  <object id="61" name="falling_block" type="night" x="4748" y="1037" width="17" height="19"/>
+  <object id="62" name="falling_block" type="night" x="5003" y="1037" width="17" height="19"/>
+  <object id="63" name="falling_block" type="night" x="5258" y="1037" width="17" height="19"/>
+  <object id="64" name="falling_block" type="night" x="4211" y="1245" width="17" height="19"/>
+  <object id="65" name="falling_block" type="night" x="4228" y="1245" width="17" height="19"/>
+  <object id="1" name="door" type="general" x="3042" y="1092" width="16" height="16"/>
+  <object id="3" name="door" type="general" x="3297" y="1092" width="16" height="16"/>
+  <object id="4" name="door" type="general" x="5591" y="1050" width="16" height="16"/>
+  <object id="5" name="door" type="general" x="5846" y="1050" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="6" name="boss">
+  <object id="6" name="boss" type="night" x="6064" y="864" width="16" height="16"/>
+  <object id="7" name="teleporter" x="6061" y="1096" width="16" height="16"/>
+ </objectgroup>
+</map>

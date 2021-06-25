@@ -1,0 +1,492 @@
+{
+    "layers": [
+        {
+            "basename": "layer_0",
+            "order": 0,
+            "tile_x": 256,
+            "tile_y": 256,
+            "tiles": [
+                {
+                    "path": "militaryman_0_0.png",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_1.png",
+                    "x": 1,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_2.png",
+                    "x": 2,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_3.png",
+                    "x": 3,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_4.png",
+                    "x": 4,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_5.png",
+                    "x": 5,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_6.png",
+                    "x": 6,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_7.png",
+                    "x": 7,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_8.png",
+                    "x": 8,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_9.png",
+                    "x": 9,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_10.png",
+                    "x": 10,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_11.png",
+                    "x": 11,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_12.png",
+                    "x": 12,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_13.png",
+                    "x": 13,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_14.png",
+                    "x": 14,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_15.png",
+                    "x": 15,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_16.png",
+                    "x": 16,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_17.png",
+                    "x": 17,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_18.png",
+                    "x": 18,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_19.png",
+                    "x": 19,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_20.png",
+                    "x": 20,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_21.png",
+                    "x": 21,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_22.png",
+                    "x": 22,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_0_23.png",
+                    "x": 23,
+                    "y": 0
+                },
+                {
+                    "path": "militaryman_1_0.png",
+                    "x": 0,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_1.png",
+                    "x": 1,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_2.png",
+                    "x": 2,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_3.png",
+                    "x": 3,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_4.png",
+                    "x": 4,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_5.png",
+                    "x": 5,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_6.png",
+                    "x": 6,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_7.png",
+                    "x": 7,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_8.png",
+                    "x": 8,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_9.png",
+                    "x": 9,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_10.png",
+                    "x": 10,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_11.png",
+                    "x": 11,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_12.png",
+                    "x": 12,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_13.png",
+                    "x": 13,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_14.png",
+                    "x": 14,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_15.png",
+                    "x": 15,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_16.png",
+                    "x": 16,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_17.png",
+                    "x": 17,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_18.png",
+                    "x": 18,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_19.png",
+                    "x": 19,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_20.png",
+                    "x": 20,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_21.png",
+                    "x": 21,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_22.png",
+                    "x": 22,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_1_23.png",
+                    "x": 23,
+                    "y": 1
+                },
+                {
+                    "path": "militaryman_2_0.png",
+                    "x": 0,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_1.png",
+                    "x": 1,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_2.png",
+                    "x": 2,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_3.png",
+                    "x": 3,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_4.png",
+                    "x": 4,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_5.png",
+                    "x": 5,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_6.png",
+                    "x": 6,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_7.png",
+                    "x": 7,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_8.png",
+                    "x": 8,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_9.png",
+                    "x": 9,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_10.png",
+                    "x": 10,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_11.png",
+                    "x": 11,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_12.png",
+                    "x": 12,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_13.png",
+                    "x": 13,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_14.png",
+                    "x": 14,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_15.png",
+                    "x": 15,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_16.png",
+                    "x": 16,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_17.png",
+                    "x": 17,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_18.png",
+                    "x": 18,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_19.png",
+                    "x": 19,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_20.png",
+                    "x": 20,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_21.png",
+                    "x": 21,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_22.png",
+                    "x": 22,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_2_23.png",
+                    "x": 23,
+                    "y": 2
+                },
+                {
+                    "path": "militaryman_3_0.png",
+                    "x": 0,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_1.png",
+                    "x": 1,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_2.png",
+                    "x": 2,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_3.png",
+                    "x": 3,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_4.png",
+                    "x": 4,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_5.png",
+                    "x": 5,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_6.png",
+                    "x": 6,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_7.png",
+                    "x": 7,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_8.png",
+                    "x": 8,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_9.png",
+                    "x": 9,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_10.png",
+                    "x": 10,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_11.png",
+                    "x": 11,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_12.png",
+                    "x": 12,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_13.png",
+                    "x": 13,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_14.png",
+                    "x": 14,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_15.png",
+                    "x": 15,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_16.png",
+                    "x": 16,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_17.png",
+                    "x": 17,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_18.png",
+                    "x": 18,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_19.png",
+                    "x": 19,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_20.png",
+                    "x": 20,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_21.png",
+                    "x": 21,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_22.png",
+                    "x": 22,
+                    "y": 3
+                },
+                {
+                    "path": "militaryman_3_23.png",
+                    "x": 23,
+                    "y": 3
+                }
+            ]
+        }
+    ]
+}

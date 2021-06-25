@@ -1,0 +1,17 @@
+{
+    "layers": [
+        {
+            "basename": "layer_0",
+            "order": 0,
+            "tile_x": 256,
+            "tile_y": 256,
+            "tiles": [
+                {
+                    "path": "weapon_0_0.png",
+                    "x": 0,
+                    "y": 0
+                }
+            ]
+        }
+    ]
+}

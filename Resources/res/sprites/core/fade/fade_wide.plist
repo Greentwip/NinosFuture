@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>fade_wide</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{435,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{435,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{435,224}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>fade_wide.png</string>
+            <key>size</key>
+            <string>{439,228}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:8c46003ea417f734b87c67453ae0efdb:cffa92493a379e3d8534285399d5a14d:b2f10bd7160af63865ea88007b30fb58$</string>
+            <key>textureFileName</key>
+            <string>fade_wide.png</string>
+        </dict>
+    </dict>
+</plist>

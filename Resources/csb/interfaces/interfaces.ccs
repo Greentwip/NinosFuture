@@ -1,0 +1,73 @@
+<Solution>
+  <PropertyGroup Name="interfaces" Version="3.10.0.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="sprites">
+          <Folder Name="gameplay">
+            <Folder Name="screens">
+              <Folder Name="gameover">
+                <Image Name="background.png" />
+                <Image Name="button_left_active.png" />
+                <Image Name="button_left_inactive.png" />
+                <Image Name="button_right_active.png" />
+                <Image Name="button_right_inactive.png" />
+                <Project Name="data.csd" Type="Scene" />
+                <Image Name="floating_window.png" />
+                <Image Name="game_over_background.png" />
+                <Image Name="gameover_screen.jpg" />
+                <Image Name="gameover_screen_2.jpg" />
+                <Image Name="level_clear_background.png" />
+                <Image Name="text_window.png" />
+                <Image Name="window.png" />
+                <Image Name="window_game_over.png" />
+              </Folder>
+              <Folder Name="options">
+                <Image Name="background.png" />
+                <Image Name="border.png" />
+                <Image Name="button.png" />
+                <Project Name="data.csd" Type="Scene" />
+                <Image Name="levels.png" />
+                <Image Name="tab.png" />
+              </Folder>
+              <Folder Name="save">
+                <Folder Name="interruptors">
+                  <Folder Name="armor">
+                    <Image Name="extreme_boot_interruptor_1.png" />
+                    <Image Name="extreme_chest_interruptor_1.png" />
+                    <Image Name="extreme_fist_interruptor_1.png" />
+                    <Image Name="extreme_helmet_interruptor_1.png" />
+                  </Folder>
+                  <Folder Name="life">
+                    <Image Name="life_interruptor_1.png" />
+                  </Folder>
+                  <Folder Name="tank">
+                    <Image Name="e_tank_interruptor_1.png" />
+                    <Image Name="m_tank_interruptor_1.png" />
+                  </Folder>
+                  <Folder Name="weapon">
+                    <Image Name="boomer_weapon_interruptor_1.png" />
+                    <Image Name="ex_weapon_interruptor_1.png" />
+                    <Image Name="freezer_weapon_interruptor_1.png" />
+                    <Image Name="helmet_weapon_interruptor_1.png" />
+                    <Image Name="military_weapon_interruptor_1.png" />
+                    <Image Name="night_weapon_interruptor_1.png" />
+                    <Image Name="sheriff_weapon_interruptor_1.png" />
+                    <Image Name="shield_weapon_interruptor_1.png" />
+                    <Image Name="torch_weapon_interruptor_1.png" />
+                    <Image Name="vine_weapon_interruptor_1.png" />
+                    <Image Name="violet_weapon_interruptor_1.png" />
+                  </Folder>
+                </Folder>
+                <Image Name="background.png" />
+                <Project Name="data.csd" Type="Scene" />
+                <Image Name="file.png" />
+              </Folder>
+            </Folder>
+          </Folder>
+        </Folder>
+        <TTF Name="megaman_2.ttf" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>spr_stage_select_swing_0</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-1,0}</string>
+                <key>spriteSize</key>
+                <string>{36,36}</string>
+                <key>spriteSourceSize</key>
+                <string>{48,48}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{36,36}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>spr_stage_select_swing.pvr.ccz</string>
+            <key>size</key>
+            <string>{40,40}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:dcadb5c0b6cf71517790375a20e58f1c:b2ed0fe24d65a1326b0b32ca8bec90d3:842f599dd388325c74e030a1ff143fd8$</string>
+            <key>textureFileName</key>
+            <string>spr_stage_select_swing.pvr.ccz</string>
+        </dict>
+    </dict>
+</plist>

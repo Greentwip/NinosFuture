@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>water_play_0</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1,1},{16,16}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{16,16}}</string>
+                <key>sourceSize</key>
+                <string>{16,16}</string>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>2</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>water.pvr.ccz</string>
+            <key>size</key>
+            <string>{18,18}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:45bd1218f96b28869a9ca07a4926e99a:c980c22d62c828f3067ff553519ddc98:509383a8a220b1a5b93b8e11238c5f2a$</string>
+            <key>textureFileName</key>
+            <string>water.pvr.ccz</string>
+        </dict>
+    </dict>
+</plist>
