@@ -55,7 +55,7 @@ void IntroScene::greentwipIntro() {
 
     auto preCallback = cocos2d::CallFunc::create([=]() {
         greentwipLogo->runAction("greentwip_logo");
-        windy::AudioManager::playSFX(windy::Sounds::Intro);
+        windy::AudioManager::playSfx(windy::Sounds::Intro);
         });
 
     auto duration = cocos2d::DelayTime::create(greentwipLogo->getActionDuration("greentwip_logo"));

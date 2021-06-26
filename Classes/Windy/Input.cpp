@@ -6,6 +6,8 @@
 
 using namespace windy;
 
+static float inputDeadZone = 0.30f;
+
 std::vector<InputKey> windy::Input::joyKeys = {
     InputKey::Right,
     InputKey::Left,
@@ -87,7 +89,7 @@ Input* Input::create() {
 
     if (input && input->init()) {
         input->autorelease();
-        input->deadZone = 0.25f;
+        input->deadZone = inputDeadZone;
         input->canMove = true;
         input->inHorizontalRange = false;
         input->inVerticalRange = false;

@@ -154,6 +154,7 @@
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <PreprocessorDefinitions>COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>MSVCRT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -167,6 +168,7 @@
       <AdditionalIncludeDirectories>..\..\Classes;$(EngineRoot)cocos\audio\include;Cocos2dEngine;Generated Files\Cocos2dEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -178,6 +180,7 @@
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <PreprocessorDefinitions>COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>MSVCRT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -191,6 +194,7 @@
       <AdditionalIncludeDirectories>..\..\Classes;$(EngineRoot)cocos\audio\include;Cocos2dEngine;Generated Files\Cocos2dEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -198,10 +202,11 @@
       <AdditionalOptions>/bigobj /Zm200 %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204;4251</DisableSpecificWarnings>
       <SDLCheck>false</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\Classes;$(EngineRoot)cocos\audio\include;Cocos2dEngine;Generated Files\Cocos2dEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Classes\External;..\..\Classes;$(EngineRoot)cocos\audio\include;Cocos2dEngine;Generated Files\Cocos2dEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <PreprocessorDefinitions>COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>MSVCRT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -220,7 +225,404 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Classes\AppDelegate.h" />
-    <ClInclude Include="..\..\Classes\External\Factory.h" />
+    <ClInclude Include="..\..\Classes\External\tao\json.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\basic_value.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binary.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binary_view.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binding.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binding\constant.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binding\element.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binding\factory.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binding\for_nothing_value.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binding\for_unknown_key.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binding\inherit.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binding\internal\array.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binding\internal\inherit.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binding\internal\object.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binding\internal\type_key.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binding\member.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binding\member_kind.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\binding\versions.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\consume_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\consume_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\events\from_binary.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\events\from_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\events\from_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\events\from_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\events\to_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\events\to_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\from_binary.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\from_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\from_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\from_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\internal\grammar.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\internal\major.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\parts_parser.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\to_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\cbor\to_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\consume.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\consume_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\consume_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\array_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\deque_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\diff.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\get.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\internal\array_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\internal\indirect_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\internal\object_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\internal\type_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\list_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\map_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\multimap_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\multiset_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\pair_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\patch.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\pointer_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\position.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\reference.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\schema.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\set_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\shared_ptr_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\tuple_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\unique_ptr_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\unordered_map_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\unordered_set_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\variant_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\vector_bool_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\contrib\vector_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\apply.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\binary_to_base64.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\binary_to_base64url.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\binary_to_exception.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\binary_to_hex.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\compare.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\debug.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\discard.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\from_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\from_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\from_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\from_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\from_value.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\hash.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\invalid_string_to_binary.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\invalid_string_to_exception.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\invalid_string_to_hex.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\key_camel_case_to_snake_case.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\key_snake_case_to_camel_case.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\limit_nesting_depth.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\limit_value_count.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\non_finite_to_exception.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\non_finite_to_null.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\non_finite_to_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\prefer_signed.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\prefer_unsigned.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\produce.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\ref.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\statistics.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\tee.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\to_pretty_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\to_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\to_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\to_value.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\transformer.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\validate_event_order.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\validate_keys.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\virtual_base.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\events\virtual_ref.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\external\double.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\external\itoa.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\external\ryu.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\forward.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\from_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\from_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\from_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\from_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\action.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\base64.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\base64url.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\dependent_false.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\endian.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\endian_gcc.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\endian_win.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\errors.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\escape.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\filesystem.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\format.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\grammar.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\hexdump.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\identity.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\number_state.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\number_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\pair.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\parse_util.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\sha256.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\single.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\string_t.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\type_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\unescape_action.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\internal\uri_fragment.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\consume_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\consume_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\events\from_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\events\from_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\events\from_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\events\from_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\events\to_pretty_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\events\to_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\events\to_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\from_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\from_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\from_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\from_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\internal\action.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\internal\bunescape_action.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\internal\errors.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\internal\grammar.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\internal\integer.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\internal\unescape_action.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\is_identifier.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\parts_parser.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\to_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\jaxn\to_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\message_extension.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\consume_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\consume_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\events\from_binary.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\events\from_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\events\from_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\events\from_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\events\to_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\events\to_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\from_binary.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\from_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\from_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\from_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\internal\format.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\internal\grammar.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\parts_parser.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\to_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\msgpack\to_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\operators.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\parts_parser.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\pointer.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\produce.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\self_contained.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\span.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\to_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\to_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\type.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\consume_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\consume_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\events\from_binary.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\events\from_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\events\from_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\events\from_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\events\to_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\events\to_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\from_binary.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\from_file.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\from_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\from_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\internal\grammar.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\internal\marker.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\parts_parser.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\to_stream.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\ubjson\to_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\utf8.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\json\value.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\apply_mode.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\argv_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\ascii.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\buffer_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\change_action.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\change_action_and_state.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\change_action_and_states.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\change_control.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\change_state.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\change_states.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\config.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\abnf.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\alphabet.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\analyze.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\analyze_traits.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\check_bytes.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\control_action.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\coverage.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\forward.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\function.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\http.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\icu\internal.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\icu\utf16.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\icu\utf32.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\icu\utf8.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\if_then.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\instantiate.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\integer.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\internal\endian.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\internal\endian_gcc.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\internal\endian_win.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\internal\peek_mask_uint.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\internal\peek_mask_uint8.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\internal\peek_uint.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\internal\peek_uint8.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\internal\peek_utf16.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\internal\peek_utf32.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\internal\read_uint.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\internal\set_stack_guard.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\internal\vector_stack_guard.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\json.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\json_pointer.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\limit_bytes.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\limit_depth.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\parse_tree.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\parse_tree_to_dot.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\peg.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\predicates.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\print.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\print_coverage.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\raw_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\remove_first_state.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\remove_last_states.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\rep_one_min_max.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\rep_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\shuffle_states.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\state_control.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\to_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\trace.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\uint16.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\uint32.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\uint64.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\uint8.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\unescape.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\uri.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\utf16.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\contrib\utf32.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\cstream_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\demangle.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\disable_action.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\discard_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\discard_input_on_failure.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\discard_input_on_success.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\enable_action.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\eol.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\eol_pair.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\file_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\action.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\action_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\any.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\apply.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\apply0.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\apply0_single.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\apply_single.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\at.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\bof.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\bol.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\bump.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\bump_help.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\bytes.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\control.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\crlf_eol.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\cr_crlf_eol.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\cr_eol.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\cstream_reader.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\cstring_reader.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\dependent_false.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\disable.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\discard.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\enable.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\enable_control.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\eof.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\eol.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\eolf.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\failure.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\filesystem.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\file_mapper_posix.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\file_mapper_win32.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\file_reader.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\has_apply.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\has_apply0.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\has_match.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\has_unwind.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\identifier.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\if_apply.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\if_must.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\if_must_else.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\if_then_else.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\input_pair.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\istream_reader.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\istring.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\iterator.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\lf_crlf_eol.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\lf_eol.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\list.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\list_must.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\list_tail.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\list_tail_pad.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\marker.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\minus.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\missing_apply.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\missing_apply0.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\must.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\not_at.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\one.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\opt.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\pad.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\pad_opt.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\path_to_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\peek_char.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\peek_utf8.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\pegtl_string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\plus.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\raise.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\range.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\ranges.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\rematch.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\rep.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\rep_min.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\rep_min_max.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\rep_opt.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\require.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\result_on_found.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\rules.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\seq.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\sor.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\star.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\star_must.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\state.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\string.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\success.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\try_catch_type.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\internal\until.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\istream_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\match.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\memory_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\mmap_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\must_if.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\normal.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\nothing.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\parse.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\parse_error.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\position.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\read_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\require_apply.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\require_apply0.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\rewind_mode.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\rules.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\string_input.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\tracking_mode.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\type_list.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\utf8.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\version.hpp" />
+    <ClInclude Include="..\..\Classes\External\tao\pegtl\visit.hpp" />
     <ClInclude Include="..\..\Classes\Game\GameState.h" />
     <ClInclude Include="..\..\Classes\Game\WeaponAcquireScene.h" />
     <ClInclude Include="..\..\Classes\Game\Computer.h" />
@@ -236,6 +638,7 @@
     <ClInclude Include="..\..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\..\Classes\Windy\AnimationAction.h" />
     <ClInclude Include="..\..\Classes\Windy\AudioManager.h" />
+    <ClInclude Include="..\..\Classes\Windy\SaveManager.h" />
     <ClInclude Include="..\..\Classes\Windy\Input.h" />
     <ClInclude Include="..\..\Classes\Windy\InputKeys.h" />
     <ClInclude Include="..\..\Classes\Windy\LabelAction.h" />
@@ -283,6 +686,7 @@
     <ClCompile Include="..\..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\..\Classes\Windy\AudioManager.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Input.cpp" />
+    <ClCompile Include="..\..\Classes\Windy\Settings.cpp" />
     <ClCompile Include="..\..\Classes\Windy\SpriteDefinition.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Label.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Sprite.cpp" />

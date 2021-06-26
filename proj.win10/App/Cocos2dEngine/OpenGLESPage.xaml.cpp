@@ -77,6 +77,9 @@ OpenGLESPage::OpenGLESPage(OpenGLES* openGLES) :
 
     mOrientation = currentDisplayInformation->CurrentOrientation;
 
+    Windows::UI::Core::SystemNavigationManager::GetForCurrentView()->BackRequested += 
+        ref new Windows::Foundation::EventHandler<Windows::UI::Core::BackRequestedEventArgs^>(this, &OpenGLESPage::OnBackRequested);
+
     this->Loaded +=
         ref new Windows::UI::Xaml::RoutedEventHandler(this, &OpenGLESPage::OnPageLoaded);
 
@@ -687,4 +690,12 @@ void OpenGLESPage::OnBackButtonPressed(Object^ sender, BackPressedEventArgs^ arg
         args->Handled = true;
     }
 }
+#else
+
+// Prevent the Xbox or any other gamepad controller from automatically closing the game with the B button
+void OpenGLESPage::OnBackRequested(Object^ sender, BackRequestedEventArgs^ args)
+{
+    args->Handled = true;
+}
+
 #endif

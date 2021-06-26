@@ -47,6 +47,8 @@ namespace CocosAppWinRT
         void OnVisibilityChanged(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::VisibilityChangedEventArgs^ args);
 #if (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP)
         void OnBackButtonPressed(Platform::Object^ sender, Windows::Phone::UI::Input::BackPressedEventArgs^ args);
+#else
+        void OnBackRequested(Object^ sender, Windows::UI::Core::BackRequestedEventArgs^ args);
 #endif
         void CreateRenderSurface();
         void DestroyRenderSurface();
@@ -62,8 +64,8 @@ namespace CocosAppWinRT
 
         void OnGamepadAdded(Platform::Object^, Windows::Gaming::Input::Gamepad^ args);
         void OnGamepadRemoved(Platform::Object^, Windows::Gaming::Input::Gamepad^ args);
-        Windows::Foundation::EventRegistrationToken                     m_gamepadAddedEventToken;
-        Windows::Foundation::EventRegistrationToken                     m_gamepadRemovedEventToken;
+        Windows::Foundation::EventRegistrationToken  m_gamepadAddedEventToken;
+        Windows::Foundation::EventRegistrationToken  m_gamepadRemovedEventToken;
 
 
         struct GamepadWithButtonState
@@ -72,11 +74,11 @@ namespace CocosAppWinRT
             int id;
             bool buttonAWasPressedLastFrame = false;
         };
-        std::vector<GamepadWithButtonState>                             m_gamepads;
 
-        std::pair<bool, Windows::Gaming::Input::GamepadButtons>
-            gamepadReading(GamepadWithButtonState gamepad,
-                Windows::Gaming::Input::GamepadButtons button);
+        std::vector<GamepadWithButtonState> m_gamepads;
+
+        std::pair<bool, Windows::Gaming::Input::GamepadButtons> gamepadReading(GamepadWithButtonState gamepad,
+                                                                               Windows::Gaming::Input::GamepadButtons button);
 
         void submitReading(GamepadWithButtonState gamepad,
             std::pair<bool, Windows::Gaming::Input::GamepadButtons> reading);

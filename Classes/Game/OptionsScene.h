@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-class OptionsScene : public cocos2d::Layer
+class OptionsScene : public cocos2d::LayerColor
 {
 public:
     virtual bool init();
@@ -17,5 +17,23 @@ public:
     virtual void update(float dt);
 
     CREATE_FUNC(OptionsScene);
+
+private:
+    void save(float bgmVolume, float sfxVolume);
+
+    cocos2d::Node* bgm;
+    cocos2d::Node* sfx;
+    cocos2d::Node* currentOption;
+
+    cocos2d::ui::Slider* bgmSlider;
+    cocos2d::ui::Slider* sfxSlider;
+
+    float bgmVolume;
+    float sfxVolume;
+
+    bool triggered;
+
+
+
 };
 #endif

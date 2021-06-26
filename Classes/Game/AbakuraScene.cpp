@@ -55,7 +55,7 @@ void AbakuraScene::abakuraIntro() {
 
     auto preCallback = cocos2d::CallFunc::create([=]() {
         abakuraLogo->runAction("abakura_logo");
-        windy::AudioManager::playSFX(windy::Sounds::Abakura);
+        windy::AudioManager::playSfx(windy::Sounds::Abakura);
         });
 
     auto duration = cocos2d::DelayTime::create(abakuraLogo->getActionDuration("abakura_logo"));

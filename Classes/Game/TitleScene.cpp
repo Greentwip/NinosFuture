@@ -22,8 +22,8 @@ public:
 std::string TitleSceneResources::titleSpriteSet = "sprites/gameplay/screens/title_screen/title_screen";
 std::string TitleSceneResources::font = "fonts/megaman_2.ttf";
 
-cocos2d::Color4B TitleSceneResources::textActiveColor = cocos2d::Color4B(97, 6, 45, 255);
-cocos2d::Color4B TitleSceneResources::textInactiveColor = cocos2d::Color4B(129, 51, 237, 255);
+cocos2d::Color4B TitleSceneResources::textActiveColor = cocos2d::Color4B(255, 255, 255, 255);
+cocos2d::Color4B TitleSceneResources::textInactiveColor = cocos2d::Color4B(127, 127, 127, 200);
 
 using namespace game;
 using namespace cocos2d;
@@ -90,7 +90,7 @@ bool TitleScene::init()
     abakura->setPosition(0, 0);
     addChild(abakura);
 
-    greentwip->setPosition((float)windy::Display::getInstance().width, 0);
+    greentwip->setPosition((float)windy::Display::getInstance().width - greentwip->getContentSize().width * 0.6f, 0);
     addChild(greentwip);
 
 
@@ -132,7 +132,7 @@ bool TitleScene::init()
     addChild(this->optionsText, 128);
 
     if (windy::AudioManager::getCurrentTrack() != windy::Sounds::Title) {
-        windy::AudioManager::playBGM(windy::Sounds::Title);
+        windy::AudioManager::playBgm(windy::Sounds::Title);
     }
 
     this->selectedOption = this->startText;
@@ -183,12 +183,12 @@ void TitleScene::update(float dt)
                 this->selectStart();
             }
 
-            windy::AudioManager::playSFX(windy::Sounds::Select);
+            windy::AudioManager::playSfx(windy::Sounds::Select);
         }
 
         if (windy::Input::keyPressed(windy::InputKey::A)) {
             this->triggered = true;
-            windy::AudioManager::playSFX(windy::Sounds::Selected);
+            windy::AudioManager::playSfx(windy::Sounds::Selected);
 
             auto fadeOut = FadeOut::create(1.0f);
             CallFunc* callback = nullptr;
@@ -197,7 +197,7 @@ void TitleScene::update(float dt)
                 callback = CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::Intro); });
             }
             else {
-                callback = CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::Abakura); });
+                callback = CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::Options); });
             }
 
             auto sequence = Sequence::create(fadeOut, callback, nullptr);

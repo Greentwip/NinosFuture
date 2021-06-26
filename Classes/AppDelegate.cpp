@@ -1,6 +1,8 @@
 #include "AppDelegate.h"
 #include "Game/IntroScene.h"
 
+#include "Windy/Settings.h"
+
 #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
 
@@ -114,6 +116,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     FileUtils::getInstance()->addSearchPath("res");
     FileUtils::getInstance()->addSearchPath("src");
+
+    // load saved settings
+    windy::Settings::load();
 
     // create a scene. it's an autorelease object
     auto scene = game::IntroScene::scene();

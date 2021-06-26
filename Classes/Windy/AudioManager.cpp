@@ -1,4 +1,5 @@
 #include "AudioManager.h"
+#include "Settings.h"
 
 #include "cocos2d.h"
 
@@ -20,6 +21,7 @@ using namespace CocosDenshion;
 
 windy::Sounds windy::AudioManager::currentTrack = windy::Sounds::NONE;
 int windy::AudioManager::currentSfxId = -1;
+int windy::AudioManager::currentBgmId = -1;
 
 std::map<windy::Sounds, std::string> windy::AudioManager::soundsKeyMap = {
 	{Sounds::Intro, "sounds/sfx_opening.mp3"},
@@ -34,7 +36,7 @@ std::map<windy::Sounds, std::string> windy::AudioManager::soundsKeyMap = {
 };
 
 
-void windy::AudioManager::playBGM(windy::Sounds resource, bool loop) {
+int windy::AudioManager::playBgm(windy::Sounds resource, bool loop) {
 	//cc.audio.current_track = path
 	//local id = ccexp.AudioEngine:play2d(path, loop, cc.bgm_volume_)
 	//cc.current_bgm_id_ = id
@@ -42,10 +44,12 @@ void windy::AudioManager::playBGM(windy::Sounds resource, bool loop) {
 
 	currentTrack = resource;
 
-	AudioEngine::play2d(soundsKeyMap[resource], loop);
+	AudioManager::currentBgmId = AudioEngine::play2d(soundsKeyMap[resource], loop, Settings::bgmVolume);
+
+	return AudioManager::currentBgmId;
 }
 
-void windy::AudioManager::playSFX(windy::Sounds resource, bool loop) {
+int windy::AudioManager::playSfx(windy::Sounds resource, bool loop) {
 	/*if (!playAlong) {
 	}*/
 	
@@ -54,7 +58,9 @@ void windy::AudioManager::playSFX(windy::Sounds resource, bool loop) {
 
 	//currentSfxId = ;
 
-	AudioEngine::play2d(soundsKeyMap[resource], loop);
+	AudioManager::currentSfxId = AudioEngine::play2d(soundsKeyMap[resource], loop, Settings::sfxVolume);
+
+	return AudioManager::currentSfxId;
 }
 
 void windy::AudioManager::stopAll() {
@@ -65,4 +71,7 @@ windy::Sounds windy::AudioManager::getCurrentTrack() {
 	return currentTrack;
 }
 
+void windy::AudioManager::setBgmVolume(float volume) {
+	AudioEngine::setVolume(AudioManager::currentBgmId, volume);
+}
 
