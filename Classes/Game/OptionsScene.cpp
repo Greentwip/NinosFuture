@@ -51,6 +51,7 @@ bool OptionsScene::init()
         return false;
     }
 
+    setCascadeOpacityEnabled(true);
 
     auto fadeIn = FadeIn::create(1.0f);
 
@@ -159,7 +160,12 @@ void OptionsScene::update(float dt)
         if (windy::Input::keyPressed(windy::InputKey::B)) {
             this->triggered = true;
             windy::Settings::save();
-            GameStateMachine::getInstance().pushState(GameState::Title);
+            auto fadeOut = cocos2d::FadeOut::create(1.0f);
+            auto callback = cocos2d::CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::Title); });
+
+            auto sequence = cocos2d::Sequence::create(fadeOut, callback, nullptr);
+
+            this->runAction(sequence);
         }
     }
 }
