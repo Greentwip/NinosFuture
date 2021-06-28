@@ -51,6 +51,11 @@ bool OptionsScene::init()
         return false;
     }
 
+
+    auto fadeIn = FadeIn::create(1.0f);
+
+    this->runAction(fadeIn);
+
     auto root = cocos2d::CSLoader::createNode(OptionsSceneResources::dataFile);
 
     addChild(root);

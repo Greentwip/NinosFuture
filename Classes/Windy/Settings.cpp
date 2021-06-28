@@ -63,8 +63,9 @@ void windy::Settings::save() {
 	};
 
 	std::string writablePath = cocos2d::FileUtils::getInstance()->getWritablePath();
+	std::string settingsPath = writablePath + "/" + "options.json";
 
-	std::ofstream out(writablePath + "/" + "options.json");
+	std::ofstream out(settingsPath);
 
 	tao::json::to_stream(out, v);
 	out.close();

@@ -6,6 +6,7 @@
 #include "AbakuraScene.h"
 #include "TitleScene.h"
 #include "OptionsScene.h"
+#include "SaveScene.h"
 
 #include "Windy/Input.h"
 
@@ -48,6 +49,7 @@ GameStateMachine::GameStateMachine() {
     sceneFactory.registerType<AbakuraScene>(GameState::Abakura);
     sceneFactory.registerType<TitleScene>(GameState::Title);
     sceneFactory.registerType<OptionsScene>(GameState::Options);
+    sceneFactory.registerType<SaveScene>(GameState::Save);
 }
 
 GameState GameStateMachine::getState() {

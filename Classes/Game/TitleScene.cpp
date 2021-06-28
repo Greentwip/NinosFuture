@@ -194,7 +194,7 @@ void TitleScene::update(float dt)
             CallFunc* callback = nullptr;
 
             if (this->selectedOption == this->startText) {
-                callback = CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::Intro); });
+                callback = CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::Save); });
             }
             else {
                 callback = CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::Options); });
