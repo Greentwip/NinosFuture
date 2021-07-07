@@ -12,7 +12,7 @@ namespace windy {
 		Title,
 		Select,
 		Selected,
-		WRONG_MOVE,
+		StageSelect,
 		COMBO_1,
 		COMBO_2,
 		COMBO_3,

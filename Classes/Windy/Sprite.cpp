@@ -100,7 +100,6 @@ Sprite* Sprite::create(const std::string& spriteName, const cocos2d::Point& anch
         sprite->currentAnimation = animations[0];
         sprite->touchRange = 0;
         sprite->getTexture()->setAliasTexParameters();
-        sprite->touchRange = 0;
         sprite->setPosition(Display::getInstance().center);
         sprite->defaultAnchor = anchor;
         sprite->actions.clear();

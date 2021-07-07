@@ -63,6 +63,24 @@
                 <Project Name="data.csd" Type="Scene" />
                 <Image Name="file.png" />
               </Folder>
+              <Folder Name="stage_select">
+                <Image Name="stage_select_lite_0.png" />
+                <Project Name="data.csd" Type="Scene" />
+                <Folder Name="mugs">
+                  <Image Name="spr_stage_select_mugs_0.png" />
+                  <Image Name="spr_stage_select_mugs_1.png" />
+                  <Image Name="spr_stage_select_mugs_2.png" />
+                  <Image Name="spr_stage_select_mugs_3.png" />
+                  <Image Name="spr_stage_select_mugs_4.png" />
+                  <Image Name="spr_stage_select_mugs_5.png" />
+                  <Image Name="spr_stage_select_mugs_6.png" />
+                  <Image Name="spr_stage_select_mugs_7.png" />
+                  <Image Name="spr_stage_select_mugs_8.png" />
+                </Folder>
+                <Folder Name="swing">
+                  <Image Name="spr_stage_select_swing_0.png" />
+                </Folder>
+              </Folder>
             </Folder>
           </Folder>
         </Folder>

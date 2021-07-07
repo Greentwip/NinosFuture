@@ -29,7 +29,7 @@ std::map<windy::Sounds, std::string> windy::AudioManager::soundsKeyMap = {
 	{Sounds::Title, "sounds/bgm_title.mp3"},
 	{Sounds::Select, "sounds/sfx_select.mp3"},
 	{Sounds::Selected, "sounds/sfx_selected.mp3"},
-	{Sounds::COMBO_3, "audio/sfx/combo3.mp3"},
+	{Sounds::StageSelect, "sounds/bgm_stage_select.mp3"},
 	{Sounds::COMBO_4, "audio/sfx/combo4.mp3"},
 	{Sounds::COMBO_5, "audio/sfx/combo5.mp3"},
 	{Sounds::DELICIOUS, "audio/sfx/delicious.mp3"}

@@ -610,7 +610,7 @@ void SaveScene::update(float dt)
                 windy::AudioManager::playSfx(windy::Sounds::Selected);
 
                 auto fadeOut = cocos2d::FadeOut::create(1.0f);
-                auto callback = cocos2d::CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::Title); });
+                auto callback = cocos2d::CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::StageSelect); });
 
                 auto sequence = cocos2d::Sequence::create(fadeOut, callback, nullptr);
 
