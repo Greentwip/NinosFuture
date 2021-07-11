@@ -103,6 +103,15 @@
     <ClCompile Include="..\..\Classes\Windy\Settings.cpp">
       <Filter>Classes\Windy</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\BossIntroScene.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\InfiniteParallax.cpp">
+      <Filter>Classes\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Intro.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -1388,6 +1397,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Windy\SaveManager.h">
       <Filter>Classes\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\BossIntroScene.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\InfiniteParallax.h">
+      <Filter>Classes\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Intro.h">
+      <Filter>Classes\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

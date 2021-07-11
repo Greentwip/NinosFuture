@@ -140,7 +140,7 @@
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>false</LinkIncremental>
+    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -204,7 +204,7 @@
       <SDLCheck>false</SDLCheck>
       <AdditionalIncludeDirectories>..\..\Classes\External;..\..\Classes;$(EngineRoot)cocos\audio\include;Cocos2dEngine;Generated Files\Cocos2dEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <PreprocessorDefinitions>COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -623,7 +623,9 @@
     <ClInclude Include="..\..\Classes\External\tao\pegtl\utf8.hpp" />
     <ClInclude Include="..\..\Classes\External\tao\pegtl\version.hpp" />
     <ClInclude Include="..\..\Classes\External\tao\pegtl\visit.hpp" />
+    <ClInclude Include="..\..\Classes\Game\BossIntroScene.h" />
     <ClInclude Include="..\..\Classes\Game\GameState.h" />
+    <ClInclude Include="..\..\Classes\Game\Intro.h" />
     <ClInclude Include="..\..\Classes\Game\WeaponAcquireScene.h" />
     <ClInclude Include="..\..\Classes\Game\Computer.h" />
     <ClInclude Include="..\..\Classes\Game\GameScene.h" />
@@ -638,6 +640,7 @@
     <ClInclude Include="..\..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\..\Classes\Windy\AnimationAction.h" />
     <ClInclude Include="..\..\Classes\Windy\AudioManager.h" />
+    <ClInclude Include="..\..\Classes\Windy\InfiniteParallax.h" />
     <ClInclude Include="..\..\Classes\Windy\SaveManager.h" />
     <ClInclude Include="..\..\Classes\Windy\Input.h" />
     <ClInclude Include="..\..\Classes\Windy\InputKeys.h" />
@@ -672,6 +675,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\..\Classes\Game\BossIntroScene.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Intro.cpp" />
     <ClCompile Include="..\..\Classes\Game\WeaponAcquireScene.cpp" />
     <ClCompile Include="..\..\Classes\Game\Computer.cpp" />
     <ClCompile Include="..\..\Classes\Game\GameScene.cpp" />
@@ -685,6 +690,7 @@
     <ClCompile Include="..\..\Classes\Game\SaveScene.cpp" />
     <ClCompile Include="..\..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\..\Classes\Windy\AudioManager.cpp" />
+    <ClCompile Include="..\..\Classes\Windy\InfiniteParallax.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Input.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Settings.cpp" />
     <ClCompile Include="..\..\Classes\Windy\SpriteDefinition.cpp" />

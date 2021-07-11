@@ -294,6 +294,9 @@ namespace game {
 
         LevelsData levels;
 
+
+        std::shared_ptr<LevelData> currentLevel;
+
         OptionsData options;
 
         int slot;

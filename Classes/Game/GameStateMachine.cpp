@@ -8,6 +8,7 @@
 #include "OptionsScene.h"
 #include "SaveScene.h"
 #include "StageSelectScene.h"
+#include "BossIntroScene.h"
 
 #include "Windy/Input.h"
 
@@ -52,6 +53,7 @@ GameStateMachine::GameStateMachine() {
     sceneFactory.registerType<OptionsScene>(GameState::Options);
     sceneFactory.registerType<SaveScene>(GameState::Save);
     sceneFactory.registerType<StageSelectScene>(GameState::StageSelect);
+    sceneFactory.registerType<BossIntroScene>(GameState::BossIntro);
 }
 
 GameState GameStateMachine::getState() {

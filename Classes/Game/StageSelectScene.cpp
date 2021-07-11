@@ -4,6 +4,8 @@
 #include "StageSelectScene.h"
 #include "GameStateMachine.h"
 
+#include "GameManager.h"
+
 #include "cocos/ui/CocosGUI.h"
 #include "cocostudio/CocoStudio.h"
 
@@ -96,7 +98,6 @@ bool StageSelectScene::init()
     this->selectedMug = swing;
 
     StageSelectSceneResources::mugLocations["middle"]["middle"] = this->swing;
-
     StageSelectSceneResources::mugLocations["middle"]["top"] = this->sheriffMan;
     StageSelectSceneResources::mugLocations["left"]["middle"] = this->militaryMan;
     StageSelectSceneResources::mugLocations["right"]["middle"] = this->vineMan;
@@ -263,13 +264,36 @@ void StageSelectScene::update(float dt)
         if (windy::Input::keyPressed(windy::InputKey::B)) {
             this->triggered = true;
             windy::AudioManager::stopAll();
-            GameStateMachine::getInstance().pushState(GameState::Save);
+
+
+            auto fadeOut = cocos2d::FadeOut::create(1.0f);
+            auto callback = cocos2d::CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::Save); });
+
+            auto sequence = cocos2d::Sequence::create(fadeOut, callback, nullptr);
+
+            this->runAction(sequence);
         }
-        else if (windy::Input::keyPressed(windy::InputKey::A)) {
+        else if (windy::Input::keyPressed(windy::InputKey::A) &&
+            this->selectedMug != StageSelectSceneResources::mugLocations["middle"]["middle"]) {
             this->triggered = true;
             windy::AudioManager::stopAll();
             windy::AudioManager::playSfx(windy::Sounds::Selected);
-            GameStateMachine::getInstance().pushState(GameState::Save);
+
+            auto levels = GameManager::getInstance().levels.collection;
+
+            for (auto level : levels) {
+                if (level->mug == this->selectedMug->getName()) {
+                    GameManager::getInstance().currentLevel = level;
+                    break;
+                }
+            }
+
+            auto fadeOut = cocos2d::FadeOut::create(1.0f);
+            auto callback = cocos2d::CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::BossIntro); });
+
+            auto sequence = cocos2d::Sequence::create(fadeOut, callback, nullptr);
+
+            this->runAction(sequence);
         }
     }
 
