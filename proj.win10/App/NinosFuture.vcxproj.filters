@@ -112,6 +112,9 @@
     <ClCompile Include="..\..\Classes\Game\Intro.cpp">
       <Filter>Classes\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Level.cpp">
+      <Filter>Classes\Windy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -1406,6 +1409,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Game\Intro.h">
       <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Level.h">
+      <Filter>Classes\Windy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

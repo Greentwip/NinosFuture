@@ -1,9 +1,20 @@
 
 #include "GameScene.h"
 #include "GameStateMachine.h"
+#include "GameManager.h"
+
+#include "Windy/Level.h"
 
 using namespace game;
 using namespace cocos2d;
+
+class GameSceneResources {
+public:
+    static std::string tilemapPath;
+};
+
+std::string GameSceneResources::tilemapPath = "tilemaps";
+
 
 Scene* GameScene::scene()
 {
@@ -25,14 +36,19 @@ bool GameScene::init()
 {
     //////////////////////////////
     // 1. super init first
-    if (!Layer::init())
+    if (!LayerColor::initWithColor(cocos2d::Color4B(0, 0, 0, 0)))
     {
         return false;
     }
 
-    auto onFinishCcallback = [=]() -> void {
-        GameStateMachine::getInstance().pushState(GameState::Abakura);
-    };
+    auto fadeIn = FadeIn::create(1.0f);
+
+    this->runAction(fadeIn);
+
+    auto level = windy::Level::create(GameSceneResources::tilemapPath, GameManager::getInstance().currentLevel->mug, windy::Sounds::NONE);
+
+    this->addChild(level);
+
 
     return true;
 }

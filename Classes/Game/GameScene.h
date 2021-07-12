@@ -2,20 +2,22 @@
 #define __GAME_SCENE_H__
 
 #include "cocos2d.h"
-#include "ui/CocosGUI.h"
 
-class GameScene : public cocos2d::Layer
-{
-public:
-    virtual bool init();
+namespace game {
+    class GameScene : public cocos2d::LayerColor
+    {
+    public:
+        virtual bool init();
 
-    static cocos2d::Scene* scene();
+        static cocos2d::Scene* scene();
 
-    virtual void onEnter();
-    virtual void onExit();
+        virtual void onEnter();
+        virtual void onExit();
 
-    virtual void update(float dt);
+        virtual void update(float dt);
 
-    CREATE_FUNC(GameScene);
-};
+        CREATE_FUNC(GameScene);
+    };
+}
+
 #endif
