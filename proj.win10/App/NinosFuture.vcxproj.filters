@@ -32,6 +32,9 @@
     <Filter Include="Classes\External\tao\pegtl">
       <UniqueIdentifier>{77422852-fb2f-4d84-ba5e-65734e25014a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Windy\Entities">
+      <UniqueIdentifier>{d4beb3e4-3230-4c87-b1be-fb51b4bef74e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -114,6 +117,36 @@
     </ClCompile>
     <ClCompile Include="..\..\Classes\Windy\Level.cpp">
       <Filter>Classes\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Logical.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Block.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Camera.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Checkpoint.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Door.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Armature.cpp">
+      <Filter>Classes\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Bounds.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Player.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\CameraFlags.h">
+      <Filter>Classes\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\CameraScroll.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1412,6 +1445,33 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Windy\Level.h">
       <Filter>Classes\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Logical.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Block.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Camera.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Checkpoint.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Door.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Armature.h">
+      <Filter>Classes\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Bounds.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Player.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\CameraScroll.h">
+      <Filter>Classes\Windy\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

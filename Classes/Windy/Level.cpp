@@ -4,27 +4,89 @@
 
 #include "Display.h"
 
+#include "Entities/Logical.h"
+#include "Entities/Block.h"
+#include "Entities/Bounds.h"
+#include "Entities/Camera.h"
+#include "Entities/Checkpoint.h"
+#include "Entities/Player.h"
+
+#include "GameTags.h"
+
 using namespace windy;
 
+
+template <typename T, typename U>
+class EntityFactory
+{
+public:
+    template <typename TDerived>
+    void registerType(U name)
+    {
+        _createFuncs[name] = &createFunc<TDerived>;
+    }
+
+    T* create(std::string name, Level* level, const cocos2d::Point& position, const cocos2d::Size& size) {
+        typename std::map<U, PCreateFunc>::const_iterator it = _createFuncs.find(name);
+        if (it != _createFuncs.end()) {
+            return it->second(level, position, size);
+        }
+        return nullptr;
+    }
+
+    void clear() {
+        this->_createFuncs.clear();
+    }
+
+private:
+    template <typename TDerived>
+    static T* createFunc(Level* level, const cocos2d::Point& position, const cocos2d::Size& size)
+    {
+        return T::create<TDerived>(level, position, size);
+    }
+
+    typedef T*(*PCreateFunc)(Level* level, const cocos2d::Point& position, const cocos2d::Size& size);
+    std::map<U, PCreateFunc> _createFuncs;
+};
+
+static EntityFactory<Logical, std::string> s_entityFactory;
+
 cocos2d::Point calculateTmxPosition(cocos2d::ValueMap tmxObject, cocos2d::experimental::TMXTiledMap* tmxMap) {
-    float tmxBlockY = (tmxMap->getMapSize().height * tmxMap->getTileSize().height) - tmxObject["y"].asFloat();
+    //float tmxBlockY = (tmxMap->getMapSize().height * tmxMap->getTileSize().height) - tmxObject["y"].asFloat();
+    float tmxBlockY = tmxObject["y"].asFloat();
     float tmxRealBlockY = tmxBlockY - tmxObject["height"].asFloat() * 0.5f;
 
     float tmxBlockX = tmxObject["x"].asFloat() + (tmxObject["width"].asFloat() * 0.5f);
 
-    int top = Display::getInstance().top;
+    //int top = Display::getInstance().top;
 
-    return cocos2d::Point(tmxBlockX, top - tmxRealBlockY);
+    //return cocos2d::Point(tmxBlockX, top - tmxRealBlockY);
+    return cocos2d::Point(tmxBlockX, tmxRealBlockY);
 }
 
-Level* Level::create(const std::string& mapPath, const std::string& mug, windy::Sounds bgm) {
+Level* Level::create(const std::string& resourcesRootPath,
+                     const std::string& tilemapRootPath,
+                     const std::string& mug, windy::Sounds bgm) {
+
+    s_entityFactory.clear();
+
+    s_entityFactory.registerType<Block>("block");
+    s_entityFactory.registerType<Camera>("camera");
+    s_entityFactory.registerType<Checkpoint>("checkpoint");
+    s_entityFactory.registerType<Bounds>("bounds");
+    s_entityFactory.registerType<Player>("player");
 
     Level* level = new (std::nothrow) Level();
 
     if (level) {
-        level->mapPath = mapPath;
+        level->resourcesRootPath = resourcesRootPath;
+        level->tilemapRootPath = tilemapRootPath;
         level->mug = mug;
         level->bgm = bgm;
+        level->isPaused = false;
+        level->triggeringDoor = nullptr;
+        level->bounds = nullptr;
+        level->camera = nullptr;
     }
 
     if (level && level->init()) {
@@ -47,7 +109,7 @@ bool Level::init()
 
 
     // Tile layers
-    std::string definitionsPath = this->mapPath + "/" + "definitions.json";
+    std::string definitionsPath = this->resourcesRootPath + "/" + this->tilemapRootPath + "/" + this->mug + "/" + "definitions.json";
     const tao::json::value v = tao::json::from_file(definitionsPath);
 
     std::vector<tao::json::value> layers = v.at("layers").get_array();
@@ -63,6 +125,18 @@ bool Level::init()
 
         std::vector<tao::json::value> tiles = layer.at("tiles").get_array();
 
+        int maxTileY = 0;
+
+        for (int j = 0; j < tiles.size(); ++j) {
+            auto tile = tiles[j];
+
+            int y = tile.as<int>("y");
+
+            if (y > maxTileY) {
+                maxTileY = y;
+            }
+        }
+
         for (int j = 0; j < tiles.size(); ++j) {
             auto tile = tiles[j];
 
@@ -71,24 +145,24 @@ bool Level::init()
             int x = tile.as<int>("x");
             int y = tile.as<int>("y");
 
-            std::string spritePath = this->mapPath + "/" + "__slices" + "/" + baseName + "/" + path;
+            std::string spritePath = this->tilemapRootPath + "/" + this->mug + "/" + "__slices" + "/" + baseName + "/" + path;
 
             auto sprite = cocos2d::Sprite::create(spritePath);
             int spriteX = x * tileX;
-            int spriteY = y * tileY;
+            int spriteY = (maxTileY - y) * tileY;
 
-            auto leftTop = Display::getInstance().left_top;
-            auto posFinal = cocos2d::Point(leftTop.x + spriteX, leftTop.y + spriteY);
+            auto leftBottom = Display::getInstance().left_bottom;
+            auto posFinal = cocos2d::Point(leftBottom.x + spriteX, leftBottom.y + spriteY);
 
             sprite->setPosition(posFinal);
-            sprite->setAnchorPoint(cocos2d::Point(0, 1));
+            sprite->setAnchorPoint(cocos2d::Point(0, 0));
             sprite->getTexture()->setAliasTexParameters();
             this->addChild(sprite);
 
         }
     }
 
-    std::string tmxPath = this->mapPath + "/" + "level" + "_" + this->mug + ".tmx";
+    std::string tmxPath = this->tilemapRootPath + "/" + this->mug + "/" + "level" + "_" + this->mug + ".tmx";
 
     auto map = cocos2d::experimental::TMXTiledMap::create(tmxPath);
     map->setAnchorPoint(cocos2d::Point(0, 1));
@@ -115,7 +189,71 @@ bool Level::init()
         }
     }
 
+    cocos2d::Vector<Logical*> checkpoints;
+
+    Logical* firstCheckpoint = nullptr;
+
+    groupArray = map->getObjectGroup("logic");
+
+    {
+        auto& objects = groupArray->getObjects();
+        for (auto& obj : objects)
+        {
+            auto& dictionary = obj.asValueMap();
+
+            std::string name = dictionary["name"].asString();
+            auto size = cocos2d::Size(dictionary["width"].asFloat(), dictionary["height"].asFloat());
+            auto position = calculateTmxPosition(dictionary, map);
+
+            if (name.compare("checkpoint") == 0) {
+                auto checkpoint = s_entityFactory.create("checkpoint", this, position, size);
+                checkpoint->parseBehavior(dictionary);
+                this->addChild(checkpoint);
+
+                checkpoints.pushBack(checkpoint);
+
+                if (checkpoint->getTag() == GameTags::Logic::Checkpoint::First) {
+                    firstCheckpoint = checkpoint;
+                }
+            }
+
+        }
+    }
+
+    auto firstCheckpointPosition = firstCheckpoint->getPosition();
+
+    auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
+
+    this->bounds = dynamic_cast<Bounds*>(s_entityFactory.create("bounds", this, firstCheckpointPosition, visibleSize));
+    
+    this->addChild(this->bounds, 4096);
+
+    auto playerSize = cocos2d::Size(15, 24);
+
+    this->player = dynamic_cast<Player*>(s_entityFactory.create("player", this, firstCheckpointPosition, playerSize));
+
+    this->addChild(this->player, 512);
+
+    auto cameraSize = cocos2d::Size(8, 16);
+
+    this->camera = dynamic_cast<Camera*>(s_entityFactory.create("camera", this, cocos2d::Point(0, 0), cameraSize));
+
+    this->camera->setPositionY(this->camera->collisionRectangles[0].size.height * 0.25f);
+
+    this->bounds->addChild(this->camera);
+
+    
+
+
     return true;
+}
+
+bool Level::paused() {
+    return this->isPaused;
+}
+
+void Level::pause(bool isPaused) {
+    this->isPaused = isPaused;
 }
 
 

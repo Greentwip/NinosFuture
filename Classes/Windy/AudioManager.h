@@ -31,7 +31,7 @@ namespace windy {
 		StageSelect,
 		BeltJoin,
 		BossIntro,
-		COMBO_3,
+		Door,
 		COMBO_4,
 		COMBO_5,
 		DELICIOUS,

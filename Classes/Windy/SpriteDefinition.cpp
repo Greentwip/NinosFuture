@@ -29,15 +29,17 @@ SpriteDefinition::SpriteDefinition(const std::string& dataFileName) {
 
 
 cocos2d::Point SpriteDefinition::pointFromString(const std::string& pointString) {
-    std::vector<int> stringPoints;
+    std::vector<float> stringPoints;
 
     std::regex e("(-*[0-9]+.[0-9]+)");
 
-    std::sregex_token_iterator iter(pointString.begin(), pointString.end(), e, -1);
-    std::sregex_token_iterator end;
+    std::string mutableString = pointString;
+
+    std::regex_token_iterator<std::string::iterator> iter(mutableString.begin(), mutableString.end(), e);
+    std::regex_token_iterator<std::string::iterator> end;
 
     for (; iter != end; ++iter) {
-        stringPoints.push_back(std::atoi(iter->str().c_str()));
+        stringPoints.push_back(static_cast<float>(std::atof(iter->str().c_str())));
     }
 
     return cocos2d::Point((float)stringPoints[0], (float)stringPoints[1]);

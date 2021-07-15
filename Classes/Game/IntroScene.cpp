@@ -6,6 +6,8 @@
 #include "Windy/AnimationAction.h"
 #include "Windy/AudioManager.h"
 
+#include "GameManager.h"
+
 using namespace game;
 
 cocos2d::Scene* IntroScene::scene()
@@ -63,7 +65,18 @@ void IntroScene::greentwipIntro() {
     auto fadeOut = cocos2d::FadeOut::create(1.0f);
 
     auto postCallback = cocos2d::CallFunc::create([=]() {
-        GameStateMachine::getInstance().pushState(GameState::Abakura);
+        //GameStateMachine::getInstance().pushState(GameState::Abakura);
+        auto levels = GameManager::getInstance().levels.collection;
+
+        for (auto level : levels) {
+            if (level->mug == "sheriffman") {
+                GameManager::getInstance().currentLevel = level;
+                break;
+            }
+        }
+
+        GameStateMachine::getInstance().pushState(GameState::Game);
+
         });
 
     auto sequence = cocos2d::Sequence::create(fadeIn, preCallback, duration, fadeOut, postCallback, nullptr);

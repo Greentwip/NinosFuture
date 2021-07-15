@@ -12,7 +12,7 @@ namespace windy {
 			Block,
 			Camera,
 			Scroll,
-			CheckPoint,
+			Checkpoint,
 			Teleporter,
 			Bounds,
 			Hole,
@@ -27,7 +27,8 @@ namespace windy {
 		};
 
 		class Logic {
-			enum CheckPoint {
+		public:
+			enum Checkpoint {
 				First = 16,
 				Last
 			};

@@ -165,6 +165,6 @@ void BossIntroScene::update(float dt)
         this->triggered = true;
         windy::AudioManager::stopAll();
 
-        GameStateMachine::getInstance().pushState(GameState::StageSelect);
+        GameStateMachine::getInstance().pushState(GameState::Game);
     }
 }

@@ -10,10 +10,18 @@ using namespace cocos2d;
 
 class GameSceneResources {
 public:
-    static std::string tilemapPath;
+    static std::string resourcesRootPath;
+    static std::string tilemapRootPath;
 };
 
-std::string GameSceneResources::tilemapPath = "tilemaps";
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
+std::string GameSceneResources::resourcesRootPath = "Assets/Resources/res";
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+std::string GameSceneResources::resourcesRootPath = "res";
+#endif
+
+std::string GameSceneResources::tilemapRootPath = "tilemaps";
+
 
 
 Scene* GameScene::scene()
@@ -45,7 +53,10 @@ bool GameScene::init()
 
     this->runAction(fadeIn);
 
-    auto level = windy::Level::create(GameSceneResources::tilemapPath, GameManager::getInstance().currentLevel->mug, windy::Sounds::NONE);
+    auto level = windy::Level::create(GameSceneResources::resourcesRootPath,
+                                      GameSceneResources::tilemapRootPath,
+                                      GameManager::getInstance().currentLevel->mug, 
+                                      windy::Sounds::NONE);
 
     this->addChild(level);
 
