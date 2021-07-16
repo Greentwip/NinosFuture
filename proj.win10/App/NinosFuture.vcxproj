@@ -641,6 +641,7 @@
     <ClInclude Include="..\..\Classes\Windy\AnimationAction.h" />
     <ClInclude Include="..\..\Classes\Windy\Armature.h" />
     <ClInclude Include="..\..\Classes\Windy\AudioManager.h" />
+    <ClInclude Include="..\..\Classes\Windy\DebugDrawNode.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Block.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Bounds.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Camera.h" />
@@ -702,6 +703,7 @@
     <ClCompile Include="..\..\Classes\Windy\Armature.cpp" />
     <ClCompile Include="..\..\Classes\Windy\AudioManager.cpp" />
     <ClCompile Include="..\..\Classes\Windy\CameraFlags.h" />
+    <ClCompile Include="..\..\Classes\Windy\DebugDrawNode.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Block.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Bounds.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Camera.cpp" />

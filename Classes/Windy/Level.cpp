@@ -13,6 +13,8 @@
 
 #include "GameTags.h"
 
+#include "DebugDrawNode.h"
+
 using namespace windy;
 
 
@@ -186,6 +188,13 @@ bool Level::init()
             auto size = cocos2d::Size(dictionary["width"].asFloat(), dictionary["height"].asFloat());
             auto position = calculateTmxPosition(dictionary, map);
 
+            auto block = s_entityFactory.create("block", this, position, size);
+
+            this->addChild(block);
+
+            this->entities.pushBack(block);
+
+
         }
     }
 
@@ -234,6 +243,8 @@ bool Level::init()
 
     this->addChild(this->player, 512);
 
+    this->entities.pushBack(this->player);
+
     auto cameraSize = cocos2d::Size(8, 16);
 
     this->camera = dynamic_cast<Camera*>(s_entityFactory.create("camera", this, cocos2d::Point(0, 0), cameraSize));
@@ -241,6 +252,10 @@ bool Level::init()
     this->camera->setPositionY(this->camera->collisionRectangles[0].size.height * 0.25f);
 
     this->bounds->addChild(this->camera);
+
+    this->debugDrawNode = DebugDrawNode::create(this);
+
+    this->addChild(this->debugDrawNode);
 
     
 

@@ -148,6 +148,9 @@
     <ClCompile Include="..\..\Classes\Windy\Entities\CameraScroll.cpp">
       <Filter>Classes\Windy\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\DebugDrawNode.cpp">
+      <Filter>Classes\Windy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -1472,6 +1475,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Windy\Entities\CameraScroll.h">
       <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\DebugDrawNode.h">
+      <Filter>Classes\Windy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

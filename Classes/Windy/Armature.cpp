@@ -73,7 +73,7 @@ Armature::Armature(const std::string& dataFileName) {
                 }
             }
 
-            auto collisionBox = cocos2d::Rect(minX, maxY, maxX - minX, maxY - minY);
+            auto collisionBox = cocos2d::Rect(minX, minY, maxX - minX, maxY - minY);
             collisionRectangles.push_back(collisionBox);
            
         }

@@ -12,6 +12,8 @@ namespace windy {
     class Bounds;
     class Camera;
     class Player;
+    class Logical;
+    class DebugDrawNode;
 }
 
 namespace windy {
@@ -44,7 +46,11 @@ namespace windy {
 
         Player* player;
 
+        cocos2d::Vector<Logical*> entities;
+
     private:
+        DebugDrawNode* debugDrawNode;
+
         std::string resourcesRootPath;
         std::string tilemapRootPath;
         std::string mug;

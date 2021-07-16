@@ -26,7 +26,8 @@ cocos2d::Rect Logical::normalizeCollisionRectangle(cocos2d::Node* node, cocos2d:
     auto rectangleOrigin = rectangle.origin;
 
     auto normalizedRectangle = rectangle;
-    normalizedRectangle.origin = nodePosition + rectangleOrigin;
+    normalizedRectangle.origin.x = nodePosition.x + rectangleOrigin.x;
+    normalizedRectangle.origin.y = nodePosition.y + rectangleOrigin.y;
 
     return normalizedRectangle;
 }
