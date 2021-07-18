@@ -56,8 +56,10 @@ bool Camera::init()
     this->collisionRectangles = armature.get("camera").collisionRectangles;
 
     for (int i = 0; i < this->collisionRectangles.size(); ++i) {
-        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, this->collisionRectangles[i]);
+        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, *this->collisionRectangles[i]);
     }
+
+    this->collisionBox = this->collisionRectangles[0];
 
     this->setTag(GameTags::General::Camera);
 
@@ -118,8 +120,8 @@ void Camera::onUpdate(float dt) {
 
         auto playerPosition = this->level->player->getPosition();
 
-        float playerCollisionTop = this->level->player->collisionRectangle.getMaxY();
-        float playerCollisionBottom = this->level->player->collisionRectangle.getMinY();
+        float playerCollisionTop = this->level->player->collisionBox->getMaxY();
+        float playerCollisionBottom = this->level->player->collisionBox->getMinY();
 
         int boundsTop = this->level->bounds->top();
         int boundsBottom = this->level->bounds->bottom();
@@ -167,8 +169,8 @@ void Camera::onUpdate(float dt) {
 
 
     if (this->fixedScroll != nullptr && this->cameraMode != CameraFlags::CameraMode::Shift) {
-        auto cameraSize = this->collisionRectangles[0].size;
-        auto fixedScrollSize = this->fixedScroll->collisionRectangles[0].size;
+        auto cameraSize = this->collisionBox->size;
+        auto fixedScrollSize = this->fixedScroll->collisionBox->size;
 
         auto boundsPosition = this->level->bounds->getPosition();
         auto scrollPosition = this->fixedScroll->getPosition();

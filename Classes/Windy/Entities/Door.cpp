@@ -46,8 +46,10 @@ bool Door::init()
     this->collisionRectangles = armature.get("door").collisionRectangles;
 
     for (int i = 0; i < this->collisionRectangles.size(); ++i) {
-        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, this->collisionRectangles[i]);
+        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, *this->collisionRectangles[i]);
     }
+
+    this->collisionBox = this->collisionRectangles[0];
 
     this->setTag(GameTags::General::Door);
 

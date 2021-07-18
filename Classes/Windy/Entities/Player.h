@@ -20,8 +20,6 @@ namespace windy {
         virtual void onUpdate(float dt) override;
 
     public:
-        cocos2d::Rect collisionRectangle;
-
         bool alive;
 
     private:

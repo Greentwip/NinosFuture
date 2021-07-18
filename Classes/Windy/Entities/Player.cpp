@@ -43,10 +43,10 @@ bool Player::init()
     this->collisionRectangles = armature.get("browners").collisionRectangles;
 
     for (int i = 0; i < this->collisionRectangles.size(); ++i) {
-        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, this->collisionRectangles[i]);
+        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, *this->collisionRectangles[i]);
     }
 
-    this->collisionRectangle = this->collisionRectangles[0];
+    this->collisionBox = this->collisionRectangles[0];
 
 
     this->setTag(GameTags::General::Player);

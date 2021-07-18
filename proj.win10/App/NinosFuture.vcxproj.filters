@@ -151,6 +151,9 @@
     <ClCompile Include="..\..\Classes\Windy\DebugDrawNode.cpp">
       <Filter>Classes\Windy</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\PhysicsWorld.cpp">
+      <Filter>Classes\Windy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -1477,6 +1480,12 @@
       <Filter>Classes\Windy\Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Classes\Windy\DebugDrawNode.h">
+      <Filter>Classes\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\PhysicsWorld.h">
+      <Filter>Classes\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\GeometryExtensions.h">
       <Filter>Classes\Windy</Filter>
     </ClInclude>
   </ItemGroup>

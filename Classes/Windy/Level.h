@@ -14,6 +14,7 @@ namespace windy {
     class Player;
     class Logical;
     class DebugDrawNode;
+    class PhysicsWorld;
 }
 
 namespace windy {
@@ -47,6 +48,8 @@ namespace windy {
         Player* player;
 
         cocos2d::Vector<Logical*> entities;
+
+        PhysicsWorld* physicsWorld;
 
     private:
         DebugDrawNode* debugDrawNode;

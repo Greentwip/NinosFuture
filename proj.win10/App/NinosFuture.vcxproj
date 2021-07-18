@@ -650,8 +650,10 @@
     <ClInclude Include="..\..\Classes\Windy\Entities\Logical.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Player.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\CameraScroll.h" />
+    <ClInclude Include="..\..\Classes\Windy\GeometryExtensions.h" />
     <ClInclude Include="..\..\Classes\Windy\InfiniteParallax.h" />
     <ClInclude Include="..\..\Classes\Windy\Level.h" />
+    <ClInclude Include="..\..\Classes\Windy\PhysicsWorld.h" />
     <ClInclude Include="..\..\Classes\Windy\SaveManager.h" />
     <ClInclude Include="..\..\Classes\Windy\Input.h" />
     <ClInclude Include="..\..\Classes\Windy\InputKeys.h" />
@@ -715,6 +717,7 @@
     <ClCompile Include="..\..\Classes\Windy\InfiniteParallax.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Input.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Level.cpp" />
+    <ClCompile Include="..\..\Classes\Windy\PhysicsWorld.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Settings.cpp" />
     <ClCompile Include="..\..\Classes\Windy\SpriteDefinition.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Label.cpp" />

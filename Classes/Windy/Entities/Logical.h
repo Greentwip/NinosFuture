@@ -1,12 +1,23 @@
 #ifndef __WINDY_LOGICAL_H__
 #define __WINDY_LOGICAL_H__
 
+#include <map>
 #include <vector>
+#include <memory>
+
 #include "cocos2d.h"
 
 #include "./../Level.h"
 
 namespace windy {
+
+    enum CollisionContact {
+        Up,
+        Down,
+        Left,
+        Right
+    };
+
     class Logical : public cocos2d::Node
     {
     public:
@@ -26,14 +37,17 @@ namespace windy {
 
         virtual void onUpdate(float dt) = 0;
 
-        static cocos2d::Rect normalizeCollisionRectangle(cocos2d::Node*, cocos2d::Rect);
+        static std::shared_ptr<cocos2d::Rect> normalizeCollisionRectangle(cocos2d::Node*, cocos2d::Rect);
 
     public:
         Level* level;
-        std::vector<cocos2d::Rect> collisionRectangles;
+
+        std::shared_ptr<cocos2d::Rect> collisionBox;
+        std::map<CollisionContact, bool> contacts;
 
     protected:
         cocos2d::Point lastPosition;
+        std::vector<std::shared_ptr<cocos2d::Rect>> collisionRectangles;
     };
 }
 

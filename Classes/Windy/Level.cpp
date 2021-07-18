@@ -15,6 +15,8 @@
 
 #include "DebugDrawNode.h"
 
+#include "PhysicsWorld.h"
+
 using namespace windy;
 
 
@@ -89,6 +91,8 @@ Level* Level::create(const std::string& resourcesRootPath,
         level->triggeringDoor = nullptr;
         level->bounds = nullptr;
         level->camera = nullptr;
+        level->debugDrawNode = nullptr;
+        level->physicsWorld = nullptr;
     }
 
     if (level && level->init()) {
@@ -175,6 +179,10 @@ bool Level::init()
 
     this->addChild(map);
 
+    // Physics
+    physicsWorld = PhysicsWorld::create(this);
+    this->addChild(physicsWorld);
+
     // Blocks
 
     cocos2d::TMXObjectGroup* groupArray = map->getObjectGroup("blocks");
@@ -249,7 +257,7 @@ bool Level::init()
 
     this->camera = dynamic_cast<Camera*>(s_entityFactory.create("camera", this, cocos2d::Point(0, 0), cameraSize));
 
-    this->camera->setPositionY(this->camera->collisionRectangles[0].size.height * 0.25f);
+    this->camera->setPositionY(this->camera->collisionBox->size.height * 0.25f);
 
     this->bounds->addChild(this->camera);
 

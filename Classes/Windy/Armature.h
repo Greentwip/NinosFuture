@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 #include "cocos2d.h"
 
@@ -10,7 +11,7 @@ namespace windy {
 	class Armature {
 	public:
 		Armature();
-		Armature(cocos2d::Point anchor, std::vector<cocos2d::Rect> collisionRectangles);
+		Armature(cocos2d::Point anchor, std::vector<std::shared_ptr<cocos2d::Rect>> collisionRectangles);
 		Armature(const std::string& dataFileName);
 		Armature(Armature const& other);
 
@@ -20,7 +21,7 @@ namespace windy {
 		cocos2d::Size sizeFromString(const std::string& pointString);
 	public:
 		cocos2d::Point anchor;
-		std::vector<cocos2d::Rect> collisionRectangles;
+		std::vector<std::shared_ptr<cocos2d::Rect> > collisionRectangles;
 		std::map<std::string, Armature> definitions;
 	};
 }

@@ -65,26 +65,21 @@ void DebugDrawNode::onDraw(const cocos2d::Mat4& transform, uint32_t flags)
     for (int i = 0; i < entities.size(); ++i) {
         auto entity = entities.at(i);
 
-        auto collisionRectangles = entity->collisionRectangles;
+        auto collisionRectangle = entity->collisionBox;
 
         cocos2d::ccDrawColor4F(1.0f, 0.0f, 0.0f, 1.0f);
 
+        float minX = collisionRectangle->getMinX();
+        float maxX = collisionRectangle->getMaxX();
 
-        for (int j = 0; j < collisionRectangles.size(); ++j) {
-            auto collisionRectangle = collisionRectangles[j];
-
-            float minX = collisionRectangle.getMinX();
-            float maxX = collisionRectangle.getMaxX();
-
-            float minY = collisionRectangle.getMinY();
-            float maxY = collisionRectangle.getMaxY();
+        float minY = collisionRectangle->getMinY();
+        float maxY = collisionRectangle->getMaxY();
 
 
-            cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX, maxY), cocos2d::Point(maxX, maxY));
-            cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX, maxY), cocos2d::Point(maxX, minY));
-            cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX, minY), cocos2d::Point(minX, minY));
-            cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX, minY), cocos2d::Point(minX, maxY));
-        }
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX, maxY), cocos2d::Point(maxX, maxY));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX, maxY), cocos2d::Point(maxX, minY));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX, minY), cocos2d::Point(minX, minY));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX, minY), cocos2d::Point(minX, maxY));
 
         auto entityPosition = entity->getPosition();
         float entityX = entityPosition.x;

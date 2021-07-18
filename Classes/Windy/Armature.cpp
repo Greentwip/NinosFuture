@@ -9,7 +9,7 @@ Armature::Armature() : anchor(cocos2d::Point(0, 0)) {
 
 }
 
-Armature::Armature(cocos2d::Point anchor, std::vector<cocos2d::Rect> collisionRectangles) {
+Armature::Armature(cocos2d::Point anchor, std::vector<std::shared_ptr<cocos2d::Rect>> collisionRectangles) {
     this->anchor = anchor;
     this->collisionRectangles = collisionRectangles;
 }
@@ -23,7 +23,7 @@ Armature::Armature(const std::string& dataFileName) {
 
         auto anchor = this->pointFromString(body.at("anchorpoint").asString());
 
-        std::vector<cocos2d::Rect> collisionRectangles;
+        std::vector<std::shared_ptr<cocos2d::Rect>> collisionRectangles;
 
         for (auto fixtureValue : body.at("fixtures").asValueVector()) {
             
@@ -73,8 +73,8 @@ Armature::Armature(const std::string& dataFileName) {
                 }
             }
 
-            auto collisionBox = cocos2d::Rect(minX, minY, maxX - minX, maxY - minY);
-            collisionRectangles.push_back(collisionBox);
+            
+            collisionRectangles.push_back(std::make_shared<cocos2d::Rect>(minX, minY, maxX - minX, maxY - minY));
            
         }
 
