@@ -1,5 +1,5 @@
-#ifndef _WINDY_PHYSICS_WORLD_H_
-#define _WINDY_PHYSICS_WORLD_H_
+#ifndef _WINDY_OBJECT_MANAGER_H_
+#define _WINDY_OBJECT_MANAGER_H_
 
 #include "cocos2d.h"
 
@@ -9,10 +9,10 @@ namespace windy {
 
 
 namespace windy {
-    class PhysicsWorld : public cocos2d::Node
+    class ObjectManager : public cocos2d::Node
     {
     public:
-        static PhysicsWorld* create(Level* level);
+        static ObjectManager* create(Level* level);
 
         virtual bool init();
 
@@ -23,8 +23,6 @@ namespace windy {
 
     private:
         Level* level;
-        float gravity;
-
     };
 
 }

@@ -35,6 +35,8 @@ namespace windy {
 
         virtual void update(float dt);
 
+        void recomputeCollisionRectangles();
+
         virtual void onUpdate(float dt) = 0;
 
         static std::shared_ptr<cocos2d::Rect> normalizeCollisionRectangle(cocos2d::Node*, cocos2d::Rect);
@@ -44,6 +46,10 @@ namespace windy {
 
         std::shared_ptr<cocos2d::Rect> collisionBox;
         std::map<CollisionContact, bool> contacts;
+
+        cocos2d::Point speed;
+
+        bool ignoreGravity;
 
     protected:
         cocos2d::Point lastPosition;

@@ -35,6 +35,7 @@ bool Door::init()
     this->lockTime = 1.0f;
 
     this->sprite = Sprite::create(DoorResources::spritePath);
+    this->addChild(this->sprite);
 
     auto armature = Armature(DoorResources::armaturePath);
 
@@ -42,7 +43,7 @@ bool Door::init()
     auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
     auto contentSize = this->sprite->getContentSize();
     this->sprite->setPosition(cocos2d::Point(0, 0) + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
-    
+
     this->collisionRectangles = armature.get("door").collisionRectangles;
 
     for (int i = 0; i < this->collisionRectangles.size(); ++i) {

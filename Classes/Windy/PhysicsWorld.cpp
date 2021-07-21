@@ -38,6 +38,9 @@ bool PhysicsWorld::init()
     {
         return false;
     }
+
+    this->gravity = -0.25;
+
     return true;
 }
 
@@ -68,7 +71,9 @@ void PhysicsWorld::update(float dt)
             landscapeEntities.pushBack(entity);
         }
         else if(entity->getTag() == GameTags::General::Player ||
-                entity->getTag() == GameTags::General::Enemy) { // Kinematic characters first
+                entity->getTag() == GameTags::General::Enemy  ||
+                entity->getTag() == GameTags::Weapon::WeaponPlayer ||
+                entity->getTag() == GameTags::Weapon::WeaponEnemy) { // Kinematic characters first
             collidingEntities.pushBack(entity);
         }
     }
@@ -86,75 +91,92 @@ void PhysicsWorld::update(float dt)
         }
     }
 
-    // Apply gravity
+    // Apply speed and gravity
     for (int i = 0; i < collidingEntities.size(); ++i) {
         auto entity = collidingEntities.at(i);
-        entity->setPositionY(entity->getPositionY() - 0.5f);
+
+        auto entityPosition = entity->getPosition();
+
+        if (!entity->ignoreGravity) {
+            entity->speed.y += this->gravity;
+        }
+        
+
+        entityPosition += entity->speed;
+
+        entity->setPosition(entityPosition);
+
+        entity->recomputeCollisionRectangles();
     }
 
 
     for (int i = 0; i < collidingEntities.size(); ++i) {
         auto entity = collidingEntities.at(i);
 
-        /*
-        * Collision tiles and sliced collision box
-        ------------------
-        -- 1 -- 2 -- 3 --
-        -- 4 -- 5 -- 6 --
-        -- 7 -- 8 -- 9 --
-        ------------------
-
-        ------------------
-        -- 5 -- 2 -- 6 --
-        -- 3 --   -- 4 --
-        -- 7 -- 1 -- 8 --
-        ------------------
-        */
-
-        cocos2d::Rect collisionBoxTiles[9];
-
-        for (int j = 0; j < 9; ++j) {
-            int column = j % 3;
-            int row = static_cast<int>(std::floor(j / 3));
-
-            float tileW = entity->collisionBox->size.width / 3.0f;
-            float tileH = entity->collisionBox->size.height / 3.0f;
-
-            float collisionBoxLeft = entity->collisionBox->getMinX();
-            float collisionBoxTop = entity->collisionBox->getMaxY();
-
-            auto tileOrigin = cocos2d::Point(collisionBoxLeft + (tileW * column), collisionBoxTop - (tileH * row));
-
-            collisionBoxTiles[j] = cocos2d::Rect(tileOrigin.x, tileOrigin.y - tileH, tileW, tileH);
-
-        }
-
-
-        cocos2d::Rect slicedCollisionBox[8];
-
-        slicedCollisionBox[0] = collisionBoxTiles[7];
-        slicedCollisionBox[1] = collisionBoxTiles[1];
-        slicedCollisionBox[2] = collisionBoxTiles[3];
-        slicedCollisionBox[3] = collisionBoxTiles[5];
-        slicedCollisionBox[4] = collisionBoxTiles[0];
-        slicedCollisionBox[5] = collisionBoxTiles[2];
-        slicedCollisionBox[6] = collisionBoxTiles[6];
-        slicedCollisionBox[7] = collisionBoxTiles[8];
-
+        entity->contacts.clear();
 
         for (int j = 0; j < screenLandscapeEntities.size(); ++j) {
             auto landscapeEntity = screenLandscapeEntities.at(j);
-            auto landscapeEntityCollisionBox = landscapeEntity->collisionBox;
-
-            float collisionBoxLeft = entity->collisionBox->getMinX();
-            float collisionBoxTop = entity->collisionBox->getMaxY();
-
-            float collisionBoxWidth = entity->collisionBox->size.width;
-            float collisionBoxHeight = entity->collisionBox->size.height;
-
-            auto collisionBoxCenter = cocos2d::Point(entity->collisionBox->getMidX(), entity->collisionBox->getMidY());
+            
 
             for (int k = 0; k < 8; k++) {
+
+                auto landscapeEntityCollisionBox = landscapeEntity->collisionBox;
+
+                float collisionBoxLeft = entity->collisionBox->getMinX();
+                float collisionBoxTop = entity->collisionBox->getMaxY();
+
+                float collisionBoxWidth = entity->collisionBox->size.width;
+                float collisionBoxHeight = entity->collisionBox->size.height;
+
+                auto collisionBoxCenter = cocos2d::Point(entity->collisionBox->getMidX(), entity->collisionBox->getMidY());
+
+
+                /*
+                * Collision tiles and sliced collision box
+                ------------------
+                -- 0 -- 1 -- 2 --
+                -- 3 -- 4 -- 5 --
+                -- 6 -- 7 -- 8 --
+                ------------------
+
+                ------------------
+                -- 4 -- 1 -- 5 --
+                -- 2 --   -- 3 --
+                -- 6 -- 0 -- 7 --
+                ------------------
+                */
+
+                cocos2d::Rect collisionBoxTiles[9];
+
+                for (int j = 0; j < 9; ++j) {
+                    int column = j % 3;
+                    int row = static_cast<int>(std::floor(j / 3));
+
+                    float tileW = entity->collisionBox->size.width / 3.0f;
+                    float tileH = entity->collisionBox->size.height / 3.0f;
+
+                    float collisionBoxLeft = entity->collisionBox->getMinX();
+                    float collisionBoxTop = entity->collisionBox->getMaxY();
+
+                    auto tileOrigin = cocos2d::Point(collisionBoxLeft + (tileW * column), collisionBoxTop - (tileH * row));
+
+                    collisionBoxTiles[j] = cocos2d::Rect(tileOrigin.x, tileOrigin.y - tileH, tileW, tileH);
+
+                }
+
+
+                cocos2d::Rect slicedCollisionBox[8];
+
+                slicedCollisionBox[0] = collisionBoxTiles[7];
+                slicedCollisionBox[1] = collisionBoxTiles[1];
+                slicedCollisionBox[2] = collisionBoxTiles[3];
+                slicedCollisionBox[3] = collisionBoxTiles[5];
+                slicedCollisionBox[4] = collisionBoxTiles[0];
+                slicedCollisionBox[5] = collisionBoxTiles[2];
+                slicedCollisionBox[6] = collisionBoxTiles[6];
+                slicedCollisionBox[7] = collisionBoxTiles[8];
+
                 if (landscapeEntityCollisionBox->intersectsRect(slicedCollisionBox[k])) {
                     auto intersection = GeometryExtensions::rectIntersection(*landscapeEntityCollisionBox, slicedCollisionBox[k]);
 
@@ -189,7 +211,6 @@ void PhysicsWorld::update(float dt)
                                 entity->contacts[CollisionContact::Up] = true;
                             }
                             else { 
-                                // 6 and 7
                                 entity->contacts[CollisionContact::Down] = true;
                             }
 
@@ -198,13 +219,12 @@ void PhysicsWorld::update(float dt)
                         }
                         else {
                             // Tile is diagonal, but resolving horizontally
-                            if (k == 6 || k == 5) {
-                                entity->contacts[CollisionContact::Left] = true;
-
-                            }
-                            else {
+                            if (k == 7 || k == 5) {
                                 entity->contacts[CollisionContact::Right] = true;
                                 intersection.size.width *= -1;
+                            }
+                            else {
+                                entity->contacts[CollisionContact::Left] = true;
                             }
 
                             hasOffsetX = true;
@@ -214,16 +234,27 @@ void PhysicsWorld::update(float dt)
 
                     if (hasOffsetX) {
                         entity->setPositionX(entity->getPositionX() + intersection.size.width);
+                        entity->recomputeCollisionRectangles();
                     }
 
                     if (hasOffsetY) {
                         entity->setPositionY(entity->getPositionY() + intersection.size.height);
+                        entity->recomputeCollisionRectangles();
                     }
                 }
             }
         }
     }
-    
+
+    // Clamp speed
+    for (int i = 0; i < collidingEntities.size(); ++i) {
+        auto entity = collidingEntities.at(i);
+
+        if (entity->contacts[CollisionContact::Down]) {
+            entity->speed.y = 0;
+        }
+    }
+
 
 
 }

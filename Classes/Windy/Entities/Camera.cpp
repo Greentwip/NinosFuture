@@ -137,7 +137,7 @@ void Camera::onUpdate(float dt) {
         else if (playerCollisionBottom < boundsBottom) {
             this->shiftDirection = CameraFlags::CameraShift::ShiftDown;
         }
-        else if (playerCollisionTop > boundsTop) {
+        else if (playerCollisionTop > boundsTop && this->level->player->climbing) {
             this->shiftDirection = CameraFlags::CameraShift::ShiftUp;
         }
         else {
@@ -206,41 +206,51 @@ void Camera::onUpdate(float dt) {
         if (!this->bossDoorWorking && this->shiftMoveCount > 0) {
             
             auto boundsPosition = this->level->bounds->getPosition();
+            auto playerPosition = this->level->player->getPosition();
 
             if (this->shiftDirection == CameraFlags::CameraShift::ShiftRight) {
+                this->level->bounds->setPositionX(boundsPosition.x + this->shiftSpeed);
+
                 if (this->bossDoorShift) {
-                    this->level->bounds->setPositionX(boundsPosition.x + this->protoShiftSpeed + 0.5f);
+                    this->level->player->setPositionX(playerPosition.x + this->protoShiftSpeed + 0.5f);
                 }
                 else {
-                    this->level->bounds->setPositionX(boundsPosition.x + this->protoShiftSpeed);
+                    this->level->player->setPositionX(playerPosition.x + this->protoShiftSpeed);
                 }
             }
 
             if (this->shiftDirection == CameraFlags::CameraShift::ShiftLeft) {
+                this->level->bounds->setPositionX(boundsPosition.x - this->shiftSpeed);
+
                 if (this->bossDoorShift) {
-                    this->level->bounds->setPositionX(boundsPosition.x - this->protoShiftSpeed - 0.5f);
+                    this->level->player->setPositionX(playerPosition.x - this->protoShiftSpeed - 0.5f);
                 }
                 else {
-                    this->level->bounds->setPositionX(boundsPosition.x - this->protoShiftSpeed);
+                    this->level->player->setPositionX(playerPosition.x - this->protoShiftSpeed);
                 }
             }
 
             if (this->shiftDirection == CameraFlags::CameraShift::ShiftUp) {
+
+                this->level->bounds->setPositionY(boundsPosition.y + this->shiftSpeed);
+
                 if (this->bossDoorShift) {
-                    this->level->bounds->setPositionY(boundsPosition.y + this->protoShiftSpeed + 0.5f);
+                    this->level->player->setPositionY(playerPosition.y + this->protoShiftSpeed + 0.15f);
                 }
                 else {
-                    this->level->bounds->setPositionY(boundsPosition.y + this->protoShiftSpeed);
+                    this->level->player->setPositionY(playerPosition.y + this->protoShiftSpeed);
                 }
             }
 
 
             if (this->shiftDirection == CameraFlags::CameraShift::ShiftDown) {
+                this->level->bounds->setPositionY(boundsPosition.y - this->shiftSpeed);
+
                 if (this->bossDoorShift) {
-                    this->level->bounds->setPositionY(boundsPosition.y - this->protoShiftSpeed - 0.5f);
+                    this->level->player->setPositionY(playerPosition.y - this->protoShiftSpeed - 0.15f);
                 }
                 else {
-                    this->level->bounds->setPositionY(boundsPosition.y - this->protoShiftSpeed);
+                    this->level->player->setPositionY(playerPosition.y - this->protoShiftSpeed);
                 }
             }
 

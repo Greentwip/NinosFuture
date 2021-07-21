@@ -1,5 +1,5 @@
-#ifndef GAME_TAGS_H
-#define GAME_TAGS_H
+#ifndef __GAME_TAGS_H__
+#define __GAME_TAGS_H__
 
 namespace windy {
 	class GameTags {

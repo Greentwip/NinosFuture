@@ -15,6 +15,7 @@ namespace windy {
     class Logical;
     class DebugDrawNode;
     class PhysicsWorld;
+    class ObjectManager;
 }
 
 namespace windy {
@@ -50,6 +51,7 @@ namespace windy {
         cocos2d::Vector<Logical*> entities;
 
         PhysicsWorld* physicsWorld;
+        ObjectManager* objectManager;
 
     private:
         DebugDrawNode* debugDrawNode;

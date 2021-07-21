@@ -1,3 +1,5 @@
+#include <thread>
+
 #include "AudioManager.h"
 #include "Settings.h"
 
@@ -16,9 +18,15 @@ std::map<windy::Sounds, std::string> windy::AudioManager::soundsKeyMap = {
 	{Sounds::StageSelect, "sounds/bgm_stage_select.mp3"},
 	{Sounds::BeltJoin, "sounds/screens/common/belt/sfx_belt_join.mp3"},
 	{Sounds::BossIntro, "sounds/bgm_boss_intro.mp3"},
-	{Sounds::Door, "sounds/sfx_door.mp3"}
+	{Sounds::Door, "sounds/sfx_door.mp3"},
+	{Sounds::BusterLow, "sounds/sfx_buster_shoot.mp3"},
+	{Sounds::BusterMid, "sounds/sfx_buster_shoot_mid.mp3"},
+	{Sounds::BusterHigh, "sounds/sfx_buster_shoot_high.mp3"},
+	{Sounds::BusterChargingMid, "sounds/sfx_buster_charging_mid.mp3"},
+	{Sounds::BusterChargingHigh, "sounds/sfx_buster_charging_high.mp3"},
+	{Sounds::Land, "sounds/sfx_land.mp3"}
+	
 };
-
 
 int windy::AudioManager::playBgm(windy::Sounds resource, bool loop) {
 	//cc.audio.current_track = path
@@ -44,7 +52,8 @@ int windy::AudioManager::playSfx(windy::Sounds resource, bool loop) {
 
 	AudioManager::currentSfxId = AudioEngine::play2d(soundsKeyMap[resource], loop, Settings::sfxVolume);
 
-	return AudioManager::currentSfxId;
+
+	return -1;
 }
 
 void windy::AudioManager::stopAll() {

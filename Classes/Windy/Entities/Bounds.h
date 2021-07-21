@@ -11,6 +11,8 @@ namespace windy {
     public:
         virtual bool init() override;
 
+        cocos2d::Rect inflate(cocos2d::Size size);
+
         int top();
         int bottom();
         int left();

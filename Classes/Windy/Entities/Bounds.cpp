@@ -29,6 +29,17 @@ bool Bounds::init()
     return true;
 }
 
+cocos2d::Rect Bounds::inflate(cocos2d::Size size) {
+    auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
+    auto inflatedCollisionRectangle = *this->collisionRectangles[0];
+    inflatedCollisionRectangle.origin = cocos2d::Point(-visibleSize.width * 0.5f - size.width * 0.5f, -visibleSize.height * 0.5f - size.height * 0.5f);
+    inflatedCollisionRectangle.size = visibleSize + size;
+
+    inflatedCollisionRectangle = *Logical::normalizeCollisionRectangle(this, inflatedCollisionRectangle);
+
+    return inflatedCollisionRectangle;
+}
+
 int Bounds::top() {
     return static_cast<int>(collisionRectangles[0]->getMaxY());
 }

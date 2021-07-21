@@ -8,6 +8,7 @@ void Logical::setup(const cocos2d::Point& position, const cocos2d::Size& size) {
     this->lastPosition = position;
     this->collisionRectangles.push_back(std::make_shared<cocos2d::Rect>(position.x - size.width * 0.5f, position.y + size.height * 0.5f, size.width, size.height));
     this->collisionBox = this->collisionRectangles[0];
+    this->ignoreGravity = false;
 }
 
 
@@ -48,9 +49,7 @@ void Logical::onExit()
     Node::onExit();
 }
 
-
-void Logical::update(float dt)
-{
+void Logical::recomputeCollisionRectangles() {
     auto positionDifference = this->getPosition() - lastPosition;
     lastPosition = this->getPosition();
 
@@ -61,6 +60,12 @@ void Logical::update(float dt)
         this->collisionRectangles[i]->origin.x += differenceX;
         this->collisionRectangles[i]->origin.y += differenceY;
     }
+
+}
+
+void Logical::update(float dt)
+{
+    recomputeCollisionRectangles();
 
     this->onUpdate(dt);
 }

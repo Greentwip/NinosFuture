@@ -154,6 +154,24 @@
     <ClCompile Include="..\..\Classes\Windy\PhysicsWorld.cpp">
       <Filter>Classes\Windy</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Browner.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Ladder.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Bullet.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\VioletBullet.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\VioletBrowner.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\ObjectManager.cpp">
+      <Filter>Classes\Windy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -1486,6 +1504,27 @@
       <Filter>Classes\Windy</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Classes\Windy\GeometryExtensions.h">
+      <Filter>Classes\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Browner.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Browners.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Ladder.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Bullet.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\VioletBullet.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\VioletBrowner.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\ObjectManager.h">
       <Filter>Classes\Windy</Filter>
     </ClInclude>
   </ItemGroup>

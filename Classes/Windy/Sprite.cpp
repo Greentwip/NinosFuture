@@ -72,19 +72,19 @@ Sprite* Sprite::create(const std::string& spriteName, const cocos2d::Point& anch
 
         frames[currentAnimation][atoi(tokens.at(tokens.size() - 1).c_str())] = k;
 
-        CCLOG("Frames content");
-        CCLOG(tokens.at(tokens.size() - 1).c_str());
-        CCLOG(frames[currentAnimation][atoi(tokens.at(tokens.size() - 1).c_str())].c_str());
+        //CCLOG("Frames content");
+        //CCLOG(tokens.at(tokens.size() - 1).c_str());
+        //CCLOG(frames[currentAnimation][atoi(tokens.at(tokens.size() - 1).c_str())].c_str());
 
     }
 
-    CCLOG("KP");
+    /*CCLOG("KP");
     for (auto kp : frames[animations[0]]) {
         CCLOG(std::to_string(kp.first).c_str());
         CCLOG(kp.second.c_str());
     }
 
-    CCLOG(frames[animations[0]][0].c_str());
+    CCLOG(frames[animations[0]][0].c_str());*/
 
     cocos2d::SpriteFrame* spriteFrame = cocos2d::SpriteFrameCache::getInstance()->getSpriteFrameByName(frames[animations[0]][0]);
 
@@ -339,11 +339,16 @@ void Sprite::reverseAction() {
 }
 
 void Sprite::pauseActions() {
-    cocos2d::Sprite::stopAllActionsByTag(GameTags::Actions::Animation);
+    if (this->getActionByTag(GameTags::Actions::Animation) != nullptr) {
+        cocos2d::Sprite::stopAllActionsByTag(GameTags::Actions::Animation);
+    }
 }
 
 void Sprite::resumeActions() {
-    cocos2d::Sprite::runAction(this->currentAction);
+
+    if (this->getActionByTag(GameTags::Actions::Animation) == nullptr) {
+        cocos2d::Sprite::runAction(this->currentAction);
+    }
 }
 
 

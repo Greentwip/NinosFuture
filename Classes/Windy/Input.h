@@ -29,6 +29,7 @@ namespace windy {
         static bool keyDown(InputKey key);
         static bool keyPressed(InputKey key);
 
+
     public:
         static std::map<InputKey, Key> delayedKeys;
         static std::map<InputKey, Key> keys;
@@ -36,6 +37,7 @@ namespace windy {
 
 
     private:
+        void onKeyPad(cocos2d::EventKeyboard::KeyCode keyCode, bool pressed);
         void onControllerKey(cocos2d::Controller* controller, int keyCode, bool pressed);
         void onAxis(float axisX, float axisY);
         

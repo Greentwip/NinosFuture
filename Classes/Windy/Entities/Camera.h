@@ -20,10 +20,11 @@ namespace windy {
         virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
         virtual void onUpdate(float dt) override;
 
-    private:
         enum CameraFlags::CameraMode cameraMode;
         enum CameraFlags::CameraScroll scroll;
         enum CameraFlags::CameraShift shiftDirection;
+
+    private:
         int shiftSpeed;
         bool bossDoorShift;
         Door* targetDoor;

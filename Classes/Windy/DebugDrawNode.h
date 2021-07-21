@@ -5,10 +5,9 @@
 
 #include "cocos2d.h"
 
-#include "Entities/Logical.h"
-
 namespace windy {
     class Level;
+    class Logical;
 }
 
 namespace windy {
@@ -25,6 +24,9 @@ namespace windy {
         void onDraw(const cocos2d::Mat4& transform, uint32_t flags);
 
         Level* level;
+
+        cocos2d::Vector<Logical*> customEntities;
+
 
     private:
         cocos2d::CustomCommand renderCommand;

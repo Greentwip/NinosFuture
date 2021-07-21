@@ -17,6 +17,8 @@
 
 #include "PhysicsWorld.h"
 
+#include "ObjectManager.h"
+
 using namespace windy;
 
 
@@ -265,8 +267,11 @@ bool Level::init()
 
     this->addChild(this->debugDrawNode);
 
+    this->debugDrawNode->customEntities.pushBack(this->bounds);
     
+    this->objectManager = ObjectManager::create(this);
 
+    this->addChild(this->objectManager);
 
     return true;
 }
