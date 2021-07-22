@@ -42,25 +42,29 @@ bool Player::init()
         return false;
     }
 
-    this->sprite = Sprite::create(PlayerResources::spritePath);
-    this->addChild(this->sprite);
 
     auto armature = Armature(PlayerResources::armaturePath);
 
     auto newAnchor = armature.get("browners").anchor;
-    //auto anchorChange = cocos2d::Point(0.5f, 0.5f) - newAnchor;
-    //auto contentSize = this->sprite->getContentSize();
-    //this->sprite->setPosition(cocos2d::Point(0, 0) + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
-    this->sprite->setAnchorPoint(newAnchor);
-    this->sprite->setPosition(cocos2d::Point(0, 0));
+    
+    this->sprite = Sprite::create(PlayerResources::spritePath, newAnchor);
+    this->addChild(this->sprite);
 
+    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
+    auto contentSize = this->sprite->getContentSize();
+    
     this->collisionRectangles = armature.get("browners").collisionRectangles;
+
+    auto collisionBoxCenter = cocos2d::Point(this->collisionRectangles[0]->getMidX(), this->collisionRectangles[0]->getMidY());
 
     for (int i = 0; i < this->collisionRectangles.size(); ++i) {
         this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, *this->collisionRectangles[i]);
     }
 
     this->collisionBox = this->collisionRectangles[0];
+
+
+    this->sprite->setPosition(collisionBoxCenter + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
 
 
     this->setTag(GameTags::General::Player);
@@ -109,8 +113,8 @@ void Player::initVariables() {
 
     this->speed = cocos2d::Point(0, 0);
 
-    this->cameraAirSpeedBackup = false;
-    this->airSpeedBackup = cocos2d::Point(0, 0);
+    this->cameraShiftSpeedBackup = false;
+    this->shiftSpeedBackup = cocos2d::Point(0, 0);
     
 }
 
@@ -538,9 +542,9 @@ void Player::onUpdate(float dt) {
         else if (this->alive) {
             if (!this->level->paused()) {
 
-                if (cameraAirSpeedBackup) {
-                    cameraAirSpeedBackup = false;
-                    this->speed = this->airSpeedBackup;
+                if (cameraShiftSpeedBackup) {
+                    cameraShiftSpeedBackup = false;
+                    this->speed = this->shiftSpeedBackup;
                     this->ignoreGravity = false;
                 }
 
@@ -563,12 +567,12 @@ void Player::onUpdate(float dt) {
                     this->level->camera->shiftDirection == CameraFlags::CameraShift::ShiftRight) &&
                     (this->onGround && !this->sliding && !this->stunned && !this->attacking)) {
                     this->currentBrowner->runAction("walk");
-                    this->speed.x = 0;
                 }
-                else if (this->level->camera->shiftDirection != CameraFlags::CameraShift::ShiftNone && !this->onGround) {
-                    if (!cameraAirSpeedBackup) {
-                        cameraAirSpeedBackup = true;
-                        this->airSpeedBackup = this->speed;
+                
+                if (this->level->camera->shiftDirection != CameraFlags::CameraShift::ShiftNone) {
+                    if (!cameraShiftSpeedBackup) {
+                        cameraShiftSpeedBackup = true;
+                        this->shiftSpeedBackup = this->speed;
                         this->ignoreGravity = true;
                         this->speed.y = 0;
                         this->speed.x = 0;

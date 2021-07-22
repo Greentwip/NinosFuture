@@ -16,6 +16,7 @@ namespace windy {
     class DebugDrawNode;
     class PhysicsWorld;
     class ObjectManager;
+    class LandscapeTile;
 }
 
 namespace windy {
@@ -63,6 +64,8 @@ namespace windy {
 
         bool isPaused;
 
+        cocos2d::Vector<LandscapeTile*> tiles;
+        cocos2d::Vector<LandscapeTile*> screenTiles;
 
     };
 }

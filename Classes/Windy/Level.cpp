@@ -19,6 +19,8 @@
 
 #include "ObjectManager.h"
 
+#include "LandscapeTile.h"
+
 using namespace windy;
 
 
@@ -165,8 +167,10 @@ bool Level::init()
             sprite->setPosition(posFinal);
             sprite->setAnchorPoint(cocos2d::Point(0, 0));
             sprite->getTexture()->setAliasTexParameters();
-            this->addChild(sprite);
 
+            this->addChild(sprite);
+            
+            //this->tiles.pushBack(LandscapeTile::create(sprite, posFinal, cocos2d::Size(static_cast<float>(tileX), static_cast<float>(tileY))));
         }
     }
 
@@ -179,7 +183,7 @@ bool Level::init()
 
     map->setPosition(leftTop);
 
-    this->addChild(map);
+    //this->addChild(map);
 
     // Physics
     physicsWorld = PhysicsWorld::create(this);
@@ -300,5 +304,107 @@ void Level::onExit()
 
 void Level::update(float dt)
 {
-    
+    /*cocos2d::Vector<LandscapeTile*> potentialNewTiles;
+    cocos2d::Vector<LandscapeTile*> discardedTiles;
+
+    auto boundsCollisionBox = this->bounds->collisionBox;
+
+    for (int i = 0; i < this->tiles.size(); ++i) {
+        auto tile = this->tiles.at(i);
+
+        auto tileCollisionBox = tile->collisionBox;
+        
+        // upper left
+
+        auto upperLeftCollisionBox = *boundsCollisionBox;
+        auto upperCenterCollisionBox = *boundsCollisionBox;
+        auto upperRightCollisionBox = *boundsCollisionBox;
+
+        auto middleLeftCollisionBox = *boundsCollisionBox;
+        auto middleCenterCollisionBox = *boundsCollisionBox;
+        auto middleRightCollisionBox = *boundsCollisionBox;
+
+        auto bottomLeftCollisionBox = *boundsCollisionBox;
+        auto bottomCenterCollisionBox = *boundsCollisionBox;
+        auto bottomRightCollisionBox = *boundsCollisionBox;
+
+        // Top row
+        upperLeftCollisionBox.origin.x -= boundsCollisionBox->size.width;
+        upperLeftCollisionBox.origin.y += boundsCollisionBox->size.height;
+
+        upperCenterCollisionBox.origin.x = boundsCollisionBox->origin.x;
+        upperCenterCollisionBox.origin.y += boundsCollisionBox->size.height;
+
+        upperRightCollisionBox.origin.x += boundsCollisionBox->size.width;
+        upperRightCollisionBox.origin.y += boundsCollisionBox->size.height;
+
+        // Middle row
+        middleLeftCollisionBox.origin.x = boundsCollisionBox->size.width;
+        middleLeftCollisionBox.origin.y += boundsCollisionBox->size.height;
+
+        middleLeftCollisionBox.origin.x = boundsCollisionBox->origin.x;
+        middleLeftCollisionBox.origin.y += boundsCollisionBox->size.height;
+
+        middleLeftCollisionBox.origin.x = boundsCollisionBox->size.width;
+        middleLeftCollisionBox.origin.y += boundsCollisionBox->size.height;
+
+        // Bottom row
+        upperLeftCollisionBox.origin.x -= boundsCollisionBox->size.width;
+        upperLeftCollisionBox.origin.y -= boundsCollisionBox->size.height;
+
+        upperCenterCollisionBox.origin.x = boundsCollisionBox->origin.x;
+        upperCenterCollisionBox.origin.y -= boundsCollisionBox->size.height;
+
+        upperRightCollisionBox.origin.x += boundsCollisionBox->size.width;
+        upperRightCollisionBox.origin.y -= boundsCollisionBox->size.height;
+
+        std::vector<cocos2d::Rect> screenCollisionRectangles = {
+            upperLeftCollisionBox,
+            upperCenterCollisionBox,
+            upperRightCollisionBox,
+
+            middleLeftCollisionBox,
+            middleCenterCollisionBox,
+            middleRightCollisionBox,
+
+            bottomLeftCollisionBox,
+            bottomCenterCollisionBox,
+            bottomRightCollisionBox
+        };
+
+        bool tileCollides = false;
+        for (int j = 0; j < screenCollisionRectangles.size(); ++j) {
+            auto screenCollisionRectangle = screenCollisionRectangles[j];
+            if (screenCollisionRectangle.intersectsRect(*tileCollisionBox)) {
+                tileCollides = true;
+                break;
+            }
+        }
+
+        if (tileCollides) {
+            potentialNewTiles.pushBack(tile);
+        }
+        else {
+            discardedTiles.pushBack(tile);
+        }
+    }
+
+    auto children = this->getChildren();
+    for (int i = 0; i < discardedTiles.size(); ++i) {
+        auto discardedTile = discardedTiles.at(i);
+
+        if (children.find(discardedTile) != children.end()) {
+            discardedTile->removeFromParent();
+        }
+    }
+
+
+    for (int i = 0; i < potentialNewTiles.size(); ++i) {
+        auto potentialNewTile = potentialNewTiles.at(i);
+
+        if (children.find(potentialNewTile) == children.end()) {
+            this->addChild(potentialNewTile);
+        }
+    }*/
+
 }

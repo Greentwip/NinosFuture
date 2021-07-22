@@ -85,8 +85,8 @@ namespace windy {
         Browner* currentBrowner;
 
     private:
-        cocos2d::Point airSpeedBackup;
-        bool cameraAirSpeedBackup;
+        cocos2d::Point shiftSpeedBackup;
+        bool cameraShiftSpeedBackup;
 
         Sprite* sprite;
 

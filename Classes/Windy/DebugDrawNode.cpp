@@ -1,8 +1,11 @@
 #include "DebugDrawNode.h"
 
 #include "Entities/Logical.h"
+#include "Entities/Bounds.h"
 
 #include "Level.h"
+
+
 
 using namespace windy;
 
@@ -61,9 +64,40 @@ void DebugDrawNode::onDraw(const cocos2d::Mat4& transform, uint32_t flags)
 	director->pushMatrix(cocos2d::MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
 	director->loadMatrix(cocos2d::MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW, transform);
 
-    auto entities = this->level->entities;
-    for (int i = 0; i < entities.size(); ++i) {
-        auto entity = entities.at(i);
+    auto levelEntities = this->level->entities;
+    auto customEntities = this->customEntities;
+
+    cocos2d::Vector<Logical*> screenEntities;
+
+    for (int i = 0; i < levelEntities.size(); ++i) {
+        auto entity = levelEntities.at(i);
+
+        auto landscapeCollisionBox = entity->collisionBox;
+        auto boundsCollisionBox = this->level->bounds->collisionBox;
+
+        if (boundsCollisionBox->intersectsRect(*landscapeCollisionBox)) {
+            screenEntities.pushBack(entity);
+        }
+    }
+
+    cocos2d::Vector<Logical*> screenCustomEntities;
+
+    for (int i = 0; i < customEntities.size(); ++i) {
+        auto entity = customEntities.at(i);
+
+        auto landscapeCollisionBox = entity->collisionBox;
+        auto boundsCollisionBox = this->level->bounds->collisionBox;
+
+        if (boundsCollisionBox->intersectsRect(*landscapeCollisionBox)) {
+            screenCustomEntities.pushBack(entity);
+        }
+    }
+
+
+
+
+    for (int i = 0; i < screenEntities.size(); ++i) {
+        auto entity = screenEntities.at(i);
 
         auto collisionRectangle = entity->collisionBox;
 
@@ -103,9 +137,8 @@ void DebugDrawNode::onDraw(const cocos2d::Mat4& transform, uint32_t flags)
 
     }
 
-    auto customEntities = this->customEntities;
-    for (int i = 0; i < customEntities.size(); ++i) {
-        auto entity = customEntities.at(i);
+    for (int i = 0; i < screenCustomEntities.size(); ++i) {
+        auto entity = screenCustomEntities.at(i);
 
         auto collisionRectangle = entity->collisionBox;
 
@@ -118,10 +151,10 @@ void DebugDrawNode::onDraw(const cocos2d::Mat4& transform, uint32_t flags)
         float maxY = collisionRectangle->getMaxY();
 
 
-        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX, maxY), cocos2d::Point(maxX, maxY));
-        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX, maxY), cocos2d::Point(maxX, minY));
-        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX, minY), cocos2d::Point(minX, minY));
-        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX, minY), cocos2d::Point(minX, maxY));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX + 2, maxY - 2), cocos2d::Point(maxX - 2, maxY - 2));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX - 2, maxY - 2), cocos2d::Point(maxX - 2, minY + 2));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX - 2, minY + 2), cocos2d::Point(minX + 2, minY + 2));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX + 2, minY + 2), cocos2d::Point(minX + 2, maxY - 2));
 
         auto entityPosition = entity->getPosition();
         float entityX = entityPosition.x;

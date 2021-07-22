@@ -172,6 +172,9 @@
     <ClCompile Include="..\..\Classes\Windy\ObjectManager.cpp">
       <Filter>Classes\Windy</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\LandscapeTile.cpp">
+      <Filter>Classes\Windy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -1525,6 +1528,9 @@
       <Filter>Classes\Windy\Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Classes\Windy\ObjectManager.h">
+      <Filter>Classes\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\LandscapeTile.h">
       <Filter>Classes\Windy</Filter>
     </ClInclude>
   </ItemGroup>
