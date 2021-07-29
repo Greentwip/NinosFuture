@@ -12,6 +12,9 @@ namespace windy {
         virtual bool init() override;
 
         virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
+
+        static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size);
+
         virtual void onUpdate(float dt) override;
     };
 }

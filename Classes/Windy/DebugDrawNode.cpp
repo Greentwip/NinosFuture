@@ -151,10 +151,10 @@ void DebugDrawNode::onDraw(const cocos2d::Mat4& transform, uint32_t flags)
         float maxY = collisionRectangle->getMaxY();
 
 
-        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX + 2, maxY - 2), cocos2d::Point(maxX - 2, maxY - 2));
-        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX - 2, maxY - 2), cocos2d::Point(maxX - 2, minY + 2));
-        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX - 2, minY + 2), cocos2d::Point(minX + 2, minY + 2));
-        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX + 2, minY + 2), cocos2d::Point(minX + 2, maxY - 2));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX, maxY), cocos2d::Point(maxX, maxY));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX, maxY), cocos2d::Point(maxX, minY));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX, minY), cocos2d::Point(minX, minY));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX, minY), cocos2d::Point(minX, maxY));
 
         auto entityPosition = entity->getPosition();
         float entityX = entityPosition.x;
@@ -177,6 +177,103 @@ void DebugDrawNode::onDraw(const cocos2d::Mat4& transform, uint32_t flags)
             cocos2d::Point(entityX - 2, entityY + 2));
 
     }
+
+    {
+        auto bounds = this->level->bounds;
+
+        auto collisionRectangle = bounds->collisionBox;
+
+        cocos2d::ccDrawColor4F(1.0f, 0.0f, 0.0f, 1.0f);
+
+        float minX = collisionRectangle->getMinX();
+        float maxX = collisionRectangle->getMaxX();
+
+        float minY = collisionRectangle->getMinY();
+        float maxY = collisionRectangle->getMaxY();
+
+
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX + 2, maxY - 2), cocos2d::Point(maxX - 2, maxY - 2));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX - 2, maxY - 2), cocos2d::Point(maxX - 2, minY + 2));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX - 2, minY + 2), cocos2d::Point(minX + 2, minY + 2));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX + 2, minY + 2), cocos2d::Point(minX + 2, maxY - 2));
+
+        auto entityPosition = bounds->getPosition();
+        float entityX = entityPosition.x;
+        float entityY = entityPosition.y;
+
+
+        cocos2d::ccDrawColor4F(1.0f, 0.0f, 1.0f, 1.0f);
+
+        //cocos2d::DrawPrimitives::drawCircle(entityPosition, 2, 0, 0, false);
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(entityX - 2, entityY + 2),
+            cocos2d::Point(entityX + 2, entityY + 2));
+
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(entityX + 2, entityY + 2),
+            cocos2d::Point(entityX + 2, entityY - 2));
+
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(entityX + 2, entityY - 2),
+            cocos2d::Point(entityX - 2, entityY - 2));
+
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(entityX - 2, entityY - 2),
+            cocos2d::Point(entityX - 2, entityY + 2));
+    }
+    
+    /*{
+        auto bounds = this->level->bounds;
+
+        auto collisionRectangle = bounds->inflate(cocos2d::Size(16, 16));
+
+        collisionRectangle.origin += cocos2d::Point(64, 64);
+
+        cocos2d::ccDrawColor4F(0.0f, 0.0f, 1.0f, 1.0f);
+
+        float minX = collisionRectangle.getMinX();
+        float maxX = collisionRectangle.getMaxX();
+
+        float minY = collisionRectangle.getMinY();
+        float maxY = collisionRectangle.getMaxY();
+
+
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX + 2, maxY - 2), cocos2d::Point(maxX - 2, maxY - 2));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX - 2, maxY - 2), cocos2d::Point(maxX - 2, minY + 2));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX - 2, minY + 2), cocos2d::Point(minX + 2, minY + 2));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX + 2, minY + 2), cocos2d::Point(minX + 2, maxY - 2));
+
+        auto entityPosition = bounds->getPosition();
+        float entityX = entityPosition.x;
+        float entityY = entityPosition.y;
+    }
+
+
+    {
+        auto bounds = this->level->bounds;
+
+        auto collisionRectangle = bounds->inflate(cocos2d::Size(48, 48));
+
+        collisionRectangle.origin += cocos2d::Point(64, 64);
+
+        cocos2d::ccDrawColor4F(0.0f, 1.0f, 1.0f, 1.0f);
+
+        float minX = collisionRectangle.getMinX();
+        float maxX = collisionRectangle.getMaxX();
+
+        float minY = collisionRectangle.getMinY();
+        float maxY = collisionRectangle.getMaxY();
+
+
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX + 2, maxY - 2), cocos2d::Point(maxX - 2, maxY - 2));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX - 2, maxY - 2), cocos2d::Point(maxX - 2, minY + 2));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX - 2, minY + 2), cocos2d::Point(minX + 2, minY + 2));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX + 2, minY + 2), cocos2d::Point(minX + 2, maxY - 2));
+
+        auto entityPosition = bounds->getPosition();
+        float entityX = entityPosition.x;
+        float entityY = entityPosition.y;
+    }*/
+
+    
+
+
 
 	
 }

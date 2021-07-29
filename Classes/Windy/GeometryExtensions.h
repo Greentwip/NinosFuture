@@ -24,6 +24,14 @@ namespace windy {
 			return intersection;
 
 		}
+
+		static bool rectIntersectsRect(const cocos2d::Rect& rect1, const cocos2d::Rect& rect2) {
+			return !(rect1.getMaxX()  < rect2.getMinX() ||
+					 rect2.getMaxX()  < rect1.getMinX() ||
+					 rect1.getMaxY()  < rect2.getMinY() ||
+					 rect2.getMaxY()  < rect1.getMinY());
+
+		}
 	};
 }
 

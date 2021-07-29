@@ -38,6 +38,8 @@ namespace windy {
 		BusterChargingMid,
 		BusterChargingHigh,
 		Land,
+		Explosion1,
+		EnemyHit,
 		NONE
 	};
 

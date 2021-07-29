@@ -20,15 +20,3 @@ bool Bullet::init()
 void Bullet::parseBehavior(const cocos2d::ValueMap& behavior) {
 
 }
-
-void Bullet::fire(int power, int direction, GameTags::Weapon tag) {
-
-    this->power = power;
-
-    bool flipX = direction == -1 ? true : false;
-
-    this->sprite->setFlippedX(flipX);
-    this->speed = cocos2d::Point(static_cast<float>(6 * direction), 0);
-
-    this->setTag(tag);
-}

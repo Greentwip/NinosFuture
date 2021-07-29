@@ -214,6 +214,76 @@ namespace game {
         friend class GameManager;
     };
 
+    class ItemData {
+    public:
+        int id;
+        std::string string;
+
+    private:
+        ItemData(int id, std::string string) {
+            this->id = id;
+            this->string = string;
+        }
+
+        ItemData(ItemData const& other) {
+            this->id = other.id;
+            this->string = other.string;
+        }
+
+        friend class GameManager;
+        friend class ItemsData;
+    };
+
+    class ItemsData {
+    public:
+        std::shared_ptr<ItemData> life;
+        std::shared_ptr<ItemData> helmet;
+        std::shared_ptr<ItemData> head;
+        std::shared_ptr<ItemData> chest;
+        std::shared_ptr<ItemData> fist;
+        std::shared_ptr<ItemData> boot;
+        std::shared_ptr<ItemData> healthSmall;
+        std::shared_ptr<ItemData> healthBig;
+        std::shared_ptr<ItemData> energySmall;
+        std::shared_ptr<ItemData> energyBig;
+        std::shared_ptr<ItemData> eTank;
+        std::shared_ptr<ItemData> mTank;
+
+        std::vector<std::shared_ptr<ItemData>> collection;
+
+    private:
+        ItemsData() :
+            life(std::shared_ptr<ItemData>(new ItemData(1, "life"))),
+            helmet(std::shared_ptr<ItemData>(new ItemData(2, "helmet"))),
+            head(std::shared_ptr<ItemData>(new ItemData(3, "head"))),
+            chest(std::shared_ptr<ItemData>(new ItemData(4, "chest"))),
+            fist(std::shared_ptr<ItemData>(new ItemData(5, "fist"))),
+            boot(std::shared_ptr<ItemData>(new ItemData(6, "boot"))),
+            healthSmall(std::shared_ptr<ItemData>(new ItemData(7, "health_small"))),
+            healthBig(std::shared_ptr<ItemData>(new ItemData(8, "health_big"))),
+            energySmall(std::shared_ptr<ItemData>(new ItemData(9, "energy_small"))),
+            energyBig(std::shared_ptr<ItemData>(new ItemData(10, "energy_big"))),
+            eTank(std::shared_ptr<ItemData>(new ItemData(11, "e_tank"))),
+            mTank(std::shared_ptr<ItemData>(new ItemData(12, "m_tank"))) {
+
+            collection.push_back(life);
+            collection.push_back(helmet);
+            collection.push_back(head);
+            collection.push_back(chest);
+            collection.push_back(fist);
+            collection.push_back(boot);
+            collection.push_back(healthSmall);
+            collection.push_back(healthBig);
+            collection.push_back(energySmall);
+            collection.push_back(energyBig);
+            collection.push_back(eTank);
+            collection.push_back(mTank);
+
+        }
+
+        friend class GameManager;
+    };
+
     class PlayerData {
     public:
         enum ClimbDirection {
@@ -293,6 +363,8 @@ namespace game {
         PlayerData player;
 
         LevelsData levels;
+
+        ItemsData items;
 
 
         std::shared_ptr<LevelData> currentLevel;

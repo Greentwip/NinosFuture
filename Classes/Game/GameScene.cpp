@@ -5,6 +5,8 @@
 
 #include "Windy/Level.h"
 
+#include "Windy/EntityFactory.h"
+
 using namespace game;
 using namespace cocos2d;
 
@@ -52,6 +54,8 @@ bool GameScene::init()
     auto fadeIn = FadeIn::create(1.0f);
 
     this->runAction(fadeIn);
+
+    windy::EntityFactory::getInstance().clear();
 
     auto level = windy::Level::create(GameSceneResources::resourcesRootPath,
                                       GameSceneResources::tilemapRootPath,

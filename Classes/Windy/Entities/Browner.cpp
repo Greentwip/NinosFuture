@@ -7,6 +7,7 @@
 #include "./../GameTags.h"
 
 #include "./../AudioManager.h"
+#include "./../ObjectManager.h"
 
 #include "Player.h"
 
@@ -180,6 +181,8 @@ void Browner::timedShoot() {
     if (!this->player->attacking) {
         this->player->attacking = true;
 
+        this->player->dashJumping = false;
+
         auto delay = cocos2d::DelayTime::create(0.280f);
         auto callback = cocos2d::CallFunc::create([this]() {
             this->player->charging = false;
@@ -192,6 +195,8 @@ void Browner::timedShoot() {
         ((Node*)this)->runAction(sequence);
     }
     else {
+        this->player->dashJumping = false;
+
         auto delay = cocos2d::DelayTime::create(0.280f);
         auto callback = cocos2d::CallFunc::create([this]() {
             this->player->charging = false;
@@ -278,15 +283,22 @@ void Browner::fire() {
     auto bulletPosition = cocos2d::Point(this->player->getPositionX() + (bulletOffset * this->getSpriteNormal()),
                                          this->player->getPositionY() - 4);
 
-    auto bullet = VioletBullet::create();
-    bullet->setPosition(bulletPosition);
-    bullet->setup(this->chargePower);
+    
+    auto chargePower = this->chargePower;
 
-    bullet->fire(bulletPower, this->getSpriteNormal(), GameTags::WeaponPlayer);
+    auto entryCollisionBox = VioletBullet::getEntryCollisionRectangle(chargePower, bulletPosition, cocos2d::Size(16, 16));
+    auto entry = Logical::getEntry(entryCollisionBox, [=]() {
+        auto bullet = VioletBullet::create();
+        bullet->setPosition(bulletPosition);
+        bullet->setup(chargePower);
 
+        bullet->fire(bulletPower, this->getSpriteNormal(), GameTags::WeaponPlayer);
 
-    this->level->entities.pushBack(bullet);
-    this->level->addChild(bullet, 2048);
+        return bullet;
+    });
+
+    this->level->objectManager->objectEntries.push_back(entry);
+
 
     //self:getParent():getParent().bullets_[bullet] = bullet
 

@@ -36,7 +36,7 @@ bool Door::init()
 
     auto armature = Armature(DoorResources::armaturePath);
 
-    auto newAnchor = armature.get("browners").anchor;
+    auto newAnchor = armature.get("door").anchor;
 
     this->sprite = Sprite::create(DoorResources::spritePath, newAnchor);
     this->addChild(this->sprite);
@@ -44,7 +44,7 @@ bool Door::init()
     auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
     auto contentSize = this->sprite->getContentSize();
 
-    this->collisionRectangles = armature.get("browners").collisionRectangles;
+    this->collisionRectangles = armature.get("door").collisionRectangles;
 
     auto collisionBoxCenter = cocos2d::Point(this->collisionRectangles[0]->getMidX(), this->collisionRectangles[0]->getMidY());
 
@@ -136,6 +136,24 @@ void Door::unlock(std::function<void()> callback) {
 void Door::parseBehavior(const cocos2d::ValueMap& behavior) {
 
 }
+
+std::shared_ptr<cocos2d::Rect> Door::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
+    
+    auto armature = Armature(DoorResources::armaturePath);
+
+    auto newAnchor = armature.get("door").anchor;
+
+    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
+
+    auto collisionRectangles = armature.get("door").collisionRectangles;
+
+    for (int i = 0; i < collisionRectangles.size(); ++i) {
+        collisionRectangles[i] = Logical::normalizeCollisionRectangle(position, *collisionRectangles[i]);
+    }
+
+    return collisionRectangles[0];
+}
+
 
 void Door::onUpdate(float dt) {
 

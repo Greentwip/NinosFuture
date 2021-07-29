@@ -1,9 +1,13 @@
+#include <algorithm>
+
 #include "ObjectManager.h"
 
 #include "Level.h"
 
 #include "Entities/Logical.h"
 #include "Entities/Bounds.h"
+
+#include "Entities/ObjectEntry.h"
 
 #include "GameTags.h"
 
@@ -55,8 +59,110 @@ void ObjectManager::onExit()
 
 void ObjectManager::update(float dt)
 {
+    // Erase finished forever entities
 
-    cocos2d::Vector<Logical*> collidingEntities;
+    for (int i = 0; i < this->objectEntries.size(); ++i) {
+        auto entry = this->objectEntries[i];
+
+        if (entry->finishedForever) {
+            if (entry->mappedInstance != nullptr) {
+                entry->mappedInstance->onFinished();
+
+                this->level->entities.eraseObject(entry->mappedInstance);
+                entry->mappedInstance->removeFromParent();
+                entry->mappedInstance = nullptr;
+            }
+        }
+    }
+
+    // Erase finished forever entries
+    this->objectEntries.erase(std::remove_if(this->objectEntries.begin(), 
+                                             this->objectEntries.end(), 
+                                             [](const std::shared_ptr<ObjectEntry> entry) {
+                                                 return entry->finishedForever;
+                                             }), 
+                              this->objectEntries.end());
+
+
+
+    // We have to inflate the bounds by 96 pixels for intro and outro player position (offscreen location)
+
+    auto boundsCollisionBox = this->level->bounds->collisionBox;
+    auto inflatedBoundsCollisionBox = this->level->bounds->inflate(cocos2d::Size(96, 96));
+
+    for (int i = 0; i < this->objectEntries.size(); ++i) {
+        auto entry = this->objectEntries[i];
+
+        if (entry->finished && entry->mappedInstance != nullptr) {
+            entry->mappedInstance->onFinished();
+
+            this->level->entities.eraseObject(entry->mappedInstance);
+            entry->mappedInstance->removeFromParent();
+            entry->mappedInstance = nullptr;
+
+        }
+
+
+        auto entryCollisionBox = entry->collisionRectangle;
+
+        if (GeometryExtensions::rectIntersectsRect(*boundsCollisionBox, *entryCollisionBox)) {
+            if (entry->mappedInstance == nullptr && !entry->respawnPrevention) {
+                entry->mappedInstance = entry->createFunction();
+
+                entry->mappedInstance->setEntry(entry);
+
+                this->level->addChild(entry->mappedInstance);
+                this->level->entities.pushBack(entry->mappedInstance);
+            }
+
+
+            if (entry->mappedInstance != nullptr) {
+                auto instanceCollisionBox = entry->mappedInstance->collisionBox;
+
+                if (!GeometryExtensions::rectIntersectsRect(inflatedBoundsCollisionBox, *instanceCollisionBox)) {
+                    entry->finished = true;
+
+                    entry->mappedInstance->onFinished();
+
+                    this->level->entities.eraseObject(entry->mappedInstance);
+                    entry->mappedInstance->removeFromParent();
+
+                    entry->mappedInstance = nullptr;
+                }
+                else {
+                    entry->respawnPrevention = true;
+                }
+            }
+
+        }
+        else {
+
+            if (entry->mappedInstance != nullptr) {
+                auto instanceCollisionBox = entry->mappedInstance->collisionBox;
+
+                if (!GeometryExtensions::rectIntersectsRect(inflatedBoundsCollisionBox, *instanceCollisionBox)) {
+                    entry->finished = true;
+                    entry->respawnPrevention = false;
+
+                    entry->mappedInstance->onFinished();
+
+                    this->level->entities.eraseObject(entry->mappedInstance);
+                    entry->mappedInstance->removeFromParent();
+
+                    entry->mappedInstance = nullptr;
+                }
+            }
+            else {
+                entry->respawnPrevention = false;
+                entry->finished = false;
+
+            }
+           
+        }
+
+    }
+
+    /*cocos2d::Vector<Logical*> collidingEntities;
 
     for (int i = 0; i < this->level->entities.size(); ++i) {
         auto entity = this->level->entities.at(i);
@@ -83,6 +189,6 @@ void ObjectManager::update(float dt)
             this->level->entities.eraseObject(entity);
             entity->removeFromParent();
         }
-    }
+    }*/
 
 }

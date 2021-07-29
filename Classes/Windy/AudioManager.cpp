@@ -24,8 +24,10 @@ std::map<windy::Sounds, std::string> windy::AudioManager::soundsKeyMap = {
 	{Sounds::BusterHigh, "sounds/sfx_buster_shoot_high.mp3"},
 	{Sounds::BusterChargingMid, "sounds/sfx_buster_charging_mid.mp3"},
 	{Sounds::BusterChargingHigh, "sounds/sfx_buster_charging_high.mp3"},
-	{Sounds::Land, "sounds/sfx_land.mp3"}
-	
+	{Sounds::Land, "sounds/sfx_land.mp3"},
+	{Sounds::Explosion1, "sounds/sfx_explosion1.mp3"},
+	{Sounds::EnemyHit, "sounds/sfx_enemyhit.mp3"}
+
 };
 
 int windy::AudioManager::playBgm(windy::Sounds resource, bool loop) {

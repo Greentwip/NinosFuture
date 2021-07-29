@@ -19,7 +19,6 @@ namespace windy {
     public:
         virtual bool init() override;
         virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
-        virtual void fire(int power, int direction, GameTags::Weapon tag);
 
     public:
         int power;

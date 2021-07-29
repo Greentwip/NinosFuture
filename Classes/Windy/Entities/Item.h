@@ -1,7 +1,7 @@
-#ifndef __WINDY_DOOR_H__
-#define __WINDY_DOOR_H__
+#ifndef __WINDY_ITEM_H__
+#define __WINDY_ITEM_H__
 
-#include <memory>
+#include <string>
 
 #include "cocos2d.h"
 
@@ -12,26 +12,21 @@ namespace windy {
 }
 
 namespace windy {
-    class Door : public Logical
+    class Item : public Logical
     {
     public:
         virtual bool init() override;
+        virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
 
-        void reopen();
-        void lock(std::function<void()> callback);
-        void unlock(std::function<void()> callback);
-
+        void setup(const std::string& content, bool forever);
         static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size);
 
-        virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
         virtual void onUpdate(float dt) override;
 
+        int id;
 
     private:
         Sprite* sprite;
-        bool isBossDoor;
-        float lockTime;
-        bool triggered;
     };
 }
 

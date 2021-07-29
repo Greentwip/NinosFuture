@@ -23,6 +23,7 @@ PhysicsWorld* PhysicsWorld::create(Level* level) {
 
     if (physicsWorld && physicsWorld->init()) {
         physicsWorld->autorelease();
+        physicsWorld->contactEventCollisionIndex = 0;
         return physicsWorld;
     }
 
@@ -72,22 +73,10 @@ void PhysicsWorld::update(float dt)
         }
         else if(entity->getTag() == GameTags::General::Player ||
                 entity->getTag() == GameTags::General::Enemy  ||
+                entity->getTag() == GameTags::General::Item   ||
                 entity->getTag() == GameTags::Weapon::WeaponPlayer ||
                 entity->getTag() == GameTags::Weapon::WeaponEnemy) { // Kinematic characters first
             collidingEntities.pushBack(entity);
-        }
-    }
-
-    cocos2d::Vector<Logical*> screenLandscapeEntities;
-
-    for (int i = 0; i < landscapeEntities.size(); ++i) {
-        auto entity = landscapeEntities.at(i);
-
-        auto landscapeCollisionBox = entity->collisionBox;
-        auto boundsCollisionBox = this->level->bounds->collisionBox;
-
-        if (boundsCollisionBox->intersectsRect(*landscapeCollisionBox)) {
-            screenLandscapeEntities.pushBack(entity);
         }
     }
 
@@ -100,7 +89,6 @@ void PhysicsWorld::update(float dt)
         if (!entity->ignoreGravity) {
             entity->speed.y += this->gravity;
         }
-        
 
         entityPosition += entity->speed;
 
@@ -112,11 +100,15 @@ void PhysicsWorld::update(float dt)
 
     for (int i = 0; i < collidingEntities.size(); ++i) {
         auto entity = collidingEntities.at(i);
+        if (entity->ignoreLandscapeCollision) {
+            continue;
+        }
 
         entity->contacts.clear();
 
-        for (int j = 0; j < screenLandscapeEntities.size(); ++j) {
-            auto landscapeEntity = screenLandscapeEntities.at(j);
+
+        for (int j = 0; j < landscapeEntities.size(); ++j) {
+            auto landscapeEntity = landscapeEntities.at(j);
             
 
             for (int k = 0; k < 8; k++) {
@@ -250,11 +242,137 @@ void PhysicsWorld::update(float dt)
     for (int i = 0; i < collidingEntities.size(); ++i) {
         auto entity = collidingEntities.at(i);
 
-        if (entity->contacts[CollisionContact::Down]) {
+        if (entity->contacts[CollisionContact::Down] || entity->contacts[CollisionContact::Up]) {
             entity->speed.y = 0;
+        }
+
+        if (entity->contacts[CollisionContact::Left] || entity->contacts[CollisionContact::Right]) {
+            entity->speed.x = 0;
+        }
+    }
+
+    for (int i = 0; i < collidingEntities.size(); ++i) {
+        auto entity = collidingEntities.at(i);
+
+        for (int j = 0; j < collidingEntities.size(); ++j) {
+            auto collidingEntity = collidingEntities.at(j);
+
+            if (entity == collidingEntity) {
+                continue;
+            }
+
+            if (GeometryExtensions::rectIntersectsRect(*entity->collisionBox, *collidingEntity->collisionBox)) {
+                
+                auto iterator = 
+                    std::find_if(contactEventCollisions.begin(), 
+                                 contactEventCollisions.end(), [=](const std::pair<long long, std::pair<Logical*, Logical*>> contact) {
+                            return contact.second.first == entity && contact.second.second == collidingEntity;
+                    });
+
+                if (iterator == contactEventCollisions.end()) {
+
+                    long long contactIndex = 0;
+                    long long emptyIndex = 0;
+
+                    bool indexFound = false;
+
+                    for (int k = 0; k < this->contactEventCollisionIndex; ++i) {
+                        
+
+                        auto iterator = std::find_if(
+                            this->contactEventCollisions.begin(),
+                            this->contactEventCollisions.end(),
+                            [=](const std::pair<long long, std::pair<Logical*, Logical*>> contact) {
+                                return k == contact.first;
+                            });
+
+                        if (iterator != this->contactEventCollisions.end()) {
+                            indexFound = true;
+                        }
+
+                        if (!indexFound) {
+                            emptyIndex = k;
+                            break;
+                        }
+
+                    }
+
+                    if (!indexFound) {
+                        contactIndex = emptyIndex;
+                    }
+                    else {
+                        contactIndex = this->contactEventCollisionIndex;
+                        this->contactEventCollisionIndex += 1;
+                    }
+
+                    this->contactEventCollisions.push_back({ contactIndex, { entity, collidingEntity } });
+                    entity->onCollisionEnter(collidingEntity);
+                }
+            }
         }
     }
 
 
+    this->contactEventCollisions.erase(
+        std::remove_if(this->contactEventCollisions.begin(),
+                       this->contactEventCollisions.end(),
+                        [=](const std::pair<long long, std::pair<Logical*, Logical*>> contact) {
+                bool entityExists = this->level->entities.find(contact.second.first) != this->level->entities.end();
+                bool collisionExists = this->level->entities.find(contact.second.second) != this->level->entities.end();
+
+                return !entityExists || !collisionExists;
+        }),
+        this->contactEventCollisions.end());
+
+    std::vector<std::pair<long long, std::pair<Logical*, Logical*>>> contactExitCollisions;
+
+    for (int i = 0; i < this->contactEventCollisions.size(); ++i) {
+        auto contact = this->contactEventCollisions.at(i);
+
+        auto entity = contact.second.first;
+        auto collidingEntity = contact.second.second;
+
+
+        if (GeometryExtensions::rectIntersectsRect(*entity->collisionBox, *collidingEntity->collisionBox)) {
+
+            entity->onCollision(collidingEntity);
+        }
+        else {
+            contactExitCollisions.push_back(contact);
+        }
+    }
+
+    this->contactEventCollisions.erase(
+        std::remove_if(this->contactEventCollisions.begin(),
+                       this->contactEventCollisions.end(),
+                       [=](const std::pair<long long, std::pair<Logical*, Logical*>> contact) {
+
+                bool shouldRemove = false;
+                for (int i = 0; i < contactExitCollisions.size(); ++i) {
+                    auto validationContact = this->contactEventCollisions.at(i);
+
+                    shouldRemove = validationContact.first == contact.first && 
+                                    validationContact.second.first == contact.second.first &&
+                                    validationContact.second.second == contact.second.second;
+
+                    if (shouldRemove) {
+                        break;
+                    }
+
+                }
+
+                return shouldRemove;
+            }),
+        this->contactEventCollisions.end());
+
+
+    for (int i = 0; i < contactExitCollisions.size(); ++i) {
+        auto contact = contactExitCollisions.at(i);
+
+        auto entity = contact.second.first;
+        auto collidingEntity = contact.second.second;
+
+        entity->onCollisionExit(collidingEntity);
+    }
 
 }

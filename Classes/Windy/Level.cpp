@@ -10,6 +10,8 @@
 #include "Entities/Camera.h"
 #include "Entities/Checkpoint.h"
 #include "Entities/Player.h"
+#include "Entities/Enemy.h"
+#include "Entities/Item.h"
 
 #include "GameTags.h"
 
@@ -21,43 +23,9 @@
 
 #include "LandscapeTile.h"
 
+#include "EntityFactory.h"
+
 using namespace windy;
-
-
-template <typename T, typename U>
-class EntityFactory
-{
-public:
-    template <typename TDerived>
-    void registerType(U name)
-    {
-        _createFuncs[name] = &createFunc<TDerived>;
-    }
-
-    T* create(std::string name, Level* level, const cocos2d::Point& position, const cocos2d::Size& size) {
-        typename std::map<U, PCreateFunc>::const_iterator it = _createFuncs.find(name);
-        if (it != _createFuncs.end()) {
-            return it->second(level, position, size);
-        }
-        return nullptr;
-    }
-
-    void clear() {
-        this->_createFuncs.clear();
-    }
-
-private:
-    template <typename TDerived>
-    static T* createFunc(Level* level, const cocos2d::Point& position, const cocos2d::Size& size)
-    {
-        return T::create<TDerived>(level, position, size);
-    }
-
-    typedef T*(*PCreateFunc)(Level* level, const cocos2d::Point& position, const cocos2d::Size& size);
-    std::map<U, PCreateFunc> _createFuncs;
-};
-
-static EntityFactory<Logical, std::string> s_entityFactory;
 
 cocos2d::Point calculateTmxPosition(cocos2d::ValueMap tmxObject, cocos2d::experimental::TMXTiledMap* tmxMap) {
     //float tmxBlockY = (tmxMap->getMapSize().height * tmxMap->getTileSize().height) - tmxObject["y"].asFloat();
@@ -76,14 +44,6 @@ Level* Level::create(const std::string& resourcesRootPath,
                      const std::string& tilemapRootPath,
                      const std::string& mug, windy::Sounds bgm) {
 
-    s_entityFactory.clear();
-
-    s_entityFactory.registerType<Block>("block");
-    s_entityFactory.registerType<Camera>("camera");
-    s_entityFactory.registerType<Checkpoint>("checkpoint");
-    s_entityFactory.registerType<Bounds>("bounds");
-    s_entityFactory.registerType<Player>("player");
-
     Level* level = new (std::nothrow) Level();
 
     if (level) {
@@ -97,6 +57,17 @@ Level* Level::create(const std::string& resourcesRootPath,
         level->camera = nullptr;
         level->debugDrawNode = nullptr;
         level->physicsWorld = nullptr;
+
+        EntityFactory::initialize(level);
+
+        EntityFactory::getInstance().registerType<Block>("block");
+        EntityFactory::getInstance().registerType<Camera>("camera");
+        EntityFactory::getInstance().registerType<Checkpoint>("checkpoint");
+        EntityFactory::getInstance().registerType<Bounds>("bounds");
+        EntityFactory::getInstance().registerType<Player>("player");
+        EntityFactory::getInstance().registerType<Enemy>("cannon_joe");
+        EntityFactory::getInstance().registerType<Item>("item");
+
     }
 
     if (level && level->init()) {
@@ -116,6 +87,7 @@ bool Level::init()
     {
         return false;
     }
+
 
 
     // Tile layers
@@ -169,7 +141,7 @@ bool Level::init()
             sprite->getTexture()->setAliasTexParameters();
 
             this->addChild(sprite);
-            
+
             //this->tiles.pushBack(LandscapeTile::create(sprite, posFinal, cocos2d::Size(static_cast<float>(tileX), static_cast<float>(tileY))));
         }
     }
@@ -184,6 +156,12 @@ bool Level::init()
     map->setPosition(leftTop);
 
     //this->addChild(map);
+
+    // Object management
+    this->objectManager = ObjectManager::create(this);
+
+    this->addChild(this->objectManager);
+
 
     // Physics
     physicsWorld = PhysicsWorld::create(this);
@@ -202,13 +180,10 @@ bool Level::init()
             auto size = cocos2d::Size(dictionary["width"].asFloat(), dictionary["height"].asFloat());
             auto position = calculateTmxPosition(dictionary, map);
 
-            auto block = s_entityFactory.create("block", this, position, size);
+            auto entryCollisionBox = Logical::getEntryCollisionRectangle<Block>(position, size);
+            auto entry = Logical::getEntry(entryCollisionBox, [=]() { return EntityFactory::getInstance().create("block", position, size); });
 
-            this->addChild(block);
-
-            this->entities.pushBack(block);
-
-
+            this->objectManager->objectEntries.push_back(entry);
         }
     }
 
@@ -229,7 +204,7 @@ bool Level::init()
             auto position = calculateTmxPosition(dictionary, map);
 
             if (name.compare("checkpoint") == 0) {
-                auto checkpoint = s_entityFactory.create("checkpoint", this, position, size);
+                auto checkpoint = EntityFactory::getInstance().create("checkpoint", position, size);
                 checkpoint->parseBehavior(dictionary);
                 this->addChild(checkpoint);
 
@@ -239,21 +214,47 @@ bool Level::init()
                     firstCheckpoint = checkpoint;
                 }
             }
-
         }
     }
+
+    groupArray = map->getObjectGroup("enemies");
+
+    {
+        auto& objects = groupArray->getObjects();
+        for (auto& obj : objects)
+        {
+            auto& dictionary = obj.asValueMap();
+
+            std::string name = dictionary["name"].asString();
+            auto size = cocos2d::Size(dictionary["width"].asFloat(), dictionary["height"].asFloat());
+            auto position = calculateTmxPosition(dictionary, map);
+
+            if (name.compare("cannon_joe") == 0) {
+
+                auto entryCollisionBox = Logical::getEntryCollisionRectangle<Enemy>(position, size);
+                auto entry = Logical::getEntry(entryCollisionBox, [=]() { 
+                    return EntityFactory::getInstance().create("cannon_joe", position, size);
+                    });
+
+                this->objectManager->objectEntries.push_back(entry);
+
+            }
+        }
+
+    }
+
 
     auto firstCheckpointPosition = firstCheckpoint->getPosition();
 
     auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
 
-    this->bounds = dynamic_cast<Bounds*>(s_entityFactory.create("bounds", this, firstCheckpointPosition, visibleSize));
-    
+    this->bounds = dynamic_cast<Bounds*>(EntityFactory::getInstance().create("bounds", firstCheckpointPosition, visibleSize));
+
     this->addChild(this->bounds, 4096);
 
     auto playerSize = cocos2d::Size(15, 24);
 
-    this->player = dynamic_cast<Player*>(s_entityFactory.create("player", this, firstCheckpointPosition, playerSize));
+    this->player = dynamic_cast<Player*>(EntityFactory::getInstance().create("player", firstCheckpointPosition, playerSize));
 
     this->addChild(this->player, 512);
 
@@ -261,7 +262,7 @@ bool Level::init()
 
     auto cameraSize = cocos2d::Size(8, 16);
 
-    this->camera = dynamic_cast<Camera*>(s_entityFactory.create("camera", this, cocos2d::Point(0, 0), cameraSize));
+    this->camera = dynamic_cast<Camera*>(EntityFactory::getInstance().create("camera", cocos2d::Point(0, 0), cameraSize));
 
     this->camera->setPositionY(this->camera->collisionBox->size.height * 0.25f);
 
@@ -272,13 +273,10 @@ bool Level::init()
     this->addChild(this->debugDrawNode);
 
     this->debugDrawNode->customEntities.pushBack(this->bounds);
-    
-    this->objectManager = ObjectManager::create(this);
-
-    this->addChild(this->objectManager);
 
     return true;
 }
+
 
 bool Level::paused() {
     return this->isPaused;

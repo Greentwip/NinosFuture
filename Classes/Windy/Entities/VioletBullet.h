@@ -17,6 +17,14 @@ namespace windy {
 
         void setup(const std::string& powerLevel);
 
+        void fire(int power, int direction, GameTags::Weapon tag);
+
+        static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const std::string& powerLevel,
+                                                                         const cocos2d::Point& position, 
+                                                                         const cocos2d::Size& size);
+
+        virtual void onFinished() override;
+
         virtual void onUpdate(float dt) override;
     };
 }

@@ -1,9 +1,13 @@
 #ifndef _WINDY_PHYSICS_WORLD_H_
 #define _WINDY_PHYSICS_WORLD_H_
 
+#include <vector>
+#include <map>
+
 #include "cocos2d.h"
 
 namespace windy {
+    class Logical;
     class Level;
 }
 
@@ -24,6 +28,9 @@ namespace windy {
     private:
         Level* level;
         float gravity;
+
+        long long contactEventCollisionIndex;
+        std::vector<std::pair<long long, std::pair<Logical*, Logical*>>> contactEventCollisions;
 
     };
 

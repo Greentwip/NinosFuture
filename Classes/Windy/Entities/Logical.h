@@ -4,10 +4,15 @@
 #include <map>
 #include <vector>
 #include <memory>
+#include <functional>
 
 #include "cocos2d.h"
 
 #include "./../Level.h"
+
+namespace windy {
+    class ObjectEntry;
+}
 
 namespace windy {
 
@@ -33,12 +38,30 @@ namespace windy {
         virtual void onEnter();
         virtual void onExit();
 
+        void setEntry(std::shared_ptr<ObjectEntry> entry);
+
+        static std::shared_ptr<ObjectEntry> getEntry(std::shared_ptr<cocos2d::Rect> collisionRectangle, 
+                                                     std::function<Logical*()> createFunction);
+
+        template<typename T>
+        static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size);
+
+        void finish();
+        void finishForever();
+
+        virtual void onFinished();
+
         virtual void update(float dt);
 
         void recomputeCollisionRectangles();
 
+        virtual void onCollisionEnter(Logical* collision);
+        virtual void onCollision(Logical* collision);
+        virtual void onCollisionExit(Logical* collision);
+
         virtual void onUpdate(float dt) = 0;
 
+        static std::shared_ptr<cocos2d::Rect> normalizeCollisionRectangle(const cocos2d::Point& nodePosition, cocos2d::Rect rectangle);
         static std::shared_ptr<cocos2d::Rect> normalizeCollisionRectangle(cocos2d::Node*, cocos2d::Rect);
 
     public:
@@ -51,9 +74,14 @@ namespace windy {
 
         bool ignoreGravity;
 
+        bool ignoreLandscapeCollision;
+
     protected:
         cocos2d::Point lastPosition;
         std::vector<std::shared_ptr<cocos2d::Rect>> collisionRectangles;
+
+    private:
+        std::shared_ptr<ObjectEntry> entry;
     };
 }
 
@@ -76,6 +104,11 @@ windy::Logical* windy::Logical::create(windy::Level* level, const cocos2d::Point
     CC_SAFE_DELETE(logical);
     return nullptr;
 
+}
+
+template<typename T>
+std::shared_ptr<cocos2d::Rect> windy::Logical::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
+    return T::getEntryCollisionRectangle(position, size);
 }
 
 

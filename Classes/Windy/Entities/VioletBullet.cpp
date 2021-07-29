@@ -72,7 +72,50 @@ void VioletBullet::setup(const std::string& powerLevel) {
 
     this->ignoreGravity = true;
 
+    this->ignoreLandscapeCollision = true;
+
 }
+
+
+std::shared_ptr<cocos2d::Rect> VioletBullet::getEntryCollisionRectangle(const std::string& powerLevel,
+                                                                        const cocos2d::Point& position, 
+                                                                        const cocos2d::Size& size) {
+
+    std::string bulletName = std::string("violet_bullet") + std::string("_") + powerLevel;
+    std::string bulletPath = bulletName + "/" + bulletName;
+
+    auto armature = Armature(VioletBulletResources::armaturePath + "/" + bulletPath);
+
+    auto newAnchor = armature.get(bulletName).anchor;
+
+    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
+
+    auto collisionRectangles = armature.get(bulletName).collisionRectangles;
+
+    for (int i = 0; i < collisionRectangles.size(); ++i) {
+        collisionRectangles[i] = Logical::normalizeCollisionRectangle(position, *collisionRectangles[i]);
+    }
+
+    return collisionRectangles[0];
+}
+
+void VioletBullet::onFinished() {
+    this->finishForever();
+}
+
+
+void VioletBullet::fire(int power, int direction, GameTags::Weapon tag) {
+
+    this->power = power;
+
+    bool flipX = direction == -1 ? true : false;
+
+    this->sprite->setFlippedX(flipX);
+    this->speed = cocos2d::Point(static_cast<float>(6 * direction), 0);
+
+    this->setTag(tag);
+}
+
 
 void VioletBullet::onUpdate(float dt) {
 

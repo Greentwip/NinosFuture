@@ -30,12 +30,14 @@ bool Bounds::init()
 }
 
 cocos2d::Rect Bounds::inflate(cocos2d::Size size) {
-    auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
+    auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();    
     auto inflatedCollisionRectangle = *this->collisionRectangles[0];
-    inflatedCollisionRectangle.origin = cocos2d::Point(-visibleSize.width * 0.5f - size.width * 0.5f, -visibleSize.height * 0.5f - size.height * 0.5f);
-    inflatedCollisionRectangle.size = visibleSize + size;
 
-    inflatedCollisionRectangle = *Logical::normalizeCollisionRectangle(this, inflatedCollisionRectangle);
+    //inflatedCollisionRectangle.origin = cocos2d::Point(-visibleSize.width * 0.5f - size.width * 0.5f, -visibleSize.height * 0.5f - size.height * 0.5f);
+    inflatedCollisionRectangle.origin -= cocos2d::Point(size.width, size.height);
+    inflatedCollisionRectangle.size = visibleSize + size * 2;
+
+    //inflatedCollisionRectangle = *Logical::normalizeCollisionRectangle(this, inflatedCollisionRectangle);
 
     return inflatedCollisionRectangle;
 }

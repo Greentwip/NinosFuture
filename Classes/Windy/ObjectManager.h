@@ -1,10 +1,14 @@
 #ifndef _WINDY_OBJECT_MANAGER_H_
 #define _WINDY_OBJECT_MANAGER_H_
 
+#include <vector>
+#include <memory>
+
 #include "cocos2d.h"
 
 namespace windy {
     class Level;
+    class ObjectEntry;
 }
 
 
@@ -20,6 +24,8 @@ namespace windy {
         virtual void onExit();
 
         virtual void update(float dt);
+
+        std::vector<std::shared_ptr<ObjectEntry>> objectEntries;
 
     private:
         Level* level;

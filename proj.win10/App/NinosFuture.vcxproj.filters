@@ -175,6 +175,15 @@
     <ClCompile Include="..\..\Classes\Windy\LandscapeTile.cpp">
       <Filter>Classes\Windy</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Enemy.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Item.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\DirectionalBullet.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -1532,6 +1541,21 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Windy\LandscapeTile.h">
       <Filter>Classes\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Enemy.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Item.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\ObjectEntry.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\EntityFactory.h">
+      <Filter>Classes\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\DirectionalBullet.h">
+      <Filter>Classes\Windy\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
