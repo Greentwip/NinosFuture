@@ -5,7 +5,7 @@ local mob       = class("green_soldier", enemy)
 
 function mob:onCreate()
     self.super:onCreate()
-    self.default_health_ = 2
+    self.default_health_ = 6
     self.attacking_  = false
     self.moving_    = false
     self.orientation_set_ = false
@@ -42,7 +42,7 @@ function mob:attack()
     if not self.attacking_ then
         self.attacking_ = true
 
-        local action_delay = cc.DelayTime:create(2)
+        local action_delay = cc.DelayTime:create(1)
 
         local attack_delay = cc.DelayTime:create(1.0)
 

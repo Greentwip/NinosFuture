@@ -42,7 +42,8 @@ namespace windy {
         
 
         Door* triggeringDoor;
-        cocos2d::Vector<Door*> doors;
+        cocos2d::Vector<Door*> verticalDoors;
+        cocos2d::Vector<Door*> horizontalDoors;
 
         Bounds* bounds;
         Camera* camera;

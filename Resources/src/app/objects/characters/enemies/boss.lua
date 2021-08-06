@@ -686,11 +686,11 @@ function boss:forced_step(dt)
                 end
             end
 
-            if defeated then
-                self.battle_status_ = cc.battle_status_.waiting_
+            --if defeated then
+                --self.battle_status_ = cc.battle_status_.waiting_
 
-                self:finish(false)
-            else
+                --self:finish(false)
+            --else
                 ccexp.AudioEngine:stopAll()
                 cc.audio.play_bgm("sounds/bgm_boss_vineman.mp3", true)
 
@@ -698,7 +698,7 @@ function boss:forced_step(dt)
                 cc.joypad_.take_inputs_ = false
                 self:spawn()
                 self.battle_status_ = cc.battle_status_.waiting_
-            end
+            --end
 
         elseif self.battle_status_ == cc.battle_status_.intro_ then
 

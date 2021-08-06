@@ -71,10 +71,12 @@ void PhysicsWorld::update(float dt)
         {
             landscapeEntities.pushBack(entity);
         }
-        else if(entity->getTag() == GameTags::General::Player ||
-                entity->getTag() == GameTags::General::Enemy  ||
-                entity->getTag() == GameTags::General::Item   ||
-                entity->getTag() == GameTags::Weapon::WeaponPlayer ||
+        else if(entity->getTag() == GameTags::General::Player       ||
+                entity->getTag() == GameTags::General::Enemy        ||
+                entity->getTag() == GameTags::General::Item         ||
+                entity->getTag() == GameTags::General::Ladder       ||
+                entity->getTag() == GameTags::General::Door         ||
+                entity->getTag() == GameTags::Weapon::WeaponPlayer  ||
                 entity->getTag() == GameTags::Weapon::WeaponEnemy) { // Kinematic characters first
             collidingEntities.pushBack(entity);
         }
@@ -137,6 +139,7 @@ void PhysicsWorld::update(float dt)
                 -- 2 --   -- 3 --
                 -- 6 -- 0 -- 7 --
                 ------------------
+
                 */
 
                 cocos2d::Rect collisionBoxTiles[9];
@@ -220,6 +223,20 @@ void PhysicsWorld::update(float dt)
                             }
 
                             hasOffsetX = true;
+
+                            // Only if slope is higher than the slope factor
+
+                            if (k == 6 || k == 7) {
+                                if (intersection.size.height <= 1.0f) {
+                                    entity->contacts[CollisionContact::Left] = false;
+                                    entity->contacts[CollisionContact::Right] = false;
+                                    intersection.size.height = 0;
+                                    hasOffsetY = true;
+                                }
+                                
+                            }
+
+                            
 
                         }
                     }

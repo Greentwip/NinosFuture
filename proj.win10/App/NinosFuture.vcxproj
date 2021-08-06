@@ -625,6 +625,16 @@
     <ClInclude Include="..\..\Classes\External\tao\pegtl\version.hpp" />
     <ClInclude Include="..\..\Classes\External\tao\pegtl\visit.hpp" />
     <ClInclude Include="..\..\Classes\Game\BossIntroScene.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Common\CannonJoe.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Enemies\GameEnemy.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Sheriff\Tremor.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Items\GameItem.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Player\GamePlayer.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Player\VioletBrowner.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Special\GameHorizontalDoor.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Special\GameVerticalDoor.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Weapons\DirectionalBullet.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Weapons\VioletBullet.h" />
     <ClInclude Include="..\..\Classes\Game\GameState.h" />
     <ClInclude Include="..\..\Classes\Game\Intro.h" />
     <ClInclude Include="..\..\Classes\Game\WeaponAcquireScene.h" />
@@ -650,7 +660,6 @@
     <ClInclude Include="..\..\Classes\Windy\Entities\Bullet.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Camera.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Checkpoint.h" />
-    <ClInclude Include="..\..\Classes\Windy\Entities\DirectionalBullet.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Door.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Enemy.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Item.h" />
@@ -659,8 +668,6 @@
     <ClInclude Include="..\..\Classes\Windy\Entities\ObjectEntry.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Player.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\CameraScroll.h" />
-    <ClInclude Include="..\..\Classes\Windy\Entities\VioletBrowner.h" />
-    <ClInclude Include="..\..\Classes\Windy\Entities\VioletBullet.h" />
     <ClInclude Include="..\..\Classes\Windy\EntityFactory.h" />
     <ClInclude Include="..\..\Classes\Windy\GeometryExtensions.h" />
     <ClInclude Include="..\..\Classes\Windy\InfiniteParallax.h" />
@@ -703,6 +710,16 @@
   <ItemGroup>
     <ClCompile Include="..\..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\..\Classes\Game\BossIntroScene.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Common\CannonJoe.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Enemies\GameEnemy.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Sheriff\Tremor.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Items\GameItem.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Player\GamePlayer.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Player\VioletBrowner.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Special\GameHorizontalDoor.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Special\GameVerticalDoor.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Weapons\DirectionalBullet.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Weapons\VioletBullet.cpp" />
     <ClCompile Include="..\..\Classes\Game\Intro.cpp" />
     <ClCompile Include="..\..\Classes\Game\WeaponAcquireScene.cpp" />
     <ClCompile Include="..\..\Classes\Game\Computer.cpp" />
@@ -726,7 +743,6 @@
     <ClCompile Include="..\..\Classes\Windy\Entities\Bullet.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Camera.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Checkpoint.cpp" />
-    <ClCompile Include="..\..\Classes\Windy\Entities\DirectionalBullet.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Door.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Enemy.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Item.cpp" />
@@ -734,8 +750,6 @@
     <ClCompile Include="..\..\Classes\Windy\Entities\Logical.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Player.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\CameraScroll.cpp" />
-    <ClCompile Include="..\..\Classes\Windy\Entities\VioletBrowner.cpp" />
-    <ClCompile Include="..\..\Classes\Windy\Entities\VioletBullet.cpp" />
     <ClCompile Include="..\..\Classes\Windy\InfiniteParallax.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Input.cpp" />
     <ClCompile Include="..\..\Classes\Windy\LandscapeTile.cpp" />

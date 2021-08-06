@@ -8,7 +8,7 @@ using namespace windy;
 void Logical::setup(const cocos2d::Point& position, const cocos2d::Size& size) {
     this->setPosition(position);
     this->lastPosition = position;
-    this->collisionRectangles.push_back(std::make_shared<cocos2d::Rect>(position.x - size.width * 0.5f, position.y + size.height * 0.5f, size.width, size.height));
+    this->collisionRectangles.push_back(std::make_shared<cocos2d::Rect>(position.x - size.width * 0.5f, position.y - size.height * 0.5f, size.width, size.height));
     this->collisionBox = this->collisionRectangles[0];
     this->ignoreGravity = false;
     this->ignoreLandscapeCollision = false;

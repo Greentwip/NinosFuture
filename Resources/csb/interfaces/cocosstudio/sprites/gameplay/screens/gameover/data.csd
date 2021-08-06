@@ -2,7 +2,7 @@
   <PropertyGroup Name="data" Type="Scene" ID="8a60d564-62e1-4dea-ad77-860844140ae6" Version="3.10.0.0" />
   <Content ctype="GameProjectContent">
     <Content>
-      <Animation Duration="135" Speed="1.0000" ActivedAnimationName="fly_out_primary">
+      <Animation Duration="135" Speed="1.0000" ActivedAnimationName="fly_in_secondary">
         <Timeline ActionTag="456892477" Property="Position">
           <PointFrame FrameIndex="30" X="128.0000" Y="36.0000">
             <EasingData Type="0" />
@@ -80,41 +80,7 @@
             <FileData Type="Normal" Path="sprites/gameplay/screens/gameover/background.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="fly_primary_window" ActionTag="456892477" Tag="107" IconVisible="True" LeftMargin="128.0000" RightMargin="128.0000" TopMargin="188.0000" BottomMargin="36.0000" ctype="SingleNodeObjectData">
-            <Size X="0.0000" Y="0.0000" />
-            <Children>
-              <AbstractNodeData Name="text_window" ActionTag="1500468309" Tag="105" IconVisible="False" LeftMargin="-104.0000" RightMargin="-104.0000" TopMargin="-27.5000" BottomMargin="-27.5000" ctype="SpriteObjectData">
-                <Size X="208.0000" Y="55.0000" />
-                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position />
-                <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition />
-                <PreSize X="0.0000" Y="0.0000" />
-                <FileData Type="Normal" Path="sprites/gameplay/screens/gameover/text_window.png" Plist="" />
-                <BlendFunc Src="1" Dst="771" />
-              </AbstractNodeData>
-              <AbstractNodeData Name="label" ActionTag="-2007268087" Tag="106" IconVisible="False" LeftMargin="-58.5000" RightMargin="-58.5000" TopMargin="-8.0000" BottomMargin="-8.0000" FontSize="16" LabelText="FINISHED" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="117.0000" Y="16.0000" />
-                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position />
-                <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition />
-                <PreSize X="0.0000" Y="0.0000" />
-                <FontResource Type="Normal" Path="megaman_2.ttf" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
-              </AbstractNodeData>
-            </Children>
-            <AnchorPoint />
-            <Position X="128.0000" Y="36.0000" />
-            <Scale ScaleX="1.0000" ScaleY="1.0000" />
-            <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.5000" Y="0.1607" />
-            <PreSize X="0.0000" Y="0.0000" />
-          </AbstractNodeData>
-          <AbstractNodeData Name="yes_button" ActionTag="1864395903" VisibleForFrame="False" Tag="13" IconVisible="True" LeftMargin="78.0000" RightMargin="178.0000" TopMargin="192.0000" BottomMargin="32.0000" ctype="SingleNodeObjectData">
+          <AbstractNodeData Name="yes_button" ActionTag="1864395903" Tag="13" IconVisible="True" LeftMargin="78.0000" RightMargin="178.0000" TopMargin="192.0000" BottomMargin="32.0000" ctype="SingleNodeObjectData">
             <Size X="0.0000" Y="0.0000" />
             <Children>
               <AbstractNodeData Name="button" ActionTag="2086535796" Tag="17" IconVisible="False" LeftMargin="-46.0000" RightMargin="-46.0000" TopMargin="-12.0000" BottomMargin="-12.0000" ctype="SpriteObjectData">
@@ -148,7 +114,7 @@
             <PrePosition X="0.3047" Y="0.1429" />
             <PreSize X="0.0000" Y="0.0000" />
           </AbstractNodeData>
-          <AbstractNodeData Name="no_button" ActionTag="369342008" VisibleForFrame="False" Tag="16" IconVisible="True" LeftMargin="178.0000" RightMargin="78.0000" TopMargin="192.0000" BottomMargin="32.0000" ctype="SingleNodeObjectData">
+          <AbstractNodeData Name="no_button" ActionTag="369342008" Tag="16" IconVisible="True" LeftMargin="178.0000" RightMargin="78.0000" TopMargin="192.0000" BottomMargin="32.0000" ctype="SingleNodeObjectData">
             <Size X="0.0000" Y="0.0000" />
             <Children>
               <AbstractNodeData Name="button" ActionTag="-1502068946" Tag="18" IconVisible="False" LeftMargin="-46.0000" RightMargin="-46.0000" TopMargin="-12.0000" BottomMargin="-12.0000" ctype="SpriteObjectData">
@@ -204,7 +170,41 @@
             <FileData Type="Normal" Path="sprites/gameplay/screens/gameover/level_clear_background.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="fly_secondary_window" ActionTag="2055334927" Tag="10" IconVisible="True" LeftMargin="128.0000" RightMargin="128.0000" TopMargin="300.0000" BottomMargin="-76.0000" ctype="SingleNodeObjectData">
+          <AbstractNodeData Name="fly_primary_window" ActionTag="456892477" Tag="107" IconVisible="True" LeftMargin="128.0000" RightMargin="128.0000" TopMargin="300.0000" BottomMargin="-76.0000" ctype="SingleNodeObjectData">
+            <Size X="0.0000" Y="0.0000" />
+            <Children>
+              <AbstractNodeData Name="text_window" ActionTag="1500468309" Tag="105" IconVisible="False" LeftMargin="-104.0000" RightMargin="-104.0000" TopMargin="-27.5000" BottomMargin="-27.5000" ctype="SpriteObjectData">
+                <Size X="208.0000" Y="55.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition />
+                <PreSize X="0.0000" Y="0.0000" />
+                <FileData Type="Normal" Path="sprites/gameplay/screens/gameover/text_window.png" Plist="" />
+                <BlendFunc Src="1" Dst="771" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="label" ActionTag="-2007268087" Tag="106" IconVisible="False" LeftMargin="-58.5000" RightMargin="-58.5000" TopMargin="-8.0000" BottomMargin="-8.0000" FontSize="16" LabelText="FINISHED" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                <Size X="117.0000" Y="16.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition />
+                <PreSize X="0.0000" Y="0.0000" />
+                <FontResource Type="Normal" Path="megaman_2.ttf" Plist="" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="110" G="110" B="110" />
+              </AbstractNodeData>
+            </Children>
+            <AnchorPoint />
+            <Position X="128.0000" Y="-76.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.5000" Y="-0.3393" />
+            <PreSize X="0.0000" Y="0.0000" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="fly_secondary_window" ActionTag="2055334927" Tag="10" IconVisible="True" LeftMargin="128.0000" RightMargin="128.0000" TopMargin="96.0000" BottomMargin="128.0000" ctype="SingleNodeObjectData">
             <Size X="0.0000" Y="0.0000" />
             <Children>
               <AbstractNodeData Name="floating_window" ActionTag="-1110905251" Tag="11" IconVisible="False" LeftMargin="-52.5000" RightMargin="-52.5000" TopMargin="-14.0000" BottomMargin="-14.0000" ctype="SpriteObjectData">
@@ -232,10 +232,10 @@
               </AbstractNodeData>
             </Children>
             <AnchorPoint />
-            <Position X="128.0000" Y="-76.0000" />
+            <Position X="128.0000" Y="128.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.5000" Y="-0.3393" />
+            <PrePosition X="0.5000" Y="0.5714" />
             <PreSize X="0.0000" Y="0.0000" />
           </AbstractNodeData>
         </Children>

@@ -5,7 +5,7 @@ local mob       = class("claw_soldier", enemy)
 
 function mob:onCreate()
     self.super:onCreate()
-    self.default_health_ = 6
+    self.default_health_ = 12
     self.moving_    = false
     self.orientation_set_ = false
 
@@ -67,7 +67,7 @@ function mob:attack()
             ]]
         
             
-            local action_delay = cc.DelayTime:create(2)
+            local action_delay = cc.DelayTime:create(1)
 
             local attack  = cc.CallFunc:create(function()
                 self.sprite_:run_action("attack")
@@ -84,7 +84,6 @@ function mob:attack()
                     weapon = self.weapon_,
                     parameters = self.weapon_parameters_})
 
-                if player_x_distance < 30 and player_y_distance < 16 then
                     local x_normal = 0
                     if self.sprite_:isFlippedX() then
                         x_normal = 1
@@ -92,10 +91,7 @@ function mob:attack()
                         x_normal = -1
                     end
 
-                    bullet:fire_straight(x_normal)
-                else
-                    bullet:setup_movement(player_position)
-                end
+                    bullet:fire_straight(player_position, x_normal)
 
             end)
 

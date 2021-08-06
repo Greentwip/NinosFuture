@@ -11,9 +11,6 @@
 
 #include "Player.h"
 
-#include "VioletBullet.h"
-
-
 using namespace windy;
 
 bool Browner::init()
@@ -81,7 +78,7 @@ void Browner::runAction(const std::string& action) {
 }
 
 float Browner::getActionDuration(const std::string& action) {
-    return this->player->sprite->getActionDuration(action);
+    return this->player->sprite->getActionDuration(action, this->baseName);
 }
 
 int Browner::getCurrentAnimationNumberOfFrames() {
@@ -260,46 +257,4 @@ void Browner::attack() {
 
         this->player->charging = false;
     }
-}
-
-void Browner::fire() {
-
-    int bulletOffset = 12;
-    int bulletPower = 1;
-
-    if (this->chargePower.compare("high") == 0) {
-        bulletOffset = 26;
-        bulletPower = 3;
-        AudioManager::playSfx(Sounds::BusterHigh);
-    }
-    else if (this->chargePower.compare("mid") == 0) {
-        bulletPower = 2;
-        AudioManager::playSfx(Sounds::BusterMid);
-    }
-    else {
-        AudioManager::playSfx(Sounds::BusterLow);
-    }
-
-    auto bulletPosition = cocos2d::Point(this->player->getPositionX() + (bulletOffset * this->getSpriteNormal()),
-                                         this->player->getPositionY() - 4);
-
-    
-    auto chargePower = this->chargePower;
-
-    auto entryCollisionBox = VioletBullet::getEntryCollisionRectangle(chargePower, bulletPosition, cocos2d::Size(16, 16));
-    auto entry = Logical::getEntry(entryCollisionBox, [=]() {
-        auto bullet = VioletBullet::create();
-        bullet->setPosition(bulletPosition);
-        bullet->setup(chargePower);
-
-        bullet->fire(bulletPower, this->getSpriteNormal(), GameTags::WeaponPlayer);
-
-        return bullet;
-    });
-
-    this->level->objectManager->objectEntries.push_back(entry);
-
-
-    //self:getParent():getParent().bullets_[bullet] = bullet
-
 }

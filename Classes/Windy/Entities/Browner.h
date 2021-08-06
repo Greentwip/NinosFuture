@@ -54,8 +54,7 @@ namespace windy {
 
         virtual void attack();
 
-
-        virtual void fire();
+        virtual void fire() = 0;
 
 
     public:

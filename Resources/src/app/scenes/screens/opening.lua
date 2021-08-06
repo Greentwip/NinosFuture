@@ -52,7 +52,7 @@ function opening:opening_intro_a()
 end
 
 function opening:step(dt)
-    if cc.key_pressed(cc.key_code_.start) then
+    if not self.triggered_ then
         local initiate = cc.CallFunc:create(function()
                             self:opening_intro_a()
                         end)
@@ -61,7 +61,7 @@ function opening:step(dt)
         self:runAction(sequence)
 
         -- self variables
-        self.triggered_ = false
+        self.triggered_ = true
 
     end
 

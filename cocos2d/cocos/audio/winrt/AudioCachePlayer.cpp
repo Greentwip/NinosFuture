@@ -35,6 +35,101 @@ inline void ThrowIfFailed(HRESULT hr)
     }
 }
 
+std::shared_ptr<AudioPlayer::AudioEngineCacheThreadPool> AudioPlayer::s_threadPool = nullptr;
+
+class CC_DLL AudioPlayer::AudioEngineCacheThreadPool
+{
+public:
+    AudioEngineCacheThreadPool(int threads = 4)
+        : _stop(false)
+    {
+        for (int index = 0; index < threads; ++index)
+        {
+            _workers.emplace_back(std::thread(std::bind(&AudioEngineCacheThreadPool::threadFunc, this)));
+        }
+
+        for (int i = 0; i < _workers.size(); ++i)
+        {
+            _workers[i].detach();
+        }
+    }
+
+    void addTask(const std::function<void()>& task) {
+        std::unique_lock<std::mutex> lk(_queueMutex);
+        _taskQueue.emplace(task);
+        //_taskCondition.notify_one();
+    }
+
+    ~AudioEngineCacheThreadPool()
+    {
+        {
+            std::unique_lock<std::mutex> lk(_queueMutex);
+            _stop = true;
+            // _taskCondition.notify_all();
+        }
+
+        for (auto&& worker : _workers) {
+            worker.join();
+        }
+    }
+
+private:
+    void threadFunc()
+    {
+        while (true) {
+            std::function<void()> task = nullptr;
+            {
+                std::unique_lock<std::mutex> lk(_queueMutex);
+                if (_stop)
+                {
+                    break;
+                }
+                if (!_taskQueue.empty())
+                {
+                    task = std::move(_taskQueue.front());
+                    _taskQueue.pop();
+                }
+                else
+                {
+                    //_taskCondition.wait(lk);
+                    continue;
+                }
+            }
+
+            task();
+        }
+    }
+
+    std::vector<std::thread>  _workers;
+    std::queue< std::function<void()> > _taskQueue;
+
+    std::mutex _queueMutex;
+    //std::condition_variable _taskCondition;
+    bool _stop;
+};
+
+
+bool AudioPlayer::lazyInit()
+{
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID)
+    if (s_threadPool == nullptr)
+    {
+        s_threadPool = std::shared_ptr<AudioEngineCacheThreadPool>(new (std::nothrow) AudioEngineCacheThreadPool());
+    }
+#endif
+
+    return true;
+}
+
+void AudioPlayer::addTask(const std::function<void()>& task)
+{
+    lazyInit();
+
+    if (s_threadPool)
+    {
+        s_threadPool->addTask(task);
+    }
+}
 
 // AudioCache
 AudioCache::AudioCache()
@@ -105,7 +200,7 @@ void AudioCache::readDataTask()
     invokeLoadCallbacks();
 }
 
-void AudioCache::addPlayCallback(const std::function<void()> &callback)
+void AudioCache::addPlayCallback(const std::function<void()>& callback)
 {
     _cbMutex.lock();
     if (_isReady) {
@@ -121,7 +216,7 @@ void AudioCache::addPlayCallback(const std::function<void()> &callback)
     }
 }
 
-void AudioCache::addLoadCallback(const std::function<void(bool)> &callback)
+void AudioCache::addLoadCallback(const std::function<void(bool)>& callback)
 {
     if (_isReady) {
         callback(true);
@@ -150,14 +245,14 @@ void AudioCache::invokePlayCallbacks()
 void AudioCache::invokeLoadCallbacks()
 {
     auto scheduler = Director::getInstance()->getScheduler();
-    scheduler->performFunctionInCocosThread([&](){
+    scheduler->performFunctionInCocosThread([&]() {
         auto cnt = _loadCallbacks.size();
         for (size_t ind = 0; ind < cnt; ind++)
         {
             _loadCallbacks[ind](_isReady);
         }
         _loadCallbacks.clear();
-    });
+        });
 }
 
 bool AudioCache::getChunk(AudioDataChunk& chunk)
@@ -173,7 +268,7 @@ bool AudioCache::getChunk(AudioDataChunk& chunk)
 
 void AudioCache::doBuffering()
 {
-    if (isStreamingSource()){
+    if (isStreamingSource()) {
         _srcReader->produceChunk();
     }
 }
@@ -189,7 +284,7 @@ bool AudioCache::isStreamingSource()
 
 void AudioCache::seek(const float ratio)
 {
-    if (nullptr != _srcReader){
+    if (nullptr != _srcReader) {
         _srcReader->seekTo(ratio);
     }
 }
@@ -232,7 +327,7 @@ void AudioPlayer::pause()
 
 bool AudioPlayer::update()
 {
-    if (_criticalError){
+    if (_criticalError) {
         free();
         init();
     }
@@ -327,7 +422,7 @@ bool AudioPlayer::setTime(float time)
 
 void AudioPlayer::setVolume(float volume)
 {
-    if (_xaMasterVoice != nullptr){
+    if (_xaMasterVoice != nullptr) {
         if (FAILED(_xaMasterVoice->SetVolume(volume))) {
             error();
         }
@@ -345,7 +440,7 @@ bool AudioPlayer::play2d(AudioCache* cache)
     if (cache != nullptr)
     {
         _cache = cache;
-        if (nullptr == _xaSourceVoice && _ready)  {
+        if (nullptr == _xaSourceVoice && _ready) {
 
             XAUDIO2_SEND_DESCRIPTOR descriptors[1];
             descriptors[0].pOutputVoice = _xaMasterVoice;
@@ -583,7 +678,7 @@ void AudioPlayer::OnCriticalError(HRESULT err)
 // IXAudio2VoiceCallback
 void AudioPlayer::OnVoiceProcessingPassStart(UINT32 uBytesRequired)
 {
-    if (_ready && uBytesRequired && _isStreaming){
+    if (_ready && uBytesRequired && _isStreaming) {
         submitBuffers();
     }
 }

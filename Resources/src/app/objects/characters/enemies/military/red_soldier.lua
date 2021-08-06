@@ -5,7 +5,7 @@ local mob       = class("red_soldier", enemy)
 
 function mob:onCreate()
     self.super:onCreate()
-    self.default_health_ = 6
+    self.default_health_ = 12
     self.shooting_  = false
     self.attacking_ = false
     self.falling_   = false
@@ -97,7 +97,7 @@ function mob:attack()
     if not self.attacking_ and self.ready_ then
         self.attacking_ = true
 
-        local action_delay = cc.DelayTime:create(self.sprite_:get_action_duration("attack") * 2.0)
+        local action_delay = cc.DelayTime:create(self.sprite_:get_action_duration("attack"))
 
         local attack  = cc.CallFunc:create(function()
             self.sprite_:run_action("attack")
@@ -147,7 +147,7 @@ function mob:attack()
 
         end)
 
-        local sequence = cc.Sequence:create(attack, action_delay, attack_callback, action_delay, on_end, nil)
+        local sequence = cc.Sequence:create(attack, action_delay, attack_callback, on_end, nil)
 
         self:stopAllActions()
         self:runAction(sequence)

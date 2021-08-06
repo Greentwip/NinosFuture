@@ -196,6 +196,8 @@ void Sprite::appendAction(AnimationAction action, bool prependAction, std::strin
         animation = animationSequence;
     }
 
+    animation->setDuration(action.delay * static_cast<float>(this->getAnimationFrames(animationName).size()));
+
     animation->setTag(GameTags::Actions::Animation);
 
     std::string animationBaseName = "";

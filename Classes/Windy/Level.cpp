@@ -5,6 +5,7 @@
 #include "Display.h"
 
 #include "Entities/Logical.h"
+#include "Entities/Door.h"
 #include "Entities/Block.h"
 #include "Entities/Bounds.h"
 #include "Entities/Camera.h"
@@ -12,6 +13,7 @@
 #include "Entities/Player.h"
 #include "Entities/Enemy.h"
 #include "Entities/Item.h"
+#include "Entities/Ladder.h"
 
 #include "GameTags.h"
 
@@ -30,7 +32,7 @@ using namespace windy;
 cocos2d::Point calculateTmxPosition(cocos2d::ValueMap tmxObject, cocos2d::experimental::TMXTiledMap* tmxMap) {
     //float tmxBlockY = (tmxMap->getMapSize().height * tmxMap->getTileSize().height) - tmxObject["y"].asFloat();
     float tmxBlockY = tmxObject["y"].asFloat();
-    float tmxRealBlockY = tmxBlockY - tmxObject["height"].asFloat() * 0.5f;
+    float tmxRealBlockY = tmxBlockY + tmxObject["height"].asFloat() * 0.5f;
 
     float tmxBlockX = tmxObject["x"].asFloat() + (tmxObject["width"].asFloat() * 0.5f);
 
@@ -64,9 +66,7 @@ Level* Level::create(const std::string& resourcesRootPath,
         EntityFactory::getInstance().registerType<Camera>("camera");
         EntityFactory::getInstance().registerType<Checkpoint>("checkpoint");
         EntityFactory::getInstance().registerType<Bounds>("bounds");
-        EntityFactory::getInstance().registerType<Player>("player");
-        EntityFactory::getInstance().registerType<Enemy>("cannon_joe");
-        EntityFactory::getInstance().registerType<Item>("item");
+        EntityFactory::getInstance().registerType<Ladder>("ladder");
 
     }
 
@@ -214,7 +214,45 @@ bool Level::init()
                     firstCheckpoint = checkpoint;
                 }
             }
+            else if (name.compare("ladder") == 0) {
+
+                auto ladder = EntityFactory::getInstance().create("ladder", position, size);
+                ladder->parseBehavior(dictionary);
+                this->addChild(ladder);
+                this->entities.pushBack(ladder);
+
+            }
+
         }
+    }
+
+    groupArray = map->getObjectGroup("special");
+
+    {
+        auto& objects = groupArray->getObjects();
+        for (auto& obj : objects)
+        {
+            auto& dictionary = obj.asValueMap();
+
+            std::string name = dictionary["name"].asString();
+            auto size = cocos2d::Size(dictionary["width"].asFloat(), dictionary["height"].asFloat());
+            auto position = calculateTmxPosition(dictionary, map);
+
+            if (name.compare("door") == 0) {
+                auto door = EntityFactory::getInstance().create("door", position, size);
+                door->parseBehavior(dictionary);
+                this->addChild(door);
+                this->entities.pushBack(door);
+
+            }
+            else if (name.compare("horizontal_door") == 0) {
+                auto door = EntityFactory::getInstance().create("horizontal_door", position, size);
+                door->parseBehavior(dictionary);
+                this->addChild(door);
+                this->entities.pushBack(door);
+            }
+        }
+
     }
 
     groupArray = map->getObjectGroup("enemies");
@@ -231,7 +269,7 @@ bool Level::init()
 
             if (name.compare("cannon_joe") == 0) {
 
-                auto entryCollisionBox = Logical::getEntryCollisionRectangle<Enemy>(position, size);
+                auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle("cannon_joe", position, size);
                 auto entry = Logical::getEntry(entryCollisionBox, [=]() { 
                     return EntityFactory::getInstance().create("cannon_joe", position, size);
                     });
@@ -242,7 +280,6 @@ bool Level::init()
         }
 
     }
-
 
     auto firstCheckpointPosition = firstCheckpoint->getPosition();
 

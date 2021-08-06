@@ -69,12 +69,42 @@ function title:onLoad()
                                       cc.VERTICAL_TEXT_ALIGNMENT_TOP)
                               :addTo(self, 128)
 
+    self.about_text_ = label:create("about",
+                                      "fonts/megaman_2.ttf",
+                                      8,
+                                      cc.TEXT_ALIGNMENT_LEFT,
+                                      cc.VERTICAL_TEXT_ALIGNMENT_TOP)
+                              :addTo(self, 128)
+
+    self.projects_text_ = label:create("projects",
+                                      "fonts/megaman_2.ttf",
+                                      8,
+                                      cc.TEXT_ALIGNMENT_LEFT,
+                                      cc.VERTICAL_TEXT_ALIGNMENT_TOP)
+                              :addTo(self, 128)
+
+    self.credits_text_ = label:create("credits",
+                                      "fonts/megaman_2.ttf",
+                                      8,
+                                      cc.TEXT_ALIGNMENT_LEFT,
+                                      cc.VERTICAL_TEXT_ALIGNMENT_TOP)
+                              :addTo(self, 128)
+
     local start_text_width = self.start_text_.label_:getContentSize().width
     local start_text_height = self.start_text_.label_:getContentSize().height
 
 
     local options_text_width = self.options_text_.label_:getContentSize().width
     local options_text_height = self.options_text_.label_:getContentSize().height
+
+    local about_text_width = self.about_text_.label_:getContentSize().width
+    local about_text_height = self.about_text_.label_:getContentSize().height
+
+    local projects_text_width = self.projects_text_.label_:getContentSize().width
+    local projects_text_height = self.projects_text_.label_:getContentSize().height
+
+    local credits_text_width = self.credits_text_.label_:getContentSize().width
+    local credits_text_height = self.credits_text_.label_:getContentSize().height
 
 
     self.start_text_:setPosition(cc.p((256 * 0.5) - (start_text_width * 0.5),
@@ -83,11 +113,25 @@ function title:onLoad()
     self.options_text_:setPosition(cc.p((256 * 0.5) - (options_text_width * 0.5),
                                    (224 * 0.5) + (options_text_height * 0.5) ))
 
+    self.about_text_:setPosition(cc.p((256 * 0.5) - (about_text_width * 0.5),
+                                   (224 * 0.5) - (about_text_height * 0.5) * 2 ))
+
+
+    self.projects_text_:setPosition(cc.p((256 * 0.5) - (projects_text_width * 0.5),
+                                   (224 * 0.5) - (projects_text_height * 0.5) * 6 ))
+
+    self.credits_text_:setPosition(cc.p((256 * 0.5) - (credits_text_width * 0.5),
+                                   (224 * 0.5) - (credits_text_height * 0.5) * 8 ))                                   
+
+
     if cc.audio.current_track ~= "sounds/bgm_title.mp3" then
         cc.audio.play_bgm("sounds/bgm_title.mp3", true)
     end
 
     self.selected_option_ = self.start_text_
+
+    self.active_color_ = cc.c4b(129, 51, 237, 255)
+    self.inactive_color_ = cc.c4b(97, 6, 45, 255)
 
     self:select_start()
 
@@ -99,8 +143,11 @@ function title:select_start()
     --self.start_text_.label_:setTextColor(cc.c4b(0.5, 0.2, 0.92, 1.0))
     --self.options_text_.label_:setTextColor(cc.c4b(0.38, 0.02, 0.17, 1.0))
 
-    self.start_text_.label_:setTextColor(cc.c4b(129, 51, 237, 255))
-    self.options_text_.label_:setTextColor(cc.c4b(97, 6, 45, 255))
+    self.start_text_.label_:setTextColor(self.active_color_)
+    self.options_text_.label_:setTextColor(self.inactive_color_)
+    self.about_text_.label_:setTextColor(self.inactive_color_)
+    self.projects_text_.label_:setTextColor(self.inactive_color_)
+    self.credits_text_.label_:setTextColor(self.inactive_color_)
 
     self.selected_option_ = self.start_text_
 
@@ -110,22 +157,79 @@ function title:select_options()
     --self.start_text_.label_:setTextColor(cc.c4b(0.38, 0.02, 0.17, 1.0))
     --self.options_text_.label_:setTextColor(cc.c4b(0.5, 0.2, 0.92, 1.0))
 
-    self.start_text_.label_:setTextColor(cc.c4b(97, 6, 45, 255))
-    self.options_text_.label_:setTextColor(cc.c4b(129, 51, 237, 255))
+    self.start_text_.label_:setTextColor(self.inactive_color_)
+    self.options_text_.label_:setTextColor(self.active_color_)
+    self.about_text_.label_:setTextColor(self.inactive_color_)
+    self.projects_text_.label_:setTextColor(self.inactive_color_)
+    self.credits_text_.label_:setTextColor(self.inactive_color_)
 
 
     self.selected_option_ = self.options_text_
 
 end
 
+function title:select_about()
+    --self.start_text_.label_:setTextColor(cc.c4b(0.38, 0.02, 0.17, 1.0))
+    --self.options_text_.label_:setTextColor(cc.c4b(0.5, 0.2, 0.92, 1.0))
+
+    self.start_text_.label_:setTextColor(self.inactive_color_)
+    self.options_text_.label_:setTextColor(self.inactive_color_)
+    self.about_text_.label_:setTextColor(self.active_color_)
+    self.projects_text_.label_:setTextColor(self.inactive_color_)
+    self.credits_text_.label_:setTextColor(self.inactive_color_)
+
+    self.selected_option_ = self.about_text_
+
+end
+
+function title:select_projects()
+    self.start_text_.label_:setTextColor(self.inactive_color_)
+    self.options_text_.label_:setTextColor(self.inactive_color_)
+    self.about_text_.label_:setTextColor(self.inactive_color_)
+    self.projects_text_.label_:setTextColor(self.active_color_)
+    self.credits_text_.label_:setTextColor(self.inactive_color_)
+
+    self.selected_option_ = self.projects_text_
+end
+
+function title:select_credits()
+    --self.start_text_.label_:setTextColor(cc.c4b(0.38, 0.02, 0.17, 1.0))
+    --self.options_text_.label_:setTextColor(cc.c4b(0.5, 0.2, 0.92, 1.0))
+
+    self.start_text_.label_:setTextColor(self.inactive_color_)
+    self.options_text_.label_:setTextColor(self.inactive_color_)
+    self.about_text_.label_:setTextColor(self.inactive_color_)
+    self.projects_text_.label_:setTextColor(self.inactive_color_)
+    self.credits_text_.label_:setTextColor(self.active_color_)
+
+    self.selected_option_ = self.credits_text_
+
+end
+
+
 function title:step(dt)
     if not self.triggered_ then
 
         if cc.key_pressed(cc.key_code_.up) then
             if self.selected_option_ == self.start_text_ then
-              self:select_options()
-            else
-              self:select_start()
+
+                self:select_credits()
+
+            elseif self.selected_option_ == self.credits_text_ then
+
+                self:select_projects()
+
+            elseif self.selected_option_ == self.projects_text_ then
+
+                self:select_about()
+
+            elseif self.selected_option_ == self.about_text_ then
+
+                self:select_options()
+
+            elseif self.selected_option_ == self.options_text_ then
+
+                self:select_start()
 
             end
 
@@ -134,9 +238,27 @@ function title:step(dt)
 
         if cc.key_pressed(cc.key_code_.down) then
             if self.selected_option_ == self.start_text_ then
-              self:select_options()
-            else
-              self:select_start()
+                
+                self:select_options()
+
+            elseif self.selected_option_ == self.options_text_ then
+                
+                self:select_about()
+
+            elseif self.selected_option_ == self.about_text_ then
+
+                self:select_projects()
+
+            elseif self.selected_option_ == self.projects_text_ then
+
+                self:select_credits()
+
+            elseif self.selected_option_ == self.credits_text_ then
+
+                self:select_start()
+
+
+
             end
 
             cc.audio.play_sfx("sounds/sfx_select.mp3")
@@ -162,9 +284,9 @@ function title:step(dt)
         
                 self:runAction(sequence)    
                 
-            else
+            elseif self.selected_option_ == self.options_text_ then
                 local callback = cc.CallFunc:create(function()
-        
+
                     self:getApp()
                         :enterScene("screens.options", "FADE", 0.5)
         
@@ -175,8 +297,48 @@ function title:step(dt)
                 local sequence = cc.Sequence:create(delay, callback, nil)
         
                 self:runAction(sequence)    
-    
-    
+                
+            elseif self.selected_option_ == self.about_text_ then
+                local callback = cc.CallFunc:create(function()
+
+                    self:getApp()
+                        :enterScene("screens.about", "FADE", 0.5)
+        
+                end)
+        
+                local delay = cc.DelayTime:create(0.5)
+        
+                local sequence = cc.Sequence:create(delay, callback, nil)
+        
+                self:runAction(sequence)    
+                
+            elseif self.selected_option_ == self.projects_text_ then
+                local callback = cc.CallFunc:create(function()
+
+                    self:getApp()
+                        :enterScene("screens.projects", "FADE", 0.5)
+        
+                end)
+        
+                local delay = cc.DelayTime:create(0.5)
+        
+                local sequence = cc.Sequence:create(delay, callback, nil)
+        
+                self:runAction(sequence)    
+
+            elseif self.selected_option_ == self.credits_text_ then
+                local callback = cc.CallFunc:create(function()
+
+                    self:getApp()
+                        :enterScene("screens.credits", "FADE", 0.5)
+        
+                end)
+        
+                local delay = cc.DelayTime:create(0.5)
+        
+                local sequence = cc.Sequence:create(delay, callback, nil)
+        
+                self:runAction(sequence)    
     
             end
 

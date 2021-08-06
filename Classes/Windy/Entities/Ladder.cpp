@@ -8,8 +8,6 @@
 
 using namespace windy;
 
-
-
 bool Ladder::init()
 {
     //////////////////////////////
@@ -24,11 +22,18 @@ bool Ladder::init()
 
     this->ceiling = dynamic_cast<Block*>(Logical::create<Block>(this->level, ceilingPosition, ceilingSize));
 
+    this->level->addChild(this->ceiling);
+
+    this->level->entities.pushBack(this->ceiling);
+
     this->solidified = false;
 
     this->solidify();
     
     this->setTag(GameTags::General::Ladder);
+
+    this->ignoreGravity = true;
+    this->ignoreLandscapeCollision = true;
 
     return true;
 }

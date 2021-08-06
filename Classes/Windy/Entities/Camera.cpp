@@ -234,24 +234,46 @@ void Camera::onUpdate(float dt) {
 
                 this->level->bounds->setPositionY(boundsPosition.y + this->shiftSpeed);
 
-                if (this->bossDoorShift) {
-                    this->level->player->setPositionY(playerPosition.y + this->protoShiftSpeed + 0.15f);
+                if (this->level->player->climbing) {
+                    if (this->bossDoorShift) {
+                        this->level->player->setPositionY(playerPosition.y + this->protoShiftSpeed + 0.25f);
+                    }
+                    else {
+                        this->level->player->setPositionY(playerPosition.y + this->protoShiftSpeed + 0.15f);
+                    }
                 }
                 else {
-                    this->level->player->setPositionY(playerPosition.y + this->protoShiftSpeed);
+                    if (this->bossDoorShift) {
+                        this->level->player->setPositionY(playerPosition.y + this->protoShiftSpeed + 0.15f);
+                    }
+                    else {
+                        this->level->player->setPositionY(playerPosition.y + this->protoShiftSpeed);
+                    }
                 }
+                
             }
 
 
             if (this->shiftDirection == CameraFlags::CameraShift::ShiftDown) {
                 this->level->bounds->setPositionY(boundsPosition.y - this->shiftSpeed);
 
-                if (this->bossDoorShift) {
-                    this->level->player->setPositionY(playerPosition.y - this->protoShiftSpeed - 0.15f);
+                if (this->level->player->climbing) {
+                    if (this->bossDoorShift) {
+                        this->level->player->setPositionY(playerPosition.y - this->protoShiftSpeed - 0.25f);
+                    }
+                    else {
+                        this->level->player->setPositionY(playerPosition.y - this->protoShiftSpeed - 0.15f);
+                    }
                 }
                 else {
-                    this->level->player->setPositionY(playerPosition.y - this->protoShiftSpeed);
+                    if (this->bossDoorShift) {
+                        this->level->player->setPositionY(playerPosition.y - this->protoShiftSpeed - 0.15f);
+                    }
+                    else {
+                        this->level->player->setPositionY(playerPosition.y - this->protoShiftSpeed);
+                    }
                 }
+                
             }
 
 

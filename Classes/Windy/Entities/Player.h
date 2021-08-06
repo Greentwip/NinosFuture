@@ -21,7 +21,14 @@ namespace windy {
         virtual bool init() override;
         virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
 
+        virtual void setupBrowners() = 0;
+
         virtual void initVariables();
+
+        virtual void onCollisionEnter(Logical* collision) override;
+
+        virtual void onCollisionExit(Logical* collision) override;
+
 
         virtual void walk();
 
@@ -84,11 +91,12 @@ namespace windy {
 
         Browner* currentBrowner;
 
+        Sprite* sprite;
+
     private:
         cocos2d::Point shiftSpeedBackup;
         bool cameraShiftSpeedBackup;
 
-        Sprite* sprite;
 
         friend class Browner;
         friend class VioletBrowner;

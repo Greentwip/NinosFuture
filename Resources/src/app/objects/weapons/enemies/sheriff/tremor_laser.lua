@@ -16,7 +16,7 @@ function tremor_laser:animate(cname)
 
     self.sprite_:set_animation("tremor_laser_shot")
 
-    self.power_ = 1
+    self.power_ = 4
 
     self.kinematic_body_size_ = cc.size(self.sprite_:getContentSize().width, self.sprite_:getContentSize().height)
 

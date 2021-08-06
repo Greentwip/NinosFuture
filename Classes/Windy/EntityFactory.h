@@ -36,6 +36,13 @@ namespace windy {
             _createFuncs[name] = &createFunc<TDerived>;
         }
 
+        template <typename TDerived>
+        void registerTypeCollisionFunc(U name)
+        {
+            _collisionFuncs[name] = &collisionFunc<TDerived>;
+        }
+
+
         T* create(std::string name, const cocos2d::Point& position, const cocos2d::Size& size) {
             typename std::map<U, PCreateFunc>::const_iterator it = _createFuncs.find(name);
             if (it != _createFuncs.end()) {
@@ -44,8 +51,18 @@ namespace windy {
             return nullptr;
         }
 
+
+        std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(std::string name, const cocos2d::Point& position, const cocos2d::Size& size) {
+            typename std::map<U, PCollisionFunc>::const_iterator it = _collisionFuncs.find(name);
+            if (it != _collisionFuncs.end()) {
+                return it->second(position, size);
+            }
+            return nullptr;
+        }
+
         void clear() {
             this->_createFuncs.clear();
+            this->_collisionFuncs.clear();
         }
 
     private:
@@ -55,8 +72,17 @@ namespace windy {
             return T::create<TDerived>(level, position, size);
         }
 
+        template <typename TDerived>
+        static std::shared_ptr<cocos2d::Rect> collisionFunc(const cocos2d::Point& position, const cocos2d::Size& size)
+        {
+            return TDerived::getEntryCollisionRectangle(position, size);
+        }
+
         typedef T* (*PCreateFunc)(Level* level, const cocos2d::Point& position, const cocos2d::Size& size);
         std::map<U, PCreateFunc> _createFuncs;
+
+        typedef std::shared_ptr<cocos2d::Rect>(*PCollisionFunc)(const cocos2d::Point& position, const cocos2d::Size& size);
+        std::map<U, PCollisionFunc> _collisionFuncs;
     };
 
     typedef ConcreteEntityFactory<Logical, std::string> EntityFactory;

@@ -7,6 +7,7 @@ function barrel:onCreate()
     self.default_health_ = 5
     self.still_ = true
     self.walking_ = false
+    self.power_ = 5
 
     self.kinematic_body_size_   = cc.size(40.0, 28.0) -- default is cc.size(16.0, 16.0)
     self.kinematic_body_offset_ = cc.p(0.0, 0.0)       -- default is cc.p(0, 0)

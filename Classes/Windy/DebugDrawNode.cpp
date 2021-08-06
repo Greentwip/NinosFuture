@@ -134,7 +134,6 @@ void DebugDrawNode::onDraw(const cocos2d::Mat4& transform, uint32_t flags)
 
         cocos2d::DrawPrimitives::drawLine(cocos2d::Point(entityX - 2, entityY - 2), 
                                           cocos2d::Point(entityX - 2, entityY + 2));
-
     }
 
     for (int i = 0; i < screenCustomEntities.size(); ++i) {

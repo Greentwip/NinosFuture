@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>microsoft_logo_0</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,-1}</string>
+                <key>spriteSize</key>
+                <string>{512,108}</string>
+                <key>spriteSourceSize</key>
+                <string>{512,512}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{512,108}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>microsoft_logo.pvr.ccz</string>
+            <key>size</key>
+            <string>{516,112}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:3a1aad7bcd2947a84fb5ce0c77f89aaf:cf4cbaba44404340f14ad64347c5e57e:ca7f8831b3733434725642a2dc160873$</string>
+            <key>textureFileName</key>
+            <string>microsoft_logo.pvr.ccz</string>
+        </dict>
+    </dict>
+</plist>

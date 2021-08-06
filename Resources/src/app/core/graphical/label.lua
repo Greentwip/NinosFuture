@@ -14,8 +14,8 @@ function label:ctor(text, font, size, halign, valign, anchor, animation)
 
     self.label_:setAnchorPoint(anchor)
 
---    self.label_:getFontAtlas()
---               :setAliasTexParameters()
+    self.label_:getFontAtlas()
+               :setAliasTexParameters()
 
     if animation ~= nil then
         self.text_ = text

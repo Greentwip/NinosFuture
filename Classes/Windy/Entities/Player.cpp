@@ -17,10 +17,6 @@
 
 #include "./../CameraFlags.h"
 
-#include "VioletBrowner.h"
-
-
-
 using namespace windy;
 
 class PlayerResources {
@@ -66,7 +62,6 @@ bool Player::init()
 
     this->sprite->setPosition(collisionBoxCenter + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
 
-
     this->setTag(GameTags::General::Player);
 
     this->alive = true;
@@ -75,10 +70,8 @@ bool Player::init()
 
     this->initVariables();
 
-    this->currentBrowner = Browner::create<VioletBrowner>(this->level, this);
-    this->currentBrowner->runAction("jump");
+    this->setupBrowners();
 
-    this->addChild(this->currentBrowner);
 
     return true;
 }
@@ -116,6 +109,31 @@ void Player::initVariables() {
     this->cameraShiftSpeedBackup = false;
     this->shiftSpeedBackup = cocos2d::Point(0, 0);
     
+}
+
+
+void Player::onCollisionEnter(Logical* collision) {
+
+    if (collision->getTag() == GameTags::General::Door) {
+        //this->level->triggeringDoor = dynamic_cast<Door*>(collision);
+    }
+    else if (collision->getTag() == GameTags::General::Ladder) {
+        this->activeLadder = dynamic_cast<Ladder*>(collision);
+    }
+
+
+}
+
+
+void Player::onCollisionExit(Logical* collision) {
+
+    if (collision->getTag() == GameTags::General::Door) {
+        //this->level->triggeringDoor = nullptr;
+    }
+    else if (collision->getTag() == GameTags::General::Ladder) {
+        this->activeLadder = nullptr;
+    }
+
 }
 
 void Player::walk() {
@@ -325,7 +343,7 @@ void Player::climbShift() {
 
 void Player::climb() {
 
-    int climbDirection = 0;
+    int climbDirection = -2;
 
     if (this->activeLadder != nullptr && !this->sliding && !this->stunned) {
         if (Input::keyDown(InputKey::Up) && !Input::keyDown(InputKey::Down)) {
@@ -337,7 +355,13 @@ void Player::climb() {
             this->climbCounter += 1;
         }
         else {
-            climbDirection = 0;
+            if (this->climbing) {
+                climbDirection = 0;
+            }
+            else {
+                climbDirection = -2;
+            }
+            
         }
 
         if (this->speed.y > 0 && !this->climbing) {
@@ -351,9 +375,9 @@ void Player::climb() {
     }
 
     if (climbDirection != -2 && this->activeLadder != nullptr) {
-        if (this->climbCounter >
-            ((this->currentBrowner->getActionDuration("climb") /
-                this->currentBrowner->getCurrentAnimationNumberOfFrames()) * 60)) {
+        float actionDuration = this->currentBrowner->getActionDuration("climb");
+        int animationNumberOfFrames = this->currentBrowner->getCurrentAnimationNumberOfFrames();
+        if (this->climbCounter > ((actionDuration / animationNumberOfFrames) * 60)) {
             this->currentBrowner->increaseOrLoopFrame();
             this->climbCounter = 0;
         }
@@ -363,6 +387,8 @@ void Player::climb() {
 
         this->climbing = true;
         this->onGround = false;
+        this->ignoreGravity = true;
+        this->ignoreLandscapeCollision = true;
 
         if (this->speed.x != 0) {
             this->speed.x = 0;
@@ -372,12 +398,16 @@ void Player::climb() {
             if (this->getPositionY() >= this->activeLadder->collisionBox->getMaxY()) {
                 if (this->collisionBox->getMinY() < this->activeLadder->collisionBox->getMaxY()) {
                     this->climbing = false;
+                    this->ignoreGravity = false;
+                    this->ignoreLandscapeCollision = false;
                     this->climbCounter = 0;
-                    this->setPositionY(this->activeLadder->collisionBox->getMaxY() + 2);
+                    this->setPositionY(this->activeLadder->collisionBox->getMaxY() + 16);
                     this->activeLadder->solidify();
                 }
                 else {
                     this->climbing = false;
+                    this->ignoreGravity = false;
+                    this->ignoreLandscapeCollision = false;
                     this->climbCounter = 0;
                     this->speed.x = speedXBackup;
 
@@ -395,6 +425,8 @@ void Player::climb() {
         else if (climbDirection == -1) {
             if (this->collisionBox->getMinY() < this->activeLadder->collisionBox->getMinY()) {
                 this->climbing = false;
+                this->ignoreGravity = false;
+                this->ignoreLandscapeCollision = false;
                 this->climbCounter = 0;
                 this->speed.x = speedXBackup;
                 this->onGround = onGroundBackup;
@@ -422,6 +454,8 @@ void Player::climb() {
     }
     else {
         this->climbing = false;
+        this->ignoreGravity = false;
+        this->ignoreLandscapeCollision = false;
         this->climbCounter = 0;
         this->currentBrowner->resumeActions();
     }
@@ -604,5 +638,4 @@ void Player::onUpdate(float dt) {
     }
 
     this->triggerActions();
-
 }

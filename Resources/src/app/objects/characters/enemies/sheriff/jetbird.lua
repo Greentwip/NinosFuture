@@ -6,10 +6,11 @@ local mob   = class("jetbird", enemy)
 function mob:onCreate()
     self.super:onCreate()
     self.movement_is_non_blockable_ = true
-    self.default_health_ = 2
+    self.default_health_ = 8
     self.shooting_  = false
     self.moving_    = false
     self.orientation_set_ = false
+    self.power_ = 4
 
     self.initial_speed_ = 0
 

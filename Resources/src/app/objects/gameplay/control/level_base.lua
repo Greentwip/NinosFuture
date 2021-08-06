@@ -71,7 +71,7 @@ function level_base:load(tmx_map, map_path, load_arguments)
     local map = ccexp.TMXTiledMap:create(tmx_map)
                                  :setAnchorPoint(cc.p(0,1))
                                  :setPosition(display.left_top)
-                                 :addTo(self, 0)
+                                 --:addTo(self, 0)
                            
 
 
@@ -97,7 +97,7 @@ function level_base:load(tmx_map, map_path, load_arguments)
 
             local final_pos = cc.p(display.left_top.x + sprite_x, display.left_top.y - sprite_y)
             
-            sprite:getTexture():setAliasTexParameters()
+            --sprite:getTexture():setAliasTexParameters()
             sprite:setPosition(final_pos)
             sprite:setAnchorPoint(0, 1)
             sprite:addTo(self, 0)      

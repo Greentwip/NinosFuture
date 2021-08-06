@@ -10,6 +10,8 @@ function mob:onCreate()
     self.attacking_  = false
     self.moving_    = false
     self.orientation_set_ = false
+    self.power_ = 6
+
 
     self.weapon_ = import("app.objects.weapons.enemies.military.tank_bullet")
     self.weapon_parameters_ = {

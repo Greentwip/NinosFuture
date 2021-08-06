@@ -25,8 +25,7 @@ namespace windy {
         virtual bool init() override;
         virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
 
-        static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size);
-
+        virtual void setup() = 0;
 
         virtual void setOrientation();
 
@@ -34,9 +33,9 @@ namespace windy {
 
         void checkHealth();
 
-        virtual void onDefeated();
+        virtual void onDefeated() = 0;
 
-        virtual void attack();
+        virtual void attack() = 0;
 
         virtual void onCollisionEnter(Logical* collision) override;
 
@@ -48,16 +47,8 @@ namespace windy {
         int maxHealth;
 
         bool isFlipping;
-        bool attacking;
 
-        int attackTimer;
-        int attackTimeInterval;
-
-        AttackState attackState;
-
-    private:
-
-        int bulletPower;
+    protected:
 
         Sprite* sprite;
 

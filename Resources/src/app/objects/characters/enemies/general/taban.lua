@@ -6,6 +6,8 @@ local mob   = class("taban", enemy)
 function mob:onCreate()
     self.super:onCreate()
     self.default_health_ = 2
+    self.power_ = 4
+
     self.still_ = true
     self.flying_ = false
 

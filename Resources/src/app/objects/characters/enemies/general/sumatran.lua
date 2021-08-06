@@ -6,6 +6,7 @@ local mob    = class("sumatran", enemy)
 function mob:onCreate()
     self.super:onCreate()
     self.default_health_ = 12
+    self.power_ = 6
     self.jump_speed_ = cc.p(60, 260)
 end
 

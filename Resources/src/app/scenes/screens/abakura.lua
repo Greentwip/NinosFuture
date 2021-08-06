@@ -39,7 +39,7 @@ function opening:opening_intro_a()
     local duration = cc.DelayTime:create(self.greentwip_logo_:get_action_duration("abakura_logo"))
     local post_callback = cc.CallFunc:create(function()
 
-        self:getApp():enterScene("screens.title", "FADE", 1)
+        self:getApp():enterScene("screens.microsoft", "FADE", 1)
 
         
     end)

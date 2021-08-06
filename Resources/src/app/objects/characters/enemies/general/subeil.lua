@@ -6,6 +6,8 @@ local mob          = class("subeil", enemy)
 function mob:onCreate()
     self.super:onCreate()
     self.default_health_ = 1
+    self.power_ = 4
+
     self.jump_speed_ = cc.p(60, 90)
     self.walk_speed_ = 60
 end

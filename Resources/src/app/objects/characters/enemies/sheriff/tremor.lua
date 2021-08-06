@@ -6,7 +6,8 @@ local tremor = class("tremor", enemy)
 local item    = import("app.objects.gameplay.level.goods.item")
 
 function tremor:onCreate()
-    self.default_health_ = 1
+    self.default_health_ = 85
+    self.power_ = 10
 
     self.kinematic_body_size_   = cc.size(40.0, 40.0) -- default is cc.size(16.0, 16.0)
     self.kinematic_body_offset_ = cc.p(0.0, 0.0)      -- default is cc.p(0, 0)

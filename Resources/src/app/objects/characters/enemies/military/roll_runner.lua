@@ -6,6 +6,8 @@ local mob   = class("roll_runner", enemy)
 function mob:onCreate()
     self.super:onCreate()
     self.default_health_ = 5
+    self.power_ = 3
+
     self.shooting_  = false
     self.moving_    = false
     self.orientation_set_ = false

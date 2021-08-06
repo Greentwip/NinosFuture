@@ -6,6 +6,22 @@
         <Folder Name="sprites">
           <Folder Name="gameplay">
             <Folder Name="screens">
+              <Folder Name="about">
+                <Image Name="background.png" />
+                <Image Name="button_left_active.png" />
+                <Image Name="button_left_inactive.png" />
+                <Image Name="button_right_active.png" />
+                <Image Name="button_right_inactive.png" />
+                <Project Name="data - Copy.csd" Type="Scene" />
+                <Project Name="data.csd" Type="Scene" />
+              </Folder>
+              <Folder Name="credits">
+                <Image Name="background.png" />
+                <Project Name="data.csd" Type="Scene" />
+                <Image Name="sides.png" />
+                <Image Name="sides-transparent.png" />
+                <Image Name="top.png" />
+              </Folder>
               <Folder Name="gameover">
                 <Image Name="background.png" />
                 <Image Name="button_left_active.png" />
@@ -63,23 +79,16 @@
                 <Project Name="data.csd" Type="Scene" />
                 <Image Name="file.png" />
               </Folder>
-              <Folder Name="stage_select">
-                <Image Name="stage_select_lite_0.png" />
+              <Folder Name="projects">
                 <Project Name="data.csd" Type="Scene" />
-                <Folder Name="mugs">
-                  <Image Name="spr_stage_select_mugs_0.png" />
-                  <Image Name="spr_stage_select_mugs_1.png" />
-                  <Image Name="spr_stage_select_mugs_2.png" />
-                  <Image Name="spr_stage_select_mugs_3.png" />
-                  <Image Name="spr_stage_select_mugs_4.png" />
-                  <Image Name="spr_stage_select_mugs_5.png" />
-                  <Image Name="spr_stage_select_mugs_6.png" />
-                  <Image Name="spr_stage_select_mugs_7.png" />
-                  <Image Name="spr_stage_select_mugs_8.png" />
-                </Folder>
-                <Folder Name="swing">
-                  <Image Name="spr_stage_select_swing_0.png" />
-                </Folder>
+                <Image Name="pygame_logo pixel.png" />
+                <Image Name="sides-transparent.png" />
+                <Image Name="solarus-logo-black-on-transparent1 pixel .png" />
+                <Image Name="top.png" />
+              </Folder>
+              <Folder Name="license">
+                <Project Name="data.csd" Type="Scene" />
+                <Image Name="microsoft_logo.png" />
               </Folder>
             </Folder>
           </Folder>

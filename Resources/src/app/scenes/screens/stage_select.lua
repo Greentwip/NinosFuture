@@ -98,10 +98,14 @@ function stage_select:setup_mugs()
             self.mugs_[#self.mugs_]:setPosition(cc.p(x_offset, y_offset))
             self.mugs_[#self.mugs_]:set_image_index(i)
 
-            if key.defeated_ then
-                self.mugs_[#self.mugs_]:setVisible(false)
-            else
+            --if key.defeated_ then
+                --self.mugs_[#self.mugs_]:setVisible(false)
+            --else
                 self.mugs_[#self.mugs_]:setVisible(true)
+            --end
+
+            if key.mug_ == "nightman" then
+                self.mugs_[#self.mugs_]:setVisible(false)
             end
         end
 
@@ -186,7 +190,7 @@ function stage_select:move_up()
         elseif self.cursor_.y_position == "top" then
             self.cursor_.y_position = "bottom"
             self.cursor_:setPositionY(self.cursor_:getPositionY() - 152)
-        elseif self.cursor_.y_position == "bottom" then
+        --elseif self.cursor_.y_position == "bottom" then
             self.cursor_.y_position = "middle"
             self.cursor_:setPositionY(self.cursor_:getPositionY() + 76)
         end
@@ -211,7 +215,7 @@ function stage_select:move_down()
         if self.cursor_.y_position == "middle" then
             self.cursor_.y_position = "bottom"
             self.cursor_:setPositionY(self.cursor_:getPositionY() - 76)
-        elseif self.cursor_.y_position == "bottom" then
+        --elseif self.cursor_.y_position == "bottom" then
             self.cursor_.y_position = "top"
             self.cursor_:setPositionY(self.cursor_:getPositionY() + 152)
         elseif self.cursor_.y_position == "top" then
@@ -248,13 +252,13 @@ function stage_select:step(dt)
                 ccexp.AudioEngine:stopAll()
                 cc.audio.play_sfx("sounds/sfx_selected.mp3")
 
-                if cc.current_level_.defeated_ then
-                    self:getApp()
-                        :enterScene("levels.level", "FADE", 2, {physics = true})
-                else
+                --if cc.current_level_.defeated_ then
+                    --self:getApp()
+                        --:enterScene("levels.level", "FADE", 2, {physics = true})
+                --else
                     self:getApp()
                         :enterScene("screens.boss_intro", "FADE", 1, {physics = false})
-                end
+                --end
 
                 self.triggered_ = true
             end

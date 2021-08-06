@@ -350,7 +350,7 @@ function MyApp:setup_player()
     cc.unlockables_.items_.head_   = {id_ = 3, acquired_ = false, name_ = "head" }
     cc.unlockables_.items_.chest_  = {id_ = 4, acquired_ = false, name_ = "chest" }
     cc.unlockables_.items_.fist_   = {id_ = 5, acquired_ = false, name_ = "fist" }
-    cc.unlockables_.items_.boot_   = {id_ = 6, acquired_ = false, name_ = "boot_" }
+    cc.unlockables_.items_.boot_   = {id_ = 6, acquired_ = false, name_ = "boot" }
 
     cc.unlockables_.helmet_acquired_ = function()
         return cc.unlockables_.items_.helmet_.acquired_
@@ -359,7 +359,7 @@ function MyApp:setup_player()
     cc.unlockables_.extreme_acquired_ = function()
         local acquired = true
 
-        for _, unlockable in ipairs(cc.unlockables_.items_) do
+        for _, unlockable in pairs(cc.unlockables_.items_) do
             if not unlockable.acquired_ then
                acquired = false
             end
@@ -486,7 +486,7 @@ function MyApp:setup_items()
 
             local extreme_acquired = true
 
-            for _, unlockable in ipairs(cc.unlockables_.items_) do
+            for _, unlockable in pairs(cc.unlockables_.items_) do
                 if not unlockable.acquired_ then
                     extreme_acquired = false
                 end

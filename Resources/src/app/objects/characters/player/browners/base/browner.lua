@@ -414,6 +414,9 @@ end
 
 function browner:timed_shoot()
 
+
+    self.dash_jumping_ = false
+
     self:fire()
 
     if not self.attacking_ then
