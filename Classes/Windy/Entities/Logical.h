@@ -27,7 +27,11 @@ namespace windy {
     {
     public:
         template<typename T>
+        static void preloadResources();
+
+        template<typename T>
         static Logical* create(Level* level, const cocos2d::Point& position, const cocos2d::Size& size);
+
 
         void setup(const cocos2d::Point& position, const cocos2d::Size& size);
 
@@ -85,7 +89,10 @@ namespace windy {
     };
 }
 
-
+template<typename T>
+void windy::Logical::preloadResources() {
+    return T::preloadResources();
+}
 
 template<typename T>
 windy::Logical* windy::Logical::create(windy::Level* level, const cocos2d::Point& position, const cocos2d::Size& size) {
@@ -110,6 +117,5 @@ template<typename T>
 std::shared_ptr<cocos2d::Rect> windy::Logical::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
     return T::getEntryCollisionRectangle(position, size);
 }
-
 
 #endif

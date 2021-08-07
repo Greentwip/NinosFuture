@@ -3,6 +3,7 @@
 #include "GameStateMachine.h"
 
 #include "Windy/Label.h"
+#include "Windy/Armature.h"
 #include "Windy/Sprite.h"
 #include "Windy/Input.h"
 
@@ -52,6 +53,10 @@ bool TitleScene::init()
     {
         return false;
     }
+
+    windy::Armature::clearPlistCache();
+    windy::Sprite::clearPlistCache();
+
 
     setCascadeOpacityEnabled(true);
 

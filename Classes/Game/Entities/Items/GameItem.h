@@ -16,6 +16,8 @@ namespace game {
     class GameItem : public windy::Item
     {
     public:
+        static void preloadResources();
+
         void setup(const std::string& content, bool forever);
 
         static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size);

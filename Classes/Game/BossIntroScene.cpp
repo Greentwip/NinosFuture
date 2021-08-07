@@ -3,6 +3,7 @@
 #include "GameStateMachine.h"
 
 #include "Windy/Label.h"
+#include "Windy/Armature.h"
 #include "Windy/Sprite.h"
 #include "Windy/AudioManager.h"
 #include "Windy/Display.h"
@@ -49,6 +50,10 @@ bool BossIntroScene::init()
     {
         return false;
     }
+
+    windy::Armature::clearPlistCache();
+    windy::Sprite::clearPlistCache();
+
 
     setCascadeOpacityEnabled(true);
 

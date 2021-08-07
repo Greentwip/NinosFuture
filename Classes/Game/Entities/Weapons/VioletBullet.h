@@ -6,13 +6,15 @@
 
 #include "cocos2d.h"
 
-#include "Windy/Entities/Bullet.h"
+#include "Windy/Entities/Weapon.h"
 #include "Windy/GameTags.h"
 
 namespace game {
-    class VioletBullet : public windy::Bullet
+    class VioletBullet : public windy::Weapon
     {
     public:
+        static void preloadResources();
+
         static VioletBullet* create();
 
         virtual bool init() override;

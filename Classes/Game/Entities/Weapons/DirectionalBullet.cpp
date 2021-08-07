@@ -17,6 +17,12 @@ public:
 std::string DirectionalBulletResources::spritePath = "sprites/gameplay/level/weapon/directional_bullet/directional_bullet";
 std::string DirectionalBulletResources::armaturePath = "physics/gameplay/level/weapon/directional_bullet/directional_bullet";
 
+void DirectionalBullet::preloadResources() {
+    windy::Armature::cache(DirectionalBulletResources::armaturePath);
+    windy::Sprite::cache(DirectionalBulletResources::spritePath);
+}
+
+
 DirectionalBullet* DirectionalBullet::create() {
     DirectionalBullet* directionalBullet = new (std::nothrow) DirectionalBullet();
 

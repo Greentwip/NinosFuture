@@ -10,6 +10,9 @@
 namespace windy {
 	class Armature {
 	public:
+		static void clearPlistCache();
+		static void cache(const std::string& dataFileName);
+
 		Armature();
 		Armature(cocos2d::Point anchor, std::vector<std::shared_ptr<cocos2d::Rect>> collisionRectangles);
 		Armature(const std::string& dataFileName);
@@ -17,8 +20,8 @@ namespace windy {
 
 		Armature get(const std::string& name);
 
-		cocos2d::Point pointFromString(const std::string& pointString);
-		cocos2d::Size sizeFromString(const std::string& pointString);
+		static cocos2d::Point pointFromString(const std::string& pointString);
+		static cocos2d::Size sizeFromString(const std::string& pointString);
 	public:
 		cocos2d::Point anchor;
 		std::vector<std::shared_ptr<cocos2d::Rect> > collisionRectangles;

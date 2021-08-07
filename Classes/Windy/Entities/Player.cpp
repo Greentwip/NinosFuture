@@ -19,63 +19,6 @@
 
 using namespace windy;
 
-class PlayerResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string PlayerResources::spritePath = "sprites/characters/player/regular/browners/browners";
-std::string PlayerResources::armaturePath = "physics/characters/player/regular/browners/browners";
-
-
-bool Player::init()
-{
-    //////////////////////////////
-    // 1. super init first
-    if (!Node::init())
-    {
-        return false;
-    }
-
-
-    auto armature = Armature(PlayerResources::armaturePath);
-
-    auto newAnchor = armature.get("browners").anchor;
-    
-    this->sprite = Sprite::create(PlayerResources::spritePath, newAnchor);
-    this->addChild(this->sprite);
-
-    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-    auto contentSize = this->sprite->getContentSize();
-    
-    this->collisionRectangles = armature.get("browners").collisionRectangles;
-
-    auto collisionBoxCenter = cocos2d::Point(this->collisionRectangles[0]->getMidX(), this->collisionRectangles[0]->getMidY());
-
-    for (int i = 0; i < this->collisionRectangles.size(); ++i) {
-        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, *this->collisionRectangles[i]);
-    }
-
-    this->collisionBox = this->collisionRectangles[0];
-
-
-    this->sprite->setPosition(collisionBoxCenter + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
-
-    this->setTag(GameTags::General::Player);
-
-    this->alive = true;
-    this->canMove = true;
-    this->spawning = false;
-
-    this->initVariables();
-
-    this->setupBrowners();
-
-
-    return true;
-}
-
 void Player::parseBehavior(const cocos2d::ValueMap& behavior) {
 
 }

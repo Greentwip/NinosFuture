@@ -11,6 +11,9 @@
 
 #include "GameManager.h"
 
+#include "Windy/Armature.h"
+#include "Windy/Sprite.h"
+
 
 
 using namespace game;
@@ -53,6 +56,10 @@ bool SaveScene::init()
     {
         return false;
     }
+
+    windy::Armature::clearPlistCache();
+    windy::Sprite::clearPlistCache();
+
 
     setCascadeOpacityEnabled(true);
 

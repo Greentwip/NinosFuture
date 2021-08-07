@@ -1,10 +1,10 @@
-#include "Bullet.h"
+#include "Weapon.h"
 
 #include "./../Sprite.h"
 
 using namespace windy;
 
-bool Bullet::init()
+bool Weapon::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -17,6 +17,6 @@ bool Bullet::init()
 }
 
 
-void Bullet::parseBehavior(const cocos2d::ValueMap& behavior) {
+void Weapon::parseBehavior(const cocos2d::ValueMap& behavior) {
 
 }

@@ -190,7 +190,7 @@
     <ClCompile Include="..\..\Classes\Windy\Entities\Ladder.cpp">
       <Filter>Classes\Windy\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Classes\Windy\Entities\Bullet.cpp">
+    <ClCompile Include="..\..\Classes\Windy\Entities\Weapon.cpp">
       <Filter>Classes\Windy\Entities</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Classes\Windy\ObjectManager.cpp">
@@ -234,6 +234,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Sheriff\Tremor.cpp">
       <Filter>Classes\Game\Entities\Enemies\Sheriff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Sheriff\TremorTail.cpp">
+      <Filter>Classes\Game\Entities\Enemies\Sheriff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Weapons\TremorDrill.cpp">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Weapons\TremorLaser.cpp">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1578,7 +1587,7 @@
     <ClInclude Include="..\..\Classes\Windy\Entities\Ladder.h">
       <Filter>Classes\Windy\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Classes\Windy\Entities\Bullet.h">
+    <ClInclude Include="..\..\Classes\Windy\Entities\Weapon.h">
       <Filter>Classes\Windy\Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Classes\Windy\ObjectManager.h">
@@ -1628,6 +1637,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Sheriff\Tremor.h">
       <Filter>Classes\Game\Entities\Enemies\Sheriff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Sheriff\TremorTail.h">
+      <Filter>Classes\Game\Entities\Enemies\Sheriff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Weapons\TremorDrill.h">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Weapons\TremorLaser.h">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

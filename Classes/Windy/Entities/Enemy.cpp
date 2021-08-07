@@ -4,7 +4,7 @@
 #include "Enemy.h"
 
 #include "Player.h"
-#include "Bullet.h"
+#include "Weapon.h"
 
 #include "./../GameTags.h"
 #include "./../Sprite.h"
@@ -97,16 +97,16 @@ void Enemy::onCollisionEnter(Logical* collision) {
 
         ((cocos2d::Node*)this->sprite)->runAction(sequence);
 
-        auto bullet = dynamic_cast<Bullet*>(collision);
+        auto weapon = dynamic_cast<Weapon*>(collision);
 
-        this->health -= bullet->power;
+        this->health -= weapon->power;
 
-        if (this->health <= 0) {
+        /*if (this->health <= 0) {
             this->onDefeated();
-        }
+        }*/
 
-        if (bullet->power < 3) {
-            bullet->finish();
+        if (weapon->power < 3) {
+            weapon->finish();
         }
 
 

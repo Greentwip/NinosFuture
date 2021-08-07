@@ -88,7 +88,7 @@ void ObjectManager::update(float dt)
     // We have to inflate the bounds by 96 pixels for intro and outro player position (offscreen location)
 
     auto boundsCollisionBox = this->level->bounds->collisionBox;
-    auto inflatedBoundsCollisionBox = this->level->bounds->inflate(cocos2d::Size(96, 96));
+    auto inflatedBoundsCollisionBox = this->level->bounds->inflate(cocos2d::Size(48, 48));
 
     for (int i = 0; i < this->objectEntries.size(); ++i) {
         auto entry = this->objectEntries[i];

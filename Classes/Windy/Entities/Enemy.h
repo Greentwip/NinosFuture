@@ -14,13 +14,6 @@ namespace windy {
 namespace windy {
     class Enemy : public Logical
     {
-        enum AttackState {
-            Before,
-            Attacking,
-            Cooldown,
-            None
-        };
-
     public:
         virtual bool init() override;
         virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
@@ -49,7 +42,6 @@ namespace windy {
         bool isFlipping;
 
     protected:
-
         Sprite* sprite;
 
         static std::random_device itemRandomDevice;

@@ -16,6 +16,11 @@ public:
 std::string GameHorizontalDoorResources::spritePath = "sprites/gameplay/level/special/general/horizontal_door/horizontal_door";
 std::string GameHorizontalDoorResources::armaturePath = "physics/gameplay/level/special/general/horizontal_door/horizontal_door";
 
+void GameHorizontalDoor::preloadResources() {
+    windy::Armature::cache(GameHorizontalDoorResources::armaturePath);
+    windy::Sprite::cache(GameHorizontalDoorResources::spritePath);
+}
+
 void GameHorizontalDoor::setup() {
 
     auto armature = windy::Armature(GameHorizontalDoorResources::armaturePath);

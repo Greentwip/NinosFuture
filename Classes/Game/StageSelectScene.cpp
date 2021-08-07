@@ -9,6 +9,7 @@
 #include "cocos/ui/CocosGUI.h"
 #include "cocostudio/CocoStudio.h"
 
+#include "Windy/Armature.h"
 #include "Windy/Sprite.h"
 
 #include "Windy/AudioManager.h"
@@ -58,6 +59,9 @@ bool StageSelectScene::init()
     {
         return false;
     }
+
+    windy::Armature::clearPlistCache();
+    windy::Sprite::clearPlistCache();
 
     setCascadeOpacityEnabled(true);
 

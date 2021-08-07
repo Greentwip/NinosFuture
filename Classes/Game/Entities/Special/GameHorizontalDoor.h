@@ -15,6 +15,8 @@ namespace game {
     class GameHorizontalDoor : public windy::Door
     {
     public:
+        static void preloadResources();
+
         virtual void setup() override;
         virtual void setupPrefix() override;
 

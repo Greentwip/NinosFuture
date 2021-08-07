@@ -270,8 +270,18 @@ bool Level::init()
             if (name.compare("cannon_joe") == 0) {
 
                 auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle("cannon_joe", position, size);
-                auto entry = Logical::getEntry(entryCollisionBox, [=]() { 
+                auto entry = Logical::getEntry(entryCollisionBox, [=]() {
                     return EntityFactory::getInstance().create("cannon_joe", position, size);
+                    });
+
+                this->objectManager->objectEntries.push_back(entry);
+
+            }
+            else if (name.compare("tremor") == 0) {
+
+                auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle("tremor", position, size);
+                auto entry = Logical::getEntry(entryCollisionBox, [=]() {
+                    return EntityFactory::getInstance().create("tremor", position, size);
                     });
 
                 this->objectManager->objectEntries.push_back(entry);

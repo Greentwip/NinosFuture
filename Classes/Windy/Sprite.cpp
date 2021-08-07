@@ -14,9 +14,67 @@
 
 using namespace windy;
 
+std::map<std::string, cocos2d::ValueMap> s_spritePlistCache;
+
+std::map<std::string, std::map<std::string, std::map<int, std::string> > > s_frameCache;
+std::map<std::string, std::vector<std::string> > s_animationCache;
+
+
+void Sprite::clearPlistCache() {
+    s_spritePlistCache.clear();
+    s_frameCache.clear();
+    s_animationCache.clear();
+}
+
+void Sprite::cache(const std::string& spriteName) {
+    auto dataFileName = spriteName + ".plist";
+    std::string imageFileName = "";
+
+    if (Settings::TextureFormat == ImageFormat::PVR) {
+        imageFileName = spriteName + ".pvr.ccz";
+    }
+
+    cocos2d::ValueMap plistDict;
+
+    if (s_spritePlistCache.find(dataFileName) == s_spritePlistCache.end()) {
+        plistDict = cocos2d::FileUtils::getInstance()->getValueMapFromFile(dataFileName);
+        s_spritePlistCache[dataFileName] = plistDict;
+    }
+    else {
+        plistDict = s_spritePlistCache[dataFileName];
+    }
+
+    std::map<std::string, std::map<int, std::string> > frames;
+    std::vector<std::string> animations;
+    std::string currentAnimation = "";
+
+    if (!cocos2d::SpriteFrameCache::getInstance()->isSpriteFramesWithFileLoaded(dataFileName)) {
+        cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile(dataFileName, imageFileName);
+    }
+
+
+    if (s_frameCache.find(dataFileName) == s_frameCache.end() && s_animationCache.find(dataFileName) == s_animationCache.end()) {
+        for (auto kp : plistDict["frames"].asValueMap()) {
+            auto k = kp.first;
+
+            std::size_t found = k.find_last_of("_");
+            auto animationName = k.substr(0, found);
+            auto frameNumber = k.substr(found + 1);
+
+            if (currentAnimation != animationName) {
+                currentAnimation = animationName;
+                animations.push_back(currentAnimation);
+            }
+
+            frames[currentAnimation][atoi(frameNumber.c_str())] = k;
+
+        }
+        s_frameCache[dataFileName] = frames;
+        s_animationCache[dataFileName] = animations;
+    }
+}
+
 Sprite* Sprite::create(const std::string& spriteName, const cocos2d::Point& anchor) {
-
-
 
     auto dataFileName = spriteName + ".plist";
     std::string imageFileName = "";
@@ -25,7 +83,16 @@ Sprite* Sprite::create(const std::string& spriteName, const cocos2d::Point& anch
         imageFileName = spriteName + ".pvr.ccz";
     }
 
-    auto plistDict = cocos2d::FileUtils::getInstance()->getValueMapFromFile(dataFileName);
+    cocos2d::ValueMap plistDict;
+
+    if (s_spritePlistCache.find(dataFileName) == s_spritePlistCache.end()) {
+        plistDict = cocos2d::FileUtils::getInstance()->getValueMapFromFile(dataFileName);
+        s_spritePlistCache[dataFileName] = plistDict;
+    }
+    else {
+        plistDict = s_spritePlistCache[dataFileName];
+    }
+    
 
     std::map<std::string, std::map<int, std::string> > frames;
     std::vector<std::string> animations;
@@ -36,47 +103,38 @@ Sprite* Sprite::create(const std::string& spriteName, const cocos2d::Point& anch
     }
             
 
-    for(auto kp : plistDict["frames"].asValueMap()){
-        auto k = kp.first;
+    if (s_frameCache.find(dataFileName) == s_frameCache.end() && s_animationCache.find(dataFileName) == s_animationCache.end()) {
+        for (auto kp : plistDict["frames"].asValueMap()) {
+            auto k = kp.first;
 
-        std::vector<std::string> tokens;
+            std::size_t found = k.find_last_of("_");
+            auto animationName = k.substr(0, found);
+            auto frameNumber = k.substr(found + 1);
 
-        std::regex e("([_]+)");
-            
-        std::sregex_token_iterator iter(k.begin(),
-            k.end(),
-            e,
-            -1);
-        std::sregex_token_iterator end;
-
-        for (; iter != end; ++iter) {
-            tokens.push_back(iter->str());
-        }
-
-        std::string animationName = "";
-
-        for (unsigned i = 0; i < tokens.size() - 1; ++i) {
-            if (animationName.compare("") != 0) {
-                animationName = animationName + "_" + tokens[i];
+            if (currentAnimation != animationName) {
+                currentAnimation = animationName;
+                animations.push_back(currentAnimation);
             }
-            else {
-                animationName = tokens[i];
-            }
+
+            frames[currentAnimation][atoi(frameNumber.c_str())] = k;
+
+            //CCLOG("Frames content");
+            //CCLOG(tokens.at(tokens.size() - 1).c_str());
+            //CCLOG(frames[currentAnimation][atoi(tokens.at(tokens.size() - 1).c_str())].c_str());
+
         }
-            
-        if (currentAnimation != animationName) {
-            currentAnimation = animationName;
-            animations.push_back(currentAnimation);
-        }
-        
-
-        frames[currentAnimation][atoi(tokens.at(tokens.size() - 1).c_str())] = k;
-
-        //CCLOG("Frames content");
-        //CCLOG(tokens.at(tokens.size() - 1).c_str());
-        //CCLOG(frames[currentAnimation][atoi(tokens.at(tokens.size() - 1).c_str())].c_str());
-
+        s_frameCache[dataFileName] = frames;
+        s_animationCache[dataFileName] = animations;
     }
+    else if(s_frameCache.find(dataFileName) != s_frameCache.end() && s_animationCache.find(dataFileName) != s_animationCache.end()){
+        frames = s_frameCache[dataFileName];
+        animations = s_animationCache[dataFileName];
+    }
+    else {
+        throw std::exception("Error, data cached incorrectly");
+    }
+
+    
 
     /*CCLOG("KP");
     for (auto kp : frames[animations[0]]) {

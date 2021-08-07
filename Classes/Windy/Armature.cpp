@@ -5,6 +5,98 @@
 
 using namespace windy;
 
+std::map<std::string, cocos2d::ValueMap> s_armaturePlistCache;
+
+std::map<std::string, std::map<std::string, Armature>> s_definitionCache;
+
+void Armature::clearPlistCache() {
+    s_armaturePlistCache.clear();
+    s_definitionCache.clear();
+}
+
+void Armature::cache(const std::string& dataFileName) {
+    cocos2d::ValueMap plistDict;
+
+    if (s_armaturePlistCache.find(dataFileName) == s_armaturePlistCache.end()) {
+        plistDict = cocos2d::FileUtils::getInstance()->getValueMapFromFile(dataFileName + ".plist");
+        s_armaturePlistCache[dataFileName] = plistDict;
+    }
+    else {
+        plistDict = s_armaturePlistCache[dataFileName];
+    }
+
+    if (s_definitionCache.find(dataFileName) == s_definitionCache.end()) {
+
+        for (auto bkvp : plistDict["bodies"].asValueMap()) {
+            auto bodyName = bkvp.first;
+            auto body = bkvp.second.asValueMap();
+
+            auto anchor = Armature::pointFromString(body.at("anchorpoint").asString());
+
+            std::vector<std::shared_ptr<cocos2d::Rect>> collisionRectangles;
+
+            for (auto fixtureValue : body.at("fixtures").asValueVector()) {
+
+                auto fixture = fixtureValue.asValueMap();
+
+                assert(fixture.at("fixture_type").asString().compare("POLYGON") == 0); // Other fixture types are not supported
+
+                auto polygonsVector = fixture.at("polygons").asValueVector();
+
+                assert(polygonsVector.size() == 1); // One polygon per fixture supported
+
+                auto vertexStrings = polygonsVector.at(0).asValueVector();
+
+                assert(vertexStrings.size() == 4); // Only rectangle shaped polygons are supported
+
+                std::vector<cocos2d::Point> vertices;
+
+                for (int i = 0; i < 4; ++i) {
+                    std::string vertexString = vertexStrings[i].asString();
+                    vertices.push_back(Armature::pointFromString(vertexString));
+                }
+
+
+                float minX = 0.0f;
+                float maxX = 0.0f;
+
+                float minY = 0.0f;
+                float maxY = 0.0f;
+
+                for (int i = 0; i < vertices.size(); ++i) {
+                    auto vertex = vertices[i];
+
+                    if (vertex.x < minX) {
+                        minX = vertex.x;
+                    }
+
+                    if (vertex.x > maxX) {
+                        maxX = vertex.x;
+                    }
+
+                    if (vertex.y < minY) {
+                        minY = vertex.y;
+                    }
+
+                    if (vertex.y > maxY) {
+                        maxY = vertex.y;
+                    }
+                }
+
+
+                collisionRectangles.push_back(std::make_shared<cocos2d::Rect>(minX, minY, maxX - minX, maxY - minY));
+
+            }
+
+            auto definitionToStore = Armature(anchor, collisionRectangles);
+
+            s_definitionCache[dataFileName][bodyName] = definitionToStore;
+        }
+
+    }
+}
+
+
 Armature::Armature() : anchor(cocos2d::Point(0, 0)) {
 
 }
@@ -15,73 +107,90 @@ Armature::Armature(cocos2d::Point anchor, std::vector<std::shared_ptr<cocos2d::R
 }
 
 Armature::Armature(const std::string& dataFileName) {
-    auto plistDict = cocos2d::FileUtils::getInstance()->getValueMapFromFile(dataFileName + ".plist");
+    cocos2d::ValueMap plistDict;
 
-    for (auto bkvp : plistDict["bodies"].asValueMap()) {
-        auto bodyName = bkvp.first;
-        auto body = bkvp.second.asValueMap();
+    if (s_armaturePlistCache.find(dataFileName) == s_armaturePlistCache.end()) {
+        plistDict = cocos2d::FileUtils::getInstance()->getValueMapFromFile(dataFileName + ".plist");
+        s_armaturePlistCache[dataFileName] = plistDict;
+    }
+    else {
+        plistDict = s_armaturePlistCache[dataFileName];
+    }
 
-        auto anchor = this->pointFromString(body.at("anchorpoint").asString());
+    if (s_definitionCache.find(dataFileName) == s_definitionCache.end()) {
 
-        std::vector<std::shared_ptr<cocos2d::Rect>> collisionRectangles;
+        for (auto bkvp : plistDict["bodies"].asValueMap()) {
+            auto bodyName = bkvp.first;
+            auto body = bkvp.second.asValueMap();
 
-        for (auto fixtureValue : body.at("fixtures").asValueVector()) {
-            
-            auto fixture = fixtureValue.asValueMap();
+            auto anchor = Armature::pointFromString(body.at("anchorpoint").asString());
 
-            assert(fixture.at("fixture_type").asString().compare("POLYGON") == 0); // Other fixture types are not supported
+            std::vector<std::shared_ptr<cocos2d::Rect>> collisionRectangles;
 
-            auto polygonsVector = fixture.at("polygons").asValueVector();
+            for (auto fixtureValue : body.at("fixtures").asValueVector()) {
 
-            assert(polygonsVector.size() == 1); // One polygon per fixture supported
-                       
-            auto vertexStrings = polygonsVector.at(0).asValueVector();
+                auto fixture = fixtureValue.asValueMap();
 
-            assert(vertexStrings.size() == 4); // Only rectangle shaped polygons are supported
+                assert(fixture.at("fixture_type").asString().compare("POLYGON") == 0); // Other fixture types are not supported
 
-            std::vector<cocos2d::Point> vertices;
+                auto polygonsVector = fixture.at("polygons").asValueVector();
 
-            for (int i = 0; i < 4; ++i) {
-                std::string vertexString = vertexStrings[i].asString();
-                vertices.push_back(this->pointFromString(vertexString));
+                assert(polygonsVector.size() == 1); // One polygon per fixture supported
+
+                auto vertexStrings = polygonsVector.at(0).asValueVector();
+
+                assert(vertexStrings.size() == 4); // Only rectangle shaped polygons are supported
+
+                std::vector<cocos2d::Point> vertices;
+
+                for (int i = 0; i < 4; ++i) {
+                    std::string vertexString = vertexStrings[i].asString();
+                    vertices.push_back(Armature::pointFromString(vertexString));
+                }
+
+
+                float minX = 0.0f;
+                float maxX = 0.0f;
+
+                float minY = 0.0f;
+                float maxY = 0.0f;
+
+                for (int i = 0; i < vertices.size(); ++i) {
+                    auto vertex = vertices[i];
+
+                    if (vertex.x < minX) {
+                        minX = vertex.x;
+                    }
+
+                    if (vertex.x > maxX) {
+                        maxX = vertex.x;
+                    }
+
+                    if (vertex.y < minY) {
+                        minY = vertex.y;
+                    }
+
+                    if (vertex.y > maxY) {
+                        maxY = vertex.y;
+                    }
+                }
+
+
+                collisionRectangles.push_back(std::make_shared<cocos2d::Rect>(minX, minY, maxX - minX, maxY - minY));
+
             }
 
+            auto definitionToStore = Armature(anchor, collisionRectangles);
 
-            float minX = 0.0f;
-            float maxX = 0.0f;
-
-            float minY = 0.0f;
-            float maxY = 0.0f;
-
-            for (int i = 0; i < vertices.size(); ++i) {
-                auto vertex = vertices[i];
-
-                if (vertex.x < minX) {
-                    minX = vertex.x;
-                }
-
-                if (vertex.x > maxX) {
-                    maxX = vertex.x;
-                }
-
-                if (vertex.y < minY) {
-                    minY = vertex.y;
-                }
-
-                if (vertex.y > maxY) {
-                    maxY = vertex.y;
-                }
-            }
-
-            
-            collisionRectangles.push_back(std::make_shared<cocos2d::Rect>(minX, minY, maxX - minX, maxY - minY));
-           
+            this->definitions[bodyName] = definitionToStore;
         }
 
-        auto definitionToStore = Armature(anchor, collisionRectangles);
-
-        this->definitions[bodyName] = definitionToStore;
+        s_definitionCache[dataFileName] = this->definitions;
     }
+    else {
+        this->definitions = s_definitionCache[dataFileName];
+    }
+
 }
 
 
@@ -108,7 +217,7 @@ Armature::Armature(Armature const& other) {
 }
 
 cocos2d::Size Armature::sizeFromString(const std::string& sizeString) {
-    auto point = this->pointFromString(sizeString);
+    auto point = Armature::pointFromString(sizeString);
     return cocos2d::Size(point.x, point.y);
 }
 

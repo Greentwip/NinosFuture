@@ -198,7 +198,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">tremor_laser_shoot_1.png</key>
+            <key type="filename">tremor_laser_shoot_0.png</key>
             <key type="filename">tremor_laser_shot_0.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -221,7 +221,7 @@
             <filename>tremor_laser_charge_0.png</filename>
             <filename>tremor_laser_charge_1.png</filename>
             <filename>tremor_laser_charge_2.png</filename>
-            <filename>tremor_laser_shoot_1.png</filename>
+            <filename>tremor_laser_shoot_0.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

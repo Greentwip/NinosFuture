@@ -9,6 +9,10 @@ namespace game {
     class GamePlayer : public windy::Player
     {
     public:
+        static void preloadResources();
+
+        virtual bool init() override;
+
         virtual void setupBrowners() override;
     };
 }

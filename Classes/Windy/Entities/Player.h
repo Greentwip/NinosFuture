@@ -18,7 +18,6 @@ namespace windy {
     class Player : public Logical
     {
     public:
-        virtual bool init() override;
         virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
 
         virtual void setupBrowners() = 0;

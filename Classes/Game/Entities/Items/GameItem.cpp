@@ -21,6 +21,11 @@ std::string GameItemResources::spritePath = "sprites/gameplay/level/goods/item/i
 std::string GameItemResources::armaturePath = "physics/gameplay/level/goods/item/item";
 
 
+void GameItem::preloadResources() {
+    windy::Armature::cache(GameItemResources::armaturePath);
+    windy::Sprite::cache(GameItemResources::spritePath);
+}
+
 void GameItem::setup(const std::string& content, bool forever) {
 
     auto armature = windy::Armature(GameItemResources::armaturePath);

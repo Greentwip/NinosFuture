@@ -14,6 +14,9 @@ namespace windy {
     class Sprite: public cocos2d::Sprite
     {
     public:
+        static void clearPlistCache();
+        static void cache(const std::string& spriteName);
+
         static Sprite* create(const std::string& spriteName, const cocos2d::Point& anchor = cocos2d::Point(0.5f, 0.5f));
         void setImageIndex(int imageIndex);
         void increaseOrLoopFrame();

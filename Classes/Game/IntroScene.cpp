@@ -2,6 +2,7 @@
 #include "IntroScene.h"
 #include "GameStateMachine.h"
 
+#include "Windy/Armature.h"
 #include "Windy/Sprite.h"
 #include "Windy/AnimationAction.h"
 #include "Windy/AudioManager.h"
@@ -34,6 +35,10 @@ bool IntroScene::init()
     {
         return false;
     }
+
+    windy::Armature::clearPlistCache();
+    windy::Sprite::clearPlistCache();
+
 
     setCascadeOpacityEnabled(true);
 

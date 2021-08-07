@@ -9,6 +9,9 @@
 #include "Windy/Input.h"
 #include "Windy/AudioManager.h"
 
+#include "Windy/Armature.h"
+#include "Windy/Sprite.h"
+
 #include "GameStateMachine.h"
 
 using namespace game;
@@ -50,6 +53,10 @@ bool OptionsScene::init()
     {
         return false;
     }
+
+    windy::Armature::clearPlistCache();
+    windy::Sprite::clearPlistCache();
+
 
     setCascadeOpacityEnabled(true);
 

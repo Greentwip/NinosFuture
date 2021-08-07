@@ -8,7 +8,7 @@
 
 #include "Windy/ObjectManager.h"
 
-#include "Game/Entities/Weapons/DIrectionalBullet.h"
+#include "Game/Entities/Weapons/DirectionalBullet.h"
 
 #include "Game/Entities/Player/GamePlayer.h"
 
@@ -26,6 +26,10 @@ public:
 std::string CannonJoeResources::spritePath = "sprites/characters/enemy/general/cannon_joe/cannon_joe";
 std::string CannonJoeResources::armaturePath = "physics/characters/enemy/general/cannon_joe/cannon_joe";
 
+void CannonJoe::preloadResources() {
+    windy::Armature::cache(CannonJoeResources::armaturePath);
+    windy::Sprite::cache(CannonJoeResources::spritePath);
+}
 
 
 void CannonJoe::setup() {

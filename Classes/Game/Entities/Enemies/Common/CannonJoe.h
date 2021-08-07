@@ -5,12 +5,6 @@
 
 #include "Game/Entities/Enemies/GameEnemy.h"
 
-#include <random>
-
-namespace windy {
-    class Sprite;
-}
-
 namespace game {
     class CannonJoe : public GameEnemy
     {
@@ -22,6 +16,8 @@ namespace game {
         };
 
     public:
+        static void preloadResources();
+
         virtual void setup() override;
 
         static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size);
@@ -30,6 +26,7 @@ namespace game {
 
         virtual void attack() override;
 
+    private:
         bool attacking;
 
         int attackTimer;
@@ -37,7 +34,6 @@ namespace game {
 
         AttackState attackState;
 
-    private:
         int bulletPower;
     };
 }

@@ -15,6 +15,33 @@ public:
 std::string VioletBulletResources::spritePath = "sprites/gameplay/level/weapon";
 std::string VioletBulletResources::armaturePath = "physics/gameplay/level/weapon";
 
+void VioletBullet::preloadResources() {
+    {
+        std::string bulletName = std::string("violet_bullet") + std::string("_") + "low";
+        std::string bulletPath = bulletName + "/" + bulletName;
+
+        windy::Armature::cache(VioletBulletResources::armaturePath + "/" + bulletPath);
+        windy::Sprite::cache(VioletBulletResources::spritePath + "/" + bulletPath);
+    }
+
+    {
+        std::string bulletName = std::string("violet_bullet") + std::string("_") + "mid";
+        std::string bulletPath = bulletName + "/" + bulletName;
+
+        windy::Armature::cache(VioletBulletResources::armaturePath + "/" + bulletPath);
+        windy::Sprite::cache(VioletBulletResources::spritePath + "/" + bulletPath);
+    }
+
+    {
+        std::string bulletName = std::string("violet_bullet") + std::string("_") + "high";
+        std::string bulletPath = bulletName + "/" + bulletName;
+
+        windy::Armature::cache(VioletBulletResources::armaturePath + "/" + bulletPath);
+        windy::Sprite::cache(VioletBulletResources::spritePath + "/" + bulletPath);
+    }
+    
+}
+
 VioletBullet* VioletBullet::create() {
     VioletBullet* violetBullet = new (std::nothrow) VioletBullet();
 
