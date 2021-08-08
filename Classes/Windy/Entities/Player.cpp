@@ -58,7 +58,7 @@ void Player::initVariables() {
 void Player::onCollisionEnter(Logical* collision) {
 
     if (collision->getTag() == GameTags::General::Door) {
-        //this->level->triggeringDoor = dynamic_cast<Door*>(collision);
+        this->level->triggeringDoor = dynamic_cast<Door*>(collision);
     }
     else if (collision->getTag() == GameTags::General::Ladder) {
         this->activeLadder = dynamic_cast<Ladder*>(collision);
@@ -71,7 +71,7 @@ void Player::onCollisionEnter(Logical* collision) {
 void Player::onCollisionExit(Logical* collision) {
 
     if (collision->getTag() == GameTags::General::Door) {
-        //this->level->triggeringDoor = nullptr;
+        this->level->triggeringDoor = nullptr;
     }
     else if (collision->getTag() == GameTags::General::Ladder) {
         this->activeLadder = nullptr;

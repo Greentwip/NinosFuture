@@ -40,6 +40,8 @@ namespace windy {
 		Land,
 		Explosion1,
 		EnemyHit,
+		Roar,
+		Taban,
 		NONE
 	};
 

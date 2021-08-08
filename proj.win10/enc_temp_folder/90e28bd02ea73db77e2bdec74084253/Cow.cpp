@@ -1,8 +1,10 @@
-#include "CannonJoe.h"
+#include "Cow.h"
 
 #include "Windy/Armature.h"
 #include "Windy/AnimationAction.h"
 #include "Windy/Sprite.h"
+
+#include "Windy/GameTags.h"
 
 #include "Windy/ObjectManager.h"
 
@@ -12,70 +14,83 @@
 
 using namespace game;
 
-class CannonJoeResources {
+
+class CowResources {
 public:
     static std::string spritePath;
     static std::string armaturePath;
 };
 
-std::string CannonJoeResources::spritePath = "sprites/characters/enemy/general/cannon_joe/cannon_joe";
-std::string CannonJoeResources::armaturePath = "physics/characters/enemy/general/cannon_joe/cannon_joe";
+std::string CowResources::spritePath = "sprites/characters/enemy/sheriff/cow/cow";
+std::string CowResources::armaturePath = "physics/characters/enemy/sheriff/cow/cow";
 
-void CannonJoe::preloadResources() {
-    windy::Armature::cache(CannonJoeResources::armaturePath);
-    windy::Sprite::cache(CannonJoeResources::spritePath);
+void Cow::preloadResources() {
+    windy::Armature::cache(CowResources::armaturePath);
+    windy::Sprite::cache(CowResources::spritePath);
 }
 
 
-void CannonJoe::setup() {
+void Cow::setup() {
 
-    this->attackTimer = 0;
-    this->attackTimeInterval = 1;
-    this->bulletPower = 3;
-    this->maxHealth = 8;
+    this->maxHealth = 28;
     this->health = this->maxHealth;
-    this->attackState = AttackState::None;
 
-    Enemy::composite(this, CannonJoeResources::armaturePath, CannonJoeResources::spritePath, "cannon_joe");
+    this->bulletPower = 5;
+    this->attackState = AttackState::Scanning;
+
+    Enemy::composite(this, CowResources::armaturePath, CowResources::spritePath, "cow");
 
     std::vector<windy::AnimationAction> actionSet = {
-        windy::AnimationAction("stand",      "cannon_joe_stand",      true,   0.10f),
-        windy::AnimationAction("flip",       "cannon_joe_flip",       true,   0.24f),
-        windy::AnimationAction("shoot",      "cannon_joe_shoot",      true,   0.04f)
+        windy::AnimationAction("stand",       "cow_stand",      false,   0.10f),
+        windy::AnimationAction("morph",       "cow_flip",       false,   0.12f),
+        windy::AnimationAction("attack",      "cow_attack",     false,   0.10f)
     };
 
     this->sprite->appendActionSet(actionSet, false);
 
-    this->sprite->setAnimation("cannon_joe_stand");
+    this->sprite->setAnimation("cow_stand");
+
+    this->attackTimer = 0;
+    this->morphTimer = 0;
+
+    this->attackTimeInterval = this->sprite->getActionDuration("attack");
+    this->morphTimeInterval = this->sprite->getActionDuration("morph");
+
 }
 
 
-std::shared_ptr<cocos2d::Rect> CannonJoe::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Enemy::buildEntryCollisionRectangle(position, size, CannonJoeResources::armaturePath, "cannon_joe");
-
+std::shared_ptr<cocos2d::Rect> Cow::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
+    return Enemy::buildEntryCollisionRectangle(position, size, CowResources::armaturePath, "cow");
 }
 
-
-void CannonJoe::setOrientation() {
-    
-}
-
-void CannonJoe::attack() {
+void Cow::attack() {
     switch (this->attackState) {
 
-        case AttackState::None: {
-            float playerDistanceX = cocos2d::Point(this->getPositionX(), 0).getDistance(cocos2d::Point(this->level->player->getPositionX(), 0));
-            float playerDistanceY = cocos2d::Point(0, this->getPositionY()).getDistance(cocos2d::Point(0, this->level->player->getPositionY()));
+        case AttackState::Scanning: {
+            float playerDistance = this->getPosition().getDistance(this->level->player->getPosition());
 
-            if (playerDistanceX > 48 || playerDistanceY <= 24) {
-                this->attackState = AttackState::Before;
-                this->attackTimer = this->attackTimeInterval;
+            if (playerDistance < 64) {
+                this->sprite->runAction("morph");
+                this->attackState = AttackState::Morphing;
+                this->morphTimer = this->morphTimeInterval;
             }
 
         }
         break;
 
-        case AttackState::Before: {
+        case AttackState::Morphing: {
+            if (this->morphTimer <= 0) {
+                this->attackTimer = this->attackTimeInterval;
+                this->sprite->runAction("attack");
+                this->attackState = AttackState::Attacking;
+            }
+            else {
+                morphTimer -= 1.0f / 60.0f;
+            }
+        }
+        break;
+
+        case AttackState::Attacking: {
             if (this->attackTimer <= 0) {
                 this->attackTimer = 0;
 
@@ -110,8 +125,10 @@ void CannonJoe::attack() {
 
                     this->level->objectManager->objectEntries.push_back(entry);
 
-                    this->attackTimer = this->attackTimeInterval;
-                    this->attackState = AttackState::Cooldown;
+                    this->sprite->reverseAction();
+
+                    this->attackTimer = this->attackTimeInterval * 2;
+                    this->attackState = AttackState::CoolDown;
                 }
 
             }
@@ -123,11 +140,12 @@ void CannonJoe::attack() {
         }
         break;
 
-        case AttackState::Cooldown:
+        case AttackState::CoolDown:
         {
             if (this->attackTimer <= 0) {
-                this->attackTimer = 0;
-                this->attackState = AttackState::None;
+                this->attackTimer = this->attackTimeInterval;
+                this->sprite->reverseAction();
+                this->attackState = AttackState::Attacking;
             }
             else {
                 this->attackTimer -= 1.0f / 60.0f;

@@ -8,9 +8,9 @@
 
 #include "Windy/EntityFactory.h"
 
-#include "Windy/GameTags.h"
-
 #include "Windy/ObjectManager.h"
+
+#include "Windy/Entities/Door.h"
 
 #include "Game/GameManager.h"
 
@@ -47,52 +47,23 @@ void Tremor::preloadResources() {
 
 void Tremor::setup() {
 
+    this->ignoreGravity = true;
+    this->ignoreLandscapeCollision = true;
+
     this->maxHealth = 5;
     this->health = this->maxHealth;
 
     this->power = 10;
 
-    this->shooting = false;
-    this->moving = false;
-    this->cannonAttackCount = 0;
-    this->attacking = false;
-
     this->startPosition = this->getPosition();
     
     this->attackState = AttackState::None;
 
-
-    auto armature = windy::Armature(TremorResources::armaturePath);
-
-    auto tremorDefinition = armature.get("tremor");
-
-    auto newAnchor = tremorDefinition.anchor;
-
-    this->sprite = windy::Sprite::create(TremorResources::spritePath, newAnchor);
-    this->addChild(this->sprite);
-
-    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-    auto contentSize = this->sprite->getContentSize();
-
-    this->collisionRectangles = tremorDefinition.collisionRectangles;
-
-    auto collisionBoxCenter = cocos2d::Point(this->collisionRectangles[0]->getMidX(), this->collisionRectangles[0]->getMidY());
-
-    for (int i = 0; i < this->collisionRectangles.size(); ++i) {
-        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, *this->collisionRectangles[i]);
-    }
-
-    this->collisionBox = this->collisionRectangles[0];
-
-    this->ignoreGravity = true;
-    this->ignoreLandscapeCollision = true;
-
-
-    this->sprite->setPosition(collisionBoxCenter + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
+    Enemy::composite(this, TremorResources::armaturePath, TremorResources::spritePath, "tremor");
 
 
     std::vector<windy::AnimationAction> actionSet = {
-        windy::AnimationAction("head",      "tremor_head",      false,   0.10f),
+        windy::AnimationAction("head",      "tremor_head",      false,   0.10f)
     };
 
     this->sprite->appendActionSet(actionSet, false);
@@ -139,28 +110,11 @@ void Tremor::setup() {
 
         tailBody->setPosition(cocos2d::Point(offsetX, offsetY));
     }
-
-    this->setTag(windy::GameTags::General::Enemy);
 }
 
 
 std::shared_ptr<cocos2d::Rect> Tremor::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-
-    auto armature = windy::Armature(TremorResources::armaturePath);
-
-    auto tremorDefinition = armature.get("tremor");
-
-    auto newAnchor = tremorDefinition.anchor;
-
-    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-
-    auto collisionRectangles = tremorDefinition.collisionRectangles;
-
-    for (int i = 0; i < collisionRectangles.size(); ++i) {
-        collisionRectangles[i] = windy::Logical::normalizeCollisionRectangle(position, *collisionRectangles[i]);
-    }
-
-    return collisionRectangles[0];
+    return Enemy::buildEntryCollisionRectangle(position, size, TremorResources::armaturePath, "tremor");
 }
 
 
@@ -200,6 +154,13 @@ void Tremor::onDefeated() {
         });
 
     this->level->objectManager->objectEntries.push_back(entry);
+
+    auto horizontalDoor = this->level->horizontalDoors.at(0);
+
+    this->level->horizontalDoors.at(0)->unlock([horizontalDoor]() {
+        horizontalDoor->setTraversable(false);
+    });
+    
 
     this->finish();
 
@@ -245,8 +206,7 @@ void Tremor::onCannonAttackEnd() {
     this->tail->runAction(sequence);
 
     auto reinit = [this]() {
-        this->attacking = false;
-        this->moving = false;
+        this->attackState = AttackState::None;
     };
 
     auto moveToStart = cocos2d::MoveTo::create(2, this->startPosition);
@@ -258,75 +218,76 @@ void Tremor::onCannonAttackEnd() {
 
 }
 
-void Tremor::onMoveEnd() {
-    this->attacking = true;
-}
-
 void Tremor::attack() {
-
-    if (!this->moving) {
-        this->moving = true;
-
-        auto moveDown = cocos2d::MoveTo::create(1.5f, cocos2d::Point(this->getPositionX(), this->getPositionY() - 128));
-        auto moveUp = cocos2d::MoveTo::create(1.5f, cocos2d::Point(this->getPositionX(), this->getPositionY() + 24));
-        auto moveDelay = cocos2d::DelayTime::create(1);
-
-        auto sequence = 
-            cocos2d::Sequence::create(moveDown, moveDelay, moveUp, moveDelay, cocos2d::CallFunc::create([this]() { this->onMoveEnd(); }), nullptr);
-
-        this->runAction(sequence);
-    }
-        
-    if (this->attacking) {
-        this->attacking = false;
-
-        auto locatePlayerY = cocos2d::MoveTo::create(1, cocos2d::Point(this->getPositionX(), this->level->player->getPositionY()));
-
-        auto animateAttack = cocos2d::CallFunc::create([this]() { 
-            this->sprite->reverseAction();
-        });
-
-        auto fireCallback = cocos2d::CallFunc::create([this]() {
-            auto offset = cocos2d::Point(-72, -10);
-
-            auto bulletPosition = this->getPosition() + offset;
-
-            auto entryCollisionBox = TremorLaser::getEntryCollisionRectangle(bulletPosition, cocos2d::Size(16, 16));
-            
-            auto entry = Logical::getEntry(entryCollisionBox, [=]() {
-                auto bullet = TremorLaser::create();
-                bullet->setPosition(bulletPosition);
-                bullet->setup();
-
-                bullet->fire(8, -this->getSpriteNormal(), windy::GameTags::WeaponEnemy);
-
-                return bullet;
-                });
-
-            this->level->objectManager->objectEntries.push_back(entry);
-        });
-
-        auto attackDelay = cocos2d::DelayTime::create(2);
-
-        auto attackEndCallback = cocos2d::CallFunc::create([this]() {
-            this->onCannonAttackEnd(); 
-        });
-
-        auto sequence = cocos2d::Sequence::create(locatePlayerY, animateAttack, fireCallback, attackDelay, attackEndCallback, nullptr);
-
-        this->runAction(sequence);
-    }
     
     switch (this->attackState) {
-        case AttackState::None: {
+        case AttackState::None:
+            this->attackState = AttackState::Moving;
+        break;
+
+        case AttackState::Moving: {
+            auto moveDown = cocos2d::MoveTo::create(1.5f, cocos2d::Point(this->getPositionX(), this->getPositionY() - 128));
+            auto moveUp = cocos2d::MoveTo::create(1.5f, cocos2d::Point(this->getPositionX(), this->getPositionY() + 24));
+            auto moveDelay = cocos2d::DelayTime::create(1);
+
+            auto sequence =
+                cocos2d::Sequence::create(
+                    moveDown, 
+                    moveDelay,
+                    moveUp, 
+                    moveDelay, 
+                    cocos2d::CallFunc::create([this]() { 
+                        this->attackState = AttackState::Attacking;
+                    }), nullptr);
+
+            this->runAction(sequence);
+
+            this->attackState = AttackState::Working;
         }
         break;
 
-        case AttackState::Before: {
+        case AttackState::Working: {
         }
         break;
 
-        case AttackState::Cooldown:{
+        case AttackState::Attacking:{
+            auto locatePlayerY = cocos2d::MoveTo::create(1, cocos2d::Point(this->getPositionX(), this->level->player->getPositionY()));
+
+            auto animateAttack = cocos2d::CallFunc::create([this]() {
+                this->sprite->reverseAction();
+                });
+
+            auto fireCallback = cocos2d::CallFunc::create([this]() {
+                auto offset = cocos2d::Point(-72, -10);
+
+                auto bulletPosition = this->getPosition() + offset;
+
+                auto entryCollisionBox = TremorLaser::getEntryCollisionRectangle(bulletPosition, cocos2d::Size(16, 16));
+
+                auto entry = Logical::getEntry(entryCollisionBox, [=]() {
+                    auto bullet = TremorLaser::create();
+                    bullet->setPosition(bulletPosition);
+                    bullet->setup();
+
+                    bullet->fire(8, -this->getSpriteNormal(), windy::GameTags::WeaponEnemy);
+
+                    return bullet;
+                    });
+
+                this->level->objectManager->objectEntries.push_back(entry);
+                });
+
+            auto attackDelay = cocos2d::DelayTime::create(2);
+
+            auto attackEndCallback = cocos2d::CallFunc::create([this]() {
+                this->onCannonAttackEnd();
+                });
+
+            auto sequence = cocos2d::Sequence::create(locatePlayerY, animateAttack, fireCallback, attackDelay, attackEndCallback, nullptr);
+
+            this->runAction(sequence);
+
+            this->attackState = AttackState::Working;
         }
         break;
     }

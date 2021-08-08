@@ -1,18 +1,18 @@
-#ifndef __GAME_CANNONJOE_H__
-#define __GAME_CANNONJOE_H__
+#ifndef __GAME_COW_H__
+#define __GAME_COW_H__
 
 #include "cocos2d.h"
 
 #include "Game/Entities/Enemies/GameEnemy.h"
 
 namespace game {
-    class CannonJoe : public GameEnemy
+    class Cow : public GameEnemy
     {
         enum AttackState {
-            Before,
+            Scanning,
+            Morphing,
             Attacking,
-            Cooldown,
-            None
+            CoolDown
         };
 
     public:
@@ -22,13 +22,14 @@ namespace game {
 
         static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size);
 
-        virtual void setOrientation() override;
-
         virtual void attack() override;
 
     private:
         float attackTimer;
         float attackTimeInterval;
+
+        float morphTimer;
+        float morphTimeInterval;
 
         AttackState attackState;
 

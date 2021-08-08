@@ -1,18 +1,17 @@
-#ifndef __GAME_CANNONJOE_H__
-#define __GAME_CANNONJOE_H__
+#ifndef __GAME_TABAN_H__
+#define __GAME_TABAN_H__
 
 #include "cocos2d.h"
 
 #include "Game/Entities/Enemies/GameEnemy.h"
 
 namespace game {
-    class CannonJoe : public GameEnemy
+    class Taban : public GameEnemy
     {
         enum AttackState {
-            Before,
-            Attacking,
-            Cooldown,
-            None
+            Scanning,
+            WakingUp,
+            Attacking
         };
 
     public:
@@ -27,12 +26,12 @@ namespace game {
         virtual void attack() override;
 
     private:
-        float attackTimer;
-        float attackTimeInterval;
+        float moveSpeed;
+
+        float wakeUpTimer;
+        float wakeUpDelay;
 
         AttackState attackState;
-
-        int bulletPower;
     };
 }
 

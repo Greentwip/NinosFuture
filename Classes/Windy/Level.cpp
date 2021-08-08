@@ -243,6 +243,7 @@ bool Level::init()
                 door->parseBehavior(dictionary);
                 this->addChild(door);
                 this->entities.pushBack(door);
+                this->verticalDoors.pushBack(dynamic_cast<Door*>(door));
 
             }
             else if (name.compare("horizontal_door") == 0) {
@@ -250,6 +251,7 @@ bool Level::init()
                 door->parseBehavior(dictionary);
                 this->addChild(door);
                 this->entities.pushBack(door);
+                this->horizontalDoors.pushBack(dynamic_cast<Door*>(door));
             }
         }
 
@@ -267,21 +269,20 @@ bool Level::init()
             auto size = cocos2d::Size(dictionary["width"].asFloat(), dictionary["height"].asFloat());
             auto position = calculateTmxPosition(dictionary, map);
 
-            if (name.compare("cannon_joe") == 0) {
+            if (name.compare("cannon_joe") == 0 || 
+                name.compare("lyric") == 0 || 
+                name.compare("Subeil") == 0 ||
+                name.compare("sumatran") == 0 || 
+                name.compare("taban") == 0 || 
+                
+                name.compare("barrel") == 0 || 
+                name.compare("cow") == 0 || 
+                name.compare("jetbird") == 0 || 
+                name.compare("tremor") == 0) {
 
-                auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle("cannon_joe", position, size);
+                auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle(name, position, size);
                 auto entry = Logical::getEntry(entryCollisionBox, [=]() {
-                    return EntityFactory::getInstance().create("cannon_joe", position, size);
-                    });
-
-                this->objectManager->objectEntries.push_back(entry);
-
-            }
-            else if (name.compare("tremor") == 0) {
-
-                auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle("tremor", position, size);
-                auto entry = Logical::getEntry(entryCollisionBox, [=]() {
-                    return EntityFactory::getInstance().create("tremor", position, size);
+                    return EntityFactory::getInstance().create(name, position, size);
                     });
 
                 this->objectManager->objectEntries.push_back(entry);

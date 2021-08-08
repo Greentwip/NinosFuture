@@ -21,11 +21,13 @@ bool Door::init()
 
     this->lockTime = 1.0f;
 
+    this->setTag(GameTags::General::Door);
+
+
     this->setup();
 
     this->triggered = false;
 
-    this->setTag(GameTags::General::Door);
 
     this->ignoreGravity = true;
     this->ignoreLandscapeCollision = true;
@@ -33,22 +35,40 @@ bool Door::init()
     return true;
 }
 
+void Door::setTraversable(bool animate) {
+    this->setTag(GameTags::General::None);
+    this->triggered = false;
+    //this->sprite->runAction("idle");
 
-void Door::close() {
+    if (animate) {
+        this->sprite->stopActions();
+        this->sprite->runAction("lock");
+        this->sprite->reverseAction();
+    }
+}
+
+
+void Door::close(bool animate) {
     this->setTag(GameTags::General::Block);
     this->triggered = false;
     //this->sprite->runAction("idle");
 
-    this->sprite->runAction("lock");
-
+    if (animate) {
+        this->sprite->stopActions();
+        this->sprite->runAction("lock");
+    }
 }
 
 
-void Door::open() {
+void Door::open(bool animate) {
     //this->sprite->setAnimation(this->prefix + "_" + "door_lock");
     //this->sprite->setImageIndex(3);
-    this->sprite->runAction("lock");
-    this->sprite->reverseAction();
+    if (animate) {
+        this->sprite->stopActions();
+        this->sprite->runAction("lock");
+        this->sprite->reverseAction();
+    }
+    
     this->setTag(GameTags::General::Door);
     this->triggered = false;
 
@@ -65,10 +85,13 @@ void Door::lock(std::function<void()> callback) {
 
     auto lock = cocos2d::CallFunc::create([this]() {
         AudioManager::playSfx(Sounds::Door);
+        this->sprite->stopActions();
         this->sprite->runAction("lock");
         });
 
     auto postLock = cocos2d::CallFunc::create([=]() {
+        this->setTag(GameTags::General::Block);
+
         callback();
         });
 
@@ -76,7 +99,6 @@ void Door::lock(std::function<void()> callback) {
 
     this->stopAllActions();
     this->runAction(sequence);
-    this->setTag(GameTags::General::Block);
 }
 
 void Door::unlock(std::function<void()> callback) {
@@ -89,11 +111,14 @@ void Door::unlock(std::function<void()> callback) {
 
     auto lock = cocos2d::CallFunc::create([this]() {
         AudioManager::playSfx(Sounds::Door);
+        this->sprite->stopActions();
         this->sprite->runAction("lock");
         this->sprite->reverseAction();
         });
 
     auto postLock = cocos2d::CallFunc::create([=]() {
+        this->setTag(GameTags::General::Door);
+
         callback();
         });
 
@@ -102,6 +127,8 @@ void Door::unlock(std::function<void()> callback) {
     this->stopAllActions();
     this->runAction(sequence);
     this->triggered = true;
+
+
 
 }
 

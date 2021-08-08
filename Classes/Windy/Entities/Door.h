@@ -22,8 +22,9 @@ namespace windy {
 
         virtual void setupPrefix() = 0;
 
-        void close();
-        void open();
+        void setTraversable(bool animate = true);
+        void close(bool animate = true);
+        void open(bool animate = true);
         void lock(std::function<void()> callback);
         void unlock(std::function<void()> callback);
 

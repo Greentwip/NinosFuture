@@ -38,7 +38,6 @@
   <object id="89" x="544" y="200" width="64" height="24"/>
   <object id="91" x="576" y="176" width="32" height="24"/>
   <object id="93" x="656" y="208" width="96" height="16"/>
-  <object id="101" x="704" y="184" width="32" height="24"/>
   <object id="104" x="736" y="224" width="8" height="224"/>
   <object id="106" x="1184" y="464" width="64" height="32"/>
   <object id="107" x="1216" y="496" width="48" height="96"/>
@@ -77,33 +76,33 @@
  </objectgroup>
  <objectgroup id="4" name="enemies">
   <object id="57" name="cannon_joe" type="general" x="435" y="48" width="27" height="32"/>
-  <object id="61" name="sumatran" type="general" x="864" y="592" width="16" height="16"/>
+  <object id="61" name="sumatran" type="general" x="863" y="563" width="33" height="45"/>
   <object id="62" name="taban" type="general" x="1400" y="72" width="16" height="16"/>
   <object id="63" name="jetbird" type="sheriff" x="1496" y="120" width="16" height="16"/>
-  <object id="64" name="cannon_joe" type="general" x="1704" y="128" width="16" height="16"/>
+  <object id="64" name="cannon_joe" type="general" x="1700" y="112" width="27" height="32"/>
   <object id="65" name="taban" type="general" x="1800" y="72" width="16" height="16"/>
   <object id="66" name="taban" type="general" x="1992" y="72" width="16" height="16"/>
   <object id="67" name="taban" type="general" x="2064" y="72" width="16" height="16"/>
-  <object id="69" name="cannon_joe" type="general" x="2136" y="128" width="16" height="16"/>
-  <object id="70" name="jetbird" type="sheriff" x="2328" y="96" width="16" height="16"/>
-  <object id="74" name="jetbird" type="sheriff" x="2424" y="144" width="16" height="16"/>
-  <object id="79" name="jetbird" type="sheriff" x="2650" y="112" width="16" height="16"/>
-  <object id="80" name="jetbird" type="sheriff" x="2720" y="144" width="16" height="16"/>
-  <object id="81" name="jetbird" type="sheriff" x="2846" y="56" width="16" height="16"/>
-  <object id="82" name="jetbird" type="sheriff" x="2878" y="104" width="16" height="16"/>
-  <object id="83" name="jetbird" type="sheriff" x="2928" y="144" width="16" height="16"/>
+  <object id="69" name="cannon_joe" type="general" x="2131" y="112" width="27" height="32"/>
+  <object id="70" name="jetbird" type="sheriff" x="2328" y="96" width="56" height="34"/>
+  <object id="74" name="jetbird" type="sheriff" x="2425" y="130" width="56" height="34"/>
+  <object id="79" name="jetbird" type="sheriff" x="2650" y="112" width="56" height="34"/>
+  <object id="80" name="jetbird" type="sheriff" x="2720" y="130" width="56" height="34"/>
+  <object id="81" name="jetbird" type="sheriff" x="2846" y="50" width="56" height="34"/>
+  <object id="82" name="jetbird" type="sheriff" x="2878" y="90" width="56" height="34"/>
+  <object id="83" name="jetbird" type="sheriff" x="2928" y="130" width="56" height="34"/>
   <object id="95" name="barrel" type="sheriff" x="1224" y="384" width="16" height="16"/>
-  <object id="98" name="cow" type="sheriff" x="1256" y="168" width="16" height="16"/>
+  <object id="98" name="cow" type="sheriff" x="1256" y="129" width="46" height="55"/>
   <object id="100" name="barrel" type="sheriff" x="1024" y="128" width="16" height="16"/>
   <object id="23" name="tremor" type="sheriff" x="700" y="34" width="40" height="40"/>
-  <object id="36" name="sumatran" type="general" x="1072" y="304" width="16" height="16"/>
-  <object id="37" name="sumatran" type="general" x="1936" y="168" width="16" height="16"/>
-  <object id="38" name="sumatran" type="general" x="1520" y="168" width="16" height="16"/>
-  <object id="39" name="sumatran" type="general" x="2832" y="168" width="16" height="16"/>
+  <object id="36" name="sumatran" type="general" x="1072" y="275" width="33" height="45"/>
+  <object id="37" name="sumatran" type="general" x="1936" y="139" width="33" height="45"/>
+  <object id="38" name="sumatran" type="general" x="1503" y="139" width="33" height="45"/>
+  <object id="39" name="sumatran" type="general" x="2814" y="139" width="33" height="45"/>
  </objectgroup>
  <objectgroup id="5" name="special">
-  <object id="5" name="door" type="general" x="3048" y="144" width="16" height="16"/>
-  <object id="7" name="door" type="general" x="3304" y="144" width="16" height="16"/>
+  <object id="5" name="door" type="general" x="3040" y="112" width="32" height="48"/>
+  <object id="7" name="door" type="general" x="3296" y="112" width="32" height="48"/>
   <object id="25" name="door" type="general" x="480" y="112" width="32" height="48"/>
   <object id="40" name="horizontal_door" type="general" x="608" y="208" width="48" height="16"/>
  </objectgroup>

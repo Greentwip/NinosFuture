@@ -1,18 +1,15 @@
-#ifndef __GAME_CANNONJOE_H__
-#define __GAME_CANNONJOE_H__
+#ifndef __GAME_LYRIC_H__
+#define __GAME_LYRIC_H__
 
 #include "cocos2d.h"
 
 #include "Game/Entities/Enemies/GameEnemy.h"
 
 namespace game {
-    class CannonJoe : public GameEnemy
+    class Lyric : public GameEnemy
     {
         enum AttackState {
-            Before,
-            Attacking,
-            Cooldown,
-            None
+            Attacking
         };
 
     public:
@@ -27,12 +24,9 @@ namespace game {
         virtual void attack() override;
 
     private:
-        float attackTimer;
-        float attackTimeInterval;
+        float moveSpeed;
 
         AttackState attackState;
-
-        int bulletPower;
     };
 }
 

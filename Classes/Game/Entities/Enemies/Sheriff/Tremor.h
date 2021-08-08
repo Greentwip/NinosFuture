@@ -13,9 +13,9 @@ namespace game {
     class Tremor : public GameEnemy
     {
         enum AttackState {
-            Before,
+            Moving,
             Attacking,
-            Cooldown,
+            Working,
             None
         };
 
@@ -40,13 +40,7 @@ namespace game {
     private:
         void onCannonAttackEnd();
 
-        void onMoveEnd();
-
         cocos2d::Point startPosition;
-        bool attacking;
-        bool shooting;
-        bool moving;
-        int cannonAttackCount;
 
         TremorTail* tail;
     };
