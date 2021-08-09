@@ -17,6 +17,7 @@ namespace windy {
     class PhysicsWorld;
     class ObjectManager;
     class LandscapeTile;
+    class Gui;
 }
 
 namespace windy {
@@ -54,6 +55,8 @@ namespace windy {
 
         PhysicsWorld* physicsWorld;
         ObjectManager* objectManager;
+
+        Gui* gui;
 
     private:
         DebugDrawNode* debugDrawNode;

@@ -7,7 +7,11 @@
 
 #include "Windy/GameTags.h"
 
+#include "Game/Entities/UI/GameGui.h"
+
 #include "VioletBrowner.h"
+
+
 
 using namespace game;
 
@@ -36,6 +40,7 @@ bool GamePlayer::init()
         return false;
     }
 
+    this->gui = nullptr;
 
     auto armature = windy::Armature(PlayerResources::armaturePath);
 

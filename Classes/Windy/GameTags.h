@@ -43,6 +43,11 @@ namespace windy {
 		enum Camera {
 			FreeScroll = 20
 		};
+
+		enum Gui {
+			Interface = 22,
+			BarMeter
+		};
 		
 	};
 }

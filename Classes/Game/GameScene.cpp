@@ -34,6 +34,9 @@
 #include "Game/Entities/Weapons/TremorLaser.h"
 #include "Game/Entities/Weapons/VioletBullet.h"
 
+#include "Game/Entities/UI/EnergyBar.h"
+#include "Game/Entities/UI/GameGui.h"
+
 
 using namespace game;
 using namespace cocos2d;
@@ -95,14 +98,16 @@ bool GameScene::init()
 
     windy::Logical::preloadResources<VioletBullet>();
 
-    
+    windy::Logical::preloadResources<EnergyBar>();
+
 
     windy::EntityFactory::getInstance().registerType<GamePlayer>("player");
     windy::EntityFactory::getInstance().registerType<GameItem>("item");
     windy::EntityFactory::getInstance().registerType<GameVerticalDoor>("door");
     windy::EntityFactory::getInstance().registerType<GameHorizontalDoor>("horizontal_door");
 
-
+    windy::EntityFactory::getInstance().registerType<EnergyBar>("energy_bar");
+    windy::EntityFactory::getInstance().registerType<GameGui>("gui");
 
     if (GameManager::getInstance().currentLevel->mug.compare("sheriffman") == 0) {
 

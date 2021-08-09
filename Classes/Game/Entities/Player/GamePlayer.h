@@ -6,6 +6,10 @@
 #include "Windy/Entities/Player.h"
 
 namespace game {
+    class GameGui;
+}
+
+namespace game {
     class GamePlayer : public windy::Player
     {
     public:
@@ -14,6 +18,8 @@ namespace game {
         virtual bool init() override;
 
         virtual void setupBrowners() override;
+
+        GameGui* gui;
     };
 }
 

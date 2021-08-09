@@ -641,6 +641,8 @@
     <ClInclude Include="..\..\Classes\Game\Entities\Player\VioletBrowner.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Special\GameHorizontalDoor.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Special\GameVerticalDoor.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\UI\EnergyBar.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\UI\GameGui.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\DirectionalBullet.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\TremorDrill.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\TremorLaser.h" />
@@ -663,10 +665,12 @@
     <ClInclude Include="..\..\Classes\Windy\Armature.h" />
     <ClInclude Include="..\..\Classes\Windy\AudioManager.h" />
     <ClInclude Include="..\..\Classes\Windy\DebugDrawNode.h" />
+    <ClInclude Include="..\..\Classes\Windy\Entities\BarMeter.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Block.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Bounds.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Browner.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Browners.h" />
+    <ClInclude Include="..\..\Classes\Windy\Entities\Gui.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Scroll.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Weapon.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Camera.h" />
@@ -737,6 +741,8 @@
     <ClCompile Include="..\..\Classes\Game\Entities\Player\VioletBrowner.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Special\GameHorizontalDoor.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Special\GameVerticalDoor.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\UI\EnergyBar.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\UI\GameGui.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\DirectionalBullet.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\TremorDrill.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\TremorLaser.cpp" />
@@ -761,7 +767,9 @@
     <ClCompile Include="..\..\Classes\Windy\Entities\Block.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Bounds.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Browner.cpp" />
+    <ClCompile Include="..\..\Classes\Windy\Entities\Gui.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Scroll.cpp" />
+    <ClCompile Include="..\..\Classes\Windy\Entities\BarMeter.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Weapon.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Camera.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Checkpoint.cpp" />

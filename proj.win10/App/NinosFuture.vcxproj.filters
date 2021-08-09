@@ -65,6 +65,9 @@
     <Filter Include="Classes\Game\Entities\Enemies\Sheriff">
       <UniqueIdentifier>{9f28e5a6-7a80-4a80-85eb-703d8028c009}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Game\Entities\UI">
+      <UniqueIdentifier>{594b0720-e5ac-4265-8be7-2ca17ac8c43a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -267,6 +270,18 @@
     </ClCompile>
     <ClCompile Include="..\..\Classes\Windy\Entities\Scroll.cpp">
       <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\BarMeter.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Gui.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\UI\EnergyBar.cpp">
+      <Filter>Classes\Game\Entities\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\UI\GameGui.cpp">
+      <Filter>Classes\Game\Entities\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1694,6 +1709,18 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Windy\Entities\Scroll.h">
       <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\BarMeter.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Gui.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\UI\EnergyBar.h">
+      <Filter>Classes\Game\Entities\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\UI\GameGui.h">
+      <Filter>Classes\Game\Entities\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

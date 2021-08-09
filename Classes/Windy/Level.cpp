@@ -15,6 +15,7 @@
 #include "Entities/Item.h"
 #include "Entities/Ladder.h"
 #include "Entities/Scroll.h"
+#include "Entities/Gui.h"
 
 #include "GameTags.h"
 
@@ -333,6 +334,12 @@ bool Level::init()
     this->addChild(this->debugDrawNode);
 
     this->debugDrawNode->customEntities.pushBack(this->bounds);
+
+    auto guiSize = cocos2d::Size(16, 16);
+
+    this->gui = dynamic_cast<Gui*>(EntityFactory::getInstance().create("gui", cocos2d::Point(0, 0), guiSize));
+
+    this->bounds->addChild(gui);
 
     return true;
 }

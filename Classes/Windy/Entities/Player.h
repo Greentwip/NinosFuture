@@ -28,7 +28,6 @@ namespace windy {
 
         virtual void onCollisionExit(Logical* collision) override;
 
-
         virtual void walk();
 
         virtual void jump();
