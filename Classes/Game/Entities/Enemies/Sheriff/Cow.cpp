@@ -69,7 +69,7 @@ void Cow::attack() {
         case AttackState::Scanning: {
             float playerDistance = this->getPosition().getDistance(this->level->player->getPosition());
 
-            if (playerDistance < 64) {
+            if (playerDistance < 128) {
                 this->sprite->runAction("morph");
                 this->attackState = AttackState::Morphing;
                 this->morphTimer = this->morphTimeInterval;
