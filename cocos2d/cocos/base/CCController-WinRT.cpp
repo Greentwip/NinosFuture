@@ -39,7 +39,7 @@ ControllerImpl::ControllerImpl(Controller* controller)
 {
 }
 
-std::vector<Controller*>::iterator ControllerImpl::findController(int deviceId)
+std::vector<Controller*>::const_iterator ControllerImpl::findController(int deviceId)
 {
 	auto iter = std::find_if(Controller::s_allController.begin(), Controller::s_allController.end(),
 		[&](Controller* controller)

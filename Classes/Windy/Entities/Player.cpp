@@ -5,17 +5,22 @@
 #include "Ladder.h"
 #include "Browner.h"
 #include "Camera.h"
+#include "Weapon.h"
+#include "Enemy.h"
+#include "Explosion.h"
+#include "Bounds.h"
 
 #include "./../GameTags.h"
-
 #include "./../Sprite.h"
-
 #include "./../Armature.h"
 #include "./../AnimationAction.h"
-
 #include "./../Input.h"
-
 #include "./../CameraFlags.h"
+#include "./../AudioManager.h"
+#include "./../EntityFactory.h"
+#include "./../ObjectManager.h"
+#include "./../GeometryExtensions.h"
+#include "./../PhysicsWorld.h"
 
 using namespace windy;
 
@@ -26,7 +31,7 @@ void Player::parseBehavior(const cocos2d::ValueMap& behavior) {
 void Player::initVariables() {
 
     this->walking = false;
-    this->jumping = false;
+    this->jumping = true;
     this->dashJumping = false;
     this->sliding = false;
     this->climbing = false;
@@ -35,6 +40,7 @@ void Player::initVariables() {
     this->stunned = false;
     this->flashing = false;
     this->onGround = false;
+    this->vulnerable = true;
 
     this->walkSpeed = 1;
     this->climbSpeed = 1;
@@ -45,13 +51,34 @@ void Player::initVariables() {
     this->slideTimer = 0;
     this->climbCounter = 0;
 
+    this->exitSpeed = 4;
+
+    this->alive = true;
+    this->canMove = false;
+    this->spawning = true;
+
+    this->health = 28;
+
     this->largeSlide = false;
 
-    this->speed = cocos2d::Point(0, 0);
+    this->speed = cocos2d::Point(0, -4);
 
     this->cameraShiftSpeedBackup = false;
     this->shiftSpeedBackup = cocos2d::Point(0, 0);
+
+    this->ignoreGravity = true;
+    this->ignoreLandscapeCollision = true;
     
+}
+
+void Player::onRestart() {
+
+    this->initVariables();
+
+}
+
+void Player::onSpawn() {
+
 }
 
 
@@ -63,9 +90,44 @@ void Player::onCollisionEnter(Logical* collision) {
     else if (collision->getTag() == GameTags::General::Ladder) {
         this->activeLadder = dynamic_cast<Ladder*>(collision);
     }
+    else if (collision->getTag() == GameTags::General::Teleporter) {
 
+        if (this->spawning) {
+            this->spawning = false;
+
+            this->ignoreGravity = false;
+            this->ignoreLandscapeCollision = false;
+
+            this->canMove = true;
+            this->onGround = true;
+
+            this->speed = cocos2d::Point(0, 0);
+
+            this->contacts[CollisionContact::Down] = true;
+
+            this->level->physicsWorld->alignCollisions(this, collision, false);
+
+
+            AudioManager::playSfx(windy::Sounds::Teleport1);
+
+            this->onSpawn();
+        }
+    }
+}
+
+void Player::onCollision(Logical* collision) {
+
+    if (collision->getTag() == GameTags::General::Enemy) {
+        auto enemy = dynamic_cast<Enemy*>(collision);
+        this->stun(enemy->power);
+    }
+    else if (collision->getTag() == GameTags::Weapon::WeaponEnemy) {
+        auto weapon = dynamic_cast<Weapon*>(collision);
+        this->stun(weapon->power);
+    }
 
 }
+
 
 
 void Player::onCollisionExit(Logical* collision) {
@@ -77,6 +139,61 @@ void Player::onCollisionExit(Logical* collision) {
         this->activeLadder = nullptr;
     }
 
+}
+
+void Player::stun(int power) {
+    if (!this->stunned && this->vulnerable) {
+        windy::AudioManager::playSfx(windy::Sounds::PlayerHit);
+
+        this->health -= power;
+
+        if (this->health <= 0) {
+            this->health = 0;
+        }
+
+        this->stunned = true;
+        this->vulnerable = false;
+
+        if (!this->largeSlide) {
+            this->sliding = false;
+            this->slideTimer = 0;
+        }
+        
+        this->currentBrowner->chargePower = "low";
+        this->charging = false;
+
+        auto delay = cocos2d::DelayTime::create(this->currentBrowner->getActionDuration("hurt"));
+
+        if (!this->sliding) {
+            this->speed.x = -0.5f * this->currentBrowner->getSpriteNormal();
+        }
+
+        auto callback = cocos2d::CallFunc::create([this]() {
+            this->stunned = false; 
+        });
+
+        auto blink = cocos2d::Blink::create(this->currentBrowner->getActionDuration("hurt"), 8);
+
+        auto blinkCallback = cocos2d::CallFunc::create([this]() {
+            if (!this->isVisible()) {
+                this->setVisible(true);
+            }
+
+            if (!this->sprite->isVisible()) {
+                this->sprite->setVisible(true);
+            }
+
+            this->vulnerable = true;
+        });
+
+        auto sequence = cocos2d::Sequence::create(delay, callback, blink, blink, blinkCallback, nullptr);
+
+        sequence->setTag(windy::GameTags::Visibility);
+
+        this->sprite->stopAllActionsByTag(windy::GameTags::Visibility);
+        ((cocos2d::Node*)this->sprite)->runAction(sequence);
+
+    }
 }
 
 void Player::walk() {
@@ -437,6 +554,10 @@ void Player::move() {
         this->jump();
         this->dashJump();
     }
+    else {
+        this->speed.x = 0;
+        this->speed.y = 0;
+    }
 
     if (this->contacts[CollisionContact::Right]) {
         if (this->speed.x > 0) {
@@ -450,73 +571,158 @@ void Player::move() {
     }
 }
 
+void Player::explode(float angleOffset) {
+
+    for (int i = 0; i < 8; ++i) {
+
+        auto explosionPosition = this->getPosition();
+
+        auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle("explosion", explosionPosition, cocos2d::Size(16, 16));
+
+        auto entry = Logical::getEntry(entryCollisionBox, [=]() {
+            auto explosion = dynamic_cast<Explosion*>(EntityFactory::getInstance().create("explosion", explosionPosition, cocos2d::Size(16, 16)));
+
+            explosion->setPosition(explosionPosition);
+            explosion->setup(cocos2d::Color3B(153, 153, 255));
+
+            explosion->fire(GeometryExtensions::degreesToRadians(static_cast<float>(angleOffset)));
+
+            return explosion;
+            });
+
+        this->level->objectManager->objectEntries.push_back(entry);
+
+        angleOffset -= 45;
+    }
+}
+
+void Player::kill(bool killAnimation) {
+}
+
+void Player::checkHealth() {
+    bool killAnimation = true;
+
+    auto playerCollisionBox = this->collisionBox;
+    auto boundsCollisionBox = this->level->bounds->collisionBox;
+
+    if (playerCollisionBox->getMinY() < boundsCollisionBox->getMinY()) {
+        this->health = 0;
+        killAnimation = false;
+    }
+
+    if (this->health <= 0 && this->alive) {
+        this->level->pause(true);
+
+        this->currentBrowner->deactivate();
+
+        this->health = 0;
+
+        this->alive = false;
+        this->vulnerable = false;
+
+        AudioManager::stopAll();
+
+        AudioManager::playSfx(windy::Sounds::Death);
+
+        this->kill(killAnimation);
+    }
+}
+
 void Player::triggerActions() {
 
-    if (!this->stunned) {
-        if (this->onGround) {
-            if (this->walking) {
-                if (this->attacking) {
-                    this->currentBrowner->runAction("walkshoot");
+    if (this->alive) {
+
+        if (!this->stunned) {
+            if (this->onGround) {
+                if (this->walking) {
+                    if (this->attacking) {
+                        this->currentBrowner->runAction("walkshoot");
+                    }
+                    else {
+                        this->currentBrowner->runAction("walk");
+                    }
                 }
                 else {
-                    this->currentBrowner->runAction("walk");
+                    if (this->attacking) {
+                        this->currentBrowner->runAction("standshoot");
+                    }
+                    else if (this->sliding) {
+                        this->currentBrowner->runAction("slide");
+                    }
+                    /*else if (this->morphing) {
+                        this->currentBrowner->runAction("morph");
+                    }*/
+                    else {
+                        this->currentBrowner->runAction("stand");
+                    }
                 }
             }
             else {
-                if (this->attacking) {
-                    this->currentBrowner->runAction("standshoot");
+                if (this->climbing) {
+                    if (this->attacking) {
+                        this->currentBrowner->runAction("climbshoot");
+                    }
+                    else {
+                        this->currentBrowner->runAction("climb");
+                    }
                 }
-                else if (this->sliding) {
-                    this->currentBrowner->runAction("slide");
-                }
-                /*else if (this->morphing) {
-                    this->currentBrowner->runAction("morph");
-                }*/
                 else {
-                    this->currentBrowner->runAction("stand");
+                    if (this->attacking) {
+                        this->currentBrowner->runAction("jumpshoot");
+                    }
+                    else {
+                        if (this->dashJumping) {
+                            this->currentBrowner->runAction("dashjump");
+                        }
+                        else if (this->jumping) {
+                            this->currentBrowner->runAction("jump");
+                        }
+                    }
                 }
             }
         }
         else {
-            if (this->climbing) {
-                if (this->attacking) {
-                    this->currentBrowner->runAction("climbshoot");
-                }
-                else {
-                    this->currentBrowner->runAction("climb");
-                }
-            }
-            else {
-                if (this->attacking) {
-                    this->currentBrowner->runAction("jumpshoot");
-                }
-                else {
-                    if (this->dashJumping) {
-                        this->currentBrowner->runAction("dashjump");
-                    }
-                    else if (this->jumping) {
-                        this->currentBrowner->runAction("jump");
-                    }
-                }
-            }
+            this->currentBrowner->runAction("hurt");
         }
     }
-    else {
-        this->currentBrowner->runAction("hurt");
-    }
+
 }
 
 
 void Player::onUpdate(float dt) {
 
+    /*if (Input::keyPressed(InputKey::Select)) {
+        this->explode(0);
+        this->explode(22.5f);
+    }*/
+
+    this->triggerActions();
+
     if (this->canMove) {
+
+        if (this->level->paused()) {
+            if (this->level->camera->shiftDirection != CameraFlags::CameraShift::ShiftNone) {
+                if (!cameraShiftSpeedBackup) {
+                    cameraShiftSpeedBackup = true;
+                    this->shiftSpeedBackup = this->speed;
+                    this->ignoreGravity = true;
+                    this->speed.y = 0;
+                    this->speed.x = 0;
+                }
+            }
+
+        }
+
+
         this->move();
 
-        if (this->spawning && this->alive) {
+
+        /*if (this->spawning && this->alive) {
             // solve collisions, old code, remove
             //this->solveCollisions();
         }
-        else if (this->alive) {
+        else */
+        if (this->alive) {
             if (!this->level->paused()) {
 
                 if (cameraShiftSpeedBackup) {
@@ -531,7 +737,7 @@ void Player::onUpdate(float dt) {
                 this->currentBrowner->charge();
                 this->slide();
                 this->climb();
-                //this->checkHealth();
+                this->checkHealth();
             }
             else {
                 if ((this->level->camera->shiftDirection == CameraFlags::CameraShift::ShiftUp ||
@@ -545,17 +751,6 @@ void Player::onUpdate(float dt) {
                     (this->onGround && !this->sliding && !this->stunned && !this->attacking)) {
                     this->currentBrowner->runAction("walk");
                 }
-                
-                if (this->level->camera->shiftDirection != CameraFlags::CameraShift::ShiftNone) {
-                    if (!cameraShiftSpeedBackup) {
-                        cameraShiftSpeedBackup = true;
-                        this->shiftSpeedBackup = this->speed;
-                        this->ignoreGravity = true;
-                        this->speed.y = 0;
-                        this->speed.x = 0;
-                    }
-                }
-
             }
         }
     }
@@ -565,20 +760,23 @@ void Player::onUpdate(float dt) {
                 // solve collisions, old code, remove
                 //this->solveCollisions();
                 this->speed.x = 0;
-                this->speed.y = 0;
+
+                if (!this->spawning) {
+                    this->speed.y = 0;
+                }
+                
             }
             else {
                 this->speed.x = 0;
-                this->speed.y = 320;
+                this->speed.y = this->exitSpeed;
             }
         }
         else {
             if (this->atExit) {
                 this->speed.x = 0;
-                this->speed.y = 320;
+                this->speed.y = this->exitSpeed;
             }
         }
     }
 
-    this->triggerActions();
 }

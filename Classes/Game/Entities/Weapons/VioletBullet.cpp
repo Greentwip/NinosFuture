@@ -72,25 +72,14 @@ void VioletBullet::setup(const std::string& powerLevel) {
     std::string bulletName = std::string("violet_bullet") + std::string("_") + powerLevel;
     std::string bulletPath = bulletName + "/" + bulletName;
 
-    this->sprite = windy::Sprite::create(VioletBulletResources::spritePath + "/" + bulletPath);
-    this->addChild(this->sprite);
+    Logical::composite<windy::Weapon>(this,
+                                      VioletBulletResources::armaturePath + "/" + bulletPath,
+                                      VioletBulletResources::spritePath + "/" + bulletPath,
+                                      bulletName);
 
-    auto armature = windy::Armature(VioletBulletResources::armaturePath + "/" + bulletPath);
+    Logical::setup(this->getPosition(), this->collisionRectangles[0]->size);
 
-    auto newAnchor = armature.get(bulletName).anchor;
-    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-    auto contentSize = this->sprite->getContentSize();
-    this->sprite->setPosition(cocos2d::Point(0, 0) + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
 
-    Logical::setup(this->getPosition(), armature.get(bulletName).collisionRectangles[0]->size);
-
-    this->collisionRectangles = armature.get(bulletName).collisionRectangles;
-
-    for (int i = 0; i < this->collisionRectangles.size(); ++i) {
-        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, *this->collisionRectangles[i]);
-    }
-
-    this->collisionBox = this->collisionRectangles[0];
     auto action = windy::AnimationAction("shoot", std::string("violet_bullet") + std::string("_") + powerLevel, true, 0.10f);
 
     this->sprite->appendAction(action, false);
@@ -105,25 +94,13 @@ void VioletBullet::setup(const std::string& powerLevel) {
 
 
 std::shared_ptr<cocos2d::Rect> VioletBullet::getEntryCollisionRectangle(const std::string& powerLevel,
-    const cocos2d::Point& position,
-    const cocos2d::Size& size) {
+                                                                        const cocos2d::Point& position,
+                                                                        const cocos2d::Size& size) {
 
     std::string bulletName = std::string("violet_bullet") + std::string("_") + powerLevel;
     std::string bulletPath = bulletName + "/" + bulletName;
 
-    auto armature = windy::Armature(VioletBulletResources::armaturePath + "/" + bulletPath);
-
-    auto newAnchor = armature.get(bulletName).anchor;
-
-    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-
-    auto collisionRectangles = armature.get(bulletName).collisionRectangles;
-
-    for (int i = 0; i < collisionRectangles.size(); ++i) {
-        collisionRectangles[i] = Logical::normalizeCollisionRectangle(position, *collisionRectangles[i]);
-    }
-
-    return collisionRectangles[0];
+    return Logical::buildEntryCollisionRectangle(position, size, VioletBulletResources::armaturePath + "/" + bulletPath, bulletName);
 }
 
 void VioletBullet::onFinished() {

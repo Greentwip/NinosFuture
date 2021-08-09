@@ -42,6 +42,9 @@ namespace windy {
 		EnemyHit,
 		Roar,
 		Taban,
+		PlayerHit,
+		Death,
+		Teleport1,
 		NONE
 	};
 

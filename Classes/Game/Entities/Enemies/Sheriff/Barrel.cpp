@@ -37,7 +37,7 @@ void Barrel::setup() {
 
     this->walkSpeed = 1;
 
-    Enemy::composite(this, BarrelResources::armaturePath, BarrelResources::spritePath, "barrel");
+    Logical::composite<windy::Enemy>(this, BarrelResources::armaturePath, BarrelResources::spritePath, "barrel");
 
     std::vector<windy::AnimationAction> actionSet = {
         windy::AnimationAction("still",      "barrel_still",      true,   0.10f),
@@ -64,7 +64,7 @@ void Barrel::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> Barrel::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Enemy::buildEntryCollisionRectangle(position, size, BarrelResources::armaturePath, "barrel");
+    return Logical::buildEntryCollisionRectangle(position, size, BarrelResources::armaturePath, "barrel");
 }
 
 void Barrel::attack() {

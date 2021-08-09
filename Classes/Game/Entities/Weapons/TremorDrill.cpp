@@ -46,20 +46,13 @@ bool TremorDrill::init()
         return false;
     }
 
+    Logical::composite<windy::Weapon>(this,
+                                      TremorDrillResources::armaturePath,
+                                      TremorDrillResources::spritePath,
+                                      "tremor_tail");
 
-    this->sprite = windy::Sprite::create(TremorDrillResources::spritePath);
-    this->addChild(this->sprite);
 
-    auto armature = windy::Armature(TremorDrillResources::armaturePath);
-
-    auto newAnchor = armature.get("tremor_tail").anchor;
-    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-    auto contentSize = this->sprite->getContentSize();
-    this->sprite->setPosition(cocos2d::Point(0, 0) + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
-
-    Logical::setup(this->getPosition(), armature.get("tremor_tail").collisionRectangles[0]->size);
-
-    this->collisionRectangles = armature.get("tremor_tail").collisionRectangles;
+    Logical::setup(this->getPosition(), this->collisionRectangles[0]->size);
 
     std::vector<windy::AnimationAction> actionSet = {
         windy::AnimationAction("tail_a",        "tremor_tail_a",         false,   0.04f),

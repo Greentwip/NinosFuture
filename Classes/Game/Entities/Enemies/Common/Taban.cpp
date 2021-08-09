@@ -44,7 +44,7 @@ void Taban::setup() {
 
     this->moveSpeed = 16;
 
-    Enemy::composite(this, TabanResources::armaturePath, TabanResources::spritePath, "taban");
+    Logical::composite<windy::Enemy>(this, TabanResources::armaturePath, TabanResources::spritePath, "taban");
 
     std::vector<windy::AnimationAction> actionSet = {
         windy::AnimationAction("still",      "taban_still",      true,   0.10f),
@@ -63,7 +63,7 @@ void Taban::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> Taban::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Enemy::buildEntryCollisionRectangle(position, size, TabanResources::armaturePath, "taban");
+    return Logical::buildEntryCollisionRectangle(position, size, TabanResources::armaturePath, "taban");
 }
 
 

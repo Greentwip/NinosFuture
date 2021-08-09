@@ -21,12 +21,14 @@ namespace windy {
         virtual void update(float dt) override;
         virtual void onUpdate(float dt) override;
 
+
         virtual void recomputeCollisionRectangles() override;
 
         virtual void onCollision(Logical* collision) override;
 
         void normalizeCollisionRectangles();
 
+        void synchronizeWithBounds();
 
         enum CameraFlags::CameraMode cameraMode;
         enum CameraFlags::CameraScroll scroll;

@@ -1,14 +1,18 @@
 #include "GamePlayer.h"
 
 #include "Windy/Entities/Browner.h"
-
 #include "Windy/Armature.h"
 #include "Windy/Sprite.h"
-
 #include "Windy/GameTags.h"
+#include "Windy/SaveManager.h"
+#include "Windy/Input.h"
 
 #include "Game/Entities/UI/GameGui.h"
+#include "Game/Entities/UI/EnergyBar.h"
+#include "Game/GameManager.h"
 
+#include "TeleportBrowner.h"
+#include "HelmetBrowner.h"
 #include "VioletBrowner.h"
 
 
@@ -67,10 +71,6 @@ bool GamePlayer::init()
 
     this->setTag(windy::GameTags::General::Player);
 
-    this->alive = true;
-    this->canMove = true;
-    this->spawning = false;
-
     this->initVariables();
 
     this->setupBrowners();
@@ -79,10 +79,141 @@ bool GamePlayer::init()
     return true;
 }
 
+void GamePlayer::onRestart() {
+
+    windy::Input::keys[windy::InputKey::A].status = windy::KeyStatus::Up;
+
+    if (windy::Input::keys[windy::InputKey::A].pressed) {
+        windy::Input::keys[windy::InputKey::A].pressed = false;
+        windy::Input::keys[windy::InputKey::A].released = false;
+    }
+
+
+    windy::Input::keys[windy::InputKey::B].status = windy::KeyStatus::Up;
+
+    if (windy::Input::keys[windy::InputKey::B].pressed) {
+        windy::Input::keys[windy::InputKey::B].pressed = false;
+        windy::Input::keys[windy::InputKey::B].released = false;
+    }
+
+    this->switchBrowner(GameManager::getInstance().browners.teleport->id);
+
+    this->vulnerable = true;
+
+    this->sprite->setFlippedX(false);
+    this->sprite->setVisible(true);
+    this->currentBrowner->activate();
+
+    this->alive = true;
+
+    this->initVariables();
+}
+
+void GamePlayer::onSpawn() {
+
+    GameManager::getInstance().options.extremeActivated = false;
+
+    if (GameManager::getInstance().options.helmetActivated) {
+        this->switchBrowner(GameManager::getInstance().browners.helmet->id);
+    }
+    else {
+        this->switchBrowner(GameManager::getInstance().browners.violet->id);
+    }
+}
+
+void GamePlayer::switchBrowner(int brownerId) {
+    for (int i = 0; i < this->browners.size(); ++i) {
+        auto browner = this->browners.at(i);
+        if (browner->brownerId == brownerId) {
+            this->currentBrowner = browner;
+        }
+    }
+}
 
 void GamePlayer::setupBrowners() {
-    this->currentBrowner = windy::Browner::create<VioletBrowner>(this->level, this);
-    this->currentBrowner->runAction("jump");
+    auto teleportBrowner = windy::Browner::create<TeleportBrowner>(this->level, this);
+    auto helmetBrowner = windy::Browner::create<HelmetBrowner>(this->level, this);
+    auto violetBrowner = windy::Browner::create<VioletBrowner>(this->level, this);
+    
 
-    this->addChild(this->currentBrowner);
+    this->addChild(teleportBrowner);
+    this->addChild(helmetBrowner);
+    this->addChild(violetBrowner);
+
+    this->browners.pushBack(teleportBrowner);
+    this->browners.pushBack(helmetBrowner);
+    this->browners.pushBack(violetBrowner);
+
+    this->currentBrowner = teleportBrowner;
+
+    this->currentBrowner->runAction("jump");
 }
+
+void GamePlayer::kill(bool killAnimation) {
+
+    if (killAnimation) {
+
+        auto explosionA = cocos2d::CallFunc::create([this]() {
+            this->explode(0);
+        });
+
+        auto delay = cocos2d::DelayTime::create(0.40f);
+
+        auto explosionB = cocos2d::CallFunc::create([this]() {
+            this->explode(22.5f);
+        });
+
+        auto killDelay = cocos2d::DelayTime::create(2);
+
+        auto lifeCallback = cocos2d::CallFunc::create([=]() {
+            GameManager::getInstance().player.lives -= 1;
+
+            auto slot = GameManager::getInstance().getDefaultSlot();
+
+            slot.lives = GameManager::getInstance().player.lives;
+
+            windy::SaveManager::saveSlot(GameManager::getInstance().slot, slot);
+
+            this->level->restart();
+        });
+
+        auto sequence = cocos2d::Sequence::create(explosionA, delay, explosionB, killDelay, lifeCallback, nullptr);
+
+        this->runAction(sequence);
+    }
+    else {
+        this->sprite->setVisible(false);
+
+
+        auto killDelay = cocos2d::DelayTime::create(2);
+
+        auto lifeCallback = cocos2d::CallFunc::create([=]() {
+            GameManager::getInstance().player.lives -= 1;
+
+            auto slot = GameManager::getInstance().getDefaultSlot();
+
+            slot.lives = GameManager::getInstance().player.lives;
+
+            windy::SaveManager::saveSlot(GameManager::getInstance().slot, slot);
+
+            this->level->restart();
+        });
+
+        auto sequence = cocos2d::Sequence::create(killDelay, lifeCallback, nullptr);
+
+        this->runAction(sequence);
+
+    }
+
+}
+
+void GamePlayer::checkHealth() {
+    this->gui->healthBar->setValue(this->health);
+
+    Player::checkHealth();
+}
+
+void GamePlayer::onUpdate(float dt) {
+    Player::onUpdate(dt);
+}
+

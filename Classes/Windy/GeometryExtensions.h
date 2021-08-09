@@ -43,6 +43,15 @@ namespace windy {
 			return current + a / magnitude * maxDistanceDelta;
 
 		}
+
+		static float degreesToRadians(float degrees) {
+			return static_cast<float>(degrees * M_PI / 180.0);
+		}
+
+		static float radiansToDegrees(float radians) {
+			return static_cast<float>(radians * (180.0 / M_PI));
+		}
+
 	};
 }
 

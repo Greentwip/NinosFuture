@@ -1,9 +1,33 @@
+#include <string>
+
 #include "Logical.h"
 
 #include "ObjectEntry.h"
 
+#include "./../Armature.h"
+#include "./../Sprite.h"
+
 using namespace windy;
 
+std::shared_ptr<cocos2d::Rect> Logical::buildEntryCollisionRectangle(const cocos2d::Point& position,
+                                                                   const cocos2d::Size& size,
+                                                                   const std::string& armaturePath,
+                                                                   const std::string& entityName)
+{
+    auto armature = windy::Armature(armaturePath);
+
+    auto newAnchor = armature.get(entityName).anchor;
+
+    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
+
+    auto collisionRectangles = armature.get(entityName).collisionRectangles;
+
+    for (int i = 0; i < collisionRectangles.size(); ++i) {
+        collisionRectangles[i] = windy::Logical::normalizeCollisionRectangle(position, *collisionRectangles[i]);
+    }
+
+    return collisionRectangles[0];
+}
 
 void Logical::setup(const cocos2d::Point& position, const cocos2d::Size& size) {
     this->setPosition(position);

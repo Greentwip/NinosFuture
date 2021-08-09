@@ -4,6 +4,8 @@
 #include "cocos2d.h"
 
 #include "Windy/Entities/Player.h"
+#include "Windy/Entities/Browner.h"
+
 
 namespace game {
     class GameGui;
@@ -17,9 +19,24 @@ namespace game {
 
         virtual bool init() override;
 
+        virtual void onRestart() override;
+        virtual void onSpawn() override;
+
+        void switchBrowner(int brownerId);
+
         virtual void setupBrowners() override;
 
+        virtual void kill(bool killAnimation) override;
+
+        virtual void checkHealth() override;
+
+        virtual void onUpdate(float dt) override;
+
+
         GameGui* gui;
+
+    private:
+        cocos2d::Vector<windy::Browner*> browners;
     };
 }
 

@@ -15,12 +15,6 @@ namespace windy {
     class Enemy : public Logical
     {
     public:
-        static void composite(Enemy* enemy, const std::string& armaturePath, const std::string& spritePath, const std::string& enemyName);
-        static std::shared_ptr<cocos2d::Rect> buildEntryCollisionRectangle(const cocos2d::Point& position, 
-                                                                           const cocos2d::Size& size, 
-                                                                           const std::string& armaturePath, 
-                                                                           const std::string& enemyName);
-
         virtual bool init() override;
         virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
 
@@ -46,10 +40,13 @@ namespace windy {
         int maxHealth;
 
     protected:
+        friend class Logical;
+
         Sprite* sprite;
 
         static std::random_device itemRandomDevice;
         static std::default_random_engine itemRandomEngine;
+
     };
 }
 

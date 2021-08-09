@@ -69,6 +69,7 @@ void Browner::activate() {
 
 void Browner::deactivate() {
     this->stopActions();
+    this->stopAllActions();
     this->player->sprite->setVisible(false);
 }
 
@@ -88,6 +89,11 @@ int Browner::getCurrentAnimationNumberOfFrames() {
 void Browner::stopActions() {
     this->player->sprite->stopActions();
 }
+
+void Browner::stopAllActions() {
+    this->player->sprite->stopAllActions();
+}
+
 
 void Browner::pauseActions() {
     this->player->sprite->pauseActions();

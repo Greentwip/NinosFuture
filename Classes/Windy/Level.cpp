@@ -15,7 +15,12 @@
 #include "Entities/Item.h"
 #include "Entities/Ladder.h"
 #include "Entities/Scroll.h"
+#include "Entities/Teleporter.h"
 #include "Entities/Gui.h"
+#include "Entities/Browner.h"
+#include "Entities/LevelController.h"
+
+#include "Sprite.h"
 
 #include "GameTags.h"
 
@@ -70,6 +75,7 @@ Level* Level::create(const std::string& resourcesRootPath,
         EntityFactory::getInstance().registerType<Bounds>("bounds");
         EntityFactory::getInstance().registerType<Ladder>("ladder");
         EntityFactory::getInstance().registerType<Scroll>("scroll");
+        EntityFactory::getInstance().registerType<Teleporter>("teleporter");
 
     }
 
@@ -207,29 +213,35 @@ bool Level::init()
             auto position = calculateTmxPosition(dictionary, map);
 
             if (name.compare("checkpoint") == 0) {
-                auto checkpoint = EntityFactory::getInstance().create("checkpoint", position, size);
-                checkpoint->parseBehavior(dictionary);
-                this->addChild(checkpoint);
+                auto entity = EntityFactory::getInstance().create("checkpoint", position, size);
+                entity->parseBehavior(dictionary);
+                this->addChild(entity);
 
-                checkpoints.pushBack(checkpoint);
+                checkpoints.pushBack(entity);
 
-                if (checkpoint->getTag() == GameTags::Logic::Checkpoint::First) {
-                    firstCheckpoint = checkpoint;
+                if (entity->getTag() == GameTags::Logic::Checkpoint::First) {
+                    firstCheckpoint = entity;
                 }
             }
             else if (name.compare("ladder") == 0) {
 
-                auto ladder = EntityFactory::getInstance().create("ladder", position, size);
-                ladder->parseBehavior(dictionary);
-                this->addChild(ladder);
-                this->entities.pushBack(ladder);
+                auto entity = EntityFactory::getInstance().create("ladder", position, size);
+                entity->parseBehavior(dictionary);
+                this->addChild(entity);
+                this->entities.pushBack(entity);
 
             }
             else if (name.compare("scroll") == 0) {
-                auto scroll = EntityFactory::getInstance().create("scroll", position, size);
-                scroll->parseBehavior(dictionary);
-                this->addChild(scroll);
-                this->entities.pushBack(scroll);
+                auto entity = EntityFactory::getInstance().create("scroll", position, size);
+                entity->parseBehavior(dictionary);
+                this->addChild(entity);
+                this->entities.pushBack(entity);
+            }
+            else if (name.compare("teleporter") == 0) {
+                auto entity = EntityFactory::getInstance().create("teleporter", position, size);
+                entity->parseBehavior(dictionary);
+                this->addChild(entity);
+                this->entities.pushBack(entity);
             }
 
         }
@@ -248,19 +260,19 @@ bool Level::init()
             auto position = calculateTmxPosition(dictionary, map);
 
             if (name.compare("door") == 0) {
-                auto door = EntityFactory::getInstance().create("door", position, size);
-                door->parseBehavior(dictionary);
-                this->addChild(door);
-                this->entities.pushBack(door);
-                this->verticalDoors.pushBack(dynamic_cast<Door*>(door));
+                auto entity = EntityFactory::getInstance().create("door", position, size);
+                entity->parseBehavior(dictionary);
+                this->addChild(entity);
+                this->entities.pushBack(entity);
+                this->verticalDoors.pushBack(dynamic_cast<Door*>(entity));
 
             }
             else if (name.compare("horizontal_door") == 0) {
-                auto door = EntityFactory::getInstance().create("horizontal_door", position, size);
-                door->parseBehavior(dictionary);
-                this->addChild(door);
-                this->entities.pushBack(door);
-                this->horizontalDoors.pushBack(dynamic_cast<Door*>(door));
+                auto entity = EntityFactory::getInstance().create("horizontal_door", position, size);
+                entity->parseBehavior(dictionary);
+                this->addChild(entity);
+                this->entities.pushBack(entity);
+                this->horizontalDoors.pushBack(dynamic_cast<Door*>(entity));
             }
         }
 
@@ -300,6 +312,8 @@ bool Level::init()
         }
 
     }
+
+    this->lastCheckpoint = firstCheckpoint;
 
     auto firstCheckpointPosition = firstCheckpoint->getPosition();
 
@@ -341,6 +355,14 @@ bool Level::init()
 
     this->bounds->addChild(gui);
 
+    this->levelController =
+        dynamic_cast<LevelController*>(EntityFactory::getInstance().create("level_controller", cocos2d::Point(0, 0), cocos2d::Size(16, 16)));
+
+    this->addChild(this->levelController);
+
+    this->restart();
+
+
     return true;
 }
 
@@ -351,6 +373,26 @@ bool Level::paused() {
 
 void Level::pause(bool isPaused) {
     this->isPaused = isPaused;
+}
+
+void Level::restart() {
+    this->bounds->setPosition(this->lastCheckpoint->getPosition());
+
+    float playerOffsetY = this->lastCheckpoint->getPositionY() + this->player->sprite->getContentSize().height + 128;
+    this->player->setPosition(cocos2d::Point(this->lastCheckpoint->getPositionX(), playerOffsetY));
+
+    this->bounds->recomputeCollisionRectangles();
+    this->camera->recomputeCollisionRectangles();
+    this->player->recomputeCollisionRectangles();
+
+    this->player->onRestart();
+
+    //this->camera->synchronizeWithBounds();
+
+    this->pause(false);
+
+    this->levelController->restart();
+
 }
 
 

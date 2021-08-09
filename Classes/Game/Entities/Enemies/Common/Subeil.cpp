@@ -38,7 +38,7 @@ void Subeil::setup() {
     this->walkSpeed = 2;
     this->jumpSpeed = cocos2d::Point(0.5f, 0.75f);
 
-    Enemy::composite(this, SubeilResources::armaturePath, SubeilResources::spritePath, "subeil");
+    Logical::composite<windy::Enemy>(this, SubeilResources::armaturePath, SubeilResources::spritePath, "subeil");
 
 
     std::vector<windy::AnimationAction> actionSet = {
@@ -54,7 +54,7 @@ void Subeil::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> Subeil::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Enemy::buildEntryCollisionRectangle(position, size, SubeilResources::armaturePath, "subeil");
+    return Logical::buildEntryCollisionRectangle(position, size, SubeilResources::armaturePath, "subeil");
 }
 
 void Subeil::attack() {

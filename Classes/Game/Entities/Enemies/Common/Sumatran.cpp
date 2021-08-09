@@ -39,7 +39,7 @@ void Sumatran::setup() {
 
     this->jumpSpeed = cocos2d::Point(1, 5);
 
-    Enemy::composite(this, SumatranResources::armaturePath, SumatranResources::spritePath, "sumatran");
+    Logical::composite<windy::Enemy>(this, SumatranResources::armaturePath, SumatranResources::spritePath, "sumatran");
 
     std::vector<windy::AnimationAction> actionSet = {
         windy::AnimationAction("stand",      "sumatran_stand",      true,   0.10f),
@@ -54,7 +54,7 @@ void Sumatran::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> Sumatran::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Enemy::buildEntryCollisionRectangle(position, size, SumatranResources::armaturePath, "sumatran");
+    return Logical::buildEntryCollisionRectangle(position, size, SumatranResources::armaturePath, "sumatran");
 }
 
 

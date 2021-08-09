@@ -317,14 +317,17 @@ namespace game {
     class OptionsData {
     public:
         bool helmetActivated;
+        bool extremeActivated;
 
     private:
-        OptionsData(bool helmetActivated = true) {
+        OptionsData(bool helmetActivated = true, bool extremeActivated = false) {
             this->helmetActivated = helmetActivated;
+            this->extremeActivated = extremeActivated;
         }
 
         OptionsData(OptionsData const& other) {
             this->helmetActivated = other.helmetActivated;
+            this->extremeActivated = other.extremeActivated;
         }
 
         friend class GameManager;

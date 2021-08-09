@@ -51,22 +51,12 @@ void TremorLaser::setup() {
     this->sprite = windy::Sprite::create(TremorLaserResources::spritePath);
     this->addChild(this->sprite);
 
-    auto armature = windy::Armature(TremorLaserResources::armaturePath);
+    Logical::composite<windy::Weapon>(this,
+                                      TremorLaserResources::armaturePath,
+                                      TremorLaserResources::spritePath,
+                                      "tremor_laser");
 
-    auto newAnchor = armature.get("tremor_laser").anchor;
-    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-    auto contentSize = this->sprite->getContentSize();
-    this->sprite->setPosition(cocos2d::Point(0, 0) + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
-
-    Logical::setup(this->getPosition(), armature.get("tremor_laser").collisionRectangles[0]->size);
-
-    this->collisionRectangles = armature.get("tremor_laser").collisionRectangles;
-
-    for (int i = 0; i < this->collisionRectangles.size(); ++i) {
-        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, *this->collisionRectangles[i]);
-    }
-
-    this->collisionBox = this->collisionRectangles[0];
+    Logical::setup(this->getPosition(), this->collisionRectangles[0]->size);
 
 
     std::vector<windy::AnimationAction> actionSet = {
@@ -93,20 +83,7 @@ void TremorLaser::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> TremorLaser::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-
-    auto armature = windy::Armature(TremorLaserResources::armaturePath);
-
-    auto newAnchor = armature.get("tremor_laser").anchor;
-
-    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-
-    auto collisionRectangles = armature.get("tremor_laser").collisionRectangles;
-
-    for (int i = 0; i < collisionRectangles.size(); ++i) {
-        collisionRectangles[i] = Logical::normalizeCollisionRectangle(position, *collisionRectangles[i]);
-    }
-
-    return collisionRectangles[0];
+    return Logical::buildEntryCollisionRectangle(position, size, TremorLaserResources::armaturePath, "tremor_laser");
 }
 
 void TremorLaser::onFinished() {

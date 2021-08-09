@@ -50,25 +50,15 @@ bool DirectionalBullet::init()
 
 void DirectionalBullet::setup() {
 
-    this->sprite = windy::Sprite::create(DirectionalBulletResources::spritePath);
-    this->addChild(this->sprite);
+    Logical::composite<windy::Weapon>(this,
+                                      DirectionalBulletResources::armaturePath,
+                                      DirectionalBulletResources::spritePath,
+                                      "directional_bullet");
 
-    auto armature = windy::Armature(DirectionalBulletResources::armaturePath);
 
-    auto newAnchor = armature.get("directional_bullet").anchor;
-    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-    auto contentSize = this->sprite->getContentSize();
-    this->sprite->setPosition(cocos2d::Point(0, 0) + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
+    Logical::setup(this->getPosition(), this->collisionRectangles[0]->size);
 
-    Logical::setup(this->getPosition(), armature.get("directional_bullet").collisionRectangles[0]->size);
 
-    this->collisionRectangles = armature.get("directional_bullet").collisionRectangles;
-
-    for (int i = 0; i < this->collisionRectangles.size(); ++i) {
-        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, *this->collisionRectangles[i]);
-    }
-
-    this->collisionBox = this->collisionRectangles[0];
     auto action = windy::AnimationAction("shoot", "directional_bullet", true, 0.10f);
 
     this->sprite->appendAction(action, false);
@@ -83,20 +73,7 @@ void DirectionalBullet::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> DirectionalBullet::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-
-    auto armature = windy::Armature(DirectionalBulletResources::armaturePath);
-
-    auto newAnchor = armature.get("directional_bullet").anchor;
-
-    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-
-    auto collisionRectangles = armature.get("directional_bullet").collisionRectangles;
-
-    for (int i = 0; i < collisionRectangles.size(); ++i) {
-        collisionRectangles[i] = Logical::normalizeCollisionRectangle(position, *collisionRectangles[i]);
-    }
-
-    return collisionRectangles[0];
+    return Logical::buildEntryCollisionRectangle(position, size, DirectionalBulletResources::armaturePath, "directional_bullet");
 }
 
 void DirectionalBullet::onFinished() {

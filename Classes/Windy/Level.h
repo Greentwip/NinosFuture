@@ -18,6 +18,7 @@ namespace windy {
     class ObjectManager;
     class LandscapeTile;
     class Gui;
+    class LevelController;
 }
 
 namespace windy {
@@ -33,6 +34,8 @@ namespace windy {
 
         bool paused();
         void pause(bool isPaused);
+
+        void restart();
 
         virtual void onEnter();
         virtual void onExit();
@@ -61,12 +64,16 @@ namespace windy {
     private:
         DebugDrawNode* debugDrawNode;
 
+        LevelController* levelController;
+
         std::string resourcesRootPath;
         std::string tilemapRootPath;
         std::string mug;
         windy::Sounds bgm;
 
         bool isPaused;
+
+        Logical* lastCheckpoint;
 
         cocos2d::Vector<LandscapeTile*> tiles;
         cocos2d::Vector<LandscapeTile*> screenTiles;

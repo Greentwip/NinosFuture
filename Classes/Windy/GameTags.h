@@ -48,6 +48,11 @@ namespace windy {
 			Interface = 22,
 			BarMeter
 		};
+
+		enum Scenery {
+			Particle = 24,
+			SpriteAnimation
+		};
 		
 	};
 }

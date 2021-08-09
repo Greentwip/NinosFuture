@@ -59,7 +59,7 @@ void Tremor::setup() {
     
     this->attackState = AttackState::None;
 
-    Enemy::composite(this, TremorResources::armaturePath, TremorResources::spritePath, "tremor");
+    Logical::composite<windy::Enemy>(this, TremorResources::armaturePath, TremorResources::spritePath, "tremor");
 
 
     std::vector<windy::AnimationAction> actionSet = {
@@ -114,7 +114,7 @@ void Tremor::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> Tremor::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Enemy::buildEntryCollisionRectangle(position, size, TremorResources::armaturePath, "tremor");
+    return Logical::buildEntryCollisionRectangle(position, size, TremorResources::armaturePath, "tremor");
 }
 
 

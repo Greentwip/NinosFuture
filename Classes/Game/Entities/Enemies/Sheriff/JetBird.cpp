@@ -38,7 +38,7 @@ void JetBird::setup() {
 
     this->flySpeed = 1;
 
-    Enemy::composite(this, JetBirdResources::armaturePath, JetBirdResources::spritePath, "jetbird");
+    Logical::composite<windy::Enemy>(this, JetBirdResources::armaturePath, JetBirdResources::spritePath, "jetbird");
 
     auto action = windy::AnimationAction("fly", "jetbird_fly", true, 0.10f);
 
@@ -48,7 +48,7 @@ void JetBird::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> JetBird::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Enemy::buildEntryCollisionRectangle(position, size, JetBirdResources::armaturePath, "jetbird");
+    return Logical::buildEntryCollisionRectangle(position, size, JetBirdResources::armaturePath, "jetbird");
 }
 
 

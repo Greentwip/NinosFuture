@@ -1,8 +1,8 @@
-#include "Weapon.h"
+#include "Animation.h"
 
 using namespace windy;
 
-bool Weapon::init()
+bool Animation::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -15,6 +15,6 @@ bool Weapon::init()
 }
 
 
-void Weapon::parseBehavior(const cocos2d::ValueMap& behavior) {
+void Animation::parseBehavior(const cocos2d::ValueMap& behavior) {
 
 }

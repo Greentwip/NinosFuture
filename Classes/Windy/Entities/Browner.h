@@ -40,6 +40,8 @@ namespace windy {
 
         void stopActions();
 
+        void stopAllActions();
+
         void pauseActions();
 
         void resumeActions();
@@ -70,6 +72,9 @@ namespace windy {
         bool canCharge;
 
         int energy;
+
+        std::string chargePower;
+
        
     protected:
         Level* level;
@@ -77,8 +82,6 @@ namespace windy {
 
         int chargeTimer;
         int attackTimer;
-
-        std::string chargePower;
 
         bool tintA;
         bool tintB;

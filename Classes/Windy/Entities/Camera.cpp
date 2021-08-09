@@ -126,6 +126,11 @@ void Camera::recomputeCollisionRectangles() {
     }
 }
 
+void Camera::synchronizeWithBounds() {
+    this->getScene()->getDefaultCamera()->setPosition(this->level->bounds->getPosition());
+}
+
+
 
 void Camera::update(float dt) {
     this->recomputeCollisionRectangles();

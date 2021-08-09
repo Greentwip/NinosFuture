@@ -38,7 +38,7 @@ void CannonJoe::setup() {
     this->health = this->maxHealth;
     this->attackState = AttackState::None;
 
-    Enemy::composite(this, CannonJoeResources::armaturePath, CannonJoeResources::spritePath, "cannon_joe");
+    Logical::composite<windy::Enemy>(this, CannonJoeResources::armaturePath, CannonJoeResources::spritePath, "cannon_joe");
 
     std::vector<windy::AnimationAction> actionSet = {
         windy::AnimationAction("stand",      "cannon_joe_stand",      true,   0.10f),
@@ -53,7 +53,7 @@ void CannonJoe::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> CannonJoe::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Enemy::buildEntryCollisionRectangle(position, size, CannonJoeResources::armaturePath, "cannon_joe");
+    return Logical::buildEntryCollisionRectangle(position, size, CannonJoeResources::armaturePath, "cannon_joe");
 
 }
 

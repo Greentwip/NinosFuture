@@ -30,6 +30,7 @@ namespace windy {
     private:
         Level* level;
         float gravity;
+        float maxFallSpeed;
 
         long long contactEventCollisionIndex;
         std::vector<std::pair<long long, std::pair<Logical*, Logical*>>> contactEventCollisions;

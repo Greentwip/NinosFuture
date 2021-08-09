@@ -38,7 +38,7 @@ void Cow::setup() {
     this->bulletPower = 5;
     this->attackState = AttackState::Scanning;
 
-    Enemy::composite(this, CowResources::armaturePath, CowResources::spritePath, "cow");
+    Logical::composite<windy::Enemy>(this, CowResources::armaturePath, CowResources::spritePath, "cow");
 
     std::vector<windy::AnimationAction> actionSet = {
         windy::AnimationAction("stand",       "cow_stand",      false,   0.10f),
@@ -60,7 +60,7 @@ void Cow::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> Cow::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Enemy::buildEntryCollisionRectangle(position, size, CowResources::armaturePath, "cow");
+    return Logical::buildEntryCollisionRectangle(position, size, CowResources::armaturePath, "cow");
 }
 
 void Cow::attack() {

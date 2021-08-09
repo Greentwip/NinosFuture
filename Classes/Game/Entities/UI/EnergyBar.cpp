@@ -92,7 +92,7 @@ void EnergyBar::setValue(int value) {
 
         this->meter = value;
     }
-    else {
+    else if(value <= -2) {
         this->setVisible(false);
         this->meter = value;
     }

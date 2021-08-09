@@ -68,6 +68,15 @@
     <Filter Include="Classes\Game\Entities\UI">
       <UniqueIdentifier>{594b0720-e5ac-4265-8be7-2ca17ac8c43a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Game\Entities\Scenery">
+      <UniqueIdentifier>{84824ad7-5f74-49d8-8b83-f3c766d1a895}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Game\Entities\Scenery\Sheriff">
+      <UniqueIdentifier>{b4dee76f-8010-4db1-af86-a2b36013b28f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Game\Entities\Scenery\General">
+      <UniqueIdentifier>{f5686a9b-ef36-4634-bf3a-e81823c635c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -282,6 +291,33 @@
     </ClCompile>
     <ClCompile Include="..\..\Classes\Game\Entities\UI\GameGui.cpp">
       <Filter>Classes\Game\Entities\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Scenery\Sheriff\Disk.cpp">
+      <Filter>Classes\Game\Entities\Scenery\Sheriff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Scenery\General\GameExplosion.cpp">
+      <Filter>Classes\Game\Entities\Scenery\General</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Animation.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Explosion.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\LevelController.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Logic\GameLevelController.cpp">
+      <Filter>Classes\Game\Entities\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\Entities\Teleporter.cpp">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Player\HelmetBrowner.cpp">
+      <Filter>Classes\Game\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Player\TeleportBrowner.cpp">
+      <Filter>Classes\Game\Entities\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1721,6 +1757,33 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Game\Entities\UI\GameGui.h">
       <Filter>Classes\Game\Entities\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Scenery\Sheriff\Disk.h">
+      <Filter>Classes\Game\Entities\Scenery\Sheriff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Scenery\General\GameExplosion.h">
+      <Filter>Classes\Game\Entities\Scenery\General</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Animation.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Explosion.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\LevelController.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Logic\GameLevelController.h">
+      <Filter>Classes\Game\Entities\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Windy\Entities\Teleporter.h">
+      <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Player\HelmetBrowner.h">
+      <Filter>Classes\Game\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Player\TeleportBrowner.h">
+      <Filter>Classes\Game\Entities\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,6 @@ namespace windy {
     class Sprite;
     class Ladder;
     class Browner;
-    class VioletBrowner;
     class Bullet;
 }
 
@@ -24,9 +23,17 @@ namespace windy {
 
         virtual void initVariables();
 
+        virtual void onRestart();
+
+        virtual void onSpawn();
+
         virtual void onCollisionEnter(Logical* collision) override;
 
+        virtual void onCollision(Logical* collision) override;
+
         virtual void onCollisionExit(Logical* collision) override;
+
+        virtual void stun(int power);
 
         virtual void walk();
 
@@ -41,6 +48,12 @@ namespace windy {
         virtual void climb();
 
         virtual void move();
+
+        virtual void explode(float angleOffset);
+
+        virtual void kill(bool killAnimation);
+
+        virtual void checkHealth();
 
         virtual void triggerActions();
 
@@ -95,9 +108,10 @@ namespace windy {
         cocos2d::Point shiftSpeedBackup;
         bool cameraShiftSpeedBackup;
 
+        float exitSpeed;
+
 
         friend class Browner;
-        friend class VioletBrowner;
     };
 }
 

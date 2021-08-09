@@ -41,6 +41,7 @@ bool PhysicsWorld::init()
     }
 
     this->gravity = -0.25;
+    this->maxFallSpeed = -6;
 
     return true;
 }
@@ -225,8 +226,10 @@ void PhysicsWorld::update(float dt)
                 entity->getTag() == GameTags::General::Door         ||
                 entity->getTag() == GameTags::General::Camera       ||
                 entity->getTag() == GameTags::General::Scroll       ||
+                entity->getTag() == GameTags::General::Teleporter   ||
                 entity->getTag() == GameTags::Weapon::WeaponPlayer  ||
-                entity->getTag() == GameTags::Weapon::WeaponEnemy) { // Kinematic characters first
+                entity->getTag() == GameTags::Weapon::WeaponEnemy   ||
+                entity->getTag() == GameTags::Scenery::Particle) { // Kinematic characters first
             collidingEntities.pushBack(entity);
         }
     }
@@ -239,6 +242,10 @@ void PhysicsWorld::update(float dt)
 
         if (!entity->ignoreGravity) {
             entity->speed.y += this->gravity;
+
+            if (entity->speed.y <= this->maxFallSpeed) {
+                entity->speed.y = this->maxFallSpeed;
+            }
         }
 
         entityPosition += entity->speed;
@@ -251,12 +258,13 @@ void PhysicsWorld::update(float dt)
 
     for (int i = 0; i < collidingEntities.size(); ++i) {
         auto entity = collidingEntities.at(i);
+
+        entity->contacts.clear();
+
         if (entity->ignoreLandscapeCollision) {
             continue;
         }
 
-
-        entity->contacts.clear();
 
         for (int j = 0; j < landscapeEntities.size(); ++j) {
             auto landscapeEntity = landscapeEntities.at(j);

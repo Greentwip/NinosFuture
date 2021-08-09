@@ -37,6 +37,11 @@
 #include "Game/Entities/UI/EnergyBar.h"
 #include "Game/Entities/UI/GameGui.h"
 
+#include "Game/Entities/Scenery/General/GameExplosion.h"
+
+#include "Game/Entities/Logic/GameLevelController.h"
+
+
 
 using namespace game;
 using namespace cocos2d;
@@ -95,19 +100,21 @@ bool GameScene::init()
     windy::Logical::preloadResources<GameItem>();
     windy::Logical::preloadResources<GameVerticalDoor>();
     windy::Logical::preloadResources<GameHorizontalDoor>();
-
     windy::Logical::preloadResources<VioletBullet>();
-
     windy::Logical::preloadResources<EnergyBar>();
+    windy::Logical::preloadResources<GameExplosion>();
 
 
     windy::EntityFactory::getInstance().registerType<GamePlayer>("player");
     windy::EntityFactory::getInstance().registerType<GameItem>("item");
     windy::EntityFactory::getInstance().registerType<GameVerticalDoor>("door");
     windy::EntityFactory::getInstance().registerType<GameHorizontalDoor>("horizontal_door");
-
     windy::EntityFactory::getInstance().registerType<EnergyBar>("energy_bar");
     windy::EntityFactory::getInstance().registerType<GameGui>("gui");
+    windy::EntityFactory::getInstance().registerType<GameExplosion>("explosion");
+    windy::EntityFactory::getInstance().registerType<GameLevelController>("level_controller");
+
+    windy::EntityFactory::getInstance().registerTypeCollisionFunc<GameExplosion>("explosion");
 
     if (GameManager::getInstance().currentLevel->mug.compare("sheriffman") == 0) {
 

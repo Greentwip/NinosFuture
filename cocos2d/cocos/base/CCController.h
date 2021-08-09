@@ -46,7 +46,7 @@ class CC_DLL ControllerImpl
 public:
     ControllerImpl(Controller* controller);
 
-    static std::vector<Controller*>::iterator findController(int deviceId);
+    static std::vector<Controller*>::const_iterator findController(int deviceId);
 
     static void onConnected(int deviceId);
 

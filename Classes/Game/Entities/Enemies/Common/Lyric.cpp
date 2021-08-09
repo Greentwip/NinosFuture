@@ -40,7 +40,7 @@ void Lyric::setup() {
 
     this->attackState = AttackState::Attacking;
 
-    Enemy::composite(this, LyricResources::armaturePath, LyricResources::spritePath, "subeil");
+    Logical::composite<windy::Enemy>(this, LyricResources::armaturePath, LyricResources::spritePath, "subeil");
 
 
     std::vector<windy::AnimationAction> actionSet = {
@@ -56,7 +56,7 @@ void Lyric::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> Lyric::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Enemy::buildEntryCollisionRectangle(position, size, LyricResources::armaturePath, "subeil");
+    return Logical::buildEntryCollisionRectangle(position, size, LyricResources::armaturePath, "subeil");
 }
 
 

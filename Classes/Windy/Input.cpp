@@ -21,10 +21,13 @@ std::map<InputKey, Key> windy::Input::delayedKeys = {
     {InputKey::Left, Key() },
     {InputKey::Right, Key() },
     {InputKey::Start, Key() },
+    {InputKey::Select, Key() },
     {InputKey::A, Key() },
     {InputKey::B, Key() },
     {InputKey::LB, Key() },
-    {InputKey::RB, Key() }
+    {InputKey::RB, Key() },
+    {InputKey::LT, Key() },
+    {InputKey::RT, Key() }
 };
 
 std::map<InputKey, Key> windy::Input::keys = {
@@ -33,10 +36,13 @@ std::map<InputKey, Key> windy::Input::keys = {
     {InputKey::Left, Key() },
     {InputKey::Right, Key() },
     {InputKey::Start, Key() },
+    {InputKey::Select, Key() },
     {InputKey::A, Key() },
     {InputKey::B, Key() },
     {InputKey::LB, Key() },
-    {InputKey::RB, Key() }
+    {InputKey::RB, Key() },
+    {InputKey::LT, Key() },
+    {InputKey::RT, Key() }
 };
 
 bool windy::Input::takeInputs = true;
@@ -62,10 +68,13 @@ static void ResetKeys() {
         {InputKey::Left, Key() },
         {InputKey::Right, Key() },
         {InputKey::Start, Key() },
+        {InputKey::Select, Key() },
         {InputKey::A, Key() },
         {InputKey::B, Key() },
         {InputKey::LB, Key() },
-        {InputKey::RB, Key() }
+        {InputKey::RB, Key() },
+        {InputKey::LT, Key() },
+        {InputKey::RT, Key() }
     };
 
     windy::Input::keys = {
@@ -74,10 +83,13 @@ static void ResetKeys() {
         {InputKey::Left, Key() },
         {InputKey::Right, Key() },
         {InputKey::Start, Key() },
+        {InputKey::Select, Key() },
         {InputKey::A, Key() },
         {InputKey::B, Key() },
         {InputKey::LB, Key() },
-        {InputKey::RB, Key() }
+        {InputKey::RB, Key() },
+        {InputKey::LT, Key() },
+        {InputKey::RT, Key() }
     };
 }
 
@@ -390,6 +402,9 @@ void Input::onControllerKey(cocos2d::Controller* controller, int keyCode, bool p
 
     if (key == 1) {
         translatedKey = InputKey::Start;
+    }
+    else if (key == 2) {
+        translatedKey = InputKey::Select;
     }
     else if (key == 64) {
         translatedKey = InputKey::Up;

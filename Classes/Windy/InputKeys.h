@@ -14,10 +14,13 @@ namespace windy {
         Left,
         Right,
         Start,
+        Select,
         A,
         B,
         LB,
-        RB
+        RB,
+        LT,
+        RT
     };
 
     enum class KeyStatus {
