@@ -122,9 +122,9 @@ void TremorDrill::disableAttack() {
     this->setTag(windy::GameTags::Weapon::WeaponNone);
 }
 
-void TremorDrill::onUpdate(float dt) {
+void TremorDrill::recomputeCollisionRectangles() {
     auto positionDifference = this->getParent()->getPosition() - lastPosition;
-    lastPosition = this->getParent()->getPosition();
+    this->lastPosition = this->getParent()->getPosition();
 
     for (int i = 0; i < this->collisionRectangles.size(); ++i) {
         float differenceX = positionDifference.x;
@@ -133,5 +133,16 @@ void TremorDrill::onUpdate(float dt) {
         this->collisionRectangles[i]->origin.x += differenceX;
         this->collisionRectangles[i]->origin.y += differenceY;
     }
+
+}
+
+
+void TremorDrill::update(float dt) {
+    this->recomputeCollisionRectangles();
+
+    this->onUpdate(dt);
+}
+
+void TremorDrill::onUpdate(float dt) {
 
 }

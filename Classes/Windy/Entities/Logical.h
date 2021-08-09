@@ -57,7 +57,7 @@ namespace windy {
 
         virtual void update(float dt);
 
-        void recomputeCollisionRectangles();
+        virtual void recomputeCollisionRectangles();
 
         virtual void onCollisionEnter(Logical* collision);
         virtual void onCollision(Logical* collision);

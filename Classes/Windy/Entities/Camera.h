@@ -18,7 +18,15 @@ namespace windy {
         virtual bool init() override;
 
         virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
+        virtual void update(float dt) override;
         virtual void onUpdate(float dt) override;
+
+        virtual void recomputeCollisionRectangles() override;
+
+        virtual void onCollision(Logical* collision) override;
+
+        void normalizeCollisionRectangles();
+
 
         enum CameraFlags::CameraMode cameraMode;
         enum CameraFlags::CameraScroll scroll;
@@ -33,6 +41,8 @@ namespace windy {
         int shiftMoveCount;
 
         //Player* player;
+        cocos2d::Point childLastPosition;
+
         cocos2d::Point speed;
         int tolerance;
         Logical* freeScroll;

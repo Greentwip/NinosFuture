@@ -17,12 +17,16 @@ namespace game {
 
         void normalizeCollisionRectangles();
 
+        virtual void recomputeCollisionRectangles() override;
+
+
         //static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size);
 
 
         void enableAttack();
         void disableAttack();
 
+        virtual void update(float dt) override;
         virtual void onUpdate(float dt) override;
 
     };

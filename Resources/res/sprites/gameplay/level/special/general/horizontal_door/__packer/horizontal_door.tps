@@ -186,6 +186,10 @@
             <key type="filename">horizontal_door_lock_1.png</key>
             <key type="filename">horizontal_door_lock_2.png</key>
             <key type="filename">horizontal_door_lock_3.png</key>
+            <key type="filename">horizontal_door_unlock_0.png</key>
+            <key type="filename">horizontal_door_unlock_1.png</key>
+            <key type="filename">horizontal_door_unlock_2.png</key>
+            <key type="filename">horizontal_door_unlock_3.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -208,6 +212,10 @@
             <filename>horizontal_door_lock_2.png</filename>
             <filename>horizontal_door_lock_3.png</filename>
             <filename>horizontal_door_idle_0.png</filename>
+            <filename>horizontal_door_unlock_0.png</filename>
+            <filename>horizontal_door_unlock_1.png</filename>
+            <filename>horizontal_door_unlock_2.png</filename>
+            <filename>horizontal_door_unlock_3.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -42,8 +42,7 @@ void Door::setTraversable(bool animate) {
 
     if (animate) {
         this->sprite->stopActions();
-        this->sprite->runAction("lock");
-        this->sprite->reverseAction();
+        this->sprite->runAction("unlock");
     }
 }
 
@@ -65,8 +64,7 @@ void Door::open(bool animate) {
     //this->sprite->setImageIndex(3);
     if (animate) {
         this->sprite->stopActions();
-        this->sprite->runAction("lock");
-        this->sprite->reverseAction();
+        this->sprite->runAction("unlock");
     }
     
     this->setTag(GameTags::General::Door);
@@ -112,8 +110,7 @@ void Door::unlock(std::function<void()> callback) {
     auto lock = cocos2d::CallFunc::create([this]() {
         AudioManager::playSfx(Sounds::Door);
         this->sprite->stopActions();
-        this->sprite->runAction("lock");
-        this->sprite->reverseAction();
+        this->sprite->runAction("unlock");
         });
 
     auto postLock = cocos2d::CallFunc::create([=]() {

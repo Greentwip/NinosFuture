@@ -4,10 +4,13 @@
 
 #include "Bounds.h"
 #include "Player.h"
+#include "Scroll.h"
 
 #include "./../GameTags.h"
 
 #include "./../Armature.h"
+
+#include "Windy/PhysicsWorld.h"
 
 
 using namespace windy;
@@ -53,15 +56,15 @@ bool Camera::init()
 
     auto armature = Armature(CameraResources::armaturePath);
 
+    Logical::setup(this->getPosition(), armature.get("camera").collisionRectangles[0]->size);
+
     this->collisionRectangles = armature.get("camera").collisionRectangles;
 
-    for (int i = 0; i < this->collisionRectangles.size(); ++i) {
-        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, *this->collisionRectangles[i]);
-    }
-
-    this->collisionBox = this->collisionRectangles[0];
 
     this->setTag(GameTags::General::Camera);
+
+    this->ignoreGravity = true;
+    this->ignoreLandscapeCollision = true;
 
     return true;
 }
@@ -70,12 +73,73 @@ void Camera::parseBehavior(const cocos2d::ValueMap& behavior) {
 
 }
 
+void Camera::onCollision(Logical* collision) {
+    if (collision->getTag() == GameTags::General::Scroll) {
+        auto scrollCollision = dynamic_cast<Scroll*>(collision);
+
+        if (this->scroll == CameraFlags::CameraScroll::ScrollMoving) {
+            this->scroll = CameraFlags::CameraScroll::ScrollNone;
+            this->cameraMode = CameraFlags::CameraMode::Screen;
+        }
+
+        if (this->cameraMode == CameraFlags::CameraMode::Screen) {
+            this->cameraMode = CameraFlags::CameraMode::Scroll;
+            
+        }
+
+        if (this->cameraMode == CameraFlags::CameraMode::Scroll) {
+            this->scroll = scrollCollision->scroll;
+        }
+
+        this->level->physicsWorld->alignCollisions(this, scrollCollision, true);
+    }
+}
+
+void Camera::normalizeCollisionRectangles() {
+    auto worldPosition = this->getParent()->convertToWorldSpace(this->getPosition());
+    this->lastPosition = worldPosition;
+    this->childLastPosition = this->getPosition();
+
+    for (int i = 0; i < this->collisionRectangles.size(); ++i) {
+        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(worldPosition, *this->collisionRectangles[i]);
+    }
+
+    this->collisionBox = this->collisionRectangles[0];
+
+}
+
+void Camera::recomputeCollisionRectangles() {
+    auto parentPositionDifference = this->getParent()->getPosition() - lastPosition;
+    auto currentPositionDifference = this->getPosition() - childLastPosition;
+
+    this->lastPosition = this->getParent()->getPosition();
+    this->childLastPosition = this->getPosition();
+
+    auto positionDifference = parentPositionDifference + currentPositionDifference;
+
+    for (int i = 0; i < this->collisionRectangles.size(); ++i) {
+        float differenceX = positionDifference.x;
+        float differenceY = positionDifference.y;
+
+        this->collisionRectangles[i]->origin.x += differenceX;
+        this->collisionRectangles[i]->origin.y += differenceY;
+    }
+}
+
+
+void Camera::update(float dt) {
+    this->recomputeCollisionRectangles();
+
+    this->setPosition(0, 0);
+
+    this->onUpdate(dt);
+}
+
 void Camera::onUpdate(float dt) {
 
-
-    if (this->cameraMode != CameraFlags::CameraMode::Shift) {
+    /*if (this->cameraMode != CameraFlags::CameraMode::Shift) {
         // manual solve collisions
-    }
+    }*/
 
     if (!this->level->player->alive) {
         return;

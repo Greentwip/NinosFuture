@@ -667,6 +667,7 @@
     <ClInclude Include="..\..\Classes\Windy\Entities\Bounds.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Browner.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Browners.h" />
+    <ClInclude Include="..\..\Classes\Windy\Entities\Scroll.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Weapon.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Camera.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Checkpoint.h" />
@@ -760,6 +761,7 @@
     <ClCompile Include="..\..\Classes\Windy\Entities\Block.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Bounds.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Browner.cpp" />
+    <ClCompile Include="..\..\Classes\Windy\Entities\Scroll.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Weapon.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Camera.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Checkpoint.cpp" />

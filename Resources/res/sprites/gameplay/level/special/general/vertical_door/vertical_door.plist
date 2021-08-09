@@ -79,6 +79,66 @@
                 <key>textureRotated</key>
                 <true/>
             </dict>
+            <key>vertical_door_unlock_0</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{33,48}</string>
+                <key>spriteSourceSize</key>
+                <string>{33,48}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{33,48}}</string>
+                <key>textureRotated</key>
+                <true/>
+            </dict>
+            <key>vertical_door_unlock_1</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,7}</string>
+                <key>spriteSize</key>
+                <string>{33,34}</string>
+                <key>spriteSourceSize</key>
+                <string>{33,48}</string>
+                <key>textureRect</key>
+                <string>{{52,2},{33,34}}</string>
+                <key>textureRotated</key>
+                <true/>
+            </dict>
+            <key>vertical_door_unlock_2</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,15}</string>
+                <key>spriteSize</key>
+                <string>{33,18}</string>
+                <key>spriteSourceSize</key>
+                <string>{33,48}</string>
+                <key>textureRect</key>
+                <string>{{88,2},{33,18}}</string>
+                <key>textureRotated</key>
+                <true/>
+            </dict>
+            <key>vertical_door_unlock_3</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-15,22.5}</string>
+                <key>spriteSize</key>
+                <string>{3,3}</string>
+                <key>spriteSourceSize</key>
+                <string>{33,48}</string>
+                <key>textureRect</key>
+                <string>{{108,2},{3,3}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -93,7 +153,7 @@
             <key>size</key>
             <string>{114,37}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:18fda19ec16c035e4210156fc0c4334c:7e853de71787f4ec69e5eac7d6f0636a:06dc4fd7c71d556e734ea20192905b80$</string>
+            <string>$TexturePacker:SmartUpdate:c588219ea05bce9b3045343174f0d8c0:712035ee50db20ce14a0056df6c55181:06dc4fd7c71d556e734ea20192905b80$</string>
             <key>textureFileName</key>
             <string>vertical_door.pvr.ccz</string>
         </dict>

@@ -46,9 +46,11 @@ void GameHorizontalDoor::setup() {
 
     this->sprite->setPosition(collisionBoxCenter + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
 
-    auto action = windy::AnimationAction("lock", "horizontal_door_lock", false, this->lockTime / 8.0f);
+    auto lockAction = windy::AnimationAction("lock", "horizontal_door_lock", false, this->lockTime / 8.0f);
+    auto unlockAction = windy::AnimationAction("unlock", "horizontal_door_unlock", false, this->lockTime / 8.0f);
 
-    this->sprite->appendAction(action, false);
+    this->sprite->appendAction(lockAction, false);
+    this->sprite->appendAction(unlockAction, false);
     this->sprite->setAnimation("horizontal_door_lock");
     this->sprite->setImageIndex(3);
 

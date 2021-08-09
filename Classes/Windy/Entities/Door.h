@@ -35,6 +35,7 @@ namespace windy {
     protected:
         Sprite* sprite;
         bool isBossDoor;
+
         float lockTime;
         bool triggered;
 

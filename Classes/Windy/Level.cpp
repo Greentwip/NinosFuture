@@ -14,6 +14,7 @@
 #include "Entities/Enemy.h"
 #include "Entities/Item.h"
 #include "Entities/Ladder.h"
+#include "Entities/Scroll.h"
 
 #include "GameTags.h"
 
@@ -67,6 +68,7 @@ Level* Level::create(const std::string& resourcesRootPath,
         EntityFactory::getInstance().registerType<Checkpoint>("checkpoint");
         EntityFactory::getInstance().registerType<Bounds>("bounds");
         EntityFactory::getInstance().registerType<Ladder>("ladder");
+        EntityFactory::getInstance().registerType<Scroll>("scroll");
 
     }
 
@@ -222,6 +224,12 @@ bool Level::init()
                 this->entities.pushBack(ladder);
 
             }
+            else if (name.compare("scroll") == 0) {
+                auto scroll = EntityFactory::getInstance().create("scroll", position, size);
+                scroll->parseBehavior(dictionary);
+                this->addChild(scroll);
+                this->entities.pushBack(scroll);
+            }
 
         }
     }
@@ -314,7 +322,11 @@ bool Level::init()
 
     this->camera->setPositionY(this->camera->collisionBox->size.height * 0.25f);
 
+    this->entities.pushBack(this->camera);
+
     this->bounds->addChild(this->camera);
+
+    this->camera->normalizeCollisionRectangles();
 
     this->debugDrawNode = DebugDrawNode::create(this);
 

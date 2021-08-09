@@ -67,7 +67,7 @@ void CannonJoe::attack() {
             float playerDistanceX = cocos2d::Point(this->getPositionX(), 0).getDistance(cocos2d::Point(this->level->player->getPositionX(), 0));
             float playerDistanceY = cocos2d::Point(0, this->getPositionY()).getDistance(cocos2d::Point(0, this->level->player->getPositionY()));
 
-            if (playerDistanceX > 48 || playerDistanceY <= 24) {
+            if ((playerDistanceX > 48 || playerDistanceY <= 24) && this->level->player->getPositionX() < this->getPositionX()) {
                 this->attackState = AttackState::Before;
                 this->attackTimer = this->attackTimeInterval;
             }
@@ -83,7 +83,7 @@ void CannonJoe::attack() {
                 float playerDistanceY = cocos2d::Point(0, this->getPositionY()).getDistance(cocos2d::Point(0, this->level->player->getPositionY()));
 
 
-                if (playerDistanceX > 48 || playerDistanceY <= 24) {
+                if ((playerDistanceX > 48 || playerDistanceY <= 24) && this->level->player->getPositionX() < this->getPositionX()) {
                     auto playerPosition = this->level->player->getPosition();
 
                     auto bulletPosition = cocos2d::Point(this->getPositionX() + (22 * this->getSpriteNormal() * -1),

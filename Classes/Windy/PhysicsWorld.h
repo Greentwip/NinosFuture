@@ -25,6 +25,8 @@ namespace windy {
 
         virtual void update(float dt);
 
+        static void alignCollisions(Logical* entity, Logical* landscapeEntity, bool clearContacts = false);
+
     private:
         Level* level;
         float gravity;
