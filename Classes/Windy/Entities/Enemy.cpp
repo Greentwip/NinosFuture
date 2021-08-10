@@ -112,6 +112,6 @@ void Enemy::onCollisionEnter(Logical* collision) {
 
 void Enemy::onUpdate(float dt) {
     this->setOrientation();
-    this->attack();
+    this->attack(dt);
     this->checkHealth();
 }

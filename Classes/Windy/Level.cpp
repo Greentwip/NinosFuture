@@ -11,6 +11,7 @@
 #include "Entities/Camera.h"
 #include "Entities/Checkpoint.h"
 #include "Entities/Player.h"
+#include "Entities/Boss.h"
 #include "Entities/Enemy.h"
 #include "Entities/Item.h"
 #include "Entities/Ladder.h"
@@ -66,6 +67,8 @@ Level* Level::create(const std::string& resourcesRootPath,
         level->camera = nullptr;
         level->debugDrawNode = nullptr;
         level->physicsWorld = nullptr;
+        level->gui = nullptr;
+        level->boss = nullptr;
 
         EntityFactory::initialize(level);
 
@@ -313,6 +316,35 @@ bool Level::init()
 
     }
 
+
+    groupArray = map->getObjectGroup("boss");
+
+    {
+        auto& objects = groupArray->getObjects();
+        for (auto& obj : objects)
+        {
+            auto& dictionary = obj.asValueMap();
+
+            std::string name = dictionary["name"].asString();
+            auto size = cocos2d::Size(dictionary["width"].asFloat(), dictionary["height"].asFloat());
+            auto position = calculateTmxPosition(dictionary, map);
+
+            auto bossType = dictionary.at("type").asString();
+
+            if (bossType.compare("sheriff") == 0){
+                
+                auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle(bossType, position, size);
+                auto entry = Logical::getEntry(entryCollisionBox, [=]() {
+                    return EntityFactory::getInstance().create(bossType, position, size);
+                    });
+
+                this->objectManager->objectEntries.push_back(entry);
+
+            }
+        }
+
+    }
+
     this->lastCheckpoint = firstCheckpoint;
 
     auto firstCheckpointPosition = firstCheckpoint->getPosition();
@@ -322,6 +354,13 @@ bool Level::init()
     this->bounds = dynamic_cast<Bounds*>(EntityFactory::getInstance().create("bounds", firstCheckpointPosition, visibleSize));
 
     this->addChild(this->bounds, 4096);
+
+    auto guiSize = cocos2d::Size(16, 16);
+
+    this->gui = dynamic_cast<Gui*>(EntityFactory::getInstance().create("gui", cocos2d::Point(0, 0), guiSize));
+
+    this->bounds->addChild(gui, 1024);
+
 
     auto playerSize = cocos2d::Size(15, 24);
 
@@ -349,12 +388,6 @@ bool Level::init()
 
     this->debugDrawNode->customEntities.pushBack(this->bounds);
 
-    auto guiSize = cocos2d::Size(16, 16);
-
-    this->gui = dynamic_cast<Gui*>(EntityFactory::getInstance().create("gui", cocos2d::Point(0, 0), guiSize));
-
-    this->bounds->addChild(gui);
-
     this->levelController =
         dynamic_cast<LevelController*>(EntityFactory::getInstance().create("level_controller", cocos2d::Point(0, 0), cocos2d::Size(16, 16)));
 
@@ -367,11 +400,11 @@ bool Level::init()
 }
 
 
-bool Level::paused() {
+bool Level::getPaused() {
     return this->isPaused;
 }
 
-void Level::pause(bool isPaused) {
+void Level::setPaused(bool isPaused) {
     this->isPaused = isPaused;
 }
 
@@ -389,7 +422,7 @@ void Level::restart() {
 
     //this->camera->synchronizeWithBounds();
 
-    this->pause(false);
+    this->setPaused(false);
 
     this->levelController->restart();
 

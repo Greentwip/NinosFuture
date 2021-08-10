@@ -75,7 +75,7 @@ void Taban::setOrientation() {
     
 }
 
-void Taban::attack() {
+void Taban::attack(float dt) {
     switch (this->attackState) {
 
         case AttackState::Scanning: {
@@ -100,7 +100,7 @@ void Taban::attack() {
                 this->attackState = AttackState::Attacking;
             }
             else {
-                this->wakeUpTimer -= 1.0f / 60.0f;
+                this->wakeUpTimer -= dt;
             }
             
 

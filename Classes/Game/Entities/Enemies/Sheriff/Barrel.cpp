@@ -67,7 +67,7 @@ std::shared_ptr<cocos2d::Rect> Barrel::getEntryCollisionRectangle(const cocos2d:
     return Logical::buildEntryCollisionRectangle(position, size, BarrelResources::armaturePath, "barrel");
 }
 
-void Barrel::attack() {
+void Barrel::attack(float dt) {
     switch (this->attackState) {
 
         case AttackState::Scanning: {
@@ -103,7 +103,7 @@ void Barrel::attack() {
                 this->attackState = AttackState::Walking;
             }
             else {
-                this->standTimer -= 1.0f / 60.0f;
+                this->standTimer -= dt;
             }
         }
         break;
@@ -129,7 +129,7 @@ void Barrel::attack() {
                 this->standTimer = this->standTimeInterval;
             }
             else {
-                this->walkTimer -= 1.0f / 60.0f;
+                this->walkTimer -= dt;
             }
 
         }
@@ -143,7 +143,7 @@ void Barrel::attack() {
                 this->attackState = AttackState::CoolDown;
             }
             else {
-                this->standTimer -= 1.0f / 60.0f;
+                this->standTimer -= dt;
             }
         }
         break;
@@ -153,7 +153,7 @@ void Barrel::attack() {
                 this->attackState = AttackState::Scanning;
             }
             else {
-                this->cooldownTimer -= 1.0f / 60.0f;
+                this->cooldownTimer -= dt;
             }
 
         }

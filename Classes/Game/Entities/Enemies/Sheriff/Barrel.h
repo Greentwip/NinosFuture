@@ -23,7 +23,7 @@ namespace game {
 
         static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size);
 
-        virtual void attack() override;
+        virtual void attack(float dt) override;
 
     private:
         AttackState attackState;

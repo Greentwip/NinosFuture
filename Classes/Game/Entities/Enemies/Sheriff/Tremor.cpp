@@ -218,7 +218,7 @@ void Tremor::onCannonAttackEnd() {
 
 }
 
-void Tremor::attack() {
+void Tremor::attack(float dt) {
     
     switch (this->attackState) {
         case AttackState::None:

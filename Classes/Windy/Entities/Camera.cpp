@@ -97,7 +97,7 @@ void Camera::onCollision(Logical* collision) {
 
 void Camera::normalizeCollisionRectangles() {
     auto worldPosition = this->getParent()->convertToWorldSpace(this->getPosition());
-    this->lastPosition = worldPosition;
+    this->lastCollisionPosition = worldPosition;
     this->childLastPosition = this->getPosition();
 
     for (int i = 0; i < this->collisionRectangles.size(); ++i) {
@@ -109,10 +109,10 @@ void Camera::normalizeCollisionRectangles() {
 }
 
 void Camera::recomputeCollisionRectangles() {
-    auto parentPositionDifference = this->getParent()->getPosition() - lastPosition;
+    auto parentPositionDifference = this->getParent()->getPosition() - lastCollisionPosition;
     auto currentPositionDifference = this->getPosition() - childLastPosition;
 
-    this->lastPosition = this->getParent()->getPosition();
+    this->lastCollisionPosition = this->getParent()->getPosition();
     this->childLastPosition = this->getPosition();
 
     auto positionDifference = parentPositionDifference + currentPositionDifference;
@@ -258,7 +258,7 @@ void Camera::onUpdate(float dt) {
     }
 
     if (this->cameraMode == CameraFlags::CameraMode::Shift) {
-        this->level->pause(true);
+        this->level->setPaused(true);
 
         if (this->targetDoor == nullptr) {
             if (this->level->triggeringDoor != nullptr && !this->bossDoorShift) {
@@ -363,7 +363,7 @@ void Camera::onUpdate(float dt) {
                         this->bossDoorWorking = false;
                         this->level->triggeringDoor = nullptr;
 
-                        this->level->pause(false);
+                        this->level->setPaused(false);
                     });
                 }
             }
@@ -371,7 +371,7 @@ void Camera::onUpdate(float dt) {
                 if (!this->bossDoorWorking && this->targetDoor == nullptr) {
                     this->cameraMode = CameraFlags::CameraMode::Screen;
 
-                    this->level->pause(false);
+                    this->level->setPaused(false);
                 }
             }
 

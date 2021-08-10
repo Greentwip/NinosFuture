@@ -31,7 +31,7 @@ void JetBird::setup() {
 
     this->power = 4;
 
-    this->maxHealth = 4;
+    this->maxHealth = 3;
     this->health = this->maxHealth;
 
     this->attackState = AttackState::Scanning;
@@ -56,7 +56,7 @@ void JetBird::setOrientation() {
 
 }
 
-void JetBird::attack() {
+void JetBird::attack(float dt) {
     switch (this->attackState) {
         case AttackState::Scanning:{
 

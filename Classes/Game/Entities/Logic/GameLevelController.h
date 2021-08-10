@@ -8,8 +8,33 @@
 namespace game {
     class GameLevelController : public windy::LevelController
     {
+    private:
+        enum GameState {
+            Startup,
+            Playing,
+            Restarting,
+            BossBattle,
+            Finishing,
+            Exit
+        };
+
+        GameState gameState;
+
     public:
+        virtual bool init() override;
+
         virtual void restart() override;
+
+        virtual void succeed() override;
+
+        virtual void onUpdate(float dt) override;
+
+    private:
+        bool atVictory;
+        float exitTimer;
+        float exitTimeDelay;
+
+        bool fading;
     };
 }
 

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <map>
+#include <functional>
 
 #define USE_AUDIO_ENGINE 1
 //#define USE_SIMPLE_AUDIO_ENGINE 1
@@ -45,6 +46,10 @@ namespace windy {
 		PlayerHit,
 		Death,
 		Teleport1,
+		Teleport2,
+		BossTheme,
+		Victory,
+		GetEnergy,
 		NONE
 	};
 
@@ -54,8 +59,8 @@ namespace windy {
 		static std::map<Sounds, std::string> soundsKeyMap;
 
 	public:
-		static int playBgm(Sounds resource, bool loop = true);
-		static int playSfx(Sounds resource, bool loop = false);
+		static int playBgm(Sounds resource, bool loop = true, std::function<void()> callback = nullptr);
+		static int playSfx(Sounds resource, bool loop = false, std::function<void()> callback = nullptr);
 		static void stopAll();
 		static cocos2d::experimental::AudioEngine::AudioState getState(int id);
 

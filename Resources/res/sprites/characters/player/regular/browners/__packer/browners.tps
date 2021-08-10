@@ -600,6 +600,43 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">military/intro/military_intro_0.png</key>
+            <key type="filename">military/intro/military_intro_1.png</key>
+            <key type="filename">military/intro/military_intro_10.png</key>
+            <key type="filename">military/intro/military_intro_11.png</key>
+            <key type="filename">military/intro/military_intro_12.png</key>
+            <key type="filename">military/intro/military_intro_13.png</key>
+            <key type="filename">military/intro/military_intro_14.png</key>
+            <key type="filename">military/intro/military_intro_15.png</key>
+            <key type="filename">military/intro/military_intro_16.png</key>
+            <key type="filename">military/intro/military_intro_17.png</key>
+            <key type="filename">military/intro/military_intro_18.png</key>
+            <key type="filename">military/intro/military_intro_19.png</key>
+            <key type="filename">military/intro/military_intro_2.png</key>
+            <key type="filename">military/intro/military_intro_20.png</key>
+            <key type="filename">military/intro/military_intro_21.png</key>
+            <key type="filename">military/intro/military_intro_22.png</key>
+            <key type="filename">military/intro/military_intro_3.png</key>
+            <key type="filename">military/intro/military_intro_4.png</key>
+            <key type="filename">military/intro/military_intro_5.png</key>
+            <key type="filename">military/intro/military_intro_6.png</key>
+            <key type="filename">military/intro/military_intro_7.png</key>
+            <key type="filename">military/intro/military_intro_8.png</key>
+            <key type="filename">military/intro/military_intro_9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>11,12,23,25</rect>
+                <key>scale9Paddings</key>
+                <rect>11,12,23,25</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">military/jump/military_jump_0.png</key>
             <key type="filename">military/jumpshoot/military_jumpshoot_0.png</key>
             <key type="filename">military/standshoot/military_standshoot_0.png</key>
@@ -668,6 +705,43 @@
                 <rect>16,13,31,25</rect>
                 <key>scale9Paddings</key>
                 <rect>16,13,31,25</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">night/intro/night_intro_0.png</key>
+            <key type="filename">night/intro/night_intro_1.png</key>
+            <key type="filename">night/intro/night_intro_10.png</key>
+            <key type="filename">night/intro/night_intro_11.png</key>
+            <key type="filename">night/intro/night_intro_12.png</key>
+            <key type="filename">night/intro/night_intro_13.png</key>
+            <key type="filename">night/intro/night_intro_14.png</key>
+            <key type="filename">night/intro/night_intro_15.png</key>
+            <key type="filename">night/intro/night_intro_16.png</key>
+            <key type="filename">night/intro/night_intro_17.png</key>
+            <key type="filename">night/intro/night_intro_18.png</key>
+            <key type="filename">night/intro/night_intro_19.png</key>
+            <key type="filename">night/intro/night_intro_2.png</key>
+            <key type="filename">night/intro/night_intro_20.png</key>
+            <key type="filename">night/intro/night_intro_21.png</key>
+            <key type="filename">night/intro/night_intro_22.png</key>
+            <key type="filename">night/intro/night_intro_3.png</key>
+            <key type="filename">night/intro/night_intro_4.png</key>
+            <key type="filename">night/intro/night_intro_5.png</key>
+            <key type="filename">night/intro/night_intro_6.png</key>
+            <key type="filename">night/intro/night_intro_7.png</key>
+            <key type="filename">night/intro/night_intro_8.png</key>
+            <key type="filename">night/intro/night_intro_9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,14,47,28</rect>
+                <key>scale9Paddings</key>
+                <rect>23,14,47,28</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -767,6 +841,43 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">sheriff/intro/sheriff_intro_0.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_1.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_10.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_11.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_12.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_13.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_14.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_15.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_16.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_17.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_18.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_19.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_2.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_20.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_21.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_22.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_3.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_4.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_5.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_6.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_7.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_8.png</key>
+            <key type="filename">sheriff/intro/sheriff_intro_9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>13,11,27,21</rect>
+                <key>scale9Paddings</key>
+                <rect>13,11,27,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">sheriff/jump/sheriff_jump_0.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -863,6 +974,29 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">vine/intro/vine_intro_0.png</key>
+            <key type="filename">vine/intro/vine_intro_1.png</key>
+            <key type="filename">vine/intro/vine_intro_10.png</key>
+            <key type="filename">vine/intro/vine_intro_11.png</key>
+            <key type="filename">vine/intro/vine_intro_12.png</key>
+            <key type="filename">vine/intro/vine_intro_13.png</key>
+            <key type="filename">vine/intro/vine_intro_14.png</key>
+            <key type="filename">vine/intro/vine_intro_15.png</key>
+            <key type="filename">vine/intro/vine_intro_16.png</key>
+            <key type="filename">vine/intro/vine_intro_17.png</key>
+            <key type="filename">vine/intro/vine_intro_18.png</key>
+            <key type="filename">vine/intro/vine_intro_19.png</key>
+            <key type="filename">vine/intro/vine_intro_2.png</key>
+            <key type="filename">vine/intro/vine_intro_20.png</key>
+            <key type="filename">vine/intro/vine_intro_21.png</key>
+            <key type="filename">vine/intro/vine_intro_22.png</key>
+            <key type="filename">vine/intro/vine_intro_3.png</key>
+            <key type="filename">vine/intro/vine_intro_4.png</key>
+            <key type="filename">vine/intro/vine_intro_5.png</key>
+            <key type="filename">vine/intro/vine_intro_6.png</key>
+            <key type="filename">vine/intro/vine_intro_7.png</key>
+            <key type="filename">vine/intro/vine_intro_8.png</key>
+            <key type="filename">vine/intro/vine_intro_9.png</key>
             <key type="filename">vine/jump/vine_jump_0.png</key>
             <key type="filename">vine/jump/vine_jump_1.png</key>
             <key type="filename">vine/stand/vine_stand_0.png</key>

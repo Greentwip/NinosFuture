@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="224" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="41">
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="224" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="46">
  <tileset firstgid="1" name="level_sheriffman_bank.png" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="768" columns="48">
   <image source="level_sheriffman_bank.png" width="864" height="288"/>
  </tileset>
@@ -46,7 +46,7 @@
   <object id="33" x="464" y="-72" width="48" height="184"/>
  </objectgroup>
  <objectgroup id="3" name="logic">
-  <object id="21" name="checkpoint" type="third" x="1128" y="104" width="16" height="16"/>
+  <object id="21" name="checkpoint" type="third" x="1130" y="104" width="16" height="16"/>
   <object id="53" name="checkpoint" type="first" x="120" y="104" width="16" height="16"/>
   <object id="54" name="teleporter" x="120" y="160" width="16" height="16"/>
   <object id="55" name="scroll" type="right" x="104" y="104" width="16" height="16"/>
@@ -55,16 +55,17 @@
   <object id="103" name="hole" x="529" y="437" width="207" height="24"/>
   <object id="105" name="ladder" x="1122" y="400" width="14" height="186"/>
   <object id="109" name="ladder" x="1068" y="144" width="10" height="152"/>
-  <object id="110" name="scroll" type="right" x="1112" y="104" width="16" height="16"/>
+  <object id="110" name="scroll" type="right" x="1114" y="104" width="16" height="16"/>
   <object id="111" name="hole" x="1068" y="217" width="10" height="16"/>
   <object id="112" name="hole" x="1125" y="441" width="8" height="32"/>
   <object id="113" name="scroll" type="left" x="2936" y="104" width="16" height="16"/>
-  <object id="22" name="teleporter" x="1128" y="144" width="16" height="16"/>
+  <object id="22" name="teleporter" x="1130" y="144" width="16" height="16"/>
   <object id="28" name="checkpoint" type="boss" x="3176" y="96" width="16" height="16"/>
   <object id="29" name="teleporter" x="3176" y="160" width="16" height="16"/>
   <object id="30" name="hole" x="1056" y="441" width="207" height="24"/>
   <object id="34" name="checkpoint" type="second" x="616" y="552" width="16" height="16"/>
   <object id="35" name="teleporter" x="616" y="608" width="16" height="16"/>
+  <object id="41" name="teleporter" x="3520" y="160" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="8" name="items">
   <object id="31" name="sheriff_e_tank" type="e_tank" x="1026" y="443" width="10.6667" height="10.6667">
@@ -90,7 +91,7 @@
   <object id="82" name="jetbird" type="sheriff" x="2878" y="90" width="56" height="34"/>
   <object id="83" name="jetbird" type="sheriff" x="2950" y="130" width="56" height="34"/>
   <object id="95" name="barrel" type="sheriff" x="1224" y="384" width="16" height="16"/>
-  <object id="98" name="cow" type="sheriff" x="1256" y="129" width="46" height="55"/>
+  <object id="98" name="cow" type="sheriff" x="1328" y="129" width="46" height="55"/>
   <object id="100" name="barrel" type="sheriff" x="1024" y="128" width="16" height="16"/>
   <object id="23" name="tremor" type="sheriff" x="700" y="34" width="40" height="40"/>
   <object id="36" name="sumatran" type="general" x="1072" y="275" width="33" height="45"/>
@@ -107,8 +108,7 @@
  <objectgroup id="6" name="animations" visible="0">
   <object id="3" name="spinner" type="sheriff" x="872" y="528" width="16" height="16"/>
  </objectgroup>
- <objectgroup id="7" name="boss" visible="0">
+ <objectgroup id="7" name="boss">
   <object id="10" name="boss" type="sheriff" x="3520" y="-16" width="16" height="16"/>
-  <object id="11" name="teleporter" x="3520" y="160" width="16" height="16"/>
  </objectgroup>
 </map>

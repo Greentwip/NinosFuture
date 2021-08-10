@@ -208,7 +208,6 @@ void PhysicsWorld::alignCollisions(Logical* entity, Logical* landscapeEntity, bo
 
 void PhysicsWorld::update(float dt)
 {
-    
     cocos2d::Vector<Logical*> landscapeEntities;
     cocos2d::Vector<Logical*> collidingEntities;
 

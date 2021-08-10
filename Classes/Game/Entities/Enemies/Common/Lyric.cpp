@@ -64,7 +64,7 @@ void Lyric::setOrientation() {
 
 }
 
-void Lyric::attack() {
+void Lyric::attack(float dt) {
     switch (this->attackState) {
 
         case AttackState::Attacking: {

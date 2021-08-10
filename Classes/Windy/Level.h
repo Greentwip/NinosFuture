@@ -19,6 +19,7 @@ namespace windy {
     class LandscapeTile;
     class Gui;
     class LevelController;
+    class Boss;
 }
 
 namespace windy {
@@ -32,8 +33,8 @@ namespace windy {
 
         virtual bool init();
 
-        bool paused();
-        void pause(bool isPaused);
+        bool getPaused();
+        void setPaused(bool isPaused);
 
         void restart();
 
@@ -60,6 +61,8 @@ namespace windy {
         ObjectManager* objectManager;
 
         Gui* gui;
+
+        Boss* boss;
 
     private:
         DebugDrawNode* debugDrawNode;

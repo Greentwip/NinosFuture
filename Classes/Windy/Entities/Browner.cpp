@@ -43,7 +43,8 @@ void Browner::initVariables()
     this->chargeTimer = 0;
     this->attackTimer = 0;
 
-    this->energy = 28;
+    this->maxEnergy = 28;
+    this->energy = this->maxEnergy;
 
     this->chargePower = "low";
 
@@ -61,6 +62,14 @@ void Browner::setBaseName() {
 
 void Browner::spawn() {
     this->energy = 28;
+}
+
+void Browner::restoreWeaponEnergy(int amount) {
+    this->energy += amount;
+
+    if (this->energy >= this->maxEnergy) {
+        this->energy = this->maxEnergy;
+    }
 }
 
 void Browner::activate() {
@@ -216,18 +225,18 @@ void Browner::timedShoot() {
 
 void Browner::attack() {
 
-    bool attackCondition = Input::keyPressed(InputKey::B);
-    bool chargeCondition = Input::keyDown(InputKey::B);
-    bool dischargeCondition = !Input::keyDown(InputKey::B);
+    bool attackCondition = this->player->attackCondition(); 
+    bool chargeCondition = this->player->chargeCondition(); 
+    bool dischargeCondition = this->player->dischargeCondition(); 
     
     if (attackCondition && !this->player->charging && !this->player->sliding && !this->player->stunned) {
-        bool walkLeftCondition = Input::keyDown(InputKey::Right) && !Input::keyDown(InputKey::Left);
-        bool walkRightCondition = Input::keyDown(InputKey::Right) && !Input::keyDown(InputKey::Left);
+        bool walkLeftCondition = this->player->walkLeftCondition();
+        bool walkRightCondition = this->player->walkRightCondition();
 
-        if (walkLeftCondition) {
+        if (walkRightCondition) {
             this->player->sprite->setFlippedX(false);
         }
-        else if (walkRightCondition) {
+        else if (walkLeftCondition) {
             this->player->sprite->setFlippedX(true);
         }
 

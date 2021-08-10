@@ -58,7 +58,7 @@ std::shared_ptr<cocos2d::Rect> Sumatran::getEntryCollisionRectangle(const cocos2
 }
 
 
-void Sumatran::attack() {
+void Sumatran::attack(float dt) {
     switch (this->attackState) {
 
         case AttackState::None: {
@@ -87,7 +87,7 @@ void Sumatran::attack() {
                 this->attackState = AttackState::Attacking;
             }
             else {
-                this->attackTimer -= 1.0f / 60.0f;
+                this->attackTimer -= dt;
             }
 
 

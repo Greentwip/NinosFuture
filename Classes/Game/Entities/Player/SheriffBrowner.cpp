@@ -1,4 +1,4 @@
-#include "VioletBrowner.h"
+#include "SheriffBrowner.h"
 
 #include "Windy/Entities/Player.h"
 
@@ -16,52 +16,43 @@
 
 using namespace game;
 
-void VioletBrowner::initConstraints() {
+void SheriffBrowner::initConstraints() {
     this->canWalk = true;
     this->canJump = true;
     this->canAttack = true;
     this->canClimb = true;
-    this->canCharge = true;
-    this->canSlide = true;
-    this->canDashJump = true;
+    this->canCharge = false;
+    this->canSlide = false;
+    this->canDashJump = false;
 }
 
-
-void VioletBrowner::setBaseName() {
-    this->baseName = "violet";
+void SheriffBrowner::setBaseName() {
+    this->baseName = "sheriff";
 }
 
-void VioletBrowner::loadActions() {
+void SheriffBrowner::loadActions() {
 
     std::vector<windy::AnimationAction> actionSet = {
-        windy::AnimationAction("stand",        "violet_stand",         true,   0.10f),
-        windy::AnimationAction("slide",        "violet_slide",         true,   0.10f),
-        windy::AnimationAction("climb",        "violet_climb",         true,   0.16f),
-        windy::AnimationAction("jump",         "violet_jump",          true,   0.10f),
-        windy::AnimationAction("dashjump",     "violet_dashjump",      true,   0.10f),
-        windy::AnimationAction("walk",         "violet_walk",          true,   0.12f),
-        windy::AnimationAction("standshoot",   "violet_standshoot",    true,   0.10f),
-        windy::AnimationAction("walkshoot",    "violet_walkshoot",     true,   0.12f),
-        windy::AnimationAction("jumpshoot",    "violet_jumpshoot",     true,   0.10f),
-        windy::AnimationAction("climbshoot",   "violet_climbshoot",    true,   0.10f),
-        windy::AnimationAction("hurt",         "violet_hurt",          true,   0.02f),
-        windy::AnimationAction("morph",        "violet_morph",         true,   0.10f)
+        windy::AnimationAction("intro",         "sheriff_intro",         false,   0.10f),
+        windy::AnimationAction("stand",         "sheriff_stand",         false,   0.10f),
+        windy::AnimationAction("jump",          "sheriff_jump",          false,   0.10f),
+        windy::AnimationAction("walk",          "sheriff_walk",          true,    0.12f),
+        windy::AnimationAction("standshoot",    "sheriff_standshoot",    false,   0.10f),
+        windy::AnimationAction("climb",         "sheriff_climb",         true,    0.16f),
+        windy::AnimationAction("hurt",          "sheriff_hurt",          false,   0.02f)
     };
 
     this->player->sprite->appendActionSet(actionSet, true, this->baseName);
 
-    this->brownerId = game::GameManager::getInstance().browners.violet->id;
+    this->brownerId = game::GameManager::getInstance().browners.sheriff->id;
 }
 
-void VioletBrowner::spawn() {
-    this->energy = -2;
+void SheriffBrowner::spawn() {
+    this->energy = -1;
 }
 
-void VioletBrowner::restoreWeaponEnergy(int amount) {
-    this->energy = -2;
-}
 
-void VioletBrowner::fire() {
+void SheriffBrowner::fire() {
 
     int bulletOffset = 12;
     int bulletPower = 1;

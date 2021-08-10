@@ -14,6 +14,7 @@
 #include "TeleportBrowner.h"
 #include "HelmetBrowner.h"
 #include "VioletBrowner.h"
+#include "SheriffBrowner.h"
 
 
 
@@ -75,6 +76,9 @@ bool GamePlayer::init()
 
     this->setupBrowners();
 
+    this->gui = dynamic_cast<GameGui*>(this->level->gui);
+
+
 
     return true;
 }
@@ -106,6 +110,9 @@ void GamePlayer::onRestart() {
 
     this->alive = true;
 
+    this->restoringHealth = false;
+    this->restoringWeaponEnergy = false;
+
     this->initVariables();
 }
 
@@ -121,6 +128,10 @@ void GamePlayer::onSpawn() {
     }
 }
 
+void GamePlayer::onPlayerExit() {
+    this->switchBrowner(GameManager::getInstance().browners.teleport->id);
+}
+
 void GamePlayer::switchBrowner(int brownerId) {
     for (int i = 0; i < this->browners.size(); ++i) {
         auto browner = this->browners.at(i);
@@ -134,15 +145,18 @@ void GamePlayer::setupBrowners() {
     auto teleportBrowner = windy::Browner::create<TeleportBrowner>(this->level, this);
     auto helmetBrowner = windy::Browner::create<HelmetBrowner>(this->level, this);
     auto violetBrowner = windy::Browner::create<VioletBrowner>(this->level, this);
-    
+    auto sheriffBrowner = windy::Browner::create<SheriffBrowner>(this->level, this);
+
 
     this->addChild(teleportBrowner);
     this->addChild(helmetBrowner);
     this->addChild(violetBrowner);
+    this->addChild(sheriffBrowner);
 
     this->browners.pushBack(teleportBrowner);
     this->browners.pushBack(helmetBrowner);
     this->browners.pushBack(violetBrowner);
+    this->browners.pushBack(sheriffBrowner);
 
     this->currentBrowner = teleportBrowner;
 
@@ -207,8 +221,46 @@ void GamePlayer::kill(bool killAnimation) {
 
 }
 
+void GamePlayer::restoreHealth(int amount) {
+    this->restoringHealth = true;
+    this->gui->restoreHealth(amount);
+
+}
+
+void GamePlayer::restoreWeaponEnergy(int amount) {
+    
+    this->restoringWeaponEnergy = true;
+
+    if (this->currentBrowner->brownerId != GameManager::getInstance().browners.teleport->id &&
+        this->currentBrowner->brownerId != GameManager::getInstance().browners.helmet->id &&
+        this->currentBrowner->brownerId != GameManager::getInstance().browners.violet->id) {
+        this->currentBrowner->restoreWeaponEnergy(amount);
+        this->gui->restoreWeapon(amount);
+    }
+
+
+}
+
+
 void GamePlayer::checkHealth() {
-    this->gui->healthBar->setValue(this->health);
+    
+    if (!this->restoringHealth) {
+        this->gui->healthBar->setValue(this->health);
+    }
+
+    if (!this->gui->fillingHealthBar) {
+        this->restoringHealth = false;
+    }
+
+    /*if (!this->restoringWeaponEnergy) {
+        this->gui->weaponBar->setValue(this->currentBrowner->energy);
+    }
+
+    if (!this->gui->fillingWeaponBar) {
+        this->restoringWeaponEnergy = false;
+    }*/
+
+    
 
     Player::checkHealth();
 }

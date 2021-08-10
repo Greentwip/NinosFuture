@@ -62,7 +62,7 @@ void CannonJoe::setOrientation() {
     
 }
 
-void CannonJoe::attack() {
+void CannonJoe::attack(float dt) {
     switch (this->attackState) {
 
         case AttackState::None: {
@@ -132,7 +132,7 @@ void CannonJoe::attack() {
 
             }
             else {
-                this->attackTimer -= 1.0f / 60.0f;
+                this->attackTimer -= dt;
             }
 
 
@@ -146,7 +146,7 @@ void CannonJoe::attack() {
                 this->attackState = AttackState::None;
             }
             else {
-                this->attackTimer -= 1.0f / 60.0f;
+                this->attackTimer -= dt;
             }
 
 

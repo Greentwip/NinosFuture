@@ -625,6 +625,8 @@
     <ClInclude Include="..\..\Classes\External\tao\pegtl\version.hpp" />
     <ClInclude Include="..\..\Classes\External\tao\pegtl\visit.hpp" />
     <ClInclude Include="..\..\Classes\Game\BossIntroScene.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Boss\GameBoss.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Boss\SheriffMan.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Common\CannonJoe.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Common\Lyric.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Common\Subeil.h" />
@@ -640,6 +642,7 @@
     <ClInclude Include="..\..\Classes\Game\Entities\Logic\GameLevelController.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Player\GamePlayer.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Player\HelmetBrowner.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Player\SheriffBrowner.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Player\TeleportBrowner.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Player\VioletBrowner.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Scenery\General\GameExplosion.h" />
@@ -673,6 +676,7 @@
     <ClInclude Include="..\..\Classes\Windy\Entities\Animation.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\BarMeter.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Block.h" />
+    <ClInclude Include="..\..\Classes\Windy\Entities\Boss.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Bounds.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Browner.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Browners.h" />
@@ -734,6 +738,8 @@
   <ItemGroup>
     <ClCompile Include="..\..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\..\Classes\Game\BossIntroScene.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Boss\GameBoss.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Boss\SheriffMan.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Common\CannonJoe.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Common\Lyric.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Common\Subeil.cpp" />
@@ -749,6 +755,7 @@
     <ClCompile Include="..\..\Classes\Game\Entities\Logic\GameLevelController.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Player\GamePlayer.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Player\HelmetBrowner.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Player\SheriffBrowner.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Player\TeleportBrowner.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Player\VioletBrowner.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Scenery\General\GameExplosion.cpp" />
@@ -780,6 +787,7 @@
     <ClCompile Include="..\..\Classes\Windy\DebugDrawNode.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Animation.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Block.cpp" />
+    <ClCompile Include="..\..\Classes\Windy\Entities\Boss.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Bounds.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Browner.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Explosion.cpp" />

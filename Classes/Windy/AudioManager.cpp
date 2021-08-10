@@ -31,10 +31,14 @@ std::map<windy::Sounds, std::string> windy::AudioManager::soundsKeyMap = {
 	{Sounds::Taban, "sounds/sfx_taban.mp3"},
 	{Sounds::PlayerHit, "sounds/sfx_hit.mp3"},
 	{Sounds::Death, "sounds/sfx_death.mp3"},
-	{Sounds::Teleport1, "sounds/sfx_teleport1.mp3"}
+	{Sounds::Teleport1, "sounds/sfx_teleport1.mp3"},
+	{Sounds::Teleport2, "sounds/sfx_teleport2.mp3"},
+	{Sounds::BossTheme, "sounds/bgm_boss.mp3"},
+	{Sounds::Victory, "sounds/sfx_victory.mp3"},
+	{Sounds::GetEnergy, "sounds/sfx_getenergy.mp3"}
 };
 
-int windy::AudioManager::playBgm(windy::Sounds resource, bool loop) {
+int windy::AudioManager::playBgm(windy::Sounds resource, bool loop, std::function<void()> callback) {
 	//cc.audio.current_track = path
 	//local id = ccexp.AudioEngine:play2d(path, loop, cc.bgm_volume_)
 	//cc.current_bgm_id_ = id
@@ -44,10 +48,18 @@ int windy::AudioManager::playBgm(windy::Sounds resource, bool loop) {
 
 	AudioManager::currentBgmId = AudioEngine::play2d(soundsKeyMap[resource], loop, Settings::bgmVolume);
 
+	if (callback) {
+		AudioEngine::setFinishCallback(
+			AudioManager::currentBgmId, 
+			[=](int, const std::string&) {
+			callback();
+		});
+	}
+
 	return AudioManager::currentBgmId;
 }
 
-int windy::AudioManager::playSfx(windy::Sounds resource, bool loop) {
+int windy::AudioManager::playSfx(windy::Sounds resource, bool loop, std::function<void()> callback) {
 	/*if (!playAlong) {
 	}*/
 	
@@ -58,6 +70,13 @@ int windy::AudioManager::playSfx(windy::Sounds resource, bool loop) {
 
 	AudioManager::currentSfxId = AudioEngine::play2d(soundsKeyMap[resource], loop, Settings::sfxVolume);
 
+	if (callback) {
+		AudioEngine::setFinishCallback(
+			AudioManager::currentSfxId,
+			[=](int, const std::string&) {
+				callback();
+		});
+	}
 
 	return -1;
 }

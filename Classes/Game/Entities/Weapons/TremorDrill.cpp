@@ -79,7 +79,7 @@ bool TremorDrill::init()
 
 void TremorDrill::normalizeCollisionRectangles() {
     auto worldPosition = this->getParent()->convertToWorldSpace(this->getPosition()); 
-    this->lastPosition = worldPosition;
+    this->lastCollisionPosition = worldPosition;
 
     for (int i = 0; i < this->collisionRectangles.size(); ++i) {
         this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(worldPosition, *this->collisionRectangles[i]);
@@ -116,8 +116,8 @@ void TremorDrill::disableAttack() {
 }
 
 void TremorDrill::recomputeCollisionRectangles() {
-    auto positionDifference = this->getParent()->getPosition() - lastPosition;
-    this->lastPosition = this->getParent()->getPosition();
+    auto positionDifference = this->getParent()->getPosition() - lastCollisionPosition;
+    this->lastCollisionPosition = this->getParent()->getPosition();
 
     for (int i = 0; i < this->collisionRectangles.size(); ++i) {
         float differenceX = positionDifference.x;
@@ -137,5 +137,7 @@ void TremorDrill::update(float dt) {
 }
 
 void TremorDrill::onUpdate(float dt) {
+
+    this->lastPosition = this->getParent()->getPosition();
 
 }

@@ -28,7 +28,7 @@ namespace game {
 
         virtual void setOrientation() override;
 
-        virtual void attack() override;
+        virtual void attack(float dt) override;
 
         virtual void onFinished() override;
 

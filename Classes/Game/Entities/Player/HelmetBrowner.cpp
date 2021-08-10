@@ -16,6 +16,17 @@
 
 using namespace game;
 
+void HelmetBrowner::initConstraints() {
+    this->canWalk = true;
+    this->canJump = true;
+    this->canAttack = true;
+    this->canClimb = true;
+    this->canCharge = true;
+    this->canSlide = true;
+    this->canDashJump = true;
+}
+
+
 void HelmetBrowner::setBaseName() {
     this->baseName = "helmet";
 }
@@ -42,7 +53,11 @@ void HelmetBrowner::loadActions() {
 }
 
 void HelmetBrowner::spawn() {
-    this->energy = -1;
+    this->energy = -2;
+}
+
+void HelmetBrowner::restoreWeaponEnergy(int amount) {
+    this->energy = -2;
 }
 
 

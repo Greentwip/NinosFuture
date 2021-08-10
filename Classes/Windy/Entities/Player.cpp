@@ -51,17 +51,21 @@ void Player::initVariables() {
     this->slideTimer = 0;
     this->climbCounter = 0;
 
-    this->exitSpeed = 4;
+    this->teleportTransitionSpeed = -4;
 
     this->alive = true;
     this->canMove = false;
     this->spawning = true;
 
-    this->health = 28;
+    this->atIntro = false;
+    this->atExit = false;
+
+    this->maxHealth = 28;
+    this->health = this->maxHealth;
 
     this->largeSlide = false;
 
-    this->speed = cocos2d::Point(0, -4);
+    this->speed = cocos2d::Point(0, this->teleportTransitionSpeed);
 
     this->cameraShiftSpeedBackup = false;
     this->shiftSpeedBackup = cocos2d::Point(0, 0);
@@ -85,7 +89,7 @@ void Player::onSpawn() {
 void Player::onCollisionEnter(Logical* collision) {
 
     if (collision->getTag() == GameTags::General::Door) {
-        this->level->triggeringDoor = dynamic_cast<Door*>(collision);
+        //this->level->triggeringDoor = dynamic_cast<Door*>(collision);
     }
     else if (collision->getTag() == GameTags::General::Ladder) {
         this->activeLadder = dynamic_cast<Ladder*>(collision);
@@ -196,11 +200,64 @@ void Player::stun(int power) {
     }
 }
 
+bool Player::attackCondition() {
+    return Input::keyPressed(InputKey::B) && this->currentBrowner->canAttack;
+}
+
+bool Player::chargeCondition() {
+    return Input::keyDown(InputKey::B) && this->currentBrowner->canCharge;
+}
+
+bool Player::dischargeCondition() {
+    return !Input::keyDown(InputKey::B) && this->currentBrowner->canCharge;
+}
+
+bool Player::walkLeftCondition() {
+    return Input::keyDown(InputKey::Left) && !Input::keyDown(InputKey::Right) && this->currentBrowner->canWalk;
+}
+
+bool Player::walkRightCondition() {
+    return Input::keyDown(InputKey::Right) && !Input::keyDown(InputKey::Left) && this->currentBrowner->canWalk;
+}
+
+bool Player::jumpCondition() {
+    return Input::keyPressed(InputKey::A) && !Input::keyDown(InputKey::Up) && !Input::keyDown(InputKey::Down) && this->currentBrowner->canJump;
+}
+
+bool Player::stopJumpCondition() {
+    return !Input::keyDown(InputKey::A) && this->currentBrowner->canJump;
+}
+
+bool Player::dashJumpCondition() {
+    return Input::keyPressed(InputKey::A) && Input::keyDown(InputKey::Up) && !Input::keyDown(InputKey::Down) && this->currentBrowner->canDashJump;
+}
+
+bool Player::slideCondition() {
+    return Input::keyPressed(InputKey::A) && Input::keyDown(InputKey::Down) && this->currentBrowner->canSlide;
+}
+
+bool Player::slideLeftCondition() {
+    return Input::keyPressed(InputKey::LB) && this->currentBrowner->canSlide;
+}
+
+bool Player::slideRightCondition() {
+    return Input::keyPressed(InputKey::RB) && this->currentBrowner->canSlide;
+}
+
+bool Player::climbUpCondition() {
+    return Input::keyDown(InputKey::Up) && !Input::keyDown(InputKey::Down) && this->currentBrowner->canClimb;
+}
+
+bool Player::climbDownCondition() {
+    return Input::keyDown(InputKey::Down) && !Input::keyDown(InputKey::Up) && this->currentBrowner->canClimb;
+}
+
+
 void Player::walk() {
 
     if (!this->climbing && !this->sliding && !this->stunned) {
-        bool walkLeftCondition = Input::keyDown(InputKey::Left) && !Input::keyDown(InputKey::Right);
-        bool walkRightCondition = Input::keyDown(InputKey::Right) && !Input::keyDown(InputKey::Left);
+        bool walkLeftCondition = this->walkLeftCondition();
+        bool walkRightCondition = this->walkRightCondition();
 
         if (walkRightCondition) {
             this->sprite->setFlippedX(false);
@@ -209,7 +266,7 @@ void Player::walk() {
         }
         else if (walkLeftCondition) {
             this->sprite->setFlippedX(true);
-            this->speed.x = static_cast<float>(-this->walkSpeed);
+            this->speed.x = static_cast<float>(this->walkSpeed * -1);
             this->walking = true;
         }
         else {
@@ -224,12 +281,9 @@ void Player::walk() {
 
 void Player::jump() {
 
-    bool jumpCondition =
-        Input::keyPressed(InputKey::A) &&
-        !Input::keyDown(InputKey::Up) &&
-        !Input::keyDown(InputKey::Down);
+    bool jumpCondition = this->jumpCondition();
 
-    bool stopJumpCondition = !Input::keyDown(InputKey::A);
+    bool stopJumpCondition = this->stopJumpCondition();
 
     if (jumpCondition && this->onGround && !this->sliding && !this->stunned) {
         this->speed.y = static_cast<float>(this->jumpSpeed);
@@ -242,13 +296,11 @@ void Player::jump() {
     }
 }
 
-void Player::dashJump() {
-    bool jumpCondition =
-        Input::keyPressed(InputKey::A) &&
-        Input::keyDown(InputKey::Up) &&
-        !Input::keyDown(InputKey::Down);
 
-    bool stopJumpCondition = !Input::keyDown(InputKey::A);
+void Player::dashJump() {
+    bool jumpCondition = this->dashJumpCondition();
+
+    bool stopJumpCondition = this->stopJumpCondition();
 
     if (jumpCondition && this->onGround && !this->sliding && !this->stunned) {
         this->speed.y = static_cast<float>(this->dashJumpSpeed);
@@ -267,15 +319,13 @@ void Player::dashJump() {
 }
 
 void Player::slide() {
-    bool slideCondition =
-        Input::keyPressed(InputKey::A) &&
-        Input::keyDown(InputKey::Down);
+    bool slideCondition = this->slideCondition();
+        
 
-    bool leftSlideCondition =
-        Input::keyPressed(InputKey::LB);
+    bool leftSlideCondition = this->slideLeftCondition();
+        
 
-    bool rightSlideCondition =
-        Input::keyPressed(InputKey::RB);
+    bool rightSlideCondition = this->slideRightCondition();
 
     if (leftSlideCondition && this->onGround && !this->sliding && !this->stunned && !this->attacking) {
         if (!(this->walking && !this->sprite->isFlippedX())) {
@@ -323,11 +373,11 @@ void Player::slide() {
             this->sliding = true;
             this->largeSlide = true;
 
-            if (Input::keyDown(InputKey::Left) && !Input::keyDown(InputKey::Right)) {
+            if (this->walkLeftCondition()) {
                 this->sprite->setFlippedX(true);
-                this->speed.x = static_cast<float>(-this->slideSpeed);
+                this->speed.x = static_cast<float>(this->slideSpeed * -1);
             }
-            else if (Input::keyDown(InputKey::Right) && !Input::keyDown(InputKey::Left)) {
+            else if (this->walkRightCondition()) {
                 this->sprite->setFlippedX(false);
                 this->speed.x = static_cast<float>(this->slideSpeed);
             }
@@ -406,11 +456,11 @@ void Player::climb() {
     int climbDirection = -2;
 
     if (this->activeLadder != nullptr && !this->sliding && !this->stunned) {
-        if (Input::keyDown(InputKey::Up) && !Input::keyDown(InputKey::Down)) {
+        if (this->climbUpCondition()) {
             climbDirection = 1;
             this->climbCounter += 1;
         }
-        else if (Input::keyDown(InputKey::Down) && !Input::keyDown(InputKey::Up)) {
+        else if (this->climbDownCondition()) {
             climbDirection = -1;
             this->climbCounter += 1;
         }
@@ -549,7 +599,7 @@ void Player::move() {
         }
     }
 
-    if (!this->level->paused()) {
+    if (!this->level->getPaused()) {
         this->walk();
         this->jump();
         this->dashJump();
@@ -599,6 +649,20 @@ void Player::explode(float angleOffset) {
 void Player::kill(bool killAnimation) {
 }
 
+void Player::restoreHealth(int amount) {
+    this->health += amount;
+
+    if (this->health >= this->maxHealth) {
+        this->health = this->maxHealth;
+    }
+}
+
+void Player::restoreWeaponEnergy(int amount) {
+    
+    //this->currentBrowner->restoreWeaponEnergy(amount);
+    
+}
+
 void Player::checkHealth() {
     bool killAnimation = true;
 
@@ -611,7 +675,7 @@ void Player::checkHealth() {
     }
 
     if (this->health <= 0 && this->alive) {
-        this->level->pause(true);
+        this->level->setPaused(true);
 
         this->currentBrowner->deactivate();
 
@@ -632,59 +696,95 @@ void Player::triggerActions() {
 
     if (this->alive) {
 
-        if (!this->stunned) {
-            if (this->onGround) {
-                if (this->walking) {
-                    if (this->attacking) {
-                        this->currentBrowner->runAction("walkshoot");
+        if (this->atIntro) {
+            this->currentBrowner->runAction("intro");
+        }
+        else {
+            if (!this->stunned) {
+                if (this->onGround) {
+                    if (this->walking) {
+                        if (this->attacking) {
+                            this->currentBrowner->runAction("walkshoot");
+                        }
+                        else {
+                            this->currentBrowner->runAction("walk");
+                        }
                     }
                     else {
-                        this->currentBrowner->runAction("walk");
+                        if (this->attacking) {
+                            this->currentBrowner->runAction("standshoot");
+                        }
+                        else if (this->sliding) {
+                            this->currentBrowner->runAction("slide");
+                        }
+                        /*else if (this->morphing) {
+                            this->currentBrowner->runAction("morph");
+                        }*/
+                        else {
+                            this->currentBrowner->runAction("stand");
+                        }
                     }
                 }
                 else {
-                    if (this->attacking) {
-                        this->currentBrowner->runAction("standshoot");
+                    if (this->climbing) {
+                        if (this->attacking) {
+                            this->currentBrowner->runAction("climbshoot");
+                        }
+                        else {
+                            this->currentBrowner->runAction("climb");
+                        }
                     }
-                    else if (this->sliding) {
-                        this->currentBrowner->runAction("slide");
-                    }
-                    /*else if (this->morphing) {
-                        this->currentBrowner->runAction("morph");
-                    }*/
                     else {
-                        this->currentBrowner->runAction("stand");
+                        if (this->attacking) {
+                            this->currentBrowner->runAction("jumpshoot");
+                        }
+                        else {
+                            if (this->dashJumping) {
+                                this->currentBrowner->runAction("dashjump");
+                            }
+                            else if (this->jumping) {
+                                this->currentBrowner->runAction("jump");
+                            }
+                        }
                     }
                 }
             }
             else {
-                if (this->climbing) {
-                    if (this->attacking) {
-                        this->currentBrowner->runAction("climbshoot");
-                    }
-                    else {
-                        this->currentBrowner->runAction("climb");
-                    }
-                }
-                else {
-                    if (this->attacking) {
-                        this->currentBrowner->runAction("jumpshoot");
-                    }
-                    else {
-                        if (this->dashJumping) {
-                            this->currentBrowner->runAction("dashjump");
-                        }
-                        else if (this->jumping) {
-                            this->currentBrowner->runAction("jump");
-                        }
-                    }
-                }
+                this->currentBrowner->runAction("hurt");
             }
         }
-        else {
-            this->currentBrowner->runAction("hurt");
-        }
+
+        
     }
+
+}
+
+void Player::cancelAttacks() {
+    this->attacking = false;
+    this->charging = false;
+    this->currentBrowner->chargePower = "low";
+
+    this->currentBrowner->chargeTimer = 0;
+    this->currentBrowner->attackTimer = 0;
+
+    this->sprite->stopAllActionsByTag(GameTags::Actions::Color);
+}
+
+void Player::exit() {
+    this->atExit = true;
+
+    this->ignoreGravity = true;
+    this->ignoreLandscapeCollision = true;
+
+    this->cancelAttacks();
+
+
+    AudioManager::playSfx(Sounds::Teleport2);
+    
+    this->onPlayerExit();
+}
+
+void Player::onPlayerExit() {
 
 }
 
@@ -696,11 +796,25 @@ void Player::onUpdate(float dt) {
         this->explode(22.5f);
     }*/
 
-    this->triggerActions();
+    if (this->canMove) {
+        if (this->level->getPaused()) {
+            if ((this->level->camera->shiftDirection == CameraFlags::CameraShift::ShiftLeft ||
+                this->level->camera->shiftDirection == CameraFlags::CameraShift::ShiftRight) &&
+                (this->onGround && !this->sliding && !this->stunned && !this->attacking)) {
+                auto currentPositionDifference = this->getPosition() - lastPosition;
+
+                auto positionDifference = currentPositionDifference + currentPositionDifference;
+
+                if (positionDifference.x != 0) {
+                    this->walking = true;
+                }
+            }
+            
+        }
+    }
 
     if (this->canMove) {
-
-        if (this->level->paused()) {
+        if (this->level->getPaused()) {
             if (this->level->camera->shiftDirection != CameraFlags::CameraShift::ShiftNone) {
                 if (!cameraShiftSpeedBackup) {
                     cameraShiftSpeedBackup = true;
@@ -723,7 +837,7 @@ void Player::onUpdate(float dt) {
         }
         else */
         if (this->alive) {
-            if (!this->level->paused()) {
+            if (!this->level->getPaused()) {
 
                 if (cameraShiftSpeedBackup) {
                     cameraShiftSpeedBackup = false;
@@ -746,36 +860,53 @@ void Player::onUpdate(float dt) {
                     this->climbShift();
                 }
 
-                if ((this->level->camera->shiftDirection == CameraFlags::CameraShift::ShiftLeft ||
+                /*if ((this->level->camera->shiftDirection == CameraFlags::CameraShift::ShiftLeft ||
                     this->level->camera->shiftDirection == CameraFlags::CameraShift::ShiftRight) &&
                     (this->onGround && !this->sliding && !this->stunned && !this->attacking)) {
                     this->currentBrowner->runAction("walk");
-                }
+                }*/
             }
         }
     }
     else {
-        if (!this->demoMode) {
-            if (!this->atExit) {
-                // solve collisions, old code, remove
-                //this->solveCollisions();
-                this->speed.x = 0;
+        this->speed.x = 0;
 
-                if (!this->spawning) {
-                    this->speed.y = 0;
-                }
-                
+        this->sliding = false;
+        this->walking = false;
+
+        if (this->contacts[CollisionContact::Down]) {
+            this->jumping = false;
+            this->dashJumping = false;
+
+            if (!this->onGround) {
+                this->onGround = true;
+                AudioManager::playSfx(Sounds::Land);
             }
-            else {
-                this->speed.x = 0;
-                this->speed.y = this->exitSpeed;
-            }
+            
+        }
+
+        this->slideTimer = 0;
+
+    }
+
+    this->triggerActions();
+
+
+    if (GeometryExtensions::rectIntersectsRect(*this->level->bounds->collisionBox, *this->collisionBox)) {
+        this->screenState = ScreenState::OnScreen;
+    }
+    else {
+        this->screenState = ScreenState::OffScreen;
+    }
+
+    if (this->atExit) {
+        if (this->getPositionY() >= this->level->bounds->collisionBox->getMaxY() + this->sprite->getContentSize().height) {
+            this->speed.x = 0;
+            this->speed.y = 0;
         }
         else {
-            if (this->atExit) {
-                this->speed.x = 0;
-                this->speed.y = this->exitSpeed;
-            }
+            this->speed.x = 0;
+            this->speed.y = this->teleportTransitionSpeed * -1;
         }
     }
 

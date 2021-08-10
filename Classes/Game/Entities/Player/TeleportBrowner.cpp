@@ -10,6 +10,16 @@
 
 using namespace game;
 
+void TeleportBrowner::initConstraints() {
+    this->canWalk = false;
+    this->canJump = true;
+    this->canAttack = false;
+    this->canClimb = false;
+    this->canCharge = false;
+    this->canSlide = false;
+    this->canDashJump = false;
+}
+
 void TeleportBrowner::setBaseName() {
     this->baseName = "teleport";
 }
@@ -27,9 +37,12 @@ void TeleportBrowner::loadActions() {
 }
 
 void TeleportBrowner::spawn() {
-    this->energy = -1;
+    this->energy = -2;
 }
 
+void TeleportBrowner::restoreWeaponEnergy(int amount) {
+    this->energy = -2;
+}
 
 void TeleportBrowner::fire() {
 

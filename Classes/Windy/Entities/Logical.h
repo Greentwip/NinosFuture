@@ -91,6 +91,7 @@ namespace windy {
         bool ignoreLandscapeCollision;
 
     protected:
+        cocos2d::Point lastCollisionPosition;
         cocos2d::Point lastPosition;
         std::vector<std::shared_ptr<cocos2d::Rect>> collisionRectangles;
 

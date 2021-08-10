@@ -28,6 +28,8 @@ namespace windy {
 
         virtual void spawn();
 
+        virtual void restoreWeaponEnergy(int amount);
+
         void activate();
 
         void deactivate();
@@ -72,16 +74,17 @@ namespace windy {
         bool canCharge;
 
         int energy;
+        int maxEnergy;
 
         std::string chargePower;
 
-       
+        int chargeTimer;
+        int attackTimer;
+
     protected:
         Level* level;
         Player* player;
 
-        int chargeTimer;
-        int attackTimer;
 
         bool tintA;
         bool tintB;

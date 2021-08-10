@@ -63,12 +63,14 @@ bool EnergyBar::init()
 
 void EnergyBar::setValue(int value) {
 
+    value = value - 1;
+
     if (value != this->meter && value > -2) {
         if (!this->isVisible()) {
             this->setVisible(true);
         }
 
-        if (value <= 0) {
+        if (value < 0) {
             for (int i = 0; i < this->cells.size(); ++i) {
                 this->cells.at(i)->setVisible(false);
             }
@@ -93,6 +95,10 @@ void EnergyBar::setValue(int value) {
         this->meter = value;
     }
     else if(value <= -2) {
+        for (int i = 0; i < this->cells.size(); ++i) {
+            this->cells.at(i)->setVisible(false);
+        }
+
         this->setVisible(false);
         this->meter = value;
     }

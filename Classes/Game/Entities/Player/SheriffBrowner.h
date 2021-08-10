@@ -1,5 +1,5 @@
-#ifndef __GAME_TELEPORT_BROWNER_H__
-#define __GAME_TELEPORT_BROWNER_H__
+#ifndef __GAME_SHERIFF_BROWNER_H__
+#define __GAME_SHERIFF_BROWNER_H__
 
 #include <string>
 
@@ -8,7 +8,7 @@
 #include "Windy/Entities/Browner.h"
 
 namespace game {
-    class TeleportBrowner : public windy::Browner
+    class SheriffBrowner : public windy::Browner
     {
     public:
         virtual void initConstraints() override;
@@ -16,7 +16,6 @@ namespace game {
         virtual void loadActions() override;
         virtual void spawn() override;
         virtual void fire() override;
-        virtual void restoreWeaponEnergy(int amount) override;
     };
 }
 

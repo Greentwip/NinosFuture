@@ -15,8 +15,31 @@ namespace game {
     public:
         virtual void build() override;
 
+        void restoreHealth(int amount);
+        void restoreWeapon(int amount);
+        void restoreBossHealth(int amount);
+
+        virtual void onUpdate(float dt) override;
+
+    
         EnergyBar* healthBar;
         EnergyBar* weaponBar;
+        EnergyBar* bossHealthBar;
+
+    public:
+        bool fillingHealthBar;
+        bool fillingWeaponBar;
+        bool fillingBossHealthBar;
+
+    private:
+        EnergyBar* fillTarget;
+
+        float fillTimer;
+        float fillTimeDelay;
+
+        int fillAmount;
+
+        bool filling;
     };
 }
 

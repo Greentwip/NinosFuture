@@ -23,9 +23,13 @@
 #include "Game/Entities/Enemies/Sheriff/Barrel.h"
 #include "Game/Entities/Enemies/Sheriff/JetBird.h"
 
+#include "Game/Entities/Boss/SheriffMan.h"
+
 #include "Game/Entities/Items/GameItem.h"
 
 #include "Game/Entities/Player/GamePlayer.h"
+#include "Game/Entities/Boss/GameBoss.h"
+
 #include "Game/Entities/Special/GameVerticalDoor.h"
 #include "Game/Entities/Special/GameHorizontalDoor.h"
 
@@ -96,6 +100,7 @@ bool GameScene::init()
 
     windy::EntityFactory::getInstance().clear();
 
+    windy::Logical::preloadResources<GameBoss>();
     windy::Logical::preloadResources<GamePlayer>();
     windy::Logical::preloadResources<GameItem>();
     windy::Logical::preloadResources<GameVerticalDoor>();
@@ -129,6 +134,7 @@ bool GameScene::init()
         windy::Logical::preloadResources<Sumatran>();
         windy::Logical::preloadResources<DirectionalBullet>();
 
+        windy::EntityFactory::getInstance().registerType<SheriffMan>("sheriff");
         windy::EntityFactory::getInstance().registerType<Tremor>("tremor");
         windy::EntityFactory::getInstance().registerType<Cow>("cow");
         windy::EntityFactory::getInstance().registerType<Barrel>("barrel");
@@ -137,6 +143,7 @@ bool GameScene::init()
         windy::EntityFactory::getInstance().registerType<Taban>("taban");
         windy::EntityFactory::getInstance().registerType<Sumatran>("sumatran");
 
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<SheriffMan>("sheriff");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Tremor>("tremor");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Cow>("cow");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Barrel>("barrel");

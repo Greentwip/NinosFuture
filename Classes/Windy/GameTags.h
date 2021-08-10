@@ -9,6 +9,7 @@ namespace windy {
 			Player = 1,
 			Item,
 			Enemy,
+			Boss,
 			Block,
 			Camera,
 			Scroll,
@@ -21,7 +22,7 @@ namespace windy {
 		};
 
 		enum Weapon {
-			WeaponPlayer = 13,
+			WeaponPlayer = 14,
 			WeaponEnemy,
 			WeaponNone
 		};
@@ -29,28 +30,28 @@ namespace windy {
 		class Logic {
 		public:
 			enum Checkpoint {
-				First = 16,
+				First = 17,
 				Last
 			};
 		};
 		
 		enum Actions {
-			Animation = 18,
+			Animation = 19,
 			Color,
-			Visibility = 21
+			Visibility 
 		};
 
 		enum Camera {
-			FreeScroll = 20
+			FreeScroll = 22
 		};
 
 		enum Gui {
-			Interface = 22,
+			Interface = 23,
 			BarMeter
 		};
 
 		enum Scenery {
-			Particle = 24,
+			Particle = 25,
 			SpriteAnimation
 		};
 		

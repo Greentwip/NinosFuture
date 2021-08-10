@@ -63,7 +63,7 @@ std::shared_ptr<cocos2d::Rect> Cow::getEntryCollisionRectangle(const cocos2d::Po
     return Logical::buildEntryCollisionRectangle(position, size, CowResources::armaturePath, "cow");
 }
 
-void Cow::attack() {
+void Cow::attack(float dt) {
     switch (this->attackState) {
 
         case AttackState::Scanning: {
@@ -85,7 +85,7 @@ void Cow::attack() {
                 this->attackState = AttackState::Attacking;
             }
             else {
-                morphTimer -= 1.0f / 60.0f;
+                morphTimer -= dt;
             }
         }
         break;
@@ -133,7 +133,7 @@ void Cow::attack() {
 
             }
             else {
-                this->attackTimer -= 1.0f / 60.0f;
+                this->attackTimer -= dt;
             }
 
 
@@ -148,7 +148,7 @@ void Cow::attack() {
                 this->attackState = AttackState::Attacking;
             }
             else {
-                this->attackTimer -= 1.0f / 60.0f;
+                this->attackTimer -= dt;
             }
 
 

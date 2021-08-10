@@ -31,6 +31,7 @@ std::shared_ptr<cocos2d::Rect> Logical::buildEntryCollisionRectangle(const cocos
 
 void Logical::setup(const cocos2d::Point& position, const cocos2d::Size& size) {
     this->setPosition(position);
+    this->lastCollisionPosition = position;
     this->lastPosition = position;
     this->collisionRectangles.push_back(std::make_shared<cocos2d::Rect>(position.x - size.width * 0.5f, position.y - size.height * 0.5f, size.width, size.height));
     this->collisionBox = this->collisionRectangles[0];
@@ -100,8 +101,8 @@ void Logical::onExit()
 }
 
 void Logical::recomputeCollisionRectangles() {
-    auto positionDifference = this->getPosition() - lastPosition;
-    lastPosition = this->getPosition();
+    auto positionDifference = this->getPosition() - lastCollisionPosition;
+    lastCollisionPosition = this->getPosition();
 
     for (int i = 0; i < this->collisionRectangles.size(); ++i) {
         float differenceX = positionDifference.x;
@@ -144,4 +145,6 @@ void Logical::update(float dt)
     recomputeCollisionRectangles();
 
     this->onUpdate(dt);
+
+    this->lastPosition = this->getPosition();
 }

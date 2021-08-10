@@ -57,7 +57,7 @@ std::shared_ptr<cocos2d::Rect> Subeil::getEntryCollisionRectangle(const cocos2d:
     return Logical::buildEntryCollisionRectangle(position, size, SubeilResources::armaturePath, "subeil");
 }
 
-void Subeil::attack() {
+void Subeil::attack(float dt) {
     switch (this->attackState) {
 
         case AttackState::Scanning: {

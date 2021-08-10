@@ -15,6 +15,8 @@ namespace windy {
 
         virtual void restart() = 0;
 
+        virtual void succeed() = 0;
+
         virtual void onUpdate(float dt) override;
     };
 }

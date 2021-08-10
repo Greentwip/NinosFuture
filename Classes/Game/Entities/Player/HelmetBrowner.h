@@ -11,10 +11,12 @@ namespace game {
     class HelmetBrowner : public windy::Browner
     {
     public:
+        virtual void initConstraints() override;
         virtual void setBaseName() override;
         virtual void loadActions() override;
         virtual void spawn() override;
         virtual void fire() override;
+        virtual void restoreWeaponEnergy(int amount) override;
     };
 }
 

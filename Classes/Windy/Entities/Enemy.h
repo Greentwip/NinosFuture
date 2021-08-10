@@ -28,7 +28,7 @@ namespace windy {
 
         virtual void onDefeated() = 0;
 
-        virtual void attack() = 0;
+        virtual void attack(float dt) = 0;
 
         virtual void onCollisionEnter(Logical* collision) override;
 

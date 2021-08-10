@@ -9,7 +9,6 @@ namespace windy {
     class Sprite;
     class Ladder;
     class Browner;
-    class Bullet;
 }
 
 
@@ -17,9 +16,17 @@ namespace windy {
     class Player : public Logical
     {
     public:
+        enum ScreenState {
+            OnScreen,
+            OffScreen
+        };
+
+    public:
         virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
 
         virtual void setupBrowners() = 0;
+
+        virtual void onPlayerExit();
 
         virtual void initVariables();
 
@@ -34,6 +41,30 @@ namespace windy {
         virtual void onCollisionExit(Logical* collision) override;
 
         virtual void stun(int power);
+
+        virtual bool attackCondition(); 
+        virtual bool chargeCondition(); 
+        virtual bool dischargeCondition(); 
+
+        virtual bool walkLeftCondition();
+
+        virtual bool walkRightCondition();
+
+        virtual bool jumpCondition();
+
+        virtual bool stopJumpCondition();
+
+        virtual bool dashJumpCondition();
+
+        virtual bool slideCondition();
+
+        virtual bool slideLeftCondition();
+
+        virtual bool slideRightCondition();
+
+        virtual bool climbUpCondition();
+
+        virtual bool climbDownCondition();
 
         virtual void walk();
 
@@ -53,14 +84,23 @@ namespace windy {
 
         virtual void kill(bool killAnimation);
 
+        virtual void restoreHealth(int amount);
+        virtual void restoreWeaponEnergy(int amount);
+
         virtual void checkHealth();
 
         virtual void triggerActions();
 
+        void cancelAttacks();
+
+        void exit();
+
         virtual void onUpdate(float dt) override;
 
+
+
     public:
-        bool atBattleEnd;
+        bool atIntro;
         bool atExit;
         bool demoMode;
         bool canMove;
@@ -70,6 +110,7 @@ namespace windy {
         int maxFallSpeed;
         int bubbleTimer;
         int health;
+        int maxHealth;
         bool alive;
         bool holeDoor;
         bool inWater;
@@ -104,12 +145,13 @@ namespace windy {
 
         Sprite* sprite;
 
+        ScreenState screenState;
+
     private:
         cocos2d::Point shiftSpeedBackup;
         bool cameraShiftSpeedBackup;
 
-        float exitSpeed;
-
+        float teleportTransitionSpeed;
 
         friend class Browner;
     };
