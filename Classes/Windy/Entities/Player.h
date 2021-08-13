@@ -25,6 +25,8 @@ namespace windy {
         virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
 
         virtual void setupBrowners() = 0;
+        
+        virtual Browner* getBrowner(int brownerId) = 0;
 
         virtual void onPlayerExit();
 
@@ -111,6 +113,7 @@ namespace windy {
         int bubbleTimer;
         int health;
         int maxHealth;
+        int maxWeaponEnergy;
         bool alive;
         bool holeDoor;
         bool inWater;

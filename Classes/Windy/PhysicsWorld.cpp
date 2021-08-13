@@ -240,7 +240,10 @@ void PhysicsWorld::update(float dt)
         auto entityPosition = entity->getPosition();
 
         if (!entity->ignoreGravity) {
-            entity->speed.y += this->gravity;
+            if (!this->level->getPaused()) {
+                entity->speed.y += this->gravity;
+            }
+            
 
             if (entity->speed.y <= this->maxFallSpeed) {
                 entity->speed.y = this->maxFallSpeed;
@@ -284,6 +287,10 @@ void PhysicsWorld::update(float dt)
         if (entity->contacts[CollisionContact::Left] || entity->contacts[CollisionContact::Right]) {
             entity->speed.x = 0;
         }
+    }
+
+    if (this->level->getPaused()) {
+        return;
     }
 
     for (int i = 0; i < collidingEntities.size(); ++i) {

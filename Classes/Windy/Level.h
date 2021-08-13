@@ -34,7 +34,7 @@ namespace windy {
         virtual bool init();
 
         bool getPaused();
-        void setPaused(bool isPaused);
+        void setPaused(bool isPaused, bool freezePlayer = false);
 
         void restart();
 

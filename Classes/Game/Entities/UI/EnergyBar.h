@@ -21,9 +21,13 @@ namespace game {
 
         virtual int getValue() override;
 
+        int getMaxValue();
+
     private:
         windy::Sprite* sprite;
         cocos2d::Vector<windy::Sprite*> cells;
+
+        int maxValue;
     };
 }
 

@@ -576,7 +576,7 @@ void Input::onAxis(float axisX, float axisY) {
 void Input::onEnter()
 {
     Node::onEnter();
-    cocos2d::Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
+    cocos2d::Director::getInstance()->getScheduler()->scheduleUpdate(this, 4096, false);
 }
 
 

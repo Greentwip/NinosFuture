@@ -1,6 +1,8 @@
 #ifndef __GAME_GUI_H__
 #define __GAME_GUI_H__
 
+#include <functional>
+
 #include "cocos2d.h"
 
 #include "Windy/Entities/Gui.h"
@@ -18,6 +20,7 @@ namespace game {
         void restoreHealth(int amount);
         void restoreWeapon(int amount);
         void restoreBossHealth(int amount);
+        void restoreGenericBar(EnergyBar* bar, int amount, std::function<void()> onRestoreCallback);
 
         virtual void onUpdate(float dt) override;
 
@@ -31,6 +34,8 @@ namespace game {
         bool fillingWeaponBar;
         bool fillingBossHealthBar;
 
+        bool fillingGenericBar;
+
     private:
         EnergyBar* fillTarget;
 
@@ -40,6 +45,8 @@ namespace game {
         int fillAmount;
 
         bool filling;
+
+        std::function<void()> onRestoreCallback;
     };
 }
 

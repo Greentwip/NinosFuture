@@ -71,6 +71,8 @@ namespace windy {
         bool canSlide;
         bool canClimb;
         bool canAttack;
+        bool canWalkShoot;
+        bool canJumpShoot;
         bool canCharge;
 
         int energy;
@@ -112,6 +114,7 @@ windy::Browner* windy::Browner::create(windy::Level* level, windy::Player* playe
         browner->initVariables();
         browner->setBaseName();
         browner->loadActions();
+        browner->spawn();
 
         return browner;
     }

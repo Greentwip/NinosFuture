@@ -15,6 +15,7 @@ namespace game {
         virtual void setBaseName() override;
         virtual void loadActions() override;
         virtual void spawn() override;
+        virtual void attack() override;
         virtual void fire() override;
     };
 }

@@ -50,6 +50,7 @@ namespace windy {
 		BossTheme,
 		Victory,
 		GetEnergy,
+		Error,
 		NONE
 	};
 

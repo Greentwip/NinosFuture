@@ -133,12 +133,38 @@ void GamePlayer::onPlayerExit() {
 }
 
 void GamePlayer::switchBrowner(int brownerId) {
+    
+    if (this->currentBrowner != nullptr) {
+        this->currentBrowner->deactivate();
+    }
+
     for (int i = 0; i < this->browners.size(); ++i) {
         auto browner = this->browners.at(i);
         if (browner->brownerId == brownerId) {
             this->currentBrowner = browner;
         }
     }
+
+    this->currentBrowner->activate();
+
+    if (this->currentBrowner->brownerId == GameManager::getInstance().browners.teleport->id ||
+        this->currentBrowner->brownerId == GameManager::getInstance().browners.helmet->id ||
+        this->currentBrowner->brownerId == GameManager::getInstance().browners.violet->id) {
+
+        this->gui->weaponBar->setVisible(false);
+    }
+    else {
+        this->gui->weaponBar->setVisible(true);
+    }
+
+    this->charging = false;
+    this->currentBrowner->chargeTimer = 0;
+    this->currentBrowner->chargePower = "low";
+
+    this->vulnerable = true;
+
+    this->triggerActions();
+
 }
 
 void GamePlayer::setupBrowners() {
@@ -161,6 +187,19 @@ void GamePlayer::setupBrowners() {
     this->currentBrowner = teleportBrowner;
 
     this->currentBrowner->runAction("jump");
+}
+
+windy::Browner* GamePlayer::getBrowner(int brownerId) {
+    windy::Browner* brownerFound = nullptr;
+    for (int i = 0; i < this->browners.size(); ++i) {
+        auto browner = this->browners.at(i);
+        if (browner->brownerId == brownerId) {
+            brownerFound = browner;
+            break;
+        }
+    }
+
+    return brownerFound;
 }
 
 void GamePlayer::kill(bool killAnimation) {
@@ -252,13 +291,13 @@ void GamePlayer::checkHealth() {
         this->restoringHealth = false;
     }
 
-    /*if (!this->restoringWeaponEnergy) {
+    if (!this->restoringWeaponEnergy) {
         this->gui->weaponBar->setValue(this->currentBrowner->energy);
     }
 
     if (!this->gui->fillingWeaponBar) {
         this->restoringWeaponEnergy = false;
-    }*/
+    }
 
     
 

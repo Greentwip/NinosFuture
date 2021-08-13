@@ -20,6 +20,8 @@ void SheriffBrowner::initConstraints() {
     this->canWalk = true;
     this->canJump = true;
     this->canAttack = true;
+    this->canWalkShoot = false;
+    this->canJumpShoot = false;
     this->canClimb = true;
     this->canCharge = false;
     this->canSlide = false;
@@ -48,10 +50,37 @@ void SheriffBrowner::loadActions() {
 }
 
 void SheriffBrowner::spawn() {
-    this->energy = -1;
+    this->energy = 28;
 }
 
+void SheriffBrowner::attack() {
 
+    if (this->player->attackCondition() && 
+        !this->player->jumping && 
+        !this->player->walking && 
+        !this->player->stunned && 
+        !this->player->attacking) {
+
+        if (this->energy > 0) {
+            this->energy -= 1;
+
+            this->player->attacking = true;
+
+            auto preDelay = cocos2d::DelayTime::create(this->getActionDuration("standshoot"));
+            auto preCallback = cocos2d::CallFunc::create([this]() { this->fire(); });
+
+            auto postDelay = cocos2d::DelayTime::create(this->getActionDuration("standshoot") * 0.5f);
+
+            auto postCallback = cocos2d::CallFunc::create([this]() { this->player->attacking = false; });
+
+            auto sequence = cocos2d::Sequence::create(preDelay, preCallback, postDelay, postCallback, nullptr);
+
+            ((cocos2d::Node*)this)->runAction(sequence);
+        }
+
+    }
+
+}
 void SheriffBrowner::fire() {
 
     int bulletOffset = 12;

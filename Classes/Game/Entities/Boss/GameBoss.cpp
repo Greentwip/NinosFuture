@@ -109,6 +109,19 @@ void GameBoss::setupBrowners() {
     this->currentBrowner->runAction("jump");
 }
 
+windy::Browner* GameBoss::getBrowner(int brownerId) {
+    windy::Browner* brownerFound = nullptr;
+    for (int i = 0; i < this->browners.size(); ++i) {
+        auto browner = this->browners.at(i);
+        if (browner->brownerId == brownerId) {
+            brownerFound = browner;
+            break;
+        }
+    }
+
+    return brownerFound;
+}
+
 void GameBoss::kill(bool killAnimation) {
 
     if (killAnimation) {

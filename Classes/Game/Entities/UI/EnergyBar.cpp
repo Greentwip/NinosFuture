@@ -38,11 +38,13 @@ bool EnergyBar::init()
 
     this->addChild(this->sprite);
 
+    this->maxValue = 28;
+
     float positionX = 1;
 
     float positionY = this->sprite->getContentSize().height * -1;
 
-    for (int i = 0; i < 28; ++i) {
+    for (int i = 0; i < this->maxValue; ++i) {
         positionY += 2;
 
         auto cell = windy::Sprite::create(EnergyBarResources::cellPath, cocos2d::Point(0, 1));
@@ -95,15 +97,22 @@ void EnergyBar::setValue(int value) {
         this->meter = value;
     }
     else if(value <= -2) {
-        for (int i = 0; i < this->cells.size(); ++i) {
-            this->cells.at(i)->setVisible(false);
-        }
+        if (this->meter != value) {
+            for (int i = 0; i < this->cells.size(); ++i) {
+                this->cells.at(i)->setVisible(false);
+            }
 
-        this->setVisible(false);
-        this->meter = value;
+            this->setVisible(false);
+            this->meter = value;
+        }
+        
     }
 }
 
 int EnergyBar::getValue() {
     return this->meter;
+}
+
+int EnergyBar::getMaxValue() {
+    return this->maxValue;
 }

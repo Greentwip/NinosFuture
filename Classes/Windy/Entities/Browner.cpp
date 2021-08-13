@@ -35,6 +35,8 @@ void Browner::initConstraints()
     this->canSlide = true;
     this->canClimb = true;
     this->canAttack = true;
+    this->canWalkShoot = false;
+    this->canJumpShoot = false;
     this->canCharge = true;
 }
 
@@ -225,9 +227,22 @@ void Browner::timedShoot() {
 
 void Browner::attack() {
 
-    bool attackCondition = this->player->attackCondition(); 
+    bool attackCondition = false;
     bool chargeCondition = this->player->chargeCondition(); 
-    bool dischargeCondition = this->player->dischargeCondition(); 
+    bool dischargeCondition = this->player->dischargeCondition();
+
+    if (this->player->walking && this->canWalkShoot && this->player->attackCondition()) {
+        attackCondition = true;
+    }
+    
+    if (!this->player->onGround && this->canJumpShoot && this->player->attackCondition())
+    {
+        attackCondition = true;
+    }
+
+    if (!this->player->walking && this->player->onGround && this->player->attackCondition()) {
+        attackCondition = true;
+    }
     
     if (attackCondition && !this->player->charging && !this->player->sliding && !this->player->stunned) {
         bool walkLeftCondition = this->player->walkLeftCondition();
@@ -250,7 +265,7 @@ void Browner::attack() {
             }
         }
 
-        //if (bulletCount < 3) 
+        if (bulletCount < 3) 
         {
             this->timedShoot();
         }

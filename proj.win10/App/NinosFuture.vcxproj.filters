@@ -80,6 +80,9 @@
     <Filter Include="Classes\Game\Entities\Boss">
       <UniqueIdentifier>{d72e2e0b-b690-40bf-b864-aefe53abdb24}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Game\Entities\UI\Pause">
+      <UniqueIdentifier>{bdf75c4d-c561-4560-a29e-a6e9f4a77ffa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -333,6 +336,18 @@
     </ClCompile>
     <ClCompile Include="..\..\Classes\Game\Entities\Player\SheriffBrowner.cpp">
       <Filter>Classes\Game\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\UI\Pause\PauseInterruptor.cpp">
+      <Filter>Classes\Game\Entities\UI\Pause</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\UI\Pause\PauseSelector.cpp">
+      <Filter>Classes\Game\Entities\UI\Pause</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\UI\Pause\PauseAnimation.cpp">
+      <Filter>Classes\Game\Entities\UI\Pause</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\UI\Pause\PauseMenu.cpp">
+      <Filter>Classes\Game\Entities\UI\Pause</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1811,6 +1826,18 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Game\Entities\Player\SheriffBrowner.h">
       <Filter>Classes\Game\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\UI\Pause\PauseInterruptor.h">
+      <Filter>Classes\Game\Entities\UI\Pause</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\UI\Pause\PauseSelector.h">
+      <Filter>Classes\Game\Entities\UI\Pause</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\UI\Pause\PauseAnimation.h">
+      <Filter>Classes\Game\Entities\UI\Pause</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\UI\Pause\PauseMenu.h">
+      <Filter>Classes\Game\Entities\UI\Pause</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

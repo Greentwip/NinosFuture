@@ -404,8 +404,12 @@ bool Level::getPaused() {
     return this->isPaused;
 }
 
-void Level::setPaused(bool isPaused) {
+void Level::setPaused(bool isPaused, bool freezePlayer) {
     this->isPaused = isPaused;
+
+    if (freezePlayer) {
+
+    }
 }
 
 void Level::restart() {

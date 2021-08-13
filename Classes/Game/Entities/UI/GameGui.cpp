@@ -46,6 +46,8 @@ void GameGui::build()
     this->fillingWeaponBar = false;
     this->fillingBossHealthBar = false;
 
+    this->onRestoreCallback = nullptr;
+
     this->level->gui = this;
 }
 
@@ -91,9 +93,22 @@ void GameGui::restoreBossHealth(int amount) {
     this->level->setPaused(true);
 
     this->fillingBossHealthBar = true;
-
-
 }
+
+void GameGui::restoreGenericBar(EnergyBar* bar, int amount, std::function<void()> onRestoreCallback) {
+    this->fillTimer = this->fillTimeDelay;
+
+    this->fillAmount = amount;
+
+    this->fillTarget = bar;
+
+    this->filling = true;
+
+    this->fillingGenericBar = true;
+
+    this->onRestoreCallback = onRestoreCallback;
+}
+
 
 
 void GameGui::onUpdate(float dt) {
@@ -112,6 +127,10 @@ void GameGui::onUpdate(float dt) {
                 this->fillTimer = this->fillTimeDelay;
 
                 this->fillAmount -= 1;
+
+                if (this->fillTarget->getValue() >= this->fillTarget->getMaxValue()) {
+                    this->fillAmount = 0;
+                }
             }
             else {
                 this->fillTimer -= dt;
@@ -130,8 +149,18 @@ void GameGui::onUpdate(float dt) {
             else if (this->fillTarget == this->bossHealthBar) {
                 this->fillingBossHealthBar = false;
             }
+            else {
+                this->fillingGenericBar = false;
+                if (this->onRestoreCallback) {
+                    this->onRestoreCallback();
+                    this->onRestoreCallback = nullptr;
+                }
+            }
 
-            this->level->setPaused(false);
+            if (this->fillTarget == this->healthBar || this->fillTarget == this->weaponBar || this->fillTarget == this->bossHealthBar) {
+                this->level->setPaused(false);
+            }
+            
         }
     }
     else {

@@ -119,18 +119,18 @@ namespace game {
 
     private:
         BrownersData() :
-            teleport(std::make_shared<BrownerData>(1, false, "")),
-            violet(std::make_shared<BrownerData>(2, false, "violet")),
+            teleport(std::make_shared<BrownerData>(1, true, "")),
+            violet(std::make_shared<BrownerData>(2, true, "violet")),
             fuzzy(std::make_shared<BrownerData>(3, false, "fuzzy", "", 28)),
             freezer(std::make_shared<BrownerData>(4, false, "freezer", "freezerman", 28)),
-            sheriff(std::make_shared<BrownerData>(5, false, "sheriff", "sheriffman", 28)),
+            sheriff(std::make_shared<BrownerData>(5, true, "sheriff", "sheriffman", 28)),
             boomer(std::make_shared<BrownerData>(6, false, "boomer", "boomerman", 28)),
             military(std::make_shared<BrownerData>(7, false, "military", "militaryman", 28)),
             vine(std::make_shared<BrownerData>(8, false, "vine", "vineman", 28)),
             shield(std::make_shared<BrownerData>(9, false, "shield", "shieldman", 28)),
             night(std::make_shared<BrownerData>(10, false, "night", "nightman", 28)),
             torch(std::make_shared<BrownerData>(11, false, "torch", "torchman", 28)),
-            helmet(std::make_shared<BrownerData>(12, false, "helmet")),
+            helmet(std::make_shared<BrownerData>(12, true, "helmet")),
             extreme(std::make_shared<BrownerData>(13, false, "ex", "", 28)),
             boss(std::make_shared<BrownerData>(14, false, "")),
             subBoss(std::make_shared<BrownerData>(15, false, "")),

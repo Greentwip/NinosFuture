@@ -63,6 +63,8 @@ void Player::initVariables() {
     this->maxHealth = 28;
     this->health = this->maxHealth;
 
+    this->maxWeaponEnergy = 28;
+
     this->largeSlide = false;
 
     this->speed = cocos2d::Point(0, this->teleportTransitionSpeed);
@@ -277,6 +279,14 @@ void Player::walk() {
     else {
         this->walking = false;
     }
+
+    bool walkShootCondition = this->walking && this->attacking && !this->currentBrowner->canWalkShoot;
+
+    if (walkShootCondition) {
+        this->walking = false;
+        this->speed.x = 0;
+    }
+
 }
 
 void Player::jump() {
@@ -285,6 +295,7 @@ void Player::jump() {
 
     bool stopJumpCondition = this->stopJumpCondition();
 
+    bool onGroundBackup = this->onGround;
     if (jumpCondition && this->onGround && !this->sliding && !this->stunned) {
         this->speed.y = static_cast<float>(this->jumpSpeed);
         this->onGround = false;
@@ -294,6 +305,19 @@ void Player::jump() {
     if (stopJumpCondition && this->speed.y >= 0 && !this->climbing && !this->onGround) {
         this->speed.y = 0;
     }
+     
+    bool jumpShootCondition = this->jumping && this->attacking && !this->currentBrowner->canJumpShoot;
+
+    if (jumpShootCondition) {
+        this->jumping = false;
+        this->onGround = onGroundBackup;
+        this->speed.y = 0;
+    }
+
+    if (this->onGround) {
+        this->jumping = false;
+    }
+        
 }
 
 
@@ -301,6 +325,9 @@ void Player::dashJump() {
     bool jumpCondition = this->dashJumpCondition();
 
     bool stopJumpCondition = this->stopJumpCondition();
+
+    bool onGroundBackup = this->onGround;
+
 
     if (jumpCondition && this->onGround && !this->sliding && !this->stunned) {
         this->speed.y = static_cast<float>(this->dashJumpSpeed);
@@ -314,6 +341,21 @@ void Player::dashJump() {
         this->dashJumping = false;
     }
     else if (this->speed.y <= 0 && !this->climbing && !this->onGround) {
+        this->dashJumping = false;
+    }
+
+
+    bool jumpShootCondition = this->jumping && this->attacking && !this->currentBrowner->canJumpShoot;
+
+    if (jumpShootCondition) {
+        this->jumping = false;
+        this->dashJumping = false;
+        this->onGround = onGroundBackup;
+        this->speed.y = 0;
+    }
+
+    if (this->onGround) {
+        this->jumping = false;
         this->dashJumping = false;
     }
 }
@@ -567,7 +609,7 @@ void Player::climb() {
         this->ignoreGravity = false;
         this->ignoreLandscapeCollision = false;
         this->climbCounter = 0;
-        this->currentBrowner->resumeActions();
+        //this->currentBrowner->resumeActions();
     }
 
     if (this->climbing) {
@@ -790,11 +832,6 @@ void Player::onPlayerExit() {
 
 
 void Player::onUpdate(float dt) {
-
-    /*if (Input::keyPressed(InputKey::Select)) {
-        this->explode(0);
-        this->explode(22.5f);
-    }*/
 
     if (this->canMove) {
         if (this->level->getPaused()) {

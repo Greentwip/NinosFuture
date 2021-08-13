@@ -6,6 +6,10 @@
 #include "Windy/Entities/LevelController.h"
 
 namespace game {
+    class PauseMenu;
+}
+
+namespace game {
     class GameLevelController : public windy::LevelController
     {
     private:
@@ -35,6 +39,8 @@ namespace game {
         float exitTimeDelay;
 
         bool fading;
+
+        PauseMenu* pauseMenu;
     };
 }
 

@@ -651,6 +651,10 @@
     <ClInclude Include="..\..\Classes\Game\Entities\Special\GameVerticalDoor.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\UI\EnergyBar.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\UI\GameGui.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\UI\Pause\PauseAnimation.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\UI\Pause\PauseInterruptor.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\UI\Pause\PauseMenu.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\UI\Pause\PauseSelector.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\DirectionalBullet.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\TremorDrill.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\TremorLaser.h" />
@@ -764,6 +768,10 @@
     <ClCompile Include="..\..\Classes\Game\Entities\Special\GameVerticalDoor.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\UI\EnergyBar.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\UI\GameGui.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\UI\Pause\PauseAnimation.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\UI\Pause\PauseInterruptor.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\UI\Pause\PauseMenu.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\UI\Pause\PauseSelector.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\DirectionalBullet.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\TremorDrill.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\TremorLaser.cpp" />

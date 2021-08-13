@@ -14,6 +14,8 @@ void TeleportBrowner::initConstraints() {
     this->canWalk = false;
     this->canJump = true;
     this->canAttack = false;
+    this->canWalkShoot = false;
+    this->canJumpShoot = false;
     this->canClimb = false;
     this->canCharge = false;
     this->canSlide = false;

@@ -40,6 +40,10 @@
 
 #include "Game/Entities/UI/EnergyBar.h"
 #include "Game/Entities/UI/GameGui.h"
+#include "Game/Entities/UI/Pause/PauseAnimation.h"
+#include "Game/Entities/UI/Pause/PauseInterruptor.h"
+#include "Game/Entities/UI/Pause/PauseMenu.h"
+#include "Game/Entities/UI/Pause/PauseSelector.h"
 
 #include "Game/Entities/Scenery/General/GameExplosion.h"
 
@@ -108,6 +112,10 @@ bool GameScene::init()
     windy::Logical::preloadResources<VioletBullet>();
     windy::Logical::preloadResources<EnergyBar>();
     windy::Logical::preloadResources<GameExplosion>();
+    windy::Logical::preloadResources<PauseInterruptor>();
+    windy::Logical::preloadResources<PauseAnimation>();
+    windy::Logical::preloadResources<PauseMenu>();
+    windy::Logical::preloadResources<PauseSelector>();
 
 
     windy::EntityFactory::getInstance().registerType<GamePlayer>("player");
