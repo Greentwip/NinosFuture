@@ -64,7 +64,7 @@ public:
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
 std::string GameSceneResources::resourcesRootPath = "Assets/Resources/res";
-#elif CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+#else
 std::string GameSceneResources::resourcesRootPath = "res";
 #endif
 
