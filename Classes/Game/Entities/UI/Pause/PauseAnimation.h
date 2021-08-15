@@ -10,6 +10,10 @@ namespace windy {
 }
 
 namespace game {
+    class PauseMenu;
+}
+
+namespace game {
     class PauseAnimation : public cocos2d::Node
     {
     public:
@@ -23,6 +27,8 @@ namespace game {
         void swapContents(const std::string& contents);
 
     private:
+        friend class PauseMenu;
+
         windy::Sprite* sprite;
         
     };

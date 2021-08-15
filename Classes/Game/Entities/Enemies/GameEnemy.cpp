@@ -44,14 +44,14 @@ void GameEnemy::onDefeated() {
 
     if (item.compare("") != 0) {
 
-        auto entryCollisionBox = Logical::getEntryCollisionRectangle<GameItem>(this->getPosition(), cocos2d::Size(16, 16));
+        auto entryCollisionBox = Logical::getEntryCollisionRectangle<GameItem>(this->getPosition(), cocos2d::Size(8, 10));
 
         auto itemPosition = this->getPosition();
         auto entry = Logical::getEntry(entryCollisionBox, [=]() {
 
-            auto itemGood = windy::EntityFactory::getInstance().create("item", itemPosition, cocos2d::Size(16, 16));
+            auto itemGood = windy::EntityFactory::getInstance().create("item", itemPosition, cocos2d::Size(8, 10));
 
-            dynamic_cast<GameItem*>(itemGood)->setup(item, false);
+            dynamic_cast<windy::Item*>(itemGood)->setup("none", item, false, false);
 
             return itemGood;
             });

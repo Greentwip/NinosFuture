@@ -8,6 +8,8 @@
 
 #include "Windy/GeometryExtensions.h"
 
+#include "Windy/DebugDrawNode.h"
+
 #include "Game/Entities/Weapons/DirectionalBullet.h"
 
 #include "Game/Entities/Player/GamePlayer.h"
@@ -70,10 +72,12 @@ void CannonJoe::attack(float dt) {
             auto& playerCollisionBox = *this->level->player->collisionBox;
             auto projectedCollisionBoxLeft = *this->collisionBox;
 
-            projectedCollisionBoxLeft.origin.x -= 196;
+            projectedCollisionBoxLeft.origin.x -= 172;
             projectedCollisionBoxLeft.origin.y -= 112;
-            projectedCollisionBoxLeft.size.width = 128;
+            projectedCollisionBoxLeft.size.width = 172;
             projectedCollisionBoxLeft.size.height = 224;
+
+            //this->level->debugDrawNode->drawCollisionBox(projectedCollisionBoxLeft);
 
             if (windy::GeometryExtensions::rectIntersectsRect(playerCollisionBox, projectedCollisionBoxLeft)) {
                 this->attackState = AttackState::Before;
@@ -90,18 +94,19 @@ void CannonJoe::attack(float dt) {
                 auto& playerCollisionBox = *this->level->player->collisionBox;
                 auto projectedCollisionBoxLeft = *this->collisionBox;
 
-                projectedCollisionBoxLeft.origin.x -= 196;
+                projectedCollisionBoxLeft.origin.x -= 172;
                 projectedCollisionBoxLeft.origin.y -= 112;
-                projectedCollisionBoxLeft.size.width = 128;
+                projectedCollisionBoxLeft.size.width = 172;
                 projectedCollisionBoxLeft.size.height = 224;
 
+                //this->level->debugDrawNode->drawCollisionBox(projectedCollisionBoxLeft);
 
 
                 if (windy::GeometryExtensions::rectIntersectsRect(playerCollisionBox, projectedCollisionBoxLeft)) {
                     auto playerPosition = this->level->player->getPosition();
 
                     float playerDistanceX = cocos2d::Point(this->getPositionX(), 0).getDistance(cocos2d::Point(this->level->player->getPositionX(), 0));
-                    float playerDistanceY = cocos2d::Point(0, this->getPositionY()).getDistance(cocos2d::Point(0, this->level->player->getPositionY()));
+                    //float playerDistanceY = cocos2d::Point(0, this->getPositionY()).getDistance(cocos2d::Point(0, this->level->player->getPositionY()));
 
                     auto bulletPosition = cocos2d::Point(this->getPositionX() + (22 * this->getSpriteNormal() * -1), this->getPositionY());
 
@@ -111,8 +116,8 @@ void CannonJoe::attack(float dt) {
                         bullet->setPosition(bulletPosition);
                         bullet->setup();
 
-                        if (playerDistanceX < 30 && playerDistanceY < 16) {
-                            bullet->fire(this->bulletPower, this->getSpriteNormal(), windy::GameTags::WeaponEnemy);
+                        if (playerDistanceX < 48){
+                            bullet->fire(this->bulletPower, this->getSpriteNormal() * -1, windy::GameTags::WeaponEnemy);
                         }
                         else {
                             bullet->fire(this->bulletPower, playerPosition, windy::GameTags::WeaponEnemy);

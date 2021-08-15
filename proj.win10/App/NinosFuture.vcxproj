@@ -639,7 +639,9 @@
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Sheriff\Tremor.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Sheriff\TremorTail.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Items\GameItem.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Items\ItemFlags.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Logic\GameLevelController.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Player\ExtremeBrowner.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Player\GamePlayer.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Player\HelmetBrowner.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Player\SheriffBrowner.h" />
@@ -656,6 +658,8 @@
     <ClInclude Include="..\..\Classes\Game\Entities\UI\Pause\PauseMenu.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\UI\Pause\PauseSelector.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\DirectionalBullet.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Weapons\ExtremeBullet.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Weapons\SheriffBullet.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\TremorDrill.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\TremorLaser.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\VioletBullet.h" />
@@ -672,7 +676,6 @@
     <ClInclude Include="..\..\Classes\Game\IntroScene.h" />
     <ClInclude Include="..\..\Classes\Game\OptionsScene.h" />
     <ClInclude Include="..\..\Classes\Game\SaveScene.h" />
-    <ClInclude Include="..\..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\..\Classes\Windy\AnimationAction.h" />
     <ClInclude Include="..\..\Classes\Windy\Armature.h" />
     <ClInclude Include="..\..\Classes\Windy\AudioManager.h" />
@@ -757,6 +760,7 @@
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Sheriff\TremorTail.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Items\GameItem.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Logic\GameLevelController.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Player\ExtremeBrowner.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Player\GamePlayer.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Player\HelmetBrowner.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Player\SheriffBrowner.cpp" />
@@ -773,6 +777,8 @@
     <ClCompile Include="..\..\Classes\Game\Entities\UI\Pause\PauseMenu.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\UI\Pause\PauseSelector.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\DirectionalBullet.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Weapons\ExtremeBullet.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Weapons\SheriffBullet.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\TremorDrill.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\TremorLaser.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\VioletBullet.cpp" />
@@ -788,7 +794,6 @@
     <ClCompile Include="..\..\Classes\Game\IntroScene.cpp" />
     <ClCompile Include="..\..\Classes\Game\OptionsScene.cpp" />
     <ClCompile Include="..\..\Classes\Game\SaveScene.cpp" />
-    <ClCompile Include="..\..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Armature.cpp" />
     <ClCompile Include="..\..\Classes\Windy\AudioManager.cpp" />
     <ClCompile Include="..\..\Classes\Windy\CameraFlags.h" />
@@ -820,6 +825,7 @@
     <ClCompile Include="..\..\Classes\Windy\Level.cpp" />
     <ClCompile Include="..\..\Classes\Windy\ObjectManager.cpp" />
     <ClCompile Include="..\..\Classes\Windy\PhysicsWorld.cpp" />
+    <ClCompile Include="..\..\Classes\Windy\SaveManager.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Settings.cpp" />
     <ClCompile Include="..\..\Classes\Windy\SpriteDefinition.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Label.cpp" />

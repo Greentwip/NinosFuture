@@ -4,9 +4,12 @@
 #include <cstdint>
 #include <string>
 #include <vector>
+#include <map>
 #include <memory>
 
 #include "Windy/SaveManager.h"
+
+#include "Game/Entities/Items/ItemFlags.h"
 
 namespace game {
     class GameManager;
@@ -20,7 +23,7 @@ namespace game {
         bool acquired;
         std::string name;
 
-    private:
+    public:
         UnlockableData(int id, bool acquired, std::string name) {
             this->id = id;
             this->acquired = acquired;
@@ -39,27 +42,36 @@ namespace game {
 
     class UnlockablesData {
     public:
-        UnlockableData helmet;
-        UnlockableData head;
-        UnlockableData chest;
-        UnlockableData fist;
-        UnlockableData boot;
+        std::shared_ptr<UnlockableData> helmet;
+        std::shared_ptr<UnlockableData> head;
+        std::shared_ptr<UnlockableData> chest;
+        std::shared_ptr<UnlockableData> fist;
+        std::shared_ptr<UnlockableData> boot;
+
+        std::vector<std::shared_ptr<UnlockableData>> collection;
+
 
         bool helmetAcquired() {
-            return helmet.acquired;
+            return helmet->acquired;
         }
 
         bool extremeAcquired() {
-            return helmet.acquired && head.acquired && chest.acquired && fist.acquired && boot.acquired;
+            return helmet->acquired && head->acquired && chest->acquired && fist->acquired && boot->acquired;
         }
 
     private:
         UnlockablesData() :
-            helmet(UnlockableData(2, false, "helmet")),
-            head(UnlockableData(3, false, "head")),
-            chest(UnlockableData(4, false, "chest")),
-            fist(UnlockableData(5, false, "fist")),
-            boot(UnlockableData(6, false, "boot")) {
+            helmet(std::make_shared<UnlockableData>(ItemId::Helmet, false, "helmet")),
+            head(std::make_shared<UnlockableData>(ItemId::Head, false, "head")),
+            chest(std::make_shared<UnlockableData>(ItemId::Chest, false, "chest")),
+            fist(std::make_shared<UnlockableData>(ItemId::Fist, false, "fist")),
+            boot(std::make_shared<UnlockableData>(ItemId::Boot, false, "boot")) {
+
+            collection.push_back(helmet);
+            collection.push_back(head);
+            collection.push_back(chest);
+            collection.push_back(fist);
+            collection.push_back(boot);
 
         }
 
@@ -253,18 +265,18 @@ namespace game {
 
     private:
         ItemsData() :
-            life(std::shared_ptr<ItemData>(new ItemData(1, "life"))),
-            helmet(std::shared_ptr<ItemData>(new ItemData(2, "helmet"))),
-            head(std::shared_ptr<ItemData>(new ItemData(3, "head"))),
-            chest(std::shared_ptr<ItemData>(new ItemData(4, "chest"))),
-            fist(std::shared_ptr<ItemData>(new ItemData(5, "fist"))),
-            boot(std::shared_ptr<ItemData>(new ItemData(6, "boot"))),
-            healthSmall(std::shared_ptr<ItemData>(new ItemData(7, "health_small"))),
-            healthBig(std::shared_ptr<ItemData>(new ItemData(8, "health_big"))),
-            energySmall(std::shared_ptr<ItemData>(new ItemData(9, "energy_small"))),
-            energyBig(std::shared_ptr<ItemData>(new ItemData(10, "energy_big"))),
-            eTank(std::shared_ptr<ItemData>(new ItemData(11, "e_tank"))),
-            mTank(std::shared_ptr<ItemData>(new ItemData(12, "m_tank"))) {
+            life(std::shared_ptr<ItemData>(new ItemData(ItemId::Life, "life"))),
+            helmet(std::shared_ptr<ItemData>(new ItemData(ItemId::Helmet, "helmet"))),
+            head(std::shared_ptr<ItemData>(new ItemData(ItemId::Head, "head"))),
+            chest(std::shared_ptr<ItemData>(new ItemData(ItemId::Chest, "chest"))),
+            fist(std::shared_ptr<ItemData>(new ItemData(ItemId::Fist, "fist"))),
+            boot(std::shared_ptr<ItemData>(new ItemData(ItemId::Boot, "boot"))),
+            healthSmall(std::shared_ptr<ItemData>(new ItemData(ItemId::HealthSmall, "health_small"))),
+            healthBig(std::shared_ptr<ItemData>(new ItemData(ItemId::HealthBig, "health_big"))),
+            energySmall(std::shared_ptr<ItemData>(new ItemData(ItemId::EnergySmall, "energy_small"))),
+            energyBig(std::shared_ptr<ItemData>(new ItemData(ItemId::EnergyBig, "energy_big"))),
+            eTank(std::shared_ptr<ItemData>(new ItemData(ItemId::eTank, "e_tank"))),
+            mTank(std::shared_ptr<ItemData>(new ItemData(ItemId::mTank, "m_tank"))) {
 
             collection.push_back(life);
             collection.push_back(helmet);
@@ -343,7 +355,7 @@ namespace game {
             return instance;
         }
     private:
-        GameManager() : slot(1) { 
+        GameManager() { 
         }
 
     public:
@@ -352,12 +364,52 @@ namespace game {
 
     public:
 
+        void loadGameDataFromDefaultSlot() {
+            auto dataSlot = windy::SaveManager::readSlot(windy::SaveManager::defaultSlot);
+
+            this->unlockables.helmet->acquired = dataSlot.helmet;
+            this->unlockables.head->acquired = dataSlot.head;
+            this->unlockables.chest->acquired = dataSlot.chest;
+            this->unlockables.fist->acquired = dataSlot.fist;
+            this->unlockables.boot->acquired = dataSlot.boot;
+
+            this->player.eTanks = dataSlot.e;
+            this->player.mTanks = dataSlot.m;
+
+            this->player.lives = dataSlot.lives;
+
+            this->browners.freezer->acquired = dataSlot.freezer;
+            this->browners.sheriff->acquired = dataSlot.sheriff;
+            this->browners.boomer->acquired = dataSlot.boomer;
+            this->browners.military->acquired = dataSlot.military;
+            this->browners.vine->acquired = dataSlot.vine;
+            this->browners.shield->acquired = dataSlot.shield;
+            this->browners.night->acquired = dataSlot.night;
+            this->browners.torch->acquired = dataSlot.torch;
+
+
+            this->browners.helmet->acquired = this->unlockables.helmetAcquired();
+            this->browners.extreme->acquired = this->unlockables.extremeAcquired();
+
+            this->levels.freezer->defeated = this->browners.freezer->acquired;
+            this->levels.sheriff->defeated = this->browners.sheriff->acquired;
+            this->levels.boomer->defeated = this->browners.boomer->acquired;
+            this->levels.military->defeated = this->browners.military->acquired;
+            this->levels.vine->defeated = this->browners.vine->acquired;
+            this->levels.shield->defeated = this->browners.shield->acquired;
+            this->levels.night->defeated = this->browners.night->acquired;
+            this->levels.torch->defeated = this->browners.torch->acquired;
+
+            this->options.helmetActivated = dataSlot.helmetActivated;
+            this->collectibles = dataSlot.collectibles;
+        }
+
         windy::Slot getDefaultSlot() {
-            return windy::SaveManager::readSlot(this->slot);
+            return windy::SaveManager::readSlot(windy::SaveManager::defaultSlot);
         }
 
         void saveDefaultSlot(const windy::Slot& data) {
-            windy::SaveManager::saveSlot(this->slot, data);
+            windy::SaveManager::saveSlot(windy::SaveManager::defaultSlot, data);
         }
 
         UnlockablesData unlockables;
@@ -374,9 +426,7 @@ namespace game {
 
         OptionsData options;
 
-        int slot;
-
-        std::vector<std::string> collectibles;
+        std::vector<std::pair<std::string, bool>> collectibles;
     };
 
 }

@@ -76,12 +76,18 @@ void Browner::restoreWeaponEnergy(int amount) {
 
 void Browner::activate() {
     this->player->sprite->setVisible(true);
+    this->player->sprite->setColor(this->spriteColor);
 }
 
 void Browner::deactivate() {
     this->stopActions();
     this->stopAllActions();
     this->player->sprite->setVisible(false);
+    this->tintA = false;
+    this->tintB = false;
+    this->player->charging = false;
+    this->chargeTimer = 0;
+    this->chargePower = "low";
 }
 
 void Browner::runAction(const std::string& action) {

@@ -48,9 +48,6 @@ bool TremorLaser::init()
 
 void TremorLaser::setup() {
 
-    this->sprite = windy::Sprite::create(TremorLaserResources::spritePath);
-    this->addChild(this->sprite);
-
     Logical::composite<windy::Weapon>(this,
                                       TremorLaserResources::armaturePath,
                                       TremorLaserResources::spritePath,

@@ -20,6 +20,7 @@
 #include "Entities/Gui.h"
 #include "Entities/Browner.h"
 #include "Entities/LevelController.h"
+#include "Entities/Weapon.h"
 
 #include "Sprite.h"
 
@@ -34,6 +35,8 @@
 #include "LandscapeTile.h"
 
 #include "EntityFactory.h"
+
+#include "SaveManager.h"
 
 using namespace windy;
 
@@ -99,8 +102,6 @@ bool Level::init()
     {
         return false;
     }
-
-
 
     // Tile layers
     std::string definitionsPath = this->resourcesRootPath + "/" + this->tilemapRootPath + "/" + this->mug + "/" + "definitions.json";
@@ -281,6 +282,58 @@ bool Level::init()
 
     }
 
+
+    groupArray = map->getObjectGroup("items");
+
+    {
+        auto collectibles = SaveManager::readSlot(SaveManager::defaultSlot).collectibles;
+
+        auto& objects = groupArray->getObjects();
+        for (auto& obj : objects)
+        {
+            auto& dictionary = obj.asValueMap();
+
+            std::string name = dictionary["name"].asString();
+            auto size = cocos2d::Size(dictionary["width"].asFloat(), dictionary["height"].asFloat());
+            auto position = calculateTmxPosition(dictionary, map);
+
+            auto itemName = dictionary.at("name").asString();
+            auto itemType = dictionary.at("type").asString();
+
+            bool collected = false;
+            for (int i = 0; i < collectibles.size(); ++i) {
+                auto collectible = collectibles[i];
+
+                if (collectible.first.compare(itemName) == 0) {
+                    if (collectible.second) {
+                        collected = true;
+                        break;
+                    }
+                }
+            }
+
+            if (collected) {
+                continue;
+            }
+
+            auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle("item", position, size);
+
+            auto entry = Logical::getEntry(entryCollisionBox, [=]() { 
+
+                auto entity = EntityFactory::getInstance().create("item", position, size); 
+
+                dynamic_cast<windy::Item*>(entity)->setup(itemName, itemType, true, true);
+
+                return entity;
+
+            });
+
+            this->objectManager->objectEntries.push_back(entry);
+
+        }
+
+    }
+
     groupArray = map->getObjectGroup("enemies");
 
     {
@@ -407,8 +460,70 @@ bool Level::getPaused() {
 void Level::setPaused(bool isPaused, bool freezePlayer) {
     this->isPaused = isPaused;
 
-    if (freezePlayer) {
+    auto player = this->player;
+    auto camera = this->camera;
 
+    for (int i = 0; i < this->entities.size(); ++i) {
+        auto entity = this->entities.at(i);
+
+        if (entity == player || entity == camera) {
+            continue;
+        }
+
+        if (isPaused) {
+            entity->pause();
+        }
+        else {
+            entity->resume();
+        }
+
+        if (entity->getTag() == GameTags::General::Enemy) {
+            auto enemy = dynamic_cast<Enemy*>(entity);
+            
+            if (isPaused) {
+                enemy->sprite->pause();
+            }
+            else {
+                enemy->sprite->resume();
+            }
+            
+        }
+
+        if (entity->getTag() == GameTags::Weapon::WeaponEnemy || 
+            entity->getTag() == GameTags::Weapon::WeaponPlayer ||
+            entity->getTag() == GameTags::Weapon::WeaponNone) {
+            auto weapon = dynamic_cast<Weapon*>(entity);
+
+            if (isPaused) {
+                weapon->sprite->pause();
+            }
+            else {
+                weapon->sprite->resume();
+            }
+
+        }
+
+        if (entity->getTag() == GameTags::General::Item) {
+            auto item = dynamic_cast<Item*>(entity);
+            if (isPaused) {
+                item->sprite->pause();
+            }
+            else {
+                item->sprite->resume();
+            }
+        }
+
+    }
+
+    if (freezePlayer) {
+        if (isPaused) {
+            this->player->pause();
+            this->player->sprite->pause();
+        }
+        else {
+            this->player->resume();
+            this->player->sprite->resume();
+        }
     }
 }
 

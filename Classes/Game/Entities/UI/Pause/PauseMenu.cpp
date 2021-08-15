@@ -48,6 +48,19 @@ PauseMenu* PauseMenu::create(windy::Player* player, GameGui* gui) {
         menu->player = player;
         menu->gui = gui;
         menu->busy = false;
+        menu->background = nullptr;
+        menu->box = nullptr;
+        menu->selector = nullptr;
+        menu->eTank = nullptr;
+        menu->mTank = nullptr;
+        menu->livesLabel = nullptr;
+        menu->eTanksLabel = nullptr;
+        menu->mTanksLabel = nullptr;
+        menu->exSwitch = nullptr;
+        menu->helmetSwitch = nullptr;
+        menu->exitSwitch = nullptr;
+        menu->health = nullptr;
+        menu->weaponAnimation = nullptr;
         menu->fillingMTank = false;
         menu->defaultBrowner = nullptr;
         menu->selectedBrowner = nullptr;
@@ -151,32 +164,32 @@ bool PauseMenu::init()
     this->addChild(fist);
 
     auto chest = PauseInterruptor::create("extreme_chest", nullptr);
-    chest->setPosition(cocos2d::Point(fist->getPositionX() + 18, head->getPositionY()));
+    chest->setPosition(cocos2d::Point(fist->getPositionX() + 18, fist->getPositionY()));
     this->addChild(chest);
 
     auto boot = PauseInterruptor::create("extreme_boot", nullptr);
     boot->setPosition(cocos2d::Point(chest->getPositionX() + 18, chest->getPositionY()));
     this->addChild(boot);
 
-    if (GameManager::getInstance().unlockables.head.acquired) {
+    if (GameManager::getInstance().unlockables.head->acquired) {
         head->visitInterruptor();
     }
 
-    if (GameManager::getInstance().unlockables.fist.acquired) {
+    if (GameManager::getInstance().unlockables.fist->acquired) {
         fist->visitInterruptor();
     }
 
-    if (GameManager::getInstance().unlockables.chest.acquired) {
+    if (GameManager::getInstance().unlockables.chest->acquired) {
         chest->visitInterruptor();
     }
 
-    if (GameManager::getInstance().unlockables.boot.acquired) {
+    if (GameManager::getInstance().unlockables.boot->acquired) {
         boot->visitInterruptor();
     }
 
     this->exSwitch = PauseInterruptor::create("ex", nullptr);
     this->exSwitch->setVisitable(false);
-    this->exSwitch->setPosition(cocos2d::Point(64, -134));
+    this->exSwitch->setPosition(cocos2d::Point(64, -144));
     this->addChild(this->exSwitch);
 
     this->helmetSwitch = PauseInterruptor::create("helmet", nullptr);
@@ -201,6 +214,47 @@ bool PauseMenu::init()
     this->menuItems.push_back(this->exSwitch);
     this->menuItems.push_back(this->helmetSwitch);
     this->menuItems.push_back(this->exitSwitch);
+
+    this->health = PauseInterruptor::create("life", nullptr);
+    this->health->setPosition(
+        cocos2d::Point(
+            this->weaponAnimation->getPositionX() - this->weaponAnimation->sprite->getContentSize().width * 0.5f, 
+            this->weaponAnimation->getPositionY() - this->health->sprite->getContentSize().height * 0.25f));
+    this->health->visitInterruptor();
+    this->addChild(this->health);
+
+    auto healthLabel =
+        windy::Label::create(
+            "HEALTH",
+            PauseMenuResources::font,
+            8,
+            cocos2d::TextHAlignment::LEFT,
+            cocos2d::TextVAlignment::TOP);
+
+    healthLabel->setPosition(this->health->sprite->getContentSize().width + 1, 0);
+    this->health->addChild(healthLabel);
+
+    auto healthBar =
+        dynamic_cast<EnergyBar*>
+        (windy::EntityFactory::getInstance().create(
+            "energy_bar",
+            cocos2d::Point(0, 0),
+            cocos2d::Size(16, 16)));
+
+    auto healthBarPosition =
+        cocos2d::Point(
+            health->sprite->getContentSize().width + healthBar->sprite->getContentSize().height,
+            health->sprite->getContentSize().height * 0.5f * -1);
+
+    healthBar->setPosition(healthBarPosition);
+
+    healthBar->setRotation(90);
+    healthBar->setScaleY(1);
+
+    this->health->energyBar = healthBar;
+    this->health->addChild(healthBar);
+
+    this->health->energyBar->setValue(this->player->health - 1);
 
     this->initCallbacks();
     this->setDefaultBrowner();
@@ -250,19 +304,27 @@ void PauseMenu::setupBrowners() {
             brownerInterruptor->brownerId = browner->id;
             brownerInterruptor->pauseItem = browner->pauseItem;
 
-            auto energyBarPosition =
-                cocos2d::Point(brownerInterruptor->sprite->getContentSize().width, brownerInterruptor->sprite->getContentSize().height * -1);
 
             auto energyBar = 
-                dynamic_cast<EnergyBar*>(windy::EntityFactory::getInstance().create("energy_bar", energyBarPosition, cocos2d::Size(16, 16)));
+                dynamic_cast<EnergyBar*>
+                (windy::EntityFactory::getInstance().create(
+                    "energy_bar", 
+                    cocos2d::Point(0, 0), 
+                    cocos2d::Size(16, 16)));
 
-            energyBar->setRotation(-90);
-            energyBar->setScaleY(0.75f);
+            auto energyBarPosition =
+                cocos2d::Point(brownerInterruptor->sprite->getContentSize().width + energyBar->sprite->getContentSize().height,
+                    brownerInterruptor->sprite->getContentSize().height * 0.5f * -1);
+
+            energyBar->setPosition(energyBarPosition);
+
+            energyBar->setRotation(90);
+            energyBar->setScaleY(1);
                         
             brownerInterruptor->energyBar = energyBar;
             brownerInterruptor->addChild(energyBar);
 
-            brownerInterruptor->energyBar->setValue(this->player->getBrowner(brownerInterruptor->brownerId)->energy);
+            brownerInterruptor->energyBar->setValue(this->player->getBrowner(brownerInterruptor->brownerId)->energy - 1);
 
 
             this->menuItems.push_back(brownerInterruptor);
@@ -288,7 +350,7 @@ void PauseMenu::initCallbacks() {
         if (this->player->health < 28 && GameManager::getInstance().player.eTanks > 0) {
             this->busy = true;
 
-            this->gui->restoreGenericBar(this->gui->healthBar, this->player->maxHealth, [this]() {
+            this->gui->restoreGenericBar(this->health->energyBar, this->player->maxHealth, [this]() {
                 this->player->health = this->player->maxHealth;
 
                 this->busy = false;
@@ -298,7 +360,7 @@ void PauseMenu::initCallbacks() {
 
                 slot.e = GameManager::getInstance().player.eTanks;
 
-                windy::SaveManager::saveSlot(GameManager::getInstance().slot, slot);    
+                windy::SaveManager::saveSlot(windy::SaveManager::defaultSlot, slot);
 
                 int numETanks = GameManager::getInstance().player.eTanks;
                 
@@ -330,7 +392,12 @@ void PauseMenu::initCallbacks() {
         if (this->fillingMTank) {
             auto selectedBrowner = this->selector->getSelectedItem();
 
-            if (this->player->getBrowner(selectedBrowner->brownerId)->energy != -2) {
+            if (this->player->getBrowner(selectedBrowner->brownerId)->brownerId != 
+                GameManager::getInstance().browners.teleport->id &&
+                this->player->getBrowner(selectedBrowner->brownerId)->brownerId !=
+                GameManager::getInstance().browners.violet->id &&
+                this->player->getBrowner(selectedBrowner->brownerId)->brownerId !=
+                GameManager::getInstance().browners.helmet->id) {
                 if (this->player->getBrowner(selectedBrowner->brownerId)->energy < 28) {
                     this->busy = true;
 
@@ -344,7 +411,7 @@ void PauseMenu::initCallbacks() {
 
                         slot.e = GameManager::getInstance().player.mTanks;
 
-                        windy::SaveManager::saveSlot(GameManager::getInstance().slot, slot);
+                        windy::SaveManager::saveSlot(windy::SaveManager::defaultSlot, slot);
 
                         int numMTanks = GameManager::getInstance().player.mTanks;
 
@@ -397,7 +464,7 @@ void PauseMenu::initCallbacks() {
 
                 slot.helmetActivated = GameManager::getInstance().options.helmetActivated;
 
-                windy::SaveManager::saveSlot(GameManager::getInstance().slot, slot);
+                windy::SaveManager::saveSlot(windy::SaveManager::defaultSlot, slot);
 
             }
             else {
@@ -548,7 +615,7 @@ void PauseMenu::validateWeapons() {
 
     if (extremeBrowner != nullptr) {
         extremeBrowner->setVisible(GameManager::getInstance().options.extremeActivated);
-        extremeBrowner->setPosition(extremeBrowner->getPosition());
+        extremeBrowner->setPosition(violetBrowner->getPosition());
     }
 }
 
@@ -568,14 +635,15 @@ void PauseMenu::onExit()
 
 void PauseMenu::update(float dt)
 {
-    for (int i = 0; i < this->menuBrowners.size(); ++i) {
-        auto browner = this->menuBrowners[i];
-
-        browner->energyBar->setValue(this->player->getBrowner(browner->brownerId)->energy);
-    }
 
     if (!this->busy) {
         
+        for (int i = 0; i < this->menuBrowners.size(); ++i) {
+            auto browner = this->menuBrowners[i];
+
+            browner->energyBar->setValue(this->player->getBrowner(browner->brownerId)->energy - 1);
+        }
+
         this->selector->selectFromItems(this->menuItems);
         
         auto selectedItem = this->selector->getSelectedItem();
@@ -590,7 +658,7 @@ void PauseMenu::update(float dt)
         }
 
         if (selectedItem->brownerId == PauseInterruptor::BrownerIdentifier::Invalid) {
-            this->selectedBrowner = nullptr;
+            this->selectedBrowner = this->defaultBrowner;
         }
         else {
             this->selectedBrowner = selectedItem;

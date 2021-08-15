@@ -52,6 +52,10 @@ void DebugDrawNode::onExit()
     Node::onExit();
 }
 
+void DebugDrawNode::drawCollisionBox(const cocos2d::Rect& collisionBox) {
+    this->collisionBoxContainer.push_back(collisionBox);
+}
+
 void DebugDrawNode::draw(cocos2d::Renderer* renderer, const cocos2d::Mat4& transform, uint32_t flags) {
     renderCommand.init(16384);
     renderCommand.func = CC_CALLBACK_0(DebugDrawNode::onDraw, this, transform, flags);
@@ -271,7 +275,27 @@ void DebugDrawNode::onDraw(const cocos2d::Mat4& transform, uint32_t flags)
     }*/
 
     
+    for (int i = 0; i < this->collisionBoxContainer.size(); ++i) {
+        auto collisionRectangle = this->collisionBoxContainer[i];
 
+        cocos2d::ccDrawColor4F(1.0f, 0.0f, 0.0f, 1.0f);
+
+        float minX = collisionRectangle.getMinX();
+        float maxX = collisionRectangle.getMaxX();
+
+        float minY = collisionRectangle.getMinY();
+        float maxY = collisionRectangle.getMaxY();
+
+
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX, maxY), cocos2d::Point(maxX, maxY));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX, maxY), cocos2d::Point(maxX, minY));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(maxX, minY), cocos2d::Point(minX, minY));
+        cocos2d::DrawPrimitives::drawLine(cocos2d::Point(minX, minY), cocos2d::Point(minX, maxY));
+
+
+    }
+
+    this->collisionBoxContainer.clear();
 
 
 	

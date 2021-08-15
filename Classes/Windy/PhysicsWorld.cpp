@@ -49,7 +49,7 @@ bool PhysicsWorld::init()
 void PhysicsWorld::onEnter()
 {
     Node::onEnter();
-    cocos2d::Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
+    cocos2d::Director::getInstance()->getScheduler()->scheduleUpdate(this, -1024, false);
 }
 
 
@@ -250,7 +250,10 @@ void PhysicsWorld::update(float dt)
             }
         }
 
-        entityPosition += entity->speed;
+        if (!this->level->getPaused()) {
+            entityPosition += entity->speed;
+        }
+        
 
         entity->setPosition(entityPosition);
 

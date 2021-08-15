@@ -9,6 +9,7 @@
 
 namespace windy {
     class Sprite;
+    class Level;
 }
 
 namespace windy {
@@ -41,6 +42,7 @@ namespace windy {
 
     protected:
         friend class Logical;
+        friend class Level;
 
         Sprite* sprite;
 

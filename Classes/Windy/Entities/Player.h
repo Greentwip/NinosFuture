@@ -5,10 +5,13 @@
 
 #include "Logical.h"
 
+#include "./../GameTags.h"
+
 namespace windy {
     class Sprite;
     class Ladder;
     class Browner;
+    class Item;
 }
 
 
@@ -35,6 +38,8 @@ namespace windy {
         virtual void onRestart();
 
         virtual void onSpawn();
+
+        virtual void onItemAcquired(Item* item);
 
         virtual void onCollisionEnter(Logical* collision) override;
 
@@ -99,8 +104,6 @@ namespace windy {
 
         virtual void onUpdate(float dt) override;
 
-
-
     public:
         bool atIntro;
         bool atExit;
@@ -150,13 +153,18 @@ namespace windy {
 
         ScreenState screenState;
 
+        windy::GameTags::Weapon weaponTag;
+
     private:
+        friend class Browner;
+
         cocos2d::Point shiftSpeedBackup;
         bool cameraShiftSpeedBackup;
 
         float teleportTransitionSpeed;
+        
+        
 
-        friend class Browner;
     };
 }
 

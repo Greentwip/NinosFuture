@@ -16,6 +16,7 @@ namespace game {
     class PauseInterruptor;
     class PauseAnimation;
     class GameGui;
+    class GameLevelController;
 }
 
 namespace game {
@@ -47,6 +48,8 @@ namespace game {
         PauseInterruptor* selectedBrowner;
 
     private:
+        friend class GameLevelController;
+
         windy::Player* player;
 
         GameGui* gui;
@@ -66,7 +69,9 @@ namespace game {
         PauseInterruptor* exSwitch;
         PauseInterruptor* helmetSwitch;
         PauseInterruptor* exitSwitch;
-        
+
+        PauseInterruptor* health;
+
         PauseAnimation* weaponAnimation;
 
 

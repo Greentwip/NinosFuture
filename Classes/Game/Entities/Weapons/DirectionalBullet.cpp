@@ -89,7 +89,10 @@ void DirectionalBullet::fire(int power, int direction, windy::GameTags::Weapon t
     bool flipX = direction == -1 ? true : false;
 
     this->sprite->setFlippedX(flipX);
-    this->speed = cocos2d::Point(static_cast<float>(4 * direction), 0);
+
+    float velocity = 2;
+
+    this->speed = cocos2d::Point(static_cast<float>(velocity * direction), 0);
 
     this->setTag(tag);
 }

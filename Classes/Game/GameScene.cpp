@@ -37,6 +37,8 @@
 #include "Game/Entities/Weapons/TremorDrill.h"
 #include "Game/Entities/Weapons/TremorLaser.h"
 #include "Game/Entities/Weapons/VioletBullet.h"
+#include "Game/Entities/Weapons/ExtremeBullet.h"
+#include "Game/Entities/Weapons/SheriffBullet.h"
 
 #include "Game/Entities/UI/EnergyBar.h"
 #include "Game/Entities/UI/GameGui.h"
@@ -110,6 +112,7 @@ bool GameScene::init()
     windy::Logical::preloadResources<GameVerticalDoor>();
     windy::Logical::preloadResources<GameHorizontalDoor>();
     windy::Logical::preloadResources<VioletBullet>();
+    windy::Logical::preloadResources<ExtremeBullet>();
     windy::Logical::preloadResources<EnergyBar>();
     windy::Logical::preloadResources<GameExplosion>();
     windy::Logical::preloadResources<PauseInterruptor>();
@@ -128,6 +131,7 @@ bool GameScene::init()
     windy::EntityFactory::getInstance().registerType<GameLevelController>("level_controller");
 
     windy::EntityFactory::getInstance().registerTypeCollisionFunc<GameExplosion>("explosion");
+    windy::EntityFactory::getInstance().registerTypeCollisionFunc<GameItem>("item");
 
     if (GameManager::getInstance().currentLevel->mug.compare("sheriffman") == 0) {
 
@@ -141,6 +145,7 @@ bool GameScene::init()
         windy::Logical::preloadResources<Taban>();
         windy::Logical::preloadResources<Sumatran>();
         windy::Logical::preloadResources<DirectionalBullet>();
+        windy::Logical::preloadResources<SheriffBullet>();
 
         windy::EntityFactory::getInstance().registerType<SheriffMan>("sheriff");
         windy::EntityFactory::getInstance().registerType<Tremor>("tremor");

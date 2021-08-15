@@ -60,7 +60,7 @@ void GameGui::restoreHealth(int amount) {
 
     this->filling = true;
 
-    this->level->setPaused(true);
+    this->level->setPaused(true, true);
 
     this->fillingHealthBar = true;
 
@@ -75,7 +75,7 @@ void GameGui::restoreWeapon(int amount) {
 
     this->filling = true;
 
-    this->level->setPaused(true);
+    this->level->setPaused(true, true);
 
     this->fillingWeaponBar = true;
 
@@ -90,7 +90,7 @@ void GameGui::restoreBossHealth(int amount) {
 
     this->filling = true;
 
-    this->level->setPaused(true);
+    this->level->setPaused(true, true);
 
     this->fillingBossHealthBar = true;
 }
@@ -122,7 +122,7 @@ void GameGui::onUpdate(float dt) {
 
                 int currentValue = this->fillTarget->getValue() + 1;
 
-                this->fillTarget->setValue(currentValue + 1);
+                this->fillTarget->setValue(currentValue);
 
                 this->fillTimer = this->fillTimeDelay;
 
@@ -158,7 +158,7 @@ void GameGui::onUpdate(float dt) {
             }
 
             if (this->fillTarget == this->healthBar || this->fillTarget == this->weaponBar || this->fillTarget == this->bossHealthBar) {
-                this->level->setPaused(false);
+                this->level->setPaused(false, true);
             }
             
         }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="224" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="46">
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="224" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="55">
  <tileset firstgid="1" name="level_sheriffman_bank.png" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="768" columns="48">
   <image source="level_sheriffman_bank.png" width="864" height="288"/>
  </tileset>
@@ -68,7 +68,61 @@
   <object id="41" name="teleporter" x="3520" y="160" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="8" name="items">
-  <object id="31" name="sheriff_e_tank" type="e_tank" x="1026" y="443" width="10.6667" height="10.6667">
+  <object id="31" name="sheriff_e_tank" type="e_tank" x="1027" y="438" width="8" height="10">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="radius" value="32"/>
+   </properties>
+  </object>
+  <object id="47" name="sheriff_m_tank_test" type="m_tank" x="360" y="150" width="8" height="10">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="radius" value="32"/>
+   </properties>
+  </object>
+  <object id="46" name="sheriff_boot_test" type="boot" x="352" y="150" width="8" height="10">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="radius" value="32"/>
+   </properties>
+  </object>
+  <object id="48" name="sheriff_chest_test" type="chest" x="344" y="150" width="8" height="10">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="radius" value="32"/>
+   </properties>
+  </object>
+  <object id="49" name="head_test" type="head" x="368" y="150" width="8" height="10">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="radius" value="32"/>
+   </properties>
+  </object>
+  <object id="52" name="fist_test" type="fist" x="376" y="150" width="8" height="10">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="radius" value="32"/>
+   </properties>
+  </object>
+  <object id="50" name="health_small_test" type="health_small" x="392" y="150" width="8" height="10">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="radius" value="32"/>
+   </properties>
+  </object>
+  <object id="51" name="health_big_test" type="health_big" x="384" y="150" width="8" height="10">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="radius" value="32"/>
+   </properties>
+  </object>
+  <object id="53" name="energy_small_test" type="energy_small" x="408" y="150" width="8" height="10">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="radius" value="32"/>
+   </properties>
+  </object>
+  <object id="54" name="energy_big_test" type="energy_big" x="400" y="150" width="8" height="10">
    <properties>
     <property name="direction" value="left"/>
     <property name="radius" value="32"/>

@@ -46,6 +46,9 @@ bool GameExplosion::init()
         return false;
     }
 
+    this->setTag(windy::GameTags::Scenery::Particle);
+
+
     return true;
 }
 

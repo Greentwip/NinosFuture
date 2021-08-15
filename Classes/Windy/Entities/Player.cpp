@@ -9,6 +9,7 @@
 #include "Enemy.h"
 #include "Explosion.h"
 #include "Bounds.h"
+#include "Item.h"
 
 #include "./../GameTags.h"
 #include "./../Sprite.h"
@@ -75,6 +76,8 @@ void Player::initVariables() {
     this->ignoreGravity = true;
     this->ignoreLandscapeCollision = true;
     
+    this->weaponTag = windy::GameTags::WeaponPlayer;
+
 }
 
 void Player::onRestart() {
@@ -86,7 +89,6 @@ void Player::onRestart() {
 void Player::onSpawn() {
 
 }
-
 
 void Player::onCollisionEnter(Logical* collision) {
 
@@ -118,6 +120,12 @@ void Player::onCollisionEnter(Logical* collision) {
 
             this->onSpawn();
         }
+    }
+    else if (collision->getTag() == GameTags::General::Item) {
+        auto item = dynamic_cast<Item*>(collision);
+
+        this->onItemAcquired(item);
+
     }
 }
 
@@ -362,11 +370,7 @@ void Player::dashJump() {
 
 void Player::slide() {
     bool slideCondition = this->slideCondition();
-        
-
     bool leftSlideCondition = this->slideLeftCondition();
-        
-
     bool rightSlideCondition = this->slideRightCondition();
 
     if (leftSlideCondition && this->onGround && !this->sliding && !this->stunned && !this->attacking) {
@@ -691,6 +695,10 @@ void Player::explode(float angleOffset) {
 void Player::kill(bool killAnimation) {
 }
 
+void Player::onItemAcquired(Item* item) {
+
+}
+
 void Player::restoreHealth(int amount) {
     this->health += amount;
 
@@ -717,14 +725,14 @@ void Player::checkHealth() {
     }
 
     if (this->health <= 0 && this->alive) {
-        this->level->setPaused(true);
-
         this->currentBrowner->deactivate();
 
         this->health = 0;
 
         this->alive = false;
         this->vulnerable = false;
+
+        this->canMove = false;
 
         AudioManager::stopAll();
 

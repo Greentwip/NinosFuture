@@ -131,6 +131,13 @@ public:
     ssize_t getStringLength()const;
 
     /**
+     * Gets label renderer.
+     *
+     * @return The label renderer.
+     */
+    Label* getLabelRenderer();
+
+    /**
      * Sets the font size of label.
      *
      * @param size The font size.

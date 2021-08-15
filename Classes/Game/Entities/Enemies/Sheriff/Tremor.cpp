@@ -134,7 +134,7 @@ void Tremor::onDefeated() {
 
     std::string item = "";
 
-    if (GameManager::getInstance().unlockables.head.acquired) {
+    if (GameManager::getInstance().unlockables.head->acquired) {
         item = "health_big";
     }
     else {
@@ -148,7 +148,7 @@ void Tremor::onDefeated() {
 
         auto itemGood = windy::EntityFactory::getInstance().create("item", itemPosition, cocos2d::Size(16, 16));
 
-        dynamic_cast<GameItem*>(itemGood)->setup(item, true);
+        dynamic_cast<GameItem*>(itemGood)->setup("none", item, true, false);
 
         return itemGood;
         });

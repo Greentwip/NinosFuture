@@ -6,6 +6,9 @@
 #include "Windy/Entities/Player.h"
 #include "Windy/Entities/Browner.h"
 
+namespace windy {
+    class Item;
+}
 
 namespace game {
     class GameGui;
@@ -22,6 +25,8 @@ namespace game {
         virtual void onRestart() override;
         virtual void onSpawn() override;
         virtual void onPlayerExit() override;
+
+        virtual void onItemAcquired(windy::Item* item) override;
 
         void switchBrowner(int brownerId);
 

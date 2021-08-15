@@ -73,6 +73,8 @@ bool GameBoss::init()
     this->level->boss = this;
 
     this->gui = dynamic_cast<GameGui*>(this->level->gui);
+
+    this->weaponTag = windy::GameTags::WeaponEnemy;
     
     return true;
 }
@@ -191,7 +193,7 @@ void GameBoss::checkHealth() {
 
         case BossState::Fighting: 
         {
-            this->gui->bossHealthBar->setValue(this->health);
+            this->gui->bossHealthBar->setValue(this->health - 1);
         }
         break;
     }

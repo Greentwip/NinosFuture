@@ -36,7 +36,8 @@ std::map<windy::Sounds, std::string> windy::AudioManager::soundsKeyMap = {
 	{Sounds::BossTheme, "sounds/bgm_boss.mp3"},
 	{Sounds::Victory, "sounds/sfx_victory.mp3"},
 	{Sounds::GetEnergy, "sounds/sfx_getenergy.mp3"},
-	{Sounds::Error, "sounds/sfx_error.mp3"}
+	{Sounds::Error, "sounds/sfx_error.mp3"},
+	{Sounds::GetLife, "sounds/sfx_getlife.mp3"}
 };
 
 int windy::AudioManager::playBgm(windy::Sounds resource, bool loop, std::function<void()> callback) {

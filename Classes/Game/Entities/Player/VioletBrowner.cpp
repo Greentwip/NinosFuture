@@ -93,7 +93,7 @@ void VioletBrowner::fire() {
         bullet->setPosition(bulletPosition);
         bullet->setup(chargePower);
 
-        bullet->fire(bulletPower, this->getSpriteNormal(), windy::GameTags::WeaponPlayer);
+        bullet->fire(bulletPower, this->getSpriteNormal(), this->player->weaponTag);
 
         return bullet;
         });

@@ -18,12 +18,14 @@ namespace game {
     public:
         static void preloadResources();
 
-        void setup(const std::string& content, bool forever);
+        virtual void setup(const std::string& name, const std::string& content, bool forever, bool collectible) override;
 
         static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size);
 
+        virtual void onFinished() override;
+
     private:
-        windy::Sprite* sprite;
+        bool permanent;
     };
 }
 

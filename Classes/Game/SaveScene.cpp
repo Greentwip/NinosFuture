@@ -147,11 +147,11 @@ windy::Slot SaveScene::readSlot(int slot) {
 void SaveScene::loadSlot(int slot) {
     auto dataSlot = windy::SaveManager::readSlot(slot);
 
-    GameManager::getInstance().unlockables.helmet.acquired = dataSlot.helmet;
-    GameManager::getInstance().unlockables.head.acquired = dataSlot.head;
-    GameManager::getInstance().unlockables.chest.acquired = dataSlot.chest;
-    GameManager::getInstance().unlockables.fist.acquired = dataSlot.fist;
-    GameManager::getInstance().unlockables.boot.acquired = dataSlot.boot;
+    GameManager::getInstance().unlockables.helmet->acquired = dataSlot.helmet;
+    GameManager::getInstance().unlockables.head->acquired = dataSlot.head;
+    GameManager::getInstance().unlockables.chest->acquired = dataSlot.chest;
+    GameManager::getInstance().unlockables.fist->acquired = dataSlot.fist;
+    GameManager::getInstance().unlockables.boot->acquired = dataSlot.boot;
 
     GameManager::getInstance().player.eTanks = dataSlot.e;
     GameManager::getInstance().player.mTanks = dataSlot.m;
@@ -250,24 +250,24 @@ void SaveScene::populateSlot(int slot) {
 
     auto weapons = saveSlot->getChildByName("weapons");
 
-    if (GameManager::getInstance().unlockables.helmet.acquired) {
+    if (GameManager::getInstance().unlockables.helmet->acquired) {
         this->colorWeapon(weapons, "helmet");
     }
     
-    if (GameManager::getInstance().unlockables.head.acquired) {
+    if (GameManager::getInstance().unlockables.head->acquired) {
         this->colorWeapon(weapons, "ex_helmet");
     }
 
-    if (GameManager::getInstance().unlockables.chest.acquired) {
+    if (GameManager::getInstance().unlockables.chest->acquired) {
         this->colorWeapon(weapons, "chest");
     }
 
-    if (GameManager::getInstance().unlockables.fist.acquired) {
+    if (GameManager::getInstance().unlockables.fist->acquired) {
         this->colorWeapon(weapons, "fist");
     }
 
 
-    if (GameManager::getInstance().unlockables.boot.acquired) {
+    if (GameManager::getInstance().unlockables.boot->acquired) {
         this->colorWeapon(weapons, "boot");
     }
 
@@ -311,11 +311,11 @@ void SaveScene::populateSlot(int slot) {
 
 void SaveScene::populateSlotCheat(int slot) {
 
-    GameManager::getInstance().unlockables.helmet.acquired = true;
-    GameManager::getInstance().unlockables.head.acquired = true;
-    GameManager::getInstance().unlockables.chest.acquired = true;
-    GameManager::getInstance().unlockables.fist.acquired = true;
-    GameManager::getInstance().unlockables.boot.acquired = true;
+    GameManager::getInstance().unlockables.helmet->acquired = true;
+    GameManager::getInstance().unlockables.head->acquired = true;
+    GameManager::getInstance().unlockables.chest->acquired = true;
+    GameManager::getInstance().unlockables.fist->acquired = true;
+    GameManager::getInstance().unlockables.boot->acquired = true;
 
     GameManager::getInstance().browners.freezer->acquired = true;
     GameManager::getInstance().browners.sheriff->acquired = true;
@@ -603,7 +603,7 @@ void SaveScene::update(float dt)
                     this->populateSlot(selectedSlot);
                 }
 
-                GameManager::getInstance().slot = selectedSlot;
+                windy::SaveManager::defaultSlot = selectedSlot;
 
                 auto slot = GameManager::getInstance().getDefaultSlot();
 

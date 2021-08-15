@@ -23,8 +23,10 @@ namespace game {
 
         int getMaxValue();
 
-    private:
+    public:
         windy::Sprite* sprite;
+
+    private:
         cocos2d::Vector<windy::Sprite*> cells;
 
         int maxValue;

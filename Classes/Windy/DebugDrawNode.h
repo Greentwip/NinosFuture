@@ -20,6 +20,8 @@ namespace windy {
         virtual void onEnter();
         virtual void onExit();
 
+        void drawCollisionBox(const cocos2d::Rect& collisionBox);
+
         virtual	void draw(cocos2d::Renderer* renderer, const cocos2d::Mat4& transform, uint32_t flags);
         void onDraw(const cocos2d::Mat4& transform, uint32_t flags);
 
@@ -30,6 +32,8 @@ namespace windy {
 
     private:
         cocos2d::CustomCommand renderCommand;
+
+        std::vector<cocos2d::Rect> collisionBoxContainer;
 
     };
 }

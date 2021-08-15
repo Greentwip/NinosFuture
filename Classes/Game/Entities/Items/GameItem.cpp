@@ -26,30 +26,11 @@ void GameItem::preloadResources() {
     windy::Sprite::cache(GameItemResources::spritePath);
 }
 
-void GameItem::setup(const std::string& content, bool forever) {
+void GameItem::setup(const std::string& name, const std::string& content, bool forever, bool collectible) {
 
     auto armature = windy::Armature(GameItemResources::armaturePath);
 
-    auto newAnchor = armature.get("item").anchor;
-
-    this->sprite = windy::Sprite::create(GameItemResources::spritePath, newAnchor);
-    this->addChild(this->sprite);
-
-    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-    auto contentSize = this->sprite->getContentSize();
-
-    this->collisionRectangles = armature.get("item").collisionRectangles;
-
-    auto collisionBoxCenter = cocos2d::Point(this->collisionRectangles[0]->getMidX(), this->collisionRectangles[0]->getMidY());
-
-    for (int i = 0; i < this->collisionRectangles.size(); ++i) {
-        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, *this->collisionRectangles[i]);
-    }
-
-    this->collisionBox = this->collisionRectangles[0];
-
-
-    this->sprite->setPosition(collisionBoxCenter + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
+    Logical::composite<GameItem>(this, GameItemResources::armaturePath, GameItemResources::spritePath, "item");
 
     this->setTag(windy::GameTags::General::Item);
 
@@ -70,13 +51,14 @@ void GameItem::setup(const std::string& content, bool forever) {
 
     this->sprite->appendActionSet(actionSet, false);
 
-
     for (int i = 0; i < GameManager::getInstance().items.collection.size(); ++i) {
         auto item = GameManager::getInstance().items.collection[i];
         if (content == item->string) {
             this->id = item->id;
         }
     }
+
+    this->sprite->setAnimation(content);
 
     if (forever) {
         this->sprite->runAction(content);
@@ -94,21 +76,20 @@ void GameItem::setup(const std::string& content, bool forever) {
 
         ((cocos2d::Node*)this)->runAction(sequence);
     }
+
+    this->permanent = forever;
+
+    this->name = name;
+    this->collectible = collectible;
 }
 
 std::shared_ptr<cocos2d::Rect> GameItem::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
+    return Logical::buildEntryCollisionRectangle(position, size, GameItemResources::armaturePath, "item");
+}
 
-    auto armature = windy::Armature(GameItemResources::armaturePath);
-
-    auto newAnchor = armature.get("item").anchor;
-
-    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-
-    auto collisionRectangles = armature.get("item").collisionRectangles;
-
-    for (int i = 0; i < collisionRectangles.size(); ++i) {
-        collisionRectangles[i] = windy::Logical::normalizeCollisionRectangle(position, *collisionRectangles[i]);
+void GameItem::onFinished() {
+    if (!this->permanent) {
+        this->finishForever();
     }
-
-    return collisionRectangles[0];
+    //this->finish();    
 }

@@ -51,6 +51,7 @@ namespace windy {
 		Victory,
 		GetEnergy,
 		Error,
+		GetLife,
 		NONE
 	};
 

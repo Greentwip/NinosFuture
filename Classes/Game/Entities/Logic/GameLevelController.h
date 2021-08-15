@@ -7,6 +7,7 @@
 
 namespace game {
     class PauseMenu;
+    class GameGui;
 }
 
 namespace game {
@@ -41,6 +42,10 @@ namespace game {
         bool fading;
 
         PauseMenu* pauseMenu;
+
+        bool manualPause;
+
+        GameGui* gui;
     };
 }
 

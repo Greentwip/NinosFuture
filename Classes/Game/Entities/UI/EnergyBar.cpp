@@ -65,8 +65,6 @@ bool EnergyBar::init()
 
 void EnergyBar::setValue(int value) {
 
-    value = value - 1;
-
     if (value != this->meter && value > -2) {
         if (!this->isVisible()) {
             this->setVisible(true);

@@ -12,7 +12,7 @@
 
 #include "Game/GameManager.h"
 
-#include "Game/Entities/Weapons/VioletBullet.h"
+#include "Game/Entities/Weapons/SheriffBullet.h"
 
 using namespace game;
 
@@ -83,40 +83,46 @@ void SheriffBrowner::attack() {
 }
 void SheriffBrowner::fire() {
 
-    int bulletOffset = 12;
-    int bulletPower = 1;
+    int bulletOffset = 24;
+    int bulletPower = 3;
 
-    if (this->chargePower.compare("high") == 0) {
-        bulletOffset = 26;
-        bulletPower = 3;
-        windy::AudioManager::playSfx(windy::Sounds::BusterHigh);
-    }
-    else if (this->chargePower.compare("mid") == 0) {
-        bulletPower = 2;
-        windy::AudioManager::playSfx(windy::Sounds::BusterMid);
-    }
-    else {
-        windy::AudioManager::playSfx(windy::Sounds::BusterLow);
-    }
-
-    auto bulletPosition = cocos2d::Point(this->player->getPositionX() + (bulletOffset * this->getSpriteNormal()),
-        this->player->getPositionY() - 4);
+    windy::AudioManager::playSfx(windy::Sounds::BusterMid);
 
 
-    auto chargePower = this->chargePower;
+    auto bulletPositionA = cocos2d::Point(
+        this->player->getPositionX() + (bulletOffset * this->getSpriteNormal()),
+        this->player->getPositionY() - 2);
 
-    auto entryCollisionBox = VioletBullet::getEntryCollisionRectangle(chargePower, bulletPosition, cocos2d::Size(16, 16));
-    auto entry = windy::Logical::getEntry(entryCollisionBox, [=]() {
-        auto bullet = VioletBullet::create();
-        bullet->setPosition(bulletPosition);
-        bullet->setup(chargePower);
+    auto bulletPositionB = cocos2d::Point(
+        this->player->getPositionX() - (bulletOffset * this->getSpriteNormal()),
+        this->player->getPositionY() - 2);
 
-        bullet->fire(bulletPower, this->getSpriteNormal(), windy::GameTags::WeaponPlayer);
+
+    auto entryCollisionBoxA = SheriffBullet::getEntryCollisionRectangle(bulletPositionA, cocos2d::Size(16, 16));
+    auto entryA = windy::Logical::getEntry(entryCollisionBoxA, [=]() {
+        auto bullet = SheriffBullet::create();
+        bullet->setPosition(bulletPositionA);
+        bullet->setup();
+
+        bullet->fire(bulletPower, this->getSpriteNormal(), this->player->weaponTag);
 
         return bullet;
-        });
+    });
 
-    this->level->objectManager->objectEntries.push_back(entry);
+    auto entryCollisionBoxB = SheriffBullet::getEntryCollisionRectangle(bulletPositionB, cocos2d::Size(16, 16));
+    auto entryB = windy::Logical::getEntry(entryCollisionBoxB, [=]() {
+        auto bullet = SheriffBullet::create();
+        bullet->setPosition(bulletPositionB);
+        bullet->setup();
+
+        bullet->fire(bulletPower, this->getSpriteNormal() * -1, this->player->weaponTag);
+
+        return bullet;
+    });
+
+
+    this->level->objectManager->objectEntries.push_back(entryA);
+    this->level->objectManager->objectEntries.push_back(entryB);
 
 
     //self:getParent():getParent().bullets_[bullet] = bullet

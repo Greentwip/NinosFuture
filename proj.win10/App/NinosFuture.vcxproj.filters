@@ -100,9 +100,6 @@
     <ClCompile Include="..\..\Classes\AppDelegate.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Classes\HelloWorldScene.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Classes\Windy\AudioManager.cpp">
       <Filter>Classes\Windy</Filter>
     </ClCompile>
@@ -349,6 +346,18 @@
     <ClCompile Include="..\..\Classes\Game\Entities\UI\Pause\PauseMenu.cpp">
       <Filter>Classes\Game\Entities\UI\Pause</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Classes\Windy\SaveManager.cpp">
+      <Filter>Classes\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Player\ExtremeBrowner.cpp">
+      <Filter>Classes\Game\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Weapons\ExtremeBullet.cpp">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Weapons\SheriffBullet.cpp">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -361,9 +370,6 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Cocos2dEngine\OpenGLESPage.xaml.h" />
     <ClInclude Include="..\..\Classes\AppDelegate.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Classes\HelloWorldScene.h">
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Classes\Windy\AudioManager.h">
@@ -1838,6 +1844,18 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Game\Entities\UI\Pause\PauseMenu.h">
       <Filter>Classes\Game\Entities\UI\Pause</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Items\ItemFlags.h">
+      <Filter>Classes\Game\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Player\ExtremeBrowner.h">
+      <Filter>Classes\Game\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Weapons\ExtremeBullet.h">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Weapons\SheriffBullet.h">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

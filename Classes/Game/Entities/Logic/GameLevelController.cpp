@@ -6,6 +6,7 @@
 #include "Game/Entities/UI/Pause/PauseInterruptor.h"
 #include "Game/Entities/Player/GamePlayer.h"
 
+#include "Game/GameManager.h"
 
 #include "Windy/GameTags.h"
 #include "Windy/AudioManager.h"
@@ -28,6 +29,12 @@ bool GameLevelController::init()
 		return false;
 	}
 
+#if _DEBUG
+	GameManager::getInstance().loadGameDataFromDefaultSlot();
+	GameManager::getInstance().browners.sheriff->acquired = true;
+#endif
+
+
 	this->setTag(windy::GameTags::General::None);
 
 	this->atVictory = false;
@@ -40,6 +47,10 @@ bool GameLevelController::init()
 	this->gameState = GameState::Startup;
 
 	this->pauseMenu = nullptr;
+
+	this->manualPause = false;
+
+	this->gui = dynamic_cast<GameGui*>(this->level->gui);
 
 
 	return true;
@@ -64,8 +75,7 @@ void GameLevelController::onUpdate(float dt) {
 			this->atVictory = false;
 			this->fading = false;
 			this->gameState = GameState::Playing;
-			auto gameGui = dynamic_cast<GameGui*>(this->level->gui);
-			gameGui->bossHealthBar->setVisible(false);
+			this->gui->bossHealthBar->setVisible(false);
 		}
 		break;
 
@@ -83,9 +93,15 @@ void GameLevelController::onUpdate(float dt) {
 
 		case GameState::Playing: 
 		{
+			if (this->level->player->spawning) {
+				this->gui->healthBar->setVisible(false);
+			}
+			else {
+				this->gui->healthBar->setVisible(true);
+			}
+
 			if (this->level->boss != nullptr) {
-				auto gameGui = dynamic_cast<GameGui*>(this->level->gui);
-				gameGui->bossHealthBar->setVisible(true);
+				this->gui->bossHealthBar->setVisible(true);
 
 				//windy::AudioManager::playBgm(windy::Sounds::BossTheme);
 
@@ -179,7 +195,7 @@ void GameLevelController::onUpdate(float dt) {
 				if (windy::Input::keyPressed(windy::InputKey::Select)) {
 					bool pausedThisFrame = false;
 
-					if (!this->level->getPaused() && this->pauseMenu == nullptr) {
+					if (!this->level->getPaused() && this->pauseMenu == nullptr && this->level->player->canMove) {
 
 						auto gameGui = dynamic_cast<GameGui*>(this->level->gui);
 
@@ -202,22 +218,45 @@ void GameLevelController::onUpdate(float dt) {
 
 					}
 
-					if (this->level->getPaused() && this->pauseMenu != nullptr && !pausedThisFrame) {
+					if (this->level->getPaused() && this->pauseMenu != nullptr && this->level->player->canMove && !pausedThisFrame) {
 
-						if (this->pauseMenu->selectedBrowner != nullptr) {
-							auto gamePlayer = dynamic_cast<GamePlayer*>(this->level->player);
+						if (!this->pauseMenu->busy) {
+							if (this->pauseMenu->selectedBrowner != nullptr) {
+								auto gamePlayer = dynamic_cast<GamePlayer*>(this->level->player);
 
-							gamePlayer->switchBrowner(this->pauseMenu->selectedBrowner->brownerId);
+								gamePlayer->switchBrowner(this->pauseMenu->selectedBrowner->brownerId);
+							}
+
+							this->pauseMenu->removeFromParent();
+							this->pauseMenu = nullptr;
+
+							bool freezePlayer;
+
+							this->level->setPaused(false, freezePlayer = true);
 						}
-
-						this->pauseMenu->removeFromParent();
-						this->pauseMenu = nullptr;
-
-						this->level->setPaused(false);
+						
 					}
 
 				}
 
+				if (windy::Input::keyPressed(windy::InputKey::Start)) {
+					bool pausedThisFrame = false;
+
+					if (!this->level->getPaused() && this->pauseMenu == nullptr && this->level->player->canMove && !this->manualPause) {
+						bool freezePlayer;
+						this->level->setPaused(true, freezePlayer = true);
+
+						pausedThisFrame = true;
+						this->manualPause = true;
+					}
+
+					if (this->level->getPaused() && this->pauseMenu == nullptr && this->level->player->canMove &&  !pausedThisFrame && this->manualPause) {
+						bool freezePlayer;
+						this->level->setPaused(false, freezePlayer = true);
+						this->manualPause = false;
+					}
+
+				}
 			}
 			
 

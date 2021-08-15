@@ -130,6 +130,10 @@ ssize_t Text::getStringLength()const
     return _labelRenderer->getStringLength();
 }
 
+Label* Text::getLabelRenderer() {
+    return _labelRenderer;
+}
+
 void Text::setFontSize(float size)
 {
     if (_type == Type::SYSTEM)

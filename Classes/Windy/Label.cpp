@@ -23,6 +23,7 @@ windy::Label* windy::Label::create(const std::string& text,
             label->delay = animation->delay;
             label->onAnimationEnd = animation->callback;
             label->setString("");
+            label->getFontAtlas()->setAliasTexParameters();
             label->setVisible(false);
         }
         else {

@@ -44,8 +44,6 @@ namespace windy {
         virtual void update(float dt);
 
     public:
-        
-
         Door* triggeringDoor;
         cocos2d::Vector<Door*> verticalDoors;
         cocos2d::Vector<Door*> horizontalDoors;
@@ -64,9 +62,10 @@ namespace windy {
 
         Boss* boss;
 
-    private:
         DebugDrawNode* debugDrawNode;
 
+
+    private:
         LevelController* levelController;
 
         std::string resourcesRootPath;
