@@ -315,6 +315,10 @@ void GamePlayer::onItemAcquired(windy::Item* item) {
         {
             GameManager::getInstance().player.lives += 1;
 
+            if (GameManager::getInstance().player.lives >= 9) {
+                GameManager::getInstance().player.lives = 9;
+            }
+
             auto slot = GameManager::getInstance().getDefaultSlot();
 
             slot.lives = GameManager::getInstance().player.lives;
@@ -423,6 +427,10 @@ void GamePlayer::onItemAcquired(windy::Item* item) {
         {
             GameManager::getInstance().player.eTanks += 1;
 
+            if (GameManager::getInstance().player.eTanks >= 9) {
+                GameManager::getInstance().player.eTanks = 9;
+            }
+
             auto slot = GameManager::getInstance().getDefaultSlot();
 
             slot.e = GameManager::getInstance().player.eTanks;
@@ -438,6 +446,10 @@ void GamePlayer::onItemAcquired(windy::Item* item) {
         case ItemId::mTank:
         {
             GameManager::getInstance().player.mTanks += 1;
+
+            if (GameManager::getInstance().player.mTanks >= 9) {
+                GameManager::getInstance().player.mTanks = 9;
+            }
 
             auto slot = GameManager::getInstance().getDefaultSlot();
 

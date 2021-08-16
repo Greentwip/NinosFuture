@@ -44,10 +44,11 @@ bool ObjectManager::init()
     return true;
 }
 
+
 void ObjectManager::onEnter()
 {
     Node::onEnter();
-    cocos2d::Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
+    cocos2d::Director::getInstance()->getScheduler()->scheduleUpdate(this, -2048, false);
 }
 
 
@@ -55,6 +56,28 @@ void ObjectManager::onExit()
 {
     cocos2d::Director::getInstance()->getScheduler()->unscheduleAllForTarget(this);
     Node::onExit();
+}
+
+
+void ObjectManager::resetEntryTable(std::vector<std::shared_ptr<ObjectEntry>> newEntries) {
+
+    for (int i = 0; i < this->objectEntries.size(); ++i) {
+        auto entry = this->objectEntries[i];
+
+        entry->finished = false;
+        entry->respawnPrevention = false;
+
+        if (entry->mappedInstance != nullptr) {
+            this->level->entities.eraseObject(entry->mappedInstance);
+
+            entry->mappedInstance->onFinished();
+            entry->mappedInstance->removeFromParent();
+            entry->mappedInstance = nullptr;
+        }
+    }
+
+    objectEntries = newEntries;
+
 }
 
 void ObjectManager::update(float dt)

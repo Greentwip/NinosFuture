@@ -20,6 +20,7 @@ namespace windy {
     class Gui;
     class LevelController;
     class Boss;
+    class ObjectEntry;
 }
 
 namespace windy {
@@ -79,6 +80,9 @@ namespace windy {
 
         cocos2d::Vector<LandscapeTile*> tiles;
         cocos2d::Vector<LandscapeTile*> screenTiles;
+
+        std::vector<std::shared_ptr<ObjectEntry>> _initialObjectEntries;
+
 
     };
 }

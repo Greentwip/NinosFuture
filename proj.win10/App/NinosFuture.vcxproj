@@ -663,6 +663,7 @@
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\TremorDrill.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\TremorLaser.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\VioletBullet.h" />
+    <ClInclude Include="..\..\Classes\Game\GameOverScene.h" />
     <ClInclude Include="..\..\Classes\Game\GameState.h" />
     <ClInclude Include="..\..\Classes\Game\Intro.h" />
     <ClInclude Include="..\..\Classes\Game\WeaponAcquireScene.h" />
@@ -783,6 +784,7 @@
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\TremorDrill.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\TremorLaser.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\VioletBullet.cpp" />
+    <ClCompile Include="..\..\Classes\Game\GameOverScene.cpp" />
     <ClCompile Include="..\..\Classes\Game\Intro.cpp" />
     <ClCompile Include="..\..\Classes\Game\WeaponAcquireScene.cpp" />
     <ClCompile Include="..\..\Classes\Game\Computer.cpp" />

@@ -456,8 +456,9 @@ bool Level::init()
 
     this->addChild(this->levelController);
 
-    this->restart();
+    _initialObjectEntries = objectManager->objectEntries;
 
+    this->restart();
 
     return true;
 }
@@ -564,6 +565,8 @@ void Level::restart() {
     //this->camera->synchronizeWithBounds();
 
     this->setPaused(false);
+
+    this->objectManager->resetEntryTable(_initialObjectEntries);
 
     this->levelController->restart();
 

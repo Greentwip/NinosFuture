@@ -23,6 +23,8 @@ namespace windy {
         virtual void onEnter();
         virtual void onExit();
 
+        void resetEntryTable(std::vector<std::shared_ptr<ObjectEntry>> newEntries);
+
         virtual void update(float dt);
 
         std::vector<std::shared_ptr<ObjectEntry>> objectEntries;

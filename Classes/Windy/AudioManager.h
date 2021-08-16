@@ -52,6 +52,7 @@ namespace windy {
 		GetEnergy,
 		Error,
 		GetLife,
+		LevelComplete,
 		NONE
 	};
 

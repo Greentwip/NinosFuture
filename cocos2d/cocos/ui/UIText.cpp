@@ -98,6 +98,7 @@ bool Text::init(const std::string &textContent, const std::string &fontName, flo
         this->setFontName(fontName);
         this->setFontSize(fontSize);
         this->setString(textContent);
+        this->_labelRenderer->getFontAtlas()->setAliasTexParameters();
     } while (0);
     return ret;
 }

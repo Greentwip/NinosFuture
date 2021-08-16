@@ -104,7 +104,7 @@ void Cow::attack(float dt) {
                     auto bulletPosition = 
                         cocos2d::Point(
                             this->getPositionX() + (30 * this->getSpriteNormal() * -1),
-                            this->getPositionY());
+                            this->getPositionY() - 2);
 
                     auto entryCollisionBox = DirectionalBullet::getEntryCollisionRectangle(bulletPosition, cocos2d::Size(16, 16));
                     auto entry = Logical::getEntry(entryCollisionBox, [=]() {

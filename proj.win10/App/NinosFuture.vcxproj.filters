@@ -361,6 +361,9 @@
     <ClCompile Include="..\..\Classes\Windy\Entities\Passage.cpp">
       <Filter>Classes\Windy\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\GameOverScene.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -1862,6 +1865,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Windy\Entities\Passage.h">
       <Filter>Classes\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\GameOverScene.h">
+      <Filter>Classes\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

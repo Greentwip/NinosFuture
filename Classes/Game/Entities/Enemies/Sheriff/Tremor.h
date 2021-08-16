@@ -9,6 +9,10 @@ namespace game {
     class TremorTail;
 }
 
+namespace windy {
+    class ObjectEntry;
+}
+
 namespace game {
     class Tremor : public GameEnemy
     {
@@ -43,6 +47,8 @@ namespace game {
         cocos2d::Point startPosition;
 
         TremorTail* tail;
+
+        std::shared_ptr<windy::ObjectEntry> _laserEntry;
     };
 }
 

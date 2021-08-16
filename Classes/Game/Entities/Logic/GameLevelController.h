@@ -14,16 +14,17 @@ namespace game {
     class GameLevelController : public windy::LevelController
     {
     private:
-        enum GameState {
+        enum LevelState {
             Startup,
             Playing,
             Restarting,
             BossBattle,
-            Finishing,
+            Succeeded,
+            GameOver,
             Exit
         };
 
-        GameState gameState;
+        LevelState levelState;
 
     public:
         virtual bool init() override;

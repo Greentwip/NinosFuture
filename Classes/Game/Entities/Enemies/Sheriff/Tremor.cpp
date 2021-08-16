@@ -7,21 +7,17 @@
 #include "Windy/Sprite.h"
 
 #include "Windy/EntityFactory.h"
-
 #include "Windy/ObjectManager.h"
 
+#include "Windy/Entities/ObjectEntry.h"
 #include "Windy/Entities/Door.h"
 
 #include "Game/GameManager.h"
 
 #include "Game/Entities/Weapons/DIrectionalBullet.h"
-
 #include "Game/Entities/Player/GamePlayer.h"
-
 #include "Game/Entities/Weapons/TremorDrill.h"
-
 #include "Game/Entities/Weapons/TremorLaser.h"
-
 #include "Game/Entities/Items/GameItem.h"
 
 
@@ -113,6 +109,8 @@ void Tremor::setup() {
 
     auto horizontalDoor = this->level->horizontalDoors.at(0);
     horizontalDoor->close(false);
+
+    _laserEntry = nullptr;
 }
 
 
@@ -164,6 +162,9 @@ void Tremor::onDefeated() {
         horizontalDoor->setTraversable(false);
     });
     
+    if (_laserEntry != nullptr) {
+        _laserEntry->finished = true;
+    }
 
     this->finish();
 
@@ -278,6 +279,8 @@ void Tremor::attack(float dt) {
                     });
 
                 this->level->objectManager->objectEntries.push_back(entry);
+
+                _laserEntry = entry;
                 });
 
             auto attackDelay = cocos2d::DelayTime::create(2);

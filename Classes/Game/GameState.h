@@ -13,7 +13,7 @@ namespace game {
         BossIntro,
         Game,
         GetWeapon,
-        GameEnd,
+        GameOver,
     };
 
 }

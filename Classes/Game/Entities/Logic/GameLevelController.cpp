@@ -8,6 +8,8 @@
 
 #include "Game/GameManager.h"
 
+#include "Game/GameStateMachine.h"
+
 #include "Windy/GameTags.h"
 #include "Windy/AudioManager.h"
 #include "Windy/Input.h"
@@ -48,7 +50,7 @@ bool GameLevelController::init()
 
 	this->fading = false;
 
-	this->gameState = GameState::Startup;
+	this->levelState = LevelState::Startup;
 
 	this->pauseMenu = nullptr;
 
@@ -64,40 +66,47 @@ bool GameLevelController::init()
 
 
 void GameLevelController::restart() {
-	this->gameState = GameState::Restarting;
+	this->levelState = LevelState::Restarting;
 }
 
 
 void GameLevelController::succeed() {
-	this->gameState = GameState::Finishing;
+	this->levelState = LevelState::Succeeded;
 }
 
 void GameLevelController::onUpdate(float dt) {
 
-	switch (this->gameState) {
-		case GameState::Startup:
+	switch (this->levelState) {
+		case LevelState::Startup:
 		{
 			//windy::AudioManager::stopAll();
 			this->atVictory = false;
 			this->fading = false;
-			this->gameState = GameState::Playing;
+			this->levelState = LevelState::Playing;
 			this->gui->bossHealthBar->setVisible(false);
 		}
 		break;
 
-		case GameState::Restarting:
+		case LevelState::Restarting:
 		{
 			if (!this->fading) {
 				this->fading = true;
 
-				this->gameState = GameState::Startup;
+				if (GameManager::getInstance().player.lives <= 0) {
+					GameStateMachine::getInstance().pushState(GameState::GameOver);
+					levelState = LevelState::GameOver;
+				}
+				else {
+					this->levelState = LevelState::Startup;
+				}
+
 			}
 			
 		}
 			
 		break;
 
-		case GameState::Playing: 
+		case LevelState::Playing:
 		{
 			if (this->level->player->spawning) {
 				this->gui->healthBar->setVisible(false);
@@ -112,7 +121,7 @@ void GameLevelController::onUpdate(float dt) {
 
 				//windy::AudioManager::playBgm(windy::Sounds::BossTheme);
 
-				this->gameState = GameState::BossBattle;
+				this->levelState = LevelState::BossBattle;
 			}
 			else {
 				//auto gameGui = dynamic_cast<GameGui*>(this->level->gui);
@@ -122,7 +131,7 @@ void GameLevelController::onUpdate(float dt) {
 		break;
 
 
-		case GameState::BossBattle: 
+		case LevelState::BossBattle:
 		{
 			
 			if (this->level->boss != nullptr) {
@@ -153,7 +162,7 @@ void GameLevelController::onUpdate(float dt) {
 		}
 		break;
 
-		case GameState::Finishing: 
+		case LevelState::Succeeded:
 		{	
 			if (!this->atVictory) {
 				this->atVictory = true;
@@ -168,14 +177,14 @@ void GameLevelController::onUpdate(float dt) {
 			switch (this->level->player->screenState) {
 				case windy::Player::ScreenState::OffScreen:
 					this->exitTimer = this->exitTimeDelay;
-					this->gameState = GameState::Exit;
+					this->levelState = LevelState::Exit;
 					break;
 			}
 			
 		} 
 		break;
 
-		case GameState::Exit: {
+		case LevelState::Exit: {
 			if (this->exitTimer <= 0) {
 				this->exitTimer = 0;
 				/*if (!this->fading) {
@@ -195,9 +204,9 @@ void GameLevelController::onUpdate(float dt) {
 
 
 	
-	switch (this->gameState) {
-		case GameState::Playing: 
-		case GameState::BossBattle:
+	switch (this->levelState) {
+		case LevelState::Playing: 
+		case LevelState::BossBattle:
 		{
 			if (!this->level->player->spawning) {
 				if (windy::Input::keyPressed(windy::InputKey::Select)) {
