@@ -82,7 +82,7 @@ bool StageSelectScene::init()
     this->swing = root->getChildByName("swing");
 
 
-    this->cursor = windy::Sprite::create(StageSelectSceneResources::cursorSpriteSet, Point(0.5, 0.5));
+    this->cursor = windy::Sprite::create(StageSelectSceneResources::cursorSpriteSet, cocos2d::Point(0.5, 0.5));
 
     this->cursor->setPosition(swing->getPosition());
 

@@ -23,6 +23,8 @@
 #include "Game/Entities/Enemies/Sheriff/Barrel.h"
 #include "Game/Entities/Enemies/Sheriff/JetBird.h"
 
+#include "Game/Entities/Enemies/Military/RollRunner.h"
+
 #include "Game/Entities/Boss/SheriffMan.h"
 
 #include "Game/Entities/Items/GameItem.h"
@@ -133,7 +135,8 @@ bool GameScene::init()
     windy::EntityFactory::getInstance().registerTypeCollisionFunc<GameExplosion>("explosion");
     windy::EntityFactory::getInstance().registerTypeCollisionFunc<GameItem>("item");
 
-    if (GameManager::getInstance().currentLevel->mug.compare("sheriffman") == 0) {
+    auto* currentLevel = GameManager::getInstance().currentLevel.get();
+    if (currentLevel && currentLevel->mug.compare("sheriffman") == 0) {
 
         windy::Logical::preloadResources<Tremor>();
         windy::Logical::preloadResources<Cow>();
@@ -166,7 +169,7 @@ bool GameScene::init()
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Sumatran>("sumatran");
 
     }    
-    else if (GameManager::getInstance().currentLevel->mug.compare("vineman") == 0) {
+    else if (currentLevel && currentLevel->mug.compare("vineman") == 0) {
 
         windy::Logical::preloadResources<Subeil>();
         windy::Logical::preloadResources<Lyric>();
@@ -185,15 +188,22 @@ bool GameScene::init()
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Sumatran>("sumatran");
 
     }
+    else if (currentLevel && currentLevel->mug.compare("militaryman") == 0) {
+        windy::Logical::preloadResources<RollRunner>();
 
-    
-    auto level = windy::Level::create(GameSceneResources::resourcesRootPath,
-                                      GameSceneResources::tilemapRootPath,
-                                      GameManager::getInstance().currentLevel->mug, 
-                                      windy::Sounds::NONE);
+        windy::EntityFactory::getInstance().registerType<RollRunner>("roll_runner");
 
-    this->addChild(level);
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<RollRunner>("roll_runner");
+    }
 
+    if (currentLevel) {
+        auto level = windy::Level::create(GameSceneResources::resourcesRootPath,
+                                          GameSceneResources::tilemapRootPath,
+                                          currentLevel->mug,
+                                          windy::Sounds::NONE);
+
+        this->addChild(level);
+    }
 
     return true;
 }
