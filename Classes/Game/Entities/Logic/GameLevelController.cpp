@@ -16,6 +16,10 @@
 #include "Windy/Entities/Boss.h"
 #include "Windy/Entities/Bounds.h"
 
+#if _DEBUG
+#include "Windy/Entities/Camera.h"
+#endif
+
 
 using namespace game;
 
@@ -49,6 +53,8 @@ bool GameLevelController::init()
 	this->pauseMenu = nullptr;
 
 	this->manualPause = false;
+
+	this->cameraPause = false;
 
 	this->gui = dynamic_cast<GameGui*>(this->level->gui);
 
@@ -95,6 +101,7 @@ void GameLevelController::onUpdate(float dt) {
 		{
 			if (this->level->player->spawning) {
 				this->gui->healthBar->setVisible(false);
+				this->gui->weaponBar->setVisible(false);
 			}
 			else {
 				this->gui->healthBar->setVisible(true);
@@ -190,6 +197,7 @@ void GameLevelController::onUpdate(float dt) {
 	
 	switch (this->gameState) {
 		case GameState::Playing: 
+		case GameState::BossBattle:
 		{
 			if (!this->level->player->spawning) {
 				if (windy::Input::keyPressed(windy::InputKey::Select)) {
@@ -257,27 +265,29 @@ void GameLevelController::onUpdate(float dt) {
 					}
 
 				}
-			}
-			
+
+#if _DEBUG
+				/*if (windy::Input::keyPressed(windy::InputKey::Start)) {
+
+					bool pausedThisFrame = false;
+
+					if (!this->cameraPause) {
+						this->level->camera->pause();
+						this->cameraPause = true;
+						pausedThisFrame = true;
+					}
+
+					if (this->cameraPause && !pausedThisFrame) {
+						this->level->camera->resume();
+						this->cameraPause = false;
+					}
+
+				}*/
+#endif
+			}			
 
 		}
 		break;
-
-		case GameState::BossBattle:
-		{
-			if (this->level->boss != nullptr) {
-				switch (this->level->boss->state) {
-					case windy::Boss::BossState::Fighting:
-						
-					break;
-
-				}
-
-			}
-		}
-		break;
-
-
 	}
 
 

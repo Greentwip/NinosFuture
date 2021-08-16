@@ -29,6 +29,10 @@ namespace game {
 
         virtual windy::Browner* getBrowner(int brownerId) override;       
 
+        virtual void walk() override;
+
+        virtual void jump() override;
+
         virtual void kill(bool killAnimation) override;
 
         virtual void restoreHealth(int amount) override;

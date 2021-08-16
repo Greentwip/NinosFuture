@@ -162,6 +162,8 @@ void Boss::onCollisionExit(Logical* collision) {
 void Boss::checkHealth() {
     if (this->health <= 0 && this->alive && this->state == BossState::Fighting) {
 
+        this->state = BossState::Defeated;
+
         this->currentBrowner->deactivate();
 
         this->health = 0;
@@ -175,6 +177,7 @@ void Boss::checkHealth() {
         AudioManager::stopAll();
 
         AudioManager::playSfx(windy::Sounds::Death);
+
 
         this->kill(true);
     }

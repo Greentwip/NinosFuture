@@ -158,6 +158,8 @@ namespace windy {
     private:
         friend class Browner;
 
+        bool traversingPassage;
+
         cocos2d::Point shiftSpeedBackup;
         bool cameraShiftSpeedBackup;
 

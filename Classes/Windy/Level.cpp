@@ -16,6 +16,7 @@
 #include "Entities/Item.h"
 #include "Entities/Ladder.h"
 #include "Entities/Scroll.h"
+#include "Entities/Passage.h"
 #include "Entities/Teleporter.h"
 #include "Entities/Gui.h"
 #include "Entities/Browner.h"
@@ -81,6 +82,7 @@ Level* Level::create(const std::string& resourcesRootPath,
         EntityFactory::getInstance().registerType<Bounds>("bounds");
         EntityFactory::getInstance().registerType<Ladder>("ladder");
         EntityFactory::getInstance().registerType<Scroll>("scroll");
+        EntityFactory::getInstance().registerType<Passage>("hole");
         EntityFactory::getInstance().registerType<Teleporter>("teleporter");
 
     }
@@ -247,6 +249,12 @@ bool Level::init()
                 this->addChild(entity);
                 this->entities.pushBack(entity);
             }
+            else if (name.compare("hole") == 0) {
+                auto entity = EntityFactory::getInstance().create("hole", position, size);
+                entity->parseBehavior(dictionary);
+                this->addChild(entity);
+                this->entities.pushBack(entity);
+            }
 
         }
     }
@@ -341,8 +349,8 @@ bool Level::init()
         for (auto& obj : objects)
         {
             auto& dictionary = obj.asValueMap();
-
             std::string name = dictionary["name"].asString();
+
             auto size = cocos2d::Size(dictionary["width"].asFloat(), dictionary["height"].asFloat());
             auto position = calculateTmxPosition(dictionary, map);
 
@@ -356,6 +364,8 @@ bool Level::init()
                 name.compare("cow") == 0 || 
                 name.compare("jetbird") == 0 || 
                 name.compare("tremor") == 0) {
+
+                
 
                 auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle(name, position, size);
                 auto entry = Logical::getEntry(entryCollisionBox, [=]() {
@@ -466,7 +476,9 @@ void Level::setPaused(bool isPaused, bool freezePlayer) {
     for (int i = 0; i < this->entities.size(); ++i) {
         auto entity = this->entities.at(i);
 
-        if (entity == player || entity == camera) {
+        bool isDoor = entity->getTag() == GameTags::General::Door;
+
+        if (entity == player || entity == camera || isDoor) {
             continue;
         }
 
@@ -536,6 +548,16 @@ void Level::restart() {
     this->bounds->recomputeCollisionRectangles();
     this->camera->recomputeCollisionRectangles();
     this->player->recomputeCollisionRectangles();
+
+    for (int i = 0; i < this->verticalDoors.size(); ++i) {
+        auto door = this->verticalDoors.at(i);
+        door->reset();
+    }
+
+    for (int i = 0; i < this->horizontalDoors.size(); ++i) {
+        auto door = this->horizontalDoors.at(i);
+        door->reset();
+    }
 
     this->player->onRestart();
 

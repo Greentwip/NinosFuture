@@ -31,6 +31,7 @@ void GameGui::build()
     this->addChild(this->bossHealthBar);
 
     this->healthBar->setValue(-2);
+    this->weaponBar->setValue(-2);
     this->bossHealthBar->setValue(-2);
 
     this->fillTimer = 0;

@@ -52,11 +52,11 @@ bool Logical::init()
 }
 
 std::shared_ptr<cocos2d::Rect> Logical::normalizeCollisionRectangle(const cocos2d::Point& nodePosition, cocos2d::Rect rectangle) {
-    auto rectangleOrigin = rectangle.origin;
+    //auto rectangleOrigin = rectangle.origin;
 
     auto normalizedRectangle = std::make_shared<cocos2d::Rect>(rectangle);
-    normalizedRectangle->origin.x = nodePosition.x + rectangleOrigin.x;
-    normalizedRectangle->origin.y = nodePosition.y + rectangleOrigin.y;
+    normalizedRectangle->origin.x = nodePosition.x - rectangle.size.width * 0.5f;
+    normalizedRectangle->origin.y = nodePosition.y - rectangle.size.height * 0.5f;
 
     return normalizedRectangle;
 }
@@ -65,11 +65,11 @@ std::shared_ptr<cocos2d::Rect> Logical::normalizeCollisionRectangle(const cocos2
 
 std::shared_ptr<cocos2d::Rect> Logical::normalizeCollisionRectangle(cocos2d::Node* node, cocos2d::Rect rectangle) {
     auto nodePosition = node->getPosition();
-    auto rectangleOrigin = rectangle.origin;
+    //auto rectangleOrigin = rectangle.origin;
 
     auto normalizedRectangle = std::make_shared<cocos2d::Rect>(rectangle);
-    normalizedRectangle->origin.x = nodePosition.x + rectangleOrigin.x;
-    normalizedRectangle->origin.y = nodePosition.y + rectangleOrigin.y;
+    normalizedRectangle->origin.x = nodePosition.x - rectangle.size.width * 0.5f;
+    normalizedRectangle->origin.y = nodePosition.y - rectangle.size.height * 0.5f;
 
     return normalizedRectangle;
 }

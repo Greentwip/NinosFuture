@@ -14,6 +14,29 @@ namespace game {
         virtual void switchToBattleBrowner() override;
 
         virtual void onUpdate(float dt) override;
+
+        void attack();
+
+    private:
+        enum AttackState {
+            ShootingLeft,
+            JumpingLeft,
+            DashingLeft,
+            ShootingRight,
+            JumpingRight,
+            DashingRight,
+            ChargingLeft,
+            ChargingRight,
+            CoolDown,
+            Idle
+        };
+
+        int jumpCounter;
+        int jumpAmount;
+
+        AttackState attackState;
+        
+
     };
 }
 

@@ -101,8 +101,10 @@ void Cow::attack(float dt) {
                 if (playerDistanceX > 48 || playerDistanceY <= 24) {
                     auto playerPosition = this->level->player->getPosition();
 
-                    auto bulletPosition = cocos2d::Point(this->getPositionX() + (30 * this->getSpriteNormal() * -1),
-                        this->getPositionY() - 20);
+                    auto bulletPosition = 
+                        cocos2d::Point(
+                            this->getPositionX() + (30 * this->getSpriteNormal() * -1),
+                            this->getPositionY());
 
                     auto entryCollisionBox = DirectionalBullet::getEntryCollisionRectangle(bulletPosition, cocos2d::Size(16, 16));
                     auto entry = Logical::getEntry(entryCollisionBox, [=]() {
@@ -110,8 +112,8 @@ void Cow::attack(float dt) {
                         bullet->setPosition(bulletPosition);
                         bullet->setup();
 
-                        if (playerDistanceX < 30 && playerDistanceY < 16) {
-                            bullet->fire(this->bulletPower, this->getSpriteNormal(), windy::GameTags::WeaponEnemy);
+                        if (playerDistanceX < 32) {
+                            bullet->fire(this->bulletPower, this->getSpriteNormal() * -1, windy::GameTags::WeaponEnemy);
                         }
                         else {
                             bullet->fire(this->bulletPower, playerPosition, windy::GameTags::WeaponEnemy);

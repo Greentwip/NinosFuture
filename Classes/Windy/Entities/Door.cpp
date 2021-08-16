@@ -46,6 +46,14 @@ void Door::setTraversable(bool animate) {
     }
 }
 
+void Door::reset() {
+    this->setTag(GameTags::General::Door);
+    this->triggered = false;
+    //this->sprite->runAction("idle");
+    this->sprite->stopActions();
+    this->sprite->runAction("lock");
+}
+
 
 void Door::close(bool animate) {
     this->setTag(GameTags::General::Block);

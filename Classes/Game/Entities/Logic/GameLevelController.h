@@ -45,6 +45,8 @@ namespace game {
 
         bool manualPause;
 
+        bool cameraPause;
+
         GameGui* gui;
     };
 }

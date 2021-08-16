@@ -68,7 +68,14 @@ bool GamePlayer::init()
     auto collisionBoxCenter = cocos2d::Point(this->collisionRectangles[0]->getMidX(), this->collisionRectangles[0]->getMidY());
 
     for (int i = 0; i < this->collisionRectangles.size(); ++i) {
-        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, *this->collisionRectangles[i]);
+        auto nodePosition = this->getPosition();
+        auto rectangleOrigin = this->collisionRectangles[i]->origin;
+
+        auto normalizedRectangle = std::make_shared<cocos2d::Rect>(*this->collisionRectangles[i]);
+        normalizedRectangle->origin.x = nodePosition.x + rectangleOrigin.x;
+        normalizedRectangle->origin.y = nodePosition.y + rectangleOrigin.y;
+
+        this->collisionRectangles[i] = normalizedRectangle;
     }
 
     this->collisionBox = this->collisionRectangles[0];

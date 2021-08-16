@@ -123,7 +123,7 @@ void windy::Logical::composite(Logical* logical, const std::string& armaturePath
 
     entity->collisionRectangles = armature.get(entityName).collisionRectangles;
 
-    //auto collisionBoxCenter = cocos2d::Point(enemy->collisionRectangles[0]->getMidX(), enemy->collisionRectangles[0]->getMidY());
+    auto collisionBoxCenter = cocos2d::Point(entity->collisionRectangles[0]->getMidX(), entity->collisionRectangles[0]->getMidY());
 
     for (int i = 0; i < entity->collisionRectangles.size(); ++i) {
         entity->collisionRectangles[i] = Logical::normalizeCollisionRectangle(entity, *entity->collisionRectangles[i]);
@@ -131,9 +131,16 @@ void windy::Logical::composite(Logical* logical, const std::string& armaturePath
 
     entity->collisionBox = entity->collisionRectangles[0];
 
+    /*entity->setPositionY(entity->collisionBox->getMaxY() - entity->collisionBox->size.height * 0.5f);
+
+    entity->lastCollisionPosition = entity->getPosition();
+    entity->lastPosition = entity->getPosition();*/
+
 
     //entity->sprite->setPosition(collisionBoxCenter + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
-    entity->sprite->setPosition(cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
+    entity->sprite->setPosition(cocos2d::Point(entity->collisionBox->size.width * anchorChange.x, entity->collisionBox->size.height * anchorChange.y));
+    //entity->sprite->setPosition(cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
+    //entity->sprite->setPosition(cocos2d::Point(0, 0));
 }
 
 

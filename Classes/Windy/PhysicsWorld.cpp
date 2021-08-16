@@ -225,6 +225,7 @@ void PhysicsWorld::update(float dt)
                 entity->getTag() == GameTags::General::Door         ||
                 entity->getTag() == GameTags::General::Camera       ||
                 entity->getTag() == GameTags::General::Scroll       ||
+                entity->getTag() == GameTags::General::Hole         ||
                 entity->getTag() == GameTags::General::Teleporter   ||
                 entity->getTag() == GameTags::Weapon::WeaponPlayer  ||
                 entity->getTag() == GameTags::Weapon::WeaponEnemy   ||

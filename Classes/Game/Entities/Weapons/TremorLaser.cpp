@@ -58,7 +58,7 @@ void TremorLaser::setup() {
 
     std::vector<windy::AnimationAction> actionSet = {
         windy::AnimationAction("charge",        "tremor_laser_charge",         true,   0.05f),
-        windy::AnimationAction("shoot",         "tremor_laser_shot",          true,   0.10f)
+        windy::AnimationAction("shoot",         "tremor_laser_shot",           true,   0.10f)
     };
 
     

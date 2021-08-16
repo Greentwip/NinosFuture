@@ -690,6 +690,7 @@
     <ClInclude Include="..\..\Classes\Windy\Entities\Explosion.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Gui.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\LevelController.h" />
+    <ClInclude Include="..\..\Classes\Windy\Entities\Passage.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Scroll.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Teleporter.h" />
     <ClInclude Include="..\..\Classes\Windy\Entities\Weapon.h" />
@@ -806,6 +807,7 @@
     <ClCompile Include="..\..\Classes\Windy\Entities\Explosion.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Gui.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\LevelController.cpp" />
+    <ClCompile Include="..\..\Classes\Windy\Entities\Passage.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Scroll.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\BarMeter.cpp" />
     <ClCompile Include="..\..\Classes\Windy\Entities\Teleporter.cpp" />

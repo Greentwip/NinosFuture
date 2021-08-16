@@ -110,6 +110,9 @@ void Tremor::setup() {
 
         tailBody->setPosition(cocos2d::Point(offsetX, offsetY));
     }
+
+    auto horizontalDoor = this->level->horizontalDoors.at(0);
+    horizontalDoor->close(false);
 }
 
 

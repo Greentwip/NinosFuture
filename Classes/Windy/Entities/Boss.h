@@ -18,7 +18,8 @@ namespace windy {
             Intro,
             Spawning,
             RestoringHealth,
-            Fighting
+            Fighting,
+            Defeated
         };
 
     public:

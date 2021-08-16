@@ -61,6 +61,8 @@ void Player::initVariables() {
     this->atIntro = false;
     this->atExit = false;
 
+    this->traversingPassage = false;
+
     this->maxHealth = 28;
     this->health = this->maxHealth;
 
@@ -93,7 +95,7 @@ void Player::onSpawn() {
 void Player::onCollisionEnter(Logical* collision) {
 
     if (collision->getTag() == GameTags::General::Door) {
-        //this->level->triggeringDoor = dynamic_cast<Door*>(collision);
+        this->level->triggeringDoor = dynamic_cast<Door*>(collision);
     }
     else if (collision->getTag() == GameTags::General::Ladder) {
         this->activeLadder = dynamic_cast<Ladder*>(collision);
@@ -127,6 +129,9 @@ void Player::onCollisionEnter(Logical* collision) {
         this->onItemAcquired(item);
 
     }
+    else if (collision->getTag() == GameTags::General::Hole) {
+        this->traversingPassage = true;
+    }
 }
 
 void Player::onCollision(Logical* collision) {
@@ -152,7 +157,9 @@ void Player::onCollisionExit(Logical* collision) {
     else if (collision->getTag() == GameTags::General::Ladder) {
         this->activeLadder = nullptr;
     }
-
+    else if (collision->getTag() == GameTags::General::Hole) {
+        this->traversingPassage = false;
+    }
 }
 
 void Player::stun(int power) {
@@ -719,13 +726,17 @@ void Player::checkHealth() {
     auto playerCollisionBox = this->collisionBox;
     auto boundsCollisionBox = this->level->bounds->collisionBox;
 
-    if (playerCollisionBox->getMinY() < boundsCollisionBox->getMinY()) {
+    if (playerCollisionBox->getMinY() < boundsCollisionBox->getMinY() + 4 && !traversingPassage) {
         this->health = 0;
         killAnimation = false;
     }
 
     if (this->health <= 0 && this->alive) {
         this->currentBrowner->deactivate();
+
+        this->ignoreGravity = true;
+        this->ignoreLandscapeCollision = true;
+
 
         this->health = 0;
 
@@ -858,6 +869,16 @@ void Player::onUpdate(float dt) {
         }
     }
 
+    if (!this->level->getPaused()) {
+        if (cameraShiftSpeedBackup) {
+            cameraShiftSpeedBackup = false;
+            this->speed = this->shiftSpeedBackup;
+            this->ignoreGravity = false;
+        }
+    }
+    
+
+
     if (this->canMove) {
         if (this->level->getPaused()) {
             if (this->level->camera->shiftDirection != CameraFlags::CameraShift::ShiftNone) {
@@ -869,7 +890,6 @@ void Player::onUpdate(float dt) {
                     this->speed.x = 0;
                 }
             }
-
         }
 
 
@@ -883,13 +903,6 @@ void Player::onUpdate(float dt) {
         else */
         if (this->alive) {
             if (!this->level->getPaused()) {
-
-                if (cameraShiftSpeedBackup) {
-                    cameraShiftSpeedBackup = false;
-                    this->speed = this->shiftSpeedBackup;
-                    this->ignoreGravity = false;
-                }
-
                 // solve collisions, old code, remove
                 //this->solveCollisions();
                 this->currentBrowner->attack();
@@ -931,6 +944,10 @@ void Player::onUpdate(float dt) {
         }
 
         this->slideTimer = 0;
+
+        if (!this->alive) {
+            this->speed.y = 0;
+        }
 
     }
 

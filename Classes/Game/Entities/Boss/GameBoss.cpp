@@ -59,7 +59,6 @@ bool GameBoss::init()
 
     this->collisionBox = this->collisionRectangles[0];
 
-
     this->sprite->setPosition(collisionBoxCenter + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
 
     this->setTag(windy::GameTags::General::Player);
@@ -75,6 +74,8 @@ bool GameBoss::init()
     this->gui = dynamic_cast<GameGui*>(this->level->gui);
 
     this->weaponTag = windy::GameTags::WeaponEnemy;
+
+    this->sprite->setFlippedX(true);
     
     return true;
 }
@@ -123,6 +124,30 @@ windy::Browner* GameBoss::getBrowner(int brownerId) {
 
     return brownerFound;
 }
+
+
+void GameBoss::walk() {
+
+    if (this->speed.y == 0) {
+        if (this->speed.x != 0) {
+            this->walking = true;
+        }
+        else {
+            this->walking = false;
+        }
+    }
+}
+
+void GameBoss::jump() {
+    if (this->speed.y != 0) {
+        this->jumping = true;
+    }
+    else {
+        this->jumping = false;
+    }
+
+}
+
 
 void GameBoss::kill(bool killAnimation) {
 
@@ -180,7 +205,7 @@ void GameBoss::checkHealth() {
         case BossState::Teleporting:
         case BossState::Intro:
         case BossState::Spawning:
-            this->gui->bossHealthBar->setValue(0);
+            this->gui->bossHealthBar->setValue(-1);
             break;
 
         case BossState::RestoringHealth:
