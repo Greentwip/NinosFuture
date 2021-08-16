@@ -73,12 +73,12 @@ bool TitleScene::init()
 
 #endif
 
-    auto background = windy::Sprite::create(TitleSceneResources::titleSpriteSet, Point(0, 0));
-    auto city = windy::Sprite::create(TitleSceneResources::titleSpriteSet, Point(0, 0));
+    auto background = windy::Sprite::create(TitleSceneResources::titleSpriteSet, cocos2d::Point(0, 0));
+    auto city = windy::Sprite::create(TitleSceneResources::titleSpriteSet, cocos2d::Point(0, 0));
     auto silhouette = windy::Sprite::create(TitleSceneResources::titleSpriteSet);
     auto logo = windy::Sprite::create(TitleSceneResources::titleSpriteSet);
-    auto abakura = windy::Sprite::create(TitleSceneResources::titleSpriteSet, Point(0, 0));
-    auto greentwip = windy::Sprite::create(TitleSceneResources::titleSpriteSet, Point(0, 0));
+    auto abakura = windy::Sprite::create(TitleSceneResources::titleSpriteSet, cocos2d::Point(0, 0));
+    auto greentwip = windy::Sprite::create(TitleSceneResources::titleSpriteSet, cocos2d::Point(0, 0));
 
     background->setPosition(0, 0);
     addChild(background);
@@ -126,11 +126,11 @@ bool TitleScene::init()
 
 
     this->startText->setPosition(
-        Point((windy::Display::getInstance().width * 0.5f) - (startTextWidth * 0.5f),
+            cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (startTextWidth * 0.5f),
               (windy::Display::getInstance().height * 0.5f) + (startTextHeight * 2)));
 
     this->optionsText->setPosition(
-        Point((windy::Display::getInstance().width * 0.5f) - (optionsTextWidth * 0.5f),
+            cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (optionsTextWidth * 0.5f),
               (windy::Display::getInstance().height * 0.5f) + (optionsTextHeight * 0.5f)));
 
     addChild(this->startText, 128);

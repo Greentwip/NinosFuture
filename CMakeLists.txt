@@ -26,7 +26,7 @@ cmake_policy(SET CMP0017 NEW)
 
 cmake_minimum_required(VERSION 3.1)
 
-set(APP_NAME MyGame)
+set(APP_NAME NinosFuture)
 project (${APP_NAME})
 
 set(COCOS2D_ROOT ${CMAKE_SOURCE_DIR}/cocos2d)
@@ -77,7 +77,7 @@ else()
   set(CMAKE_C_FLAGS_DEBUG "-g -Wall")
   set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wno-deprecated-declarations -Wno-reorder")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Wno-deprecated-declarations -Wno-reorder")
   if(CLANG)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
   endif()
@@ -108,16 +108,6 @@ elseif(ANDROID)
     )
 endif()
 
-include_directories(
-  /usr/local/include/GLFW
-  /usr/include/GLFW
-  ${COCOS2D_ROOT}
-  ${COCOS2D_ROOT}/cocos
-  ${COCOS2D_ROOT}/external
-  ${COCOS2D_ROOT}/cocos/platform
-  ${COCOS2D_ROOT}/cocos/audio/include/
-  Classes
-)
 if ( WIN32 )
   include_directories(
   ${COCOS2D_ROOT}/external/glfw3/include/win32
@@ -125,18 +115,28 @@ if ( WIN32 )
 )
 endif( WIN32 )
 
+file(GLOB_RECURSE GAME_SRCS
+  Classes/*.cpp
+)
+
+file(GLOB_RECURSE GAME_HDRS
+  Classes/*.h
+  Classes/*.hpp
+)
+
 set(GAME_SRC
-  Classes/AppDelegate.cpp
-  Classes/HelloWorldScene.cpp
   ${PLATFORM_SPECIFIC_SRC}
+  ${GAME_SRCS}
 )
 
 set(GAME_HEADERS
-  Classes/AppDelegate.h
-  Classes/HelloWorldScene.h
   ${PLATFORM_SPECIFIC_HEADERS}
+  ${GAME_HDRS}
 )
 
+set(GAME_RESOURCES
+    ${CMAKE_CURRENT_LIST_DIR}/Resources/res
+)
 
 # Configure libcocos2d
 set(BUILD_CPP_EMPTY_TEST OFF CACHE BOOL "turn off build cpp-empty-test")
@@ -155,6 +155,17 @@ if( ANDROID )
 else()
     add_executable(${APP_NAME} ${GAME_SRC} ${GAME_HEADERS})
 endif()
+
+target_include_directories(${APP_NAME} PRIVATE
+        /usr/local/include/GLFW
+        /usr/include/GLFW
+        ${COCOS2D_ROOT}
+        ${COCOS2D_ROOT}/cocos
+        ${COCOS2D_ROOT}/external
+        ${COCOS2D_ROOT}/cocos/editor-support
+        Classes/External/
+        Classes
+)
 
 target_link_libraries(${APP_NAME} cocos2d)
 
@@ -175,8 +186,10 @@ elseif( ANDROID )
 
 else()
   pre_build(${APP_NAME}
-    COMMAND ${CMAKE_COMMAND} -E remove_directory ${APP_BIN_DIR}/Resources
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/Resources ${APP_BIN_DIR}/Resources
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${APP_BIN_DIR}/res
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${APP_BIN_DIR}/src
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/Resources/res ${APP_BIN_DIR}/res
+          COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/Resources/src ${APP_BIN_DIR}/src
     )
 
 endif()

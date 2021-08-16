@@ -363,7 +363,9 @@ bool Level::init()
                 name.compare("barrel") == 0 || 
                 name.compare("cow") == 0 || 
                 name.compare("jetbird") == 0 || 
-                name.compare("tremor") == 0) {
+                name.compare("tremor") == 0 ||
+
+                name.compare("roll_runner") == 0) {
 
                 
 
