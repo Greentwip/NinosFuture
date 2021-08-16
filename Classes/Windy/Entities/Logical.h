@@ -9,6 +9,8 @@
 #include "cocos2d.h"
 
 #include "./../Level.h"
+#include "./../Armature.h"
+#include "./../Sprite.h"
 
 namespace windy {
     class ObjectEntry;

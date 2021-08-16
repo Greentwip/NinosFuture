@@ -131,7 +131,8 @@ Sprite* Sprite::create(const std::string& spriteName, const cocos2d::Point& anch
         animations = s_animationCache[dataFileName];
     }
     else {
-        throw std::exception("Error, data cached incorrectly");
+        //std::string("Error, data cached incorrectly")
+        throw std::exception();
     }
 
     

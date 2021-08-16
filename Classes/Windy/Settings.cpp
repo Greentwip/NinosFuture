@@ -17,10 +17,9 @@ windy::SettingsData windy::Settings::read() {
 	std::string writablePath = cocos2d::FileUtils::getInstance()->getWritablePath();
 	std::string settingsPath = writablePath + "/" + "options.json";
 
-	std::ifstream file(settingsPath);
+    if (std::filesystem::exists(settingsPath)) {
 
-	if (file.good()) {
-		const tao::json::value v = tao::json::from_file(settingsPath);
+        const tao::json::value v = tao::json::from_file(settingsPath);
 
 		float bgmVolume = v.as<float>("bgmVolume");
 		float sfxVolume = v.as<float>("sfxVolume");
@@ -40,9 +39,9 @@ void windy::Settings::load() {
 
 	std::string settingsPath = writablePath + "/" + "options.json";
 
-	std::ifstream file(settingsPath);
 
-	if (file.good()) {
+	if (std::filesystem::exists(settingsPath)) {
+
 		const tao::json::value v = tao::json::from_file(settingsPath);
 
 		Settings::bgmVolume = v.as<float>("bgmVolume");

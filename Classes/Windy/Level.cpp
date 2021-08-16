@@ -74,7 +74,7 @@ Level* Level::create(const std::string& resourcesRootPath,
         level->gui = nullptr;
         level->boss = nullptr;
 
-        EntityFactory::initialize(level);
+        EntityFactory::getInstance().initialize(level);
 
         EntityFactory::getInstance().registerType<Block>("block");
         EntityFactory::getInstance().registerType<Camera>("camera");
@@ -115,7 +115,7 @@ bool Level::init()
         auto layer = layers[i];
 
         std::string baseName = layer.as<std::string>("basename");
-        int order = layer.as<int>("order");
+        //int order = layer.as<int>("order");
 
         int tileX = layer.as<int>("tile_x");
         int tileY = layer.as<int>("tile_y");

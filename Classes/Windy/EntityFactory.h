@@ -7,44 +7,52 @@
 
 #include "cocos2d.h"
 
+#include "Entities/Logical.h"
+
 namespace windy {
-    class Logical;
     class Level;
 }
 
 namespace windy {
 
-    template <typename T, typename U>
-    class ConcreteEntityFactory
+    class EntityFactory
     {
-        static Level* levelInstance;
-
+    protected:
+        Level* levelInstance;
+        
     public:
-        static void initialize(Level* level) {
-            levelInstance = level;
+        static EntityFactory& getInstance() {
+            static EntityFactory instance;
+            return instance;
         }
 
-        static ConcreteEntityFactory<Logical, std::string>& getInstance() {
-            static ConcreteEntityFactory<Logical, std::string> instance;
-            return instance;
+        void initialize(Level* level) {
+            this->levelInstance = level;
+        }
+
+    private:
+        EntityFactory(){
+            this->levelInstance = nullptr;
+            this->_createFuncs.clear();
+            this->_collisionFuncs.clear();
         }
 
     public:
         template <typename TDerived>
-        void registerType(U name)
+        void registerType(std::string name)
         {
             _createFuncs[name] = &createFunc<TDerived>;
         }
 
         template <typename TDerived>
-        void registerTypeCollisionFunc(U name)
+        void registerTypeCollisionFunc(std::string name)
         {
             _collisionFuncs[name] = &collisionFunc<TDerived>;
         }
 
 
-        T* create(std::string name, const cocos2d::Point& position, const cocos2d::Size& size) {
-            typename std::map<U, PCreateFunc>::const_iterator it = _createFuncs.find(name);
+        Logical* create(std::string name, const cocos2d::Point& position, const cocos2d::Size& size) {
+            typename std::map<std::string, PCreateFunc>::const_iterator it = _createFuncs.find(name);
             if (it != _createFuncs.end()) {
                 return it->second(levelInstance, position, size);
             }
@@ -53,7 +61,7 @@ namespace windy {
 
 
         std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(std::string name, const cocos2d::Point& position, const cocos2d::Size& size) {
-            typename std::map<U, PCollisionFunc>::const_iterator it = _collisionFuncs.find(name);
+            typename std::map<std::string, PCollisionFunc>::const_iterator it = _collisionFuncs.find(name);
             if (it != _collisionFuncs.end()) {
                 return it->second(position, size);
             }
@@ -67,9 +75,9 @@ namespace windy {
 
     private:
         template <typename TDerived>
-        static T* createFunc(Level* level, const cocos2d::Point& position, const cocos2d::Size& size)
+        static Logical* createFunc(Level* level, const cocos2d::Point& position, const cocos2d::Size& size)
         {
-            return T::create<TDerived>(level, position, size);
+            return Logical::create<TDerived>(level, position, size);
         }
 
         template <typename TDerived>
@@ -78,16 +86,12 @@ namespace windy {
             return TDerived::getEntryCollisionRectangle(position, size);
         }
 
-        typedef T* (*PCreateFunc)(Level* level, const cocos2d::Point& position, const cocos2d::Size& size);
-        std::map<U, PCreateFunc> _createFuncs;
+        typedef Logical* (*PCreateFunc)(Level* level, const cocos2d::Point& position, const cocos2d::Size& size);
+        std::map<std::string, PCreateFunc> _createFuncs;
 
         typedef std::shared_ptr<cocos2d::Rect>(*PCollisionFunc)(const cocos2d::Point& position, const cocos2d::Size& size);
-        std::map<U, PCollisionFunc> _collisionFuncs;
+        std::map<std::string, PCollisionFunc> _collisionFuncs;
     };
-
-    typedef ConcreteEntityFactory<Logical, std::string> EntityFactory;
-
-    Level* EntityFactory::levelInstance = nullptr;
 }
 
 #endif
