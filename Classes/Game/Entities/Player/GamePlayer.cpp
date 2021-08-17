@@ -1,46 +1,29 @@
 #include "GamePlayer.h"
 
+#include "ExtremeBrowner.h"
+#include "HelmetBrowner.h"
+#include "SheriffBrowner.h"
+#include "TeleportBrowner.h"
+#include "VioletBrowner.h"
+#include "Game/GameManager.h"
+#include "Game/Entities/Items/ItemFlags.h"
+#include "Game/Entities/UI/EnergyBar.h"
+#include "Game/Entities/UI/GameGui.h"
+#include "Windy/AudioManager.h"
+#include "Windy/Armature.h"
+#include "Windy/GameTags.h"
+#include "Windy/Input.h"
+#include "Windy/SaveManager.h"
+#include "Windy/Sprite.h"
 #include "Windy/Entities/Browner.h"
 #include "Windy/Entities/Item.h"
-#include "Windy/Armature.h"
-#include "Windy/Sprite.h"
-#include "Windy/GameTags.h"
-#include "Windy/SaveManager.h"
-#include "Windy/Input.h"
-#include "Windy/AudioManager.h"
-
-
-#include "Game/Entities/UI/GameGui.h"
-#include "Game/Entities/UI/EnergyBar.h"
-#include "Game/Entities/Items/ItemFlags.h"
-#include "Game/GameManager.h"
-
-#include "TeleportBrowner.h"
-#include "HelmetBrowner.h"
-#include "VioletBrowner.h"
-#include "ExtremeBrowner.h"
-#include "SheriffBrowner.h"
-
-
-
 
 using namespace game;
 
-
-class PlayerResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string PlayerResources::spritePath = "sprites/characters/player/regular/browners/browners";
-std::string PlayerResources::armaturePath = "physics/characters/player/regular/browners/browners";
-
-void GamePlayer::preloadResources() {
-    windy::Armature::cache(PlayerResources::armaturePath);
-    windy::Sprite::cache(PlayerResources::spritePath);
+windy::Resources& GamePlayer::getResources() {
+    static windy::Resources resources{windy::ResourceKind::Player, "browners"};
+    return resources;
 }
-
 
 bool GamePlayer::init()
 {
@@ -53,17 +36,19 @@ bool GamePlayer::init()
 
     this->gui = nullptr;
 
-    auto armature = windy::Armature(PlayerResources::armaturePath);
+    const auto& resources = getResources();
 
-    auto newAnchor = armature.get("browners").anchor;
+    auto armature = windy::Armature(resources._armaturePath);
 
-    this->sprite = windy::Sprite::create(PlayerResources::spritePath, newAnchor);
+    auto newAnchor = armature.get(resources._entityName).anchor;
+
+    this->sprite = windy::Sprite::create(resources._spritePath, newAnchor);
     this->addChild(this->sprite);
 
     auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
     auto contentSize = this->sprite->getContentSize();
 
-    this->collisionRectangles = armature.get("browners").collisionRectangles;
+    this->collisionRectangles = armature.get(resources._entityName).collisionRectangles;
 
     auto collisionBoxCenter = cocos2d::Point(this->collisionRectangles[0]->getMidX(), this->collisionRectangles[0]->getMidY());
 
@@ -179,7 +164,7 @@ void GamePlayer::switchBrowner(int brownerId) {
 
     this->charging = false;
     this->currentBrowner->chargeTimer = 0;
-    this->currentBrowner->chargePower = "low";
+    this->currentBrowner->chargePower = ExtremeBrowner::ChargePower::low;
 
     this->vulnerable = true;
 
@@ -528,4 +513,3 @@ void GamePlayer::checkHealth() {
 void GamePlayer::onUpdate(float dt) {
     Player::onUpdate(dt);
 }
-

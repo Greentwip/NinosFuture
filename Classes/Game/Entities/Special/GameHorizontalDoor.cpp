@@ -7,33 +7,24 @@
 
 using namespace game;
 
-class GameHorizontalDoorResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string GameHorizontalDoorResources::spritePath = "sprites/gameplay/level/special/general/horizontal_door/horizontal_door";
-std::string GameHorizontalDoorResources::armaturePath = "physics/gameplay/level/special/general/horizontal_door/horizontal_door";
-
-void GameHorizontalDoor::preloadResources() {
-    windy::Armature::cache(GameHorizontalDoorResources::armaturePath);
-    windy::Sprite::cache(GameHorizontalDoorResources::spritePath);
+windy::Resources& GameHorizontalDoor::getResources() {
+    static windy::Resources resources{windy::ResourceKind::LevelSpecial, "horizontal_door"};
+    return resources;
 }
 
 void GameHorizontalDoor::setup() {
+    const auto& resources = GameHorizontalDoor::getResources();
+    auto armature = windy::Armature(resources._armaturePath);
 
-    auto armature = windy::Armature(GameHorizontalDoorResources::armaturePath);
+    auto newAnchor = armature.get(resources._entityName).anchor;
 
-    auto newAnchor = armature.get("horizontal_door").anchor;
-
-    this->sprite = windy::Sprite::create(GameHorizontalDoorResources::spritePath, newAnchor);
+    this->sprite = windy::Sprite::create(resources._spritePath, newAnchor);
     this->addChild(this->sprite);
 
     auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
     auto contentSize = this->sprite->getContentSize();
 
-    this->collisionRectangles = armature.get("horizontal_door").collisionRectangles;
+    this->collisionRectangles = armature.get(resources._entityName).collisionRectangles;
 
     auto collisionBoxCenter = cocos2d::Point(this->collisionRectangles[0]->getMidX(), this->collisionRectangles[0]->getMidY());
 
@@ -62,14 +53,11 @@ void GameHorizontalDoor::setupPrefix() {
 }
 
 std::shared_ptr<cocos2d::Rect> GameHorizontalDoor::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-
-    auto armature = windy::Armature(GameHorizontalDoorResources::armaturePath);
-
-    auto newAnchor = armature.get("horizontal_door").anchor;
-
+    const auto& resources = getResources();
+    auto armature = windy::Armature(resources._armaturePath);
+    auto newAnchor = armature.get(resources._entityName).anchor;
     auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-
-    auto collisionRectangles = armature.get("horizontal_door").collisionRectangles;
+    auto collisionRectangles = armature.get(resources._entityName).collisionRectangles;
 
     for (int i = 0; i < collisionRectangles.size(); ++i) {
         collisionRectangles[i] = windy::Logical::normalizeCollisionRectangle(position, *collisionRectangles[i]);

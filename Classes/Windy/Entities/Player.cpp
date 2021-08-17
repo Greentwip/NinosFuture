@@ -1,27 +1,18 @@
-#include <string>
-
 #include "Player.h"
 
-#include "Ladder.h"
+#include "Bounds.h"
 #include "Browner.h"
 #include "Camera.h"
-#include "Weapon.h"
 #include "Enemy.h"
 #include "Explosion.h"
-#include "Bounds.h"
 #include "Item.h"
-
-#include "./../GameTags.h"
-#include "./../Sprite.h"
-#include "./../Armature.h"
-#include "./../AnimationAction.h"
-#include "./../Input.h"
-#include "./../CameraFlags.h"
-#include "./../AudioManager.h"
-#include "./../EntityFactory.h"
-#include "./../ObjectManager.h"
-#include "./../GeometryExtensions.h"
-#include "./../PhysicsWorld.h"
+#include "Ladder.h"
+#include "Weapon.h"
+#include "../EntityFactory.h"
+#include "../GeometryExtensions.h"
+#include "../Input.h"
+#include "../ObjectManager.h"
+#include "../PhysicsWorld.h"
 
 using namespace windy;
 
@@ -147,8 +138,6 @@ void Player::onCollision(Logical* collision) {
 
 }
 
-
-
 void Player::onCollisionExit(Logical* collision) {
 
     if (collision->getTag() == GameTags::General::Door) {
@@ -180,7 +169,7 @@ void Player::stun(int power) {
             this->slideTimer = 0;
         }
         
-        this->currentBrowner->chargePower = "low";
+        this->currentBrowner->chargePower = Browner::ChargePower::low;
         this->charging = false;
 
         auto delay = cocos2d::DelayTime::create(this->currentBrowner->getActionDuration("hurt"));
@@ -823,7 +812,7 @@ void Player::triggerActions() {
 void Player::cancelAttacks() {
     this->attacking = false;
     this->charging = false;
-    this->currentBrowner->chargePower = "low";
+    this->currentBrowner->chargePower = Browner::ChargePower::low;
 
     this->currentBrowner->chargeTimer = 0;
     this->currentBrowner->attackTimer = 0;

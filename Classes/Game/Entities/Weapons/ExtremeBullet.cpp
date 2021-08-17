@@ -1,27 +1,13 @@
-#include <cmath>
-
 #include "ExtremeBullet.h"
 
-#include "Windy/Sprite.h"
-#include "Windy/Armature.h"
 #include "Windy/AnimationAction.h"
 
 using namespace game;
 
-class ExtremeBulletResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string ExtremeBulletResources::spritePath = "sprites/gameplay/level/weapon/extreme_bullet/extreme_bullet";
-std::string ExtremeBulletResources::armaturePath = "physics/gameplay/level/weapon/extreme_bullet/extreme_bullet";
-
-void ExtremeBullet::preloadResources() {
-    windy::Armature::cache(ExtremeBulletResources::armaturePath);
-    windy::Sprite::cache(ExtremeBulletResources::spritePath);
+windy::Resources& ExtremeBullet::getResources() {
+    static windy::Resources resources{windy::ResourceKind::Weapon, "extreme_bullet"};
+    return resources;
 }
-
 
 ExtremeBullet* ExtremeBullet::create() {
     ExtremeBullet* entity = new (std::nothrow) ExtremeBullet();
@@ -49,8 +35,7 @@ bool ExtremeBullet::init()
 }
 
 void ExtremeBullet::setup() {
-
-    Logical::composite<windy::Weapon>(this, ExtremeBulletResources::armaturePath, ExtremeBulletResources::spritePath, "extreme_bullet");
+    Logical::composite<ExtremeBullet>(this);
     Logical::setup(this->getPosition(), this->collisionRectangles[0]->size);
 
     auto action = windy::AnimationAction("shoot", "extreme_bullet", true, 0.10f);
@@ -67,14 +52,12 @@ void ExtremeBullet::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> ExtremeBullet::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Logical::buildEntryCollisionRectangle(position, size, ExtremeBulletResources::armaturePath, "extreme_bullet");
+    return Logical::buildEntryCollisionRectangle<ExtremeBullet>(position, size);
 }
 
 void ExtremeBullet::onFinished() {
     this->finishForever();
 }
-
-
 
 void ExtremeBullet::fire(int power, int direction, windy::GameTags::Weapon tag) {
 

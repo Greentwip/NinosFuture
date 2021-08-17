@@ -6,13 +6,14 @@
 #include "cocos2d.h"
 
 #include "Windy/GameTags.h"
+#include "Windy/Entities/Resources.h"
 #include "Windy/Entities/Weapon.h"
 
 namespace game {
     class ExtremeBullet : public windy::Weapon
     {
     public:
-        static void preloadResources();
+        static windy::Resources& getResources();
 
         static ExtremeBullet* create();
 

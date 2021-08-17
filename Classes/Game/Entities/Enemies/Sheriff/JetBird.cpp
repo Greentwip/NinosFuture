@@ -1,44 +1,26 @@
 #include "JetBird.h"
 
-#include "Windy/Armature.h"
-#include "Windy/AnimationAction.h"
-#include "Windy/Sprite.h"
-
 #include "Game/Entities/Player/GamePlayer.h"
+#include "Windy/AnimationAction.h"
 
 using namespace game;
 
-
-class JetBirdResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string JetBirdResources::spritePath = "sprites/characters/enemy/sheriff/jetbird/jetbird";
-std::string JetBirdResources::armaturePath = "physics/characters/enemy/sheriff/jetbird/jetbird";
-
-void JetBird::preloadResources() {
-    windy::Armature::cache(JetBirdResources::armaturePath);
-    windy::Sprite::cache(JetBirdResources::spritePath);
+windy::Resources& JetBird::getResources() {
+    static windy::Resources resources{windy::ResourceKind::EnemySheriff, "jetbird"};
+    return resources;
 }
-
 
 void JetBird::setup() {
 
     this->ignoreGravity = true;
     this->ignoreLandscapeCollision = true;
-
     this->power = 4;
-
     this->maxHealth = 3;
     this->health = this->maxHealth;
-
     this->attackState = AttackState::Scanning;
-
     this->flySpeed = 1;
 
-    Logical::composite<windy::Enemy>(this, JetBirdResources::armaturePath, JetBirdResources::spritePath, "jetbird");
+    Logical::composite<JetBird>(this);
 
     auto action = windy::AnimationAction("fly", "jetbird_fly", true, 0.10f);
 
@@ -48,9 +30,8 @@ void JetBird::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> JetBird::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Logical::buildEntryCollisionRectangle(position, size, JetBirdResources::armaturePath, "jetbird");
+    return Logical::buildEntryCollisionRectangle<JetBird>(position, size);
 }
-
 
 void JetBird::setOrientation() {
 

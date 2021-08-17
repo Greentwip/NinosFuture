@@ -1,28 +1,15 @@
-#include <cmath>
-
 #include "GameExplosion.h"
 
-#include "Windy/Sprite.h"
-#include "Windy/Armature.h"
 #include "Windy/AnimationAction.h"
+
+#include <cmath>
 
 using namespace game;
 
-class GameExplosionResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string GameExplosionResources::spritePath = "sprites/gameplay/level/fx/explosion/explosion";
-std::string GameExplosionResources::armaturePath = "physics/gameplay/level/fx/explosion/explosion";
-
-
-void GameExplosion::preloadResources() {
-    windy::Armature::cache(GameExplosionResources::armaturePath);
-    windy::Sprite::cache(GameExplosionResources::spritePath);
+windy::Resources& GameExplosion::getResources() {
+    static windy::Resources resources{windy::ResourceKind::LevelFX, "explosion"};
+    return resources;
 }
-
 
 GameExplosion* GameExplosion::create() {
     GameExplosion* explosion = new (std::nothrow) GameExplosion();
@@ -53,12 +40,7 @@ bool GameExplosion::init()
 }
 
 void GameExplosion::setup(cocos2d::Color3B spriteColor) {
-
-    windy::Logical::composite<windy::Explosion>(this,
-                                                GameExplosionResources::armaturePath,
-                                                GameExplosionResources::spritePath,
-                                                "explosion");
-
+    Logical::composite<GameExplosion>(this);
     Logical::setup(this->getPosition(), this->collisionRectangles[0]->size);
 
     auto action = windy::AnimationAction("shoot", "explosion_death", true, 0.10f);
@@ -76,7 +58,7 @@ void GameExplosion::setup(cocos2d::Color3B spriteColor) {
 
 
 std::shared_ptr<cocos2d::Rect> GameExplosion::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Logical::buildEntryCollisionRectangle(position, size, GameExplosionResources::armaturePath, "explosion");
+    return Logical::buildEntryCollisionRectangle<GameExplosion>(position, size);
 }
 
 
@@ -94,4 +76,3 @@ void GameExplosion::fire(float angle) {
 
     this->setTag(windy::GameTags::Scenery::Particle);
 }
-

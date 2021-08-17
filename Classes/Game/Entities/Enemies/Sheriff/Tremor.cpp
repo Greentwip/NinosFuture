@@ -14,7 +14,7 @@
 
 #include "Game/GameManager.h"
 
-#include "Game/Entities/Weapons/DIrectionalBullet.h"
+#include "Game/Entities/Weapons/DirectionalBullet.h"
 #include "Game/Entities/Player/GamePlayer.h"
 #include "Game/Entities/Weapons/TremorDrill.h"
 #include "Game/Entities/Weapons/TremorLaser.h"
@@ -26,37 +26,21 @@
 
 using namespace game;
 
-
-class TremorResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string TremorResources::spritePath = "sprites/characters/enemy/sheriff/tremor/tremor";
-std::string TremorResources::armaturePath = "physics/characters/enemy/sheriff/tremor/tremor";
-
-void Tremor::preloadResources() {
-    windy::Armature::cache(TremorResources::armaturePath);
-    windy::Sprite::cache(TremorResources::spritePath);
+windy::Resources& Tremor::getResources() {
+    static windy::Resources resources{windy::ResourceKind::EnemySheriff, "tremor"};
+    return resources;
 }
 
 void Tremor::setup() {
-
     this->ignoreGravity = true;
     this->ignoreLandscapeCollision = true;
-
     this->maxHealth = 5;
     this->health = this->maxHealth;
-
     this->power = 10;
-
     this->startPosition = this->getPosition();
-    
     this->attackState = AttackState::None;
 
-    Logical::composite<windy::Enemy>(this, TremorResources::armaturePath, TremorResources::spritePath, "tremor");
-
+    Logical::composite<Tremor>(this);
 
     std::vector<windy::AnimationAction> actionSet = {
         windy::AnimationAction("head",      "tremor_head",      false,   0.10f)
@@ -67,13 +51,12 @@ void Tremor::setup() {
     this->sprite->runAction("head");
     this->sprite->reverseAction();
 
-
+    const auto& resources = Tremor::getResources();
     float offsetY = this->sprite->getPositionY();
-
     float offsetX = 5;
 
     for (int i = 0; i < 5; ++i) {
-        auto bodySprite = windy::Sprite::create(TremorResources::spritePath);
+        auto bodySprite = windy::Sprite::create(resources._spritePath);
         bodySprite->setAnimation("tremor_body");
 
         this->addChild(bodySprite, -32 - i);
@@ -97,7 +80,7 @@ void Tremor::setup() {
     offsetY = -2;
 
     for (int i = 0; i < 5; ++i) {
-        auto tailBody = windy::Sprite::create(TremorResources::spritePath);
+        auto tailBody = windy::Sprite::create(resources._spritePath);
         tailBody->setAnimation("tremor_body");
 
         this->tail->addChild(tailBody, -32 - i);
@@ -113,11 +96,9 @@ void Tremor::setup() {
     _laserEntry = nullptr;
 }
 
-
 std::shared_ptr<cocos2d::Rect> Tremor::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Logical::buildEntryCollisionRectangle(position, size, TremorResources::armaturePath, "tremor");
+    return Logical::buildEntryCollisionRectangle<Tremor>(position, size);
 }
-
 
 void Tremor::setOrientation() {
 }
@@ -126,8 +107,6 @@ void Tremor::onFinished() {
     this->level->entities.eraseObject(this->tail->drill);
     this->tail->removeFromParent();
 }
-
-
 
 void Tremor::onDefeated() {
 

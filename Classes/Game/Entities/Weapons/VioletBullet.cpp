@@ -5,41 +5,33 @@
 #include "Windy/AnimationAction.h"
 
 using namespace game;
+using ChargePower = windy::Browner::ChargePower;
+using Resources = windy::Resources;
 
-class VioletBulletResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
+static Resources& getLowResource() {
+    static Resources resource {windy::ResourceKind::Weapon, "violet_bullet_low"};
+    return resource;
+}
 
-std::string VioletBulletResources::spritePath = "sprites/gameplay/level/weapon";
-std::string VioletBulletResources::armaturePath = "physics/gameplay/level/weapon";
+static Resources& getMidResource() {
+    static Resources resource {windy::ResourceKind::Weapon, "violet_bullet_mid"};
+    return resource;
+}
 
-void VioletBullet::preloadResources() {
-    {
-        std::string bulletName = std::string("violet_bullet") + std::string("_") + "low";
-        std::string bulletPath = bulletName + "/" + bulletName;
+static Resources& getHighResource() {
+    static Resources resource {windy::ResourceKind::Weapon, "violet_bullet_high"};
+    return resource;
+}
 
-        windy::Armature::cache(VioletBulletResources::armaturePath + "/" + bulletPath);
-        windy::Sprite::cache(VioletBulletResources::spritePath + "/" + bulletPath);
+Resources& VioletBullet::getResources(ChargePower chargePower) {
+    switch (chargePower) {
+        case ChargePower::low:
+            return getLowResource();
+        case ChargePower::mid:
+            return getMidResource();
+        case ChargePower::high:
+            return getHighResource();
     }
-
-    {
-        std::string bulletName = std::string("violet_bullet") + std::string("_") + "mid";
-        std::string bulletPath = bulletName + "/" + bulletName;
-
-        windy::Armature::cache(VioletBulletResources::armaturePath + "/" + bulletPath);
-        windy::Sprite::cache(VioletBulletResources::spritePath + "/" + bulletPath);
-    }
-
-    {
-        std::string bulletName = std::string("violet_bullet") + std::string("_") + "high";
-        std::string bulletPath = bulletName + "/" + bulletName;
-
-        windy::Armature::cache(VioletBulletResources::armaturePath + "/" + bulletPath);
-        windy::Sprite::cache(VioletBulletResources::spritePath + "/" + bulletPath);
-    }
-    
 }
 
 VioletBullet* VioletBullet::create() {
@@ -67,20 +59,13 @@ bool VioletBullet::init()
     return true;
 }
 
-void VioletBullet::setup(const std::string& powerLevel) {
-
-    std::string bulletName = std::string("violet_bullet") + std::string("_") + powerLevel;
-    std::string bulletPath = bulletName + "/" + bulletName;
-
-    Logical::composite<windy::Weapon>(this,
-                                      VioletBulletResources::armaturePath + "/" + bulletPath,
-                                      VioletBulletResources::spritePath + "/" + bulletPath,
-                                      bulletName);
-
+void VioletBullet::setup(ChargePower powerLevel) {
+    const auto& resources = VioletBullet::getResources(powerLevel);
+    Logical::composite<windy::Weapon>(this, resources);
     Logical::setup(this->getPosition(), this->collisionRectangles[0]->size);
 
 
-    auto action = windy::AnimationAction("shoot", std::string("violet_bullet") + std::string("_") + powerLevel, true, 0.10f);
+    auto action = windy::AnimationAction("shoot", resources._entityName, true, 0.10f);
 
     this->sprite->appendAction(action, false);
 
@@ -93,14 +78,11 @@ void VioletBullet::setup(const std::string& powerLevel) {
 }
 
 
-std::shared_ptr<cocos2d::Rect> VioletBullet::getEntryCollisionRectangle(const std::string& powerLevel,
+std::shared_ptr<cocos2d::Rect> VioletBullet::getEntryCollisionRectangle(ChargePower powerLevel,
                                                                         const cocos2d::Point& position,
                                                                         const cocos2d::Size& size) {
-
-    std::string bulletName = std::string("violet_bullet") + std::string("_") + powerLevel;
-    std::string bulletPath = bulletName + "/" + bulletName;
-
-    return Logical::buildEntryCollisionRectangle(position, size, VioletBulletResources::armaturePath + "/" + bulletPath, bulletName);
+    const auto& resources = VioletBullet::getResources(powerLevel);
+    return Logical::buildEntryCollisionRectangle(resources, position, size);
 }
 
 void VioletBullet::onFinished() {

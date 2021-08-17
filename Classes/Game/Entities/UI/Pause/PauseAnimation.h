@@ -1,9 +1,11 @@
 #ifndef _GAME_PAUSE_ANIMATION_H_
 #define _GAME_PAUSE_ANIMATION_H_
 
-#include <string>
-
 #include "cocos2d.h"
+
+#include "Windy/Entities/Resources.h"
+
+#include <string>
 
 namespace windy {
     class Sprite;
@@ -17,7 +19,7 @@ namespace game {
     class PauseAnimation : public cocos2d::Node
     {
     public:
-        static void preloadResources();
+        static windy::Resources& getResources();
 
         static PauseAnimation* create();
 

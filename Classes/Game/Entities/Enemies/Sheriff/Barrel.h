@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 
 #include "Game/Entities/Enemies/GameEnemy.h"
+#include "Windy/Entities/Resources.h"
 
 namespace game {
     class Barrel : public GameEnemy
@@ -17,7 +18,7 @@ namespace game {
         };
 
     public:
-        static void preloadResources();
+        static windy::Resources& getResources();
 
         virtual void setup() override;
 

@@ -1,35 +1,18 @@
 #include "CannonJoe.h"
 
-#include "Windy/Armature.h"
-#include "Windy/AnimationAction.h"
-#include "Windy/Sprite.h"
-
-#include "Windy/ObjectManager.h"
-
-#include "Windy/GeometryExtensions.h"
-
-#include "Windy/DebugDrawNode.h"
-
-#include "Game/Entities/Weapons/DirectionalBullet.h"
-
 #include "Game/Entities/Player/GamePlayer.h"
+#include "Game/Entities/Weapons/DirectionalBullet.h"
+#include "Windy/AnimationAction.h"
+#include "Windy/DebugDrawNode.h"
+#include "Windy/GeometryExtensions.h"
+#include "Windy/ObjectManager.h"
 
 using namespace game;
 
-class CannonJoeResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string CannonJoeResources::spritePath = "sprites/characters/enemy/general/cannon_joe/cannon_joe";
-std::string CannonJoeResources::armaturePath = "physics/characters/enemy/general/cannon_joe/cannon_joe";
-
-void CannonJoe::preloadResources() {
-    windy::Armature::cache(CannonJoeResources::armaturePath);
-    windy::Sprite::cache(CannonJoeResources::spritePath);
+windy::Resources& CannonJoe::getResources() {
+    static windy::Resources resources{windy::ResourceKind::EnemyGeneral, "cannon_joe"};
+    return resources;
 }
-
 
 void CannonJoe::setup() {
 
@@ -40,7 +23,7 @@ void CannonJoe::setup() {
     this->health = this->maxHealth;
     this->attackState = AttackState::None;
 
-    Logical::composite<windy::Enemy>(this, CannonJoeResources::armaturePath, CannonJoeResources::spritePath, "cannon_joe");
+    Logical::composite<CannonJoe>(this);
 
     std::vector<windy::AnimationAction> actionSet = {
         windy::AnimationAction("stand",      "cannon_joe_stand",      true,   0.10f),
@@ -53,12 +36,9 @@ void CannonJoe::setup() {
     this->sprite->setAnimation("cannon_joe_stand");
 }
 
-
 std::shared_ptr<cocos2d::Rect> CannonJoe::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Logical::buildEntryCollisionRectangle(position, size, CannonJoeResources::armaturePath, "cannon_joe");
-
+    return Logical::buildEntryCollisionRectangle<CannonJoe>(position, size);
 }
-
 
 void CannonJoe::setOrientation() {
     

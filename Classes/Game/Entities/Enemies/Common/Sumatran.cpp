@@ -1,45 +1,26 @@
 #include "Sumatran.h"
 
-#include "Windy/Armature.h"
-#include "Windy/AnimationAction.h"
-#include "Windy/Sprite.h"
-
-#include "Windy/AudioManager.h"
-
 #include "Game/Entities/Player/GamePlayer.h"
+#include "Windy/AnimationAction.h"
+#include "Windy/AudioManager.h"
 
 using namespace game;
 
-
-class SumatranResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string SumatranResources::spritePath = "sprites/characters/enemy/general/sumatran/sumatran";
-std::string SumatranResources::armaturePath = "physics/characters/enemy/general/sumatran/sumatran";
-
-void Sumatran::preloadResources() {
-    windy::Armature::cache(SumatranResources::armaturePath);
-    windy::Sprite::cache(SumatranResources::spritePath);
+windy::Resources& Sumatran::getResources() {
+    static windy::Resources resources{windy::ResourceKind::EnemyGeneral, "sumatran"};
+    return resources;
 }
 
-
 void Sumatran::setup() {
-
     this->power = 6;
-
     this->maxHealth = 12;
     this->health = this->maxHealth; 
-
     this->attackTimer = 0;
     this->attackTimeInterval = 1;
     this->attackState = AttackState::None;
-
     this->jumpSpeed = cocos2d::Point(1, 5);
 
-    Logical::composite<windy::Enemy>(this, SumatranResources::armaturePath, SumatranResources::spritePath, "sumatran");
+    Logical::composite<Sumatran>(this);
 
     std::vector<windy::AnimationAction> actionSet = {
         windy::AnimationAction("stand",      "sumatran_stand",      true,   0.10f),
@@ -52,11 +33,9 @@ void Sumatran::setup() {
     this->sprite->runAction("stand");
 }
 
-
 std::shared_ptr<cocos2d::Rect> Sumatran::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Logical::buildEntryCollisionRectangle(position, size, SumatranResources::armaturePath, "sumatran");
+    return Logical::buildEntryCollisionRectangle<Sumatran>(position, size);
 }
-
 
 void Sumatran::attack(float dt) {
     switch (this->attackState) {

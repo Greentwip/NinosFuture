@@ -1,11 +1,12 @@
 #ifndef _GAME_PAUSE_INTERRUPTOR_H_
 #define _GAME_PAUSE_INTERRUPTOR_H_
 
-#include <string>
-#include <functional>
-
-
 #include "cocos2d.h"
+
+#include "Windy/Entities/Resources.h"
+
+#include <functional>
+#include <string>
 
 namespace windy {
     class Sprite;
@@ -27,7 +28,7 @@ namespace game {
         };
 
     public:
-        static void preloadResources();
+        static windy::Resources& getResources();
 
         static PauseInterruptor* create(const std::string& animation, std::function<void(PauseInterruptor* sender)> onTriggered);
         

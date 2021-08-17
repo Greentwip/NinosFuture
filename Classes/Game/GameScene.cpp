@@ -108,21 +108,6 @@ bool GameScene::init()
 
     windy::EntityFactory::getInstance().clear();
 
-    windy::Logical::preloadResources<GameBoss>();
-    windy::Logical::preloadResources<GamePlayer>();
-    windy::Logical::preloadResources<GameItem>();
-    windy::Logical::preloadResources<GameVerticalDoor>();
-    windy::Logical::preloadResources<GameHorizontalDoor>();
-    windy::Logical::preloadResources<VioletBullet>();
-    windy::Logical::preloadResources<ExtremeBullet>();
-    windy::Logical::preloadResources<EnergyBar>();
-    windy::Logical::preloadResources<GameExplosion>();
-    windy::Logical::preloadResources<PauseInterruptor>();
-    windy::Logical::preloadResources<PauseAnimation>();
-    windy::Logical::preloadResources<PauseMenu>();
-    windy::Logical::preloadResources<PauseSelector>();
-
-
     windy::EntityFactory::getInstance().registerType<GamePlayer>("player");
     windy::EntityFactory::getInstance().registerType<GameItem>("item");
     windy::EntityFactory::getInstance().registerType<GameVerticalDoor>("door");
@@ -137,18 +122,6 @@ bool GameScene::init()
 
     auto* currentLevel = GameManager::getInstance().currentLevel.get();
     if (currentLevel && currentLevel->mug.compare("sheriffman") == 0) {
-
-        windy::Logical::preloadResources<Tremor>();
-        windy::Logical::preloadResources<Cow>();
-        windy::Logical::preloadResources<Barrel>();
-        windy::Logical::preloadResources<JetBird>();
-        windy::Logical::preloadResources<TremorDrill>();
-        windy::Logical::preloadResources<TremorLaser>();
-        windy::Logical::preloadResources<CannonJoe>();
-        windy::Logical::preloadResources<Taban>();
-        windy::Logical::preloadResources<Sumatran>();
-        windy::Logical::preloadResources<DirectionalBullet>();
-        windy::Logical::preloadResources<SheriffBullet>();
 
         windy::EntityFactory::getInstance().registerType<SheriffMan>("sheriff");
         windy::EntityFactory::getInstance().registerType<Tremor>("tremor");
@@ -171,13 +144,7 @@ bool GameScene::init()
     }    
     else if (currentLevel && currentLevel->mug.compare("vineman") == 0) {
 
-        windy::Logical::preloadResources<Subeil>();
-        windy::Logical::preloadResources<Lyric>();
-        windy::Logical::preloadResources<Taban>();
-        windy::Logical::preloadResources<Sumatran>();
-        windy::Logical::preloadResources<DirectionalBullet>();
-
-        windy::EntityFactory::getInstance().registerType<Subeil>("subeil");               
+        windy::EntityFactory::getInstance().registerType<Subeil>("subeil");
         windy::EntityFactory::getInstance().registerType<Lyric>("lyric");
         windy::EntityFactory::getInstance().registerType<Taban>("taban");
         windy::EntityFactory::getInstance().registerType<Sumatran>("sumatran");
@@ -189,8 +156,6 @@ bool GameScene::init()
 
     }
     else if (currentLevel && currentLevel->mug.compare("militaryman") == 0) {
-        windy::Logical::preloadResources<RollRunner>();
-
         windy::EntityFactory::getInstance().registerType<RollRunner>("roll_runner");
 
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<RollRunner>("roll_runner");

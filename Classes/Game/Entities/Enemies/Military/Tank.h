@@ -1,5 +1,5 @@
-#ifndef __GAME_ROLL_RUNNER_H__
-#define __GAME_ROLL_RUNNER_H__
+#ifndef __GAME_TANK_H__
+#define __GAME_TANK_H__
 
 #include "cocos2d.h"
 #include "Game/Entities/Enemies/GameEnemy.h"
@@ -7,25 +7,19 @@
 
 namespace game {
 
-    class RollRunner: public GameEnemy
+    class Tank : public GameEnemy
     {
-        enum class Orientation {
-            Left = -1,
-            Right = 1
-        };
-    bool orientationSet = false;
-    float walkSpeed = 1.0f;
-    Orientation orientation = Orientation::Left;
-
-    void flip(Orientation _orientation);
-
+        float _walkSpeed = 35.0f;
+        bool _attacking = false;
+        bool _moving = false;
     public:
         static windy::Resources& getResources();
-        void setup() override;
         static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size);
+        void setup() override;
         void attack(float dt) override;
     };
 
 }
+
 
 #endif
