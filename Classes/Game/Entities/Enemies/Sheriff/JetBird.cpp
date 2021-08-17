@@ -5,8 +5,8 @@
 
 using namespace game;
 
-windy::Resources& JetBird::getResources() {
-    static windy::Resources resources{windy::ResourceKind::EnemySheriff, "jetbird"};
+game::Resources& JetBird::getResources() {
+    static game::Resources resources{game::ResourceKind::EnemySheriff, "jetbird"};
     return resources;
 }
 

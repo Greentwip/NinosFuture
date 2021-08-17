@@ -26,8 +26,8 @@
 
 using namespace game;
 
-windy::Resources& Tremor::getResources() {
-    static windy::Resources resources{windy::ResourceKind::EnemySheriff, "tremor"};
+game::Resources& Tremor::getResources() {
+    static game::Resources resources{game::ResourceKind::EnemySheriff, "tremor"};
     return resources;
 }
 

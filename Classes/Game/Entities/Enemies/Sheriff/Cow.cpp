@@ -8,8 +8,8 @@
 
 using namespace game;
 
-windy::Resources& Cow::getResources() {
-    static windy::Resources resources {windy::ResourceKind::EnemySheriff, "cow"};
+game::Resources& Cow::getResources() {
+    static game::Resources resources {game::ResourceKind::EnemySheriff, "cow"};
     return resources;
 }
 

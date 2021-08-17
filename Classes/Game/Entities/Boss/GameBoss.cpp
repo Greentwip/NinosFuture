@@ -9,8 +9,8 @@
 
 using namespace game;
 
-windy::Resources& GameBoss::getResources() {
-    static windy::Resources resources{windy::ResourceKind::Player, "browners"};
+game::Resources& GameBoss::getResources() {
+    static game::Resources resources{game::ResourceKind::Player, "browners"};
     return resources;
 }
 

@@ -7,8 +7,8 @@
 
 using namespace game;
 
-windy::Resources& TremorDrill::getResources() {
-    static windy::Resources resources{windy::ResourceKind::Weapon, "tremor_tail"};
+game::Resources& TremorDrill::getResources() {
+    static game::Resources resources{game::ResourceKind::Weapon, "tremor_tail"};
     return resources;
 }
 

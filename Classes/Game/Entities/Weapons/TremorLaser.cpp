@@ -4,8 +4,8 @@
 
 using namespace game;
 
-windy::Resources& TremorLaser::getResources() {
-    static windy::Resources resources{windy::ResourceKind::Weapon, "tremor_laser"};
+game::Resources& TremorLaser::getResources() {
+    static game::Resources resources{game::ResourceKind::Weapon, "tremor_laser"};
     return resources;
 }
 

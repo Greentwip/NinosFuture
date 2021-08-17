@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 
-#include "Windy/Entities/Resources.h"
+#include "Game/Entities/Resources.h"
 
 #include <functional>
 #include <string>
@@ -28,7 +28,7 @@ namespace game {
         };
 
     public:
-        static windy::Resources& getResources();
+        static game::Resources& getResources();
 
         static PauseInterruptor* create(const std::string& animation, std::function<void(PauseInterruptor* sender)> onTriggered);
         

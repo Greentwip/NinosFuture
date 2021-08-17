@@ -7,8 +7,8 @@
 
 using namespace game;
 
-windy::Resources& GameItem::getResources() {
-    static windy::Resources resources{windy::ResourceKind::Item, "item"};
+game::Resources& GameItem::getResources() {
+    static game::Resources resources{game::ResourceKind::Item, "item"};
     return resources;
 }
 

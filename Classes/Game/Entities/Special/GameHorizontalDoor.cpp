@@ -7,8 +7,8 @@
 
 using namespace game;
 
-windy::Resources& GameHorizontalDoor::getResources() {
-    static windy::Resources resources{windy::ResourceKind::LevelSpecial, "horizontal_door"};
+game::Resources& GameHorizontalDoor::getResources() {
+    static game::Resources resources{game::ResourceKind::LevelSpecial, "horizontal_door"};
     return resources;
 }
 

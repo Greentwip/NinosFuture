@@ -7,7 +7,7 @@
 #include "cocos2d.h"
 
 #include "Windy/Entities/Item.h"
-#include "Windy/Entities/Resources.h"
+#include "Game/Entities/Resources.h"
 
 namespace windy {
     class Sprite;
@@ -17,7 +17,7 @@ namespace game {
     class GameItem : public windy::Item
     {
     public:
-        static windy::Resources& getResources();
+        static game::Resources& getResources();
 
         virtual void setup(const std::string& name, const std::string& content, bool forever, bool collectible) override;
 

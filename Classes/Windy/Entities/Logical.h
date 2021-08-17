@@ -6,7 +6,7 @@
 #include "./../Level.h"
 #include "./../Armature.h"
 #include "./../Sprite.h"
-#include "Resources.h"
+#include "Game/Entities/Resources.h"
 
 #include <functional>
 #include <map>
@@ -36,9 +36,9 @@ namespace windy {
         template<typename T>
         static void composite(Logical* logical);
         template<typename T>
-        static void composite(Logical* logical, const Resources& resources);
+        static void composite(Logical* logical, const game::Resources& resources);
 
-        static std::shared_ptr<cocos2d::Rect> buildEntryCollisionRectangle(const Resources& resources,
+        static std::shared_ptr<cocos2d::Rect> buildEntryCollisionRectangle(const game::Resources& resources,
                                                                            const cocos2d::Point& position,
                                                                            const cocos2d::Size& size);
 
@@ -112,12 +112,12 @@ namespace windy {
 
 template<typename T>
 void windy::Logical::composite(Logical* entity) {
-    const Resources& resources = T::getResources();
+    const game::Resources& resources = T::getResources();
     Logical::composite<T>(entity, resources);
 }
 
 template<typename T>
-void windy::Logical::composite(Logical* logical, const Resources& resources) {
+void windy::Logical::composite(Logical* logical, const game::Resources& resources) {
     auto* entity = dynamic_cast<T*>(logical);
     assert(entity);
 

@@ -4,8 +4,8 @@
 
 using namespace game;
 
-windy::Resources& SheriffBullet::getResources() {
-    static windy::Resources resources{windy::ResourceKind::Weapon, "directional_star_bullet"};
+game::Resources& SheriffBullet::getResources() {
+    static game::Resources resources{game::ResourceKind::Weapon, "directional_star_bullet"};
     return resources;
 }
 

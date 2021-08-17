@@ -5,7 +5,7 @@
 
 #include <type_traits>
 
-namespace windy {
+namespace game {
 
 Resources::Resources(ResourceKind kind, std::string entityName, bool hasArmature) noexcept:
         _spritePath{"sprites/" + Resources::entityPath(kind) + "/" + entityName + "/" + entityName},
@@ -18,9 +18,9 @@ Resources::Resources(ResourceKind kind, std::string entityName, bool hasArmature
 
 void Resources::cache() const noexcept {
     if (!_cached) {
-        Sprite::cache(_spritePath);
+        windy::Sprite::cache(_spritePath);
         if (_hasArmature) {
-            Armature::cache(_armaturePath);
+            windy::Armature::cache(_armaturePath);
         }
         _cached = true;
     }

@@ -2,7 +2,7 @@
 #define __GAME_VIOLET_BULLET_H__
 
 #include "Windy/Entities/Browner.h"
-#include "Windy/Entities/Resources.h"
+#include "Game/Entities/Resources.h"
 #include "Windy/Entities/Weapon.h"
 #include "Windy/GameTags.h"
 
@@ -15,7 +15,7 @@ namespace game {
     class VioletBullet : public windy::Weapon
     {
     public:
-        static windy::Resources& getResources(windy::Browner::ChargePower);
+        static game::Resources& getResources(windy::Browner::ChargePower);
 
         static VioletBullet* create();
 

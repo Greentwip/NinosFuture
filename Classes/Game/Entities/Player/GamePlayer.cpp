@@ -20,8 +20,8 @@
 
 using namespace game;
 
-windy::Resources& GamePlayer::getResources() {
-    static windy::Resources resources{windy::ResourceKind::Player, "browners"};
+game::Resources& GamePlayer::getResources() {
+    static game::Resources resources{game::ResourceKind::Player, "browners"};
     return resources;
 }
 

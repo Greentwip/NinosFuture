@@ -6,8 +6,8 @@
 
 using namespace game;
 
-windy::Resources& GameExplosion::getResources() {
-    static windy::Resources resources{windy::ResourceKind::LevelFX, "explosion"};
+game::Resources& GameExplosion::getResources() {
+    static game::Resources resources{game::ResourceKind::LevelFX, "explosion"};
     return resources;
 }
 

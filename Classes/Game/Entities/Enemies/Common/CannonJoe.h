@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 
 #include "Game/Entities/Enemies/GameEnemy.h"
-#include "Windy/Entities/Resources.h"
+#include "Game/Entities/Resources.h"
 
 namespace game {
     class CannonJoe : public GameEnemy
@@ -17,7 +17,7 @@ namespace game {
         };
 
     public:
-        static windy::Resources& getResources();
+        static game::Resources& getResources();
 
         virtual void setup() override;
 

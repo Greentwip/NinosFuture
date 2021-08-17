@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 
-#include "Windy/Entities/Resources.h"
+#include "Game/Entities/Resources.h"
 
 #include <string>
 
@@ -19,7 +19,7 @@ namespace game {
     class PauseAnimation : public cocos2d::Node
     {
     public:
-        static windy::Resources& getResources();
+        static game::Resources& getResources();
 
         static PauseAnimation* create();
 

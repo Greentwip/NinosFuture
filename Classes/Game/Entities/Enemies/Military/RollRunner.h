@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "Game/Entities/Enemies/GameEnemy.h"
-#include "Windy/Entities/Resources.h"
+#include "Game/Entities/Resources.h"
 
 namespace game {
 
@@ -20,7 +20,7 @@ namespace game {
     void flip(Orientation _orientation);
 
     public:
-        static windy::Resources& getResources();
+        static game::Resources& getResources();
         void setup() override;
         static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size);
         void attack(float dt) override;

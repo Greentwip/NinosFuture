@@ -2,8 +2,8 @@
 
 using namespace game;
 
-windy::Resources& Tank::getResources() {
-    static windy::Resources resources{windy::ResourceKind::EnemyMilitary, "tank"};
+game::Resources& Tank::getResources() {
+    static game::Resources resources{game::ResourceKind::EnemyMilitary, "tank"};
     return resources;
 }
 

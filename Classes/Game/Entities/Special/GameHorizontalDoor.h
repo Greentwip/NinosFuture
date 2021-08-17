@@ -6,7 +6,7 @@
 #include "cocos2d.h"
 
 #include "Windy/Entities/Door.h"
-#include "Windy/Entities/Resources.h"
+#include "Game/Entities/Resources.h"
 
 namespace windy {
     class Sprite;
@@ -16,7 +16,7 @@ namespace game {
     class GameHorizontalDoor : public windy::Door
     {
     public:
-        static windy::Resources& getResources();
+        static game::Resources& getResources();
 
         virtual void setup() override;
         virtual void setupPrefix() override;

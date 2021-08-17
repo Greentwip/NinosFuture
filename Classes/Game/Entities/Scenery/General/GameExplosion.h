@@ -7,13 +7,13 @@
 
 #include "Windy/GameTags.h"
 #include "Windy/Entities/Explosion.h"
-#include "Windy/Entities/Resources.h"
+#include "Game/Entities/Resources.h"
 
 namespace game {
     class GameExplosion : public windy::Explosion
     {
     public:
-        static windy::Resources& getResources();
+        static game::Resources& getResources();
 
         static GameExplosion* create();
 

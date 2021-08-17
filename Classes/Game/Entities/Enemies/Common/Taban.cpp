@@ -7,8 +7,8 @@
 
 using namespace game;
 
-windy::Resources& Taban::getResources() {
-    static windy::Resources resources{windy::ResourceKind::EnemyGeneral, "taban"};
+game::Resources& Taban::getResources() {
+    static game::Resources resources{game::ResourceKind::EnemyGeneral, "taban"};
     return resources;
 }
 

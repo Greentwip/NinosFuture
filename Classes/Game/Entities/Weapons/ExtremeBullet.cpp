@@ -4,8 +4,8 @@
 
 using namespace game;
 
-windy::Resources& ExtremeBullet::getResources() {
-    static windy::Resources resources{windy::ResourceKind::Weapon, "extreme_bullet"};
+game::Resources& ExtremeBullet::getResources() {
+    static game::Resources resources{game::ResourceKind::Weapon, "extreme_bullet"};
     return resources;
 }
 

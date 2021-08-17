@@ -4,8 +4,8 @@
 
 using namespace game;
 
-windy::Resources& PauseInterruptor::getResources() {
-    static windy::Resources resources{windy::ResourceKind::PauseMenu, "pause_interruptor", false};
+game::Resources& PauseInterruptor::getResources() {
+    static game::Resources resources{game::ResourceKind::PauseMenu, "pause_interruptor", false};
     return resources;
 }
 

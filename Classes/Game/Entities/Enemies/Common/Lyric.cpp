@@ -6,8 +6,8 @@
 
 using namespace game;
 
-windy::Resources& Lyric::getResources() {
-    static windy::Resources resources{windy::ResourceKind::EnemyGeneral, "lyric"};
+game::Resources& Lyric::getResources() {
+    static game::Resources resources{game::ResourceKind::EnemyGeneral, "lyric"};
     return resources;
 }
 

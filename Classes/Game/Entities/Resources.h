@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace windy {
+namespace game {
 
 enum class ResourceKind {
     EnemyGeneral,
@@ -20,8 +20,6 @@ enum class ResourceKind {
 };
 
 struct Resources {
-
-
     const std::string _spritePath;
     const std::string _armaturePath;
     const ResourceKind _kind;

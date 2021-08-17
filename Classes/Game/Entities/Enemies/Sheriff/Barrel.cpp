@@ -6,8 +6,8 @@
 
 using namespace game;
 
-windy::Resources& Barrel::getResources() {
-    static windy::Resources resources{windy::ResourceKind::EnemySheriff, "barrel"};
+game::Resources& Barrel::getResources() {
+    static game::Resources resources{game::ResourceKind::EnemySheriff, "barrel"};
     return resources;
 }
 

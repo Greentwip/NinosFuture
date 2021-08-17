@@ -6,8 +6,8 @@
 
 using namespace game;
 
-windy::Resources& DirectionalBullet::getResources() {
-    static windy::Resources resources{windy::ResourceKind::Weapon, "directional_bullet"};
+game::Resources& DirectionalBullet::getResources() {
+    static game::Resources resources{game::ResourceKind::Weapon, "directional_bullet"};
     return resources;
 }
 

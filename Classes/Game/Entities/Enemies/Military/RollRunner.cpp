@@ -4,8 +4,8 @@
 
 using namespace game;
 
-windy::Resources& RollRunner::getResources() {
-    static windy::Resources resources{windy::ResourceKind::EnemyMilitary, "roll_runner"};
+game::Resources& RollRunner::getResources() {
+    static game::Resources resources{game::ResourceKind::EnemyMilitary, "roll_runner"};
     return resources;
 }
 

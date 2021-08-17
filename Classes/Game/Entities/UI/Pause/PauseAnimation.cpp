@@ -4,8 +4,8 @@
 
 using namespace game;
 
-windy::Resources& PauseAnimation::getResources() {
-    static windy::Resources resources{windy::ResourceKind::PauseMenu, "pause_animation", false};
+game::Resources& PauseAnimation::getResources() {
+    static game::Resources resources{game::ResourceKind::PauseMenu, "pause_animation", false};
     return resources;
 }
 

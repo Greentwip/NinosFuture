@@ -4,7 +4,7 @@
 
 using namespace windy;
 
-std::shared_ptr<cocos2d::Rect> Logical::buildEntryCollisionRectangle(const Resources& resources,
+std::shared_ptr<cocos2d::Rect> Logical::buildEntryCollisionRectangle(const game::Resources& resources,
                                                                      const cocos2d::Point& position,
                                                                      const cocos2d::Size& size) {
     auto armature = windy::Armature(resources._armaturePath);

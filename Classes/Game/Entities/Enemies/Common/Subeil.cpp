@@ -6,8 +6,8 @@
 
 using namespace game;
 
-windy::Resources& Subeil::getResources() {
-    static windy::Resources resources{windy::ResourceKind::EnemyGeneral, "subeil"};
+game::Resources& Subeil::getResources() {
+    static game::Resources resources{game::ResourceKind::EnemyGeneral, "subeil"};
     return resources;
 }
 

@@ -6,20 +6,20 @@
 
 using namespace game;
 using ChargePower = windy::Browner::ChargePower;
-using Resources = windy::Resources;
+using Resources = game::Resources;
 
 static Resources& getLowResource() {
-    static Resources resource {windy::ResourceKind::Weapon, "violet_bullet_low"};
+    static Resources resource {game::ResourceKind::Weapon, "violet_bullet_low"};
     return resource;
 }
 
 static Resources& getMidResource() {
-    static Resources resource {windy::ResourceKind::Weapon, "violet_bullet_mid"};
+    static Resources resource {game::ResourceKind::Weapon, "violet_bullet_mid"};
     return resource;
 }
 
 static Resources& getHighResource() {
-    static Resources resource {windy::ResourceKind::Weapon, "violet_bullet_high"};
+    static Resources resource {game::ResourceKind::Weapon, "violet_bullet_high"};
     return resource;
 }
 

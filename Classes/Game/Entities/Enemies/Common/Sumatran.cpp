@@ -6,8 +6,8 @@
 
 using namespace game;
 
-windy::Resources& Sumatran::getResources() {
-    static windy::Resources resources{windy::ResourceKind::EnemyGeneral, "sumatran"};
+game::Resources& Sumatran::getResources() {
+    static game::Resources resources{game::ResourceKind::EnemyGeneral, "sumatran"};
     return resources;
 }
 

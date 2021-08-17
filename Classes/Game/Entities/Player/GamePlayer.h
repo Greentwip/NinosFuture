@@ -5,7 +5,7 @@
 
 #include "Windy/Entities/Player.h"
 #include "Windy/Entities/Browner.h"
-#include "Windy/Entities/Resources.h"
+#include "Game/Entities/Resources.h"
 
 namespace windy {
     class Item;
@@ -19,7 +19,7 @@ namespace game {
     class GamePlayer : public windy::Player
     {
     public:
-        static windy::Resources& getResources();
+        static game::Resources& getResources();
 
         virtual bool init() override;
 

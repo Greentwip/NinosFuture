@@ -9,8 +9,8 @@
 
 using namespace game;
 
-windy::Resources& CannonJoe::getResources() {
-    static windy::Resources resources{windy::ResourceKind::EnemyGeneral, "cannon_joe"};
+game::Resources& CannonJoe::getResources() {
+    static game::Resources resources{game::ResourceKind::EnemyGeneral, "cannon_joe"};
     return resources;
 }
 
