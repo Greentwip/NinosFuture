@@ -24,23 +24,16 @@
 #include "Game/Entities/Enemies/Sheriff/JetBird.h"
 
 #include "Game/Entities/Enemies/Military/RollRunner.h"
+#include "Game/Entities/Enemies/Military/Tank.h"
 
 #include "Game/Entities/Boss/SheriffMan.h"
 
 #include "Game/Entities/Items/GameItem.h"
 
 #include "Game/Entities/Player/GamePlayer.h"
-#include "Game/Entities/Boss/GameBoss.h"
 
 #include "Game/Entities/Special/GameVerticalDoor.h"
 #include "Game/Entities/Special/GameHorizontalDoor.h"
-
-#include "Game/Entities/Weapons/DirectionalBullet.h"
-#include "Game/Entities/Weapons/TremorDrill.h"
-#include "Game/Entities/Weapons/TremorLaser.h"
-#include "Game/Entities/Weapons/VioletBullet.h"
-#include "Game/Entities/Weapons/ExtremeBullet.h"
-#include "Game/Entities/Weapons/SheriffBullet.h"
 
 #include "Game/Entities/UI/EnergyBar.h"
 #include "Game/Entities/UI/GameGui.h"
@@ -157,8 +150,10 @@ bool GameScene::init()
     }
     else if (currentLevel && currentLevel->mug.compare("militaryman") == 0) {
         windy::EntityFactory::getInstance().registerType<RollRunner>("roll_runner");
+        windy::EntityFactory::getInstance().registerType<Tank>("tank");
 
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<RollRunner>("roll_runner");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<Tank>("tank");
     }
 
     if (currentLevel) {

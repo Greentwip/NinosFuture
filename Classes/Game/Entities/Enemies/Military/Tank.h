@@ -7,15 +7,19 @@
 
 namespace game {
 
-    class Tank : public GameEnemy
-    {
+    class Tank : public GameEnemy {
+        enum class AttackState {
+            Walking,
+            Standing,
+            Attacking,
+        };
         float _walkSpeed = 35.0f;
-        bool _attacking = false;
-        bool _moving = false;
+        AttackState _attackState = AttackState::Walking;
     public:
         static game::Resources& getResources();
         static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size);
         void setup() override;
+        void fire();
         void attack(float dt) override;
     };
 
