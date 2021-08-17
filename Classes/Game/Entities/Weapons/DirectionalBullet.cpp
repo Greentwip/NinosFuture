@@ -1,27 +1,15 @@
-#include <cmath>
-
 #include "DirectionalBullet.h"
 
-#include "Windy/Sprite.h"
-#include "Windy/Armature.h"
 #include "Windy/AnimationAction.h"
+
+#include <cmath>
 
 using namespace game;
 
-class DirectionalBulletResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string DirectionalBulletResources::spritePath = "sprites/gameplay/level/weapon/directional_bullet/directional_bullet";
-std::string DirectionalBulletResources::armaturePath = "physics/gameplay/level/weapon/directional_bullet/directional_bullet";
-
-void DirectionalBullet::preloadResources() {
-    windy::Armature::cache(DirectionalBulletResources::armaturePath);
-    windy::Sprite::cache(DirectionalBulletResources::spritePath);
+game::Resources& DirectionalBullet::getResources() {
+    static game::Resources resources{game::ResourceKind::Weapon, "directional_bullet"};
+    return resources;
 }
-
 
 DirectionalBullet* DirectionalBullet::create() {
     DirectionalBullet* directionalBullet = new (std::nothrow) DirectionalBullet();
@@ -49,15 +37,8 @@ bool DirectionalBullet::init()
 }
 
 void DirectionalBullet::setup() {
-
-    Logical::composite<windy::Weapon>(this,
-                                      DirectionalBulletResources::armaturePath,
-                                      DirectionalBulletResources::spritePath,
-                                      "directional_bullet");
-
-
+    Logical::composite<DirectionalBullet>(this);
     Logical::setup(this->getPosition(), this->collisionRectangles[0]->size);
-
 
     auto action = windy::AnimationAction("shoot", "directional_bullet", true, 0.10f);
 
@@ -71,16 +52,13 @@ void DirectionalBullet::setup() {
 
 }
 
-
 std::shared_ptr<cocos2d::Rect> DirectionalBullet::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Logical::buildEntryCollisionRectangle(position, size, DirectionalBulletResources::armaturePath, "directional_bullet");
+    return Logical::buildEntryCollisionRectangle<DirectionalBullet>(position, size);
 }
 
 void DirectionalBullet::onFinished() {
     this->finishForever();
 }
-
-
 
 void DirectionalBullet::fire(int power, int direction, windy::GameTags::Weapon tag) {
 
@@ -96,8 +74,6 @@ void DirectionalBullet::fire(int power, int direction, windy::GameTags::Weapon t
 
     this->setTag(tag);
 }
-
-
 
 void DirectionalBullet::fire(int power, const cocos2d::Point& playerPosition, windy::GameTags::Weapon tag) {
 
@@ -115,7 +91,6 @@ void DirectionalBullet::fire(int power, const cocos2d::Point& playerPosition, wi
 
     this->setTag(tag);
 }
-
 
 void DirectionalBullet::onUpdate(float dt) {
 

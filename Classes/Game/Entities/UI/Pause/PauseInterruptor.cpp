@@ -4,16 +4,9 @@
 
 using namespace game;
 
-class PauseInterruptorResources {
-public:
-    static std::string spritePath;
-};
-
-std::string PauseInterruptorResources::spritePath = "sprites/gameplay/screens/pause_menu/pause_interruptor/pause_interruptor";
-
-
-void PauseInterruptor::preloadResources() {
-    windy::Sprite::cache(PauseInterruptorResources::spritePath);
+game::Resources& PauseInterruptor::getResources() {
+    static game::Resources resources{game::ResourceKind::PauseMenu, "pause_interruptor", false};
+    return resources;
 }
 
 PauseInterruptor* PauseInterruptor::create(const std::string& animation, std::function<void(PauseInterruptor* sender)> onTriggered) {
@@ -43,7 +36,7 @@ bool PauseInterruptor::init()
         return false;
     }
 
-    this->sprite = windy::Sprite::create(PauseInterruptorResources::spritePath, cocos2d::Point(0, 1));
+    this->sprite = windy::Sprite::create(PauseInterruptor::getResources()._spritePath, cocos2d::Point(0, 1));
     this->sprite->setPosition(cocos2d::Point(0, 0));
     this->addChild(this->sprite);
 

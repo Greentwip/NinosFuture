@@ -5,7 +5,7 @@
 
 #include "Windy/Entities/Boss.h"
 #include "Windy/Entities/Browner.h"
-
+#include "Game/Entities/Resources.h"
 
 namespace game {
     class GameGui;
@@ -15,7 +15,7 @@ namespace game {
     class GameBoss : public windy::Boss
     {
     public:
-        static void preloadResources();
+        static game::Resources& getResources();
 
         virtual bool init() override;
 

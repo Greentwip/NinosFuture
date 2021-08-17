@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 
 #include "Game/Entities/Enemies/GameEnemy.h"
+#include "Game/Entities/Resources.h"
 
 namespace game {
     class TremorTail;
@@ -24,7 +25,7 @@ namespace game {
         };
 
     public:
-        static void preloadResources();
+        static game::Resources& getResources();
 
         virtual void setup() override;
 

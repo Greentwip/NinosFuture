@@ -1,31 +1,33 @@
 #ifndef __GAME_VIOLET_BULLET_H__
 #define __GAME_VIOLET_BULLET_H__
 
-#include <string>
-#include <memory>
+#include "Windy/Entities/Browner.h"
+#include "Game/Entities/Resources.h"
+#include "Windy/Entities/Weapon.h"
+#include "Windy/GameTags.h"
 
 #include "cocos2d.h"
 
-#include "Windy/Entities/Weapon.h"
-#include "Windy/GameTags.h"
+#include <string>
+#include <memory>
 
 namespace game {
     class VioletBullet : public windy::Weapon
     {
     public:
-        static void preloadResources();
+        static game::Resources& getResources(windy::Browner::ChargePower);
 
         static VioletBullet* create();
 
         virtual bool init() override;
 
-        void setup(const std::string& powerLevel);
+        void setup(windy::Browner::ChargePower powerLevel);
 
         void fire(int power, int direction, windy::GameTags::Weapon tag);
 
-        static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const std::string& powerLevel,
-            const cocos2d::Point& position,
-            const cocos2d::Size& size);
+        static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(windy::Browner::ChargePower powerLevel,
+                                                                         const cocos2d::Point& position,
+                                                                         const cocos2d::Size& size);
 
         virtual void onFinished() override;
 

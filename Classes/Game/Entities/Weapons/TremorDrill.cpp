@@ -1,27 +1,15 @@
-#include <vector>
-
 #include "TremorDrill.h"
 
-#include "Windy/Sprite.h"
-#include "Windy/Armature.h"
 #include "Windy/AnimationAction.h"
-
 #include "Windy/GameTags.h"
+
+#include <vector>
 
 using namespace game;
 
-class TremorDrillResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string TremorDrillResources::spritePath = "sprites/gameplay/level/weapon/tremor_tail/tremor_tail";
-std::string TremorDrillResources::armaturePath = "physics/gameplay/level/weapon/tremor_tail/tremor_tail";
-
-void TremorDrill::preloadResources() {
-    windy::Armature::cache(TremorDrillResources::armaturePath);
-    windy::Sprite::cache(TremorDrillResources::spritePath);
+game::Resources& TremorDrill::getResources() {
+    static game::Resources resources{game::ResourceKind::Weapon, "tremor_tail"};
+    return resources;
 }
 
 TremorDrill* TremorDrill::create() {
@@ -46,12 +34,7 @@ bool TremorDrill::init()
         return false;
     }
 
-    Logical::composite<windy::Weapon>(this,
-                                      TremorDrillResources::armaturePath,
-                                      TremorDrillResources::spritePath,
-                                      "tremor_tail");
-
-
+    Logical::composite<TremorDrill>(this);
     Logical::setup(this->getPosition(), this->collisionRectangles[0]->size);
 
     std::vector<windy::AnimationAction> actionSet = {
@@ -89,24 +72,6 @@ void TremorDrill::normalizeCollisionRectangles() {
 
 }
 
-/*std::shared_ptr<cocos2d::Rect> TremorDrill::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-
-    auto armature = windy::Armature(TremorDrillResources::armaturePath);
-
-    auto newAnchor = armature.get("tremor_tail").anchor;
-
-    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-
-    auto collisionRectangles = armature.get("tremor_tail").collisionRectangles;
-
-    for (int i = 0; i < collisionRectangles.size(); ++i) {
-        collisionRectangles[i] = Logical::normalizeCollisionRectangle(position, *collisionRectangles[i]);
-    }
-
-    return collisionRectangles[0];
-}*/
-
-
 void TremorDrill::enableAttack() {
     this->setTag(windy::GameTags::Weapon::WeaponEnemy);
 }
@@ -128,7 +93,6 @@ void TremorDrill::recomputeCollisionRectangles() {
     }
 
 }
-
 
 void TremorDrill::update(float dt) {
     this->recomputeCollisionRectangles();

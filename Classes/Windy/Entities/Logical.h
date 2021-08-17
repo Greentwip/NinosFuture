@@ -1,16 +1,19 @@
 #ifndef __WINDY_LOGICAL_H__
 #define __WINDY_LOGICAL_H__
 
-#include <map>
-#include <vector>
-#include <memory>
-#include <functional>
-
 #include "cocos2d.h"
 
 #include "./../Level.h"
 #include "./../Armature.h"
 #include "./../Sprite.h"
+#include "Game/Entities/Resources.h"
+
+#include <functional>
+#include <map>
+#include <memory>
+#include <string>
+#include <type_traits>
+#include <vector>
 
 namespace windy {
     class ObjectEntry;
@@ -31,15 +34,20 @@ namespace windy {
 
 
         template<typename T>
-        static void preloadResources();
+        static void composite(Logical* logical);
+        template<typename T>
+        static void composite(Logical* logical, const game::Resources& resources);
+
+        static std::shared_ptr<cocos2d::Rect> buildEntryCollisionRectangle(const game::Resources& resources,
+                                                                           const cocos2d::Point& position,
+                                                                           const cocos2d::Size& size);
 
         template<typename T>
-        static void composite(Logical* logical, const std::string& armaturePath, const std::string& spritePath, const std::string& entityName);
-        static std::shared_ptr<cocos2d::Rect> buildEntryCollisionRectangle(const cocos2d::Point& position, 
-                                                                           const cocos2d::Size& size, 
-                                                                           const std::string& armaturePath, 
-                                                                           const std::string& entityName);
-
+        static std::shared_ptr<cocos2d::Rect> buildEntryCollisionRectangle(const cocos2d::Point& position,
+                                                                    const cocos2d::Size& size) {
+            const auto& resources = T::getResources();
+            return Logical::buildEntryCollisionRectangle(resources, position, size);
+        }
 
         template<typename T>
         static Logical* create(Level* level, const cocos2d::Point& position, const cocos2d::Size& size);
@@ -103,27 +111,26 @@ namespace windy {
 }
 
 template<typename T>
-void windy::Logical::preloadResources() {
-    return T::preloadResources();
+void windy::Logical::composite(Logical* entity) {
+    const game::Resources& resources = T::getResources();
+    Logical::composite<T>(entity, resources);
 }
 
-
 template<typename T>
-void windy::Logical::composite(Logical* logical, const std::string& armaturePath, const std::string& spritePath, const std::string& entityName) {
+void windy::Logical::composite(Logical* logical, const game::Resources& resources) {
+    auto* entity = dynamic_cast<T*>(logical);
+    assert(entity);
 
-    auto entity = dynamic_cast<T*>(logical);
+    auto armature = Armature(resources._armaturePath);
+    auto newAnchor = armature.get(resources._entityName).anchor;
 
-    auto armature = Armature(armaturePath);
-
-    auto newAnchor = armature.get(entityName).anchor;
-
-    entity->sprite = Sprite::create(spritePath, newAnchor);
+    entity->sprite = Sprite::create(resources._spritePath, newAnchor);
     entity->addChild(entity->sprite);
 
     auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
     auto contentSize = entity->sprite->getContentSize();
 
-    entity->collisionRectangles = armature.get(entityName).collisionRectangles;
+    entity->collisionRectangles = armature.get(resources._entityName).collisionRectangles;
 
     auto collisionBoxCenter = cocos2d::Point(entity->collisionRectangles[0]->getMidX(), entity->collisionRectangles[0]->getMidY());
 
@@ -132,17 +139,7 @@ void windy::Logical::composite(Logical* logical, const std::string& armaturePath
     }
 
     entity->collisionBox = entity->collisionRectangles[0];
-
-    /*entity->setPositionY(entity->collisionBox->getMaxY() - entity->collisionBox->size.height * 0.5f);
-
-    entity->lastCollisionPosition = entity->getPosition();
-    entity->lastPosition = entity->getPosition();*/
-
-
-    //entity->sprite->setPosition(collisionBoxCenter + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
     entity->sprite->setPosition(cocos2d::Point(entity->collisionBox->size.width * anchorChange.x, entity->collisionBox->size.height * anchorChange.y));
-    //entity->sprite->setPosition(cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
-    //entity->sprite->setPosition(cocos2d::Point(0, 0));
 }
 
 
