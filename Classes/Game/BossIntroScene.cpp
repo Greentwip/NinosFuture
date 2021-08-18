@@ -96,7 +96,6 @@ bool BossIntroScene::init()
 
     this->intro = 
         Intro::create(GameManager::getInstance().currentLevel->mug, 
-                      windy::Sounds::NONE, 
                       [this]() { this->onIntroComplete(); });
 
     this->addChild(this->intro);

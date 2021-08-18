@@ -633,6 +633,7 @@
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Common\Sumatran.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Common\Taban.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\GameEnemy.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Military\RollRunner.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Sheriff\Barrel.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Sheriff\Cow.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Sheriff\JetBird.h" />
@@ -755,6 +756,7 @@
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Common\Sumatran.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Common\Taban.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\GameEnemy.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Military\RollRunner.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Sheriff\Barrel.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Sheriff\Cow.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Sheriff\JetBird.cpp" />

@@ -87,6 +87,8 @@ namespace windy {
 
         virtual void move();
 
+        virtual void morph(bool morphing);
+
         virtual void explode(float angleOffset);
 
         virtual void kill(bool killAnimation);
@@ -134,6 +136,7 @@ namespace windy {
         bool charging;
         bool stunned;
         bool flashing;
+        bool _morphing;
         bool onGround;
 
         int walkSpeed;

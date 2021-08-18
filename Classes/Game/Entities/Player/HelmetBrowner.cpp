@@ -26,6 +26,10 @@ void HelmetBrowner::initConstraints() {
     this->canCharge = true;
     this->canSlide = true;
     this->canDashJump = true;
+    this->canMorph = false;
+    this->hasIntro = false;
+    this->canBeHurt = true;
+
 }
 
 

@@ -40,6 +40,7 @@ void Player::initVariables() {
     this->charging = false;
     this->stunned = false;
     this->flashing = false;
+    this->_morphing = false;
     this->onGround = false;
     this->vulnerable = true;
 
@@ -674,6 +675,10 @@ void Player::move() {
     }
 }
 
+void Player::morph(bool morphing) {
+    _morphing = morphing;
+}
+
 void Player::explode(float angleOffset) {
 
     for (int i = 0; i < 8; ++i) {
@@ -758,36 +763,42 @@ void Player::triggerActions() {
     if (this->alive) {
 
         if (this->atIntro) {
-            this->currentBrowner->runAction("intro");
+            if (this->currentBrowner->hasIntro) {
+                this->currentBrowner->runAction("intro");
+            }
+            
         }
         else {
             if (!this->stunned) {
                 if (this->onGround) {
                     if (this->walking) {
-                        if (this->attacking) {
+                        if (this->attacking && this->currentBrowner->canWalkShoot) {
                             this->currentBrowner->runAction("walkshoot");
                         }
                         else {
-                            this->currentBrowner->runAction("walk");
+                            if (this->currentBrowner->canWalk) {
+                                this->currentBrowner->runAction("walk");
+                            }
+                            
                         }
                     }
                     else {
-                        if (this->attacking) {
+                        if (this->attacking && this->currentBrowner->canAttack) {
                             this->currentBrowner->runAction("standshoot");
                         }
-                        else if (this->sliding) {
+                        else if (this->sliding && this->currentBrowner->canSlide) {
                             this->currentBrowner->runAction("slide");
                         }
-                        /*else if (this->morphing) {
+                        else if (this->_morphing && this->currentBrowner->canMorph) {
                             this->currentBrowner->runAction("morph");
-                        }*/
+                        }
                         else {
                             this->currentBrowner->runAction("stand");
                         }
                     }
                 }
                 else {
-                    if (this->climbing) {
+                    if (this->climbing && this->currentBrowner->canClimb) {
                         if (this->attacking) {
                             this->currentBrowner->runAction("climbshoot");
                         }
@@ -796,14 +807,14 @@ void Player::triggerActions() {
                         }
                     }
                     else {
-                        if (this->attacking) {
+                        if (this->attacking && this->currentBrowner->canJumpShoot) {
                             this->currentBrowner->runAction("jumpshoot");
                         }
                         else {
-                            if (this->dashJumping) {
+                            if (this->dashJumping && this->currentBrowner->canDashJump) {
                                 this->currentBrowner->runAction("dashjump");
                             }
-                            else if (this->jumping) {
+                            else if (this->jumping && this->currentBrowner->canJump) {
                                 this->currentBrowner->runAction("jump");
                             }
                         }
@@ -811,7 +822,10 @@ void Player::triggerActions() {
                 }
             }
             else {
-                this->currentBrowner->runAction("hurt");
+                if (this->currentBrowner->canBeHurt) {
+                    this->currentBrowner->runAction("hurt");
+                }
+                
             }
         }
 

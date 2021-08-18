@@ -20,6 +20,10 @@ void TeleportBrowner::initConstraints() {
     this->canCharge = false;
     this->canSlide = false;
     this->canDashJump = false;
+    this->canMorph = false;
+    this->hasIntro = false;
+    this->canBeHurt = false;
+
 }
 
 void TeleportBrowner::setBaseName() {

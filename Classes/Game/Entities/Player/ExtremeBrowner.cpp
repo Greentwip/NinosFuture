@@ -26,6 +26,10 @@ void ExtremeBrowner::initConstraints() {
     this->canCharge = false;
     this->canSlide = false;
     this->canDashJump = true;
+    this->canMorph = false;
+    this->hasIntro = false;
+    this->canBeHurt = true;
+
 }
 
 void ExtremeBrowner::setBaseName() {

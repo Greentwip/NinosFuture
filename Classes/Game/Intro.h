@@ -18,7 +18,6 @@ namespace game {
     {
     public:
         static Intro* create(const std::string& mug,
-                             windy::Sounds bgm, 
                              std::function<void()> onIntroEnd);
 
         virtual bool init();
@@ -27,7 +26,6 @@ namespace game {
         void onRingMoveComplete();
 
         std::string mug;
-        windy::Sounds bgm;
         std::function<void()> onIntroEnd;
 
         windy::InfiniteParallax* parallax;

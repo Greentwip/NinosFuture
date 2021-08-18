@@ -4,18 +4,37 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-class WeaponAcquireScene : public cocos2d::Layer
-{
-public:
-    virtual bool init();
+namespace game {
+    class GamePlayer;
+}
 
-    static cocos2d::Scene* scene();
+namespace game {
+    class WeaponAcquireScene : public cocos2d::Layer
+    {
+    public:
+        virtual bool init();
 
-    virtual void onEnter();
-    virtual void onExit();
+        static cocos2d::Scene* scene();
 
-    virtual void update(float dt);
+        virtual void onEnter();
+        virtual void onExit();
 
-    CREATE_FUNC(WeaponAcquireScene);
-};
+        virtual void update(float dt);
+
+        CREATE_FUNC(WeaponAcquireScene);
+
+    private:
+        GamePlayer* _player;
+
+        int _targetBrownerId;
+        bool _morphing;
+        bool _playerActionsFinished;
+
+        float _exitTimer;
+        float _exitTimeDelay;
+        bool _exitingScreen;
+        bool _transitioning;
+    };
+
+}
 #endif

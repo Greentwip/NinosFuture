@@ -21,7 +21,6 @@ std::string IntroResources::beltPath = "sprites/gameplay/screens/common/belt";
 
 
 Intro* Intro::create(const std::string& mug, 
-                     windy::Sounds bgm, 
                      std::function<void()> onIntroEnd) {
 
     Intro* intro = new (std::nothrow) Intro();
@@ -37,7 +36,6 @@ Intro* Intro::create(const std::string& mug,
     if (intro && intro->init()) {
         intro->autorelease();
         intro->mug = mug;
-        intro->bgm = bgm;
         intro->onIntroEnd = onIntroEnd;
         intro->ringCount = 0;
 
@@ -135,10 +133,6 @@ bool Intro::init()
     auto shadowSequence = cocos2d::Sequence::create(shadowMove, cocos2d::DelayTime::create(0.5f), cocos2d::CallFunc::create(shadowCallback), nullptr);
 
     ((cocos2d::Node*)this->shadow)->runAction(shadowSequence);
-
-    if (this->bgm != windy::Sounds::NONE) {
-        windy::AudioManager::playBgm(this->bgm);
-    }
 
     return true;
 }

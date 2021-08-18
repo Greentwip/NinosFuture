@@ -348,6 +348,9 @@ void Input::onKeyPad(cocos2d::EventKeyboard::KeyCode key, bool pressed) {
     if (key == cocos2d::EventKeyboard::KeyCode::KEY_KP_ENTER || key == cocos2d::EventKeyboard::KeyCode::KEY_ENTER) {
         translatedKey = InputKey::Start;
     }
+    else if (key == cocos2d::EventKeyboard::KeyCode::KEY_BACK_SLASH) {
+        translatedKey = InputKey::Select;
+    }
     else if (key == cocos2d::EventKeyboard::KeyCode::KEY_UP_ARROW) {
         translatedKey = InputKey::Up;
     }

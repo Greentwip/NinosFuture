@@ -88,11 +88,13 @@ bool GamePlayer::init()
     this->initVariables();
     this->setupBrowners();
 
+    this->_acquiringWeapon = false;
+
     this->weaponTag = windy::GameTags::WeaponPlayer;
 
     this->gui = dynamic_cast<GameGui*>(this->level->gui);
 
-
+    
 
     return true;
 }
@@ -132,19 +134,37 @@ void GamePlayer::onRestart() {
 
 void GamePlayer::onSpawn() {
 
-    GameManager::getInstance().options.extremeActivated = false;
+    if (!_acquiringWeapon) {
+        GameManager::getInstance().options.extremeActivated = false;
 
-    if (GameManager::getInstance().options.helmetActivated) {
-        this->switchBrowner(GameManager::getInstance().browners.helmet->id);
+        if (GameManager::getInstance().options.helmetActivated) {
+            this->switchBrowner(GameManager::getInstance().browners.helmet->id);
+        }
+        else {
+            this->switchBrowner(GameManager::getInstance().browners.violet->id);
+        }
     }
     else {
+        GameManager::getInstance().options.extremeActivated = false;
+
         this->switchBrowner(GameManager::getInstance().browners.violet->id);
+
     }
+    
 }
 
 void GamePlayer::onPlayerExit() {
     this->switchBrowner(GameManager::getInstance().browners.teleport->id);
 }
+
+bool GamePlayer::getAcquiringWeapon() {
+    return _acquiringWeapon;
+}
+
+void GamePlayer::setAcquiringWeapon(bool acquiringWeapon) {
+    _acquiringWeapon = acquiringWeapon;
+}
+
 
 void GamePlayer::switchBrowner(int brownerId) {
     
@@ -518,6 +538,13 @@ void GamePlayer::checkHealth() {
 
     if (!this->gui->fillingWeaponBar) {
         this->restoringWeaponEnergy = false;
+    }
+
+    if (this->_acquiringWeapon) {
+        this->gui->healthBar->setValue(-2);
+        this->gui->weaponBar->setValue(-2);
+        this->gui->healthBar->setVisible(false);
+        this->gui->weaponBar->setVisible(false);
     }
 
     

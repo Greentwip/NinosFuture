@@ -30,6 +30,9 @@ namespace game {
 
         void switchBrowner(int brownerId);
 
+        bool getAcquiringWeapon();
+        void setAcquiringWeapon(bool acquiringWeapon);
+
         virtual void setupBrowners() override;
 
         virtual windy::Browner* getBrowner(int brownerId) override;
@@ -48,11 +51,14 @@ namespace game {
 
         GameGui* gui;
 
+
     private:
         cocos2d::Vector<windy::Browner*> browners;
 
         bool restoringHealth;
         bool restoringWeaponEnergy;
+
+        bool _acquiringWeapon;
 
     };
 }

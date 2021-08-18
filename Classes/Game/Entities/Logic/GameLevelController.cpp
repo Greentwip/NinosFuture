@@ -60,6 +60,8 @@ bool GameLevelController::init()
 
 	this->gui = dynamic_cast<GameGui*>(this->level->gui);
 
+	this->_player = dynamic_cast<GamePlayer*>(this->level->player);
+
 
 	return true;
 }
@@ -108,12 +110,21 @@ void GameLevelController::onUpdate(float dt) {
 
 		case LevelState::Playing:
 		{
-			if (this->level->player->spawning) {
+			if (this->_player->spawning) {
 				this->gui->healthBar->setVisible(false);
 				this->gui->weaponBar->setVisible(false);
 			}
 			else {
 				this->gui->healthBar->setVisible(true);
+
+				if (this->_player->getAcquiringWeapon()) {
+					this->gui->healthBar->setValue(-2);
+					this->gui->weaponBar->setValue(-2);
+					this->gui->healthBar->setVisible(false);
+					this->gui->weaponBar->setVisible(false);
+				}
+
+
 			}
 
 			if (this->level->boss != nullptr) {
@@ -140,13 +151,13 @@ void GameLevelController::onUpdate(float dt) {
 					case windy::Boss::BossState::Intro:
 					case windy::Boss::BossState::Spawning:
 					case windy::Boss::BossState::RestoringHealth:
-						this->level->player->canMove = false;
+						this->_player->canMove = false;
 					break;
 				}
 
 				switch (this->level->boss->state) {
 					case windy::Boss::BossState::Fighting:
-						this->level->player->canMove = true;
+						this->_player->canMove = true;
 					break;
 						
 				}
@@ -154,7 +165,7 @@ void GameLevelController::onUpdate(float dt) {
 			}
 			else {
 				
-				this->level->player->canMove = false;
+				this->_player->canMove = false;
 				this->succeed();
 
 			}
@@ -166,15 +177,15 @@ void GameLevelController::onUpdate(float dt) {
 		{	
 			if (!this->atVictory) {
 				this->atVictory = true;
-				this->level->player->cancelAttacks();
+				this->_player->cancelAttacks();
 
 				windy::AudioManager::playSfx(windy::Sounds::Victory, false, [this]() {
-					this->level->player->exit();
+					this->_player->exit();
 				});
 			}
 
 
-			switch (this->level->player->screenState) {
+			switch (this->_player->screenState) {
 				case windy::Player::ScreenState::OffScreen:
 					this->exitTimer = this->exitTimeDelay;
 					this->levelState = LevelState::Exit;
@@ -191,7 +202,10 @@ void GameLevelController::onUpdate(float dt) {
 					this->fading = true;
 				}*/
 
-				this->level->restart();
+				GameStateMachine::getInstance().pushState(GameState::GetWeapon);
+				levelState = LevelState::GameOver;
+
+				//this->level->restart();
 
 				
 			}
@@ -208,15 +222,15 @@ void GameLevelController::onUpdate(float dt) {
 		case LevelState::Playing: 
 		case LevelState::BossBattle:
 		{
-			if (!this->level->player->spawning) {
+			if (!this->_player->spawning) {
 				if (windy::Input::keyPressed(windy::InputKey::Select)) {
 					bool pausedThisFrame = false;
 
-					if (!this->level->getPaused() && this->pauseMenu == nullptr && this->level->player->canMove) {
+					if (!this->level->getPaused() && this->pauseMenu == nullptr && this->_player->canMove) {
 
 						auto gameGui = dynamic_cast<GameGui*>(this->level->gui);
 
-						this->pauseMenu = PauseMenu::create(this->level->player, gameGui);
+						this->pauseMenu = PauseMenu::create(this->_player, gameGui);
 						this->pauseMenu->setVisible(true);
 
 						auto pauseMenuPosition =
@@ -235,13 +249,11 @@ void GameLevelController::onUpdate(float dt) {
 
 					}
 
-					if (this->level->getPaused() && this->pauseMenu != nullptr && this->level->player->canMove && !pausedThisFrame) {
+					if (this->level->getPaused() && this->pauseMenu != nullptr && this->_player->canMove && !pausedThisFrame) {
 
 						if (!this->pauseMenu->busy) {
 							if (this->pauseMenu->selectedBrowner != nullptr) {
-								auto gamePlayer = dynamic_cast<GamePlayer*>(this->level->player);
-
-								gamePlayer->switchBrowner(this->pauseMenu->selectedBrowner->brownerId);
+								this->_player->switchBrowner(this->pauseMenu->selectedBrowner->brownerId);
 							}
 
 							this->pauseMenu->removeFromParent();
@@ -259,7 +271,7 @@ void GameLevelController::onUpdate(float dt) {
 				if (windy::Input::keyPressed(windy::InputKey::Start)) {
 					bool pausedThisFrame = false;
 
-					if (!this->level->getPaused() && this->pauseMenu == nullptr && this->level->player->canMove && !this->manualPause) {
+					if (!this->level->getPaused() && this->pauseMenu == nullptr && this->_player->canMove && !this->manualPause) {
 						bool freezePlayer;
 						this->level->setPaused(true, freezePlayer = true);
 
@@ -267,7 +279,7 @@ void GameLevelController::onUpdate(float dt) {
 						this->manualPause = true;
 					}
 
-					if (this->level->getPaused() && this->pauseMenu == nullptr && this->level->player->canMove &&  !pausedThisFrame && this->manualPause) {
+					if (this->level->getPaused() && this->pauseMenu == nullptr && this->_player->canMove &&  !pausedThisFrame && this->manualPause) {
 						bool freezePlayer;
 						this->level->setPaused(false, freezePlayer = true);
 						this->manualPause = false;

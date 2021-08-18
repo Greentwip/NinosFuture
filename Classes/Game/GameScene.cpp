@@ -115,6 +115,7 @@ bool GameScene::init()
     windy::Logical::preloadResources<GameHorizontalDoor>();
     windy::Logical::preloadResources<VioletBullet>();
     windy::Logical::preloadResources<ExtremeBullet>();
+    windy::Logical::preloadResources<SheriffBullet>();
     windy::Logical::preloadResources<EnergyBar>();
     windy::Logical::preloadResources<GameExplosion>();
     windy::Logical::preloadResources<PauseInterruptor>();
@@ -148,7 +149,6 @@ bool GameScene::init()
         windy::Logical::preloadResources<Taban>();
         windy::Logical::preloadResources<Sumatran>();
         windy::Logical::preloadResources<DirectionalBullet>();
-        windy::Logical::preloadResources<SheriffBullet>();
 
         windy::EntityFactory::getInstance().registerType<SheriffMan>("sheriff");
         windy::EntityFactory::getInstance().registerType<Tremor>("tremor");

@@ -11,6 +11,7 @@
 #include "BossIntroScene.h"
 #include "GameScene.h"
 #include "GameOverScene.h"
+#include "WeaponAcquireScene.h"
 
 #include "Windy/Input.h"
 
@@ -58,6 +59,7 @@ GameStateMachine::GameStateMachine() {
     sceneFactory.registerType<BossIntroScene>(GameState::BossIntro);
     sceneFactory.registerType<GameScene>(GameState::Game);
     sceneFactory.registerType<GameOverScene>(GameState::GameOver);
+    sceneFactory.registerType<WeaponAcquireScene>(GameState::GetWeapon);
 }
 
 GameState GameStateMachine::getState() {

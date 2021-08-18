@@ -186,6 +186,7 @@ bool Level::init()
 
     cocos2d::TMXObjectGroup* groupArray = map->getObjectGroup("blocks");
 
+    if (groupArray != nullptr)
     {
         auto& objects = groupArray->getObjects();
         for (auto& obj : objects)
@@ -208,6 +209,7 @@ bool Level::init()
 
     groupArray = map->getObjectGroup("logic");
 
+    if (groupArray != nullptr)
     {
         auto& objects = groupArray->getObjects();
         for (auto& obj : objects)
@@ -261,6 +263,7 @@ bool Level::init()
 
     groupArray = map->getObjectGroup("special");
 
+    if (groupArray != nullptr)
     {
         auto& objects = groupArray->getObjects();
         for (auto& obj : objects)
@@ -293,6 +296,7 @@ bool Level::init()
 
     groupArray = map->getObjectGroup("items");
 
+    if(groupArray != nullptr)
     {
         auto collectibles = SaveManager::readSlot(SaveManager::defaultSlot).collectibles;
 
@@ -344,6 +348,7 @@ bool Level::init()
 
     groupArray = map->getObjectGroup("enemies");
 
+    if (groupArray != nullptr)
     {
         auto& objects = groupArray->getObjects();
         for (auto& obj : objects)
@@ -384,6 +389,7 @@ bool Level::init()
 
     groupArray = map->getObjectGroup("boss");
 
+    if (groupArray != nullptr)
     {
         auto& objects = groupArray->getObjects();
         for (auto& obj : objects)
@@ -408,6 +414,11 @@ bool Level::init()
             }
         }
 
+    }
+
+    if (firstCheckpoint == nullptr) {
+        // must define initial checkpoint
+        throw std::exception();
     }
 
     this->lastCheckpoint = firstCheckpoint;

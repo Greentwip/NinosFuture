@@ -38,6 +38,9 @@ void Browner::initConstraints()
     this->canWalkShoot = false;
     this->canJumpShoot = false;
     this->canCharge = true;
+    this->canMorph = false;
+    this->hasIntro = false;
+    this->canBeHurt = true;
 }
 
 void Browner::initVariables() 

@@ -71,16 +71,16 @@ void IntroScene::greentwipIntro() {
 
     auto postCallback = cocos2d::CallFunc::create([=]() {
         GameStateMachine::getInstance().pushState(GameState::Abakura);
-//        auto levels = GameManager::getInstance().levels.collection;
-//
-//        for (auto level : levels) {
-//            if (level->mug == "sheriffman") {
-//                GameManager::getInstance().currentLevel = level;
-//                break;
-//            }
-//        }
+        /*auto levels = GameManager::getInstance().levels.collection;
 
-//        GameStateMachine::getInstance().pushState(GameState::Game);
+        for (auto level : levels) {
+            if (level->mug == "sheriffman") {
+                GameManager::getInstance().currentLevel = level;
+                break;
+            }
+        }
+
+        GameStateMachine::getInstance().pushState(GameState::GetWeapon);*/
 
         });
 

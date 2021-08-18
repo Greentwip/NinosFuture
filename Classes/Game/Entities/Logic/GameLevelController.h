@@ -8,6 +8,7 @@
 namespace game {
     class PauseMenu;
     class GameGui;
+    class GamePlayer;
 }
 
 namespace game {
@@ -49,6 +50,8 @@ namespace game {
         bool cameraPause;
 
         GameGui* gui;
+
+        GamePlayer* _player;
     };
 }
 

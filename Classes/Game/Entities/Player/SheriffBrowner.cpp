@@ -26,6 +26,10 @@ void SheriffBrowner::initConstraints() {
     this->canCharge = false;
     this->canSlide = false;
     this->canDashJump = false;
+    this->canMorph = false;
+    this->hasIntro = true;
+    this->canBeHurt = true;
+
 }
 
 void SheriffBrowner::setBaseName() {

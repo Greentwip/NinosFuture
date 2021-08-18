@@ -74,6 +74,9 @@ namespace windy {
         bool canWalkShoot;
         bool canJumpShoot;
         bool canCharge;
+        bool canMorph;
+        bool hasIntro;
+        bool canBeHurt;
 
         int energy;
         int maxEnergy;

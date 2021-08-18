@@ -26,6 +26,10 @@ void VioletBrowner::initConstraints() {
     this->canCharge = true;
     this->canSlide = true;
     this->canDashJump = true;
+    this->canMorph = true;
+    this->hasIntro = false;
+    this->canBeHurt = true;
+
 }
 
 
