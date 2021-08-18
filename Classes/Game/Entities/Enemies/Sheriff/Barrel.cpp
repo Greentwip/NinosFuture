@@ -1,49 +1,29 @@
 #include "Barrel.h"
 
-#include "Windy/Armature.h"
-#include "Windy/AnimationAction.h"
-#include "Windy/Sprite.h"
-
-#include "Windy/GeometryExtensions.h"
-
 #include "Game/Entities/Player/GamePlayer.h"
+#include "Windy/AnimationAction.h"
+#include "Windy/GeometryExtensions.h"
 
 using namespace game;
 
-
-class BarrelResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string BarrelResources::spritePath = "sprites/characters/enemy/sheriff/barrel/barrel";
-std::string BarrelResources::armaturePath = "physics/characters/enemy/sheriff/barrel/barrel";
-
-void Barrel::preloadResources() {
-    windy::Armature::cache(BarrelResources::armaturePath);
-    windy::Sprite::cache(BarrelResources::spritePath);
+game::Resources& Barrel::getResources() {
+    static game::Resources resources{game::ResourceKind::EnemySheriff, "barrel"};
+    return resources;
 }
 
-
 void Barrel::setup() {
-
     this->power = 4;
-
     this->maxHealth = 24;
     this->health = this->maxHealth;
-
     this->attackState = AttackState::Scanning;
-
     this->walkSpeed = 1;
 
-    Logical::composite<windy::Enemy>(this, BarrelResources::armaturePath, BarrelResources::spritePath, "barrel");
+    Logical::composite<Barrel>(this);
 
     std::vector<windy::AnimationAction> actionSet = {
         windy::AnimationAction("still",      "barrel_still",      true,   0.10f),
         windy::AnimationAction("stand",      "barrel_stand",      false,   0.10f),
         windy::AnimationAction("walk",       "barrel_walk",       true,   0.10f)
-        
     };
 
     this->sprite->appendActionSet(actionSet, false);
@@ -64,7 +44,7 @@ void Barrel::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> Barrel::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Logical::buildEntryCollisionRectangle(position, size, BarrelResources::armaturePath, "barrel");
+    return Logical::buildEntryCollisionRectangle<Barrel>(position, size);
 }
 
 void Barrel::attack(float dt) {

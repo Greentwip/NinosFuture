@@ -1,34 +1,17 @@
 #include "Cow.h"
 
-#include "Windy/Armature.h"
-#include "Windy/AnimationAction.h"
-#include "Windy/Sprite.h"
-
-#include "Windy/GameTags.h"
-
-#include "Windy/ObjectManager.h"
-
-#include "Game/Entities/Weapons/DirectionalBullet.h"
-
 #include "Game/Entities/Player/GamePlayer.h"
+#include "Game/Entities/Weapons/DirectionalBullet.h"
+#include "Windy/AnimationAction.h"
+#include "Windy/GameTags.h"
+#include "Windy/ObjectManager.h"
 
 using namespace game;
 
-
-class CowResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string CowResources::spritePath = "sprites/characters/enemy/sheriff/cow/cow";
-std::string CowResources::armaturePath = "physics/characters/enemy/sheriff/cow/cow";
-
-void Cow::preloadResources() {
-    windy::Armature::cache(CowResources::armaturePath);
-    windy::Sprite::cache(CowResources::spritePath);
+game::Resources& Cow::getResources() {
+    static game::Resources resources {game::ResourceKind::EnemySheriff, "cow"};
+    return resources;
 }
-
 
 void Cow::setup() {
 
@@ -38,7 +21,7 @@ void Cow::setup() {
     this->bulletPower = 5;
     this->attackState = AttackState::Scanning;
 
-    Logical::composite<windy::Enemy>(this, CowResources::armaturePath, CowResources::spritePath, "cow");
+    Logical::composite<Cow>(this);
 
     std::vector<windy::AnimationAction> actionSet = {
         windy::AnimationAction("stand",       "cow_stand",      false,   0.10f),
@@ -58,9 +41,8 @@ void Cow::setup() {
 
 }
 
-
 std::shared_ptr<cocos2d::Rect> Cow::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Logical::buildEntryCollisionRectangle(position, size, CowResources::armaturePath, "cow");
+    return Logical::buildEntryCollisionRectangle<Cow>(position, size);
 }
 
 void Cow::attack(float dt) {

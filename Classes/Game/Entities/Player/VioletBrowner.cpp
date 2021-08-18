@@ -72,12 +72,12 @@ void VioletBrowner::fire() {
     int bulletOffset = 12;
     int bulletPower = 1;
 
-    if (this->chargePower.compare("high") == 0) {
+    if (this->chargePower == ChargePower::high) {
         bulletOffset = 26;
         bulletPower = 3;
         windy::AudioManager::playSfx(windy::Sounds::BusterHigh);
     }
-    else if (this->chargePower.compare("mid") == 0) {
+    else if (this->chargePower == ChargePower::mid) {
         bulletPower = 2;
         windy::AudioManager::playSfx(windy::Sounds::BusterMid);
     }

@@ -4,16 +4,9 @@
 
 using namespace game;
 
-class PauseAnimationResources {
-public:
-    static std::string spritePath;
-};
-
-std::string PauseAnimationResources::spritePath = "sprites/gameplay/screens/pause_menu/pause_animation/pause_animation";
-
-
-void PauseAnimation::preloadResources() {
-    windy::Sprite::cache(PauseAnimationResources::spritePath);
+game::Resources& PauseAnimation::getResources() {
+    static game::Resources resources{game::ResourceKind::PauseMenu, "pause_animation", false};
+    return resources;
 }
 
 PauseAnimation* PauseAnimation::create() {
@@ -38,7 +31,7 @@ bool PauseAnimation::init()
         return false;
     }
 
-    this->sprite = windy::Sprite::create(PauseAnimationResources::spritePath, cocos2d::Point(0.5f, 0));
+    this->sprite = windy::Sprite::create(PauseAnimation::getResources()._spritePath, cocos2d::Point(0.5f, 0));
     this->sprite->setPosition(cocos2d::Point(0, 0));
     this->addChild(this->sprite);
 

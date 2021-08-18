@@ -3,13 +3,14 @@
 
 #include "cocos2d.h"
 
+#include "Game/Entities/Resources.h"
 #include "Windy/Entities/Weapon.h"
 
 namespace game {
     class TremorDrill : public windy::Weapon
     {
     public:
-        static void preloadResources();
+        static game::Resources& getResources();
 
         static TremorDrill* create();
 

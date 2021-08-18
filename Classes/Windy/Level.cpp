@@ -370,7 +370,8 @@ bool Level::init()
                 name.compare("jetbird") == 0 || 
                 name.compare("tremor") == 0 ||
 
-                name.compare("roll_runner") == 0) {
+                name.compare("roll_runner") == 0 ||
+                name.compare("tank") == 0) {
 
                 
 

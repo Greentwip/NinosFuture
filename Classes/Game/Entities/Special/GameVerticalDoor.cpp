@@ -1,35 +1,22 @@
 #include "GameVerticalDoor.h"
 
-#include "Windy/Armature.h"
 #include "Windy/AnimationAction.h"
+#include "Windy/Armature.h"
 #include "Windy/Sprite.h"
-
 
 using namespace game;
 
-class GameVerticalDoorResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string GameVerticalDoorResources::spritePath = "sprites/gameplay/level/special/general/vertical_door/vertical_door";
-std::string GameVerticalDoorResources::armaturePath = "physics/gameplay/level/special/general/door/door";
-
-void GameVerticalDoor::preloadResources() {
-    windy::Armature::cache(GameVerticalDoorResources::armaturePath);
-    windy::Sprite::cache(GameVerticalDoorResources::spritePath);
+game::Resources& GameVerticalDoor::getResources() {
+    static game::Resources resources{game::ResourceKind::LevelSpecial, "vertical_door"};
+    return resources;
 }
 
 void GameVerticalDoor::setup() {
-
-    auto armature = windy::Armature(GameVerticalDoorResources::armaturePath);
-
+    const auto& resources = GameVerticalDoor::getResources();
+    auto armature = windy::Armature(resources._armaturePath);
     auto newAnchor = armature.get("door").anchor;
-
-    this->sprite = windy::Sprite::create(GameVerticalDoorResources::spritePath, newAnchor);
+    this->sprite = windy::Sprite::create(resources._spritePath, newAnchor);
     this->addChild(this->sprite);
-
     auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
     auto contentSize = this->sprite->getContentSize();
 
@@ -46,8 +33,6 @@ void GameVerticalDoor::setup() {
 
     this->sprite->setPosition(collisionBoxCenter + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
 
-
-
     auto lockAction = windy::AnimationAction("lock", "vertical_door_lock", false, this->lockTime / 8.0f);
     auto unlockAction = windy::AnimationAction("unlock", "vertical_door_unlock", false, this->lockTime / 8.0f);
 
@@ -62,13 +47,10 @@ void GameVerticalDoor::setupPrefix() {
 }
 
 std::shared_ptr<cocos2d::Rect> GameVerticalDoor::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-
-    auto armature = windy::Armature(GameVerticalDoorResources::armaturePath);
-
+    const auto& resources = GameVerticalDoor::getResources();
+    auto armature = windy::Armature(resources._armaturePath);
     auto newAnchor = armature.get("door").anchor;
-
     auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-
     auto collisionRectangles = armature.get("door").collisionRectangles;
 
     for (int i = 0; i < collisionRectangles.size(); ++i) {

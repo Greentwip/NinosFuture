@@ -24,23 +24,25 @@
 #include "Game/Entities/Enemies/Sheriff/JetBird.h"
 
 #include "Game/Entities/Enemies/Military/RollRunner.h"
+#include "Game/Entities/Enemies/Military/Tank.h"
 
 #include "Game/Entities/Boss/SheriffMan.h"
 
 #include "Game/Entities/Items/GameItem.h"
 
 #include "Game/Entities/Player/GamePlayer.h"
-#include "Game/Entities/Boss/GameBoss.h"
 
-#include "Game/Entities/Special/GameVerticalDoor.h"
-#include "Game/Entities/Special/GameHorizontalDoor.h"
-
-#include "Game/Entities/Weapons/DirectionalBullet.h"
-#include "Game/Entities/Weapons/TremorDrill.h"
-#include "Game/Entities/Weapons/TremorLaser.h"
 #include "Game/Entities/Weapons/VioletBullet.h"
 #include "Game/Entities/Weapons/ExtremeBullet.h"
 #include "Game/Entities/Weapons/SheriffBullet.h"
+#include "Game/Entities/Weapons/DirectionalBullet.h"
+#include "Game/Entities/Weapons/TremorLaser.h"
+#include "Game/Entities/Weapons/TankBullet.h"
+#include "Game/Entities/Weapons/TremorDrill.h"
+
+
+#include "Game/Entities/Special/GameVerticalDoor.h"
+#include "Game/Entities/Special/GameHorizontalDoor.h"
 
 #include "Game/Entities/UI/EnergyBar.h"
 #include "Game/Entities/UI/GameGui.h"
@@ -108,20 +110,25 @@ bool GameScene::init()
 
     windy::EntityFactory::getInstance().clear();
 
-    windy::Logical::preloadResources<GameBoss>();
-    windy::Logical::preloadResources<GamePlayer>();
-    windy::Logical::preloadResources<GameItem>();
-    windy::Logical::preloadResources<GameVerticalDoor>();
-    windy::Logical::preloadResources<GameHorizontalDoor>();
-    windy::Logical::preloadResources<VioletBullet>();
-    windy::Logical::preloadResources<ExtremeBullet>();
-    windy::Logical::preloadResources<SheriffBullet>();
-    windy::Logical::preloadResources<EnergyBar>();
-    windy::Logical::preloadResources<GameExplosion>();
-    windy::Logical::preloadResources<PauseInterruptor>();
-    windy::Logical::preloadResources<PauseAnimation>();
-    windy::Logical::preloadResources<PauseMenu>();
-    windy::Logical::preloadResources<PauseSelector>();
+    GameBoss::getResources().cache();
+    GamePlayer::getResources().cache();
+    GameItem::getResources().cache();
+    GameVerticalDoor::getResources().cache();
+    GameHorizontalDoor::getResources().cache();
+    VioletBullet::getResources(windy::Browner::ChargePower::low).cache();
+    VioletBullet::getResources(windy::Browner::ChargePower::mid).cache();
+    VioletBullet::getResources(windy::Browner::ChargePower::high).cache();
+    ExtremeBullet::getResources().cache();
+    SheriffBullet::getResources().cache();
+
+    EnergyBar::preloadResources();
+
+    GameExplosion::getResources().cache();
+    PauseInterruptor::getResources().cache();
+    PauseAnimation::getResources().cache();
+    
+    PauseMenu::preloadResources();    
+    PauseSelector::preloadResources();
 
 
     windy::EntityFactory::getInstance().registerType<GamePlayer>("player");
@@ -139,16 +146,16 @@ bool GameScene::init()
     auto* currentLevel = GameManager::getInstance().currentLevel.get();
     if (currentLevel && currentLevel->mug.compare("sheriffman") == 0) {
 
-        windy::Logical::preloadResources<Tremor>();
-        windy::Logical::preloadResources<Cow>();
-        windy::Logical::preloadResources<Barrel>();
-        windy::Logical::preloadResources<JetBird>();
-        windy::Logical::preloadResources<TremorDrill>();
-        windy::Logical::preloadResources<TremorLaser>();
-        windy::Logical::preloadResources<CannonJoe>();
-        windy::Logical::preloadResources<Taban>();
-        windy::Logical::preloadResources<Sumatran>();
-        windy::Logical::preloadResources<DirectionalBullet>();
+        Tremor::getResources().cache();
+        Cow::getResources().cache();
+        Barrel::getResources().cache();
+        JetBird::getResources().cache();
+        TremorDrill::getResources().cache();
+        TremorLaser::getResources().cache();
+        CannonJoe::getResources().cache();
+        Taban::getResources().cache();
+        Sumatran::getResources().cache();
+        DirectionalBullet::getResources().cache();
 
         windy::EntityFactory::getInstance().registerType<SheriffMan>("sheriff");
         windy::EntityFactory::getInstance().registerType<Tremor>("tremor");
@@ -171,29 +178,39 @@ bool GameScene::init()
     }    
     else if (currentLevel && currentLevel->mug.compare("vineman") == 0) {
 
-        windy::Logical::preloadResources<Subeil>();
-        windy::Logical::preloadResources<Lyric>();
-        windy::Logical::preloadResources<Taban>();
-        windy::Logical::preloadResources<Sumatran>();
-        windy::Logical::preloadResources<DirectionalBullet>();
+        Subeil::getResources().cache();
+        Lyric::getResources().cache();
+        Taban::getResources().cache();
+        Sumatran::getResources().cache();
+        CannonJoe::getResources().cache();
 
-        windy::EntityFactory::getInstance().registerType<Subeil>("subeil");               
+        DirectionalBullet::getResources().cache();
+
+        windy::EntityFactory::getInstance().registerType<Subeil>("subeil");
         windy::EntityFactory::getInstance().registerType<Lyric>("lyric");
         windy::EntityFactory::getInstance().registerType<Taban>("taban");
         windy::EntityFactory::getInstance().registerType<Sumatran>("sumatran");
+        windy::EntityFactory::getInstance().registerType<CannonJoe>("cannon_joe");
+
 
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Subeil>("subeil");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Lyric>("lyric");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Taban>("taban");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Sumatran>("sumatran");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<CannonJoe>("cannon_joe");
 
     }
     else if (currentLevel && currentLevel->mug.compare("militaryman") == 0) {
-        windy::Logical::preloadResources<RollRunner>();
+
+        RollRunner::getResources().cache();
+        Tank::getResources().cache();
+        TankBullet::getResources().cache();
 
         windy::EntityFactory::getInstance().registerType<RollRunner>("roll_runner");
+        windy::EntityFactory::getInstance().registerType<Tank>("tank");
 
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<RollRunner>("roll_runner");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<Tank>("tank");
     }
 
     if (currentLevel) {

@@ -1,36 +1,21 @@
 #include "GameItem.h"
 
-#include "Windy/Armature.h"
-#include "Windy/AnimationAction.h"
-#include "Windy/Sprite.h"
-
-#include "Windy/GameTags.h"
-
 #include "Game/GameManager.h"
-
+#include "Windy/AnimationAction.h"
+#include "Windy/Armature.h"
+#include "Windy/GameTags.h"
 
 using namespace game;
 
-class GameItemResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string GameItemResources::spritePath = "sprites/gameplay/level/goods/item/item";
-std::string GameItemResources::armaturePath = "physics/gameplay/level/goods/item/item";
-
-
-void GameItem::preloadResources() {
-    windy::Armature::cache(GameItemResources::armaturePath);
-    windy::Sprite::cache(GameItemResources::spritePath);
+game::Resources& GameItem::getResources() {
+    static game::Resources resources{game::ResourceKind::Item, "item"};
+    return resources;
 }
 
 void GameItem::setup(const std::string& name, const std::string& content, bool forever, bool collectible) {
+    auto armature = windy::Armature(GameItem::getResources()._armaturePath);
 
-    auto armature = windy::Armature(GameItemResources::armaturePath);
-
-    Logical::composite<GameItem>(this, GameItemResources::armaturePath, GameItemResources::spritePath, "item");
+    Logical::composite<GameItem>(this);
 
     this->setTag(windy::GameTags::General::Item);
 
@@ -84,7 +69,7 @@ void GameItem::setup(const std::string& name, const std::string& content, bool f
 }
 
 std::shared_ptr<cocos2d::Rect> GameItem::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Logical::buildEntryCollisionRectangle(position, size, GameItemResources::armaturePath, "item");
+    return Logical::buildEntryCollisionRectangle<GameItem>(position, size);
 }
 
 void GameItem::onFinished() {

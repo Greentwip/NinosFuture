@@ -1,27 +1,13 @@
-#include <cmath>
-
 #include "SheriffBullet.h"
 
-#include "Windy/Sprite.h"
-#include "Windy/Armature.h"
 #include "Windy/AnimationAction.h"
 
 using namespace game;
 
-class SheriffBulletResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string SheriffBulletResources::spritePath = "sprites/gameplay/level/weapon/directional_star_bullet/directional_star_bullet";
-std::string SheriffBulletResources::armaturePath = "physics/gameplay/level/weapon/directional_star_bullet/directional_star_bullet";
-
-void SheriffBullet::preloadResources() {
-    windy::Armature::cache(SheriffBulletResources::armaturePath);
-    windy::Sprite::cache(SheriffBulletResources::spritePath);
+game::Resources& SheriffBullet::getResources() {
+    static game::Resources resources{game::ResourceKind::Weapon, "directional_star_bullet"};
+    return resources;
 }
-
 
 SheriffBullet* SheriffBullet::create() {
     SheriffBullet* entity = new (std::nothrow) SheriffBullet();
@@ -49,8 +35,7 @@ bool SheriffBullet::init()
 }
 
 void SheriffBullet::setup() {
-
-    Logical::composite<windy::Weapon>(this, SheriffBulletResources::armaturePath, SheriffBulletResources::spritePath, "directional_star_bullet");
+    Logical::composite<SheriffBullet>(this);
     Logical::setup(this->getPosition(), this->collisionRectangles[0]->size);
 
     auto action = windy::AnimationAction("shoot", "directional_star_bullet", true, 0.10f);
@@ -67,7 +52,7 @@ void SheriffBullet::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> SheriffBullet::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Logical::buildEntryCollisionRectangle(position, size, SheriffBulletResources::armaturePath, "directional_star_bullet");
+    return Logical::buildEntryCollisionRectangle<SheriffBullet>(position, size);
 }
 
 void SheriffBullet::onFinished() {

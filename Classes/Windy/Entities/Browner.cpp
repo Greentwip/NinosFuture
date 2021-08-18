@@ -1,15 +1,7 @@
 #include "Browner.h"
 
-#include "./../Level.h"
-#include "./../Sprite.h"
-#include "./../Input.h"
-
-#include "./../GameTags.h"
-
-#include "./../AudioManager.h"
-#include "./../ObjectManager.h"
-
 #include "Player.h"
+#include "../ObjectManager.h"
 
 using namespace windy;
 
@@ -51,7 +43,7 @@ void Browner::initVariables()
     this->maxEnergy = 28;
     this->energy = this->maxEnergy;
 
-    this->chargePower = "low";
+    this->chargePower = ChargePower::low;
 
     this->tintA = false;
     this->tintB = false;
@@ -90,7 +82,7 @@ void Browner::deactivate() {
     this->tintB = false;
     this->player->charging = false;
     this->chargeTimer = 0;
-    this->chargePower = "low";
+    this->chargePower = ChargePower::low;
 }
 
 void Browner::runAction(const std::string& action) {
@@ -143,7 +135,7 @@ void Browner::charge() {
         this->chargeTimer += 1;
 
         if (this->chargeTimer == 20) {
-            this->chargePower = "mid";
+            this->chargePower = ChargePower::mid;
             AudioManager::playSfx(Sounds::BusterChargingMid);
 
             if (!this->tintA) {
@@ -185,7 +177,7 @@ void Browner::charge() {
                 this->chargeTimer = 60;
             }
 
-            this->chargePower = "high";
+            this->chargePower = ChargePower::high;
 
         }
     }
@@ -289,9 +281,9 @@ void Browner::attack() {
     if ((dischargeCondition && !this->player->sliding) ||
         (dischargeCondition && this->player->charging && !this->player->sliding) &&
         !this->player->stunned) {
-        if (this->chargePower.compare("low") != 0) {
+        if (this->chargePower != ChargePower::low) {
             this->timedShoot();
-            this->chargePower = "low";
+            this->chargePower = ChargePower::low;
         }
 
         this->player->charging = false;

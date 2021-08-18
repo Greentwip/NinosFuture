@@ -634,6 +634,7 @@
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Common\Taban.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\GameEnemy.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Military\RollRunner.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Military\Tank.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Sheriff\Barrel.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Sheriff\Cow.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Sheriff\JetBird.h" />
@@ -648,6 +649,7 @@
     <ClInclude Include="..\..\Classes\Game\Entities\Player\SheriffBrowner.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Player\TeleportBrowner.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Player\VioletBrowner.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Resources.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Scenery\General\GameExplosion.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Scenery\Sheriff\Disk.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Special\GameHorizontalDoor.h" />
@@ -661,6 +663,7 @@
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\DirectionalBullet.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\ExtremeBullet.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\SheriffBullet.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Weapons\TankBullet.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\TremorDrill.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\TremorLaser.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\VioletBullet.h" />
@@ -757,6 +760,7 @@
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Common\Taban.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\GameEnemy.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Military\RollRunner.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Military\Tank.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Sheriff\Barrel.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Sheriff\Cow.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Sheriff\JetBird.cpp" />
@@ -770,6 +774,7 @@
     <ClCompile Include="..\..\Classes\Game\Entities\Player\SheriffBrowner.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Player\TeleportBrowner.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Player\VioletBrowner.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Resources.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Scenery\General\GameExplosion.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Scenery\Sheriff\Disk.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Special\GameHorizontalDoor.cpp" />
@@ -783,6 +788,7 @@
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\DirectionalBullet.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\ExtremeBullet.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\SheriffBullet.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Weapons\TankBullet.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\TremorDrill.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\TremorLaser.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\VioletBullet.cpp" />

@@ -1,30 +1,19 @@
 #include "RollRunner.h"
 
-#include "Windy/Armature.h"
 #include "Windy/AnimationAction.h"
-#include "Windy/Sprite.h"
 
 using namespace game;
 
-class RollRunnerResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string RollRunnerResources::spritePath = "sprites/characters/enemy/military/roll_runner/roll_runner";
-std::string RollRunnerResources::armaturePath = "physics/characters/enemy/military/roll_runner/roll_runner";
-
-void RollRunner::preloadResources() {
-    windy::Armature::cache(RollRunnerResources::armaturePath);
-    windy::Sprite::cache(RollRunnerResources::spritePath);
+game::Resources& RollRunner::getResources() {
+    static game::Resources resources{game::ResourceKind::EnemyMilitary, "roll_runner"};
+    return resources;
 }
 
 void RollRunner::setup() {
     maxHealth = 5;
     power = 3;
 
-    Logical::composite<windy::Enemy>(this, RollRunnerResources::armaturePath, RollRunnerResources::spritePath, "roll_runner");
+    Logical::composite<RollRunner>(this);
 
     std::vector<windy::AnimationAction> actionSet {
         windy::AnimationAction("walk", "roll_runner_walk", true, 0.10f)
@@ -35,7 +24,7 @@ void RollRunner::setup() {
 }
 
 std::shared_ptr<cocos2d::Rect> RollRunner::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Logical::buildEntryCollisionRectangle(position, size, RollRunnerResources::armaturePath, "roll_runner");
+    return Logical::buildEntryCollisionRectangle<RollRunner>(position, size);
 }
 
 void RollRunner::flip(Orientation _orientation) {

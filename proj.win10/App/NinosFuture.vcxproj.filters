@@ -370,6 +370,15 @@
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Military\RollRunner.cpp">
       <Filter>Classes\Game\Entities\Enemies\Military</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Resources.cpp">
+      <Filter>Classes\Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Military\Tank.cpp">
+      <Filter>Classes\Game\Entities\Enemies\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Weapons\TankBullet.cpp">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -1877,6 +1886,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Military\RollRunner.h">
       <Filter>Classes\Game\Entities\Enemies\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Resources.h">
+      <Filter>Classes\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Military\Tank.h">
+      <Filter>Classes\Game\Entities\Enemies\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Weapons\TankBullet.h">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

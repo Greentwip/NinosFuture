@@ -83,11 +83,14 @@ bool WeaponAcquireScene::init()
 
     windy::EntityFactory::getInstance().clear();
 
-    windy::Logical::preloadResources<GamePlayer>();
-    windy::Logical::preloadResources<VioletBullet>();
-    windy::Logical::preloadResources<ExtremeBullet>();
-    windy::Logical::preloadResources<SheriffBullet>();
-    windy::Logical::preloadResources<EnergyBar>();
+    GamePlayer::getResources().cache();
+    VioletBullet::getResources(windy::Browner::ChargePower::low).cache();
+    VioletBullet::getResources(windy::Browner::ChargePower::mid).cache();
+    VioletBullet::getResources(windy::Browner::ChargePower::high).cache();
+    ExtremeBullet::getResources().cache();
+    SheriffBullet::getResources().cache();
+    
+    EnergyBar::preloadResources();
 
 
     windy::EntityFactory::getInstance().registerType<GamePlayer>("player");

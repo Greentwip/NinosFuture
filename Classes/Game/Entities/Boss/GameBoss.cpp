@@ -1,33 +1,18 @@
 #include "GameBoss.h"
 
-#include "Windy/Entities/Browner.h"
-#include "Windy/Armature.h"
-#include "Windy/Sprite.h"
-#include "Windy/GameTags.h"
-
-#include "Game/Entities/UI/GameGui.h"
-#include "Game/Entities/UI/EnergyBar.h"
-#include "Game/GameManager.h"
-
-#include "Game/Entities/Player/TeleportBrowner.h"
 #include "Game/Entities/Player/SheriffBrowner.h"
+#include "Game/Entities/Player/TeleportBrowner.h"
+#include "Game/Entities/UI/EnergyBar.h"
+#include "Game/Entities/UI/GameGui.h"
+#include "Windy/GameTags.h"
+#include "Windy/Entities/Browner.h"
 
 using namespace game;
 
-class GameBossResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string GameBossResources::spritePath = "sprites/characters/player/regular/browners/browners";
-std::string GameBossResources::armaturePath = "physics/characters/player/regular/browners/browners";
-
-void GameBoss::preloadResources() {
-    windy::Armature::cache(GameBossResources::armaturePath);
-    windy::Sprite::cache(GameBossResources::spritePath);
+game::Resources& GameBoss::getResources() {
+    static game::Resources resources{game::ResourceKind::Player, "browners"};
+    return resources;
 }
-
 
 bool GameBoss::init()
 {
@@ -39,17 +24,18 @@ bool GameBoss::init()
     }
 
     this->gui = nullptr;
-    auto armature = windy::Armature(GameBossResources::armaturePath);
+    const auto& resources = getResources();
+    auto armature = windy::Armature(resources._armaturePath);
 
-    auto newAnchor = armature.get("browners").anchor;
+    auto newAnchor = armature.get(resources._entityName).anchor;
 
-    this->sprite = windy::Sprite::create(GameBossResources::spritePath, newAnchor);
+    this->sprite = windy::Sprite::create(resources._spritePath, newAnchor);
     this->addChild(this->sprite);
 
     auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
     auto contentSize = this->sprite->getContentSize();
 
-    this->collisionRectangles = armature.get("browners").collisionRectangles;
+    this->collisionRectangles = armature.get(resources._entityName).collisionRectangles;
 
     auto collisionBoxCenter = cocos2d::Point(this->collisionRectangles[0]->getMidX(), this->collisionRectangles[0]->getMidY());
 
@@ -81,7 +67,7 @@ bool GameBoss::init()
 }
 
 std::shared_ptr<cocos2d::Rect> GameBoss::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return windy::Logical::buildEntryCollisionRectangle(position, size, GameBossResources::armaturePath, "browners");
+    return windy::Logical::buildEntryCollisionRectangle<GameBoss>(position, size);
 }
 
 void GameBoss::onFinished() {
@@ -229,4 +215,3 @@ void GameBoss::checkHealth() {
 void GameBoss::onUpdate(float dt) {
     Boss::onUpdate(dt);
 }
-

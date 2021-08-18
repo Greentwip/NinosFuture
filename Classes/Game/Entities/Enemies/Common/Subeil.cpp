@@ -1,45 +1,25 @@
 #include "Subeil.h"
 
-#include "Windy/Armature.h"
-#include "Windy/AnimationAction.h"
-#include "Windy/Sprite.h"
-
-#include "Windy/GeometryExtensions.h"
-
 #include "Game/Entities/Player/GamePlayer.h"
+#include "Windy/AnimationAction.h"
+#include "Windy/GeometryExtensions.h"
 
 using namespace game;
 
-
-class SubeilResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string SubeilResources::spritePath = "sprites/characters/enemy/general/subeil/subeil";
-std::string SubeilResources::armaturePath = "physics/characters/enemy/general/subeil/subeil";
-
-void Subeil::preloadResources() {
-    windy::Armature::cache(SubeilResources::armaturePath);
-    windy::Sprite::cache(SubeilResources::spritePath);
+game::Resources& Subeil::getResources() {
+    static game::Resources resources{game::ResourceKind::EnemyGeneral, "subeil"};
+    return resources;
 }
 
-
 void Subeil::setup() {
-
     this->power = 2;
-
     this->maxHealth = 1;
     this->health = this->maxHealth;
-
     this->attackState = AttackState::Scanning;
-
     this->walkSpeed = 2;
     this->jumpSpeed = cocos2d::Point(0.5f, 0.75f);
 
-    Logical::composite<windy::Enemy>(this, SubeilResources::armaturePath, SubeilResources::spritePath, "subeil");
-
+    Logical::composite<Subeil>(this);
 
     std::vector<windy::AnimationAction> actionSet = {
         windy::AnimationAction("stand",      "subeil_stand",      true,   0.10f),
@@ -54,7 +34,7 @@ void Subeil::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> Subeil::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Logical::buildEntryCollisionRectangle(position, size, SubeilResources::armaturePath, "subeil");
+    return Logical::buildEntryCollisionRectangle<Subeil>(position, size);
 }
 
 void Subeil::attack(float dt) {

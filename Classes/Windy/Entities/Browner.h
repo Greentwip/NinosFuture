@@ -1,9 +1,9 @@
 #ifndef __WINDY_BROWNER_H__
 #define __WINDY_BROWNER_H__
 
-#include <string>
-
 #include "cocos2d.h"
+
+#include <string>
 
 namespace windy {
     class Player;
@@ -14,6 +14,10 @@ namespace windy {
     class Browner : public cocos2d::Node
     {
     public:
+        enum class ChargePower {
+            low, mid, high
+        };
+
         template<typename T>
         static Browner* create(Level* level, Player* player);
 
@@ -81,7 +85,7 @@ namespace windy {
         int energy;
         int maxEnergy;
 
-        std::string chargePower;
+        ChargePower chargePower;
 
         int chargeTimer;
         int attackTimer;

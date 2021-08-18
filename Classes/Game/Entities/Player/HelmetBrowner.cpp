@@ -66,18 +66,17 @@ void HelmetBrowner::restoreWeaponEnergy(int amount) {
     this->energy = -2;
 }
 
-
 void HelmetBrowner::fire() {
-
+    using ChargePower = windy::Browner::ChargePower;
     int bulletOffset = 12;
     int bulletPower = 1;
 
-    if (this->chargePower.compare("high") == 0) {
+    if (this->chargePower == ChargePower::high) {
         bulletOffset = 26;
         bulletPower = 3;
         windy::AudioManager::playSfx(windy::Sounds::BusterHigh);
     }
-    else if (this->chargePower.compare("mid") == 0) {
+    else if (this->chargePower == ChargePower::mid) {
         bulletPower = 2;
         windy::AudioManager::playSfx(windy::Sounds::BusterMid);
     }
@@ -88,9 +87,7 @@ void HelmetBrowner::fire() {
     auto bulletPosition = cocos2d::Point(this->player->getPositionX() + (bulletOffset * this->getSpriteNormal()),
         this->player->getPositionY() - 4);
 
-
     auto chargePower = this->chargePower;
-
     auto entryCollisionBox = VioletBullet::getEntryCollisionRectangle(chargePower, bulletPosition, cocos2d::Size(16, 16));
     auto entry = windy::Logical::getEntry(entryCollisionBox, [=]() {
         auto bullet = VioletBullet::create();
@@ -100,11 +97,7 @@ void HelmetBrowner::fire() {
         bullet->fire(bulletPower, this->getSpriteNormal(), this->player->weaponTag);
 
         return bullet;
-        });
+    });
 
     this->level->objectManager->objectEntries.push_back(entry);
-
-
-    //self:getParent():getParent().bullets_[bullet] = bullet
-
 }

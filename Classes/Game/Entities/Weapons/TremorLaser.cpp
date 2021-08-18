@@ -1,24 +1,12 @@
 #include "TremorLaser.h"
 
-#include "Windy/Sprite.h"
-#include "Windy/Armature.h"
 #include "Windy/AnimationAction.h"
 
 using namespace game;
 
-class TremorLaserResources {
-public:
-    static std::string spritePath;
-    static std::string armaturePath;
-};
-
-std::string TremorLaserResources::spritePath = "sprites/gameplay/level/weapon/tremor_laser/tremor_laser";
-std::string TremorLaserResources::armaturePath = "physics/gameplay/level/weapon/tremor_laser/tremor_laser";
-
-
-void TremorLaser::preloadResources() {
-    windy::Armature::cache(TremorLaserResources::armaturePath);
-    windy::Sprite::cache(TremorLaserResources::spritePath);
+game::Resources& TremorLaser::getResources() {
+    static game::Resources resources{game::ResourceKind::Weapon, "tremor_laser"};
+    return resources;
 }
 
 TremorLaser* TremorLaser::create() {
@@ -47,12 +35,7 @@ bool TremorLaser::init()
 }
 
 void TremorLaser::setup() {
-
-    Logical::composite<windy::Weapon>(this,
-                                      TremorLaserResources::armaturePath,
-                                      TremorLaserResources::spritePath,
-                                      "tremor_laser");
-
+    Logical::composite<TremorLaser>(this);
     Logical::setup(this->getPosition(), this->collisionRectangles[0]->size);
 
 
@@ -80,7 +63,7 @@ void TremorLaser::setup() {
 
 
 std::shared_ptr<cocos2d::Rect> TremorLaser::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {
-    return Logical::buildEntryCollisionRectangle(position, size, TremorLaserResources::armaturePath, "tremor_laser");
+    return Logical::buildEntryCollisionRectangle<TremorLaser>(position, size);
 }
 
 void TremorLaser::onFinished() {
