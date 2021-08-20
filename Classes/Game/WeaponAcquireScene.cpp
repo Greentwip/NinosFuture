@@ -21,8 +21,7 @@
 
 #include "Intro.h"
 
-
-
+#include "Game/Entities/UI/Fader.h"
 
 using namespace game;
 using namespace cocos2d;
@@ -158,6 +157,19 @@ bool WeaponAcquireScene::init()
 
     intro->setPositionY(intro->getPositionY() + 32);
 
+    auto fader = Fader::create(cocos2d::Point(0, 0));
+
+    fader->setPosition(cocos2d::Point(0, 0));
+
+    fader->setOpacity(255);
+
+    addChild(fader, 4096);
+
+    _fader = fader;
+
+    _fader->fadeOut(nullptr);
+
+
 
     return true;
 }
@@ -223,7 +235,11 @@ void WeaponAcquireScene::update(float dt)
         if (_exitTimer <= 0) {
             _exitTimer = 0;
             _transitioning = true;
-            GameStateMachine::getInstance().pushState(GameState::StageSelect);
+
+            _fader->fadeIn([this]() {
+                GameStateMachine::getInstance().pushState(GameState::StageSelect);
+            });
+
         }
         else {
             _exitTimer -= dt;

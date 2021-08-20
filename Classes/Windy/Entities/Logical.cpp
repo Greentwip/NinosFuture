@@ -80,7 +80,7 @@ std::shared_ptr<ObjectEntry> Logical::getEntry(std::shared_ptr<cocos2d::Rect> co
 void Logical::onEnter()
 {
     Node::onEnter();
-    cocos2d::Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
+    cocos2d::Director::getInstance()->getScheduler()->scheduleUpdate(this, 32, false);
 }
 
 

@@ -20,6 +20,7 @@ namespace windy {
 
         cocos2d::Point center();
 
+        virtual void onCollisionEnter(Logical* collision) override;
 
         virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
         virtual void onUpdate(float dt) override;

@@ -14,6 +14,9 @@
 
 #include "GameStateMachine.h"
 
+#include "Game/Entities/UI/Fader.h"
+
+
 using namespace game;
 using namespace cocos2d;
 
@@ -57,13 +60,6 @@ bool OptionsScene::init()
     windy::Armature::clearPlistCache();
     windy::Sprite::clearPlistCache();
 
-
-    setCascadeOpacityEnabled(true);
-
-    auto fadeIn = FadeIn::create(1.0f);
-
-    this->runAction(fadeIn);
-
     auto root = cocos2d::CSLoader::createNode(OptionsSceneResources::dataFile);
 
     addChild(root);
@@ -83,6 +79,23 @@ bool OptionsScene::init()
     this->sfxSlider->setPercent((int)this->sfxVolume);
 
     this->triggered = false;
+
+    _ready = false;
+
+    auto fader = Fader::create(cocos2d::Point(0, 0));
+
+    fader->setPosition(cocos2d::Point(0, 0));
+
+    fader->setOpacity(255);
+
+    addChild(fader, 4096);
+
+    _fader = fader;
+
+    _fader->fadeOut([this]() {
+        _ready = true;
+    });
+
 
     return true;
 }
@@ -111,7 +124,7 @@ void OptionsScene::onExit()
 void OptionsScene::update(float dt)
 {
 
-    if (!this->triggered) {
+    if (!this->triggered && _ready) {
         if (windy::Input::keyPressed(windy::InputKey::Up) || windy::Input::keyPressed(windy::InputKey::Down)) {
             if (this->currentOption == this->bgm) {
                 this->bgm->setColor(OptionsSceneResources::inactiveColor);                
@@ -167,12 +180,10 @@ void OptionsScene::update(float dt)
         if (windy::Input::keyPressed(windy::InputKey::B)) {
             this->triggered = true;
             windy::Settings::save();
-            auto fadeOut = cocos2d::FadeOut::create(1.0f);
-            auto callback = cocos2d::CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::Title); });
 
-            auto sequence = cocos2d::Sequence::create(fadeOut, callback, nullptr);
-
-            this->runAction(sequence);
+            _fader->fadeIn([this]() {
+                GameStateMachine::getInstance().pushState(GameState::Title);
+            });
         }
     }
 }

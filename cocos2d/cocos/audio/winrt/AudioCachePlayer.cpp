@@ -40,7 +40,7 @@ std::shared_ptr<AudioPlayer::AudioEngineCacheThreadPool> AudioPlayer::s_threadPo
 class CC_DLL AudioPlayer::AudioEngineCacheThreadPool
 {
 public:
-    AudioEngineCacheThreadPool(int threads = 4)
+    AudioEngineCacheThreadPool(int threads = 1)
         : _stop(false)
     {
         for (int index = 0; index < threads; ++index)
@@ -111,12 +111,10 @@ private:
 
 bool AudioPlayer::lazyInit()
 {
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID)
     if (s_threadPool == nullptr)
     {
         s_threadPool = std::shared_ptr<AudioEngineCacheThreadPool>(new (std::nothrow) AudioEngineCacheThreadPool());
     }
-#endif
 
     return true;
 }

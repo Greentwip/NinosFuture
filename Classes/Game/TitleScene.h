@@ -8,28 +8,39 @@ namespace windy {
     class Label;
 }
 
-class TitleScene : public cocos2d::LayerColor
-{
-public:
-    virtual bool init();
+namespace game {
+    class Fader;
+}
 
-    static cocos2d::Scene* scene();
+namespace game {
+    class TitleScene : public cocos2d::LayerColor
+    {
+    public:
+        virtual bool init();
 
-    virtual void onEnter();
-    virtual void onExit();
+        static cocos2d::Scene* scene();
 
-    virtual void update(float dt);
+        virtual void onEnter();
+        virtual void onExit();
 
-    CREATE_FUNC(TitleScene);
+        virtual void update(float dt);
 
-private:
-    void selectStart();
-    void selectOptions();
+        CREATE_FUNC(TitleScene);
 
-    bool triggered;
+    private:
+        void selectStart();
+        void selectOptions();
 
-    windy::Label* startText;
-    windy::Label* optionsText;
-    windy::Label* selectedOption;
-};
+        bool triggered;
+
+        bool _ready;
+
+        windy::Label* startText;
+        windy::Label* optionsText;
+        windy::Label* selectedOption;
+
+        Fader* _fader;
+    };
+}
+
 #endif

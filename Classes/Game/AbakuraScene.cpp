@@ -2,6 +2,9 @@
 #include "AbakuraScene.h"
 #include "GameStateMachine.h"
 
+#include "Game/Entities/UI/Fader.h"
+
+
 #include "Windy/Armature.h"
 #include "Windy/Sprite.h"
 #include "Windy/AnimationAction.h"
@@ -37,8 +40,6 @@ bool AbakuraScene::init()
     windy::Armature::clearPlistCache();
     windy::Sprite::clearPlistCache();
 
-    setCascadeOpacityEnabled(true);
-
     this->abakuraIntro();
 
     return true;
@@ -55,26 +56,36 @@ void AbakuraScene::abakuraIntro() {
 
     abakuraLogo->appendAction(action, false);
 
-    auto fadeIn = cocos2d::FadeIn::create(1.0f);
 
-    auto preCallback = cocos2d::CallFunc::create([=]() {
-        abakuraLogo->runAction("abakura_logo");
-        windy::AudioManager::playSfx(windy::Sounds::Abakura);
+    auto fader = Fader::create(cocos2d::Point(0, 0));
+
+    fader->setPosition(cocos2d::Point(0, 0));
+
+    fader->setOpacity(255);
+
+    addChild(fader, 4096);
+
+
+    fader->fadeOut([=]() {
+        auto preCallback = cocos2d::CallFunc::create([=]() {
+            abakuraLogo->runAction("abakura_logo");
+            windy::AudioManager::playSfx(windy::Sounds::Abakura);
         });
 
-    auto duration = cocos2d::DelayTime::create(abakuraLogo->getActionDuration("abakura_logo"));
+        auto duration = cocos2d::DelayTime::create(abakuraLogo->getActionDuration("abakura_logo"));
 
-    auto durationAfter = cocos2d::DelayTime::create(abakuraLogo->getActionDuration("abakura_logo"));
+        auto durationAfter = cocos2d::DelayTime::create(abakuraLogo->getActionDuration("abakura_logo"));
 
-    auto fadeOut = cocos2d::FadeOut::create(1.0f);
-
-    auto postCallback = cocos2d::CallFunc::create([=]() {
-        GameStateMachine::getInstance().pushState(GameState::Title);
+        auto fadeOut = cocos2d::CallFunc::create([=]() {
+            fader->fadeIn([=]() {
+                GameStateMachine::getInstance().pushState(GameState::Title);
+            });
         });
 
-    auto sequence = cocos2d::Sequence::create(fadeIn, preCallback, duration, durationAfter, fadeOut, postCallback, nullptr);
+        auto sequence = cocos2d::Sequence::create(preCallback, duration, durationAfter, fadeOut, nullptr);
 
-    this->runAction(sequence);
+        this->runAction(sequence);
+    });
 
 }
 

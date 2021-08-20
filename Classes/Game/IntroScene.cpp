@@ -2,6 +2,8 @@
 #include "IntroScene.h"
 #include "GameStateMachine.h"
 
+#include "Game/Entities/UI/Fader.h"
+
 #include "Windy/Armature.h"
 #include "Windy/Sprite.h"
 #include "Windy/AnimationAction.h"
@@ -40,7 +42,7 @@ bool IntroScene::init()
     windy::Sprite::clearPlistCache();
 
 
-    setCascadeOpacityEnabled(true);
+    //setCascadeOpacityEnabled(true);
 
     this->greentwipIntro();
 
@@ -58,36 +60,46 @@ void IntroScene::greentwipIntro() {
 
     greentwipLogo->appendAction(action, false);
 
-    auto fadeIn = cocos2d::FadeIn::create(1.0f);
+    auto fader = Fader::create(cocos2d::Point(0, 0));
 
-    auto preCallback = cocos2d::CallFunc::create([=]() {
-        greentwipLogo->runAction("greentwip_logo");
-        windy::AudioManager::playSfx(windy::Sounds::Intro);
+    fader->setPosition(cocos2d::Point(0, 0));
+
+    fader->setOpacity(255);
+
+    addChild(fader, 4096);
+
+
+    fader->fadeOut([=]() {
+        auto preCallback = cocos2d::CallFunc::create([=]() {
+            greentwipLogo->runAction("greentwip_logo");
+            windy::AudioManager::playSfx(windy::Sounds::Intro);
+            });
+
+        auto duration = cocos2d::DelayTime::create(greentwipLogo->getActionDuration("greentwip_logo"));
+
+        auto fadeOut = cocos2d::CallFunc::create([=]() {
+            fader->fadeIn([=]() {
+                GameStateMachine::getInstance().pushState(GameState::Abakura);
+                /*auto levels = GameManager::getInstance().levels.collection;
+
+                for (auto level : levels) {
+                    if (level->mug == "sheriffman") {
+                        GameManager::getInstance().currentLevel = level;
+                        break;
+                    }
+                }
+
+                GameStateMachine::getInstance().pushState(GameState::GetWeapon);*/
+
+            });
         });
 
-    auto duration = cocos2d::DelayTime::create(greentwipLogo->getActionDuration("greentwip_logo"));
+        auto sequence = cocos2d::Sequence::create(preCallback, duration, fadeOut, nullptr);
 
-    auto fadeOut = cocos2d::FadeOut::create(1.0f);
+        this->runAction(sequence);
 
-    auto postCallback = cocos2d::CallFunc::create([=]() {
-        GameStateMachine::getInstance().pushState(GameState::Abakura);
-        /*auto levels = GameManager::getInstance().levels.collection;
-
-        for (auto level : levels) {
-            if (level->mug == "sheriffman") {
-                GameManager::getInstance().currentLevel = level;
-                break;
-            }
-        }
-
-        GameStateMachine::getInstance().pushState(GameState::GetWeapon);*/
-
-        });
-
-    auto sequence = cocos2d::Sequence::create(fadeIn, preCallback, duration, fadeOut, postCallback, nullptr);
-
-    this->runAction(sequence);
-
+    });
+    
 }
 
 

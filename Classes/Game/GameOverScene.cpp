@@ -13,6 +13,7 @@
 #include "Windy/Armature.h"
 #include "Windy/Sprite.h"
 
+#include "Game/Entities/UI/Fader.h"
 
 
 using namespace game;
@@ -59,14 +60,6 @@ bool GameOverScene::init()
     windy::Armature::clearPlistCache();
     windy::Sprite::clearPlistCache();
 
-    setCascadeOpacityEnabled(true);
-
-
-    auto fadeIn = FadeIn::create(1.0f);
-
-    runAction(fadeIn);
-
-
     auto root = cocos2d::CSLoader::createNode(GameOverSceneResources::dataFile);
 
     addChild(root);
@@ -75,6 +68,10 @@ bool GameOverScene::init()
 
     _yesButton = root->getChildByName("yes_button");
     _noButton = root->getChildByName("no_button");
+
+    _yesButton->setColor(GameOverSceneResources::activeColor);
+    _noButton->setColor(GameOverSceneResources::inactiveColor);
+
 
     root->getChildByName("game_over_background")->setVisible(true);
     root->getChildByName("level_clear_background")->setVisible(false);
@@ -90,49 +87,66 @@ bool GameOverScene::init()
 
     rootTimeline->gotoFrameAndPause(0);
 
-    auto flyPrimaryDelay = cocos2d::DelayTime::create((1.0f / 60.0f) * 30);
-    auto flySecondaryDelay = cocos2d::DelayTime::create((1.0f / 60.0f) * 45);
-    
-    auto preFlyCallback = cocos2d::CallFunc::create([rootTimeline]() {
-        rootTimeline->play("fly_in_primary", false);
+    auto fader = Fader::create(cocos2d::Point(0, 0));
+
+    fader->setPosition(cocos2d::Point(0, 0));
+
+    fader->setOpacity(255);
+
+    addChild(fader, 4096);
+
+    _fader = fader;
+
+    _fader->fadeOut([this, rootTimeline]() {
+
+        auto flyPrimaryDelay = cocos2d::DelayTime::create((1.0f / 60.0f) * 30);
+        auto flySecondaryDelay = cocos2d::DelayTime::create((1.0f / 60.0f) * 45);
+
+        auto preFlyCallback = cocos2d::CallFunc::create([rootTimeline]() {
+            rootTimeline->play("fly_in_primary", false);
+        });
+
+        auto flyInPrimaryCallback = cocos2d::CallFunc::create([rootTimeline]() {
+            rootTimeline->play("fly_out_primary", false);
+        });
+
+        auto flyOutPrimaryCallback = cocos2d::CallFunc::create([rootTimeline]() {
+            rootTimeline->play("fly_in_secondary", false);
+        });
+
+        auto flyInSecondaryCallback = cocos2d::CallFunc::create([this]() {
+            _yesButton->setVisible(true);
+            _noButton->setVisible(true);
+            _ready = true;
+
+            _yesButton->setColor(GameOverSceneResources::activeColor);
+            _noButton->setColor(GameOverSceneResources::inactiveColor);
+        });
+
+        auto flyCallbacks = cocos2d::Sequence::create(preFlyCallback,
+            flyPrimaryDelay,
+            flyInPrimaryCallback,
+            flyPrimaryDelay,
+            flyOutPrimaryCallback,
+            flySecondaryDelay,
+            flyInSecondaryCallback,
+            nullptr);
+
+        auto flySequence = cocos2d::Sequence::create(
+            flyPrimaryDelay,
+            flyPrimaryDelay,
+            flyPrimaryDelay,
+            flyPrimaryDelay,
+            flyCallbacks,
+            nullptr
+        );
+
+        runAction(flySequence);
     });
 
-    auto flyInPrimaryCallback = cocos2d::CallFunc::create([rootTimeline]() {
-        rootTimeline->play("fly_out_primary", false);
-    });
 
-    auto flyOutPrimaryCallback = cocos2d::CallFunc::create([rootTimeline]() {
-        rootTimeline->play("fly_in_secondary", false);
-    });
 
-    auto flyInSecondaryCallback = cocos2d::CallFunc::create([this]() {
-        _yesButton->setVisible(true);
-        _noButton->setVisible(true);
-        _ready = true;
 
-        _yesButton->setColor(GameOverSceneResources::activeColor);
-        _noButton->setColor(GameOverSceneResources::inactiveColor);
-    });
-
-    auto flyCallbacks = cocos2d::Sequence::create(preFlyCallback,
-        flyPrimaryDelay,
-        flyInPrimaryCallback,
-        flyPrimaryDelay,
-        flyOutPrimaryCallback,
-        flySecondaryDelay,
-        flyInSecondaryCallback,
-        nullptr);
-
-    auto flySequence = cocos2d::Sequence::create(
-        flyPrimaryDelay,
-        flyPrimaryDelay,
-        flyPrimaryDelay,
-        flyPrimaryDelay,
-        flyCallbacks,
-        nullptr
-    );
-
-    runAction(flySequence);
 
 
     windy::AudioManager::playSfx(windy::Sounds::LevelComplete);
@@ -188,10 +202,16 @@ void GameOverScene::update(float dt)
             windy::SaveManager::saveSlot(windy::SaveManager::defaultSlot, slot);
 
             if (_currentOption == _yesButton) {
-                GameStateMachine::getInstance().pushState(GameState::Game);
+
+                _fader->fadeIn([this]() {
+                    GameStateMachine::getInstance().pushState(GameState::Game);
+                });
+
             }
             else {
-                GameStateMachine::getInstance().pushState(GameState::StageSelect);
+                _fader->fadeIn([this]() {
+                    GameStateMachine::getInstance().pushState(GameState::StageSelect);
+                });
             }
                         
         }

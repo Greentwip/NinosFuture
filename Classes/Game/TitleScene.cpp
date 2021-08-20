@@ -11,6 +11,9 @@
 
 #include "Windy/AudioManager.h"
 
+#include "Game/Entities/UI/Fader.h"
+
+
 class TitleSceneResources {
 public:
     static std::string titleSpriteSet;
@@ -56,18 +59,6 @@ bool TitleScene::init()
 
     windy::Armature::clearPlistCache();
     windy::Sprite::clearPlistCache();
-
-
-    setCascadeOpacityEnabled(true);
-
-    auto fadeIn = FadeIn::create(1.0f);
-
-    //@TODO disable taking inputs before screen fades in
-    /*auto audioCallback = CallFunc::create([this]() {
-
-        });*/
-    this->runAction(fadeIn);
-
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS
 
@@ -136,15 +127,33 @@ bool TitleScene::init()
     addChild(this->startText, 128);
     addChild(this->optionsText, 128);
 
-    if (windy::AudioManager::getCurrentTrack() != windy::Sounds::Title) {
-        windy::AudioManager::playBgm(windy::Sounds::Title);
-    }
-
     this->selectedOption = this->startText;
 
     selectStart();
 
     this->triggered = false;
+
+    _ready = false;
+
+    auto fader = Fader::create(cocos2d::Point(0, 0));
+
+    fader->setPosition(cocos2d::Point(0, 0));
+
+    fader->setOpacity(255);
+
+    addChild(fader, 4096);
+
+    _fader = fader;
+
+    _fader->fadeOut([this]() {
+        _ready = true;
+
+        if (windy::AudioManager::getCurrentTrack() != windy::Sounds::Title) {
+            windy::AudioManager::stopAll();
+            windy::AudioManager::playBgm(windy::Sounds::Title);
+        }
+
+    });
 
     return true;
 }
@@ -178,7 +187,7 @@ void TitleScene::onExit()
 
 void TitleScene::update(float dt)
 {
-    if (!this->triggered) {
+    if (!this->triggered && _ready) {
 
         if (windy::Input::keyPressed(windy::InputKey::Up) || windy::Input::keyPressed(windy::InputKey::Down)) {
             if (this->selectedOption == this->startText) {
@@ -195,19 +204,18 @@ void TitleScene::update(float dt)
             this->triggered = true;
             windy::AudioManager::playSfx(windy::Sounds::Selected);
 
-            auto fadeOut = FadeOut::create(1.0f);
-            CallFunc* callback = nullptr;
+            _fader->fadeIn([this]() {
+                
+                if (this->selectedOption == this->startText) {
+                    GameStateMachine::getInstance().pushState(GameState::Save); 
+                }
+                else {
+                    GameStateMachine::getInstance().pushState(GameState::Options); 
+                }
+                                
+            });
 
-            if (this->selectedOption == this->startText) {
-                callback = CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::Save); });
-            }
-            else {
-                callback = CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::Options); });
-            }
-
-            auto sequence = Sequence::create(fadeOut, callback, nullptr);
-
-            this->runAction(sequence);
+            
 
         }
 

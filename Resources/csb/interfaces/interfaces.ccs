@@ -38,6 +38,21 @@
                 <Image Name="window.png" />
                 <Image Name="window_game_over.png" />
               </Folder>
+              <Folder Name="license">
+                <Project Name="data.csd" Type="Scene" />
+                <Image Name="microsoft_logo.png" />
+              </Folder>
+              <Folder Name="mugs">
+                <Image Name="spr_stage_select_mugs_0.png" />
+                <Image Name="spr_stage_select_mugs_1.png" />
+                <Image Name="spr_stage_select_mugs_2.png" />
+                <Image Name="spr_stage_select_mugs_3.png" />
+                <Image Name="spr_stage_select_mugs_4.png" />
+                <Image Name="spr_stage_select_mugs_5.png" />
+                <Image Name="spr_stage_select_mugs_6.png" />
+                <Image Name="spr_stage_select_mugs_7.png" />
+                <Image Name="spr_stage_select_mugs_8.png" />
+              </Folder>
               <Folder Name="options">
                 <Image Name="background.png" />
                 <Image Name="border.png" />
@@ -45,6 +60,13 @@
                 <Project Name="data.csd" Type="Scene" />
                 <Image Name="levels.png" />
                 <Image Name="tab.png" />
+              </Folder>
+              <Folder Name="projects">
+                <Project Name="data.csd" Type="Scene" />
+                <Image Name="pygame_logo pixel.png" />
+                <Image Name="sides-transparent.png" />
+                <Image Name="solarus-logo-black-on-transparent1 pixel .png" />
+                <Image Name="top.png" />
               </Folder>
               <Folder Name="save">
                 <Folder Name="interruptors">
@@ -79,16 +101,32 @@
                 <Project Name="data.csd" Type="Scene" />
                 <Image Name="file.png" />
               </Folder>
-              <Folder Name="projects">
+              <Folder Name="sound_test">
+                <Image Name="background.png" />
+                <Image Name="border.png" />
                 <Project Name="data.csd" Type="Scene" />
-                <Image Name="pygame_logo pixel.png" />
-                <Image Name="sides-transparent.png" />
-                <Image Name="solarus-logo-black-on-transparent1 pixel .png" />
-                <Image Name="top.png" />
+                <Image Name="tab.png" />
               </Folder>
-              <Folder Name="license">
+              <Folder Name="stage_select">
+                <Folder Name="mugs">
+                  <Image Name="spr_stage_select_mugs_0.png" />
+                  <Image Name="spr_stage_select_mugs_1.png" />
+                  <Image Name="spr_stage_select_mugs_2.png" />
+                  <Image Name="spr_stage_select_mugs_3.png" />
+                  <Image Name="spr_stage_select_mugs_4.png" />
+                  <Image Name="spr_stage_select_mugs_5.png" />
+                  <Image Name="spr_stage_select_mugs_6.png" />
+                  <Image Name="spr_stage_select_mugs_7.png" />
+                  <Image Name="spr_stage_select_mugs_8.png" />
+                </Folder>
+                <Folder Name="swing">
+                  <Image Name="spr_stage_select_swing_0.png" />
+                </Folder>
                 <Project Name="data.csd" Type="Scene" />
-                <Image Name="microsoft_logo.png" />
+                <Image Name="stage_select_lite_0.png" />
+              </Folder>
+              <Folder Name="swing">
+                <Image Name="spr_stage_select_swing_0.png" />
               </Folder>
             </Folder>
           </Folder>

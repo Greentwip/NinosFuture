@@ -8,24 +8,26 @@ namespace windy {
     class Sprite;
 }
 
+namespace game {
+    class AbakuraScene : public cocos2d::LayerColor
+    {
+    public:
+        virtual bool init();
 
-class AbakuraScene : public cocos2d::LayerColor
-{
-public:
-    virtual bool init();
+        static cocos2d::Scene* scene();
 
-    static cocos2d::Scene* scene();
+        virtual void onEnter();
+        virtual void onExit();
 
-    virtual void onEnter();
-    virtual void onExit();
+        virtual void update(float dt);
 
-    virtual void update(float dt);
+        void abakuraIntro();
 
-    void abakuraIntro();
+        CREATE_FUNC(AbakuraScene);
 
-    CREATE_FUNC(AbakuraScene);
+    private:
+        windy::Sprite* abakuraLogo;
+    };
+}
 
-private:
-    windy::Sprite* abakuraLogo;
-};
 #endif

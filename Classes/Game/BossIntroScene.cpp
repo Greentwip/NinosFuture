@@ -14,6 +14,9 @@
 
 #include "Intro.h"
 
+#include "Game/Entities/UI/Fader.h"
+
+
 using namespace game;
 
 class BossIntroSceneResources {
@@ -53,14 +56,6 @@ bool BossIntroScene::init()
 
     windy::Armature::clearPlistCache();
     windy::Sprite::clearPlistCache();
-
-
-    setCascadeOpacityEnabled(true);
-
-    auto fadeIn = cocos2d::FadeIn::create(1.0f);
-
-    this->runAction(fadeIn);
-
 
     this->boss = windy::Sprite::create(BossIntroSceneResources::bossPath, cocos2d::Point(0.5f, 0));
     this->boss->setPosition(windy::Display::getInstance().center);
@@ -104,6 +99,8 @@ bool BossIntroScene::init()
 
     this->triggered = false;
 
+    windy::AudioManager::stopAll();
+
     this->bgmId = windy::AudioManager::playBgm(windy::Sounds::BossIntro, false);
 
     auto audioCallback = cocos2d::CallFunc::create([=]()
@@ -120,6 +117,24 @@ bool BossIntroScene::init()
     auto sequence = cocos2d::Sequence::create(audioDelay, audioCallback, nullptr);
 
     this->runAction(sequence);
+
+    _ready = false;
+
+    auto fader = Fader::create(cocos2d::Point(0, 0));
+
+    fader->setPosition(cocos2d::Point(0, 0));
+
+    fader->setOpacity(255);
+
+    addChild(fader, 4096);
+
+    _fader = fader;
+
+    _fader->fadeOut([this]() {
+        _ready = true;
+    });
+
+
 
 
     return true;
@@ -164,11 +179,16 @@ void BossIntroScene::onBossIntroComplete() {
 void BossIntroScene::update(float dt)
 {
 
-    if (windy::AudioManager::getState(this->bgmId) == cocos2d::experimental::AudioEngine::AudioState::ERROR && !this->triggered)
+    if (windy::AudioManager::getState(this->bgmId) == cocos2d::experimental::AudioEngine::AudioState::ERROR && 
+        !this->triggered &&
+        _ready)
     {
         this->triggered = true;
         windy::AudioManager::stopAll();
+               
+        _fader->fadeIn([this]() {
+            GameStateMachine::getInstance().pushState(GameState::Game);
+        });
 
-        GameStateMachine::getInstance().pushState(GameState::Game);
     }
 }

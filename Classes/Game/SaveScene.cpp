@@ -14,6 +14,7 @@
 #include "Windy/Armature.h"
 #include "Windy/Sprite.h"
 
+#include "Game/Entities/UI/Fader.h"
 
 
 using namespace game;
@@ -60,15 +61,6 @@ bool SaveScene::init()
     windy::Armature::clearPlistCache();
     windy::Sprite::clearPlistCache();
 
-
-    setCascadeOpacityEnabled(true);
-
-
-    auto fadeIn = FadeIn::create(1.0f);
-
-    this->runAction(fadeIn);
-
-
     auto root = cocos2d::CSLoader::createNode(SaveSceneResources::dataFile);
 
     addChild(root);
@@ -109,15 +101,31 @@ bool SaveScene::init()
         }
     }
 
-    this->triggered = false;
-
     if (windy::AudioManager::getCurrentTrack() != windy::Sounds::Title) {
+        windy::AudioManager::stopAll();
         windy::AudioManager::playBgm(windy::Sounds::Title);
     }
 
-    auto onFinishCcallback = [=]() -> void {
-        GameStateMachine::getInstance().pushState(GameState::Abakura);
-    };
+    this->triggered = false;
+
+    _ready = false;
+
+    auto fader = Fader::create(cocos2d::Point(0, 0));
+
+    fader->setPosition(cocos2d::Point(0, 0));
+
+    fader->setOpacity(255);
+
+    addChild(fader, 4096);
+
+    _fader = fader;
+
+    _fader->fadeOut([this]() {
+        _ready = true;
+
+
+    });
+
 
     return true;
 }
@@ -391,7 +399,7 @@ void SaveScene::clearSlot(int slot) {
 void SaveScene::update(float dt)
 {
 
-    if (this->state == this->deletingConfirmation) {
+    if (this->state == this->deletingConfirmation && _ready && !triggered) {
         if (windy::Input::keyPressed(windy::InputKey::Up)) {
             if (this->activeSlot == this->slot1) {
                 if (this->slotExists(3)) {
@@ -480,7 +488,7 @@ void SaveScene::update(float dt)
 
     }
 
-    if (this->state == this->selecting) {
+    if (this->state == this->selecting && _ready && !triggered) {
         if (windy::Input::keyPressed(windy::InputKey::Up)) {
             if (this->activeSlot == this->slot1) {
                 if (this->slotExists(1) || this->slotExists(2) || this->slotExists(3)) {
@@ -546,7 +554,7 @@ void SaveScene::update(float dt)
         }
     }
 
-    if (!this->triggered) {
+    if (!this->triggered && _ready) {
         if (windy::Input::keyPressed(windy::InputKey::A)) {
             bool deleteState = false;
 
@@ -592,7 +600,7 @@ void SaveScene::update(float dt)
 
                 this->loadSlot(selectedSlot);
 
-                if (GameManager::getInstance().player.lives <= 3) {
+                if (GameManager::getInstance().player.lives <= 0) {
                     GameManager::getInstance().player.lives = 3;
                 }
 
@@ -613,15 +621,12 @@ void SaveScene::update(float dt)
 
                 this->triggered = true;
 
-                windy::AudioManager::stopAll();
                 windy::AudioManager::playSfx(windy::Sounds::Selected);
 
-                auto fadeOut = cocos2d::FadeOut::create(1.0f);
-                auto callback = cocos2d::CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::StageSelect); });
+                _fader->fadeIn([this]() {
+                    GameStateMachine::getInstance().pushState(GameState::StageSelect);
+                });
 
-                auto sequence = cocos2d::Sequence::create(fadeOut, callback, nullptr);
-
-                this->runAction(sequence);
             }
         }
         else if (windy::Input::keyPressed(windy::InputKey::B)) {
@@ -631,13 +636,10 @@ void SaveScene::update(float dt)
             }
             else {
                 this->triggered = true;
-                auto fadeOut = cocos2d::FadeOut::create(1.0f);
-                auto callback = cocos2d::CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::Title); });
 
-                auto sequence = cocos2d::Sequence::create(fadeOut, callback, nullptr);
-
-                this->runAction(sequence);
-
+                _fader->fadeIn([this]() {
+                    GameStateMachine::getInstance().pushState(GameState::Title);
+                });
             }
         }
     }

@@ -4,36 +4,45 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-class OptionsScene : public cocos2d::LayerColor
-{
-public:
-    virtual bool init();
+namespace game {
+    class Fader;
+}
 
-    static cocos2d::Scene* scene();
+namespace game {
+    class OptionsScene : public cocos2d::LayerColor
+    {
+    public:
+        virtual bool init();
 
-    virtual void onEnter();
-    virtual void onExit();
+        static cocos2d::Scene* scene();
 
-    virtual void update(float dt);
+        virtual void onEnter();
+        virtual void onExit();
 
-    CREATE_FUNC(OptionsScene);
+        virtual void update(float dt);
 
-private:
-    void save(float bgmVolume, float sfxVolume);
+        CREATE_FUNC(OptionsScene);
 
-    cocos2d::Node* bgm;
-    cocos2d::Node* sfx;
-    cocos2d::Node* currentOption;
+    private:
+        void save(float bgmVolume, float sfxVolume);
 
-    cocos2d::ui::Slider* bgmSlider;
-    cocos2d::ui::Slider* sfxSlider;
+        cocos2d::Node* bgm;
+        cocos2d::Node* sfx;
+        cocos2d::Node* currentOption;
 
-    float bgmVolume;
-    float sfxVolume;
+        cocos2d::ui::Slider* bgmSlider;
+        cocos2d::ui::Slider* sfxSlider;
 
-    bool triggered;
+        float bgmVolume;
+        float sfxVolume;
+
+        bool triggered;
+        bool _ready;
+
+        Fader* _fader;
 
 
+    };
+}
 
-};
 #endif

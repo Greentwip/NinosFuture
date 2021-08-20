@@ -230,6 +230,8 @@ bool Level::init()
                 if (entity->getTag() == GameTags::Logic::Checkpoint::First) {
                     firstCheckpoint = entity;
                 }
+
+                this->entities.pushBack(entity);
             }
             else if (name.compare("ladder") == 0) {
 
@@ -432,6 +434,8 @@ bool Level::init()
 
     this->addChild(this->bounds, 4096);
 
+    this->entities.pushBack(this->bounds);
+
     auto guiSize = cocos2d::Size(16, 16);
 
     this->gui = dynamic_cast<Gui*>(EntityFactory::getInstance().create("gui", cocos2d::Point(0, 0), guiSize));
@@ -472,7 +476,7 @@ bool Level::init()
 
     _initialObjectEntries = objectManager->objectEntries;
 
-    this->restart();
+    startup();
 
     return true;
 }
@@ -553,8 +557,7 @@ void Level::setPaused(bool isPaused, bool freezePlayer) {
         }
     }
 }
-
-void Level::restart() {
+void Level::resetGameplay() {
     this->bounds->setPosition(this->lastCheckpoint->getPosition());
 
     float playerOffsetY = this->lastCheckpoint->getPositionY() + this->player->sprite->getContentSize().height + 128;
@@ -578,13 +581,24 @@ void Level::restart() {
 
     //this->camera->synchronizeWithBounds();
 
-    this->setPaused(false);
+    this->setPaused(false, true);
 
     this->objectManager->resetEntryTable(_initialObjectEntries);
-
-    this->levelController->restart();
-
 }
+
+void Level::startup() {
+    resetGameplay();
+
+    this->levelController->startup();
+}
+
+void Level::restart() {
+    this->levelController->restart([this]() {
+        resetGameplay();
+    });
+}
+
+
 
 
 void Level::onEnter()

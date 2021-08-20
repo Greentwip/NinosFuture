@@ -16,13 +16,11 @@
 
 #include "Windy/Input.h"
 
-
+#include "Game/Entities/UI/Fader.h"
 
 
 using namespace game;
 using namespace cocos2d;
-
-
 
 class StageSelectSceneResources {
 public:
@@ -63,14 +61,6 @@ bool StageSelectScene::init()
     windy::Armature::clearPlistCache();
     windy::Sprite::clearPlistCache();
 
-    setCascadeOpacityEnabled(true);
-
-
-    auto fadeIn = FadeIn::create(1.0f);
-
-    this->runAction(fadeIn);
-
-
     auto root = cocos2d::CSLoader::createNode(StageSelectSceneResources::dataFile);
 
     addChild(root);
@@ -109,7 +99,24 @@ bool StageSelectScene::init()
 
     this->triggered = false;
 
+    _ready = false;
+
+    windy::AudioManager::stopAll();
     windy::AudioManager::playBgm(windy::Sounds::StageSelect);
+
+    auto fader = Fader::create(cocos2d::Point(0, 0));
+
+    fader->setPosition(cocos2d::Point(0, 0));
+
+    fader->setOpacity(255);
+
+    addChild(fader, 4096);
+
+    _fader = fader;
+
+    _fader->fadeOut([this]() {
+        _ready = true;
+    });
 
 
     return true;
@@ -243,7 +250,7 @@ void StageSelectScene::moveDown()
 
 void StageSelectScene::update(float dt)
 {
-    if (!this->triggered) {
+    if (!this->triggered && _ready) {
         if (windy::Input::keyPressed(windy::InputKey::Up)) {
             this->moveUp();
             this->cursor->setPosition(StageSelectSceneResources::mugLocations[this->positionX][this->positionY]->getPosition());
@@ -267,20 +274,15 @@ void StageSelectScene::update(float dt)
 
         if (windy::Input::keyPressed(windy::InputKey::B)) {
             this->triggered = true;
-            windy::AudioManager::stopAll();
 
-
-            auto fadeOut = cocos2d::FadeOut::create(1.0f);
-            auto callback = cocos2d::CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::Save); });
-
-            auto sequence = cocos2d::Sequence::create(fadeOut, callback, nullptr);
-
-            this->runAction(sequence);
+            _fader->fadeIn([this]() {
+                GameStateMachine::getInstance().pushState(GameState::Save);
+            });
         }
         else if (windy::Input::keyPressed(windy::InputKey::A) &&
             this->selectedMug != StageSelectSceneResources::mugLocations["middle"]["middle"]) {
             this->triggered = true;
-            windy::AudioManager::stopAll();
+
             windy::AudioManager::playSfx(windy::Sounds::Selected);
 
             auto levels = GameManager::getInstance().levels.collection;
@@ -292,12 +294,10 @@ void StageSelectScene::update(float dt)
                 }
             }
 
-            auto fadeOut = cocos2d::FadeOut::create(1.0f);
-            auto callback = cocos2d::CallFunc::create([]() { GameStateMachine::getInstance().pushState(GameState::BossIntro); });
+            _fader->fadeIn([this]() {
+                GameStateMachine::getInstance().pushState(GameState::BossIntro);
+            });
 
-            auto sequence = cocos2d::Sequence::create(fadeOut, callback, nullptr);
-
-            this->runAction(sequence);
         }
     }
 

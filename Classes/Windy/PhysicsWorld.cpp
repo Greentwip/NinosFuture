@@ -227,6 +227,8 @@ void PhysicsWorld::update(float dt)
                 entity->getTag() == GameTags::General::Scroll       ||
                 entity->getTag() == GameTags::General::Hole         ||
                 entity->getTag() == GameTags::General::Teleporter   ||
+                entity->getTag() == GameTags::General::Bounds       ||
+                entity->getTag() == GameTags::General::Checkpoint   ||
                 entity->getTag() == GameTags::Weapon::WeaponPlayer  ||
                 entity->getTag() == GameTags::Weapon::WeaponEnemy   ||
                 entity->getTag() == GameTags::Scenery::Particle) { // Kinematic characters first

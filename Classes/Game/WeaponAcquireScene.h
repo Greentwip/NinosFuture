@@ -6,6 +6,7 @@
 
 namespace game {
     class GamePlayer;
+    class Fader;
 }
 
 namespace game {
@@ -34,6 +35,8 @@ namespace game {
         float _exitTimeDelay;
         bool _exitingScreen;
         bool _transitioning;
+
+        Fader* _fader;
     };
 
 }

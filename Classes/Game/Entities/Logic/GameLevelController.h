@@ -9,6 +9,7 @@ namespace game {
     class PauseMenu;
     class GameGui;
     class GamePlayer;
+    class Fader;
 }
 
 namespace game {
@@ -30,7 +31,9 @@ namespace game {
     public:
         virtual bool init() override;
 
-        virtual void restart() override;
+        virtual void startup() override;
+
+        virtual void restart(std::function<void()> onLevelRestarted) override;
 
         virtual void succeed() override;
 
@@ -41,8 +44,6 @@ namespace game {
         float exitTimer;
         float exitTimeDelay;
 
-        bool fading;
-
         PauseMenu* pauseMenu;
 
         bool manualPause;
@@ -52,6 +53,9 @@ namespace game {
         GameGui* gui;
 
         GamePlayer* _player;
+
+        Fader* _restartFader;
+        Fader* _pauseFader;
     };
 }
 

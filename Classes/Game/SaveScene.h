@@ -8,55 +8,64 @@
 
 #include "Windy/SaveManager.h"
 
-class SaveScene : public cocos2d::LayerColor
-{
-public:
-    virtual bool init();
+namespace game {
+    class Fader;
+}
 
-    static cocos2d::Scene* scene();
+namespace game {
+    class SaveScene : public cocos2d::LayerColor
+    {
+    public:
+        virtual bool init();
 
-    virtual void onEnter();
-    virtual void onExit();
+        static cocos2d::Scene* scene();
 
-    virtual void update(float dt);
+        virtual void onEnter();
+        virtual void onExit();
 
-    CREATE_FUNC(SaveScene);
+        virtual void update(float dt);
 
-private:
-    bool slotExists(int slot);
-    windy::Slot readSlot(int slot);
-    void loadSlot(int slot);
-    void saveSlot(int slot);
-    void deleteSlot(int slot);
-    void resetDeleting();
-    void uncolorWeapon(cocos2d::Node* custom, std::string weaponName);
-    void colorWeapon(cocos2d::Node* custom, std::string weaponName);
-    void populateSlot(int slot);
-    void populateSlotCheat(int slot);
-    void clearSlot(int slot);
+        CREATE_FUNC(SaveScene);
 
-    cocos2d::Node* slot1;
-    cocos2d::Node* slot2;
-    cocos2d::Node* slot3;
+    private:
+        bool slotExists(int slot);
+        windy::Slot readSlot(int slot);
+        void loadSlot(int slot);
+        void saveSlot(int slot);
+        void deleteSlot(int slot);
+        void resetDeleting();
+        void uncolorWeapon(cocos2d::Node* custom, std::string weaponName);
+        void colorWeapon(cocos2d::Node* custom, std::string weaponName);
+        void populateSlot(int slot);
+        void populateSlotCheat(int slot);
+        void clearSlot(int slot);
 
-    cocos2d::Node* slot1Customs;
-    cocos2d::Node* slot2Customs;
-    cocos2d::Node* slot3Customs;
-    
-    cocos2d::Node* deleteButton;
-    
-    cocos2d::Node* deleteConfirm;
+        cocos2d::Node* slot1;
+        cocos2d::Node* slot2;
+        cocos2d::Node* slot3;
 
-    int selecting;
-    int deletingConfirmation;
-    int state;
+        cocos2d::Node* slot1Customs;
+        cocos2d::Node* slot2Customs;
+        cocos2d::Node* slot3Customs;
 
-    cocos2d::Node* activeSlot;
+        cocos2d::Node* deleteButton;
 
+        cocos2d::Node* deleteConfirm;
 
-    bool triggered;
+        int selecting;
+        int deletingConfirmation;
+        int state;
 
+        cocos2d::Node* activeSlot;
 
 
-};
+        bool triggered;
+        bool _ready;
+
+        Fader* _fader;
+
+
+    };
+}
+
 #endif

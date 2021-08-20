@@ -22,6 +22,8 @@
 #include "Windy/Entities/Camera.h"
 #endif
 
+#include "Game/Entities/UI/Fader.h"
+
 
 using namespace game;
 
@@ -48,8 +50,6 @@ bool GameLevelController::init()
 	this->exitTimer = 0;
 	this->exitTimeDelay = 2;
 
-	this->fading = false;
-
 	this->levelState = LevelState::Startup;
 
 	this->pauseMenu = nullptr;
@@ -62,12 +62,21 @@ bool GameLevelController::init()
 
 	this->_player = dynamic_cast<GamePlayer*>(this->level->player);
 
+	_restartFader = nullptr;
+	_pauseFader = nullptr;
+	
+	_onLevelRestarted = nullptr;
 
 	return true;
 }
 
 
-void GameLevelController::restart() {
+void GameLevelController::startup() {
+	this->levelState = LevelState::Startup;
+}
+
+void GameLevelController::restart(std::function<void()> onLevelRestarted) {
+	_onLevelRestarted = onLevelRestarted;
 	this->levelState = LevelState::Restarting;
 }
 
@@ -81,29 +90,70 @@ void GameLevelController::onUpdate(float dt) {
 	switch (this->levelState) {
 		case LevelState::Startup:
 		{
+			this->gui->healthBar->setVisible(false);
+			this->gui->weaponBar->setVisible(false);
+
 			//windy::AudioManager::stopAll();
 			this->atVictory = false;
-			this->fading = false;
-			this->levelState = LevelState::Playing;
 			this->gui->bossHealthBar->setVisible(false);
+
+			if (_restartFader == nullptr) {
+				auto fader = Fader::create(cocos2d::Point(0.5f, 0.5f));
+
+				fader->setPosition(cocos2d::Point(0, 0));
+
+				fader->setOpacity(255);
+
+				this->level->bounds->addChild(fader, 4096);
+
+				_restartFader = fader;
+
+				_restartFader->fadeOut([this]() {
+					levelState = LevelState::Playing;
+					this->level->setPaused(false, true);
+
+					_restartFader->removeFromParent();
+					_restartFader = nullptr;
+				});
+			}
 		}
 		break;
 
 		case LevelState::Restarting:
 		{
-			if (!this->fading) {
-				this->fading = true;
+			if (_restartFader == nullptr) {
 
-				if (GameManager::getInstance().player.lives <= 0) {
-					GameStateMachine::getInstance().pushState(GameState::GameOver);
-					levelState = LevelState::GameOver;
-				}
-				else {
-					this->levelState = LevelState::Startup;
-				}
+				this->level->setPaused(true, true);
+
+				auto fader = Fader::create(cocos2d::Point(0.5f, 0.5f));
+
+				fader->setPosition(cocos2d::Point(0, 0));
+
+				fader->setOpacity(0);
+
+				this->level->bounds->addChild(fader, 4096);
+
+				_restartFader = fader;
+
+				_restartFader->fadeIn([=]() {
+					if (GameManager::getInstance().player.lives <= 0) {
+						GameStateMachine::getInstance().pushState(GameState::GameOver);
+						this->levelState = LevelState::GameOver;
+					}
+					else {
+						this->levelState = LevelState::Startup;
+
+						if (this->_onLevelRestarted) {
+							this->_onLevelRestarted();
+							this->_onLevelRestarted = nullptr;
+						}
+					}
+
+					this->_restartFader->removeFromParent();
+					this->_restartFader = nullptr;
+				});
 
 			}
-			
 		}
 			
 		break;
@@ -161,11 +211,19 @@ void GameLevelController::onUpdate(float dt) {
 					break;
 						
 				}
+
+				switch (this->level->boss->state) 
+				{
+					case windy::Boss::BossState::Defeated:
+						this->_player->vulnerable = false;
+					break;
+				}
 				
 			}
 			else {
 				
 				this->_player->canMove = false;
+				this->_player->vulnerable = false;
 				this->succeed();
 
 			}
@@ -201,9 +259,26 @@ void GameLevelController::onUpdate(float dt) {
 				/*if (!this->fading) {
 					this->fading = true;
 				}*/
+				if (_restartFader == nullptr) {
+					auto fader = Fader::create(cocos2d::Point(0.5f, 0.5f));
 
-				GameStateMachine::getInstance().pushState(GameState::GetWeapon);
-				levelState = LevelState::GameOver;
+					fader->setPosition(cocos2d::Point(0, 0));
+
+					fader->setOpacity(255);
+
+					this->level->bounds->addChild(fader, 4096);
+
+					_restartFader = fader;
+
+					_restartFader->fadeIn([this]() {
+						GameStateMachine::getInstance().pushState(GameState::GetWeapon);
+						levelState = LevelState::GameOver;
+
+						_restartFader->removeFromParent();
+						_restartFader = nullptr;
+					});
+				}
+
 
 				//this->level->restart();
 
@@ -226,42 +301,93 @@ void GameLevelController::onUpdate(float dt) {
 				if (windy::Input::keyPressed(windy::InputKey::Select)) {
 					bool pausedThisFrame = false;
 
-					if (!this->level->getPaused() && this->pauseMenu == nullptr && this->_player->canMove) {
+					if (!this->level->getPaused() && 
+						this->pauseMenu == nullptr && 
+						_pauseFader == nullptr &&
+						this->_player->canMove) {
 
-						auto gameGui = dynamic_cast<GameGui*>(this->level->gui);
-
-						this->pauseMenu = PauseMenu::create(this->_player, gameGui);
-						this->pauseMenu->setVisible(true);
-
-						auto pauseMenuPosition =
-							cocos2d::Point(
-								this->level->bounds->collisionBox->size.width * 0.5f * -1,
-								this->level->bounds->collisionBox->size.height * 0.5f);
-
-						this->pauseMenu->setPosition(pauseMenuPosition);
-						this->level->bounds->addChild(this->pauseMenu, 4096);
 
 						bool freezePlayer;
 
 						this->level->setPaused(true, freezePlayer = true);
 
+
+						auto fader = Fader::create(cocos2d::Point(0.5f, 0.5f));
+
+						fader->setPosition(cocos2d::Point(0, 0));
+
+						fader->setOpacity(0);
+
+						this->level->bounds->addChild(fader, 4096);
+
+						_pauseFader = fader;
+
+						_pauseFader->fadeIn([this]() {
+							this->pauseMenu = PauseMenu::create(this->_player, gui);
+							this->pauseMenu->setVisible(true);
+							auto pauseMenuPosition =
+								cocos2d::Point(
+									this->level->bounds->collisionBox->size.width * 0.5f * -1,
+									this->level->bounds->collisionBox->size.height * 0.5f);
+
+							this->pauseMenu->setPosition(pauseMenuPosition);
+							this->level->bounds->addChild(this->pauseMenu, 2048);
+
+							_pauseFader->fadeOut([this]() {
+
+								_pauseFader->removeFromParent();
+								_pauseFader = nullptr;
+								});
+														
+						});
+
+
 						pausedThisFrame = true;
+
 
 					}
 
-					if (this->level->getPaused() && this->pauseMenu != nullptr && this->_player->canMove && !pausedThisFrame) {
+					if (this->level->getPaused() && 
+						this->pauseMenu != nullptr && 
+						_pauseFader == nullptr &&
+						this->_player->canMove && 
+						!pausedThisFrame) {
 
 						if (!this->pauseMenu->busy) {
-							if (this->pauseMenu->selectedBrowner != nullptr) {
-								this->_player->switchBrowner(this->pauseMenu->selectedBrowner->brownerId);
-							}
 
-							this->pauseMenu->removeFromParent();
-							this->pauseMenu = nullptr;
+							auto fader = Fader::create(cocos2d::Point(0.5f, 0.5f));
 
-							bool freezePlayer;
+							fader->setPosition(cocos2d::Point(0, 0));
 
-							this->level->setPaused(false, freezePlayer = true);
+							fader->setOpacity(0);
+
+							this->level->bounds->addChild(fader, 4096);
+
+							_pauseFader = fader;
+
+							_pauseFader->fadeIn([this]() {
+
+								if (this->pauseMenu->selectedBrowner != nullptr) {
+									this->_player->switchBrowner(this->pauseMenu->selectedBrowner->brownerId);
+								}
+
+								this->pauseMenu->removeFromParent();
+								this->pauseMenu = nullptr;
+
+								bool freezePlayer;
+
+								this->level->setPaused(false, freezePlayer = true);
+
+
+								_pauseFader->fadeOut([this]() {
+
+									_pauseFader->removeFromParent();
+									_pauseFader = nullptr;
+									});
+
+								});
+
+
 						}
 						
 					}

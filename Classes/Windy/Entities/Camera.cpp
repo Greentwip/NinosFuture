@@ -92,6 +92,7 @@ void Camera::onCollision(Logical* collision) {
         }
 
         this->level->physicsWorld->alignCollisions(this, scrollCollision, true);
+        this->level->bounds->setPositionX(this->collisionBox->getMidX());
     }
 }
 

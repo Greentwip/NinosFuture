@@ -12,6 +12,9 @@ bool Block::init()
         return false;
     }
 
+    this->ignoreGravity = true;
+    this->ignoreLandscapeCollision = true;
+
     this->setTag(GameTags::General::Block);
 
     return true;

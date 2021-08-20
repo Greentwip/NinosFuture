@@ -46,7 +46,7 @@
   <object id="33" x="464" y="-72" width="48" height="184"/>
  </objectgroup>
  <objectgroup id="3" name="logic">
-  <object id="21" name="checkpoint" type="third" x="1130" y="104" width="16" height="16"/>
+  <object id="21" name="checkpoint" type="third" x="1128" y="104" width="16" height="16"/>
   <object id="53" name="checkpoint" type="first" x="120" y="104" width="16" height="16"/>
   <object id="54" name="teleporter" x="120" y="160" width="16" height="16"/>
   <object id="55" name="scroll" type="right" x="104" y="104" width="16" height="16"/>
@@ -55,11 +55,11 @@
   <object id="103" name="hole" x="529" y="437" width="207" height="24"/>
   <object id="105" name="ladder" x="1122" y="400" width="14" height="186"/>
   <object id="109" name="ladder" x="1068" y="144" width="10" height="152"/>
-  <object id="110" name="scroll" type="right" x="1114" y="104" width="16" height="16"/>
+  <object id="110" name="scroll" type="right" x="1112" y="104" width="16" height="16"/>
   <object id="111" name="hole" x="1068" y="217" width="10" height="16"/>
   <object id="112" name="hole" x="1125" y="441" width="8" height="32"/>
   <object id="113" name="scroll" type="left" x="2936" y="104" width="16" height="16"/>
-  <object id="22" name="teleporter" x="1130" y="144" width="16" height="16"/>
+  <object id="22" name="teleporter" x="1128" y="144" width="16" height="16"/>
   <object id="28" name="checkpoint" type="boss" x="3176" y="96" width="16" height="16"/>
   <object id="29" name="teleporter" x="3176" y="160" width="16" height="16"/>
   <object id="30" name="hole" x="1056" y="441" width="207" height="24"/>

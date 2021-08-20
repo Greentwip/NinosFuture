@@ -8,39 +8,50 @@ namespace windy {
     class Sprite;
 }
 
-class StageSelectScene : public cocos2d::LayerColor
-{
-public:
-    virtual bool init();
+namespace game {
+    class Fader;
+}
 
-    static cocos2d::Scene* scene();
+namespace game {
+    class StageSelectScene : public cocos2d::LayerColor
+    {
+    public:
+        virtual bool init();
 
-    virtual void onEnter();
-    virtual void onExit();
+        static cocos2d::Scene* scene();
 
-    virtual void update(float dt);
+        virtual void onEnter();
+        virtual void onExit();
 
-    CREATE_FUNC(StageSelectScene);
+        virtual void update(float dt);
 
-private:
-    void moveLeft();
-    void moveRight();
-    void moveUp();
-    void moveDown();
+        CREATE_FUNC(StageSelectScene);
 
-    cocos2d::Node* sheriffMan;
-    cocos2d::Node* militaryMan;
-    cocos2d::Node* vineMan;
-    cocos2d::Node* nightMan;
-    cocos2d::Node* swing;
+    private:
+        void moveLeft();
+        void moveRight();
+        void moveUp();
+        void moveDown();
 
-    cocos2d::Node* selectedMug;
+        cocos2d::Node* sheriffMan;
+        cocos2d::Node* militaryMan;
+        cocos2d::Node* vineMan;
+        cocos2d::Node* nightMan;
+        cocos2d::Node* swing;
 
-    windy::Sprite* cursor;
+        cocos2d::Node* selectedMug;
 
-    std::string positionX;
-    std::string positionY;
+        windy::Sprite* cursor;
 
-    bool triggered;
-};
+        std::string positionX;
+        std::string positionY;
+
+        bool triggered;
+
+        bool _ready;
+
+        Fader* _fader;
+    };
+}
+
 #endif

@@ -6,27 +6,37 @@
 
 #include <string>
 
-class GameOverScene : public cocos2d::LayerColor
-{
-public:
-    virtual bool init();
+namespace game {
+    class Fader;
+}
 
-    static cocos2d::Scene* scene();
+namespace game {
+    class GameOverScene : public cocos2d::LayerColor
+    {
+    public:
+        virtual bool init();
 
-    virtual void onEnter();
-    virtual void onExit();
+        static cocos2d::Scene* scene();
 
-    virtual void update(float dt);
+        virtual void onEnter();
+        virtual void onExit();
 
-    CREATE_FUNC(GameOverScene);
+        virtual void update(float dt);
 
-private:
-    cocos2d::Node* _yesButton;
-    cocos2d::Node* _noButton;
+        CREATE_FUNC(GameOverScene);
 
-    cocos2d::Node* _currentOption;
+    private:
+        cocos2d::Node* _yesButton;
+        cocos2d::Node* _noButton;
 
-    bool _triggered;
-    bool _ready;
-};
+        cocos2d::Node* _currentOption;
+
+        bool _triggered;
+        bool _ready;
+
+        Fader* _fader;
+
+    };
+}
+
 #endif

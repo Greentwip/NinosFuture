@@ -42,7 +42,7 @@ void TankBullet::setup() {
     Logical::composite<TankBullet>(this);
     Logical::setup(this->getPosition(), this->collisionRectangles[0]->size);
 
-    auto action = windy::AnimationAction("shoot", "tank_bullet", true, 0.10);
+    auto action = windy::AnimationAction("shoot", "tank_bullet", true, 0.10f);
     sprite->appendAction(action, false);
     sprite->runAction("shoot");
 

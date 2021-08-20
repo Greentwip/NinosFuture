@@ -16,7 +16,7 @@ std::map<windy::Sounds, std::string> windy::AudioManager::soundsKeyMap = {
 	{Sounds::Select, "sounds/sfx_select.mp3"},
 	{Sounds::Selected, "sounds/sfx_selected.mp3"},
 	{Sounds::StageSelect, "sounds/bgm_stage_select.mp3"},
-	{Sounds::BeltJoin, "sounds/screens/common/belt/sfx_belt_join.mp3"},
+	{Sounds::BeltJoin, "sounds/sfx_belt_join.mp3"},
 	{Sounds::BossIntro, "sounds/bgm_boss_intro.mp3"},
 	{Sounds::Door, "sounds/sfx_door.mp3"},
 	{Sounds::BusterLow, "sounds/sfx_buster_shoot.mp3"},

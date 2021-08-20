@@ -24,6 +24,9 @@ bool Bounds::init()
 
     this->collisionBox = this->collisionRectangles[0];
 
+    this->ignoreGravity = true;
+    this->ignoreLandscapeCollision = true;
+
     this->setTag(GameTags::General::Bounds);
 
     return true;
@@ -62,6 +65,11 @@ cocos2d::Point Bounds::center() {
     return cocos2d::Point(collisionRectangles[0]->getMidX(), collisionRectangles[0]->getMidY());
 }
 
+void Bounds::onCollisionEnter(Logical* collision) {
+    if (collision->getTag() == GameTags::Checkpoint) {
+        this->level->lastCheckpoint = collision;
+    }
+}
 
 void Bounds::parseBehavior(const cocos2d::ValueMap& behavior) {
 

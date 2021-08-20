@@ -37,6 +37,9 @@ namespace windy {
         bool getPaused();
         void setPaused(bool isPaused, bool freezePlayer = false);
 
+        void resetGameplay();
+
+        void startup();
         void restart();
 
         virtual void onEnter();
@@ -65,6 +68,7 @@ namespace windy {
 
         DebugDrawNode* debugDrawNode;
 
+        Logical* lastCheckpoint;
 
     private:
         LevelController* levelController;
@@ -76,7 +80,6 @@ namespace windy {
 
         bool isPaused;
 
-        Logical* lastCheckpoint;
 
         cocos2d::Vector<LandscapeTile*> tiles;
         cocos2d::Vector<LandscapeTile*> screenTiles;

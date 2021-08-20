@@ -293,6 +293,8 @@ bool Sprite::initWithTexture(Texture2D *texture, const Rect& rect, bool rotated)
         setTexture(texture);
         setTextureRect(rect, rotated, rect.size);
 
+        _texture->setAliasTexParameters();
+
         // by default use "Self Render".
         // if the sprite is added to a batchnode, then it will automatically switch to "batchnode Render"
         setBatchNode(nullptr);
@@ -301,6 +303,7 @@ bool Sprite::initWithTexture(Texture2D *texture, const Rect& rect, bool rotated)
 
     _recursiveDirty = true;
     setDirty(true);
+
 
     return result;
 }

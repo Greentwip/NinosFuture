@@ -101,10 +101,6 @@ bool GameScene::init()
         return false;
     }
 
-    auto fadeIn = FadeIn::create(1.0f);
-
-    this->runAction(fadeIn);
-
     windy::Armature::clearPlistCache();
     windy::Sprite::clearPlistCache();
 

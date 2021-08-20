@@ -12,6 +12,9 @@ bool Checkpoint::init()
         return false;
     }
 
+    this->ignoreGravity = true;
+    this->ignoreLandscapeCollision = true;
+
     this->setTag(GameTags::General::Checkpoint);
 
     return true;

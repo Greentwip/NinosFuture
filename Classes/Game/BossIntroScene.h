@@ -10,6 +10,7 @@ namespace windy {
 
 namespace game {
     class Intro;
+    class Fader;
 }
 
 namespace game {
@@ -32,6 +33,10 @@ namespace game {
         void onBossIntroComplete();
 
         bool triggered;
+
+        bool _ready;
+
+        Fader* _fader;
 
         int bgmId;
         windy::Sprite* boss;
