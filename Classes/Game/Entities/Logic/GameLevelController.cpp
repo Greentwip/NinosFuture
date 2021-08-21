@@ -382,7 +382,7 @@ void GameLevelController::onUpdate(float dt) {
 						_pauseFader = fader;
 
 						_pauseFader->fadeIn([this]() {
-							this->pauseMenu = PauseMenu::create(this->_player, gui);
+							this->pauseMenu = PauseMenu::create(this->_player, gui, this->level);
 							this->pauseMenu->setVisible(true);
 							auto pauseMenuPosition =
 								cocos2d::Point(
