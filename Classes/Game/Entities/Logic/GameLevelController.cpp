@@ -103,6 +103,10 @@ void GameLevelController::onUpdate(float dt) {
 			this->gui->bossHealthBar->setVisible(false);
 
 			if (_restartFader == nullptr) {
+
+				windy::AudioManager::stopAll();
+				windy::AudioManager::playBgm(this->level->bgm);
+
 				auto fader = Fader::create(cocos2d::Point(0.5f, 0.5f));
 
 				fader->setPosition(cocos2d::Point(0, 0));
@@ -322,6 +326,7 @@ void GameLevelController::onUpdate(float dt) {
 						_pauseFader == nullptr &&
 						this->_player->canMove) {
 
+						windy::AudioManager::playSfx(windy::Sounds::Pause);
 
 						bool freezePlayer;
 
@@ -370,6 +375,10 @@ void GameLevelController::onUpdate(float dt) {
 						!pausedThisFrame) {
 
 						if (!this->pauseMenu->busy) {
+
+							this->pauseMenu->busy = true;
+
+							windy::AudioManager::playSfx(windy::Sounds::Pause);
 
 							auto fader = Fader::create(cocos2d::Point(0.5f, 0.5f));
 

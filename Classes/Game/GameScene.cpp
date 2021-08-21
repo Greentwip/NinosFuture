@@ -212,10 +212,40 @@ bool GameScene::init()
     }
 
     if (currentLevel) {
+
+        auto levelMug = GameManager::getInstance().currentLevel->mug;
+
+        windy::Sounds levelBGM = windy::Sounds::NONE;
+
+        if (levelMug.compare("freezerman") == 0) {
+            //levelBGM = windy::Sounds::FreezerMan;
+        }
+        else if (levelMug.compare("sheriffman") == 0) {
+            levelBGM = windy::Sounds::SheriffMan;
+        }
+        else if (levelMug.compare("boomerman") == 0) {
+            //levelBGM = windy::Sounds::BoomerMan;
+        }
+        else if (levelMug.compare("militaryman") == 0) {
+            levelBGM = windy::Sounds::MilitaryMan;
+        }
+        else if (levelMug.compare("vineman") == 0) {
+            levelBGM = windy::Sounds::VineMan;
+        }
+        else if (levelMug.compare("shieldman") == 0) {
+            //levelBGM = windy::Sounds::ShieldMan;
+        }
+        else if (levelMug.compare("nightman") == 0) {
+            levelBGM = windy::Sounds::NightMan;
+        }
+        else if (levelMug.compare("torchman") == 0) {
+            //levelBGM = windy::Sounds::TorchMan;
+        }
+
         auto level = windy::Level::create(GameSceneResources::resourcesRootPath,
                                           GameSceneResources::tilemapRootPath,
                                           currentLevel->mug,
-                                          windy::Sounds::NONE);
+                                          levelBGM);
 
         this->addChild(level);
     }

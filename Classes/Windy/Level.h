@@ -70,13 +70,14 @@ namespace windy {
 
         Logical* lastCheckpoint;
 
+        windy::Sounds bgm;
+
     private:
         LevelController* levelController;
 
         std::string resourcesRootPath;
         std::string tilemapRootPath;
         std::string mug;
-        windy::Sounds bgm;
 
         bool isPaused;
 

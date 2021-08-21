@@ -109,23 +109,65 @@ bool TitleScene::init()
                                            cocos2d::TextHAlignment::LEFT,
                                            cocos2d::TextVAlignment::TOP);    
 
+    this->_aboutText = windy::Label::create("ABOUT", 
+                                           TitleSceneResources::font, 
+                                           8, 
+                                           cocos2d::TextHAlignment::LEFT,
+                                           cocos2d::TextVAlignment::TOP);    
+
+    this->_projectsText = windy::Label::create("PROJECTS", 
+                                           TitleSceneResources::font, 
+                                           8, 
+                                           cocos2d::TextHAlignment::LEFT,
+                                           cocos2d::TextVAlignment::TOP);    
+
+    this->_creditsText = windy::Label::create("CREDITS", 
+                                           TitleSceneResources::font, 
+                                           8, 
+                                           cocos2d::TextHAlignment::LEFT,
+                                           cocos2d::TextVAlignment::TOP);    
     float startTextWidth = this->startText->getContentSize().width;
     float startTextHeight = this->startText->getContentSize().height;
 
     float optionsTextWidth = this->optionsText->getContentSize().width;
     float optionsTextHeight = this->optionsText->getContentSize().height;
 
+    float aboutTextWidth = this->_aboutText->getContentSize().width;
+    float aboutTextHeight = this->_aboutText->getContentSize().height;
+
+    float projectsTextWidth = this->_projectsText->getContentSize().width;
+    float projectsTextHeight = this->_projectsText->getContentSize().height;
+
+    float creditsTextWidth = this->_creditsText->getContentSize().width;
+    float creditsTextHeight = this->_creditsText->getContentSize().height;
 
     this->startText->setPosition(
             cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (startTextWidth * 0.5f),
               (windy::Display::getInstance().height * 0.5f) + (startTextHeight * 2)));
 
     this->optionsText->setPosition(
-            cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (optionsTextWidth * 0.5f),
-              (windy::Display::getInstance().height * 0.5f) + (optionsTextHeight * 0.5f)));
+        cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (optionsTextWidth * 0.5f),
+            (windy::Display::getInstance().height * 0.5f) + (optionsTextHeight * 0.5f)));
+
+    this->_aboutText->setPosition(
+        cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (aboutTextWidth * 0.5f),
+            (windy::Display::getInstance().height * 0.5f) - (aboutTextHeight * 0.5f) * 2));
+
+
+    this->_projectsText->setPosition(
+        cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (projectsTextWidth * 0.5f),
+            (windy::Display::getInstance().height * 0.5f) - (projectsTextHeight * 0.5f) * 6));
+
+
+    this->_creditsText->setPosition(
+        cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (creditsTextWidth * 0.5f),
+            (windy::Display::getInstance().height * 0.5f) - (creditsTextHeight * 0.5f) * 8));
 
     addChild(this->startText, 128);
     addChild(this->optionsText, 128);
+    addChild(this->_aboutText, 128);
+    addChild(this->_projectsText, 128);
+    addChild(this->_creditsText, 128);
 
     this->selectedOption = this->startText;
 
@@ -161,15 +203,51 @@ bool TitleScene::init()
 void TitleScene::selectStart() {
     this->startText->setTextColor(TitleSceneResources::textActiveColor);
     this->optionsText->setTextColor(TitleSceneResources::textInactiveColor);
-
+    this->_aboutText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->_projectsText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->_creditsText->setTextColor(TitleSceneResources::textInactiveColor);
     this->selectedOption = this->startText;
 }   
 
 void TitleScene::selectOptions() {
     this->startText->setTextColor(TitleSceneResources::textInactiveColor);
     this->optionsText->setTextColor(TitleSceneResources::textActiveColor);
+    this->_aboutText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->_projectsText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->_creditsText->setTextColor(TitleSceneResources::textInactiveColor);
 
     this->selectedOption = this->optionsText;
+}
+
+void TitleScene::selectAbout() {
+    this->startText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->optionsText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->_aboutText->setTextColor(TitleSceneResources::textActiveColor);
+    this->_projectsText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->_creditsText->setTextColor(TitleSceneResources::textInactiveColor);
+
+    this->selectedOption = this->_aboutText;
+}
+
+
+
+void TitleScene::selectProjects() {
+    this->startText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->optionsText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->_aboutText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->_projectsText->setTextColor(TitleSceneResources::textActiveColor);
+    this->_creditsText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->selectedOption = this->_projectsText;
+}
+
+void TitleScene::selectCredits() {
+    this->startText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->optionsText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->_aboutText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->_projectsText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->_creditsText->setTextColor(TitleSceneResources::textActiveColor);
+
+    this->selectedOption = this->_creditsText;
 }
 
 void TitleScene::onEnter()
@@ -189,13 +267,43 @@ void TitleScene::update(float dt)
 {
     if (!this->triggered && _ready) {
 
-        if (windy::Input::keyPressed(windy::InputKey::Up) || windy::Input::keyPressed(windy::InputKey::Down)) {
+        if (windy::Input::keyPressed(windy::InputKey::Down)) {
             if (this->selectedOption == this->startText) {
                 this->selectOptions();
             }
-            else {
+            else if (this->selectedOption == this->optionsText) {
+                this->selectAbout();
+            }
+            else if (this->selectedOption == this->_aboutText) {
+                this->selectProjects();
+            }
+            else if (this->selectedOption == this->_projectsText) {
+                this->selectCredits();
+            }
+            else if (this->selectedOption == this->_creditsText) {
                 this->selectStart();
             }
+
+
+            windy::AudioManager::playSfx(windy::Sounds::Select);
+        }
+        else if (windy::Input::keyPressed(windy::InputKey::Up)) {
+            if (this->selectedOption == this->startText) {
+                this->selectCredits();
+            }
+            else if (this->selectedOption == this->optionsText) {
+                this->selectStart();
+            }
+            else if (this->selectedOption == this->_aboutText) {
+                this->selectOptions();
+            }
+            else if (this->selectedOption == this->_projectsText) {
+                this->selectAbout();
+            }
+            else if (this->selectedOption == this->_creditsText) {
+                this->selectProjects();
+            }
+
 
             windy::AudioManager::playSfx(windy::Sounds::Select);
         }
@@ -207,11 +315,22 @@ void TitleScene::update(float dt)
             _fader->fadeIn([this]() {
                 
                 if (this->selectedOption == this->startText) {
-                    GameStateMachine::getInstance().pushState(GameState::Save); 
+                    GameStateMachine::getInstance().pushState(GameState::Save);
                 }
-                else {
-                    GameStateMachine::getInstance().pushState(GameState::Options); 
+                else if (this->selectedOption == this->optionsText) {
+                    GameStateMachine::getInstance().pushState(GameState::Options);
                 }
+                else if (this->selectedOption == this->_aboutText) {
+                    GameStateMachine::getInstance().pushState(GameState::About);
+                }
+                else if (this->selectedOption == this->_projectsText) {
+                    GameStateMachine::getInstance().pushState(GameState::Projects);
+
+                }
+                else if (this->selectedOption == this->_creditsText) {
+                    GameStateMachine::getInstance().pushState(GameState::Credits);
+                }
+
                                 
             });
 

@@ -385,6 +385,18 @@
     <ClCompile Include="..\..\Classes\Game\Entities\UI\ReadyIndicator.cpp">
       <Filter>Classes\Game\Entities\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\MicrosoftScene.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\AboutScene.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\ProjectsScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\CreditsScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -1907,6 +1919,18 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Game\Entities\UI\ReadyIndicator.h">
       <Filter>Classes\Game\Entities\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\MicrosoftScene.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\AboutScene.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\ProjectsScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\CreditsScene.h">
+      <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

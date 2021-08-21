@@ -16,11 +16,6 @@ namespace game {
 
         static cocos2d::Scene* scene();
 
-        virtual void onEnter();
-        virtual void onExit();
-
-        virtual void update(float dt);
-
         void abakuraIntro();
 
         CREATE_FUNC(AbakuraScene);

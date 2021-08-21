@@ -1,16 +1,14 @@
-#ifndef __GAME_GAME_OVER_SCENE_H__
-#define __GAME_GAME_OVER_SCENE_H__
+#ifndef __GAME_PROJECTS_SCENE_H__
+#define __GAME_PROJECTS_SCENE_H__
 
 #include "cocos2d.h"
-
-#include <string>
 
 namespace game {
     class Fader;
 }
 
 namespace game {
-    class GameOverScene : public cocos2d::LayerColor
+    class ProjectsScene : public cocos2d::LayerColor
     {
     public:
         virtual bool init();
@@ -22,14 +20,9 @@ namespace game {
 
         virtual void update(float dt);
 
-        CREATE_FUNC(GameOverScene);
+        CREATE_FUNC(ProjectsScene);
 
     private:
-        cocos2d::Node* _yesButton;
-        cocos2d::Node* _noButton;
-
-        cocos2d::Node* _currentOption;
-
         bool _triggered;
         bool _ready;
 

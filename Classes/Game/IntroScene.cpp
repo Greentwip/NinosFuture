@@ -101,23 +101,3 @@ void IntroScene::greentwipIntro() {
     });
     
 }
-
-
-
-
-void IntroScene::onEnter()
-{
-    Layer::onEnter();
-    cocos2d::Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
-}
-
-
-void IntroScene::onExit()
-{
-    cocos2d::Director::getInstance()->getScheduler()->unscheduleAllForTarget(this);
-    Layer::onExit();
-}
-
-void IntroScene::update(float dt)
-{
-}

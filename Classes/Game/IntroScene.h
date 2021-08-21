@@ -2,7 +2,6 @@
 #define __INTRO_SCENE_H__
 
 #include "cocos2d.h"
-#include "ui/CocosGUI.h"
 
 namespace windy {
     class Sprite;
@@ -15,11 +14,6 @@ namespace game {
         virtual bool init();
 
         static cocos2d::Scene* scene();
-
-        virtual void onEnter();
-        virtual void onExit();
-
-        virtual void update(float dt);
 
         CREATE_FUNC(IntroScene);
 

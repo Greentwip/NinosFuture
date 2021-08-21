@@ -53,6 +53,11 @@ namespace windy {
 		Error,
 		GetLife,
 		LevelComplete,
+		Pause,
+		SheriffMan,
+		MilitaryMan,
+		VineMan,
+		NightMan,
 		NONE
 	};
 

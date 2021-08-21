@@ -2,7 +2,6 @@
 #define __TITLE_SCENE_H__
 
 #include "cocos2d.h"
-#include "ui/CocosGUI.h"
 
 namespace windy {
     class Label;
@@ -30,6 +29,9 @@ namespace game {
     private:
         void selectStart();
         void selectOptions();
+        void selectAbout();
+        void selectProjects();
+        void selectCredits();
 
         bool triggered;
 
@@ -37,6 +39,9 @@ namespace game {
 
         windy::Label* startText;
         windy::Label* optionsText;
+        windy::Label* _aboutText;
+        windy::Label* _projectsText;
+        windy::Label* _creditsText;
         windy::Label* selectedOption;
 
         Fader* _fader;

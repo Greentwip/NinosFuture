@@ -28,21 +28,5 @@
         <EnableHTML5Advanced Value="False" />
       </Value>
     </Item>
-    <Item Key="TabsParamsKey">
-      <Value ctype="TabsInfo">
-        <OpenedDocuments>
-          <FilePathData Path="sprites/gameplay/screens/credits/data.csd" />
-          <FilePathData Path="sprites/gameplay/screens/options/data.csd" />
-          <FilePathData Path="sprites/gameplay/screens/about/data.csd" />
-          <FilePathData Path="sprites/gameplay/screens/about/data - Copy.csd" />
-          <FilePathData Path="sprites/gameplay/screens/gameover/data.csd" />
-          <FilePathData Path="sprites/gameplay/screens/save/data.csd" />
-          <FilePathData Path="sprites/gameplay/screens/projects/data.csd" />
-          <FilePathData Path="sprites/gameplay/screens/license/data.csd" />
-          <FilePathData Path="sprites/gameplay/screens/stage_select/data.csd" />
-        </OpenedDocuments>
-        <ActiveDocument Path="sprites/gameplay/screens/stage_select/data.csd" />
-      </Value>
-    </Item>
   </Properties>
 </UserData>

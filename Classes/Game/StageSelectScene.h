@@ -2,7 +2,6 @@
 #define __STAGE_SELECT_SCENE_H__
 
 #include "cocos2d.h"
-#include "ui/CocosGUI.h"
 
 namespace windy {
     class Sprite;

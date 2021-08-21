@@ -2,7 +2,7 @@
 #define __OPTIONS_SCENE_H__
 
 #include "cocos2d.h"
-#include "ui/CocosGUI.h"
+#include "cocos/ui/CocosGUI.h"
 
 namespace game {
     class Fader;

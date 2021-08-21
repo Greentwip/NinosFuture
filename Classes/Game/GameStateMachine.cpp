@@ -4,7 +4,11 @@
 
 #include "IntroScene.h"
 #include "AbakuraScene.h"
+#include "MicrosoftScene.h"
 #include "TitleScene.h"
+#include "AboutScene.h"
+#include "ProjectsScene.h"
+#include "CreditsScene.h"
 #include "OptionsScene.h"
 #include "SaveScene.h"
 #include "StageSelectScene.h"
@@ -52,7 +56,11 @@ static SceneFactory<Scene*, GameState> sceneFactory;
 GameStateMachine::GameStateMachine() {
     sceneFactory.registerType<IntroScene>(GameState::Intro);
     sceneFactory.registerType<AbakuraScene>(GameState::Abakura);
+    sceneFactory.registerType<MicrosoftScene>(GameState::Microsoft);
     sceneFactory.registerType<TitleScene>(GameState::Title);
+    sceneFactory.registerType<AboutScene>(GameState::About);
+    sceneFactory.registerType<ProjectsScene>(GameState::Projects);
+    sceneFactory.registerType<CreditsScene>(GameState::Credits);
     sceneFactory.registerType<OptionsScene>(GameState::Options);
     sceneFactory.registerType<SaveScene>(GameState::Save);
     sceneFactory.registerType<StageSelectScene>(GameState::StageSelect);

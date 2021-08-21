@@ -6,8 +6,12 @@ namespace game {
     enum class GameState {
         Intro,
         Abakura,
+        Microsoft,
         Title,
         Options,
+        About,
+        Projects,
+        Credits,
         Save,
         StageSelect,
         BossIntro,

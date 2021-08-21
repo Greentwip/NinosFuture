@@ -2,7 +2,6 @@
 #define __SAVE_SCENE_H__
 
 #include "cocos2d.h"
-#include "ui/CocosGUI.h"
 
 #include <string>
 

@@ -78,7 +78,7 @@ void AbakuraScene::abakuraIntro() {
 
         auto fadeOut = cocos2d::CallFunc::create([=]() {
             fader->fadeIn([=]() {
-                GameStateMachine::getInstance().pushState(GameState::Title);
+                GameStateMachine::getInstance().pushState(GameState::Microsoft);
             });
         });
 
@@ -87,22 +87,4 @@ void AbakuraScene::abakuraIntro() {
         this->runAction(sequence);
     });
 
-}
-
-
-void AbakuraScene::onEnter()
-{
-    Layer::onEnter();
-    cocos2d::Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
-}
-
-
-void AbakuraScene::onExit()
-{
-    cocos2d::Director::getInstance()->getScheduler()->unscheduleAllForTarget(this);
-    Layer::onExit();
-}
-
-void AbakuraScene::update(float dt)
-{
 }

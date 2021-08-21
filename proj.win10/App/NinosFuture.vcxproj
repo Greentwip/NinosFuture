@@ -624,7 +624,9 @@
     <ClInclude Include="..\..\Classes\External\tao\pegtl\utf8.hpp" />
     <ClInclude Include="..\..\Classes\External\tao\pegtl\version.hpp" />
     <ClInclude Include="..\..\Classes\External\tao\pegtl\visit.hpp" />
+    <ClInclude Include="..\..\Classes\Game\AboutScene.h" />
     <ClInclude Include="..\..\Classes\Game\BossIntroScene.h" />
+    <ClInclude Include="..\..\Classes\Game\CreditsScene.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Boss\GameBoss.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Boss\SheriffMan.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Enemies\Common\CannonJoe.h" />
@@ -672,6 +674,8 @@
     <ClInclude Include="..\..\Classes\Game\GameOverScene.h" />
     <ClInclude Include="..\..\Classes\Game\GameState.h" />
     <ClInclude Include="..\..\Classes\Game\Intro.h" />
+    <ClInclude Include="..\..\Classes\Game\MicrosoftScene.h" />
+    <ClInclude Include="..\..\Classes\Game\ProjectsScene.h" />
     <ClInclude Include="..\..\Classes\Game\WeaponAcquireScene.h" />
     <ClInclude Include="..\..\Classes\Game\Computer.h" />
     <ClInclude Include="..\..\Classes\Game\GameScene.h" />
@@ -752,7 +756,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\..\Classes\Game\AboutScene.cpp" />
     <ClCompile Include="..\..\Classes\Game\BossIntroScene.cpp" />
+    <ClCompile Include="..\..\Classes\Game\CreditsScene.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Boss\GameBoss.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Boss\SheriffMan.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Enemies\Common\CannonJoe.cpp" />
@@ -798,6 +804,8 @@
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\VioletBullet.cpp" />
     <ClCompile Include="..\..\Classes\Game\GameOverScene.cpp" />
     <ClCompile Include="..\..\Classes\Game\Intro.cpp" />
+    <ClCompile Include="..\..\Classes\Game\MicrosoftScene.cpp" />
+    <ClCompile Include="..\..\Classes\Game\ProjectsScene.cpp" />
     <ClCompile Include="..\..\Classes\Game\WeaponAcquireScene.cpp" />
     <ClCompile Include="..\..\Classes\Game\Computer.cpp" />
     <ClCompile Include="..\..\Classes\Game\GameScene.cpp" />

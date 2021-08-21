@@ -38,7 +38,13 @@ std::map<windy::Sounds, std::string> windy::AudioManager::soundsKeyMap = {
 	{Sounds::GetEnergy, "sounds/sfx_getenergy.mp3"},
 	{Sounds::Error, "sounds/sfx_error.mp3"},
 	{Sounds::GetLife, "sounds/sfx_getlife.mp3"},
-	{Sounds::LevelComplete, "sounds/sfx_level_complete.mp3"}
+	{Sounds::LevelComplete, "sounds/sfx_level_complete.mp3"},
+	{Sounds::Pause, "sounds/sfx_pause.mp3"},
+	{Sounds::SheriffMan, "sounds/bgm_level_sheriffman.mp3"},
+	{Sounds::MilitaryMan, "sounds/bgm_level_militaryman.mp3"},
+	{Sounds::VineMan, "sounds/bgm_level_vineman.mp3"},
+	{Sounds::NightMan, "sounds/bgm_level_nightman.mp3"}
+
 };
 
 int windy::AudioManager::playBgm(windy::Sounds resource, bool loop, std::function<void()> callback) {
@@ -46,6 +52,10 @@ int windy::AudioManager::playBgm(windy::Sounds resource, bool loop, std::functio
 	//local id = ccexp.AudioEngine:play2d(path, loop, cc.bgm_volume_)
 	//cc.current_bgm_id_ = id
 	//return id
+
+	if (resource == Sounds::NONE) {
+		return -1;
+	}
 
 	currentTrack = resource;
 
@@ -70,6 +80,10 @@ int windy::AudioManager::playSfx(windy::Sounds resource, bool loop, std::functio
 	//return id
 
 	//currentSfxId = ;
+
+	if (resource == Sounds::NONE) {
+		return -1;
+	}
 
 	AudioManager::currentSfxId = AudioEngine::play2d(soundsKeyMap[resource], loop, Settings::sfxVolume);
 
