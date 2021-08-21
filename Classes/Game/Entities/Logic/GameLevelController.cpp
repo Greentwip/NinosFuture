@@ -315,6 +315,10 @@ void GameLevelController::onUpdate(float dt) {
 		case LevelState::Exit: 
 		{
 			if (_restartFader == nullptr) {
+				if (this->pauseMenu != nullptr) {
+					this->pauseMenu->busy = true;
+				}
+
 				auto fader = Fader::create(cocos2d::Point(0.5f, 0.5f));
 
 				fader->setPosition(cocos2d::Point(0, 0));
