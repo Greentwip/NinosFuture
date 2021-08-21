@@ -19,6 +19,8 @@ namespace windy {
 
         virtual void restart(std::function<void()> onLevelRestarted) = 0;
 
+        virtual void exitLevel() = 0;
+
         virtual void succeed() = 0;
 
         virtual void onUpdate(float dt) override;

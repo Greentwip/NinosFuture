@@ -24,6 +24,7 @@ namespace game {
             BossBattle,
             Succeeded,
             GameOver,
+            ExitToWeaponScene,
             Exit
         };
 
@@ -35,6 +36,8 @@ namespace game {
         virtual void startup() override;
 
         virtual void restart(std::function<void()> onLevelRestarted) override;
+
+        virtual void exitLevel() override;
 
         virtual void succeed() override;
 

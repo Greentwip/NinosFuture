@@ -83,9 +83,13 @@ void GameLevelController::restart(std::function<void()> onLevelRestarted) {
 	this->levelState = LevelState::Restarting;
 }
 
-
 void GameLevelController::succeed() {
 	this->levelState = LevelState::Succeeded;
+}
+
+void GameLevelController::exitLevel() {
+	this->exitTimer = this->exitTimeDelay;
+	this->levelState = LevelState::Exit;
 }
 
 void GameLevelController::onUpdate(float dt) {
@@ -266,19 +270,17 @@ void GameLevelController::onUpdate(float dt) {
 			switch (this->_player->screenState) {
 				case windy::Player::ScreenState::OffScreen:
 					this->exitTimer = this->exitTimeDelay;
-					this->levelState = LevelState::Exit;
+					this->levelState = LevelState::ExitToWeaponScene;
 					break;
 			}
 			
 		} 
 		break;
 
-		case LevelState::Exit: {
+		case LevelState::ExitToWeaponScene: 
+		{
 			if (this->exitTimer <= 0) {
 				this->exitTimer = 0;
-				/*if (!this->fading) {
-					this->fading = true;
-				}*/
 				if (_restartFader == nullptr) {
 					auto fader = Fader::create(cocos2d::Point(0.5f, 0.5f));
 
@@ -307,6 +309,42 @@ void GameLevelController::onUpdate(float dt) {
 			else {
 				this->exitTimer -= dt;
 			}
+		}
+		break;
+
+		case LevelState::Exit: 
+		{
+			if (this->exitTimer <= 0) {
+				this->exitTimer = 0;
+				if (_restartFader == nullptr) {
+					auto fader = Fader::create(cocos2d::Point(0.5f, 0.5f));
+
+					fader->setPosition(cocos2d::Point(0, 0));
+
+					fader->setOpacity(255);
+
+					this->level->bounds->addChild(fader, 4096);
+
+					_restartFader = fader;
+
+					_restartFader->fadeIn([this]() {
+						GameStateMachine::getInstance().pushState(GameState::StageSelect);
+						levelState = LevelState::GameOver;
+
+						_restartFader->removeFromParent();
+						_restartFader = nullptr;
+					});
+				}
+
+
+				//this->level->restart();
+
+
+			}
+			else {
+				this->exitTimer -= dt;
+			}
+		
 		}
 		break;
 	}

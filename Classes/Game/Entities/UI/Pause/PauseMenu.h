@@ -9,6 +9,7 @@ namespace windy {
     class Sprite;
     class Label;
     class Player;
+    class Level;
 }
 
 namespace game {
@@ -25,7 +26,7 @@ namespace game {
     public:
         static void preloadResources();
 
-        static PauseMenu* create(windy::Player* player, GameGui* gui);
+        static PauseMenu* create(windy::Player* player, GameGui* gui, windy::Level* level);
 
         virtual bool init();
 
@@ -88,6 +89,7 @@ namespace game {
         std::function<void(PauseInterruptor* sender)> onBrownerTriggered;
         std::function<void(PauseInterruptor* sender)> onSwitchTriggered;
 
+        windy::Level* _level;
 
     };
 

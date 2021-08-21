@@ -41,6 +41,7 @@ namespace windy {
 
         void startup();
         void restart();
+        void exitLevel();
 
         virtual void onEnter();
         virtual void onExit();

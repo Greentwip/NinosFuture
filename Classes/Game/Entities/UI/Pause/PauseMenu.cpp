@@ -40,13 +40,14 @@ void PauseMenu::preloadResources() {
     windy::Sprite::cache(PauseMenuResources::boxPath);
 }
 
-PauseMenu* PauseMenu::create(windy::Player* player, GameGui* gui) {
+PauseMenu* PauseMenu::create(windy::Player* player, GameGui* gui, windy::Level* level) {
 
     PauseMenu* menu = new (std::nothrow) PauseMenu();
 
     if (menu) {
         menu->player = player;
         menu->gui = gui;
+        menu->_level = level;
         menu->busy = false;
         menu->background = nullptr;
         menu->box = nullptr;
@@ -496,7 +497,7 @@ void PauseMenu::initCallbacks() {
         }
         else if (sender == this->exitSwitch) {
             windy::AudioManager::playSfx(windy::Sounds::Selected);
-            //this->level->exitToTitleScreen();
+            this->level->exitLevel();
         }
 
         if (visitTarget) {

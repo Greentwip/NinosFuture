@@ -599,6 +599,9 @@ void Level::restart() {
     });
 }
 
+void Level::exitLevel() {
+    this->levelController->exitLevel();
+}
 
 
 
