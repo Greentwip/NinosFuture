@@ -9,9 +9,17 @@ game::Resources& RollRunner::getResources() {
     return resources;
 }
 
+void RollRunner::setOrientation() {
+
+}
+
 void RollRunner::setup() {
     maxHealth = 5;
     power = 3;
+
+    orientationSet = false;
+    walkSpeed = 1.0f;
+    orientation = Orientation::Left;
 
     Logical::composite<RollRunner>(this);
 
@@ -41,6 +49,6 @@ void RollRunner::attack(float dt) {
             flip(Orientation::Right);
         }
 
-        speed.x += walkSpeed * (float)orientation;
+        speed.x = walkSpeed * (float)orientation;
     }
 }

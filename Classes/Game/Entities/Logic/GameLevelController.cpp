@@ -314,37 +314,27 @@ void GameLevelController::onUpdate(float dt) {
 
 		case LevelState::Exit: 
 		{
-			if (this->exitTimer <= 0) {
-				this->exitTimer = 0;
-				if (_restartFader == nullptr) {
-					auto fader = Fader::create(cocos2d::Point(0.5f, 0.5f));
+			if (_restartFader == nullptr) {
+				auto fader = Fader::create(cocos2d::Point(0.5f, 0.5f));
 
-					fader->setPosition(cocos2d::Point(0, 0));
+				fader->setPosition(cocos2d::Point(0, 0));
 
-					fader->setOpacity(255);
+				fader->setOpacity(255);
 
-					this->level->bounds->addChild(fader, 4096);
+				this->level->bounds->addChild(fader, 4096);
 
-					_restartFader = fader;
+				_restartFader = fader;
 
-					_restartFader->fadeIn([this]() {
-						GameStateMachine::getInstance().pushState(GameState::StageSelect);
-						levelState = LevelState::GameOver;
+				_restartFader->fadeIn([this]() {
+					GameStateMachine::getInstance().pushState(GameState::StageSelect);
+					levelState = LevelState::GameOver;
 
-						_restartFader->removeFromParent();
-						_restartFader = nullptr;
-					});
-				}
-
-
-				//this->level->restart();
-
-
+					_restartFader->removeFromParent();
+					_restartFader = nullptr;
+				});
 			}
-			else {
-				this->exitTimer -= dt;
-			}
-		
+
+			//this->level->restart();
 		}
 		break;
 	}

@@ -19,6 +19,9 @@ void Tank::setup() {
     health = maxHealth;
     power = 6;
 
+    _walkSpeed = 0.5f;
+    _attackState = AttackState::Walking;
+
     Logical::composite<Tank>(this);
 
     std::vector<windy::AnimationAction> actionSet = {
@@ -59,10 +62,10 @@ void Tank::attack(float dt) {
 
         if (!inRange && level->player->getPositionX() >= getPositionX()) {
             speed.x = _walkSpeed;
-            sprite->setFlippedX(false);
+            sprite->setFlippedX(true);
         } else if (!inRange) {
             speed.x = -_walkSpeed;
-            sprite->setFlippedX(true);
+            sprite->setFlippedX(false);
         }
 
         if (inRange || contacts[windy::CollisionContact::Right] || contacts[windy::CollisionContact::Left]) {

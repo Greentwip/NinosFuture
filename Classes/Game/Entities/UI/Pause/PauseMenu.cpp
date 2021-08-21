@@ -11,6 +11,7 @@
 #include "Windy/Display.h"
 #include "Windy/EntityFactory.h"
 #include "Windy/AudioManager.h"
+#include "Windy/Level.h"
 
 #include "Windy/Entities/Player.h"
 #include "Windy/Entities/Browner.h"
@@ -497,7 +498,7 @@ void PauseMenu::initCallbacks() {
         }
         else if (sender == this->exitSwitch) {
             windy::AudioManager::playSfx(windy::Sounds::Selected);
-            this->level->exitLevel();
+            this->_level->exitLevel();
         }
 
         if (visitTarget) {
