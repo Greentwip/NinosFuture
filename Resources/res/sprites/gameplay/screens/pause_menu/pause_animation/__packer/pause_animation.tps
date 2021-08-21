@@ -2,11 +2,9 @@
 <data version="1.0">
     <struct type="Settings">
         <key>fileFormatVersion</key>
-        <int>3</int>
+        <int>4</int>
         <key>texturePackerVersion</key>
-        <string>3.9.2</string>
-        <key>fileName</key>
-        <string>C:/dev/projects/greentwip/codycobain/revenge_of_the_future/res/sprites/gameplay/screens/pause_menu/pause_animation/__packer/pause_animation.tps</string>
+        <string>5.5.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -29,8 +27,6 @@
         </array>
         <key>allowRotation</key>
         <true/>
-        <key>premultiplyAlpha</key>
-        <false/>
         <key>shapeDebug</key>
         <false/>
         <key>dpi</key>
@@ -49,6 +45,8 @@
         <uint>32768</uint>
         <key>etc1CompressionQuality</key>
         <enum type="SettingsBase::Etc1CompressionQuality">ETC1_QUALITY_LOW_PERCEPTUAL</enum>
+        <key>etc2CompressionQuality</key>
+        <enum type="SettingsBase::Etc2CompressionQuality">ETC2_QUALITY_LOW_PERCEPTUAL</enum>
         <key>dxtCompressionMode</key>
         <enum type="SettingsBase::DxtCompressionMode">DXT_PERCEPTUAL</enum>
         <key>jxrColorFormat</key>
@@ -81,6 +79,8 @@
         <uint>101</uint>
         <key>textureSubPath</key>
         <string></string>
+        <key>atfFormats</key>
+        <string></string>
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">pvr3ccz</enum>
         <key>borderPadding</key>
@@ -88,9 +88,9 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>768</int>
+            <int>1024</int>
             <key>height</key>
-            <int>768</int>
+            <int>1024</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -99,8 +99,6 @@
             <key>height</key>
             <int>-1</int>
         </QSize>
-        <key>reduceBorderArtifacts</key>
-        <false/>
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
@@ -108,11 +106,9 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">AnySize</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
             <key>forceSquared</key>
             <false/>
-            <key>forceWordAligned</key>
-            <true/>
             <key>maxRects</key>
             <struct type="AlgorithmMaxRectsSettings">
                 <key>heuristic</key>
@@ -125,22 +121,11 @@
                 <key>order</key>
                 <enum type="AlgorithmBasicSettings::Order">Ascending</enum>
             </struct>
-        </struct>
-        <key>andEngine</key>
-        <struct type="AndEngine">
-            <key>minFilter</key>
-            <enum type="AndEngine::MinFilter">Linear</enum>
-            <key>packageName</key>
-            <string>Texture</string>
-            <key>wrap</key>
-            <struct type="AndEngineWrap">
-                <key>s</key>
-                <enum type="AndEngineWrap::Wrap">Clamp</enum>
-                <key>t</key>
-                <enum type="AndEngineWrap::Wrap">Clamp</enum>
+            <key>polygon</key>
+            <struct type="AlgorithmPolygonSettings">
+                <key>alignToGrid</key>
+                <uint>1</uint>
             </struct>
-            <key>magFilter</key>
-            <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileNames</key>
         <map type="GFileNameMap">
@@ -156,6 +141,8 @@
         <false/>
         <key>outputFormat</key>
         <enum type="SettingsBase::OutputFormat">RGBA4444</enum>
+        <key>alphaHandling</key>
+        <enum type="SettingsBase::AlphaHandling">ClearTransparentPixels</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
@@ -167,7 +154,7 @@
         <true/>
         <key>prependSmartFolderName</key>
         <false/>
-        <key>cleanTransparentPixels</key>
+        <key>autodetectAnimations</key>
         <true/>
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
@@ -175,19 +162,367 @@
             <double>1</double>
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
-            <key>innerPadding</key>
-            <uint>0</uint>
             <key>extrude</key>
             <uint>0</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
+            <key>trimMargin</key>
+            <uint>1</uint>
             <key>trimMode</key>
             <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <key>tracerTolerance</key>
+            <int>200</int>
             <key>heuristicMask</key>
             <false/>
-            <key>pivotPoint</key>
-            <enum type="SpriteSettings::PivotPoint">Center</enum>
+            <key>defaultPivotPoint</key>
+            <point_f>0.5,0.5</point_f>
+            <key>writePivotPoints</key>
+            <false/>
         </struct>
+        <key>individualSpriteSettings</key>
+        <map type="IndividualSpriteSettingsMap">
+            <key type="filename">extreme/ex_animation_0.png</key>
+            <key type="filename">extreme/ex_animation_1.png</key>
+            <key type="filename">extreme/ex_animation_10.png</key>
+            <key type="filename">extreme/ex_animation_11.png</key>
+            <key type="filename">extreme/ex_animation_12.png</key>
+            <key type="filename">extreme/ex_animation_13.png</key>
+            <key type="filename">extreme/ex_animation_14.png</key>
+            <key type="filename">extreme/ex_animation_15.png</key>
+            <key type="filename">extreme/ex_animation_16.png</key>
+            <key type="filename">extreme/ex_animation_17.png</key>
+            <key type="filename">extreme/ex_animation_18.png</key>
+            <key type="filename">extreme/ex_animation_19.png</key>
+            <key type="filename">extreme/ex_animation_2.png</key>
+            <key type="filename">extreme/ex_animation_20.png</key>
+            <key type="filename">extreme/ex_animation_21.png</key>
+            <key type="filename">extreme/ex_animation_22.png</key>
+            <key type="filename">extreme/ex_animation_23.png</key>
+            <key type="filename">extreme/ex_animation_24.png</key>
+            <key type="filename">extreme/ex_animation_25.png</key>
+            <key type="filename">extreme/ex_animation_26.png</key>
+            <key type="filename">extreme/ex_animation_27.png</key>
+            <key type="filename">extreme/ex_animation_3.png</key>
+            <key type="filename">extreme/ex_animation_4.png</key>
+            <key type="filename">extreme/ex_animation_5.png</key>
+            <key type="filename">extreme/ex_animation_6.png</key>
+            <key type="filename">extreme/ex_animation_7.png</key>
+            <key type="filename">extreme/ex_animation_8.png</key>
+            <key type="filename">extreme/ex_animation_9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>21,16,41,33</rect>
+                <key>scale9Paddings</key>
+                <rect>21,16,41,33</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">fuzzy/fuzzy_animation_0.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_1.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_10.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_11.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_12.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_13.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_14.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_15.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_16.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_17.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_18.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_19.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_2.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_20.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_21.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_22.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_23.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_24.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_25.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_26.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_27.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_28.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_29.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_3.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_30.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_31.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_32.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_33.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_34.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_35.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_36.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_37.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_38.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_39.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_4.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_40.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_41.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_42.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_43.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_44.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_45.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_46.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_47.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_48.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_49.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_5.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_50.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_51.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_52.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_53.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_54.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_55.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_56.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_57.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_58.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_59.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_6.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_60.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_61.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_7.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_8.png</key>
+            <key type="filename">fuzzy/fuzzy_animation_9.png</key>
+            <key type="filename">sheriff/sheriff_animation_0.png</key>
+            <key type="filename">sheriff/sheriff_animation_1.png</key>
+            <key type="filename">sheriff/sheriff_animation_2.png</key>
+            <key type="filename">sheriff/sheriff_animation_3.png</key>
+            <key type="filename">sheriff/sheriff_animation_4.png</key>
+            <key type="filename">sheriff/sheriff_animation_5.png</key>
+            <key type="filename">sheriff/sheriff_animation_6.png</key>
+            <key type="filename">sheriff/sheriff_animation_7.png</key>
+            <key type="filename">sheriff/sheriff_animation_8.png</key>
+            <key type="filename">sheriff/sheriff_animation_9.png</key>
+            <key type="filename">shield/shield_animation_0.png</key>
+            <key type="filename">shield/shield_animation_1.png</key>
+            <key type="filename">shield/shield_animation_2.png</key>
+            <key type="filename">shield/shield_animation_3.png</key>
+            <key type="filename">shield/shield_animation_4.png</key>
+            <key type="filename">shield/shield_animation_5.png</key>
+            <key type="filename">shield/shield_animation_6.png</key>
+            <key type="filename">shield/shield_animation_7.png</key>
+            <key type="filename">shield/shield_animation_8.png</key>
+            <key type="filename">vine/vine_animation_0.png</key>
+            <key type="filename">vine/vine_animation_1.png</key>
+            <key type="filename">vine/vine_animation_10.png</key>
+            <key type="filename">vine/vine_animation_2.png</key>
+            <key type="filename">vine/vine_animation_3.png</key>
+            <key type="filename">vine/vine_animation_4.png</key>
+            <key type="filename">vine/vine_animation_5.png</key>
+            <key type="filename">vine/vine_animation_6.png</key>
+            <key type="filename">vine/vine_animation_7.png</key>
+            <key type="filename">vine/vine_animation_8.png</key>
+            <key type="filename">vine/vine_animation_9.png</key>
+            <key type="filename">violet/violet_animation_0.png</key>
+            <key type="filename">violet/violet_animation_1.png</key>
+            <key type="filename">violet/violet_animation_10.png</key>
+            <key type="filename">violet/violet_animation_2.png</key>
+            <key type="filename">violet/violet_animation_3.png</key>
+            <key type="filename">violet/violet_animation_4.png</key>
+            <key type="filename">violet/violet_animation_5.png</key>
+            <key type="filename">violet/violet_animation_6.png</key>
+            <key type="filename">violet/violet_animation_7.png</key>
+            <key type="filename">violet/violet_animation_8.png</key>
+            <key type="filename">violet/violet_animation_9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>20,16,41,32</rect>
+                <key>scale9Paddings</key>
+                <rect>20,16,41,32</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">helmet/helmet_animation_0.png</key>
+            <key type="filename">helmet/helmet_animation_1.png</key>
+            <key type="filename">helmet/helmet_animation_10.png</key>
+            <key type="filename">helmet/helmet_animation_11.png</key>
+            <key type="filename">helmet/helmet_animation_12.png</key>
+            <key type="filename">helmet/helmet_animation_13.png</key>
+            <key type="filename">helmet/helmet_animation_14.png</key>
+            <key type="filename">helmet/helmet_animation_15.png</key>
+            <key type="filename">helmet/helmet_animation_16.png</key>
+            <key type="filename">helmet/helmet_animation_17.png</key>
+            <key type="filename">helmet/helmet_animation_18.png</key>
+            <key type="filename">helmet/helmet_animation_19.png</key>
+            <key type="filename">helmet/helmet_animation_2.png</key>
+            <key type="filename">helmet/helmet_animation_20.png</key>
+            <key type="filename">helmet/helmet_animation_21.png</key>
+            <key type="filename">helmet/helmet_animation_22.png</key>
+            <key type="filename">helmet/helmet_animation_23.png</key>
+            <key type="filename">helmet/helmet_animation_24.png</key>
+            <key type="filename">helmet/helmet_animation_25.png</key>
+            <key type="filename">helmet/helmet_animation_26.png</key>
+            <key type="filename">helmet/helmet_animation_27.png</key>
+            <key type="filename">helmet/helmet_animation_28.png</key>
+            <key type="filename">helmet/helmet_animation_29.png</key>
+            <key type="filename">helmet/helmet_animation_3.png</key>
+            <key type="filename">helmet/helmet_animation_30.png</key>
+            <key type="filename">helmet/helmet_animation_31.png</key>
+            <key type="filename">helmet/helmet_animation_32.png</key>
+            <key type="filename">helmet/helmet_animation_33.png</key>
+            <key type="filename">helmet/helmet_animation_34.png</key>
+            <key type="filename">helmet/helmet_animation_35.png</key>
+            <key type="filename">helmet/helmet_animation_36.png</key>
+            <key type="filename">helmet/helmet_animation_37.png</key>
+            <key type="filename">helmet/helmet_animation_38.png</key>
+            <key type="filename">helmet/helmet_animation_39.png</key>
+            <key type="filename">helmet/helmet_animation_4.png</key>
+            <key type="filename">helmet/helmet_animation_40.png</key>
+            <key type="filename">helmet/helmet_animation_41.png</key>
+            <key type="filename">helmet/helmet_animation_5.png</key>
+            <key type="filename">helmet/helmet_animation_6.png</key>
+            <key type="filename">helmet/helmet_animation_7.png</key>
+            <key type="filename">helmet/helmet_animation_8.png</key>
+            <key type="filename">helmet/helmet_animation_9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>17,15,33,29</rect>
+                <key>scale9Paddings</key>
+                <rect>17,15,33,29</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">military/military_animation_0.png</key>
+            <key type="filename">military/military_animation_1.png</key>
+            <key type="filename">military/military_animation_10.png</key>
+            <key type="filename">military/military_animation_11.png</key>
+            <key type="filename">military/military_animation_12.png</key>
+            <key type="filename">military/military_animation_13.png</key>
+            <key type="filename">military/military_animation_14.png</key>
+            <key type="filename">military/military_animation_15.png</key>
+            <key type="filename">military/military_animation_16.png</key>
+            <key type="filename">military/military_animation_17.png</key>
+            <key type="filename">military/military_animation_18.png</key>
+            <key type="filename">military/military_animation_19.png</key>
+            <key type="filename">military/military_animation_2.png</key>
+            <key type="filename">military/military_animation_20.png</key>
+            <key type="filename">military/military_animation_21.png</key>
+            <key type="filename">military/military_animation_22.png</key>
+            <key type="filename">military/military_animation_23.png</key>
+            <key type="filename">military/military_animation_24.png</key>
+            <key type="filename">military/military_animation_25.png</key>
+            <key type="filename">military/military_animation_26.png</key>
+            <key type="filename">military/military_animation_27.png</key>
+            <key type="filename">military/military_animation_28.png</key>
+            <key type="filename">military/military_animation_29.png</key>
+            <key type="filename">military/military_animation_3.png</key>
+            <key type="filename">military/military_animation_30.png</key>
+            <key type="filename">military/military_animation_31.png</key>
+            <key type="filename">military/military_animation_32.png</key>
+            <key type="filename">military/military_animation_33.png</key>
+            <key type="filename">military/military_animation_34.png</key>
+            <key type="filename">military/military_animation_35.png</key>
+            <key type="filename">military/military_animation_36.png</key>
+            <key type="filename">military/military_animation_37.png</key>
+            <key type="filename">military/military_animation_38.png</key>
+            <key type="filename">military/military_animation_39.png</key>
+            <key type="filename">military/military_animation_4.png</key>
+            <key type="filename">military/military_animation_40.png</key>
+            <key type="filename">military/military_animation_41.png</key>
+            <key type="filename">military/military_animation_42.png</key>
+            <key type="filename">military/military_animation_43.png</key>
+            <key type="filename">military/military_animation_44.png</key>
+            <key type="filename">military/military_animation_45.png</key>
+            <key type="filename">military/military_animation_46.png</key>
+            <key type="filename">military/military_animation_5.png</key>
+            <key type="filename">military/military_animation_6.png</key>
+            <key type="filename">military/military_animation_7.png</key>
+            <key type="filename">military/military_animation_8.png</key>
+            <key type="filename">military/military_animation_9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>24,15,48,29</rect>
+                <key>scale9Paddings</key>
+                <rect>24,15,48,29</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">night/night_animation_0.png</key>
+            <key type="filename">night/night_animation_1.png</key>
+            <key type="filename">night/night_animation_10.png</key>
+            <key type="filename">night/night_animation_11.png</key>
+            <key type="filename">night/night_animation_12.png</key>
+            <key type="filename">night/night_animation_13.png</key>
+            <key type="filename">night/night_animation_14.png</key>
+            <key type="filename">night/night_animation_15.png</key>
+            <key type="filename">night/night_animation_16.png</key>
+            <key type="filename">night/night_animation_17.png</key>
+            <key type="filename">night/night_animation_18.png</key>
+            <key type="filename">night/night_animation_19.png</key>
+            <key type="filename">night/night_animation_2.png</key>
+            <key type="filename">night/night_animation_20.png</key>
+            <key type="filename">night/night_animation_21.png</key>
+            <key type="filename">night/night_animation_22.png</key>
+            <key type="filename">night/night_animation_23.png</key>
+            <key type="filename">night/night_animation_24.png</key>
+            <key type="filename">night/night_animation_25.png</key>
+            <key type="filename">night/night_animation_26.png</key>
+            <key type="filename">night/night_animation_27.png</key>
+            <key type="filename">night/night_animation_28.png</key>
+            <key type="filename">night/night_animation_29.png</key>
+            <key type="filename">night/night_animation_3.png</key>
+            <key type="filename">night/night_animation_30.png</key>
+            <key type="filename">night/night_animation_31.png</key>
+            <key type="filename">night/night_animation_32.png</key>
+            <key type="filename">night/night_animation_33.png</key>
+            <key type="filename">night/night_animation_34.png</key>
+            <key type="filename">night/night_animation_35.png</key>
+            <key type="filename">night/night_animation_36.png</key>
+            <key type="filename">night/night_animation_37.png</key>
+            <key type="filename">night/night_animation_38.png</key>
+            <key type="filename">night/night_animation_39.png</key>
+            <key type="filename">night/night_animation_4.png</key>
+            <key type="filename">night/night_animation_40.png</key>
+            <key type="filename">night/night_animation_41.png</key>
+            <key type="filename">night/night_animation_42.png</key>
+            <key type="filename">night/night_animation_43.png</key>
+            <key type="filename">night/night_animation_44.png</key>
+            <key type="filename">night/night_animation_45.png</key>
+            <key type="filename">night/night_animation_46.png</key>
+            <key type="filename">night/night_animation_47.png</key>
+            <key type="filename">night/night_animation_48.png</key>
+            <key type="filename">night/night_animation_49.png</key>
+            <key type="filename">night/night_animation_5.png</key>
+            <key type="filename">night/night_animation_50.png</key>
+            <key type="filename">night/night_animation_6.png</key>
+            <key type="filename">night/night_animation_7.png</key>
+            <key type="filename">night/night_animation_8.png</key>
+            <key type="filename">night/night_animation_9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,17,33,33</rect>
+                <key>scale9Paddings</key>
+                <rect>16,17,33,33</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+        </map>
         <key>fileList</key>
         <array>
             <filename>military</filename>
@@ -220,5 +555,7 @@
         <string></string>
         <key>normalMapSheetFileName</key>
         <filename></filename>
+        <key>exporterProperties</key>
+        <map type="ExporterProperties"/>
     </struct>
 </data>

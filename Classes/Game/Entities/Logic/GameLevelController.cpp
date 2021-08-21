@@ -18,11 +18,14 @@
 #include "Windy/Entities/Boss.h"
 #include "Windy/Entities/Bounds.h"
 
+#include "Windy/Display.h"
+
 #if _DEBUG
 #include "Windy/Entities/Camera.h"
 #endif
 
 #include "Game/Entities/UI/Fader.h"
+#include "Game/Entities/UI/ReadyIndicator.h"
 
 
 using namespace game;
@@ -90,6 +93,8 @@ void GameLevelController::onUpdate(float dt) {
 	switch (this->levelState) {
 		case LevelState::Startup:
 		{
+			this->level->setPaused(true, true);
+
 			this->gui->healthBar->setVisible(false);
 			this->gui->weaponBar->setVisible(false);
 
@@ -109,11 +114,22 @@ void GameLevelController::onUpdate(float dt) {
 				_restartFader = fader;
 
 				_restartFader->fadeOut([this]() {
-					levelState = LevelState::Playing;
-					this->level->setPaused(false, true);
+					_readyIndicator = ReadyIndicator::create([this]() {
+						levelState = LevelState::Playing;
+						this->level->setPaused(false, true);
 
-					_restartFader->removeFromParent();
-					_restartFader = nullptr;
+						_restartFader->removeFromParent();
+						_restartFader = nullptr;
+
+						_readyIndicator->removeFromParent();
+						_readyIndicator = nullptr;
+					});
+
+					float indicatorPositionY = windy::Display::getInstance().height * 0.125f;
+					_readyIndicator->setPosition(cocos2d::Point(0, indicatorPositionY));
+
+					this->level->bounds->addChild(_readyIndicator, 2048);
+					
 				});
 			}
 		}

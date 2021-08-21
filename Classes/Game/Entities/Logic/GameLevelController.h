@@ -10,6 +10,7 @@ namespace game {
     class GameGui;
     class GamePlayer;
     class Fader;
+    class ReadyIndicator;
 }
 
 namespace game {
@@ -56,6 +57,8 @@ namespace game {
 
         Fader* _restartFader;
         Fader* _pauseFader;
+
+        ReadyIndicator* _readyIndicator;
     };
 }
 

@@ -46,6 +46,7 @@
 
 #include "Game/Entities/UI/EnergyBar.h"
 #include "Game/Entities/UI/GameGui.h"
+#include "Game/Entities/UI/ReadyIndicator.h"
 #include "Game/Entities/UI/Pause/PauseAnimation.h"
 #include "Game/Entities/UI/Pause/PauseInterruptor.h"
 #include "Game/Entities/UI/Pause/PauseMenu.h"
@@ -125,6 +126,7 @@ bool GameScene::init()
     
     PauseMenu::preloadResources();    
     PauseSelector::preloadResources();
+    ReadyIndicator::preloadResources();
 
 
     windy::EntityFactory::getInstance().registerType<GamePlayer>("player");

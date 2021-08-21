@@ -401,7 +401,7 @@ void PhysicsWorld::update(float dt)
 
                 bool shouldRemove = false;
                 for (int i = 0; i < contactExitCollisions.size(); ++i) {
-                    auto validationContact = this->contactEventCollisions.at(i);
+                    auto validationContact = contactExitCollisions.at(i);
 
                     shouldRemove = validationContact.first == contact.first && 
                                     validationContact.second.first == contact.second.first &&

@@ -661,6 +661,7 @@
     <ClInclude Include="..\..\Classes\Game\Entities\UI\Pause\PauseInterruptor.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\UI\Pause\PauseMenu.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\UI\Pause\PauseSelector.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\UI\ReadyIndicator.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\DirectionalBullet.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\ExtremeBullet.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Weapons\SheriffBullet.h" />
@@ -787,6 +788,7 @@
     <ClCompile Include="..\..\Classes\Game\Entities\UI\Pause\PauseInterruptor.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\UI\Pause\PauseMenu.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\UI\Pause\PauseSelector.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\UI\ReadyIndicator.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\DirectionalBullet.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\ExtremeBullet.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Weapons\SheriffBullet.cpp" />

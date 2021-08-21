@@ -487,6 +487,7 @@ bool Level::getPaused() {
 }
 
 void Level::setPaused(bool isPaused, bool freezePlayer) {
+
     this->isPaused = isPaused;
 
     auto player = this->player;

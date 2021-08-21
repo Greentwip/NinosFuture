@@ -382,6 +382,9 @@
     <ClCompile Include="..\..\Classes\Game\Entities\UI\Fader.cpp">
       <Filter>Classes\Game\Entities\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\UI\ReadyIndicator.cpp">
+      <Filter>Classes\Game\Entities\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -1900,6 +1903,9 @@
       <Filter>Classes\Game\Entities\Weapons</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Classes\Game\Entities\UI\Fader.h">
+      <Filter>Classes\Game\Entities\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\UI\ReadyIndicator.h">
       <Filter>Classes\Game\Entities\UI</Filter>
     </ClInclude>
   </ItemGroup>
