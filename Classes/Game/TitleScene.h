@@ -29,9 +29,11 @@ namespace game {
     private:
         void selectStart();
         void selectOptions();
+        void selectSoundTest();
         void selectAbout();
         void selectProjects();
         void selectCredits();
+
 
         bool triggered;
 
@@ -39,6 +41,7 @@ namespace game {
 
         windy::Label* startText;
         windy::Label* optionsText;
+        windy::Label* soundTestText;
         windy::Label* _aboutText;
         windy::Label* _projectsText;
         windy::Label* _creditsText;

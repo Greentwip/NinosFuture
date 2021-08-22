@@ -10,12 +10,14 @@
 #include "ProjectsScene.h"
 #include "CreditsScene.h"
 #include "OptionsScene.h"
+#include "SoundTestScene.h"
 #include "SaveScene.h"
 #include "StageSelectScene.h"
 #include "BossIntroScene.h"
 #include "GameScene.h"
 #include "GameOverScene.h"
 #include "WeaponAcquireScene.h"
+
 
 #include "Windy/Input.h"
 
@@ -62,6 +64,7 @@ GameStateMachine::GameStateMachine() {
     sceneFactory.registerType<ProjectsScene>(GameState::Projects);
     sceneFactory.registerType<CreditsScene>(GameState::Credits);
     sceneFactory.registerType<OptionsScene>(GameState::Options);
+    sceneFactory.registerType<SoundTestScene>(GameState::SoundTest);
     sceneFactory.registerType<SaveScene>(GameState::Save);
     sceneFactory.registerType<StageSelectScene>(GameState::StageSelect);
     sceneFactory.registerType<BossIntroScene>(GameState::BossIntro);

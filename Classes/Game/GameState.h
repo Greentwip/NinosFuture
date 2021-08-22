@@ -9,6 +9,7 @@ namespace game {
         Microsoft,
         Title,
         Options,
+        SoundTest,
         About,
         Projects,
         Credits,

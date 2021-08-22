@@ -77,6 +77,15 @@ bool SoundTestMenu::init()
     }
 
     _amplitudes = windy::Settings::read().soundAmplitudeValues;
+
+    currentSoundText->setString(_trackIdentifiers[_currentTrackId]);
+    amplitudeText->setString(std::to_string(_amplitudes[_tracks[_currentTrackId]]));
+
+    float amplitude = _amplitudes[_tracks[_currentTrackId]];
+    int percent = (amplitude * 100) / 2.0f;
+
+    slider->setPercent(percent);
+
     
     playButton->addClickEventListener([=](Ref*)
     {
@@ -102,6 +111,11 @@ bool SoundTestMenu::init()
         currentSoundText->setString(_trackIdentifiers[_currentTrackId]);
         amplitudeText->setString(std::to_string(_amplitudes[_tracks[_currentTrackId]]));
 
+        float amplitude = _amplitudes[_tracks[_currentTrackId]];
+        int percent = (amplitude * 100) / 2.0f;
+
+        slider->setPercent(percent);
+
         windy::AudioManager::stopAll();
         _playing = false;
 
@@ -116,6 +130,11 @@ bool SoundTestMenu::init()
 
         currentSoundText->setString(_trackIdentifiers[_currentTrackId]);
         amplitudeText->setString(std::to_string(_amplitudes[_tracks[_currentTrackId]]));
+
+        float amplitude = _amplitudes[_tracks[_currentTrackId]];
+        int percent = (amplitude * 100) / 2.0f;
+        
+        slider->setPercent(percent);
 
         windy::AudioManager::stopAll();
         _playing = false;
@@ -133,6 +152,8 @@ bool SoundTestMenu::init()
             int percent = slider->getPercent();
             float amplitude = static_cast<float>(percent * 2) / 100.0f;
             _amplitudes[_tracks[_currentTrackId]] = amplitude;
+            windy::Settings::soundAmplitudeValues = _amplitudes;
+
             amplitudeText->setString(std::to_string(amplitude));
 
             if (_playing) {

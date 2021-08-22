@@ -10,6 +10,81 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\External">
+      <UniqueIdentifier>{66c520f3-2472-40fe-816d-8c6fd6af236f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\External\tao">
+      <UniqueIdentifier>{ad3e6428-b37f-48e2-9181-03b38b16a0d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\External\tao\json">
+      <UniqueIdentifier>{bf4a9c5d-a574-4006-9474-78cc770232c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\External\tao\pegtl">
+      <UniqueIdentifier>{4dc47dff-79f1-4204-9c5c-55443db8b0c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game">
+      <UniqueIdentifier>{840f9042-06a3-4bd7-944b-d5f2799c21a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Windy">
+      <UniqueIdentifier>{65b8cfe4-2193-431a-8062-fe17e21bdec9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Windy\Entities">
+      <UniqueIdentifier>{c28190ee-7076-48fa-96fa-7c539357c7e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities">
+      <UniqueIdentifier>{8fb36a2b-d69d-4668-94ba-14128fb0a33e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Animations">
+      <UniqueIdentifier>{b0cb10f2-4a18-4449-9f39-8cd1c5a9a16b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Boss">
+      <UniqueIdentifier>{98a25ea7-c8ea-464c-9926-21fec04bd54a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Enemies">
+      <UniqueIdentifier>{89a15d07-f818-4b17-bedd-5f0c48d48139}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Items">
+      <UniqueIdentifier>{1d870876-93d4-4c0a-b6be-43fecc44e483}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Logic">
+      <UniqueIdentifier>{1f9a7c6e-116b-4e80-a807-514f01a5ebca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Player">
+      <UniqueIdentifier>{c96128d0-5bfc-4d6c-8a01-eb05debb26f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Scenery">
+      <UniqueIdentifier>{9dff2e8c-b04c-4b3b-8a2b-3f75fc326611}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Enemies\Common">
+      <UniqueIdentifier>{595db12c-f3c2-4087-8c52-f80a58c80a66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Enemies\Sheriff">
+      <UniqueIdentifier>{5bcb64a1-c866-4fba-a159-6181f93c86b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Enemies\Military">
+      <UniqueIdentifier>{587aa236-4211-4a4c-8cdb-04d51c298b22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Scenery\Common">
+      <UniqueIdentifier>{5df4a9ce-1a61-4d1a-9ffb-8a6971dad6ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Scenery\Sheriff">
+      <UniqueIdentifier>{bab32ce3-177f-411d-b089-2cc6a54f08bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Special">
+      <UniqueIdentifier>{f62f12cd-ba9e-4422-a13a-d4774b45db6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Weapons">
+      <UniqueIdentifier>{3c9c8d32-0283-4a7a-9bf5-73dd8c10052b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\UI">
+      <UniqueIdentifier>{41935dad-47f3-498c-9538-3e5a43aef726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\UI\Sound">
+      <UniqueIdentifier>{1d657b79-2660-4b48-ac43-ca0798721579}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\UI\Pause">
+      <UniqueIdentifier>{04e76a45-8112-41ac-acd7-794ed834ee6f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -18,8 +93,305 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\Classes\Windy\Entities\Animation.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\BarMeter.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Block.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Boss.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Bounds.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Browner.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Camera.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\CameraScroll.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Checkpoint.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Door.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Enemy.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Explosion.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Gui.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Item.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Ladder.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\LevelController.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Logical.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Passage.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Player.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Scroll.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Teleporter.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Weapon.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Level.cpp">
+      <Filter>src\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\ObjectManager.cpp">
+      <Filter>src\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\PhysicsWorld.cpp">
+      <Filter>src\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\SaveManager.cpp">
+      <Filter>src\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Settings.cpp">
+      <Filter>src\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Sprite.cpp">
+      <Filter>src\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\SpriteDefinition.cpp">
+      <Filter>src\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Armature.cpp">
+      <Filter>src\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\AudioManager.cpp">
+      <Filter>src\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\DebugDrawNode.cpp">
+      <Filter>src\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\InfiniteParallax.cpp">
+      <Filter>src\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Input.cpp">
+      <Filter>src\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Label.cpp">
+      <Filter>src\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\LandscapeTile.cpp">
+      <Filter>src\Windy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\IntroScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\MicrosoftScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\OptionsScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ProjectsScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SaveScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\StageSelectScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\TitleScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WeaponAcquireScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\AbakuraScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\AboutScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\BossIntroScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Computer.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\CreditsScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\GameManager.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\GameOverScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\GameScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\GameStateMachine.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Intro.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Player\ExtremeBrowner.cpp">
+      <Filter>src\Game\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Player\GamePlayer.cpp">
+      <Filter>src\Game\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Player\HelmetBrowner.cpp">
+      <Filter>src\Game\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Player\SheriffBrowner.cpp">
+      <Filter>src\Game\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Player\TeleportBrowner.cpp">
+      <Filter>src\Game\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Player\VioletBrowner.cpp">
+      <Filter>src\Game\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Boss\GameBoss.cpp">
+      <Filter>src\Game\Entities\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Boss\SheriffMan.cpp">
+      <Filter>src\Game\Entities\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Enemies\GameEnemy.cpp">
+      <Filter>src\Game\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Enemies\Common\CannonJoe.cpp">
+      <Filter>src\Game\Entities\Enemies\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Enemies\Common\Lyric.cpp">
+      <Filter>src\Game\Entities\Enemies\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Enemies\Common\Subeil.cpp">
+      <Filter>src\Game\Entities\Enemies\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Enemies\Common\Sumatran.cpp">
+      <Filter>src\Game\Entities\Enemies\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Enemies\Common\Taban.cpp">
+      <Filter>src\Game\Entities\Enemies\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Enemies\Military\RollRunner.cpp">
+      <Filter>src\Game\Entities\Enemies\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Enemies\Military\Tank.cpp">
+      <Filter>src\Game\Entities\Enemies\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Enemies\Sheriff\Barrel.cpp">
+      <Filter>src\Game\Entities\Enemies\Sheriff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Enemies\Sheriff\Cow.cpp">
+      <Filter>src\Game\Entities\Enemies\Sheriff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Enemies\Sheriff\JetBird.cpp">
+      <Filter>src\Game\Entities\Enemies\Sheriff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Enemies\Sheriff\Tremor.cpp">
+      <Filter>src\Game\Entities\Enemies\Sheriff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Enemies\Sheriff\TremorTail.cpp">
+      <Filter>src\Game\Entities\Enemies\Sheriff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Items\GameItem.cpp">
+      <Filter>src\Game\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Logic\GameLevelController.cpp">
+      <Filter>src\Game\Entities\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Scenery\General\GameExplosion.cpp">
+      <Filter>src\Game\Entities\Scenery\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Scenery\Sheriff\Disk.cpp">
+      <Filter>src\Game\Entities\Scenery\Sheriff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Special\GameHorizontalDoor.cpp">
+      <Filter>src\Game\Entities\Special</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Special\GamePlatform.cpp">
+      <Filter>src\Game\Entities\Special</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Special\GameVerticalDoor.cpp">
+      <Filter>src\Game\Entities\Special</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Resources.cpp">
+      <Filter>src\Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Weapons\DirectionalBullet.cpp">
+      <Filter>src\Game\Entities\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Weapons\ExtremeBullet.cpp">
+      <Filter>src\Game\Entities\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Weapons\SheriffBullet.cpp">
+      <Filter>src\Game\Entities\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Weapons\TankBullet.cpp">
+      <Filter>src\Game\Entities\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Weapons\TremorDrill.cpp">
+      <Filter>src\Game\Entities\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Weapons\TremorLaser.cpp">
+      <Filter>src\Game\Entities\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Weapons\VioletBullet.cpp">
+      <Filter>src\Game\Entities\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\UI\EnergyBar.cpp">
+      <Filter>src\Game\Entities\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\UI\Fader.cpp">
+      <Filter>src\Game\Entities\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\UI\GameGui.cpp">
+      <Filter>src\Game\Entities\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\UI\ReadyIndicator.cpp">
+      <Filter>src\Game\Entities\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\UI\Sound\SoundTestMenu.cpp">
+      <Filter>src\Game\Entities\UI\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\UI\Pause\PauseAnimation.cpp">
+      <Filter>src\Game\Entities\UI\Pause</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\UI\Pause\PauseInterruptor.cpp">
+      <Filter>src\Game\Entities\UI\Pause</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\UI\Pause\PauseMenu.cpp">
+      <Filter>src\Game\Entities\UI\Pause</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\UI\Pause\PauseSelector.cpp">
+      <Filter>src\Game\Entities\UI\Pause</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SoundTestScene.cpp">
+      <Filter>src\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -29,8 +401,1541 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>src</Filter>
+    <ClInclude Include="..\Classes\External\tao\json\basic_value.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binary.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binary_view.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binding\constant.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binding\element.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binding\factory.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binding\for_nothing_value.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binding\for_unknown_key.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binding\inherit.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binding\internal\array.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binding\internal\inherit.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binding\internal\object.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binding\internal\type_key.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binding\member.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binding\member_kind.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binding\versions.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\binding.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\consume_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\consume_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\events\from_binary.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\events\from_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\events\from_input.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\events\from_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\events\to_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\events\to_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\from_binary.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\from_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\from_input.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\from_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\internal\grammar.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\internal\major.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\parts_parser.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\to_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor\to_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\cbor.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\consume.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\consume_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\consume_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\array_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\deque_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\diff.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\get.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\internal\array_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\internal\indirect_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\internal\object_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\internal\type_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\list_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\map_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\multimap_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\multiset_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\pair_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\patch.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\pointer_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\position.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\reference.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\schema.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\set_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\shared_ptr_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\tuple_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\unique_ptr_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\unordered_map_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\unordered_set_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\variant_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\vector_bool_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\contrib\vector_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\apply.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\binary_to_base64.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\binary_to_base64url.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\binary_to_exception.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\binary_to_hex.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\compare.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\debug.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\discard.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\from_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\from_input.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\from_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\from_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\from_value.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\hash.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\invalid_string_to_binary.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\invalid_string_to_exception.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\invalid_string_to_hex.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\key_camel_case_to_snake_case.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\key_snake_case_to_camel_case.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\limit_nesting_depth.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\limit_value_count.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\non_finite_to_exception.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\non_finite_to_null.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\non_finite_to_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\prefer_signed.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\prefer_unsigned.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\produce.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\ref.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\statistics.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\tee.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\to_pretty_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\to_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\to_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\to_value.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\transformer.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\validate_event_order.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\validate_keys.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\virtual_base.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events\virtual_ref.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\events.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\external\double.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\external\itoa.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\external\ryu.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\forward.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\from_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\from_input.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\from_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\from_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\action.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\base64.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\base64url.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\dependent_false.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\endian.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\endian_gcc.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\endian_win.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\errors.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\escape.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\filesystem.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\format.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\grammar.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\hexdump.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\identity.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\number_state.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\number_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\pair.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\parse_util.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\sha256.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\single.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\string_t.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\type_traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\unescape_action.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\internal\uri_fragment.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\consume_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\consume_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\events\from_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\events\from_input.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\events\from_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\events\from_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\events\to_pretty_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\events\to_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\events\to_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\from_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\from_input.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\from_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\from_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\internal\action.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\internal\bunescape_action.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\internal\errors.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\internal\grammar.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\internal\integer.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\internal\unescape_action.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\is_identifier.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\parts_parser.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\to_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn\to_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\jaxn.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\message_extension.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\consume_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\consume_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\events\from_binary.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\events\from_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\events\from_input.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\events\from_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\events\to_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\events\to_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\from_binary.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\from_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\from_input.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\from_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\internal\format.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\internal\grammar.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\parts_parser.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\to_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack\to_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\msgpack.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\operators.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\parts_parser.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\pointer.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\produce.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\self_contained.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\span.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\to_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\to_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\traits.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\type.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\consume_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\consume_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\events\from_binary.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\events\from_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\events\from_input.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\events\from_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\events\to_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\events\to_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\from_binary.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\from_file.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\from_input.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\from_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\internal\grammar.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\internal\marker.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\parts_parser.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\to_stream.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson\to_string.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\ubjson.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\utf8.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json\value.hpp">
+      <Filter>src\External\tao\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\apply_mode.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\argv_input.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\ascii.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\buffer_input.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\change_action.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\change_action_and_state.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\change_action_and_states.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\change_control.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\change_state.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\change_states.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\config.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\abnf.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\alphabet.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\analyze.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\analyze_traits.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\check_bytes.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\control_action.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\coverage.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\forward.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\function.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\http.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\icu\internal.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\icu\utf16.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\icu\utf32.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\icu\utf8.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\if_then.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\instantiate.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\integer.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\internal\endian.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\internal\endian_gcc.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\internal\endian_win.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\internal\peek_mask_uint.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\internal\peek_mask_uint8.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\internal\peek_uint.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\internal\peek_uint8.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\internal\peek_utf16.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\internal\peek_utf32.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\internal\read_uint.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\internal\set_stack_guard.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\internal\vector_stack_guard.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\json.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\json_pointer.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\limit_bytes.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\limit_depth.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\parse_tree.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\parse_tree_to_dot.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\peg.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\predicates.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\print.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\print_coverage.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\raw_string.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\remove_first_state.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\remove_last_states.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\rep_one_min_max.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\rep_string.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\shuffle_states.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\state_control.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\to_string.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\trace.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\uint16.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\uint32.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\uint64.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\uint8.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\unescape.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\uri.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\utf16.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\contrib\utf32.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\cstream_input.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\demangle.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\disable_action.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\discard_input.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\discard_input_on_failure.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\discard_input_on_success.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\enable_action.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\eol.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\eol_pair.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\file_input.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\action.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\action_input.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\any.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\apply.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\apply0.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\apply0_single.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\apply_single.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\at.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\bof.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\bol.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\bump.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\bump_help.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\bytes.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\control.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\crlf_eol.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\cr_crlf_eol.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\cr_eol.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\cstream_reader.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\cstring_reader.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\dependent_false.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\disable.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\discard.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\enable.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\enable_control.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\eof.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\eol.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\eolf.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\failure.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\filesystem.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\file_mapper_posix.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\file_mapper_win32.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\file_reader.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\has_apply.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\has_apply0.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\has_match.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\has_unwind.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\identifier.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\if_apply.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\if_must.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\if_must_else.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\if_then_else.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\input_pair.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\istream_reader.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\istring.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\iterator.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\lf_crlf_eol.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\lf_eol.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\list.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\list_must.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\list_tail.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\list_tail_pad.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\marker.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\minus.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\missing_apply.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\missing_apply0.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\must.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\not_at.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\one.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\opt.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\pad.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\pad_opt.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\path_to_string.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\peek_char.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\peek_utf8.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\pegtl_string.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\plus.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\raise.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\range.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\ranges.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\rematch.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\rep.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\rep_min.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\rep_min_max.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\rep_opt.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\require.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\result_on_found.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\rules.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\seq.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\sor.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\star.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\star_must.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\state.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\string.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\success.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\try_catch_type.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\internal\until.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\istream_input.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\match.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\memory_input.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\mmap_input.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\must_if.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\normal.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\nothing.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\parse.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\parse_error.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\position.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\read_input.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\require_apply.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\require_apply0.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\rewind_mode.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\rules.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\string_input.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\tracking_mode.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\type_list.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\utf8.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\version.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl\visit.hpp">
+      <Filter>src\External\tao\pegtl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\json.hpp">
+      <Filter>src\External\tao</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\tao\pegtl.hpp">
+      <Filter>src\External\tao</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Animation.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\BarMeter.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Block.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Boss.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Bounds.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Browner.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Browners.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Camera.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\CameraScroll.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Checkpoint.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Door.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Enemy.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Explosion.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Gui.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Item.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Ladder.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\LevelController.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Logical.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\ObjectEntry.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Passage.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Player.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Scroll.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Tags.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Teleporter.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Weapon.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\LandscapeTile.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Level.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\ObjectManager.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\PhysicsWorld.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\SaveManager.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Settings.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Sprite.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\SpriteDefinition.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\AnimationAction.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Armature.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\AudioManager.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\CameraFlags.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\DebugDrawNode.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Display.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\EntityFactory.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\GameTags.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\GeometryExtensions.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\ImageFormat.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\InfiniteParallax.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Input.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\InputKeys.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Label.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\LabelAction.h">
+      <Filter>src\Windy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\IntroScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\MicrosoftScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\OptionsScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\ProjectsScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SaveScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\StageSelectScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\TitleScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\WeaponAcquireScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\AbakuraScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\AboutScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\BossIntroScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Computer.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\CreditsScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\GameManager.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\GameOverScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\GameScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\GameState.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\GameStateMachine.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Intro.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Player\ExtremeBrowner.h">
+      <Filter>src\Game\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Player\GamePlayer.h">
+      <Filter>src\Game\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Player\HelmetBrowner.h">
+      <Filter>src\Game\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Player\SheriffBrowner.h">
+      <Filter>src\Game\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Player\TeleportBrowner.h">
+      <Filter>src\Game\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Player\VioletBrowner.h">
+      <Filter>src\Game\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Boss\GameBoss.h">
+      <Filter>src\Game\Entities\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Boss\SheriffMan.h">
+      <Filter>src\Game\Entities\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Enemies\GameEnemy.h">
+      <Filter>src\Game\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Enemies\Common\CannonJoe.h">
+      <Filter>src\Game\Entities\Enemies\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Enemies\Common\Lyric.h">
+      <Filter>src\Game\Entities\Enemies\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Enemies\Common\Subeil.h">
+      <Filter>src\Game\Entities\Enemies\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Enemies\Common\Sumatran.h">
+      <Filter>src\Game\Entities\Enemies\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Enemies\Common\Taban.h">
+      <Filter>src\Game\Entities\Enemies\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Enemies\Military\RollRunner.h">
+      <Filter>src\Game\Entities\Enemies\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Enemies\Military\Tank.h">
+      <Filter>src\Game\Entities\Enemies\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Enemies\Sheriff\Barrel.h">
+      <Filter>src\Game\Entities\Enemies\Sheriff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Enemies\Sheriff\Cow.h">
+      <Filter>src\Game\Entities\Enemies\Sheriff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Enemies\Sheriff\JetBird.h">
+      <Filter>src\Game\Entities\Enemies\Sheriff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Enemies\Sheriff\Tremor.h">
+      <Filter>src\Game\Entities\Enemies\Sheriff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Enemies\Sheriff\TremorTail.h">
+      <Filter>src\Game\Entities\Enemies\Sheriff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Items\GameItem.h">
+      <Filter>src\Game\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Items\ItemFlags.h">
+      <Filter>src\Game\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Logic\GameLevelController.h">
+      <Filter>src\Game\Entities\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Scenery\General\GameExplosion.h">
+      <Filter>src\Game\Entities\Scenery\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Scenery\Sheriff\Disk.h">
+      <Filter>src\Game\Entities\Scenery\Sheriff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Special\GameHorizontalDoor.h">
+      <Filter>src\Game\Entities\Special</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Special\GamePlatform.h">
+      <Filter>src\Game\Entities\Special</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Special\GameVerticalDoor.h">
+      <Filter>src\Game\Entities\Special</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Resources.h">
+      <Filter>src\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Weapons\DirectionalBullet.h">
+      <Filter>src\Game\Entities\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Weapons\ExtremeBullet.h">
+      <Filter>src\Game\Entities\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Weapons\SheriffBullet.h">
+      <Filter>src\Game\Entities\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Weapons\TankBullet.h">
+      <Filter>src\Game\Entities\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Weapons\TremorDrill.h">
+      <Filter>src\Game\Entities\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Weapons\TremorLaser.h">
+      <Filter>src\Game\Entities\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Weapons\VioletBullet.h">
+      <Filter>src\Game\Entities\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\UI\EnergyBar.h">
+      <Filter>src\Game\Entities\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\UI\Fader.h">
+      <Filter>src\Game\Entities\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\UI\GameGui.h">
+      <Filter>src\Game\Entities\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\UI\ReadyIndicator.h">
+      <Filter>src\Game\Entities\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\UI\Sound\SoundTestMenu.h">
+      <Filter>src\Game\Entities\UI\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\UI\Pause\PauseAnimation.h">
+      <Filter>src\Game\Entities\UI\Pause</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\UI\Pause\PauseInterruptor.h">
+      <Filter>src\Game\Entities\UI\Pause</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\UI\Pause\PauseMenu.h">
+      <Filter>src\Game\Entities\UI\Pause</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\UI\Pause\PauseSelector.h">
+      <Filter>src\Game\Entities\UI\Pause</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\SoundTestScene.h">
+      <Filter>src\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

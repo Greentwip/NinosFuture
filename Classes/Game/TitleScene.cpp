@@ -109,6 +109,12 @@ bool TitleScene::init()
                                            cocos2d::TextHAlignment::LEFT,
                                            cocos2d::TextVAlignment::TOP);    
 
+    this->soundTestText = windy::Label::create("SOUND TEST", 
+                                           TitleSceneResources::font, 
+                                           8, 
+                                           cocos2d::TextHAlignment::LEFT,
+                                           cocos2d::TextVAlignment::TOP);    
+
     this->_aboutText = windy::Label::create("ABOUT", 
                                            TitleSceneResources::font, 
                                            8, 
@@ -132,6 +138,9 @@ bool TitleScene::init()
     float optionsTextWidth = this->optionsText->getContentSize().width;
     float optionsTextHeight = this->optionsText->getContentSize().height;
 
+    float soundTestTextWidth = this->soundTestText->getContentSize().width;
+    float soundTestTextHeight = this->soundTestText->getContentSize().height;
+
     float aboutTextWidth = this->_aboutText->getContentSize().width;
     float aboutTextHeight = this->_aboutText->getContentSize().height;
 
@@ -149,22 +158,27 @@ bool TitleScene::init()
         cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (optionsTextWidth * 0.5f),
             (windy::Display::getInstance().height * 0.5f) + (optionsTextHeight * 0.5f)));
 
+    this->soundTestText->setPosition(
+        cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (soundTestTextWidth * 0.5f),
+            (windy::Display::getInstance().height * 0.5f) - (soundTestTextHeight * 0.5f) * 2));
+
     this->_aboutText->setPosition(
         cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (aboutTextWidth * 0.5f),
-            (windy::Display::getInstance().height * 0.5f) - (aboutTextHeight * 0.5f) * 2));
+            (windy::Display::getInstance().height * 0.5f) - (aboutTextHeight * 0.5f) * 6));
 
 
     this->_projectsText->setPosition(
         cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (projectsTextWidth * 0.5f),
-            (windy::Display::getInstance().height * 0.5f) - (projectsTextHeight * 0.5f) * 6));
+            (windy::Display::getInstance().height * 0.5f) - (projectsTextHeight * 0.5f) * 8));
 
 
     this->_creditsText->setPosition(
         cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (creditsTextWidth * 0.5f),
-            (windy::Display::getInstance().height * 0.5f) - (creditsTextHeight * 0.5f) * 8));
+            (windy::Display::getInstance().height * 0.5f) - (creditsTextHeight * 0.5f) * 10));
 
     addChild(this->startText, 128);
     addChild(this->optionsText, 128);
+    addChild(this->soundTestText, 128);
     addChild(this->_aboutText, 128);
     addChild(this->_projectsText, 128);
     addChild(this->_creditsText, 128);
@@ -203,6 +217,7 @@ bool TitleScene::init()
 void TitleScene::selectStart() {
     this->startText->setTextColor(TitleSceneResources::textActiveColor);
     this->optionsText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->soundTestText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_aboutText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_projectsText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_creditsText->setTextColor(TitleSceneResources::textInactiveColor);
@@ -212,6 +227,7 @@ void TitleScene::selectStart() {
 void TitleScene::selectOptions() {
     this->startText->setTextColor(TitleSceneResources::textInactiveColor);
     this->optionsText->setTextColor(TitleSceneResources::textActiveColor);
+    this->soundTestText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_aboutText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_projectsText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_creditsText->setTextColor(TitleSceneResources::textInactiveColor);
@@ -219,9 +235,23 @@ void TitleScene::selectOptions() {
     this->selectedOption = this->optionsText;
 }
 
+void TitleScene::selectSoundTest() {
+    this->startText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->optionsText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->soundTestText->setTextColor(TitleSceneResources::textActiveColor);
+    this->_aboutText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->_projectsText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->_creditsText->setTextColor(TitleSceneResources::textInactiveColor);
+
+    this->selectedOption = this->soundTestText;
+}
+
+
 void TitleScene::selectAbout() {
     this->startText->setTextColor(TitleSceneResources::textInactiveColor);
     this->optionsText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->soundTestText->setTextColor(TitleSceneResources::textInactiveColor);
+
     this->_aboutText->setTextColor(TitleSceneResources::textActiveColor);
     this->_projectsText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_creditsText->setTextColor(TitleSceneResources::textInactiveColor);
@@ -234,6 +264,8 @@ void TitleScene::selectAbout() {
 void TitleScene::selectProjects() {
     this->startText->setTextColor(TitleSceneResources::textInactiveColor);
     this->optionsText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->soundTestText->setTextColor(TitleSceneResources::textInactiveColor);
+
     this->_aboutText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_projectsText->setTextColor(TitleSceneResources::textActiveColor);
     this->_creditsText->setTextColor(TitleSceneResources::textInactiveColor);
@@ -243,6 +275,8 @@ void TitleScene::selectProjects() {
 void TitleScene::selectCredits() {
     this->startText->setTextColor(TitleSceneResources::textInactiveColor);
     this->optionsText->setTextColor(TitleSceneResources::textInactiveColor);
+    this->soundTestText->setTextColor(TitleSceneResources::textInactiveColor);
+
     this->_aboutText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_projectsText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_creditsText->setTextColor(TitleSceneResources::textActiveColor);
@@ -272,6 +306,9 @@ void TitleScene::update(float dt)
                 this->selectOptions();
             }
             else if (this->selectedOption == this->optionsText) {
+                this->selectSoundTest();
+            }
+            else if (this->selectedOption == this->soundTestText) {
                 this->selectAbout();
             }
             else if (this->selectedOption == this->_aboutText) {
@@ -294,8 +331,11 @@ void TitleScene::update(float dt)
             else if (this->selectedOption == this->optionsText) {
                 this->selectStart();
             }
-            else if (this->selectedOption == this->_aboutText) {
+            else if (this->selectedOption == this->soundTestText) {
                 this->selectOptions();
+            }
+            else if (this->selectedOption == this->_aboutText) {
+                this->selectSoundTest();
             }
             else if (this->selectedOption == this->_projectsText) {
                 this->selectAbout();
@@ -319,6 +359,9 @@ void TitleScene::update(float dt)
                 }
                 else if (this->selectedOption == this->optionsText) {
                     GameStateMachine::getInstance().pushState(GameState::Options);
+                }
+                else if (this->selectedOption == this->soundTestText) {
+                    GameStateMachine::getInstance().pushState(GameState::SoundTest);
                 }
                 else if (this->selectedOption == this->_aboutText) {
                     GameStateMachine::getInstance().pushState(GameState::About);

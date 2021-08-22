@@ -47,6 +47,20 @@ Controller* Controller::getControllerByTag(int tag)
     return nullptr;
 }
 
+
+Controller* Controller::getControllerByDeviceId(int deviceId)
+{
+    for (auto controller : Controller::s_allController)
+    {
+        if (controller->_deviceId == deviceId)
+        {
+            return controller;
+        }
+    }
+    return nullptr;
+}
+
+
 void Controller::init()
 {
     for (int key = Key::JOYSTICK_LEFT_X; key < Key::KEY_MAX; ++key)

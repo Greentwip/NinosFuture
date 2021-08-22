@@ -97,6 +97,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
         scaleFactor = virtualRatio / screenRatio;
     }
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+    glview->setCursorVisible(true);
+#endif
+
     //director->setContentScaleFactor(scaleFactor);
     // if the frame's height is larger than the height of medium size.
     /*if (frameSize.height > mediumResolutionSize.height)

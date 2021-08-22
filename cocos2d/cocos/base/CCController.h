@@ -25,12 +25,13 @@
 
 #ifndef __cocos2d_libs__CCController__
 #define __cocos2d_libs__CCController__
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX  || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX  || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
 
 #include "platform/CCPlatformMacros.h"
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <map>
 
 NS_CC_BEGIN
 
@@ -39,13 +40,31 @@ class EventListenerController;
 class EventController;
 class EventDispatcher;
 
-
-
 class CC_DLL ControllerImpl
 {
 public:
     ControllerImpl(Controller* controller);
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+    ControllerImpl();
+    ~ControllerImpl();
 
+    static ControllerImpl* getInstance()
+    {
+        static ControllerImpl instance;
+        return &instance;
+    }
+
+    static std::vector<Controller*>::const_iterator findController(int deviceId);
+
+    static void onConnected(const std::string& deviceName, int deviceId);
+
+    static void onDisconnected(int deviceId);
+
+    static void onButtonEvent(int deviceId, int keyCode, bool isPressed, float value, bool isAnalog);
+
+    static void onAxisEvent(int deviceId, int axisCode, float value, bool isAnalog);
+
+#else
     static std::vector<Controller*>::const_iterator findController(int deviceId);
 
     static void onConnected(int deviceId);
@@ -55,10 +74,24 @@ public:
     static void onButtonEvent(int deviceId, int keyCode, bool isPressed, float value, bool isAnalog);
 
     static void onAxisEvent(int deviceId, int axisCode, float value, bool isAnalog);
+#endif
+
+
+
 
 public:
     Controller* _controller;
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+
+    static void handleConnectionsAndDisconnections(int deviceId, int event);
+    void update(float /*dt*/);
+
+private:
+    static std::map<std::string, std::pair< std::unordered_map<int, int>, std::unordered_map<int, int> > > s_controllerProfiles;
+#endif
 };
+
 
 /**
  * @addtogroup base
