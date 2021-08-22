@@ -84,7 +84,7 @@ std::shared_ptr<cocos2d::Rect> GamePlatform::getEntryCollisionRectangle(const co
 
 void GamePlatform::onCollisionEnter(windy::Logical* collision) {
     if (collision->getTag() == windy::GameTags::Player) {
-        /*if (windy::PhysicsWorld::getCollisionResult(collision, this)[windy::CollisionContact::Down]) {
+        if (windy::PhysicsWorld::getCollisionResult(collision, this)[windy::CollisionContact::Down]) {
             this->level->player->ignoreGravity = true;
             this->level->player->ignoreLandscapeCollision = true;
 
@@ -105,7 +105,7 @@ void GamePlatform::onCollisionEnter(windy::Logical* collision) {
             _isPlayerStanding = true;
 
             //this->onUpdate(1.0f / 60.0f);
-        }*/
+        }
         
     }
 }
