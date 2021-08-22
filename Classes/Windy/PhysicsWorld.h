@@ -6,8 +6,9 @@
 
 #include "cocos2d.h"
 
+#include "Entities/Logical.h"
+
 namespace windy {
-    class Logical;
     class Level;
 }
 
@@ -25,6 +26,7 @@ namespace windy {
 
         virtual void update(float dt);
 
+        static std::map<CollisionContact, bool> getCollisionResult(Logical* entity, Logical* landscapeEntity);
         static void alignCollisions(Logical* entity, Logical* landscapeEntity, bool clearContacts = false);
 
     private:

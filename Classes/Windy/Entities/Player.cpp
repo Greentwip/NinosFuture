@@ -606,10 +606,14 @@ void Player::climb() {
         }
     }
     else {
-        this->climbing = false;
-        this->ignoreGravity = false;
-        this->ignoreLandscapeCollision = false;
+        if (this->climbing) {
+            this->climbing = false;
+            this->ignoreGravity = false;
+            this->ignoreLandscapeCollision = false;
+        }
+        
         this->climbCounter = 0;
+
         //this->currentBrowner->resumeActions();
     }
 
@@ -720,7 +724,7 @@ void Player::checkHealth() {
     auto playerCollisionBox = this->collisionBox;
     auto boundsCollisionBox = this->level->bounds->collisionBox;
 
-    if (playerCollisionBox->getMinY() < boundsCollisionBox->getMinY() + 4 && !traversingPassage) {
+    if (playerCollisionBox->getMinY() < boundsCollisionBox->getMinY() + 8 && !traversingPassage) {
         this->health = 0;
         killAnimation = false;
     }

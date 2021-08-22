@@ -74,7 +74,7 @@ void Fader::fadeIn(std::function<void()> onFadeInCallback) {
 
     setOpacity(0);
 
-    auto fadeIn = cocos2d::FadeIn::create(1);
+    auto fadeIn = cocos2d::FadeIn::create(0.5f);
 
     auto callback = cocos2d::CallFunc::create([this]() {
         if (_onFadeInCallback != nullptr) {
@@ -98,7 +98,7 @@ void Fader::fadeOut(std::function<void()> onFadeOutCallback) {
 
     setOpacity(255);
 
-    auto fadeOut = cocos2d::FadeOut::create(1);
+    auto fadeOut = cocos2d::FadeOut::create(0.5f);
 
     auto callback = cocos2d::CallFunc::create([this]() {
         if (_onFadeOutCallback != nullptr) {

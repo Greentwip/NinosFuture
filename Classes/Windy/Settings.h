@@ -1,8 +1,10 @@
 #ifndef WINDY_SETTINGS_H
 #define WINDY_SETTINGS_H
 
-#include "ImageFormat.h"
+#include <map>
+#include <string>
 
+#include "ImageFormat.h"
 
 namespace windy {
 
@@ -13,10 +15,13 @@ namespace windy {
 		float bgmVolume;
 		float sfxVolume;
 
+		std::map<std::string, float> soundAmplitudeValues;
+
 	private:
-		SettingsData(float bgmVolume = 1.0f, float sfxVolume = 1.0f){
+		SettingsData(float bgmVolume, float sfxVolume, std::map<std::string, float> soundAmplitudeValues){
 			this->bgmVolume = bgmVolume;
 			this->sfxVolume = sfxVolume;
+			this->soundAmplitudeValues = soundAmplitudeValues;
 		}
 
 		friend class Settings;
@@ -27,11 +32,16 @@ namespace windy {
 		static ImageFormat TextureFormat;
 		static float bgmVolume;
 		static float sfxVolume;
+		static std::map<std::string, float> soundAmplitudeValues;
+
 
 		static SettingsData read();
 		static void load();
 		static void save();
 		static void apply();
+
+	private:
+		static std::map<std::string, float> loadDefaultAmplitudeValues();
 	};
 }
 

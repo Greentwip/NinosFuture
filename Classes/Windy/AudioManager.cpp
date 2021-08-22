@@ -47,6 +47,10 @@ std::map<windy::Sounds, std::string> windy::AudioManager::soundsKeyMap = {
 
 };
 
+std::map<windy::Sounds, std::string> windy::AudioManager::getSoundKeyMap() {
+	return AudioManager::soundsKeyMap;
+}
+
 int windy::AudioManager::playBgm(windy::Sounds resource, bool loop, std::function<void()> callback) {
 	//cc.audio.current_track = path
 	//local id = ccexp.AudioEngine:play2d(path, loop, cc.bgm_volume_)
@@ -59,9 +63,11 @@ int windy::AudioManager::playBgm(windy::Sounds resource, bool loop, std::functio
 
 	currentTrack = resource;
 
-	AudioManager::currentBgmId = AudioEngine::play2d(soundsKeyMap[resource], loop, Settings::bgmVolume);
+	auto& amplitudes = Settings::soundAmplitudeValues;
 
-	if (callback) {
+	AudioManager::currentBgmId = AudioEngine::play2d(soundsKeyMap[resource], loop, Settings::bgmVolume * amplitudes[soundsKeyMap[resource]]);
+
+	if (callback != nullptr) {
 		AudioEngine::setFinishCallback(
 			AudioManager::currentBgmId, 
 			[=](int, const std::string&) {
@@ -85,9 +91,11 @@ int windy::AudioManager::playSfx(windy::Sounds resource, bool loop, std::functio
 		return -1;
 	}
 
-	AudioManager::currentSfxId = AudioEngine::play2d(soundsKeyMap[resource], loop, Settings::sfxVolume);
+	auto& amplitudes = Settings::soundAmplitudeValues;
 
-	if (callback) {
+	AudioManager::currentSfxId = AudioEngine::play2d(soundsKeyMap[resource], loop, Settings::sfxVolume * amplitudes[soundsKeyMap[resource]]);
+
+	if (callback != nullptr) {
 		AudioEngine::setFinishCallback(
 			AudioManager::currentSfxId,
 			[=](int, const std::string&) {
@@ -115,3 +123,6 @@ void windy::AudioManager::setBgmVolume(float volume) {
 	AudioEngine::setVolume(AudioManager::currentBgmId, volume);
 }
 
+void windy::AudioManager::setSfxVolume(float volume) {
+	AudioEngine::setVolume(AudioManager::currentSfxId, volume);
+}

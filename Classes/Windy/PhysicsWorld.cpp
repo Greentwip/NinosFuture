@@ -49,7 +49,7 @@ bool PhysicsWorld::init()
 void PhysicsWorld::onEnter()
 {
     Node::onEnter();
-    cocos2d::Director::getInstance()->getScheduler()->scheduleUpdate(this, -1024, false);
+    cocos2d::Director::getInstance()->getScheduler()->scheduleUpdate(this, 1024, false);
 }
 
 
@@ -57,6 +57,165 @@ void PhysicsWorld::onExit()
 {
     cocos2d::Director::getInstance()->getScheduler()->unscheduleAllForTarget(this);
     Node::onExit();
+}
+
+std::map<CollisionContact, bool> PhysicsWorld::getCollisionResult(Logical* entity, Logical* landscapeEntity) {
+
+    std::map<CollisionContact, bool> result;
+
+    auto entityPosition = entity->getPosition();
+    auto lastEntityCollisionPosition = entity->getPosition();
+
+    for (int k = 0; k < 8; k++) {
+
+        auto landscapeEntityCollisionBox = landscapeEntity->collisionBox;
+
+        float collisionBoxLeft = entity->collisionBox->getMinX();
+        float collisionBoxTop = entity->collisionBox->getMaxY();
+
+        float collisionBoxWidth = entity->collisionBox->size.width;
+        float collisionBoxHeight = entity->collisionBox->size.height;
+
+        auto collisionBoxCenter = cocos2d::Point(entity->collisionBox->getMidX(), entity->collisionBox->getMidY());
+
+        auto entityCollisionBox = *entity->collisionBox;
+
+        /*
+        * Collision tiles and sliced collision box
+        ------------------
+        -- 0 -- 1 -- 2 --
+        -- 3 -- 4 -- 5 --
+        -- 6 -- 7 -- 8 --
+        ------------------
+
+        ------------------
+        -- 4 -- 1 -- 5 --
+        -- 2 --   -- 3 --
+        -- 6 -- 0 -- 7 --
+        ------------------
+
+        */
+
+        cocos2d::Rect collisionBoxTiles[9];
+
+        for (int j = 0; j < 9; ++j) {
+            int column = j % 3;
+            int row = static_cast<int>(std::floor(j / 3));
+
+            float tileW = entityCollisionBox.size.width / 3.0f;
+            float tileH = entityCollisionBox.size.height / 3.0f;
+
+            float collisionBoxLeft = entityCollisionBox.getMinX();
+            float collisionBoxTop = entityCollisionBox.getMaxY();
+
+            auto tileOrigin = cocos2d::Point(collisionBoxLeft + (tileW * column), collisionBoxTop - (tileH * row));
+
+            collisionBoxTiles[j] = cocos2d::Rect(tileOrigin.x, tileOrigin.y - tileH, tileW, tileH);
+
+        }
+
+
+        cocos2d::Rect slicedCollisionBox[8];
+
+        slicedCollisionBox[0] = collisionBoxTiles[7];
+        slicedCollisionBox[1] = collisionBoxTiles[1];
+        slicedCollisionBox[2] = collisionBoxTiles[3];
+        slicedCollisionBox[3] = collisionBoxTiles[5];
+        slicedCollisionBox[4] = collisionBoxTiles[0];
+        slicedCollisionBox[5] = collisionBoxTiles[2];
+        slicedCollisionBox[6] = collisionBoxTiles[6];
+        slicedCollisionBox[7] = collisionBoxTiles[8];
+
+        if (landscapeEntityCollisionBox->intersectsRect(slicedCollisionBox[k])) {
+            auto intersection = GeometryExtensions::rectIntersection(*landscapeEntityCollisionBox, slicedCollisionBox[k]);
+
+            bool hasOffsetX = false;
+            bool hasOffsetY = false;
+
+            if (k == 0) {
+                result[CollisionContact::Down] = true;
+                hasOffsetY = true;
+            }
+            else if (k == 1)
+            {
+                result[CollisionContact::Up] = true;
+                hasOffsetY = true;
+                intersection.size.height *= -1;
+            }
+            else if (k == 2) {
+                result[CollisionContact::Left] = true;
+                hasOffsetX = true;
+            }
+            else if (k == 3) {
+                result[CollisionContact::Right] = true;
+                hasOffsetX = true;
+                intersection.size.width *= -1;
+            }
+            else {
+
+                if (intersection.size.width >= intersection.size.height) {
+                    // Tile is diagonal, but resolving collision vertically
+                    if (k == 4 || k == 5) {
+                        intersection.size.height = -intersection.size.height;
+                        result[CollisionContact::Up] = true;
+                    }
+                    else {
+                        result[CollisionContact::Down] = true;
+                    }
+
+                    hasOffsetY = true;
+
+                }
+                else {
+                    // Tile is diagonal, but resolving horizontally
+                    if (k == 7 || k == 5) {
+                        result[CollisionContact::Right] = true;
+                        intersection.size.width *= -1;
+                    }
+                    else {
+                        result[CollisionContact::Left] = true;
+                    }
+
+                    hasOffsetX = true;
+
+                    // Only if slope is higher than the slope factor
+
+                    if (k == 6 || k == 7) {
+                        if (intersection.size.height <= 1.0f) {
+                            result[CollisionContact::Left] = false;
+                            result[CollisionContact::Right] = false;
+                            intersection.size.height = 0;
+                            hasOffsetY = true;
+                        }
+
+                    }
+
+
+
+                }
+            }
+
+            if (hasOffsetX) {
+                entityPosition.x = entityPosition.x + intersection.size.width;
+            }
+
+            if (hasOffsetY) {
+                entityPosition.y = entityPosition.y + intersection.size.height;
+            }
+
+            auto positionDifference = entityPosition - lastEntityCollisionPosition;
+            lastEntityCollisionPosition = entityPosition;
+
+            float differenceX = positionDifference.x;
+            float differenceY = positionDifference.y;
+
+            entityCollisionBox.origin.x += differenceX;
+            entityCollisionBox.origin.y += differenceY;
+
+        }
+    }
+
+    return result;
 }
 
 void PhysicsWorld::alignCollisions(Logical* entity, Logical* landscapeEntity, bool clearContacts) {
@@ -218,20 +377,23 @@ void PhysicsWorld::update(float dt)
         {
             landscapeEntities.pushBack(entity);
         }
-        else if(entity->getTag() == GameTags::General::Player       ||
-                entity->getTag() == GameTags::General::Enemy        ||
-                entity->getTag() == GameTags::General::Item         ||
-                entity->getTag() == GameTags::General::Ladder       ||
-                entity->getTag() == GameTags::General::Door         ||
-                entity->getTag() == GameTags::General::Camera       ||
-                entity->getTag() == GameTags::General::Scroll       ||
-                entity->getTag() == GameTags::General::Hole         ||
-                entity->getTag() == GameTags::General::Teleporter   ||
-                entity->getTag() == GameTags::General::Bounds       ||
-                entity->getTag() == GameTags::General::Checkpoint   ||
-                entity->getTag() == GameTags::Weapon::WeaponPlayer  ||
-                entity->getTag() == GameTags::Weapon::WeaponEnemy   ||
-                entity->getTag() == GameTags::Scenery::Particle) { // Kinematic characters first
+        
+        if(//entity->getTag() == GameTags::General::Block        ||
+           entity->getTag() == GameTags::General::Player       ||
+           entity->getTag() == GameTags::General::Enemy        ||
+           entity->getTag() == GameTags::General::Item         ||
+           entity->getTag() == GameTags::General::Ladder       ||
+           entity->getTag() == GameTags::General::Door         ||
+           entity->getTag() == GameTags::General::Camera       ||
+           entity->getTag() == GameTags::General::Scroll       ||
+           entity->getTag() == GameTags::General::Hole         ||
+           entity->getTag() == GameTags::General::Teleporter   ||
+           entity->getTag() == GameTags::General::Bounds       ||
+           entity->getTag() == GameTags::General::Checkpoint   ||
+           entity->getTag() == GameTags::General::Platform     ||
+           entity->getTag() == GameTags::Weapon::WeaponPlayer  ||
+           entity->getTag() == GameTags::Weapon::WeaponEnemy   ||
+           entity->getTag() == GameTags::Scenery::Particle) { 
             collidingEntities.pushBack(entity);
         }
     }
@@ -273,10 +435,15 @@ void PhysicsWorld::update(float dt)
             continue;
         }
 
+        
 
         for (int j = 0; j < landscapeEntities.size(); ++j) {
             auto landscapeEntity = landscapeEntities.at(j);
-            
+
+            if (entity == landscapeEntity || entity->getTag() == GameTags::Block) {
+                continue;
+            }
+
             PhysicsWorld::alignCollisions(entity, landscapeEntity);
 
         }
@@ -307,10 +474,6 @@ void PhysicsWorld::update(float dt)
 
             if (entity == collidingEntity) {
                 continue;
-            }
-
-            if (entity->getTag() == GameTags::General::Camera) {
-                bool breakHere = true;
             }
 
             if (GeometryExtensions::rectIntersectsRect(*entity->collisionBox, *collidingEntity->collisionBox)) {

@@ -36,7 +36,12 @@ bool GamePlayer::init()
 
     this->gui = nullptr;
 
-    const auto& resources = getResources();
+    Logical::composite<GamePlayer>(this); //@TODO
+
+    this->collisionRectangles[1]->origin = this->collisionRectangles[0]->origin;
+
+
+    /*const auto& resources = getResources();
 
     auto armature = windy::Armature(resources._armaturePath);
 
@@ -66,7 +71,7 @@ bool GamePlayer::init()
     this->collisionBox = this->collisionRectangles[0];
 
 
-    this->sprite->setPosition(collisionBoxCenter + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
+    this->sprite->setPosition(collisionBoxCenter + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));*/
 
     this->setTag(windy::GameTags::General::Player);
 

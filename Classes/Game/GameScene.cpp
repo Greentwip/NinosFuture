@@ -43,6 +43,7 @@
 
 #include "Game/Entities/Special/GameVerticalDoor.h"
 #include "Game/Entities/Special/GameHorizontalDoor.h"
+#include "Game/Entities/Special/GamePlatform.h"
 
 #include "Game/Entities/UI/EnergyBar.h"
 #include "Game/Entities/UI/GameGui.h"
@@ -181,32 +182,36 @@ bool GameScene::init()
         Taban::getResources().cache();
         Sumatran::getResources().cache();
         CannonJoe::getResources().cache();
-
+        
         DirectionalBullet::getResources().cache();
 
+        
         windy::EntityFactory::getInstance().registerType<Subeil>("subeil");
         windy::EntityFactory::getInstance().registerType<Lyric>("lyric");
         windy::EntityFactory::getInstance().registerType<Taban>("taban");
         windy::EntityFactory::getInstance().registerType<Sumatran>("sumatran");
         windy::EntityFactory::getInstance().registerType<CannonJoe>("cannon_joe");
-
-
+        
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Subeil>("subeil");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Lyric>("lyric");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Taban>("taban");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Sumatran>("sumatran");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<CannonJoe>("cannon_joe");
+        
 
     }
     else if (currentLevel && currentLevel->mug.compare("militaryman") == 0) {
 
+        GamePlatform::getResources().cache();
         RollRunner::getResources().cache();
         Tank::getResources().cache();
         TankBullet::getResources().cache();
 
+        windy::EntityFactory::getInstance().registerType<GamePlatform>("platform");
         windy::EntityFactory::getInstance().registerType<RollRunner>("roll_runner");
         windy::EntityFactory::getInstance().registerType<Tank>("tank");
 
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<GamePlatform>("platform");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<RollRunner>("roll_runner");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Tank>("tank");
     }

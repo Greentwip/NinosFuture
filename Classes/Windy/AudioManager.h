@@ -24,7 +24,7 @@ using namespace CocosDenshion;
 namespace windy {
 
 	enum class Sounds {
-		Intro,
+		Intro = 0,
 		Abakura,
 		Title,
 		Select,
@@ -67,6 +67,8 @@ namespace windy {
 		static std::map<Sounds, std::string> soundsKeyMap;
 
 	public:
+		static std::map<Sounds, std::string> getSoundKeyMap();
+
 		static int playBgm(Sounds resource, bool loop = true, std::function<void()> callback = nullptr);
 		static int playSfx(Sounds resource, bool loop = false, std::function<void()> callback = nullptr);
 		static void stopAll();
@@ -75,6 +77,7 @@ namespace windy {
 		static Sounds getCurrentTrack();
 
 		static void setBgmVolume(float volume);
+		static void setSfxVolume(float volume);
 
 	private:
 		static Sounds currentTrack;

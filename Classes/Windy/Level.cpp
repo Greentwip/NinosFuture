@@ -291,6 +291,14 @@ bool Level::init()
                 this->entities.pushBack(entity);
                 this->horizontalDoors.pushBack(dynamic_cast<Door*>(entity));
             }
+            else if (name.compare("platform") == 0) {
+
+                auto entity = EntityFactory::getInstance().create("platform", position, size);
+                entity->parseBehavior(dictionary);
+                this->addChild(entity);
+                this->entities.pushBack(entity);
+
+            }
         }
 
     }
