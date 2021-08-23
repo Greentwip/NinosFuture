@@ -69,6 +69,7 @@ void Player::initVariables() {
 
     this->ignoreGravity = true;
     this->ignoreLandscapeCollision = true;
+    this->ignoreEntityCollision = false;
     
     this->weaponTag = windy::GameTags::WeaponPlayer;
 

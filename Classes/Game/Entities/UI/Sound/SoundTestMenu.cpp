@@ -82,7 +82,7 @@ bool SoundTestMenu::init()
     amplitudeText->setString(std::to_string(_amplitudes[_tracks[_currentTrackId]]));
 
     float amplitude = _amplitudes[_tracks[_currentTrackId]];
-    int percent = (amplitude * 100) / 2.0f;
+    int percent = static_cast<int>((amplitude * 100) / 2.0f);
 
     slider->setPercent(percent);
 
@@ -112,7 +112,7 @@ bool SoundTestMenu::init()
         amplitudeText->setString(std::to_string(_amplitudes[_tracks[_currentTrackId]]));
 
         float amplitude = _amplitudes[_tracks[_currentTrackId]];
-        int percent = (amplitude * 100) / 2.0f;
+        int percent = static_cast<int>((amplitude * 100) / 2.0f);
 
         slider->setPercent(percent);
 
@@ -132,7 +132,7 @@ bool SoundTestMenu::init()
         amplitudeText->setString(std::to_string(_amplitudes[_tracks[_currentTrackId]]));
 
         float amplitude = _amplitudes[_tracks[_currentTrackId]];
-        int percent = (amplitude * 100) / 2.0f;
+        int percent = static_cast<int>((amplitude * 100) / 2.0f);
         
         slider->setPercent(percent);
 

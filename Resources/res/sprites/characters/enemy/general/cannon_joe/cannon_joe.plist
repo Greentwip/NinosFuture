@@ -6,80 +6,94 @@
         <dict>
             <key>cannon_joe_flip_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{38,32}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{-4,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{2,0},{38,32}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{40,32}</string>
+                <key>spriteSourceSize</key>
                 <string>{50,32}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{40,32}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>cannon_joe_flip_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{80,2},{22,32}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{14,0},{22,32}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{24,32}</string>
+                <key>spriteSourceSize</key>
                 <string>{50,32}</string>
+                <key>textureRect</key>
+                <string>{{2,70},{24,32}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>cannon_joe_shoot_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{38,32}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{-4,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{2,0},{38,32}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{40,32}</string>
+                <key>spriteSourceSize</key>
                 <string>{50,32}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{40,32}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>cannon_joe_shoot_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{42,2},{36,32}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{-3,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{4,0},{36,32}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{38,32}</string>
+                <key>spriteSourceSize</key>
                 <string>{50,32}</string>
+                <key>textureRect</key>
+                <string>{{2,36},{38,32}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>cannon_joe_stand_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{38,32}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{-4,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{2,0},{38,32}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{40,32}</string>
+                <key>spriteSourceSize</key>
                 <string>{50,32}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{40,32}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>cannon_joe.pvr.ccz</string>
             <key>size</key>
-            <string>{104,36}</string>
+            <string>{64,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:03f45ecbbd58b978619ca96a46601bf8:36b1db3fc8cf9ca81018ea6d303bb0ea:0f14dd5c48c09ffb2c73a45b9867cc34$</string>
+            <string>$TexturePacker:SmartUpdate:fbd4e9933ac61476979846d74066d7d4:36b1db3fc8cf9ca81018ea6d303bb0ea:0f14dd5c48c09ffb2c73a45b9867cc34$</string>
             <key>textureFileName</key>
             <string>cannon_joe.pvr.ccz</string>
         </dict>

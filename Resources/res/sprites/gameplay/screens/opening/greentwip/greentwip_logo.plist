@@ -6,223 +6,259 @@
         <dict>
             <key>greentwip_logo_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>greentwip_logo_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>greentwip_logo_10</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,228},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,260},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>greentwip_logo_11</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>greentwip_logo_12</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>greentwip_logo_13</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>greentwip_logo_14</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>greentwip_logo_15</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>greentwip_logo_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>greentwip_logo_3</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>greentwip_logo_4</key>
             <dict>
-                <key>frame</key>
-                <string>{{228,228},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,518},{256,224}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>greentwip_logo_5</key>
             <dict>
-                <key>frame</key>
-                <string>{{260,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,744},{256,224}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>greentwip_logo_6</key>
             <dict>
-                <key>frame</key>
-                <string>{{454,228},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{228,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>greentwip_logo_7</key>
             <dict>
-                <key>frame</key>
-                <string>{{518,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{228,260},{256,224}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>greentwip_logo_8</key>
             <dict>
-                <key>frame</key>
-                <string>{{776,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{260,486},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>greentwip_logo_9</key>
             <dict>
-                <key>frame</key>
-                <string>{{680,260},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{260,744},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>greentwip_logo.pvr.ccz</string>
             <key>size</key>
-            <string>{1002,486}</string>
+            <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8df3d36d6991c5396e4a2916133df76a:8b3249bc403f230aa425164e902735b6:1a823f18cbf5f76c147e919cfb66479d$</string>
+            <string>$TexturePacker:SmartUpdate:64a6459d50c83c4d8ad0f77d0eb59e67:8b3249bc403f230aa425164e902735b6:1a823f18cbf5f76c147e919cfb66479d$</string>
             <key>textureFileName</key>
             <string>greentwip_logo.pvr.ccz</string>
         </dict>

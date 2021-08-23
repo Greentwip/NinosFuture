@@ -57,6 +57,10 @@ bool BossIntroScene::init()
     windy::Armature::clearPlistCache();
     windy::Sprite::clearPlistCache();
 
+    windy::AudioManager::cacheSound(windy::Sounds::BeltJoin);
+    windy::AudioManager::cacheSound(windy::Sounds::BossIntro);
+
+
     this->boss = windy::Sprite::create(BossIntroSceneResources::bossPath, cocos2d::Point(0.5f, 0));
     this->boss->setPosition(windy::Display::getInstance().center);
     this->boss->setVisible(false);

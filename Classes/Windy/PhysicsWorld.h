@@ -29,9 +29,12 @@ namespace windy {
         static std::map<CollisionContact, bool> getCollisionResult(Logical* entity, Logical* landscapeEntity);
         static void alignCollisions(Logical* entity, Logical* landscapeEntity, bool clearContacts = false);
 
+        void unregisterContact(Logical* a, Logical* b);
+
+        float gravity;
+
     private:
         Level* level;
-        float gravity;
         float maxFallSpeed;
 
         long long contactEventCollisionIndex;

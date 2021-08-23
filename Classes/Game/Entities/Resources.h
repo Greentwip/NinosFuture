@@ -9,6 +9,7 @@ enum class ResourceKind {
     EnemyGeneral,
     EnemyMilitary,
     EnemySheriff,
+    EnemyNight,
     EnergyBar,
     Item,
     LevelFX,

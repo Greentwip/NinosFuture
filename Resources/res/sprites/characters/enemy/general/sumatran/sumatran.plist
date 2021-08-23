@@ -6,80 +6,94 @@
         <dict>
             <key>sumatran_jump_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{54,65}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,-2}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{3,6},{54,65}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{56,67}</string>
+                <key>spriteSourceSize</key>
                 <string>{60,73}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{56,67}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>sumatran_jump_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,69},{54,65}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,-2}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{3,6},{54,65}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{56,67}</string>
+                <key>spriteSourceSize</key>
                 <string>{60,73}</string>
+                <key>textureRect</key>
+                <string>{{2,60},{56,67}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>sumatran_jump_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,136},{54,65}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,-2}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{3,6},{54,65}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{56,67}</string>
+                <key>spriteSourceSize</key>
                 <string>{60,73}</string>
+                <key>textureRect</key>
+                <string>{{2,118},{56,67}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>sumatran_stand_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,203},{52,49}}</string>
-                <key>offset</key>
-                <string>{-4,-12}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,24},{52,49}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-3,-11}</string>
+                <key>spriteSize</key>
+                <string>{54,51}</string>
+                <key>spriteSourceSize</key>
                 <string>{60,73}</string>
+                <key>textureRect</key>
+                <string>{{71,2},{54,51}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>sumatran_stand_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,254},{52,49}}</string>
-                <key>offset</key>
-                <string>{-4,-12}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,24},{52,49}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-3,-12}</string>
+                <key>spriteSize</key>
+                <string>{54,49}</string>
+                <key>spriteSourceSize</key>
                 <string>{60,73}</string>
+                <key>textureRect</key>
+                <string>{{71,55},{54,49}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>sumatran.pvr.ccz</string>
             <key>size</key>
-            <string>{58,305}</string>
+            <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:48cd8d6f84b6a5620ee84fa4d653a6e8:be6762b2bf9c18c2c6dd90fd2f1dd0eb:a915c0e3e501bd6c314ad8e4277a8557$</string>
+            <string>$TexturePacker:SmartUpdate:e9f9fdd09b2ef3a944fe940cbf9eefb4:be6762b2bf9c18c2c6dd90fd2f1dd0eb:a915c0e3e501bd6c314ad8e4277a8557$</string>
             <key>textureFileName</key>
             <string>sumatran.pvr.ccz</string>
         </dict>

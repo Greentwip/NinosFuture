@@ -41,6 +41,10 @@ bool IntroScene::init()
     windy::Armature::clearPlistCache();
     windy::Sprite::clearPlistCache();
 
+    windy::AudioManager::cacheSound(windy::Sounds::Intro);
+    windy::AudioManager::cacheSound(windy::Sounds::Abakura);
+    windy::AudioManager::cacheSound(windy::Sounds::Title);
+
 
     //setCascadeOpacityEnabled(true);
 

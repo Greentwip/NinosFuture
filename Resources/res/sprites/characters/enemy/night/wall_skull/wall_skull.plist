@@ -6,171 +6,199 @@
         <dict>
             <key>wall_skull_attack_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,102},{15,20}}</string>
-                <key>offset</key>
-                <string>{0,2}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{15,20}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,1}</string>
+                <key>spriteSize</key>
+                <string>{15,22}</string>
+                <key>spriteSourceSize</key>
                 <string>{15,24}</string>
+                <key>textureRect</key>
+                <string>{{45,2},{15,22}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>wall_skull_attack_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,54},{15,22}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{15,22}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{15,22}</string>
+                <key>spriteSourceSize</key>
                 <string>{15,24}</string>
+                <key>textureRect</key>
+                <string>{{19,19},{15,22}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>wall_skull_attack_10</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,102},{15,20}}</string>
-                <key>offset</key>
-                <string>{0,2}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{15,20}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,1}</string>
+                <key>spriteSize</key>
+                <string>{15,22}</string>
+                <key>spriteSourceSize</key>
                 <string>{15,24}</string>
+                <key>textureRect</key>
+                <string>{{45,2},{15,22}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>wall_skull_attack_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,78},{15,22}}</string>
-                <key>offset</key>
-                <string>{0,1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{15,22}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
                 <string>{15,24}</string>
+                <key>spriteSourceSize</key>
+                <string>{15,24}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{15,24}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>wall_skull_attack_3</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{15,24}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{15,24}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{15,24}</string>
+                <key>spriteSourceSize</key>
+                <string>{15,24}</string>
+                <key>textureRect</key>
+                <string>{{2,28},{15,24}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>wall_skull_attack_4</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,28},{15,24}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{15,24}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{15,24}</string>
+                <key>spriteSourceSize</key>
+                <string>{15,24}</string>
+                <key>textureRect</key>
+                <string>{{19,2},{15,24}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>wall_skull_attack_5</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{15,24}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{15,24}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{15,24}</string>
+                <key>spriteSourceSize</key>
+                <string>{15,24}</string>
+                <key>textureRect</key>
+                <string>{{2,28},{15,24}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>wall_skull_attack_6</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,28},{15,24}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{15,24}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{15,24}</string>
+                <key>spriteSourceSize</key>
+                <string>{15,24}</string>
+                <key>textureRect</key>
+                <string>{{19,2},{15,24}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>wall_skull_attack_7</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,28},{15,24}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{15,24}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{15,24}</string>
+                <key>spriteSourceSize</key>
+                <string>{15,24}</string>
+                <key>textureRect</key>
+                <string>{{19,2},{15,24}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>wall_skull_attack_8</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,78},{15,22}}</string>
-                <key>offset</key>
-                <string>{0,1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{15,22}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
                 <string>{15,24}</string>
+                <key>spriteSourceSize</key>
+                <string>{15,24}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{15,24}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>wall_skull_attack_9</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,54},{15,22}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{15,22}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{15,22}</string>
+                <key>spriteSourceSize</key>
                 <string>{15,24}</string>
+                <key>textureRect</key>
+                <string>{{19,19},{15,22}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>wall_skull_still_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,102},{15,20}}</string>
-                <key>offset</key>
-                <string>{0,2}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{15,20}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,1}</string>
+                <key>spriteSize</key>
+                <string>{15,22}</string>
+                <key>spriteSourceSize</key>
                 <string>{15,24}</string>
+                <key>textureRect</key>
+                <string>{{45,2},{15,22}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>wall_skull.pvr.ccz</string>
             <key>size</key>
-            <string>{20,124}</string>
+            <string>{64,64}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:d3774a24b84e969f6c03d9d4c570f2c1:7c1fa31783f8dab1e5a5e5cd1056095f:a68b89ec9b4f8e5ffbfa6902c78a6383$</string>
+            <string>$TexturePacker:SmartUpdate:cde30c8dd002bf464f8ad5778e4b5c6a:7c1fa31783f8dab1e5a5e5cd1056095f:a68b89ec9b4f8e5ffbfa6902c78a6383$</string>
             <key>textureFileName</key>
             <string>wall_skull.pvr.ccz</string>
         </dict>

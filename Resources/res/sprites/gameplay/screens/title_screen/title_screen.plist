@@ -7,11 +7,11 @@
             <key>abakura_0</key>
             <dict>
                 <key>frame</key>
-                <string>{{775,109},{50,40}}</string>
+                <string>{{1,453},{50,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{50,40}}</string>
                 <key>sourceSize</key>
@@ -37,7 +37,7 @@
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{256,224}}</string>
                 <key>sourceSize</key>
@@ -46,11 +46,11 @@
             <key>greentwip_0</key>
             <dict>
                 <key>frame</key>
-                <string>{{775,151},{27,39}}</string>
+                <string>{{43,453},{27,39}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{27,39}}</string>
                 <key>sourceSize</key>
@@ -59,11 +59,11 @@
             <key>logo_0</key>
             <dict>
                 <key>frame</key>
-                <string>{{775,1},{106,59}}</string>
+                <string>{{259,259},{106,59}}</string>
                 <key>offset</key>
                 <string>{0,2}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{4,1},{106,59}}</string>
                 <key>sourceSize</key>
@@ -72,7 +72,7 @@
             <key>silhouette_0</key>
             <dict>
                 <key>frame</key>
-                <string>{{775,180},{28,37}}</string>
+                <string>{{72,453},{28,37}}</string>
                 <key>offset</key>
                 <string>{-1,-1}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>title_screen_0</key>
             <dict>
                 <key>frame</key>
-                <string>{{517,1},{256,224}}</string>
+                <string>{{1,227},{256,224}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -101,15 +101,15 @@
             <key>format</key>
             <integer>2</integer>
             <key>pixelFormat</key>
-            <string>RGBA4444</string>
+            <string>RGBA8888</string>
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
             <string>title_screen.pvr.ccz</string>
             <key>size</key>
-            <string>{835,226}</string>
+            <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:133a32186520f609cebec60f9d7c9321:43bf914f2cef5b35dd3aeb70e5e3fe51:1ccd6a2c4507498315b47403dffcde30$</string>
+            <string>$TexturePacker:SmartUpdate:8ec8636e586ee5e54766502381ebfa33:43bf914f2cef5b35dd3aeb70e5e3fe51:1ccd6a2c4507498315b47403dffcde30$</string>
             <key>textureFileName</key>
             <string>title_screen.pvr.ccz</string>
         </dict>

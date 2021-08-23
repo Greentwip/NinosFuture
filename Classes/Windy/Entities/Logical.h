@@ -97,8 +97,8 @@ namespace windy {
         cocos2d::Point speed;
 
         bool ignoreGravity;
-
         bool ignoreLandscapeCollision;
+        bool ignoreEntityCollision;
 
     protected:
         cocos2d::Point lastCollisionPosition;

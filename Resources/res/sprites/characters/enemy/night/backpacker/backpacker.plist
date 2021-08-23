@@ -6,41 +6,49 @@
         <dict>
             <key>backpacker_attack_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{55,89}}</string>
-                <key>offset</key>
-                <string>{3,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{6,0},{55,89}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{2,0}</string>
+                <key>spriteSize</key>
+                <string>{57,89}</string>
+                <key>spriteSourceSize</key>
                 <string>{61,89}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{57,89}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>backpacker_stand_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{59,2},{61,71}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,-9}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,18},{61,71}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{61,71}</string>
+                <key>spriteSourceSize</key>
                 <string>{61,89}</string>
+                <key>textureRect</key>
+                <string>{{61,2},{61,71}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>backpacker.pvr.ccz</string>
             <key>size</key>
-            <string>{122,93}</string>
+            <string>{128,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:62bfac89ccdd9596238abb4abb8538be:5dfc36998cdacd430e27a97391557c60:b5e987e69fcefd6eba397d0e34d5f443$</string>
+            <string>$TexturePacker:SmartUpdate:21baf79574b26b2614501e299a66d1c8:5dfc36998cdacd430e27a97391557c60:b5e987e69fcefd6eba397d0e34d5f443$</string>
             <key>textureFileName</key>
             <string>backpacker.pvr.ccz</string>
         </dict>

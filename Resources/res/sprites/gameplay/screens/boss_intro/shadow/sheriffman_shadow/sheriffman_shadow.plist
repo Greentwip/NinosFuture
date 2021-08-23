@@ -6,28 +6,34 @@
         <dict>
             <key>sheriffman_shadow_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{170,198}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{170,198}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{170,198}</string>
+                <key>spriteSourceSize</key>
+                <string>{170,198}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{170,198}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>sheriffman_shadow.pvr.ccz</string>
             <key>size</key>
-            <string>{174,202}</string>
+            <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:071e65efaaa44dd05688715b36e369d4:9ae58a4839cf128503cff45df237a6da:e749fbfcdda0396708f9e7f95fb625a6$</string>
+            <string>$TexturePacker:SmartUpdate:81b527d47346ab62fa87ae16da9c629e:9ae58a4839cf128503cff45df237a6da:e749fbfcdda0396708f9e7f95fb625a6$</string>
             <key>textureFileName</key>
             <string>sheriffman_shadow.pvr.ccz</string>
         </dict>

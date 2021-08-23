@@ -6,28 +6,34 @@
         <dict>
             <key>militaryman_parallax_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>militaryman_parallax.pvr.ccz</string>
             <key>size</key>
-            <string>{260,228}</string>
+            <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:c2c1f36428902b43d89b24f4e4c604f5:29e6f6039d73e31db566f365d7e34a67:38e8a90881e03f417773ab557e656e08$</string>
+            <string>$TexturePacker:SmartUpdate:c78476b455b94c575dadd31cbe1bacf9:29e6f6039d73e31db566f365d7e34a67:38e8a90881e03f417773ab557e656e08$</string>
             <key>textureFileName</key>
             <string>militaryman_parallax.pvr.ccz</string>
         </dict>

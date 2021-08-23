@@ -6,41 +6,49 @@
         <dict>
             <key>claw_soldier_attack_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{47,42}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{47,42}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{47,42}</string>
+                <key>spriteSourceSize</key>
+                <string>{47,42}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{47,42}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>claw_soldier_stand_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{51,2},{43,42}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{2,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{4,0},{43,42}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{43,42}</string>
+                <key>spriteSourceSize</key>
                 <string>{47,42}</string>
+                <key>textureRect</key>
+                <string>{{2,46},{43,42}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>claw_soldier.pvr.ccz</string>
             <key>size</key>
-            <string>{96,46}</string>
+            <string>{64,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:015c146d402606e24882823fc8286c33:cb27df31e38f6d63cc1fc519ad0ca9cb:bd7ecdc1ce2f18f1b8e28ca6d5f7f99a$</string>
+            <string>$TexturePacker:SmartUpdate:7321f84a34473beda04fae07bcf1bd06:cb27df31e38f6d63cc1fc519ad0ca9cb:bd7ecdc1ce2f18f1b8e28ca6d5f7f99a$</string>
             <key>textureFileName</key>
             <string>claw_soldier.pvr.ccz</string>
         </dict>

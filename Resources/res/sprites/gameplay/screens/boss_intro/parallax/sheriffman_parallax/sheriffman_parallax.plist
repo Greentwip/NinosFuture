@@ -6,28 +6,34 @@
         <dict>
             <key>sheriffman_parallax_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>sheriffman_parallax.pvr.ccz</string>
             <key>size</key>
-            <string>{260,228}</string>
+            <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:47116c297ee98d57852591a19fd56ffe:b7c17da567319928e2f951c0f2c58327:d4aec58b04e1688de9604c81b5df4034$</string>
+            <string>$TexturePacker:SmartUpdate:eb5664b92a334f7a1a2bca3d1e009fa1:b7c17da567319928e2f951c0f2c58327:d4aec58b04e1688de9604c81b5df4034$</string>
             <key>textureFileName</key>
             <string>sheriffman_parallax.pvr.ccz</string>
         </dict>

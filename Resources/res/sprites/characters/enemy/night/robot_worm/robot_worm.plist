@@ -15,7 +15,7 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{350,17},{8,7}}</string>
+                <string>{{117,2},{8,7}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -30,9 +30,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{350,2},{12,13}}</string>
+                <string>{{58,74},{12,13}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>robot_worm_attack_10</key>
             <dict>
@@ -45,9 +45,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{86,2},{22,27}}</string>
+                <string>{{59,2},{22,27}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>robot_worm_attack_11</key>
             <dict>
@@ -60,7 +60,7 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{2,2},{26,27}}</string>
+                <string>{{2,70},{26,27}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -75,7 +75,7 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{2,2},{26,27}}</string>
+                <string>{{2,70},{26,27}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -90,7 +90,7 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{30,2},{26,27}}</string>
+                <string>{{2,99},{26,27}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -105,9 +105,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{110,2},{22,27}}</string>
+                <string>{{88,2},{22,27}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>robot_worm_attack_15</key>
             <dict>
@@ -120,9 +120,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{134,2},{22,27}}</string>
+                <string>{{59,26},{22,27}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>robot_worm_attack_16</key>
             <dict>
@@ -135,9 +135,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{158,2},{22,27}}</string>
+                <string>{{30,30},{22,27}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>robot_worm_attack_17</key>
             <dict>
@@ -150,9 +150,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{134,2},{22,27}}</string>
+                <string>{{59,26},{22,27}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>robot_worm_attack_18</key>
             <dict>
@@ -165,9 +165,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{110,2},{22,27}}</string>
+                <string>{{88,2},{22,27}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>robot_worm_attack_19</key>
             <dict>
@@ -180,7 +180,7 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{30,2},{26,27}}</string>
+                <string>{{2,99},{26,27}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -195,9 +195,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{325,2},{26,23}}</string>
+                <string>{{88,50},{26,23}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
             <key>robot_worm_attack_20</key>
             <dict>
@@ -210,9 +210,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{230,2},{26,33}}</string>
+                <string>{{2,2},{26,33}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
             <key>robot_worm_attack_21</key>
             <dict>
@@ -225,9 +225,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{58,2},{26,27}}</string>
+                <string>{{30,2},{26,27}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>robot_worm_attack_22</key>
             <dict>
@@ -240,9 +240,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{265,2},{26,31}}</string>
+                <string>{{2,37},{26,31}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
             <key>robot_worm_attack_23</key>
             <dict>
@@ -255,9 +255,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{298,2},{26,25}}</string>
+                <string>{{30,54},{26,25}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
             <key>robot_worm_attack_24</key>
             <dict>
@@ -270,9 +270,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{325,2},{26,23}}</string>
+                <string>{{88,50},{26,23}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
             <key>robot_worm_attack_25</key>
             <dict>
@@ -285,9 +285,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{350,2},{12,13}}</string>
+                <string>{{58,74},{12,13}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>robot_worm_attack_3</key>
             <dict>
@@ -300,9 +300,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{298,2},{26,25}}</string>
+                <string>{{30,54},{26,25}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
             <key>robot_worm_attack_4</key>
             <dict>
@@ -315,9 +315,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{265,2},{26,31}}</string>
+                <string>{{2,37},{26,31}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
             <key>robot_worm_attack_5</key>
             <dict>
@@ -330,9 +330,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{58,2},{26,27}}</string>
+                <string>{{30,2},{26,27}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>robot_worm_attack_6</key>
             <dict>
@@ -345,7 +345,7 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{2,2},{26,27}}</string>
+                <string>{{2,70},{26,27}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -360,9 +360,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{182,2},{22,27}}</string>
+                <string>{{88,26},{22,27}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>robot_worm_attack_8</key>
             <dict>
@@ -375,9 +375,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{86,2},{22,27}}</string>
+                <string>{{59,2},{22,27}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>robot_worm_attack_9</key>
             <dict>
@@ -390,9 +390,9 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{206,2},{22,27}}</string>
+                <string>{{59,50},{22,27}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>robot_worm_still_0</key>
             <dict>
@@ -405,7 +405,7 @@
                 <key>spriteSourceSize</key>
                 <string>{26,33}</string>
                 <key>textureRect</key>
-                <string>{{350,17},{8,7}}</string>
+                <string>{{117,2},{8,7}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -421,9 +421,9 @@
             <key>realTextureFileName</key>
             <string>robot_worm.pvr.ccz</string>
             <key>size</key>
-            <string>{364,31}</string>
+            <string>{128,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:e4f2d329e5ec8df6d4dd67554104eff2:f2270422f3f18ae35aa07d6959c545a0:47eaa4c260f33a2f2b83f1482631d42e$</string>
+            <string>$TexturePacker:SmartUpdate:353e33afa04299aefd093e85f9e08a43:f2270422f3f18ae35aa07d6959c545a0:47eaa4c260f33a2f2b83f1482631d42e$</string>
             <key>textureFileName</key>
             <string>robot_worm.pvr.ccz</string>
         </dict>

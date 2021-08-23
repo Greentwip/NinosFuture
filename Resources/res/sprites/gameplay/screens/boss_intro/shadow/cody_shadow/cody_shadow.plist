@@ -6,28 +6,34 @@
         <dict>
             <key>cody_shadow_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{203,181}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{203,181}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{203,181}</string>
+                <key>spriteSourceSize</key>
+                <string>{203,181}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{203,181}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>cody_shadow.pvr.ccz</string>
             <key>size</key>
-            <string>{208,185}</string>
+            <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:6add2ac86fcea19484543d89044a8ecd:15456eee7d5688424e60d83b0ced838b:c2b88cadd7538d2efded6d22d2c1fe7b$</string>
+            <string>$TexturePacker:SmartUpdate:82b58cdcb4afa7ccb52c353f8d5b7af6:15456eee7d5688424e60d83b0ced838b:c2b88cadd7538d2efded6d22d2c1fe7b$</string>
             <key>textureFileName</key>
             <string>cody_shadow.pvr.ccz</string>
         </dict>

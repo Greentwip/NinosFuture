@@ -6,41 +6,49 @@
         <dict>
             <key>tank_walk_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{73,50}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{73,50}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{73,50}</string>
+                <key>spriteSourceSize</key>
+                <string>{73,50}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{73,50}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>tank_walk_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{77,2},{73,50}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{73,50}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{73,50}</string>
+                <key>spriteSourceSize</key>
+                <string>{73,50}</string>
+                <key>textureRect</key>
+                <string>{{2,54},{73,50}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>tank.pvr.ccz</string>
             <key>size</key>
-            <string>{152,54}</string>
+            <string>{128,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f4b2e5e3c2581b7683bcad7dd6f9f4b2:7900c35a3c690037c606b0fd7c6bb3ef:05ddfb56cf6a4f16b630456e9931b9d4$</string>
+            <string>$TexturePacker:SmartUpdate:5343cd5567999d2b170e755ebcf9aa37:7900c35a3c690037c606b0fd7c6bb3ef:05ddfb56cf6a4f16b630456e9931b9d4$</string>
             <key>textureFileName</key>
             <string>tank.pvr.ccz</string>
         </dict>

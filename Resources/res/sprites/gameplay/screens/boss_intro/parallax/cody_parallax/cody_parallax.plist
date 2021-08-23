@@ -6,28 +6,34 @@
         <dict>
             <key>cody_parallax_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>cody_parallax.pvr.ccz</string>
             <key>size</key>
-            <string>{260,228}</string>
+            <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0d5736c7a765930c49e22b2563a75eb4:0247d9e24eb9fa7c0d2d96c23b80d4fc:657d1c0551982cfbc8777868e36bdde6$</string>
+            <string>$TexturePacker:SmartUpdate:d8e2cffe2aab7bf58c8aee7236288d44:0247d9e24eb9fa7c0d2d96c23b80d4fc:657d1c0551982cfbc8777868e36bdde6$</string>
             <key>textureFileName</key>
             <string>cody_parallax.pvr.ccz</string>
         </dict>

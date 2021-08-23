@@ -6,28 +6,34 @@
         <dict>
             <key>vineman_parallax_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>vineman_parallax.pvr.ccz</string>
             <key>size</key>
-            <string>{260,228}</string>
+            <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:748ef085e23c129641840a471ce65d40:8585d0c7b1b0b5192fe07d44927c661e:e1218366a402d00b0de3956547fa83be$</string>
+            <string>$TexturePacker:SmartUpdate:a3853c381062f84be282755bab2363d5:8585d0c7b1b0b5192fe07d44927c661e:e1218366a402d00b0de3956547fa83be$</string>
             <key>textureFileName</key>
             <string>vineman_parallax.pvr.ccz</string>
         </dict>

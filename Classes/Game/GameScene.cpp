@@ -11,6 +11,7 @@
 
 #include "Windy/EntityFactory.h"
 
+#include "Windy/AudioManager.h"
 
 #include "Game/Entities/Enemies/Common/CannonJoe.h"
 #include "Game/Entities/Enemies/Common/Subeil.h"
@@ -25,6 +26,19 @@
 
 #include "Game/Entities/Enemies/Military/RollRunner.h"
 #include "Game/Entities/Enemies/Military/Tank.h"
+#include "Game/Entities/Enemies/Military/GreenSoldier.h"
+#include "Game/Entities/Enemies/Military/RedSoldier.h"
+#include "Game/Entities/Enemies/Military/KnifeSoldier.h"
+
+#include "Game/Entities/Enemies/Night/BackPacker.h"
+#include "Game/Entities/Enemies/Night/Bat.h"
+#include "Game/Entities/Enemies/Night/FallingSkull.h"
+#include "Game/Entities/Enemies/Night/FlashBrain.h"
+#include "Game/Entities/Enemies/Night/Golem.h"
+#include "Game/Entities/Enemies/Night/Rip.h"
+#include "Game/Entities/Enemies/Night/Spider.h"
+#include "Game/Entities/Enemies/Night/WallSkull.h"
+#include "Game/Entities/Enemies/Night/Worm.h"
 
 #include "Game/Entities/Boss/SheriffMan.h"
 
@@ -39,6 +53,9 @@
 #include "Game/Entities/Weapons/TremorLaser.h"
 #include "Game/Entities/Weapons/TankBullet.h"
 #include "Game/Entities/Weapons/TremorDrill.h"
+#include "Game/Entities/Weapons/Grenade.h"
+#include "Game/Entities/Weapons/Knife.h"
+#include "Game/Entities/Weapons/BackPackBullet.h"
 
 
 #include "Game/Entities/Special/GameVerticalDoor.h"
@@ -105,6 +122,32 @@ bool GameScene::init()
 
     windy::Armature::clearPlistCache();
     windy::Sprite::clearPlistCache();
+    windy::AudioManager::uncacheAll();
+
+    windy::AudioManager::cacheSound(windy::Sounds::Select);
+    windy::AudioManager::cacheSound(windy::Sounds::Selected);
+    windy::AudioManager::cacheSound(windy::Sounds::Door);
+    windy::AudioManager::cacheSound(windy::Sounds::BusterLow);
+    windy::AudioManager::cacheSound(windy::Sounds::BusterMid);
+    windy::AudioManager::cacheSound(windy::Sounds::BusterHigh);
+    windy::AudioManager::cacheSound(windy::Sounds::BusterChargingMid);
+    windy::AudioManager::cacheSound(windy::Sounds::BusterChargingHigh);
+    windy::AudioManager::cacheSound(windy::Sounds::Land);
+    windy::AudioManager::cacheSound(windy::Sounds::Explosion1);
+    windy::AudioManager::cacheSound(windy::Sounds::EnemyHit);
+    windy::AudioManager::cacheSound(windy::Sounds::Roar);
+    windy::AudioManager::cacheSound(windy::Sounds::Taban);
+    windy::AudioManager::cacheSound(windy::Sounds::PlayerHit);
+    windy::AudioManager::cacheSound(windy::Sounds::Death);
+    windy::AudioManager::cacheSound(windy::Sounds::Teleport1);
+    windy::AudioManager::cacheSound(windy::Sounds::Teleport2);
+    windy::AudioManager::cacheSound(windy::Sounds::BossTheme);
+    windy::AudioManager::cacheSound(windy::Sounds::Victory);
+    windy::AudioManager::cacheSound(windy::Sounds::GetEnergy);
+    windy::AudioManager::cacheSound(windy::Sounds::Error);
+    windy::AudioManager::cacheSound(windy::Sounds::GetLife);
+    windy::AudioManager::cacheSound(windy::Sounds::LevelComplete);
+    windy::AudioManager::cacheSound(windy::Sounds::Pause);
 
     windy::EntityFactory::getInstance().clear();
 
@@ -156,6 +199,8 @@ bool GameScene::init()
         Sumatran::getResources().cache();
         DirectionalBullet::getResources().cache();
 
+        windy::AudioManager::cacheSound(windy::Sounds::SheriffMan);
+
         windy::EntityFactory::getInstance().registerType<SheriffMan>("sheriff");
         windy::EntityFactory::getInstance().registerType<Tremor>("tremor");
         windy::EntityFactory::getInstance().registerType<Cow>("cow");
@@ -185,6 +230,7 @@ bool GameScene::init()
         
         DirectionalBullet::getResources().cache();
 
+        windy::AudioManager::cacheSound(windy::Sounds::VineMan);
         
         windy::EntityFactory::getInstance().registerType<Subeil>("subeil");
         windy::EntityFactory::getInstance().registerType<Lyric>("lyric");
@@ -205,15 +251,64 @@ bool GameScene::init()
         GamePlatform::getResources().cache();
         RollRunner::getResources().cache();
         Tank::getResources().cache();
+        GreenSoldier::getResources().cache();
+        RedSoldier::getResources().cache();
+        KnifeSoldier::getResources().cache();
         TankBullet::getResources().cache();
+        Grenade::getResources().cache();
+        Knife::getResources().cache();
+
+        windy::AudioManager::cacheSound(windy::Sounds::MilitaryMan);
 
         windy::EntityFactory::getInstance().registerType<GamePlatform>("platform");
         windy::EntityFactory::getInstance().registerType<RollRunner>("roll_runner");
         windy::EntityFactory::getInstance().registerType<Tank>("tank");
+        windy::EntityFactory::getInstance().registerType<GreenSoldier>("green_soldier");
+        windy::EntityFactory::getInstance().registerType<RedSoldier>("red_soldier");
+        windy::EntityFactory::getInstance().registerType<KnifeSoldier>("claw_soldier");
 
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<GamePlatform>("platform");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<RollRunner>("roll_runner");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Tank>("tank");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<GreenSoldier>("green_soldier");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<RedSoldier>("red_soldier");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<KnifeSoldier>("claw_soldier");
+    }
+    else if (currentLevel && currentLevel->mug.compare("nightman") == 0) {
+        BackPacker::getResources().cache();
+        Bat::getResources().cache();
+        FallingSkull::getResources().cache();
+        FlashBrain::getResources().cache();
+        Golem::getResources().cache();
+        Rip::getResources().cache();
+        Spider::getResources().cache();
+        WallSkull::getResources().cache();
+        Worm::getResources().cache();
+
+        BackPackBullet::getResources().cache();
+
+        windy::AudioManager::cacheSound(windy::Sounds::NightMan);
+
+        windy::EntityFactory::getInstance().registerType<BackPacker>("backpacker");
+        windy::EntityFactory::getInstance().registerType<Bat>("batcombat");
+        windy::EntityFactory::getInstance().registerType<FallingSkull>("falling_skull");
+        windy::EntityFactory::getInstance().registerType<FlashBrain>("flash_brain");
+        windy::EntityFactory::getInstance().registerType<Golem>("golem_jumper");
+        windy::EntityFactory::getInstance().registerType<Rip>("rip_jumper");
+        windy::EntityFactory::getInstance().registerType<Spider>("wall_spider");
+        windy::EntityFactory::getInstance().registerType<WallSkull>("wall_skull");
+        windy::EntityFactory::getInstance().registerType<Worm>("robot_worm");
+
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<BackPacker>("backpacker");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<Bat>("batcombat");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<FallingSkull>("falling_skull");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<FlashBrain>("flash_brain");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<Golem>("golem_jumper");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<Rip>("rip_jumper");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<Spider>("wall_spider");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<WallSkull>("wall_skull");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<Worm>("robot_worm");
+
     }
 
     if (currentLevel) {

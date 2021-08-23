@@ -29,9 +29,9 @@
             <key>realTextureFileName</key>
             <string>water.pvr.ccz</string>
             <key>size</key>
-            <string>{18,18}</string>
+            <string>{32,32}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:45bd1218f96b28869a9ca07a4926e99a:c980c22d62c828f3067ff553519ddc98:509383a8a220b1a5b93b8e11238c5f2a$</string>
+            <string>$TexturePacker:SmartUpdate:47b82e57ba7e94812c8649fffc22aee2:c980c22d62c828f3067ff553519ddc98:509383a8a220b1a5b93b8e11238c5f2a$</string>
             <key>textureFileName</key>
             <string>water.pvr.ccz</string>
         </dict>

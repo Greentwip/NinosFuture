@@ -6,41 +6,49 @@
         <dict>
             <key>jetbird_fly_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{81,2},{77,40}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{-1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,2},{77,40}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{77,42}</string>
+                <key>spriteSourceSize</key>
                 <string>{79,44}</string>
+                <key>textureRect</key>
+                <string>{{2,48},{77,42}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>jetbird_fly_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{77,42}}</string>
-                <key>offset</key>
-                <string>{-1,1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{77,42}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-1,0}</string>
+                <key>spriteSize</key>
+                <string>{77,44}</string>
+                <key>spriteSourceSize</key>
                 <string>{79,44}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{77,44}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>jetbird.pvr.ccz</string>
             <key>size</key>
-            <string>{160,46}</string>
+            <string>{128,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:14e5b91ee39007f624cb26a5e74d601c:9855c963b17b9fd2351ed6679766bf22:80e699f2b2daf2f287f3c1f939bdf723$</string>
+            <string>$TexturePacker:SmartUpdate:5bb5732e62802439f11178d7e3b3a96e:9855c963b17b9fd2351ed6679766bf22:80e699f2b2daf2f287f3c1f939bdf723$</string>
             <key>textureFileName</key>
             <string>jetbird.pvr.ccz</string>
         </dict>

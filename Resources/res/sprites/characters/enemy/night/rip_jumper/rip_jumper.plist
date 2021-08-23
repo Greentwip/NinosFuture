@@ -6,158 +6,184 @@
         <dict>
             <key>rip_jumper_jump_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,180},{32,30}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,-2}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,4},{32,30}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{32,30}</string>
+                <key>spriteSourceSize</key>
                 <string>{32,34}</string>
+                <key>textureRect</key>
+                <string>{{36,36},{32,30}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>rip_jumper_jump_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,180},{32,30}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,-2}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,4},{32,30}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{32,30}</string>
+                <key>spriteSourceSize</key>
                 <string>{32,34}</string>
+                <key>textureRect</key>
+                <string>{{36,36},{32,30}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>rip_jumper_jump_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,146},{32,32}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,-1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,2},{32,32}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{32,32}</string>
+                <key>spriteSourceSize</key>
                 <string>{32,34}</string>
+                <key>textureRect</key>
+                <string>{{72,2},{32,32}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>rip_jumper_jump_3</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{32,34}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{32,34}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{32,34}</string>
+                <key>spriteSourceSize</key>
+                <string>{32,34}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{32,34}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>rip_jumper_jump_4</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,38},{32,34}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{32,34}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{32,34}</string>
+                <key>spriteSourceSize</key>
+                <string>{32,34}</string>
+                <key>textureRect</key>
+                <string>{{2,38},{32,34}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>rip_jumper_jump_5</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,74},{32,34}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{32,34}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{32,34}</string>
+                <key>spriteSourceSize</key>
+                <string>{32,34}</string>
+                <key>textureRect</key>
+                <string>{{2,74},{32,34}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>rip_jumper_jump_6</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,110},{32,34}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{32,34}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{32,34}</string>
+                <key>spriteSourceSize</key>
+                <string>{32,34}</string>
+                <key>textureRect</key>
+                <string>{{36,2},{32,34}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>rip_jumper_jump_7</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,110},{32,34}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{32,34}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{32,34}</string>
+                <key>spriteSourceSize</key>
+                <string>{32,34}</string>
+                <key>textureRect</key>
+                <string>{{36,2},{32,34}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>rip_jumper_jump_8</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,110},{32,34}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{32,34}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{32,34}</string>
+                <key>spriteSourceSize</key>
+                <string>{32,34}</string>
+                <key>textureRect</key>
+                <string>{{36,2},{32,34}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>rip_jumper_jump_9</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,110},{32,34}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{32,34}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{32,34}</string>
+                <key>spriteSourceSize</key>
+                <string>{32,34}</string>
+                <key>textureRect</key>
+                <string>{{36,2},{32,34}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>rip_jumper_stand_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,180},{32,30}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,-2}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,4},{32,30}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{32,30}</string>
+                <key>spriteSourceSize</key>
                 <string>{32,34}</string>
+                <key>textureRect</key>
+                <string>{{36,36},{32,30}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>rip_jumper.pvr.ccz</string>
             <key>size</key>
-            <string>{36,214}</string>
+            <string>{128,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:da69d5ef83265ad7bdde85a06482901d:f59c62d89efa5ec784f0bf2cacee5ed0:94b4432ba4e768c14975231812136e4a$</string>
+            <string>$TexturePacker:SmartUpdate:ce9a8c1b42891db4f43727faac2a7453:f59c62d89efa5ec784f0bf2cacee5ed0:94b4432ba4e768c14975231812136e4a$</string>
             <key>textureFileName</key>
             <string>rip_jumper.pvr.ccz</string>
         </dict>

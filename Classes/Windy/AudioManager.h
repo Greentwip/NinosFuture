@@ -69,6 +69,10 @@ namespace windy {
 	public:
 		static std::map<Sounds, std::string> getSoundKeyMap();
 
+		static void uncacheAll();
+
+		static void cacheSound(windy::Sounds resource);
+
 		static int playBgm(Sounds resource, bool loop = true, std::function<void()> callback = nullptr);
 		static int playSfx(Sounds resource, bool loop = false, std::function<void()> callback = nullptr);
 		static void stopAll();

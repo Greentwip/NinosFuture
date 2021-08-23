@@ -15,11 +15,11 @@ game::Resources& Tank::getResources() {
 }
 
 void Tank::setup() {
-    maxHealth = 24;
+    maxHealth = 32;
     health = maxHealth;
     power = 6;
 
-    _walkSpeed = 0.5f;
+    _walkSpeed = 0.75f;
     _attackState = AttackState::Walking;
 
     Logical::composite<Tank>(this);
@@ -39,7 +39,7 @@ std::shared_ptr<cocos2d::Rect> Tank::getEntryCollisionRectangle(const cocos2d::P
 
 void Tank::fire() {
     if (_attackState == AttackState::Attacking) {
-        auto bulletPosition = cocos2d::Point(getPositionX() + (float)(18 * -getSpriteNormal()), getPositionY() + 18);
+        auto bulletPosition = cocos2d::Point(getPositionX() + static_cast<float>(18 * getSpriteNormal() * -1), getPositionY() + 18);
         auto entryCollisionBox = TankBullet::getEntryCollisionRectangle(bulletPosition, cocos2d::Size(16, 15));
         bool flipped = sprite->isFlippedX();
         auto entry = Logical::getEntry(entryCollisionBox, [=]() {
@@ -78,7 +78,7 @@ void Tank::attack(float dt) {
             sprite->runAction("walk");
         }
     } else if (_attackState == AttackState::Standing) {
-        auto delay = cocos2d::DelayTime::create(2.0f);
+        auto delay = cocos2d::DelayTime::create(1.0f);
 
         auto fireWeapon = cocos2d::CallFunc::create([this]() {
             this->fire();

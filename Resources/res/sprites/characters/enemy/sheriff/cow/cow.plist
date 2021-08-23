@@ -6,197 +6,229 @@
         <dict>
             <key>cow_attack_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{61,2},{51,88}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{10,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{21,0},{51,88}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{53,88}</string>
+                <key>spriteSourceSize</key>
                 <string>{73,88}</string>
+                <key>textureRect</key>
+                <string>{{2,92},{53,88}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>cow_attack_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{57,88}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{7,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{15,0},{57,88}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{59,88}</string>
+                <key>spriteSourceSize</key>
                 <string>{73,88}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{59,88}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>cow_attack_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{233,2},{59,62}}</string>
-                <key>offset</key>
-                <string>{2,-13}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{9,26},{59,62}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{2,-12}</string>
+                <key>spriteSize</key>
+                <string>{61,64}</string>
+                <key>spriteSourceSize</key>
                 <string>{73,88}</string>
+                <key>textureRect</key>
+                <string>{{168,2},{61,64}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>cow_morph_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{167,71},{59,44}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{6,-22}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{13,44},{59,44}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{61,44}</string>
+                <key>spriteSourceSize</key>
                 <string>{73,88}</string>
+                <key>textureRect</key>
+                <string>{{124,163},{61,44}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>cow_morph_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{429,2},{55,54}}</string>
-                <key>offset</key>
-                <string>{9,-17}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{18,34},{55,54}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{8,-17}</string>
+                <key>spriteSize</key>
+                <string>{57,54}</string>
+                <key>spriteSourceSize</key>
                 <string>{73,88}</string>
+                <key>textureRect</key>
+                <string>{{170,163},{57,54}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>cow_morph_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{294,2},{65,50}}</string>
-                <key>offset</key>
-                <string>{4,-19}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{8,38},{65,50}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{3,-18}</string>
+                <key>spriteSize</key>
+                <string>{67,52}</string>
+                <key>spriteSourceSize</key>
                 <string>{73,88}</string>
+                <key>textureRect</key>
+                <string>{{70,182},{67,52}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>cow_morph_3</key>
             <dict>
-                <key>frame</key>
-                <string>{{301,54},{65,50}}</string>
-                <key>offset</key>
-                <string>{4,-19}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{8,38},{65,50}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{3,-18}</string>
+                <key>spriteSize</key>
+                <string>{67,52}</string>
+                <key>spriteSourceSize</key>
                 <string>{73,88}</string>
+                <key>textureRect</key>
+                <string>{{63,2},{67,52}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>cow_morph_4</key>
             <dict>
-                <key>frame</key>
-                <string>{{368,53},{47,60}}</string>
-                <key>offset</key>
-                <string>{13,-14}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{26,28},{47,60}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{13,-13}</string>
+                <key>spriteSize</key>
+                <string>{47,62}</string>
+                <key>spriteSourceSize</key>
                 <string>{73,88}</string>
+                <key>textureRect</key>
+                <string>{{168,65},{47,62}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>cow_morph_5</key>
             <dict>
-                <key>frame</key>
-                <string>{{417,58},{47,60}}</string>
-                <key>offset</key>
-                <string>{13,-14}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{26,28},{47,60}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{13,-13}</string>
+                <key>spriteSize</key>
+                <string>{47,62}</string>
+                <key>spriteSourceSize</key>
                 <string>{73,88}</string>
+                <key>textureRect</key>
+                <string>{{165,114},{47,62}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>cow_morph_6</key>
             <dict>
-                <key>frame</key>
-                <string>{{167,2},{67,64}}</string>
-                <key>offset</key>
-                <string>{3,-12}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{6,24},{67,64}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{3,-11}</string>
+                <key>spriteSize</key>
+                <string>{67,66}</string>
+                <key>spriteSourceSize</key>
                 <string>{73,88}</string>
+                <key>textureRect</key>
+                <string>{{2,182},{67,66}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>cow_morph_7</key>
             <dict>
-                <key>frame</key>
-                <string>{{233,66},{49,66}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{12,-11}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{24,22},{49,66}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{49,66}</string>
+                <key>spriteSourceSize</key>
                 <string>{73,88}</string>
+                <key>textureRect</key>
+                <string>{{117,2},{49,66}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>cow_morph_8</key>
             <dict>
-                <key>frame</key>
-                <string>{{361,2},{49,66}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{7,-11}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{19,22},{49,66}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{51,66}</string>
+                <key>spriteSourceSize</key>
                 <string>{73,88}</string>
+                <key>textureRect</key>
+                <string>{{112,71},{51,66}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>cow_morph_9</key>
             <dict>
-                <key>frame</key>
-                <string>{{114,2},{51,88}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{10,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{21,0},{51,88}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{53,88}</string>
+                <key>spriteSourceSize</key>
                 <string>{73,88}</string>
+                <key>textureRect</key>
+                <string>{{57,92},{53,88}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>cow_stand_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{167,71},{59,44}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{6,-22}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{13,44},{59,44}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{61,44}</string>
+                <key>spriteSourceSize</key>
                 <string>{73,88}</string>
+                <key>textureRect</key>
+                <string>{{124,163},{61,44}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>cow.pvr.ccz</string>
             <key>size</key>
-            <string>{486,117}</string>
+            <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0904979104efb1bc1621d7a12da06f6d:e85dc9d191ba3d4f3d9d9b216fc7cc6a:85e7ee9488512247df4463272838b95c$</string>
+            <string>$TexturePacker:SmartUpdate:c5d6a5664818409fa32585854267ad97:e85dc9d191ba3d4f3d9d9b216fc7cc6a:85e7ee9488512247df4463272838b95c$</string>
             <key>textureFileName</key>
             <string>cow.pvr.ccz</string>
         </dict>

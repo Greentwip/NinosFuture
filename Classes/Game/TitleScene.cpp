@@ -60,6 +60,9 @@ bool TitleScene::init()
     windy::Armature::clearPlistCache();
     windy::Sprite::clearPlistCache();
 
+    windy::AudioManager::cacheSound(windy::Sounds::Title);
+
+
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS
 
 #endif

@@ -6,132 +6,154 @@
         <dict>
             <key>plane_fly_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{258,34},{62,28}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,7}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{62,28}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{62,28}</string>
+                <key>spriteSourceSize</key>
                 <string>{62,42}</string>
+                <key>textureRect</key>
+                <string>{{66,130},{62,28}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>plane_fly_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{322,34},{62,28}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,7}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{62,28}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{62,28}</string>
+                <key>spriteSourceSize</key>
                 <string>{62,42}</string>
+                <key>textureRect</key>
+                <string>{{2,150},{62,28}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>plane_fly_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{258,2},{62,30}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,6}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{62,30}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{62,30}</string>
+                <key>spriteSourceSize</key>
                 <string>{62,42}</string>
+                <key>textureRect</key>
+                <string>{{2,118},{62,30}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>plane_fly_3</key>
             <dict>
-                <key>frame</key>
-                <string>{{322,2},{62,30}}</string>
-                <key>offset</key>
-                <string>{0,6}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{62,30}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,5}</string>
+                <key>spriteSize</key>
+                <string>{62,32}</string>
+                <key>spriteSourceSize</key>
                 <string>{62,42}</string>
+                <key>textureRect</key>
+                <string>{{66,66},{62,32}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>plane_fly_4</key>
             <dict>
-                <key>frame</key>
-                <string>{{194,2},{62,32}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,5}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{62,32}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{62,32}</string>
+                <key>spriteSourceSize</key>
                 <string>{62,42}</string>
+                <key>textureRect</key>
+                <string>{{2,84},{62,32}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>plane_fly_5</key>
             <dict>
-                <key>frame</key>
-                <string>{{130,2},{62,36}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,3}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{62,36}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{62,36}</string>
+                <key>spriteSourceSize</key>
                 <string>{62,42}</string>
+                <key>textureRect</key>
+                <string>{{2,46},{62,36}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>plane_fly_6</key>
             <dict>
-                <key>frame</key>
-                <string>{{66,2},{62,40}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{62,40}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{62,40}</string>
+                <key>spriteSourceSize</key>
                 <string>{62,42}</string>
+                <key>textureRect</key>
+                <string>{{66,2},{62,40}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>plane_fly_7</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{62,42}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{62,42}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{62,42}</string>
+                <key>spriteSourceSize</key>
+                <string>{62,42}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{62,42}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>plane_fly_8</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{62,42}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{62,42}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{62,42}</string>
+                <key>spriteSourceSize</key>
+                <string>{62,42}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{62,42}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>plane.pvr.ccz</string>
             <key>size</key>
-            <string>{386,64}</string>
+            <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:6b5d80cc89a6bf3c1bea5c9e52ea2fa8:5d73ad99688b6c7b25258b26ddd5c573:ac34a41def3bdcee814062a65f27898e$</string>
+            <string>$TexturePacker:SmartUpdate:e1b39bc8da3282002c14fcc88b7dece7:5d73ad99688b6c7b25258b26ddd5c573:ac34a41def3bdcee814062a65f27898e$</string>
             <key>textureFileName</key>
             <string>plane.pvr.ccz</string>
         </dict>

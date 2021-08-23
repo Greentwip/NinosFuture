@@ -394,7 +394,10 @@ void PhysicsWorld::update(float dt)
            entity->getTag() == GameTags::Weapon::WeaponPlayer  ||
            entity->getTag() == GameTags::Weapon::WeaponEnemy   ||
            entity->getTag() == GameTags::Scenery::Particle) { 
-            collidingEntities.pushBack(entity);
+            if (!entity->ignoreEntityCollision) {
+                collidingEntities.pushBack(entity);
+            }
+            
         }
     }
 
@@ -589,5 +592,23 @@ void PhysicsWorld::update(float dt)
 
         entity->onCollisionExit(collidingEntity);
     }
+
+}
+
+void PhysicsWorld::unregisterContact(Logical* a, Logical* b) {
+    this->contactEventCollisions.erase(
+        std::remove_if(this->contactEventCollisions.begin(),
+                       this->contactEventCollisions.end(),
+                       [=](const std::pair<long long, std::pair<Logical*, Logical*>> contact) {
+
+                bool shouldRemove = false;
+                shouldRemove = (contact.second.first == a &&
+                    contact.second.second == b) ||
+                    (contact.second.first == b &&
+                        contact.second.second == a);
+
+                return shouldRemove;
+            }),
+        this->contactEventCollisions.end());
 
 }

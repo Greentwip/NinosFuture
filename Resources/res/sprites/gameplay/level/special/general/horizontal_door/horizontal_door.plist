@@ -30,7 +30,7 @@
                 <key>spriteSourceSize</key>
                 <string>{48,16}</string>
                 <key>textureRect</key>
-                <string>{{112,2},{6,16}}</string>
+                <string>{{52,2},{6,16}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -45,7 +45,7 @@
                 <key>spriteSourceSize</key>
                 <string>{48,16}</string>
                 <key>textureRect</key>
-                <string>{{92,2},{18,16}}</string>
+                <string>{{20,20},{18,16}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -60,9 +60,9 @@
                 <key>spriteSourceSize</key>
                 <string>{48,16}</string>
                 <key>textureRect</key>
-                <string>{{52,2},{38,16}}</string>
+                <string>{{2,20},{38,16}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>horizontal_door_lock_3</key>
             <dict>
@@ -105,9 +105,9 @@
                 <key>spriteSourceSize</key>
                 <string>{48,16}</string>
                 <key>textureRect</key>
-                <string>{{52,2},{38,16}}</string>
+                <string>{{2,20},{38,16}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>horizontal_door_unlock_2</key>
             <dict>
@@ -120,7 +120,7 @@
                 <key>spriteSourceSize</key>
                 <string>{48,16}</string>
                 <key>textureRect</key>
-                <string>{{92,2},{18,16}}</string>
+                <string>{{20,20},{18,16}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -135,7 +135,7 @@
                 <key>spriteSourceSize</key>
                 <string>{48,16}</string>
                 <key>textureRect</key>
-                <string>{{112,2},{6,16}}</string>
+                <string>{{52,2},{6,16}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -151,9 +151,9 @@
             <key>realTextureFileName</key>
             <string>horizontal_door.pvr.ccz</string>
             <key>size</key>
-            <string>{120,20}</string>
+            <string>{64,64}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:52ccfc246bab6dd206440ae46a924b0c:fa490fa892d345e164a0c356b3679bbe:823d93c93a6fbee5b11c9cf78408cbce$</string>
+            <string>$TexturePacker:SmartUpdate:125e998f6ea5f76783d5f63d25a5c8bd:fa490fa892d345e164a0c356b3679bbe:823d93c93a6fbee5b11c9cf78408cbce$</string>
             <key>textureFileName</key>
             <string>horizontal_door.pvr.ccz</string>
         </dict>

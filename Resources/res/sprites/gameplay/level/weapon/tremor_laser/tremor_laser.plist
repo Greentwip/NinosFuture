@@ -15,9 +15,9 @@
                 <key>spriteSourceSize</key>
                 <string>{32,44}</string>
                 <key>textureRect</key>
-                <string>{{2,2},{16,34}}</string>
+                <string>{{96,2},{16,34}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
             <key>tremor_laser_charge_1</key>
             <dict>
@@ -30,7 +30,7 @@
                 <key>spriteSourceSize</key>
                 <string>{32,44}</string>
                 <key>textureRect</key>
-                <string>{{2,20},{20,44}}</string>
+                <string>{{50,2},{20,44}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -45,7 +45,7 @@
                 <key>spriteSourceSize</key>
                 <string>{32,44}</string>
                 <key>textureRect</key>
-                <string>{{2,42},{32,34}}</string>
+                <string>{{86,38},{32,34}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -60,7 +60,7 @@
                 <key>spriteSourceSize</key>
                 <string>{144,48}</string>
                 <key>textureRect</key>
-                <string>{{2,206},{140,46}}</string>
+                <string>{{2,2},{140,46}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -75,7 +75,7 @@
                 <key>spriteSourceSize</key>
                 <string>{144,48}</string>
                 <key>textureRect</key>
-                <string>{{2,76},{128,34}}</string>
+                <string>{{50,24},{128,34}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -91,9 +91,9 @@
             <key>realTextureFileName</key>
             <string>tremor_laser.pvr.ccz</string>
             <key>size</key>
-            <string>{50,348}</string>
+            <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:5b33d5fe1f3cadcfcfa34ceafc3c09df:894a86675b47cecaaf0e3d1419f9cedd:444c7fae7338a13a08a36a551c6f890b$</string>
+            <string>$TexturePacker:SmartUpdate:41d87c275f3dfa70494ccfe324385a9e:894a86675b47cecaaf0e3d1419f9cedd:444c7fae7338a13a08a36a551c6f890b$</string>
             <key>textureFileName</key>
             <string>tremor_laser.pvr.ccz</string>
         </dict>

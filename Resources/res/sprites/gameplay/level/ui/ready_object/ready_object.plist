@@ -6,41 +6,49 @@
         <dict>
             <key>spr_ready_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{40,8}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{4,4},{40,8}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{42,10}</string>
+                <key>spriteSourceSize</key>
                 <string>{48,16}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{42,10}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>spr_ready_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{44,2},{1,1}}</string>
-                <key>offset</key>
-                <string>{-23.5,7.5}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{1,1}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-22.5,6.5}</string>
+                <key>spriteSize</key>
+                <string>{3,3}</string>
+                <key>spriteSourceSize</key>
                 <string>{48,16}</string>
+                <key>textureRect</key>
+                <string>{{2,46},{3,3}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>ready_object.pvr.ccz</string>
             <key>size</key>
-            <string>{48,12}</string>
+            <string>{16,64}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:5a7d47a4ab6263caa91bbef03c04cd7c:85236f1b294dfe5992cd167993b1bcbf:ed8afa7dab195ca68197d64984e3411e$</string>
+            <string>$TexturePacker:SmartUpdate:9fa796b739e89204acc5e724fd50a999:85236f1b294dfe5992cd167993b1bcbf:ed8afa7dab195ca68197d64984e3411e$</string>
             <key>textureFileName</key>
             <string>ready_object.pvr.ccz</string>
         </dict>

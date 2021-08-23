@@ -51,6 +51,16 @@ std::map<windy::Sounds, std::string> windy::AudioManager::getSoundKeyMap() {
 	return AudioManager::soundsKeyMap;
 }
 
+void windy::AudioManager::uncacheAll() {
+	AudioEngine::uncacheAll();
+}
+
+void windy::AudioManager::cacheSound(windy::Sounds resource) {
+	if (resource != Sounds::NONE) {
+		AudioEngine::preload(soundsKeyMap[resource]);
+	}	
+}
+
 int windy::AudioManager::playBgm(windy::Sounds resource, bool loop, std::function<void()> callback) {
 	//cc.audio.current_track = path
 	//local id = ccexp.AudioEngine:play2d(path, loop, cc.bgm_volume_)

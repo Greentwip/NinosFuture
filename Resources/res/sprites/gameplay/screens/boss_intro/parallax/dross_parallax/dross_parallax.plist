@@ -6,28 +6,34 @@
         <dict>
             <key>dross_parallax_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>dross_parallax.pvr.ccz</string>
             <key>size</key>
-            <string>{260,228}</string>
+            <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:cf3d43de37653233c7457d5b58223139:487db5b20a54743f4806ee33f54aacf6:9c71926278d9de9d0ebc99ed41976e5e$</string>
+            <string>$TexturePacker:SmartUpdate:8ef5b6cffe13352a6dafdc2f15cc45f4:487db5b20a54743f4806ee33f54aacf6:9c71926278d9de9d0ebc99ed41976e5e$</string>
             <key>textureFileName</key>
             <string>dross_parallax.pvr.ccz</string>
         </dict>

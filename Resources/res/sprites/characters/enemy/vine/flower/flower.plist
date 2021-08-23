@@ -6,82 +6,96 @@
         <dict>
             <key>flower_attack_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{57,180}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{57,180}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{57,180}</string>
+                <key>spriteSourceSize</key>
+                <string>{57,180}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{57,180}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>flower_attack_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{57,180}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{57,180}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{57,180}</string>
+                <key>spriteSourceSize</key>
+                <string>{57,180}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{57,180}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>flower_attack_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,184},{57,180}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{57,180}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{57,180}</string>
+                <key>spriteSourceSize</key>
+                <string>{57,180}</string>
+                <key>textureRect</key>
+                <string>{{61,2},{57,180}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>flower_attack_3</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{57,180}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{57,180}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{57,180}</string>
+                <key>spriteSourceSize</key>
+                <string>{57,180}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{57,180}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>flower_attack_4</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,366},{57,180}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{57,180}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{57,180}</string>
+                <key>spriteSourceSize</key>
+                <string>{57,180}</string>
+                <key>textureRect</key>
+                <string>{{120,2},{57,180}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
-            <string>flower.png</string>
+            <string>flower.pvr.ccz</string>
             <key>size</key>
-            <string>{61,548}</string>
+            <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:09b22d31bb82191508faaff9e1a6d505:8a9ce4ce894e3ac1d15805cdace16097:28b5f63aee02c9e802c3848dbb8fc9b7$</string>
+            <string>$TexturePacker:SmartUpdate:28234660c79e22a9dd34219e4e5eedf9:8a9ce4ce894e3ac1d15805cdace16097:fc6ec5f07db6d41067262cabc5880e26$</string>
             <key>textureFileName</key>
-            <string>flower.png</string>
+            <string>flower.pvr.ccz</string>
         </dict>
     </dict>
 </plist>

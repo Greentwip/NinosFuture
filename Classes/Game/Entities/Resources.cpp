@@ -34,6 +34,8 @@ std::string Resources::entityPath(ResourceKind kind) noexcept {
             return "characters/enemy/military";
         case ResourceKind::EnemySheriff:
             return "characters/enemy/sheriff";
+        case ResourceKind::EnemyNight:
+            return "characters/enemy/night";
         case ResourceKind::EnergyBar:
             return "gameplay/level/ui/energy_bar";
         case ResourceKind::Item:

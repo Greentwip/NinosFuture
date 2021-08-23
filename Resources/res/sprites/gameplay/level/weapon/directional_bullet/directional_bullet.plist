@@ -6,28 +6,34 @@
         <dict>
             <key>directional_bullet_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{8,8}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,0},{8,8}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{10,8}</string>
+                <key>spriteSourceSize</key>
+                <string>{10,8}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{10,8}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>directional_bullet.pvr.ccz</string>
             <key>size</key>
-            <string>{12,12}</string>
+            <string>{16,16}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:2640cd8f4e48887f579c15f03e5fce72:6022642b9f45d54f477f5f2d5f16830e:b46816f18f0d723dc7292ae66a7deec6$</string>
+            <string>$TexturePacker:SmartUpdate:6c5d431ad76e77e2f8272bcee0ebcb2d:6022642b9f45d54f477f5f2d5f16830e:b46816f18f0d723dc7292ae66a7deec6$</string>
             <key>textureFileName</key>
             <string>directional_bullet.pvr.ccz</string>
         </dict>

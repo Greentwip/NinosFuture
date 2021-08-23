@@ -6,67 +6,79 @@
         <dict>
             <key>violet_bullet_high_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{25,30}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{-4,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,1},{25,30}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{25,32}</string>
+                <key>spriteSourceSize</key>
                 <string>{33,32}</string>
+                <key>textureRect</key>
+                <string>{{37,2},{25,32}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>violet_bullet_high_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{34,2},{23,24}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{-4,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,4},{23,24}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{25,26}</string>
+                <key>spriteSourceSize</key>
                 <string>{33,32}</string>
+                <key>textureRect</key>
+                <string>{{2,36},{25,26}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>violet_bullet_high_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{59,2},{31,20}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,6},{31,20}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{33,22}</string>
+                <key>spriteSourceSize</key>
                 <string>{33,32}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{33,22}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>violet_bullet_high_3</key>
             <dict>
-                <key>frame</key>
-                <string>{{92,2},{17,10}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{7,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{15,11},{17,10}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{19,12}</string>
+                <key>spriteSourceSize</key>
                 <string>{33,32}</string>
+                <key>textureRect</key>
+                <string>{{29,36},{19,12}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>violet_bullet_high.pvr.ccz</string>
             <key>size</key>
-            <string>{104,29}</string>
+            <string>{64,64}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1398e04a5b7f6fc9988cedf681bdaeaa:f61cabbf205900b48fa621cff09a12a8:67202510648cb3fae4ce02e876c962a6$</string>
+            <string>$TexturePacker:SmartUpdate:2b05559a330508c0ce4f4bd3eff926bb:f61cabbf205900b48fa621cff09a12a8:67202510648cb3fae4ce02e876c962a6$</string>
             <key>textureFileName</key>
             <string>violet_bullet_high.pvr.ccz</string>
         </dict>

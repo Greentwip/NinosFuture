@@ -6,28 +6,34 @@
         <dict>
             <key>meter_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{6,1}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{6,1}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{6,1}</string>
+                <key>spriteSourceSize</key>
+                <string>{6,1}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{6,1}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>meter.pvr.ccz</string>
             <key>size</key>
-            <string>{10,5}</string>
+            <string>{8,16}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:4ee7ed7d7e9f14c314c3f7b9b0cb0740:ea983f0eadd8ccc8c32c2e6e416e80fe:a32030e04338f7a4613c70612b3d1d79$</string>
+            <string>$TexturePacker:SmartUpdate:64ed5ca39c23211da54b913acc06364f:ea983f0eadd8ccc8c32c2e6e416e80fe:a32030e04338f7a4613c70612b3d1d79$</string>
             <key>textureFileName</key>
             <string>meter.pvr.ccz</string>
         </dict>

@@ -6,223 +6,259 @@
         <dict>
             <key>red_soldier_attack_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,73},{41,37}}</string>
-                <key>offset</key>
-                <string>{-7,-16}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,32},{41,37}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-7,-15}</string>
+                <key>spriteSize</key>
+                <string>{43,39}</string>
+                <key>spriteSourceSize</key>
                 <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{2,120},{43,39}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>red_soldier_attack_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{61,2},{41,39}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{-7,-15}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,30},{41,39}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{43,39}</string>
+                <key>spriteSourceSize</key>
                 <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{41,73},{43,39}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>red_soldier_attack_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{149,2},{41,35}}</string>
-                <key>offset</key>
-                <string>{-7,-17}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,34},{41,35}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-7,-16}</string>
+                <key>spriteSize</key>
+                <string>{43,37}</string>
+                <key>spriteSourceSize</key>
                 <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{2,165},{43,37}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>red_soldier_fall_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{57,69}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
+                <key>spriteSize</key>
+                <string>{57,69}</string>
+                <key>spriteSourceSize</key>
+                <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{57,69}}</string>
+                <key>textureRotated</key>
                 <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{57,69}}</string>
-                <key>sourceSize</key>
-                <string>{57,69}</string>
-            </dict>
-            <key>red_soldier_fall_1</key>
-            <dict>
-                <key>frame</key>
-                <string>{{45,80},{31,39}}</string>
-                <key>offset</key>
-                <string>{-4,-15}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{9,30},{31,39}}</string>
-                <key>sourceSize</key>
-                <string>{57,69}</string>
-            </dict>
-            <key>red_soldier_fall_2</key>
-            <dict>
-                <key>frame</key>
-                <string>{{104,78},{33,35}}</string>
-                <key>offset</key>
-                <string>{-3,-17}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{9,34},{33,35}}</string>
-                <key>sourceSize</key>
-                <string>{57,69}</string>
             </dict>
             <key>red_soldier_morph_a_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{104,78},{33,35}}</string>
-                <key>offset</key>
-                <string>{-3,-17}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{9,34},{33,35}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-3,-16}</string>
+                <key>spriteSize</key>
+                <string>{35,37}</string>
+                <key>spriteSourceSize</key>
                 <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{88,92},{35,37}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>red_soldier_morph_a_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{190,39},{33,35}}</string>
-                <key>offset</key>
-                <string>{-3,-17}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{9,34},{33,35}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-3,-16}</string>
+                <key>spriteSize</key>
+                <string>{35,37}</string>
+                <key>spriteSourceSize</key>
                 <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{90,192},{35,37}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>red_soldier_morph_a_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{188,76},{35,35}}</string>
-                <key>offset</key>
-                <string>{-4,-17}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{7,34},{35,35}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-4,-16}</string>
+                <key>spriteSize</key>
+                <string>{37,37}</string>
+                <key>spriteSourceSize</key>
                 <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{86,153},{37,37}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>red_soldier_morph_a_3</key>
             <dict>
-                <key>frame</key>
-                <string>{{192,2},{39,35}}</string>
-                <key>offset</key>
-                <string>{-6,-17}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{3,34},{39,35}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-6,-16}</string>
+                <key>spriteSize</key>
+                <string>{41,37}</string>
+                <key>spriteSourceSize</key>
                 <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{47,153},{41,37}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>red_soldier_morph_b_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{147,76},{39,35}}</string>
-                <key>offset</key>
-                <string>{-6,-17}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{3,34},{39,35}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-6,-16}</string>
+                <key>spriteSize</key>
+                <string>{41,37}</string>
+                <key>spriteSourceSize</key>
                 <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{47,196},{41,37}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>red_soldier_morph_b_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{104,2},{43,35}}</string>
-                <key>offset</key>
-                <string>{-6,-17}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,34},{43,35}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-6,-16}</string>
+                <key>spriteSize</key>
+                <string>{45,37}</string>
+                <key>spriteSourceSize</key>
                 <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{2,73},{45,37}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>red_soldier_morph_b_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{61,43},{41,35}}</string>
-                <key>offset</key>
-                <string>{-7,-17}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,34},{41,35}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-7,-16}</string>
+                <key>spriteSize</key>
+                <string>{43,37}</string>
+                <key>spriteSourceSize</key>
                 <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{43,114},{43,37}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>red_soldier_morph_b_3</key>
             <dict>
-                <key>frame</key>
-                <string>{{147,39},{41,35}}</string>
-                <key>offset</key>
-                <string>{-7,-17}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,34},{41,35}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-7,-16}</string>
+                <key>spriteSize</key>
+                <string>{43,37}</string>
+                <key>spriteSourceSize</key>
                 <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{86,47},{43,37}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>red_soldier_morph_b_4</key>
             <dict>
-                <key>frame</key>
-                <string>{{104,39},{41,37}}</string>
-                <key>offset</key>
-                <string>{-7,-16}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,32},{41,37}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-7,-15}</string>
+                <key>spriteSize</key>
+                <string>{43,39}</string>
+                <key>spriteSourceSize</key>
                 <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{61,2},{43,39}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>red_soldier_stand_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{147,76},{39,35}}</string>
-                <key>offset</key>
-                <string>{-6,-17}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{3,34},{39,35}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-6,-16}</string>
+                <key>spriteSize</key>
+                <string>{41,37}</string>
+                <key>spriteSourceSize</key>
                 <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{47,196},{41,37}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>red_soldier_unused_fall_0</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-4,-14}</string>
+                <key>spriteSize</key>
+                <string>{33,41}</string>
+                <key>spriteSourceSize</key>
+                <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{2,204},{33,41}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>red_soldier_unused_fall_1</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-3,-16}</string>
+                <key>spriteSize</key>
+                <string>{35,37}</string>
+                <key>spriteSourceSize</key>
+                <string>{57,69}</string>
+                <key>textureRect</key>
+                <string>{{88,92},{35,37}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>red_soldier.pvr.ccz</string>
             <key>size</key>
-            <string>{234,113}</string>
+            <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:cd196d357c43e14c7ee44ee2a9933aac:30feb19978e2ba595d21ffe6d71e3349:b780f35ac65b782434ad4cc40de750db$</string>
+            <string>$TexturePacker:SmartUpdate:ff0254483c84f52c063dfdc122808231:6df4b67a278d64443084259753f43413:b780f35ac65b782434ad4cc40de750db$</string>
             <key>textureFileName</key>
             <string>red_soldier.pvr.ccz</string>
         </dict>

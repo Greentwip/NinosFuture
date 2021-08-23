@@ -30,7 +30,7 @@
                 <key>spriteSourceSize</key>
                 <string>{33,48}</string>
                 <key>textureRect</key>
-                <string>{{108,2},{3,3}}</string>
+                <string>{{52,2},{3,3}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -45,7 +45,7 @@
                 <key>spriteSourceSize</key>
                 <string>{33,48}</string>
                 <key>textureRect</key>
-                <string>{{88,2},{33,18}}</string>
+                <string>{{38,37},{33,18}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -60,7 +60,7 @@
                 <key>spriteSourceSize</key>
                 <string>{33,48}</string>
                 <key>textureRect</key>
-                <string>{{52,2},{33,34}}</string>
+                <string>{{2,37},{33,34}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -105,7 +105,7 @@
                 <key>spriteSourceSize</key>
                 <string>{33,48}</string>
                 <key>textureRect</key>
-                <string>{{52,2},{33,34}}</string>
+                <string>{{2,37},{33,34}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -120,7 +120,7 @@
                 <key>spriteSourceSize</key>
                 <string>{33,48}</string>
                 <key>textureRect</key>
-                <string>{{88,2},{33,18}}</string>
+                <string>{{38,37},{33,18}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -135,7 +135,7 @@
                 <key>spriteSourceSize</key>
                 <string>{33,48}</string>
                 <key>textureRect</key>
-                <string>{{108,2},{3,3}}</string>
+                <string>{{52,2},{3,3}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -151,9 +151,9 @@
             <key>realTextureFileName</key>
             <string>vertical_door.pvr.ccz</string>
             <key>size</key>
-            <string>{114,37}</string>
+            <string>{64,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:c588219ea05bce9b3045343174f0d8c0:712035ee50db20ce14a0056df6c55181:06dc4fd7c71d556e734ea20192905b80$</string>
+            <string>$TexturePacker:SmartUpdate:898bf1fbf6b8ba18132028cec5eebc88:712035ee50db20ce14a0056df6c55181:06dc4fd7c71d556e734ea20192905b80$</string>
             <key>textureFileName</key>
             <string>vertical_door.pvr.ccz</string>
         </dict>

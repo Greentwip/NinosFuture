@@ -27,6 +27,7 @@ void Logical::setup(const cocos2d::Point& position, const cocos2d::Size& size) {
     this->collisionBox = this->collisionRectangles[0];
     this->ignoreGravity = false;
     this->ignoreLandscapeCollision = false;
+    this->ignoreEntityCollision = false;
 }
 
 

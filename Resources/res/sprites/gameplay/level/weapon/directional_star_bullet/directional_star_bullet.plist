@@ -6,41 +6,49 @@
         <dict>
             <key>directional_star_bullet_walk_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{20,2},{16,16}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,1},{16,16}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{18,18}</string>
+                <key>spriteSourceSize</key>
+                <string>{18,18}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{18,18}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>directional_star_bullet_walk_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{18,16}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,1},{18,16}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{18,18}</string>
+                <key>spriteSourceSize</key>
+                <string>{18,18}</string>
+                <key>textureRect</key>
+                <string>{{2,22},{18,18}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>directional_star_bullet.pvr.ccz</string>
             <key>size</key>
-            <string>{38,22}</string>
+            <string>{32,64}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:a1ec7dadf933f4ed8ea1b8655857f000:0b4f0136d55c2a904373332f36c611b5:7102367879d67355554360a0db877cee$</string>
+            <string>$TexturePacker:SmartUpdate:cb2c56d278ac449dff2405d3a017d037:0b4f0136d55c2a904373332f36c611b5:7102367879d67355554360a0db877cee$</string>
             <key>textureFileName</key>
             <string>directional_star_bullet.pvr.ccz</string>
         </dict>

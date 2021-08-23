@@ -6,28 +6,34 @@
         <dict>
             <key>bar_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{8,57}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{8,57}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{8,57}</string>
+                <key>spriteSourceSize</key>
+                <string>{8,57}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{8,57}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>bar.pvr.ccz</string>
             <key>size</key>
-            <string>{12,61}</string>
+            <string>{16,64}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:21bffaed7875bc65484d1d995f8b13b5:b7106915d9d45ca5b51c7aab47e7cb76:fdd3611864e1c51ff5ec7ea9103f89a5$</string>
+            <string>$TexturePacker:SmartUpdate:03d9c13ed0fac765dd4aa4a55038a60e:b7106915d9d45ca5b51c7aab47e7cb76:fdd3611864e1c51ff5ec7ea9103f89a5$</string>
             <key>textureFileName</key>
             <string>bar.pvr.ccz</string>
         </dict>

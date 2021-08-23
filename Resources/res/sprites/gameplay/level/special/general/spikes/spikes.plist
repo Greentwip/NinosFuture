@@ -29,9 +29,9 @@
             <key>realTextureFileName</key>
             <string>spikes.pvr.ccz</string>
             <key>size</key>
-            <string>{18,18}</string>
+            <string>{32,32}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:9fa474d9597b53e9e0aa5b0c9f866b40:e4384ce6618d6cff0050709838612d31:796fbc3f86e3fba34c80fcbb9ad59c7c$</string>
+            <string>$TexturePacker:SmartUpdate:60a2502f4d6b0ffc5c6a1499a3e18ae5:e4384ce6618d6cff0050709838612d31:796fbc3f86e3fba34c80fcbb9ad59c7c$</string>
             <key>textureFileName</key>
             <string>spikes.pvr.ccz</string>
         </dict>

@@ -371,7 +371,7 @@ bool Level::init()
 
             if (name.compare("cannon_joe") == 0 || 
                 name.compare("lyric") == 0 || 
-                name.compare("Subeil") == 0 ||
+                name.compare("subeil") == 0 ||
                 name.compare("sumatran") == 0 || 
                 name.compare("taban") == 0 || 
                 
@@ -381,9 +381,19 @@ bool Level::init()
                 name.compare("tremor") == 0 ||
 
                 name.compare("roll_runner") == 0 ||
-                name.compare("tank") == 0) {
+                name.compare("tank") == 0 ||
+                name.compare("green_soldier") == 0 ||
+                name.compare("red_soldier") == 0 ||
+                name.compare("claw_soldier") == 0 ||
 
-                
+                name.compare("backpacker") == 0 ||
+                name.compare("batcombat") == 0 ||
+                name.compare("falling_skull") == 0 ||
+                name.compare("flash_brain") == 0 ||
+                name.compare("rip_jumper") == 0 ||
+                name.compare("wall_spider") == 0 ||
+                name.compare("wall_skull") == 0 ||
+                name.compare("robot_worm") == 0) {
 
                 auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle(name, position, size);
                 auto entry = Logical::getEntry(entryCollisionBox, [=]() {

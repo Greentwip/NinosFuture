@@ -6,106 +6,124 @@
         <dict>
             <key>subeil_jump_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,130},{23,28}}</string>
-                <key>offset</key>
-                <string>{-1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,2},{23,28}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{25,30}</string>
+                <key>spriteSourceSize</key>
                 <string>{25,32}</string>
+                <key>textureRect</key>
+                <string>{{36,36},{25,30}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>subeil_jump_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{23,30}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{-1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,1},{23,30}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
+                <string>{23,32}</string>
+                <key>spriteSourceSize</key>
                 <string>{25,32}</string>
+                <key>textureRect</key>
+                <string>{{2,56},{23,32}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>subeil_jump_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,160},{23,28}}</string>
-                <key>offset</key>
-                <string>{-1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,2},{23,28}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{25,30}</string>
+                <key>spriteSourceSize</key>
                 <string>{25,32}</string>
+                <key>textureRect</key>
+                <string>{{36,68},{25,30}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>subeil_stand_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,34},{23,30}}</string>
-                <key>offset</key>
-                <string>{-1,-1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,2},{23,30}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
                 <string>{25,32}</string>
+                <key>spriteSourceSize</key>
+                <string>{25,32}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{25,32}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>subeil_walk_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,66},{23,30}}</string>
-                <key>offset</key>
-                <string>{-1,-1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,2},{23,30}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
                 <string>{25,32}</string>
+                <key>spriteSourceSize</key>
+                <string>{25,32}</string>
+                <key>textureRect</key>
+                <string>{{36,2},{25,32}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>subeil_walk_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,98},{23,30}}</string>
-                <key>offset</key>
-                <string>{-1,-1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,2},{23,30}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
                 <string>{25,32}</string>
+                <key>spriteSourceSize</key>
+                <string>{25,32}</string>
+                <key>textureRect</key>
+                <string>{{2,29},{25,32}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>subeil_walk_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,34},{23,30}}</string>
-                <key>offset</key>
-                <string>{-1,-1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,2},{23,30}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
                 <string>{25,32}</string>
+                <key>spriteSourceSize</key>
+                <string>{25,32}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{25,32}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>subeil.pvr.ccz</string>
             <key>size</key>
-            <string>{28,190}</string>
+            <string>{64,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:fb8bde9c39d80582c54c42d90c0bcbbc:ed3fb6bcdb026ceb8655fb4da83249bd:7ead475e7d8fe3be51a5923a1cd623b0$</string>
+            <string>$TexturePacker:SmartUpdate:c76a43c106b0c73d48e547b938945b26:ed3fb6bcdb026ceb8655fb4da83249bd:7ead475e7d8fe3be51a5923a1cd623b0$</string>
             <key>textureFileName</key>
             <string>subeil.pvr.ccz</string>
         </dict>

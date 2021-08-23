@@ -4,43 +4,51 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>grenade_bullet_walk_0</key>
+            <key>grenade_bullet_shoot_0</key>
             <dict>
-                <key>frame</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{18,19}</string>
+                <key>spriteSourceSize</key>
+                <string>{18,19}</string>
+                <key>textureRect</key>
                 <string>{{2,2},{18,19}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{18,19}}</string>
-                <key>sourceSize</key>
-                <string>{18,19}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
-            <key>grenade_bullet_walk_1</key>
+            <key>grenade_bullet_shoot_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{22,2},{18,19}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{18,19}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{18,19}</string>
+                <key>spriteSourceSize</key>
+                <string>{18,19}</string>
+                <key>textureRect</key>
+                <string>{{2,22},{18,19}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>grenade_bullet.pvr.ccz</string>
             <key>size</key>
-            <string>{42,23}</string>
+            <string>{32,64}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:37419e672e11fa851c134ce1df6448b5:dd0b70337e11bbd667c88c80305ffbcf:8a4a56c54b1bc9e62ca5ccdea9136edb$</string>
+            <string>$TexturePacker:SmartUpdate:1210f00cc84fe06a21df52d33b35fbe9:dd0b70337e11bbd667c88c80305ffbcf:8a4a56c54b1bc9e62ca5ccdea9136edb$</string>
             <key>textureFileName</key>
             <string>grenade_bullet.pvr.ccz</string>
         </dict>

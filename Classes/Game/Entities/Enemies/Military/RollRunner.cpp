@@ -15,6 +15,7 @@ void RollRunner::setOrientation() {
 
 void RollRunner::setup() {
     maxHealth = 5;
+    health = maxHealth;
     power = 3;
 
     orientationSet = false;

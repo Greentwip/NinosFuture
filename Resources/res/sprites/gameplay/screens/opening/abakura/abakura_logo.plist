@@ -130,15 +130,15 @@
             <key>format</key>
             <integer>3</integer>
             <key>pixelFormat</key>
-            <string>RGBA4444</string>
+            <string>RGBA8888</string>
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
             <string>abakura_logo.pvr.ccz</string>
             <key>size</key>
-            <string>{486,680}</string>
+            <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:52e1e6d3d5e26e597dbbbb2aa99b44c3:d80788b2ad1ff2984f76544d62123acd:99542c58a429a82fb4fbb303668c0166$</string>
+            <string>$TexturePacker:SmartUpdate:0a35facbb608f071f0cd6280368182fc:d80788b2ad1ff2984f76544d62123acd:99542c58a429a82fb4fbb303668c0166$</string>
             <key>textureFileName</key>
             <string>abakura_logo.pvr.ccz</string>
         </dict>

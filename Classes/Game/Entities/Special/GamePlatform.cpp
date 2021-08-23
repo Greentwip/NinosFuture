@@ -162,7 +162,7 @@ void GamePlatform::onUpdate(float dt) {
     this->recomputeCollisionRectangles();
     this->recomputeCollisionRectangles();
 
-    if (_isPlayerStanding) {
+    if (_isPlayerStanding && this->level->player->alive) {
         auto playerPosition = this->level->player->getPosition();
 
         this->level->player->setPositionX(playerPosition.x + (newPosition.x - currentPosition.x));
@@ -173,5 +173,13 @@ void GamePlatform::onUpdate(float dt) {
         this->level->player->recomputeCollisionRectangles();
 
         //this->level->physicsWorld->alignCollisions(this->level->player, this, false);
+    }
+    else if(!this->level->player->alive){
+        if (_isPlayerStanding) {
+            _isPlayerStanding = false;
+            this->level->player->ignoreEntityCollision = true;
+            this->level->physicsWorld->unregisterContact(this, this->level->player);
+        }
+        
     }
 }

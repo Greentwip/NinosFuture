@@ -4,56 +4,36 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>claw_bullet_walk_0</key>
+            <key>claw_bullet_shoot_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{24,11}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{24,11}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{24,11}</string>
-            </dict>
-            <key>claw_bullet_walk_1</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,15},{18,18}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{18,18}}</string>
-                <key>sourceSize</key>
-                <string>{18,18}</string>
-            </dict>
-            <key>claw_bullet_walk_2</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,35},{18,18}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{18,18}}</string>
-                <key>sourceSize</key>
-                <string>{18,18}</string>
+                <key>spriteSourceSize</key>
+                <string>{24,11}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{24,11}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>claw_bullet.pvr.ccz</string>
             <key>size</key>
-            <string>{28,55}</string>
+            <string>{16,32}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:194292d1d641493ca559df7007194626:fa368a812dad4fd83797d4eb285bccc7:f753290cef752b5fb043cb4e2a08bf53$</string>
+            <string>$TexturePacker:SmartUpdate:7dbeae36558835f47a03753fdaf69548:06eff62b84018c14bd97297973457d65:f753290cef752b5fb043cb4e2a08bf53$</string>
             <key>textureFileName</key>
             <string>claw_bullet.pvr.ccz</string>
         </dict>

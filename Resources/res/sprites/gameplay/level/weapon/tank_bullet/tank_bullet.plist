@@ -4,30 +4,36 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>tank_bullet_walk_0</key>
+            <key>tank_bullet_shoot_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{11,11}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{11,11}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{11,11}</string>
+                <key>spriteSourceSize</key>
+                <string>{11,11}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{11,11}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA4444</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>tank_bullet.pvr.ccz</string>
             <key>size</key>
-            <string>{16,15}</string>
+            <string>{16,16}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:65aca96546b667922400c646f1358395:6726ff0cb00c3357133981b02eec7de9:69f181b02fe879891ffb3b1d00892799$</string>
+            <string>$TexturePacker:SmartUpdate:8711b0dc75449e9f9e22516a840189db:6726ff0cb00c3357133981b02eec7de9:69f181b02fe879891ffb3b1d00892799$</string>
             <key>textureFileName</key>
             <string>tank_bullet.pvr.ccz</string>
         </dict>

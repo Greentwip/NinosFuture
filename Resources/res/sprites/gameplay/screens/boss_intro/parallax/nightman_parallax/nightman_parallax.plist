@@ -6,28 +6,34 @@
         <dict>
             <key>nightman_parallax_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{256,224}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{256,224}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{256,224}</string>
+                <key>spriteSourceSize</key>
+                <string>{256,224}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{256,224}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>nightman_parallax.pvr.ccz</string>
             <key>size</key>
-            <string>{260,228}</string>
+            <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:46965a7993a87aa10161c0e2fba34bd2:1e61af75b1b432f2918de2b389f4742f:2a8b4a9a172b713308dfc017ee531d20$</string>
+            <string>$TexturePacker:SmartUpdate:7e560cf17e05d3aa1051faf60fa2aa12:1e61af75b1b432f2918de2b389f4742f:2a8b4a9a172b713308dfc017ee531d20$</string>
             <key>textureFileName</key>
             <string>nightman_parallax.pvr.ccz</string>
         </dict>

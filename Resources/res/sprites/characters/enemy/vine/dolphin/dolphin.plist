@@ -6,95 +6,111 @@
         <dict>
             <key>dolphin_still_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{54,31}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{54,31}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{54,31}</string>
+                <key>spriteSourceSize</key>
+                <string>{54,31}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{54,31}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>dolphin_swim_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,35},{54,31}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{54,31}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{54,31}</string>
+                <key>spriteSourceSize</key>
+                <string>{54,31}</string>
+                <key>textureRect</key>
+                <string>{{2,35},{54,31}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>dolphin_swim_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,68},{54,31}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{54,31}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{54,31}</string>
+                <key>spriteSourceSize</key>
+                <string>{54,31}</string>
+                <key>textureRect</key>
+                <string>{{2,68},{54,31}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>dolphin_swim_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{54,31}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{54,31}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{54,31}</string>
+                <key>spriteSourceSize</key>
+                <string>{54,31}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{54,31}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>dolphin_wake_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{54,31}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{54,31}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{54,31}</string>
+                <key>spriteSourceSize</key>
+                <string>{54,31}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{54,31}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>dolphin_wake_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{54,31}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{54,31}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{54,31}</string>
+                <key>spriteSourceSize</key>
+                <string>{54,31}</string>
+                <key>textureRect</key>
+                <string>{{2,2},{54,31}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
-            <string>dolphin.png</string>
+            <string>dolphin.pvr.ccz</string>
             <key>size</key>
-            <string>{58,101}</string>
+            <string>{64,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:67ebc186cf45de9365b9d2f4bc61e3e2:23f22f4631aa0895fcc462c6b5bdb4fc:a9279645dc9050168ded1aeebb4cb510$</string>
+            <string>$TexturePacker:SmartUpdate:2317d1f26d5e50b836d8df5805d7bf4e:23f22f4631aa0895fcc462c6b5bdb4fc:da074608eb752cbd7613b43279c05b52$</string>
             <key>textureFileName</key>
-            <string>dolphin.png</string>
+            <string>dolphin.pvr.ccz</string>
         </dict>
     </dict>
 </plist>
