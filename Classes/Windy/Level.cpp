@@ -297,6 +297,15 @@ bool Level::init()
                 entity->parseBehavior(dictionary);
                 this->addChild(entity);
                 this->entities.pushBack(entity);
+            }
+            else if (name.compare("falling_block") == 0) {
+
+                auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle(name, position, size);
+                auto entry = Logical::getEntry(entryCollisionBox, [=]() {
+                    return EntityFactory::getInstance().create(name, position, size, 16);
+                });
+
+                this->objectManager->objectEntries.push_back(entry);
 
             }
         }

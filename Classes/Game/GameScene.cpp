@@ -61,6 +61,7 @@
 #include "Game/Entities/Special/GameVerticalDoor.h"
 #include "Game/Entities/Special/GameHorizontalDoor.h"
 #include "Game/Entities/Special/GamePlatform.h"
+#include "Game/Entities/Special/GameFallingBlock.h"
 
 #include "Game/Entities/UI/EnergyBar.h"
 #include "Game/Entities/UI/GameGui.h"
@@ -287,6 +288,8 @@ bool GameScene::init()
 
         BackPackBullet::getResources().cache();
 
+        GameFallingBlock::getResources().cache();
+
         windy::AudioManager::cacheSound(windy::Sounds::NightMan);
 
         windy::EntityFactory::getInstance().registerType<BackPacker>("backpacker");
@@ -299,6 +302,8 @@ bool GameScene::init()
         windy::EntityFactory::getInstance().registerType<WallSkull>("wall_skull");
         windy::EntityFactory::getInstance().registerType<Worm>("robot_worm");
 
+        windy::EntityFactory::getInstance().registerType<GameFallingBlock>("falling_block");
+
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<BackPacker>("backpacker");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Bat>("batcombat");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<FallingSkull>("falling_skull");
@@ -308,6 +313,8 @@ bool GameScene::init()
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Spider>("wall_spider");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<WallSkull>("wall_skull");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Worm>("robot_worm");
+
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<GameFallingBlock>("falling_block");
 
     }
 

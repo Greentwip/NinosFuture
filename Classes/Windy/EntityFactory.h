@@ -51,10 +51,10 @@ namespace windy {
         }
 
 
-        Logical* create(std::string name, const cocos2d::Point& position, const cocos2d::Size& size) {
+        Logical* create(std::string name, const cocos2d::Point& position, const cocos2d::Size& size, const int updatePriority = 32) {
             typename std::map<std::string, PCreateFunc>::const_iterator it = _createFuncs.find(name);
             if (it != _createFuncs.end()) {
-                return it->second(levelInstance, position, size);
+                return it->second(levelInstance, position, size, updatePriority);
             }
             return nullptr;
         }
@@ -75,9 +75,9 @@ namespace windy {
 
     private:
         template <typename TDerived>
-        static Logical* createFunc(Level* level, const cocos2d::Point& position, const cocos2d::Size& size)
+        static Logical* createFunc(Level* level, const cocos2d::Point& position, const cocos2d::Size& size, int updatePriority)
         {
-            return Logical::create<TDerived>(level, position, size);
+            return Logical::create<TDerived>(level, position, size, updatePriority);
         }
 
         template <typename TDerived>
@@ -86,7 +86,7 @@ namespace windy {
             return TDerived::getEntryCollisionRectangle(position, size);
         }
 
-        typedef Logical* (*PCreateFunc)(Level* level, const cocos2d::Point& position, const cocos2d::Size& size);
+        typedef Logical* (*PCreateFunc)(Level* level, const cocos2d::Point& position, const cocos2d::Size& size, int updatePriority);
         std::map<std::string, PCreateFunc> _createFuncs;
 
         typedef std::shared_ptr<cocos2d::Rect>(*PCollisionFunc)(const cocos2d::Point& position, const cocos2d::Size& size);

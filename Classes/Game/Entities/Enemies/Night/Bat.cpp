@@ -52,7 +52,7 @@ void Bat::attack(float dt) {
 
             float playerDistanceX = cocos2d::Point(this->getPosition().x, 0).getDistance(cocos2d::Point(this->level->player->getPositionX(), 0));
 
-            if (playerDistanceX < 56) {
+            if (playerDistanceX < 72) {
                 this->wakeUpTimer = this->wakeUpDelay;
                 this->sprite->runAction("wake");
                 this->attackState = AttackState::WakingUp;

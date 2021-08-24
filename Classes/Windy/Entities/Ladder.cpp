@@ -20,7 +20,7 @@ bool Ladder::init()
     auto ceilingSize = cocos2d::Size(this->collisionBox->size.width, 12.0f);
     auto ceilingPosition = cocos2d::Point(this->getPositionX(), this->collisionBox->getMaxY() - (ceilingSize.height * 0.5f));
 
-    this->ceiling = dynamic_cast<Block*>(Logical::create<Block>(this->level, ceilingPosition, ceilingSize));
+    this->ceiling = dynamic_cast<Block*>(Logical::create<Block>(this->level, ceilingPosition, ceilingSize, 32));
 
     this->level->addChild(this->ceiling);
 

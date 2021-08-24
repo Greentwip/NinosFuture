@@ -434,11 +434,10 @@ void PhysicsWorld::update(float dt)
 
         entity->contacts.clear();
 
+
         if (entity->ignoreLandscapeCollision) {
             continue;
         }
-
-        
 
         for (int j = 0; j < landscapeEntities.size(); ++j) {
             auto landscapeEntity = landscapeEntities.at(j);

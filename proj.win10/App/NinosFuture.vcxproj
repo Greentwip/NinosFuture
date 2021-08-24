@@ -666,6 +666,7 @@
     <ClInclude Include="..\..\Classes\Game\Entities\Resources.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Scenery\General\GameExplosion.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Scenery\Sheriff\Disk.h" />
+    <ClInclude Include="..\..\Classes\Game\Entities\Special\GameFallingBlock.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Special\GameHorizontalDoor.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Special\GamePlatform.h" />
     <ClInclude Include="..\..\Classes\Game\Entities\Special\GameVerticalDoor.h" />
@@ -815,6 +816,7 @@
     <ClCompile Include="..\..\Classes\Game\Entities\Resources.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Scenery\General\GameExplosion.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Scenery\Sheriff\Disk.cpp" />
+    <ClCompile Include="..\..\Classes\Game\Entities\Special\GameFallingBlock.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Special\GameHorizontalDoor.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Special\GamePlatform.cpp" />
     <ClCompile Include="..\..\Classes\Game\Entities\Special\GameVerticalDoor.cpp" />

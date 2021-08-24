@@ -61,6 +61,12 @@ void ObjectManager::onExit()
 
 void ObjectManager::resetEntryTable(std::vector<std::shared_ptr<ObjectEntry>> newEntries) {
 
+    for (int i = 0; i < newEntries.size(); ++i) {
+        newEntries[i]->finished = false;
+        newEntries[i]->finishedForever = false;
+        newEntries[i]->respawnPrevention = false;
+    }
+
     for (int i = 0; i < this->objectEntries.size(); ++i) {
         auto entry = this->objectEntries[i];
 
@@ -111,7 +117,7 @@ void ObjectManager::update(float dt)
     // We have to inflate the bounds by 96 pixels for intro and outro player position (offscreen location)
 
     auto boundsCollisionBox = this->level->bounds->collisionBox;
-    auto inflatedBoundsCollisionBox = this->level->bounds->inflate(cocos2d::Size(16, 16));
+    auto inflatedBoundsCollisionBox = *this->level->bounds->collisionBox;
 
     for (int i = 0; i < this->objectEntries.size(); ++i) {
         auto entry = this->objectEntries[i];

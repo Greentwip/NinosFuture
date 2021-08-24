@@ -12,7 +12,7 @@ game::Resources& Worm::getResources() {
 }
 
 void Worm::setup() {
-    maxHealth = 128;
+    maxHealth = 3;
     health = maxHealth;
     power = 6;
 

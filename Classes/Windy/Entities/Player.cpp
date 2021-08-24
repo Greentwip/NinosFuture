@@ -626,7 +626,7 @@ void Player::climb() {
 void Player::move() {
 
     if (this->contacts[CollisionContact::Down]) {
-        this->speed.y = 0;
+        //this->speed.y = 0;
 
         if (!this->onGround && !this->climbing && !this->spawning) {
             this->onGround = true;

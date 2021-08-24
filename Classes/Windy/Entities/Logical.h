@@ -50,7 +50,7 @@ namespace windy {
         }
 
         template<typename T>
-        static Logical* create(Level* level, const cocos2d::Point& position, const cocos2d::Size& size);
+        static Logical* create(Level* level, const cocos2d::Point& position, const cocos2d::Size& size, int updatePriority);
 
 
         void setup(const cocos2d::Point& position, const cocos2d::Size& size);
@@ -107,6 +107,7 @@ namespace windy {
 
     private:
         std::shared_ptr<ObjectEntry> entry;
+        int updatePriority;
     };
 }
 
@@ -144,11 +145,12 @@ void windy::Logical::composite(Logical* logical, const game::Resources& resource
 
 
 template<typename T>
-windy::Logical* windy::Logical::create(windy::Level* level, const cocos2d::Point& position, const cocos2d::Size& size) {
+windy::Logical* windy::Logical::create(windy::Level* level, const cocos2d::Point& position, const cocos2d::Size& size, int updatePriority) {
     Logical* logical = new (std::nothrow) T();
 
     if (logical) {
         logical->level = level;
+        logical->updatePriority = updatePriority;
         logical->setup(position, size);
     }
 
