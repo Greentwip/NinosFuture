@@ -24,6 +24,8 @@ namespace game {
 
         bool getFading();
 
+        windy::Sprite* getSprite();
+
     private:
         windy::Sprite* _sprite;
         bool _fading;

@@ -19,6 +19,7 @@ namespace game {
         Game,
         GetWeapon,
         GameOver,
+        Arena
     };
 
 }

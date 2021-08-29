@@ -394,6 +394,8 @@ void Sprite::reverseAction() {
     this->actions.erase(*foundName);
     this->actions.insert(*foundName, this->currentAction);
 
+    this->currentAction->setTag(GameTags::Actions::Animation);
+
     cocos2d::Sprite::runAction(this->currentAction);
     previousAction->release();
 

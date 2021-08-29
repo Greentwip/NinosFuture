@@ -43,6 +43,16 @@ bool GameLevelController::init()
 #if _DEBUG
 	GameManager::getInstance().loadGameDataFromDefaultSlot();
 	GameManager::getInstance().browners.sheriff->acquired = true;
+	GameManager::getInstance().browners.military->acquired = true;
+	GameManager::getInstance().browners.vine->acquired = true;
+	GameManager::getInstance().browners.night->acquired = true;
+	GameManager::getInstance().browners.extreme->acquired = true;
+
+	GameManager::getInstance().unlockables.boot->acquired = true;
+	GameManager::getInstance().unlockables.chest->acquired = true;
+	GameManager::getInstance().unlockables.fist->acquired = true;
+	GameManager::getInstance().unlockables.head->acquired = true;
+	GameManager::getInstance().unlockables.helmet->acquired = true;
 #endif
 
 
@@ -122,21 +132,33 @@ void GameLevelController::onUpdate(float dt) {
 				_restartFader = fader;
 
 				_restartFader->fadeOut([this]() {
-					_readyIndicator = ReadyIndicator::create([this]() {
+					auto state = GameStateMachine::getInstance().getState();
+
+					if (state != GameState::GetWeapon) {
+						_readyIndicator = ReadyIndicator::create([this]() {
+							levelState = LevelState::Playing;
+							this->level->setPaused(false, true);
+
+							_restartFader->removeFromParent();
+							_restartFader = nullptr;
+
+							_readyIndicator->removeFromParent();
+							_readyIndicator = nullptr;
+							});
+
+						float indicatorPositionY = windy::Display::getInstance().height * 0.125f;
+						_readyIndicator->setPosition(cocos2d::Point(0, indicatorPositionY));
+
+						this->level->bounds->addChild(_readyIndicator, 2048);
+
+					}
+					else {
 						levelState = LevelState::Playing;
 						this->level->setPaused(false, true);
 
 						_restartFader->removeFromParent();
 						_restartFader = nullptr;
-
-						_readyIndicator->removeFromParent();
-						_readyIndicator = nullptr;
-					});
-
-					float indicatorPositionY = windy::Display::getInstance().height * 0.125f;
-					_readyIndicator->setPosition(cocos2d::Point(0, indicatorPositionY));
-
-					this->level->bounds->addChild(_readyIndicator, 2048);
+					}
 					
 				});
 			}

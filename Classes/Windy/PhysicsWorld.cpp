@@ -381,6 +381,7 @@ void PhysicsWorld::update(float dt)
         if(//entity->getTag() == GameTags::General::Block        ||
            entity->getTag() == GameTags::General::Player       ||
            entity->getTag() == GameTags::General::Enemy        ||
+           entity->getTag() == GameTags::General::Boss         ||
            entity->getTag() == GameTags::General::Item         ||
            entity->getTag() == GameTags::General::Ladder       ||
            entity->getTag() == GameTags::General::Door         ||

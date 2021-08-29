@@ -93,7 +93,7 @@ void IntroScene::greentwipIntro() {
                     }
                 }
 
-                GameStateMachine::getInstance().pushState(GameState::GetWeapon);*/
+                GameStateMachine::getInstance().pushState(GameState::Arena);*/
 
             });
         });

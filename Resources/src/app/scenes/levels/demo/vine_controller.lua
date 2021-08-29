@@ -1,1 +1,0 @@
--- Copyright 2014-2015 Greentwip. All Rights Reserved. 

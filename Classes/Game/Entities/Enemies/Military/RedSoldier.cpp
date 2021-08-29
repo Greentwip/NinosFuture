@@ -29,7 +29,7 @@ void RedSoldier::setup() {
     std::vector<windy::AnimationAction> actionSet{
         windy::AnimationAction("stand",             "red_soldier_stand",   false, 0.10f),
         windy::AnimationAction("attack",            "red_soldier_attack",  false, 0.10f),
-        windy::AnimationAction("fall",              "red_soldier_fall",    true, 0.10f),
+        windy::AnimationAction("fall",              "red_soldier_fall",    false, 0.10f),
         windy::AnimationAction("morph_a",           "red_soldier_morph_a", false, 0.15f),
         windy::AnimationAction("morph_a_reversed",  "red_soldier_morph_a", false, 0.15f),
         windy::AnimationAction("morph_b",           "red_soldier_morph_b", false, 0.15f)
@@ -42,10 +42,11 @@ void RedSoldier::setup() {
 
     sprite->stopActions();
 
-    sprite->runAction("fall");
     sprite->setAnimation("red_soldier_fall");
 
     this->ignoreGravity = true;
+
+    _attackState = AttackState::Falling;
 
 }
 

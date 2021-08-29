@@ -1,10 +1,14 @@
 #include "GamePlayer.h"
 
-#include "ExtremeBrowner.h"
-#include "HelmetBrowner.h"
-#include "SheriffBrowner.h"
 #include "TeleportBrowner.h"
 #include "VioletBrowner.h"
+#include "HelmetBrowner.h"
+#include "SheriffBrowner.h"
+#include "MilitaryBrowner.h"
+#include "VineBrowner.h"
+#include "NightBrowner.h"
+#include "ExtremeBrowner.h"
+
 #include "Game/GameManager.h"
 #include "Game/Entities/Items/ItemFlags.h"
 #include "Game/Entities/UI/EnergyBar.h"
@@ -203,19 +207,27 @@ void GamePlayer::setupBrowners() {
     auto violetBrowner = windy::Browner::create<VioletBrowner>(this->level, this);
     auto extremeBrowner = windy::Browner::create<ExtremeBrowner>(this->level, this);
     auto sheriffBrowner = windy::Browner::create<SheriffBrowner>(this->level, this);
-
+    auto militaryBrowner = windy::Browner::create<MilitaryBrowner>(this->level, this);
+    auto vineBrowner = windy::Browner::create<VineBrowner>(this->level, this);
+    auto nightBrowner = windy::Browner::create<NightBrowner>(this->level, this);
 
     this->addChild(teleportBrowner);
     this->addChild(helmetBrowner);
     this->addChild(violetBrowner);
     this->addChild(extremeBrowner);
     this->addChild(sheriffBrowner);
+    this->addChild(militaryBrowner);
+    this->addChild(vineBrowner);
+    this->addChild(nightBrowner);
 
     this->browners.pushBack(teleportBrowner);
     this->browners.pushBack(helmetBrowner);
     this->browners.pushBack(violetBrowner);
     this->browners.pushBack(extremeBrowner);
     this->browners.pushBack(sheriffBrowner);
+    this->browners.pushBack(militaryBrowner);
+    this->browners.pushBack(vineBrowner);
+    this->browners.pushBack(nightBrowner);
 
     this->currentBrowner = teleportBrowner;
 

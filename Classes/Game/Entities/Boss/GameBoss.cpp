@@ -1,7 +1,10 @@
 #include "GameBoss.h"
 
-#include "Game/Entities/Player/SheriffBrowner.h"
 #include "Game/Entities/Player/TeleportBrowner.h"
+#include "Game/Entities/Player/SheriffBrowner.h"
+#include "Game/Entities/Player/MilitaryBrowner.h"
+#include "Game/Entities/Player/VineBrowner.h"
+#include "Game/Entities/Player/NightBrowner.h"
 #include "Game/Entities/UI/EnergyBar.h"
 #include "Game/Entities/UI/GameGui.h"
 #include "Windy/GameTags.h"
@@ -24,30 +27,12 @@ bool GameBoss::init()
     }
 
     this->gui = nullptr;
-    const auto& resources = getResources();
-    auto armature = windy::Armature(resources._armaturePath);
 
-    auto newAnchor = armature.get(resources._entityName).anchor;
+    Logical::composite<GameBoss>(this); //@TODO
 
-    this->sprite = windy::Sprite::create(resources._spritePath, newAnchor);
-    this->addChild(this->sprite);
+    this->collisionRectangles[1]->origin = this->collisionRectangles[0]->origin;
 
-    auto anchorChange = newAnchor - cocos2d::Point(0.5f, 0.5f);
-    auto contentSize = this->sprite->getContentSize();
-
-    this->collisionRectangles = armature.get(resources._entityName).collisionRectangles;
-
-    auto collisionBoxCenter = cocos2d::Point(this->collisionRectangles[0]->getMidX(), this->collisionRectangles[0]->getMidY());
-
-    for (int i = 0; i < this->collisionRectangles.size(); ++i) {
-        this->collisionRectangles[i] = Logical::normalizeCollisionRectangle(this, *this->collisionRectangles[i]);
-    }
-
-    this->collisionBox = this->collisionRectangles[0];
-
-    this->sprite->setPosition(collisionBoxCenter + cocos2d::Point(contentSize.width * anchorChange.x, contentSize.height * anchorChange.y));
-
-    this->setTag(windy::GameTags::General::Player);
+    this->setTag(windy::GameTags::General::Boss);
 
     this->initVariables();
 
@@ -86,12 +71,21 @@ void GameBoss::switchBrowner(int brownerId) {
 void GameBoss::setupBrowners() {
     auto teleportBrowner = windy::Browner::create<TeleportBrowner>(this->level, this);
     auto sheriffBrowner = windy::Browner::create<SheriffBrowner>(this->level, this);
+    auto militaryBrowner = windy::Browner::create<MilitaryBrowner>(this->level, this);
+    auto vineBrowner = windy::Browner::create<VineBrowner>(this->level, this);
+    auto nightBrowner = windy::Browner::create<NightBrowner>(this->level, this);
 
     this->addChild(teleportBrowner);
     this->addChild(sheriffBrowner);
+    this->addChild(militaryBrowner);
+    this->addChild(vineBrowner);
+    this->addChild(nightBrowner);
 
     this->browners.pushBack(teleportBrowner);
     this->browners.pushBack(sheriffBrowner);
+    this->browners.pushBack(militaryBrowner);
+    this->browners.pushBack(vineBrowner);
+    this->browners.pushBack(nightBrowner);
 
     this->currentBrowner = teleportBrowner;
 

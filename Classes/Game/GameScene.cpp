@@ -40,7 +40,11 @@
 #include "Game/Entities/Enemies/Night/WallSkull.h"
 #include "Game/Entities/Enemies/Night/Worm.h"
 
+#include "Game/Entities/Boss/GameBoss.h"
 #include "Game/Entities/Boss/SheriffMan.h"
+#include "Game/Entities/Boss/MilitaryMan.h"
+#include "Game/Entities/Boss/VineMan.h"
+#include "Game/Entities/Boss/NightMan.h"
 
 #include "Game/Entities/Items/GameItem.h"
 
@@ -49,6 +53,9 @@
 #include "Game/Entities/Weapons/VioletBullet.h"
 #include "Game/Entities/Weapons/ExtremeBullet.h"
 #include "Game/Entities/Weapons/SheriffBullet.h"
+#include "Game/Entities/Weapons/MilitaryMissile.h"
+#include "Game/Entities/Weapons/VineBall.h"
+#include "Game/Entities/Weapons/Shiki108.h"
 #include "Game/Entities/Weapons/DirectionalBullet.h"
 #include "Game/Entities/Weapons/TremorLaser.h"
 #include "Game/Entities/Weapons/TankBullet.h"
@@ -162,6 +169,9 @@ bool GameScene::init()
     VioletBullet::getResources(windy::Browner::ChargePower::high).cache();
     ExtremeBullet::getResources().cache();
     SheriffBullet::getResources().cache();
+    MilitaryMissile::getResources().cache();
+    VineBall::getResources().cache();
+    Shiki108::getResources().cache();
 
     EnergyBar::preloadResources();
 
@@ -202,7 +212,6 @@ bool GameScene::init()
 
         windy::AudioManager::cacheSound(windy::Sounds::SheriffMan);
 
-        windy::EntityFactory::getInstance().registerType<SheriffMan>("sheriff");
         windy::EntityFactory::getInstance().registerType<Tremor>("tremor");
         windy::EntityFactory::getInstance().registerType<Cow>("cow");
         windy::EntityFactory::getInstance().registerType<Barrel>("barrel");
@@ -210,8 +219,8 @@ bool GameScene::init()
         windy::EntityFactory::getInstance().registerType<CannonJoe>("cannon_joe");
         windy::EntityFactory::getInstance().registerType<Taban>("taban");
         windy::EntityFactory::getInstance().registerType<Sumatran>("sumatran");
+        windy::EntityFactory::getInstance().registerType<SheriffMan>("sheriff");
 
-        windy::EntityFactory::getInstance().registerTypeCollisionFunc<SheriffMan>("sheriff");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Tremor>("tremor");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Cow>("cow");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Barrel>("barrel");
@@ -219,6 +228,7 @@ bool GameScene::init()
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<CannonJoe>("cannon_joe");        
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Taban>("taban");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Sumatran>("sumatran");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<SheriffMan>("sheriff");
 
     }    
     else if (currentLevel && currentLevel->mug.compare("vineman") == 0) {
@@ -238,14 +248,14 @@ bool GameScene::init()
         windy::EntityFactory::getInstance().registerType<Taban>("taban");
         windy::EntityFactory::getInstance().registerType<Sumatran>("sumatran");
         windy::EntityFactory::getInstance().registerType<CannonJoe>("cannon_joe");
-        
+        windy::EntityFactory::getInstance().registerType<VineMan>("vine");
+
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Subeil>("subeil");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Lyric>("lyric");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Taban>("taban");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Sumatran>("sumatran");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<CannonJoe>("cannon_joe");
-        
-
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<VineMan>("vine");
     }
     else if (currentLevel && currentLevel->mug.compare("militaryman") == 0) {
 
@@ -267,6 +277,7 @@ bool GameScene::init()
         windy::EntityFactory::getInstance().registerType<GreenSoldier>("green_soldier");
         windy::EntityFactory::getInstance().registerType<RedSoldier>("red_soldier");
         windy::EntityFactory::getInstance().registerType<KnifeSoldier>("claw_soldier");
+        windy::EntityFactory::getInstance().registerType<MilitaryMan>("military");
 
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<GamePlatform>("platform");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<RollRunner>("roll_runner");
@@ -274,6 +285,7 @@ bool GameScene::init()
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<GreenSoldier>("green_soldier");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<RedSoldier>("red_soldier");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<KnifeSoldier>("claw_soldier");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<MilitaryMan>("military");
     }
     else if (currentLevel && currentLevel->mug.compare("nightman") == 0) {
         BackPacker::getResources().cache();
@@ -301,6 +313,7 @@ bool GameScene::init()
         windy::EntityFactory::getInstance().registerType<Spider>("wall_spider");
         windy::EntityFactory::getInstance().registerType<WallSkull>("wall_skull");
         windy::EntityFactory::getInstance().registerType<Worm>("robot_worm");
+        windy::EntityFactory::getInstance().registerType<NightMan>("night");
 
         windy::EntityFactory::getInstance().registerType<GameFallingBlock>("falling_block");
 
@@ -313,8 +326,11 @@ bool GameScene::init()
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Spider>("wall_spider");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<WallSkull>("wall_skull");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Worm>("robot_worm");
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<NightMan>("night");
 
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<GameFallingBlock>("falling_block");
+
+
 
     }
 

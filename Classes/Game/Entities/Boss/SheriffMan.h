@@ -20,9 +20,11 @@ namespace game {
     private:
         enum AttackState {
             ShootingLeft,
+            RammingLeft,
             JumpingLeft,
             DashingLeft,
             ShootingRight,
+            RammingRight,
             JumpingRight,
             DashingRight,
             ChargingLeft,

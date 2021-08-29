@@ -10,6 +10,8 @@
 #include "Entities/Weapons/ExtremeBullet.h"
 #include "Entities/Weapons/SheriffBullet.h"
 
+#include "Windy/Entities/Bounds.h"
+
 #include "Entities/UI/EnergyBar.h"
 #include "Entities/UI/GameGui.h"
 
@@ -159,11 +161,13 @@ bool WeaponAcquireScene::init()
 
     auto fader = Fader::create(cocos2d::Point(0, 0));
 
-    fader->setPosition(cocos2d::Point(0, 0));
+    fader->setPosition(cocos2d::Point(
+        fader->getSprite()->getContentSize().width * 0.5f * -1, 
+        fader->getSprite()->getContentSize().height * 0.5f * -1));
 
     fader->setOpacity(255);
 
-    addChild(fader, 4096);
+    level->bounds->addChild(fader, 4096);
 
     _fader = fader;
 

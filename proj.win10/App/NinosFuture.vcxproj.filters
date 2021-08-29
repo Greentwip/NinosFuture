@@ -460,6 +460,36 @@
     <ClCompile Include="..\..\Classes\Game\Entities\Special\GameFallingBlock.cpp">
       <Filter>Classes\Game\Entities\Special</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Boss\MilitaryMan.cpp">
+      <Filter>Classes\Game\Entities\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Weapons\MilitaryMissile.cpp">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Player\MilitaryBrowner.cpp">
+      <Filter>Classes\Game\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Player\VineBrowner.cpp">
+      <Filter>Classes\Game\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Player\NightBrowner.cpp">
+      <Filter>Classes\Game\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Weapons\VineBall.cpp">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Weapons\Shiki108.cpp">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\ArenaScene.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Boss\VineMan.cpp">
+      <Filter>Classes\Game\Entities\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\Entities\Boss\NightMan.cpp">
+      <Filter>Classes\Game\Entities\Boss</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -2051,6 +2081,36 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Game\Entities\Special\GameFallingBlock.h">
       <Filter>Classes\Game\Entities\Special</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Boss\MilitaryMan.h">
+      <Filter>Classes\Game\Entities\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Weapons\MilitaryMissile.h">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Player\MilitaryBrowner.h">
+      <Filter>Classes\Game\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Player\VineBrowner.h">
+      <Filter>Classes\Game\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Player\NightBrowner.h">
+      <Filter>Classes\Game\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Weapons\VineBall.h">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Weapons\Shiki108.h">
+      <Filter>Classes\Game\Entities\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\ArenaScene.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Boss\VineMan.h">
+      <Filter>Classes\Game\Entities\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\Entities\Boss\NightMan.h">
+      <Filter>Classes\Game\Entities\Boss</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

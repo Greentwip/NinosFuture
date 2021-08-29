@@ -13,7 +13,7 @@ namespace game {
 class TankBullet : public windy::Weapon {
     bool _rising = false;
     float _riseSpeed = 4.0f;
-    float _moveSpeed = 1.0f;
+    float _moveSpeed = 1.2f;
 public:
     static game::Resources& getResources();
     static TankBullet* create();

@@ -132,21 +132,21 @@
  <objectgroup id="4" name="enemies">
   <object id="57" name="cannon_joe" type="general" x="435" y="48" width="27" height="32"/>
   <object id="61" name="sumatran" type="general" x="863" y="563" width="33" height="45"/>
-  <object id="62" name="taban" type="general" x="1400" y="72" width="16" height="16"/>
+  <object id="62" name="taban" type="general" x="1400" y="72" width="25" height="21"/>
   <object id="63" name="jetbird" type="sheriff" x="1496" y="120" width="16" height="16"/>
   <object id="64" name="cannon_joe" type="general" x="1700" y="112" width="27" height="32"/>
-  <object id="65" name="taban" type="general" x="1800" y="72" width="16" height="16"/>
-  <object id="66" name="taban" type="general" x="1992" y="72" width="16" height="16"/>
-  <object id="67" name="taban" type="general" x="2064" y="72" width="16" height="16"/>
+  <object id="65" name="taban" type="general" x="1800" y="72" width="25" height="21"/>
+  <object id="66" name="taban" type="general" x="1992" y="72" width="25" height="21"/>
+  <object id="67" name="taban" type="general" x="2064" y="72" width="25" height="21"/>
   <object id="69" name="cannon_joe" type="general" x="2131" y="112" width="27" height="32"/>
   <object id="74" name="jetbird" type="sheriff" x="2425" y="130" width="56" height="34"/>
   <object id="80" name="jetbird" type="sheriff" x="2720" y="130" width="56" height="34"/>
   <object id="81" name="jetbird" type="sheriff" x="2846" y="50" width="56" height="34"/>
   <object id="82" name="jetbird" type="sheriff" x="2878" y="90" width="56" height="34"/>
   <object id="83" name="jetbird" type="sheriff" x="2950" y="130" width="56" height="34"/>
-  <object id="95" name="barrel" type="sheriff" x="1224" y="384" width="16" height="16"/>
+  <object id="95" name="barrel" type="sheriff" x="1221" y="360" width="35" height="40"/>
   <object id="98" name="cow" type="sheriff" x="1328" y="129" width="46" height="55"/>
-  <object id="100" name="barrel" type="sheriff" x="1024" y="128" width="16" height="16"/>
+  <object id="100" name="barrel" type="sheriff" x="1015" y="104" width="35" height="40"/>
   <object id="23" name="tremor" type="sheriff" x="700" y="34" width="40" height="40"/>
   <object id="36" name="sumatran" type="general" x="1072" y="275" width="33" height="45"/>
   <object id="37" name="sumatran" type="general" x="1936" y="139" width="33" height="45"/>
@@ -163,6 +163,6 @@
   <object id="3" name="spinner" type="sheriff" x="872" y="528" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="7" name="boss">
-  <object id="10" name="boss" type="sheriff" x="3520" y="-16" width="16" height="16"/>
+  <object id="10" name="boss" type="sheriff" x="3520" y="0" width="16" height="16"/>
  </objectgroup>
 </map>

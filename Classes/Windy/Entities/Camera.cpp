@@ -10,7 +10,9 @@
 
 #include "./../Armature.h"
 
-#include "Windy/PhysicsWorld.h"
+#include "./../PhysicsWorld.h"
+
+#include "./../GeometryExtensions.h"
 
 
 using namespace windy;
@@ -91,8 +93,22 @@ void Camera::onCollision(Logical* collision) {
             this->scroll = scrollCollision->scroll;
         }
 
-        this->level->physicsWorld->alignCollisions(this, scrollCollision, true);
+        auto collisionResult = PhysicsWorld::getCollisionResult(collision, this);
+
+        if (this->scroll == CameraFlags::CameraScroll::ScrollLeft &&
+            collisionResult[CollisionContact::Left] &&
+            (this->lastCollisionPosition.x + this->collisionBox->size.width * 0.5f) <= collision->collisionBox->getMinX()) {
+            this->level->physicsWorld->alignCollisions(this, scrollCollision, true);
+        }
+
+        if (this->scroll == CameraFlags::CameraScroll::ScrollRight &&
+            collisionResult[CollisionContact::Right] &&
+            (this->lastCollisionPosition.x - this->collisionBox->size.width * 0.5f) >= collision->collisionBox->getMaxX()) {
+            this->level->physicsWorld->alignCollisions(this, scrollCollision, true);
+        }        
+
         this->level->bounds->setPositionX(this->collisionBox->getMidX());
+
     }
 }
 
@@ -138,6 +154,8 @@ void Camera::update(float dt) {
 
     this->setPosition(0, 0);
 
+    this->recomputeCollisionRectangles();
+
     this->onUpdate(dt);
 }
 
@@ -168,19 +186,61 @@ void Camera::onUpdate(float dt) {
 
         if (this->scroll == CameraFlags::CameraScroll::ScrollMoving) {
             auto worldPosition = this->convertToWorldSpace(this->getPosition());
-            auto playerPosition = this->level->player->getPosition();
-            auto boundsPosition = this->level->bounds->getPosition();
+            worldPosition =
+                cocos2d::Point(
+                    std::roundf(worldPosition.x),
+                    std::roundf(worldPosition.y));
+            auto playerPosition =
+                cocos2d::Point(
+                    std::roundf(this->level->player->getPositionX()),
+                    std::roundf(this->level->player->getPositionY()));
+            auto boundsPosition =
+                cocos2d::Point(
+                    std::roundf(this->level->bounds->getPositionX()),
+                    std::roundf(this->level->bounds->getPositionY()));
 
             auto positionDifference = playerPosition - worldPosition;
-            
+            auto currentBoundsPositionZeroY = cocos2d::Point(std::roundf(this->level->bounds->getPositionX()), 0);
+
             if (playerPosition.x > worldPosition.x + this->tolerance) {
                 if (playerPosition.x - this->tolerance > worldPosition.x) {
-                    this->level->bounds->setPositionX(boundsPosition.x + positionDifference.x - tolerance);
+                    
+                    auto nextBoundsPosition = cocos2d::Point(boundsPosition.x + positionDifference.x - tolerance, 0);
+                    if (this->level->player->speed.x != 0) {
+                        auto targetBoundsPosition = 
+                            GeometryExtensions::moveTowards(
+                                currentBoundsPositionZeroY, 
+                                nextBoundsPosition, 
+                                dt * 64 * static_cast<float>(std::abs(this->level->player->speed.x)));
+
+                        this->level->bounds->setPositionX(targetBoundsPosition.x);
+                    }
+                    else {
+                        auto targetBoundsPosition = GeometryExtensions::moveTowards(currentBoundsPositionZeroY, nextBoundsPosition, dt * 64);
+
+                        this->level->bounds->setPositionX(targetBoundsPosition.x);
+                    }
+                    
                 }
             }
             else if (playerPosition.x < worldPosition.x - this->tolerance) {
                 if (playerPosition.x + this->tolerance < worldPosition.x) {
-                    this->level->bounds->setPositionX(boundsPosition.x + positionDifference.x + tolerance);
+
+                    auto nextBoundsPosition = cocos2d::Point(boundsPosition.x + positionDifference.x + tolerance, 0);
+                    if (this->level->player->speed.x != 0) {
+                        auto targetBoundsPosition =
+                            GeometryExtensions::moveTowards(
+                                currentBoundsPositionZeroY,
+                                nextBoundsPosition,
+                                dt * 64 * static_cast<float>(std::abs(this->level->player->speed.x)));
+
+                        this->level->bounds->setPositionX(targetBoundsPosition.x);
+                    }
+                    else {
+                        auto targetBoundsPosition = GeometryExtensions::moveTowards(currentBoundsPositionZeroY, nextBoundsPosition, dt * 64);
+
+                        this->level->bounds->setPositionX(targetBoundsPosition.x);
+                    }
                 }
             }
         }
@@ -275,8 +335,14 @@ void Camera::onUpdate(float dt) {
 
         if (!this->bossDoorWorking && this->shiftMoveCount > 0) {
             
-            auto boundsPosition = this->level->bounds->getPosition();
-            auto playerPosition = this->level->player->getPosition();
+            auto playerPosition =
+                cocos2d::Point(
+                    std::roundf(this->level->player->getPositionX()),
+                    std::roundf(this->level->player->getPositionY()));
+            auto boundsPosition =
+                cocos2d::Point(
+                    std::roundf(this->level->bounds->getPositionX()),
+                    std::roundf(this->level->bounds->getPositionY()));
 
             if (this->shiftDirection == CameraFlags::CameraShift::ShiftRight) {
                 this->level->bounds->setPositionX(boundsPosition.x + this->shiftSpeed);
@@ -309,12 +375,12 @@ void Camera::onUpdate(float dt) {
                         this->level->player->setPositionY(playerPosition.y + this->protoShiftSpeed + 0.25f);
                     }
                     else {
-                        this->level->player->setPositionY(playerPosition.y + this->protoShiftSpeed + 0.15f);
+                        this->level->player->setPositionY(playerPosition.y + this->protoShiftSpeed + 0.25f);
                     }
                 }
                 else {
                     if (this->bossDoorShift) {
-                        this->level->player->setPositionY(playerPosition.y + this->protoShiftSpeed + 0.15f);
+                        this->level->player->setPositionY(playerPosition.y + this->protoShiftSpeed + 0.25f);
                     }
                     else {
                         this->level->player->setPositionY(playerPosition.y + this->protoShiftSpeed);
@@ -332,12 +398,12 @@ void Camera::onUpdate(float dt) {
                         this->level->player->setPositionY(playerPosition.y - this->protoShiftSpeed - 0.25f);
                     }
                     else {
-                        this->level->player->setPositionY(playerPosition.y - this->protoShiftSpeed - 0.15f);
+                        this->level->player->setPositionY(playerPosition.y - this->protoShiftSpeed - 0.25f);
                     }
                 }
                 else {
                     if (this->bossDoorShift) {
-                        this->level->player->setPositionY(playerPosition.y - this->protoShiftSpeed - 0.15f);
+                        this->level->player->setPositionY(playerPosition.y - this->protoShiftSpeed - 0.25f);
                     }
                     else {
                         this->level->player->setPositionY(playerPosition.y - this->protoShiftSpeed);
@@ -380,6 +446,12 @@ void Camera::onUpdate(float dt) {
 
     }
 
-    this->getScene()->getDefaultCamera()->setPosition(this->level->bounds->getPosition());
+    auto boundsPosition =
+        cocos2d::Point(
+            std::roundf(this->level->bounds->getPositionX()),
+            std::roundf(this->level->bounds->getPositionY()));
+
+
+    this->getScene()->getDefaultCamera()->setPosition(boundsPosition);
 
 }

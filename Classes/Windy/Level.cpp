@@ -69,7 +69,9 @@ Level* Level::create(const std::string& resourcesRootPath,
         level->triggeringDoor = nullptr;
         level->bounds = nullptr;
         level->camera = nullptr;
+#if _DEBUG
         level->debugDrawNode = nullptr;
+#endif
         level->physicsWorld = nullptr;
         level->gui = nullptr;
         level->boss = nullptr;
@@ -441,7 +443,36 @@ bool Level::init()
 
                 this->objectManager->objectEntries.push_back(entry);
 
+            } else if (bossType.compare("military") == 0) {
+
+                auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle(bossType, position, size);
+                auto entry = Logical::getEntry(entryCollisionBox, [=]() {
+                    return EntityFactory::getInstance().create(bossType, position, size);
+                    });
+
+                this->objectManager->objectEntries.push_back(entry);
+
+            } else if (bossType.compare("vine") == 0) {
+
+                auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle(bossType, position, size);
+                auto entry = Logical::getEntry(entryCollisionBox, [=]() {
+                    return EntityFactory::getInstance().create(bossType, position, size);
+                    });
+
+                this->objectManager->objectEntries.push_back(entry);
+
+            } else if (bossType.compare("night") == 0) {
+
+                auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle(bossType, position, size);
+                auto entry = Logical::getEntry(entryCollisionBox, [=]() {
+                    return EntityFactory::getInstance().create(bossType, position, size);
+                    });
+
+                this->objectManager->objectEntries.push_back(entry);
+
             }
+
+
         }
 
     }
@@ -480,7 +511,7 @@ bool Level::init()
 
     auto cameraSize = cocos2d::Size(8, 16);
 
-    this->camera = dynamic_cast<Camera*>(EntityFactory::getInstance().create("camera", cocos2d::Point(0, 0), cameraSize));
+    this->camera = dynamic_cast<Camera*>(EntityFactory::getInstance().create("camera", cocos2d::Point(0, 0), cameraSize, 48));
 
     this->camera->setPositionY(this->camera->collisionBox->size.height * 0.25f);
 
@@ -490,11 +521,13 @@ bool Level::init()
 
     this->camera->normalizeCollisionRectangles();
 
+#if _DEBUG
     this->debugDrawNode = DebugDrawNode::create(this);
 
     this->addChild(this->debugDrawNode);
 
     this->debugDrawNode->customEntities.pushBack(this->bounds);
+#endif
 
     this->levelController =
         dynamic_cast<LevelController*>(EntityFactory::getInstance().create("level_controller", cocos2d::Point(0, 0), cocos2d::Size(16, 16)));

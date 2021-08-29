@@ -181,9 +181,9 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">linear_missile_bullet_walk_0.png</key>
-            <key type="filename">linear_missile_bullet_walk_1.png</key>
-            <key type="filename">linear_missile_bullet_walk_2.png</key>
+            <key type="filename">linear_missile_bullet_shoot_0.png</key>
+            <key type="filename">linear_missile_bullet_shoot_1.png</key>
+            <key type="filename">linear_missile_bullet_shoot_2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -201,9 +201,9 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>linear_missile_bullet_walk_0.png</filename>
-            <filename>linear_missile_bullet_walk_1.png</filename>
-            <filename>linear_missile_bullet_walk_2.png</filename>
+            <filename>linear_missile_bullet_shoot_0.png</filename>
+            <filename>linear_missile_bullet_shoot_1.png</filename>
+            <filename>linear_missile_bullet_shoot_2.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -16,6 +16,9 @@ def split_image_to_tiles(im):
     #This treats the image `im` as a square grid of images.
     w, h = im.size
 
+    print(w)
+    print(h)
+
     w_step = int(w / grid_step)
     h_step = int(h / grid_step)
 

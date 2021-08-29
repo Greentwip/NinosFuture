@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="272" height="64" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="130">
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="272" height="64" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="151">
  <tileset firstgid="1" name="level_vineman_bank.png" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="432" columns="48">
   <image source="level_vineman_bank.png" width="864" height="164"/>
  </tileset>
@@ -60,7 +60,7 @@
   <object id="51" x="1056" y="338" width="48" height="12"/>
   <object id="52" x="1200" y="402" width="48" height="12"/>
   <object id="53" x="1264" y="402" width="48" height="12"/>
-  <object id="54" x="1072" y="434" width="112" height="12"/>
+  <object id="54" x="1072" y="433" width="112" height="13"/>
   <object id="55" x="1040" y="402" width="80" height="14"/>
   <object id="56" x="1536" y="290" width="48" height="12"/>
   <object id="57" x="2160" y="334" width="32" height="16"/>
@@ -117,10 +117,22 @@
   <object id="129" name="vineman-e-tank" type="e_tank" x="816" y="514" width="16" height="16"/>
   <object id="125" name="vineman-m-tank" type="m_tank" x="1104" y="610" width="16" height="16"/>
   <object id="128" name="chest" type="chest" x="1248" y="610" width="16" height="16"/>
+  <object id="133" name="vineman-life" type="life" x="731" y="360" width="8" height="10">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="radius" value="32"/>
+   </properties>
+  </object>
+  <object id="137" name="vineman-life" type="life" x="814" y="280" width="8" height="10">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="radius" value="32"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="3" name="logic">
   <object id="115" name="scroll" type="left" x="664" y="96" width="16" height="16"/>
-  <object id="116" name="teleporter" x="120" y="176" width="16" height="16"/>
+  <object id="116" name="teleporter" x="120" y="178" width="16" height="16"/>
   <object id="117" name="checkpoint" type="first" x="120" y="104" width="16" height="16"/>
   <object id="118" name="scroll" type="right" x="104" y="104" width="16" height="16"/>
   <object id="170" name="hole" x="688" y="216" width="32" height="24"/>
@@ -138,6 +150,7 @@
   <object id="182" name="scroll" type="left" x="3512" y="768" width="16" height="16"/>
   <object id="126" name="teleporter" x="3752" y="850" width="16" height="16"/>
   <object id="127" name="checkpoint" type="boss" x="3752" y="778" width="16" height="16"/>
+  <object id="150" name="teleporter" x="4096" y="850" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="5" name="special">
   <object id="2" name="door" type="general" x="3624" y="834" width="16" height="16"/>
@@ -224,48 +237,46 @@
  <objectgroup id="4" name="enemies">
   <object id="123" name="lyric" type="general" x="376" y="16" width="16" height="16"/>
   <object id="124" name="lyric" type="general" x="504" y="40" width="16" height="16"/>
-  <object id="125" name="cannon_joe" type="general" x="296" y="114" width="16" height="16"/>
   <object id="126" name="lyric" type="general" x="584" y="24" width="16" height="16"/>
   <object id="127" name="lyric" type="general" x="736" y="8" width="16" height="16"/>
-  <object id="128" name="sumatran" type="general" x="736" y="162" width="16" height="16"/>
-  <object id="129" name="subeil" type="general" x="600" y="290" width="16" height="16"/>
-  <object id="130" name="subeil" type="general" x="632" y="290" width="16" height="16"/>
-  <object id="132" name="subeil" type="general" x="734" y="354" width="16" height="16"/>
-  <object id="133" name="cannon_joe" type="general" x="704" y="482" width="16" height="16"/>
+  <object id="129" name="subeil" type="general" x="600" y="292" width="14" height="14"/>
+  <object id="130" name="subeil" type="general" x="633" y="292" width="14" height="14"/>
   <object id="134" name="subeil" type="general" x="968" y="610" width="16" height="16"/>
   <object id="136" name="lyric" type="general" x="824" y="248" width="16" height="16"/>
   <object id="137" name="lyric" type="general" x="968" y="264" width="16" height="16"/>
-  <object id="138" name="cannon_joe" type="general" x="904" y="290" width="16" height="16"/>
-  <object id="139" name="subeil" type="general" x="896" y="386" width="16" height="16"/>
-  <object id="140" name="subeil" type="general" x="1168" y="416" width="16" height="16"/>
   <object id="141" name="lyric" type="general" x="1096" y="264" width="16" height="16"/>
   <object id="142" name="lyric" type="general" x="1288" y="264" width="16" height="16"/>
-  <object id="143" name="cannon_joe" type="general" x="1280" y="386" width="16" height="16"/>
   <object id="144" name="lyric" type="general" x="1400" y="280" width="16" height="16"/>
-  <object id="145" name="subeil" type="general" x="1528" y="402" width="16" height="16"/>
-  <object id="146" name="cannon_joe" type="general" x="1640" y="322" width="16" height="16"/>
-  <object id="147" name="subeil" type="general" x="1728" y="416" width="16" height="16"/>
   <object id="148" name="lyric" type="general" x="1720" y="264" width="16" height="16"/>
   <object id="149" name="lyric" type="general" x="1776" y="272" width="16" height="16"/>
   <object id="150" name="lyric" type="general" x="1888" y="256" width="16" height="16"/>
-  <object id="151" name="cannon_joe" type="general" x="1928" y="338" width="16" height="16"/>
-  <object id="152" name="taban" type="general" x="2048" y="318" width="16" height="16"/>
-  <object id="153" name="subeil" type="general" x="1872" y="416" width="16" height="16"/>
-  <object id="154" name="taban" type="general" x="2144" y="334" width="16" height="16"/>
-  <object id="155" name="sumatran" type="general" x="2488" y="402" width="16" height="16"/>
+  <object id="152" name="taban" type="general" x="2048" y="318" width="25" height="21"/>
+  <object id="154" name="taban" type="general" x="2144" y="334" width="25" height="21"/>
   <object id="156" name="lyric" type="general" x="2448" y="296" width="16" height="16"/>
   <object id="157" name="lyric" type="general" x="2560" y="320" width="16" height="16"/>
-  <object id="158" name="cannon_joe" type="general" x="2656" y="548" width="16" height="16"/>
   <object id="159" name="lyric" type="general" x="2640" y="696" width="16" height="16"/>
   <object id="160" name="lyric" type="general" x="2888" y="736" width="16" height="16"/>
   <object id="161" name="lyric" type="general" x="3024" y="736" width="16" height="16"/>
-  <object id="162" name="sumatran" type="general" x="3068" y="850" width="16" height="16"/>
-  <object id="163" name="taban" type="general" x="3200" y="784" width="16" height="16"/>
-  <object id="164" name="subeil" type="general" x="3440" y="784" width="16" height="16"/>
-  <object id="168" name="cannon_joe" type="general" x="3576" y="834" width="16" height="16"/>
+  <object id="163" name="taban" type="general" x="3200" y="784" width="25" height="21"/>
+  <object id="130" name="cannon_joe" type="general" x="287" y="98" width="27" height="32"/>
+  <object id="131" name="sumatran" type="general" x="728" y="133" width="33" height="45"/>
+  <object id="134" name="cannon_joe" type="general" x="700" y="466" width="27" height="32"/>
+  <object id="135" name="subeil" type="general" x="898" y="388" width="14" height="14"/>
+  <object id="136" name="subeil" type="general" x="906" y="292" width="14" height="14"/>
+  <object id="138" name="subeil" type="general" x="1167" y="420" width="14" height="14"/>
+  <object id="139" name="cannon_joe" type="general" x="1275" y="370" width="27" height="32"/>
+  <object id="140" name="cannon_joe" type="general" x="1635" y="306" width="27" height="32"/>
+  <object id="141" name="subeil" type="general" x="1528" y="404" width="14" height="14"/>
+  <object id="142" name="subeil" type="general" x="1730" y="418" width="14" height="14"/>
+  <object id="143" name="subeil" type="general" x="1873" y="418" width="14" height="14"/>
+  <object id="144" name="cannon_joe" type="general" x="1922" y="322" width="27" height="32"/>
+  <object id="145" name="sumatran" type="general" x="2658" y="613" width="33" height="45"/>
+  <object id="146" name="sumatran" type="general" x="3050" y="821" width="33" height="45"/>
+  <object id="147" name="cannon_joe" type="general" x="3568" y="818" width="27" height="32"/>
+  <object id="148" name="sumatran" type="general" x="2479" y="373" width="33" height="45"/>
+  <object id="149" name="subeil" type="general" x="3439" y="788" width="14" height="14"/>
  </objectgroup>
  <objectgroup id="6" name="boss">
-  <object id="12" name="boss" type="vine" x="4112" y="656" width="16" height="16"/>
-  <object id="13" name="teleporter" x="4111.96" y="849.75" width="16" height="16"/>
+  <object id="12" name="boss" type="vine" x="4096" y="706" width="16" height="16"/>
  </objectgroup>
 </map>

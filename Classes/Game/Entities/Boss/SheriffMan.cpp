@@ -16,7 +16,7 @@ void SheriffMan::onSpawn() {
     this->state = BossState::Fighting;
 
     this->jumpCounter = 0;
-    this->jumpAmount = 2;
+    this->jumpAmount = 1;
 }
 
 void SheriffMan::attack() {
@@ -55,7 +55,7 @@ void SheriffMan::onUpdate(float dt) {
 
                 auto stateCallback = cocos2d::CallFunc::create([this]() { 
                     this->jumpCounter = 0;
-                    this->attackState = AttackState::JumpingLeft; 
+                    this->attackState = AttackState::RammingLeft; 
                 });
 
                 auto sequence = cocos2d::Sequence::create(shootAttack, shootDelay, shootAttack, shootDelay, stateCallback, nullptr);
@@ -67,12 +67,31 @@ void SheriffMan::onUpdate(float dt) {
             }
             break;
 
+            case AttackState::RammingLeft:
+            {
+                this->sprite->setFlippedX(true);
+
+                this->speed.x = this->walkSpeed * -1.5f;
+
+                auto playerPosition = this->level->player->getPosition();
+                auto bossPosition = this->getPosition();
+                
+                float playerDistance = bossPosition.getDistance(playerPosition);
+
+
+                if (playerDistance < 48) {
+                    this->attackState = AttackState::JumpingLeft;
+                }
+
+            }
+            break;
+
             case AttackState::JumpingLeft: 
             {
                 this->sprite->setFlippedX(true);
 
                 if (this->contacts[windy::CollisionContact::Down]) {
-                    if (this->jumpCounter <= this->jumpAmount) {
+                    if (this->jumpCounter < this->jumpAmount) {
                         this->jumpCounter++;
 
                         this->speed.x = this->walkSpeed * -1.25f;
@@ -98,6 +117,7 @@ void SheriffMan::onUpdate(float dt) {
             }
             break;
 
+
             case AttackState::ShootingRight:
             {
                 this->speed.x = 0;
@@ -108,11 +128,11 @@ void SheriffMan::onUpdate(float dt) {
                     this->attack();
                 });
 
-                auto shootDelay = cocos2d::DelayTime::create(this->currentBrowner->getActionDuration("standshoot") * 2);
+                auto shootDelay = cocos2d::DelayTime::create(this->currentBrowner->getActionDuration("standshoot") * 4);
 
                 auto stateCallback = cocos2d::CallFunc::create([this]() {
                     this->jumpCounter = 0;
-                    this->attackState = AttackState::JumpingRight;
+                    this->attackState = AttackState::RammingRight;
                 });
 
                 auto sequence = cocos2d::Sequence::create(shootAttack, shootDelay, shootAttack, shootDelay, stateCallback, nullptr);
@@ -124,16 +144,36 @@ void SheriffMan::onUpdate(float dt) {
             }
             break;
 
+            case AttackState::RammingRight:
+            {
+                this->sprite->setFlippedX(false);
+
+                this->speed.x = this->walkSpeed * 1.5f;
+
+                auto playerPosition = this->level->player->getPosition();
+                auto bossPosition = this->getPosition();
+
+                float playerDistance = bossPosition.getDistance(playerPosition);
+
+
+                if (playerDistance < 48) {
+                    this->attackState = AttackState::JumpingRight;
+                }
+
+            }
+            break;
+
+
             case AttackState::JumpingRight:
             {
                 this->sprite->setFlippedX(false);
 
                 if (this->contacts[windy::CollisionContact::Down]) {
-                    if (this->jumpCounter <= this->jumpAmount) {
+                    if (this->jumpCounter < this->jumpAmount) {
                         this->jumpCounter++;
 
                         this->speed.x = this->walkSpeed * 1.25f;
-                        this->speed.y = this->jumpSpeed * 1.25f;
+                        this->speed.y = this->jumpSpeed * 1.5f;
                     }
                     else {
                         this->attackState = AttackState::DashingRight;

@@ -61,12 +61,23 @@ void FlashBrain::attack(float dt) {
         case AttackState::Attacking:
         {
             if (this->level->player->getPositionX() < getPositionX()) {
-                this->speed.x = -0.75f;
+                this->speed.x = -0.25f;
             }
             else {
-                this->speed.x = 0.75f;
+                this->speed.x = 0.25f;
             }
 
+            auto enemyPosition = this->getPosition();
+            auto playerPosition = this->level->player->getPosition();
+            float distance = enemyPosition.getDistance(playerPosition);
+
+            if (distance < 16) {
+                this->speed.x = 0;
+                this->sprite->runAction("idle");
+            }
+            else {
+                this->sprite->runAction("walk");
+            }
         }
         break;
     }

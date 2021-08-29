@@ -13,7 +13,9 @@ namespace windy {
     class Camera;
     class Player;
     class Logical;
+#if _DEBUG
     class DebugDrawNode;
+#endif
     class PhysicsWorld;
     class ObjectManager;
     class LandscapeTile;
@@ -67,7 +69,9 @@ namespace windy {
 
         Boss* boss;
 
+#if _DEBUG
         DebugDrawNode* debugDrawNode;
+#endif
 
         Logical* lastCheckpoint;
 

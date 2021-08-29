@@ -24,7 +24,7 @@ namespace windy {
     public:
         bool solidified;
 
-    private:
+    public:
         Block* ceiling;
     };
 }

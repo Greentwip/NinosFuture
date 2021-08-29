@@ -3,7 +3,9 @@
 #include "Game/Entities/Player/GamePlayer.h"
 #include "Game/Entities/Weapons/DirectionalBullet.h"
 #include "Windy/AnimationAction.h"
+#if _DEBUG
 #include "Windy/DebugDrawNode.h"
+#endif
 #include "Windy/GeometryExtensions.h"
 #include "Windy/ObjectManager.h"
 

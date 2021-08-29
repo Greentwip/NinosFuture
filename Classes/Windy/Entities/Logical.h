@@ -100,13 +100,16 @@ namespace windy {
         bool ignoreLandscapeCollision;
         bool ignoreEntityCollision;
 
+        cocos2d::Point lastPosition;
+
     protected:
         cocos2d::Point lastCollisionPosition;
-        cocos2d::Point lastPosition;
         std::vector<std::shared_ptr<cocos2d::Rect>> collisionRectangles;
 
-    private:
+    protected:
         std::shared_ptr<ObjectEntry> entry;
+
+    private:
         int updatePriority;
     };
 }

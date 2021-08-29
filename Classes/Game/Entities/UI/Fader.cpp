@@ -118,3 +118,7 @@ void Fader::fadeOut(std::function<void()> onFadeOutCallback) {
 bool Fader::getFading() {
     return _fading;
 }
+
+windy::Sprite* Fader::getSprite() {
+    return _sprite;
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="32" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="23">
+ <tileset firstgid="1" name="level_weapon" tilewidth="256" tileheight="256" tilecount="2" columns="2">
+  <image source="level_arena.png" width="512" height="256"/>
+ </tileset>
+ <layer id="1" name="layout" width="32" height="16">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGAb0BI4X6mSjUDwAJAAAE
+  </data>
+ </layer>
+ <objectgroup id="2" name="blocks">
+  <object id="1" x="0" y="177" width="512" height="24"/>
+  <object id="8" x="0" y="101" width="95" height="25"/>
+  <object id="9" x="0" y="127" width="6" height="50"/>
+  <object id="10" x="89" y="51" width="6" height="50"/>
+  <object id="12" x="159" y="100" width="113" height="29"/>
+  <object id="13" x="159" y="50" width="6" height="50"/>
+  <object id="14" x="95" y="48" width="64" height="15"/>
+  <object id="15" x="255" y="32" width="17" height="68"/>
+  <object id="16" x="496" y="32" width="16" height="145"/>
+  <object id="19" x="272" y="31" width="224" height="13"/>
+ </objectgroup>
+ <objectgroup id="3" name="logic">
+  <object id="2" name="checkpoint" type="first" x="120" y="104" width="16" height="16"/>
+  <object id="3" name="teleporter" x="120" y="177" width="16" height="16"/>
+  <object id="21" name="teleporter" x="472" y="177" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="4" name="animations"/>
+ <objectgroup id="5" name="special">
+  <object id="20" name="door" x="240" y="129" width="32" height="48"/>
+ </objectgroup>
+ <objectgroup id="6" name="boss">
+  <object id="22" name="boss" type="night" x="472" y="28" width="16" height="16"/>
+ </objectgroup>
+</map>

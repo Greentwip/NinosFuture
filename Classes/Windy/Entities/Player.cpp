@@ -7,7 +7,9 @@
 #include "Explosion.h"
 #include "Item.h"
 #include "Ladder.h"
+#include "Block.h"
 #include "Weapon.h"
+#include "Boss.h"
 #include "../EntityFactory.h"
 #include "../GeometryExtensions.h"
 #include "../Input.h"
@@ -137,6 +139,11 @@ void Player::onCollision(Logical* collision) {
         auto weapon = dynamic_cast<Weapon*>(collision);
         this->stun(weapon->power);
     }
+    else if (collision->getTag() == GameTags::General::Boss) {
+        auto entity = dynamic_cast<Boss*>(collision);
+        this->stun(entity->power);
+    }
+
 
 }
 
@@ -587,8 +594,25 @@ void Player::climb() {
                 this->activeLadder->solidify();
             }
             else {
-                this->speed.y = static_cast<float>(-this->climbSpeed);
-                this->activeLadder->unsolidify();
+                auto& collisionBox = *this->collisionBox;
+                auto& ceilingCollisionBox = *this->activeLadder->ceiling->collisionBox;
+
+                if (!GeometryExtensions::rectIntersectsRect(collisionBox, ceilingCollisionBox)) {
+                    this->speed.y = static_cast<float>(-this->climbSpeed);
+                    this->activeLadder->unsolidify();
+                }
+                else {
+                    this->climbing = false;
+                    this->ignoreGravity = false;
+                    this->ignoreLandscapeCollision = false;
+                    this->climbCounter = 0;
+                    this->speed.x = speedXBackup;
+                    this->onGround = onGroundBackup;
+                    this->activeLadder->solidify();
+
+                }
+
+                
             }
         }
         else {
@@ -725,7 +749,7 @@ void Player::checkHealth() {
     auto playerCollisionBox = this->collisionBox;
     auto boundsCollisionBox = this->level->bounds->collisionBox;
 
-    if (playerCollisionBox->getMinY() < boundsCollisionBox->getMinY() + 8 && !traversingPassage) {
+    if (playerCollisionBox->getMinY() < boundsCollisionBox->getMinY() && !traversingPassage) {
         this->health = 0;
         killAnimation = false;
     }

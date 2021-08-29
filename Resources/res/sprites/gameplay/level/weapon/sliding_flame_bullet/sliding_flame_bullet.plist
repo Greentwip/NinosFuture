@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>sliding_flame_bullet_walk_0</key>
+            <key>sliding_flame_bullet_shoot_0</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -19,7 +19,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>sliding_flame_bullet_walk_1</key>
+            <key>sliding_flame_bullet_shoot_1</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -34,7 +34,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>sliding_flame_bullet_walk_2</key>
+            <key>sliding_flame_bullet_shoot_2</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -49,7 +49,7 @@
                 <key>textureRotated</key>
                 <true/>
             </dict>
-            <key>sliding_flame_bullet_walk_3</key>
+            <key>sliding_flame_bullet_shoot_3</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -64,7 +64,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>sliding_flame_bullet_walk_4</key>
+            <key>sliding_flame_bullet_shoot_4</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -93,7 +93,7 @@
             <key>size</key>
             <string>{64,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:6770a0336bc15210554e6254b60e7004:3c948e171f0c68592aa329ac3dbe965f:b7adee5bad2d45217fd6c20a01ae99eb$</string>
+            <string>$TexturePacker:SmartUpdate:5e99cb3922eeec3d7038d1c5260bb76a:3c948e171f0c68592aa329ac3dbe965f:b7adee5bad2d45217fd6c20a01ae99eb$</string>
             <key>textureFileName</key>
             <string>sliding_flame_bullet.pvr.ccz</string>
         </dict>

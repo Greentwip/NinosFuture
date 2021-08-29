@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>linear_missile_bullet_walk_0</key>
+            <key>linear_missile_bullet_shoot_0</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -19,7 +19,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>linear_missile_bullet_walk_1</key>
+            <key>linear_missile_bullet_shoot_1</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -34,7 +34,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>linear_missile_bullet_walk_2</key>
+            <key>linear_missile_bullet_shoot_2</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -63,7 +63,7 @@
             <key>size</key>
             <string>{32,64}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:7fa5de141d9acc22d8c3345b391dac2d:62844743e1a2698db1a0c146bec7de27:56c534fe4329c06db7b8c6b6fb711143$</string>
+            <string>$TexturePacker:SmartUpdate:1af5c1307cdbaa0217cba3d1d594e169:62844743e1a2698db1a0c146bec7de27:56c534fe4329c06db7b8c6b6fb711143$</string>
             <key>textureFileName</key>
             <string>linear_missile_bullet.pvr.ccz</string>
         </dict>

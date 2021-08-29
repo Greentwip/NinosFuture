@@ -17,6 +17,7 @@
 #include "GameScene.h"
 #include "GameOverScene.h"
 #include "WeaponAcquireScene.h"
+#include "ArenaScene.h"
 
 
 #include "Windy/Input.h"
@@ -71,6 +72,7 @@ GameStateMachine::GameStateMachine() {
     sceneFactory.registerType<GameScene>(GameState::Game);
     sceneFactory.registerType<GameOverScene>(GameState::GameOver);
     sceneFactory.registerType<WeaponAcquireScene>(GameState::GetWeapon);
+    sceneFactory.registerType<ArenaScene>(GameState::Arena);
 }
 
 GameState GameStateMachine::getState() {

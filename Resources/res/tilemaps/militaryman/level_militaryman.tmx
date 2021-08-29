@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="384" height="64" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="21">
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="384" height="64" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="39">
  <tileset firstgid="1" name="level_militaryman_bank" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="3752" columns="67">
   <image source="level_militaryman_bank.png" width="1208" height="1008"/>
  </tileset>
@@ -11,40 +11,40 @@
  <objectgroup id="2" name="blocks">
   <object id="12" x="255" y="108" width="330" height="105"/>
   <object id="13" x="551.155" y="75" width="32.8696" height="33"/>
-  <object id="15" x="692.119" y="108.238" width="148.131" height="105.232"/>
-  <object id="16" x="948.055" y="108.449" width="148.006" height="52.1993"/>
+  <object id="15" x="692" y="108" width="148" height="105"/>
+  <object id="16" x="948" y="108" width="148" height="52"/>
   <object id="17" x="948.086" y="160.648" width="370.982" height="53"/>
-  <object id="18" x="1203.97" y="108.45" width="115.1" height="52.1993"/>
+  <object id="18" x="1203" y="108" width="115" height="52"/>
   <object id="19" x="1140.06" y="108.347" width="28.0418" height="52.2968"/>
   <object id="20" x="1148.37" y="-2.00716" width="59.9754" height="52.4403"/>
   <object id="22" x="1335" y="0" width="25" height="680"/>
-  <object id="23" x="1279.07" y="780" width="169.002" height="20.5"/>
+  <object id="23" x="1279" y="780" width="169.002" height="20"/>
   <object id="24" x="1420.19" y="801.176" width="12.8325" height="93.4722"/>
-  <object id="25" x="1442.11" y="880.466" width="43.9617" height="14.3068"/>
+  <object id="25" x="1442" y="880" width="43" height="14"/>
   <object id="26" x="1574.3" y="785.849" width="12.8325" height="108.736"/>
   <object id="27" x="1686.28" y="785.592" width="12.8325" height="108.993"/>
-  <object id="28" x="1790.4" y="843.586" width="200.666" height="50.8055"/>
+  <object id="28" x="1790" y="843" width="200" height="50"/>
   <object id="31" x="1909.06" y="811.616" width="67.0744" height="31.9691"/>
   <object id="33" x="1943.06" y="778.663" width="33.0727" height="32.9494"/>
   <object id="34" x="1991.08" y="861.537" width="41.0818" height="32.9494"/>
   <object id="35" x="39" y="128" width="33" height="32"/>
-  <object id="36" x="2147.03" y="669.007" width="308.036" height="99.3914"/>
-  <object id="37" x="2064.02" y="715.648" width="73.1381" height="15"/>
+  <object id="36" x="2147" y="669" width="308" height="99"/>
+  <object id="37" x="2064" y="715" width="73" height="15"/>
   <object id="38" x="2657.01" y="669.134" width="308.036" height="99.3914"/>
-  <object id="39" x="2106.11" y="861.664" width="156.957" height="32.9808"/>
-  <object id="40" x="2346.09" y="861.658" width="156.957" height="32.9808"/>
+  <object id="39" x="2106" y="861" width="156" height="32"/>
+  <object id="40" x="2346" y="861" width="156" height="32"/>
   <object id="41" x="2616.09" y="861.658" width="156.957" height="32.9808"/>
-  <object id="42" x="3833.01" y="406.601" width="111.047" height="34.0469"/>
-  <object id="43" x="3973.07" y="406.644" width="225.966" height="34.0041"/>
-  <object id="44" x="4228.06" y="406.637" width="225.966" height="34.0041"/>
-  <object id="45" x="4483.04" y="406.602" width="225.966" height="34.0041"/>
-  <object id="46" x="4738.02" y="406.646" width="170.046" height="34.0041"/>
-  <object id="47" x="4734" y="791" width="745.072" height="102.65"/>
-  <object id="48" x="5066.13" y="64" width="25.87" height="692"/>
+  <object id="42" x="3833" y="406" width="111" height="34"/>
+  <object id="43" x="3973" y="406" width="225" height="34.0041"/>
+  <object id="44" x="4228" y="406" width="225" height="34.0041"/>
+  <object id="45" x="4483" y="406" width="225" height="34.0041"/>
+  <object id="46" x="4738" y="406" width="170" height="34.0041"/>
+  <object id="47" x="4734" y="791" width="745" height="102"/>
+  <object id="48" x="5066" y="64" width="25" height="692"/>
   <object id="49" x="5557" y="822" width="353" height="72"/>
-  <object id="50" x="4810.95" y="440.646" width="80.125" height="312.002"/>
-  <object id="51" x="4594.74" y="668.981" width="39" height="85"/>
-  <object id="52" x="4617.03" y="880.648" width="14.0435" height="14.5"/>
+  <object id="50" x="4810" y="440" width="80" height="312.002"/>
+  <object id="51" x="4594" y="668" width="39" height="85"/>
+  <object id="52" x="4617" y="880" width="14" height="14"/>
   <object id="53" x="4978.03" y="268.669" width="14.0435" height="15.0014"/>
   <object id="54" x="5027.14" y="268.602" width="29.9308" height="15.0014"/>
   <object id="55" x="4918.07" y="268.636" width="14.0435" height="15.0014"/>
@@ -52,8 +52,8 @@
   <object id="57" x="4773.05" y="268.602" width="28.0217" height="15.0014"/>
   <object id="58" x="4723.11" y="268.585" width="14.0435" height="15.0014"/>
   <object id="59" x="4663.13" y="268.648" width="29.875" height="14.875"/>
-  <object id="60" x="4643.03" y="372.398" width="65.9819" height="34.207"/>
-  <object id="61" x="4660.07" y="340.648" width="33.0909" height="31.7273"/>
+  <object id="60" x="4643" y="372" width="65" height="34"/>
+  <object id="61" x="4660" y="340" width="33" height="31"/>
   <object id="62" x="4597.11" y="268.626" width="29.9638" height="15.0014"/>
   <object id="63" x="4517.11" y="268.713" width="29.9348" height="15.0014"/>
   <object id="64" x="4468.07" y="268.627" width="14.0435" height="15.0014"/>
@@ -71,25 +71,25 @@
   <object id="77" x="3124" y="424" width="14" height="15.0014"/>
   <object id="78" x="3152" y="424" width="32" height="15.0014"/>
   <object id="79" x="2672.15" y="843.736" width="44.9229" height="17.9229"/>
-  <object id="80" x="2402.11" y="843.71" width="44.8967" height="17.9382"/>
-  <object id="81" x="2162.1" y="843.646" width="45.0962" height="18.0017"/>
+  <object id="80" x="2402" y="843" width="44" height="17"/>
+  <object id="81" x="2162" y="843" width="45" height="18.0017"/>
   <object id="82" x="2494.04" y="686.637" width="27.2107" height="30.0003"/>
-  <object id="83" x="3066.11" y="406.488" width="57.9358" height="33.2262"/>
+  <object id="83" x="3066" y="406" width="57" height="33"/>
   <object id="84" x="3066.07" y="212.713" width="159.333" height="97.9355"/>
   <object id="85" x="2464.07" y="716.64" width="58.9933" height="15.0014"/>
   <object id="86" x="5049.07" y="406.647" width="17.0592" height="32.0437"/>
-  <object id="87" x="4405.12" y="340.732" width="33.0909" height="31.7273"/>
-  <object id="88" x="4388.08" y="372.482" width="65.9819" height="34.207"/>
-  <object id="89" x="4227.02" y="372.409" width="33.0909" height="34.1137"/>
+  <object id="87" x="4405" y="340" width="33" height="31"/>
+  <object id="88" x="4388" y="372" width="65" height="34"/>
+  <object id="89" x="4227" y="372" width="33" height="34"/>
   <object id="90" x="4167" y="372.599" width="33.0909" height="34.0494"/>
   <object id="91" x="4341.04" y="212.724" width="124.78" height="32.9243"/>
-  <object id="92" x="4350.1" y="245.659" width="108.967" height="35.9887"/>
+  <object id="92" x="4350" y="245" width="108" height="35"/>
   <object id="93" x="3831.22" y="212.686" width="379.598" height="32.9243"/>
-  <object id="94" x="3840.16" y="245.519" width="364.409" height="32.9243"/>
-  <object id="95" x="3056.98" y="310.652" width="9.08696" height="358.018"/>
+  <object id="94" x="3840" y="245" width="364" height="32"/>
+  <object id="95" x="3056" y="310" width="9" height="358"/>
   <object id="96" x="3315.25" y="451.594" width="9.08696" height="443.054"/>
   <object id="97" x="4634.75" y="652.315" width="176.199" height="16.6615"/>
-  <object id="135" x="5510.92" y="879.71" width="14.0435" height="15.0014"/>
+  <object id="135" x="5510" y="879" width="14" height="15.0014"/>
   <object id="17" x="1264" y="213" width="15.697" height="567"/>
   <object id="20" x="0" y="160" width="256" height="34"/>
   <object id="41" x="5910" y="875" width="194" height="18"/>
@@ -111,34 +111,29 @@
   <object id="23" name="hole" x="1280" y="412" width="99" height="48"/>
   <object id="24" name="hole" x="1280" y="640" width="254" height="38"/>
   <object id="26" name="scroll" type="right" x="1287" y="776" width="16" height="16"/>
-  <object id="33" name="scroll" type="left" x="3136" y="776" width="14" height="16"/>
-  <object id="34" name="scroll" type="right" x="3104" y="330" width="16" height="16"/>
+  <object id="33" name="scroll" type="left" x="3137" y="776" width="14" height="16"/>
+  <object id="34" name="scroll" type="right" x="3105" y="330" width="16" height="16"/>
   <object id="37" name="hole" x="4892" y="428" width="172" height="38"/>
   <object id="38" name="hole" x="4891" y="656" width="175" height="38"/>
   <object id="39" name="scroll" type="left" x="4720" y="330" width="16" height="16"/>
-  <object id="40" name="scroll" type="right" x="5200" y="775" width="16" height="16"/>
-  <object id="45" name="scroll" type="left" x="5493" y="775" width="16" height="16"/>
+  <object id="40" name="scroll" type="right" x="4944" y="776" width="16" height="16"/>
+  <object id="45" name="scroll" type="left" x="5495" y="776" width="16" height="16"/>
   <object id="17" name="teleporter" x="5734" y="822" width="16" height="16"/>
   <object id="18" name="checkpoint" type="boss" x="5734" y="775" width="16" height="16"/>
+  <object id="21" name="hole" x="3066" y="632" width="256" height="64"/>
+  <object id="22" name="hole" x="3066" y="424" width="118" height="64"/>
+  <object id="38" name="teleporter" x="6064" y="875" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="4" name="enemies">
-  <object id="98" name="tank" type="military" x="411.326" y="98" width="10.6667" height="10"/>
-  <object id="100" name="green_soldier" type="military" x="522" y="98" width="10.6667" height="10"/>
-  <object id="101" name="roll_runner" type="military" x="821.542" y="97.417" width="10.6667" height="10.6667"/>
+  <object id="98" name="tank" type="military" x="395" y="70" width="62" height="38"/>
+  <object id="100" name="green_soldier" type="military" x="507" y="77" width="25" height="31"/>
   <object id="102" name="plane" type="military" x="868.292" y="10.6667" width="10.6667" height="10.6667"/>
-  <object id="103" name="tank" type="military" x="1070.32" y="97.661" width="10.6667" height="10.6667"/>
-  <object id="104" name="claw_soldier" type="military" x="1209.24" y="97.629" width="10.6667" height="10.6667"/>
+  <object id="104" name="claw_soldier" type="military" x="1205" y="68" width="39" height="40"/>
   <object id="105" name="plane" type="military" x="1500.95" y="474.833" width="10.6667" height="10.6667"/>
-  <object id="107" name="green_soldier" type="military" x="1284.67" y="769.864" width="10.6667" height="10.6667"/>
-  <object id="108" name="green_soldier" type="military" x="1465.57" y="869.653" width="10.6667" height="10.6667"/>
   <object id="109" name="plane" type="military" x="1565.62" y="676.167" width="10.6667" height="10.6667"/>
-  <object id="110" name="claw_soldier" type="military" x="1807.84" y="832.779" width="10.6667" height="10.6667"/>
   <object id="111" name="red_soldier" type="military" x="1921.3" y="685.667" width="10.6667" height="10.6667"/>
   <object id="112" name="plane" type="military" x="2037.8" y="677.667" width="10.6667" height="10.6667"/>
-  <object id="113" name="green_soldier" type="military" x="2179.59" y="832.758" width="10.6667" height="10.6667"/>
-  <object id="114" name="green_soldier" type="military" x="2366.07" y="850.842" width="10.6667" height="10.6667"/>
   <object id="115" name="green_soldier" type="military" x="2635.64" y="850.854" width="10.6667" height="10.6667"/>
-  <object id="116" name="roll_runner" type="military" x="2114.36" y="704.837" width="10.6667" height="10.6667"/>
   <object id="117" name="plane" type="military" x="3264.62" y="703.833" width="10.6667" height="10.6667"/>
   <object id="118" name="plane" type="military" x="3262.95" y="540.833" width="10.6667" height="10.6667"/>
   <object id="119" name="plane" type="military" x="3264.62" y="465.167" width="10.6667" height="10.6667"/>
@@ -146,19 +141,25 @@
   <object id="121" name="plane" type="military" x="3457.95" y="238.5" width="10.6667" height="10.6667"/>
   <object id="122" name="red_soldier" type="military" x="3582.62" y="259.167" width="10.6667" height="10.6667"/>
   <object id="123" name="plane" type="military" x="3704.62" y="228.5" width="10.6667" height="10.6667"/>
-  <object id="124" name="tank" type="military" x="4129.3" y="395.807" width="10.6667" height="10.6667"/>
   <object id="125" name="red_soldier" type="military" x="4300.3" y="234.667" width="10.6667" height="10.6667"/>
-  <object id="126" name="roll_runner" type="military" x="4365.78" y="395.815" width="10.6667" height="10.6667"/>
   <object id="127" name="red_soldier" type="military" x="4564.8" y="332.667" width="10.6667" height="10.6667"/>
-  <object id="128" name="roll_runner" type="military" x="4820.91" y="395.835" width="10.6667" height="10.6667"/>
   <object id="129" name="red_soldier" type="military" x="4883.62" y="318.833" width="10.6667" height="10.6667"/>
   <object id="130" name="plane" type="military" x="5036.3" y="310.167" width="10.6667" height="10.6667"/>
   <object id="131" name="red_soldier" type="military" x="4750.95" y="716.833" width="10.6667" height="10.6667"/>
-  <object id="132" name="tank" type="military" x="5030.36" y="780.804" width="10.6667" height="10.6667"/>
-  <object id="133" name="roll_runner" type="military" x="5356.74" y="780.884" width="10.6667" height="10.6667"/>
-  <object id="134" name="claw_soldier" type="military" x="5565.55" y="811.822" width="10.6667" height="10.6667"/>
-  <object id="4" name="roll_runner" type="military" x="561" y="65" width="10.6667" height="10"/>
-  <object id="5" name="plane" type="military" x="1236" y="76" width="10.6667" height="10.6667"/>
+  <object id="4" name="roll_runner" type="military" x="552" y="42" width="31" height="33"/>
+  <object id="24" name="roll_runner" type="military" x="806" y="75" width="31" height="33"/>
+  <object id="25" name="tank" type="military" x="1019" y="70" width="62" height="38"/>
+  <object id="26" name="green_soldier" type="military" x="1284" y="749" width="25" height="31"/>
+  <object id="27" name="green_soldier" type="military" x="1459" y="849" width="25" height="31"/>
+  <object id="28" name="claw_soldier" type="military" x="1798" y="803" width="39" height="40"/>
+  <object id="29" name="green_soldier" type="military" x="2170" y="812" width="25" height="31"/>
+  <object id="31" name="green_soldier" type="military" x="2360" y="830" width="25" height="31"/>
+  <object id="32" name="roll_runner" type="military" x="2099" y="682" width="31" height="33"/>
+  <object id="33" name="roll_runner" type="military" x="4348" y="373" width="31" height="33"/>
+  <object id="34" name="roll_runner" type="military" x="4813" y="373" width="31" height="33"/>
+  <object id="35" name="tank" type="military" x="4999" y="753" width="62" height="38"/>
+  <object id="36" name="roll_runner" type="military" x="5349" y="758" width="31" height="33"/>
+  <object id="37" name="tank" type="military" x="4099" y="368" width="62" height="38"/>
  </objectgroup>
  <objectgroup id="5" name="special">
   <object id="2" name="platform" type="military" x="632" y="72" width="10.6667" height="10.6667">
@@ -262,8 +263,8 @@
     <property name="radius" value="32"/>
    </properties>
   </object>
-  <object id="6" name="door" type="general" x="5862" y="806" width="16" height="16"/>
-  <object id="7" name="door" type="general" x="5607" y="806" width="16" height="16"/>
+  <object id="6" name="door" type="general" x="5854" y="774" width="32" height="48"/>
+  <object id="7" name="door" type="general" x="5599" y="774" width="32" height="48"/>
   <object id="13" name="platform" type="military" x="4635" y="817" width="10.6667" height="10.6667">
    <properties>
     <property name="direction" value="left"/>
@@ -278,27 +279,26 @@
   </object>
  </objectgroup>
  <objectgroup id="7" name="items">
-  <object id="19" name="military_m_tank" type="m_tank" x="5513" y="869" width="10.6667" height="10.6667">
+  <object id="19" name="military_m_tank" type="m_tank" x="5512" y="869" width="8" height="10">
    <properties>
     <property name="direction" value="left"/>
     <property name="radius" value="32"/>
    </properties>
   </object>
-  <object id="20" name="military_e_tank" type="e_tank" x="3089" y="396" width="10.6667" height="10.6667">
+  <object id="20" name="military_e_tank" type="e_tank" x="3089" y="396" width="8" height="10">
    <properties>
     <property name="direction" value="left"/>
     <property name="radius" value="32"/>
    </properties>
   </object>
-  <object id="16" name="boot" type="boot" x="4619" y="870" width="10.6667" height="10.6667">
+  <object id="16" name="boot" type="boot" x="4619" y="870" width="8" height="10">
    <properties>
     <property name="direction" value="left"/>
     <property name="radius" value="32"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="6" name="boss" visible="0">
-  <object id="8" name="boss" type="military" x="6080" y="640" width="16" height="16"/>
-  <object id="9" name="teleporter" x="6080" y="875" width="16" height="16"/>
+ <objectgroup id="6" name="boss">
+  <object id="8" name="boss" type="military" x="6064" y="671" width="16" height="16"/>
  </objectgroup>
 </map>
