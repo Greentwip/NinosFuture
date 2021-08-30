@@ -65,7 +65,8 @@ namespace windy {
         void setEntry(std::shared_ptr<ObjectEntry> entry);
 
         static std::shared_ptr<ObjectEntry> getEntry(std::shared_ptr<cocos2d::Rect> collisionRectangle, 
-                                                     std::function<Logical*()> createFunction);
+                                                     std::function<Logical*()> createFunction,
+                                                     int priority = 0);
 
         template<typename T>
         static std::shared_ptr<cocos2d::Rect> getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size);

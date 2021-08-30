@@ -141,7 +141,7 @@ void ObjectManager::update(float dt)
 
                 entry->mappedInstance->setEntry(entry);
 
-                this->level->addChild(entry->mappedInstance);
+                this->level->addChild(entry->mappedInstance, entry->priority);
                 this->level->entities.pushBack(entry->mappedInstance);
             }
 

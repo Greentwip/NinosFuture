@@ -1,6 +1,8 @@
 #ifndef __TITLE_SCENE_H__
 #define __TITLE_SCENE_H__
 
+#define ENABLE_SOUND_TEST 0
+
 #include "cocos2d.h"
 
 namespace windy {
@@ -41,7 +43,9 @@ namespace game {
 
         windy::Label* startText;
         windy::Label* optionsText;
+#if ENABLE_SOUND_TEST
         windy::Label* soundTestText;
+#endif
         windy::Label* _aboutText;
         windy::Label* _projectsText;
         windy::Label* _creditsText;

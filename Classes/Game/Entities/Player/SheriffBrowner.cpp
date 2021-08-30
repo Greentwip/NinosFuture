@@ -111,7 +111,7 @@ void SheriffBrowner::fire() {
         bullet->fire(bulletPower, this->getSpriteNormal(), this->player->weaponTag);
 
         return bullet;
-    });
+    }, 512);
 
     auto entryCollisionBoxB = SheriffBullet::getEntryCollisionRectangle(bulletPositionB, cocos2d::Size(16, 16));
     auto entryB = windy::Logical::getEntry(entryCollisionBoxB, [=]() {
@@ -122,7 +122,7 @@ void SheriffBrowner::fire() {
         bullet->fire(bulletPower, this->getSpriteNormal() * -1, this->player->weaponTag);
 
         return bullet;
-    });
+    }, 512);
 
 
     this->level->objectManager->objectEntries.push_back(entryA);

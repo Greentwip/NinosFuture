@@ -74,60 +74,6 @@
     <property name="radius" value="32"/>
    </properties>
   </object>
-  <object id="47" name="sheriff_m_tank_test" type="m_tank" x="360" y="150" width="8" height="10">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="radius" value="32"/>
-   </properties>
-  </object>
-  <object id="46" name="sheriff_boot_test" type="boot" x="352" y="150" width="8" height="10">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="radius" value="32"/>
-   </properties>
-  </object>
-  <object id="48" name="sheriff_chest_test" type="chest" x="344" y="150" width="8" height="10">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="radius" value="32"/>
-   </properties>
-  </object>
-  <object id="49" name="head_test" type="head" x="368" y="150" width="8" height="10">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="radius" value="32"/>
-   </properties>
-  </object>
-  <object id="52" name="fist_test" type="fist" x="376" y="150" width="8" height="10">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="radius" value="32"/>
-   </properties>
-  </object>
-  <object id="50" name="health_small_test" type="health_small" x="392" y="150" width="8" height="10">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="radius" value="32"/>
-   </properties>
-  </object>
-  <object id="51" name="health_big_test" type="health_big" x="384" y="150" width="8" height="10">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="radius" value="32"/>
-   </properties>
-  </object>
-  <object id="53" name="energy_small_test" type="energy_small" x="408" y="150" width="8" height="10">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="radius" value="32"/>
-   </properties>
-  </object>
-  <object id="54" name="energy_big_test" type="energy_big" x="400" y="150" width="8" height="10">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="radius" value="32"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="4" name="enemies">
   <object id="57" name="cannon_joe" type="general" x="435" y="48" width="27" height="32"/>

@@ -15,7 +15,7 @@ InfiniteParallax* InfiniteParallax::create(const std::string& filePath, const co
         infiniteParallax->parallax = Sprite::create(filePath, cocos2d::Point(1, 0.5f));
         infiniteParallax->scroller = Sprite::create(filePath, cocos2d::Point(1, 0.5f));
 
-        infiniteParallax->scroller->setPositionY(-infiniteParallax->parallax->getContentSize().height);
+        infiniteParallax->scroller->setPositionY(-infiniteParallax->parallax->getContentSize().height * 0.5f);
 
         infiniteParallax->addChild(infiniteParallax->parallax);
         infiniteParallax->addChild(infiniteParallax->scroller);

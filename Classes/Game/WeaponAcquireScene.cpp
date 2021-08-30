@@ -6,11 +6,14 @@
 
 #include "Windy/EntityFactory.h"
 
+#include "Windy/Display.h"
+
 #include "Entities/Weapons/VioletBullet.h"
 #include "Entities/Weapons/ExtremeBullet.h"
 #include "Entities/Weapons/SheriffBullet.h"
 
 #include "Windy/Entities/Bounds.h"
+#include "Windy/Entities/Camera.h"
 
 #include "Entities/UI/EnergyBar.h"
 #include "Entities/UI/GameGui.h"
@@ -107,7 +110,7 @@ bool WeaponAcquireScene::init()
             "weapon",
             windy::Sounds::NONE);
 
-    this->addChild(level);
+    this->addChild(level, 256);
 
     _player = dynamic_cast<GamePlayer*>(level->player);
 
@@ -157,7 +160,7 @@ bool WeaponAcquireScene::init()
 
     level->addChild(intro, 128);
 
-    intro->setPositionY(intro->getPositionY() + 32);
+    //intro->setPositionY(intro->getPositionY() + 32);
 
     auto fader = Fader::create(cocos2d::Point(0, 0));
 
@@ -173,8 +176,19 @@ bool WeaponAcquireScene::init()
 
     _fader->fadeOut(nullptr);
 
+    //level->entities.eraseObject(level->camera);
+    //level->camera->removeFromParent();
+    //level->camera = nullptr;
 
+    //auto defaultCamera = Camera::getDefaultCamera();
 
+    //defaultCamera->setPosition(level->bounds->getPosition());
+
+    //level->setPositionY(-16);
+    
+    
+
+    
     return true;
 }
 

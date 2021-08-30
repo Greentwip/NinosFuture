@@ -103,7 +103,7 @@ void Cow::attack(float dt) {
 
 
                         return bullet;
-                        });
+                    }, 512);
 
 
 

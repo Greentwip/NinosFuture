@@ -518,6 +518,9 @@ bool Level::init()
 
     this->addChild(this->bounds, 4096);
 
+    this->bounds->recomputeCollisionRectangles();
+
+
     this->entities.pushBack(this->bounds);
 
     auto guiSize = cocos2d::Size(16, 16);

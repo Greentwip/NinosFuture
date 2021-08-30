@@ -107,7 +107,7 @@ void VioletBrowner::fire() {
         bullet->fire(bulletPower, this->getSpriteNormal(), this->player->weaponTag);
 
         return bullet;
-        });
+    }, 512);
 
     this->level->objectManager->objectEntries.push_back(entry);
 

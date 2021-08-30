@@ -72,9 +72,10 @@ void Logical::setEntry(std::shared_ptr<ObjectEntry> entry) {
 
 
 std::shared_ptr<ObjectEntry> Logical::getEntry(std::shared_ptr<cocos2d::Rect> collisionRectangle,
-                                                      std::function<Logical* ()> createFunction){
+                                               std::function<Logical* ()> createFunction,
+                                               int priority){
 
-    return std::make_shared<ObjectEntry>(collisionRectangle, createFunction);
+    return std::make_shared<ObjectEntry>(collisionRectangle, createFunction, priority);
 }
 
 

@@ -68,7 +68,7 @@ void Tremor::setup() {
         
 
     this->tail = TremorTail::create();
-    this->level->addChild(this->tail);
+    this->level->addChild(this->tail, 512);
 
     this->level->entities.pushBack(this->tail->drill);
 
@@ -131,7 +131,7 @@ void Tremor::onDefeated() {
         dynamic_cast<GameItem*>(itemGood)->setup("none", item, true, false);
 
         return itemGood;
-        });
+    }, 512);
 
     this->level->objectManager->objectEntries.push_back(entry);
 
@@ -255,7 +255,7 @@ void Tremor::attack(float dt) {
                     bullet->fire(8, -this->getSpriteNormal(), windy::GameTags::WeaponEnemy);
 
                     return bullet;
-                    });
+                }, 512);
 
                 this->level->objectManager->objectEntries.push_back(entry);
 

@@ -107,7 +107,7 @@ void CannonJoe::attack(float dt) {
 
 
                         return bullet;
-                        });
+                    }, 512);
 
 
 

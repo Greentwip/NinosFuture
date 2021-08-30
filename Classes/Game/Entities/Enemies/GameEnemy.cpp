@@ -54,7 +54,7 @@ void GameEnemy::onDefeated() {
             dynamic_cast<windy::Item*>(itemGood)->setup("none", item, false, false);
 
             return itemGood;
-            });
+        }, 512);
 
         this->level->objectManager->objectEntries.push_back(entry);
     }

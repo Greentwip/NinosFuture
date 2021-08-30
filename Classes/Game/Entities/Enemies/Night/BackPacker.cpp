@@ -45,7 +45,7 @@ void BackPacker::fire() {
         bullet->fire(flipped);
 
         return bullet;
-    });
+    }, 512);
 
     level->objectManager->objectEntries.push_back(entry);
 }

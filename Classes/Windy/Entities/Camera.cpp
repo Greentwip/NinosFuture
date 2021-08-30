@@ -513,6 +513,6 @@ void Camera::onUpdate(float dt) {
 
     }
 
-    this->getScene()->getDefaultCamera()->setPosition(this->level->bounds->getPosition());
+    cocos2d::Camera::getDefaultCamera()->setPosition(this->level->bounds->getPosition());
 
 }

@@ -13,7 +13,7 @@ namespace windy {
 namespace windy {
 	class ObjectEntry {
 	public:
-		ObjectEntry(std::shared_ptr<cocos2d::Rect> collisionRectangle, std::function<Logical* ()> createFunction) {
+		ObjectEntry(std::shared_ptr<cocos2d::Rect> collisionRectangle, std::function<Logical* ()> createFunction, int priority = 0) {
 			this->collisionRectangle = collisionRectangle;
 			this->createFunction = createFunction;
 			this->mappedInstance = nullptr;
@@ -21,6 +21,8 @@ namespace windy {
 			this->finished = false;
 			this->finishedForever = false;
 			this->respawnPrevention = false;
+
+			this->priority = priority;
 		}
 
 		std::shared_ptr<cocos2d::Rect> collisionRectangle;
@@ -32,6 +34,8 @@ namespace windy {
 		bool finished;
 		bool finishedForever;
 		bool respawnPrevention;
+
+		int priority;
 	};
 }
 

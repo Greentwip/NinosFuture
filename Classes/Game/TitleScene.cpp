@@ -112,11 +112,13 @@ bool TitleScene::init()
                                            cocos2d::TextHAlignment::LEFT,
                                            cocos2d::TextVAlignment::TOP);    
 
+#if ENABLE_SOUND_TEST
     this->soundTestText = windy::Label::create("SOUND TEST", 
                                            TitleSceneResources::font, 
                                            8, 
                                            cocos2d::TextHAlignment::LEFT,
                                            cocos2d::TextVAlignment::TOP);    
+#endif
 
     this->_aboutText = windy::Label::create("ABOUT", 
                                            TitleSceneResources::font, 
@@ -141,8 +143,10 @@ bool TitleScene::init()
     float optionsTextWidth = this->optionsText->getContentSize().width;
     float optionsTextHeight = this->optionsText->getContentSize().height;
 
+#if ENABLE_SOUND_TEST
     float soundTestTextWidth = this->soundTestText->getContentSize().width;
     float soundTestTextHeight = this->soundTestText->getContentSize().height;
+#endif
 
     float aboutTextWidth = this->_aboutText->getContentSize().width;
     float aboutTextHeight = this->_aboutText->getContentSize().height;
@@ -161,6 +165,7 @@ bool TitleScene::init()
         cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (optionsTextWidth * 0.5f),
             (windy::Display::getInstance().height * 0.5f) + (optionsTextHeight * 0.5f)));
 
+#if ENABLE_SOUND_TEST
     this->soundTestText->setPosition(
         cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (soundTestTextWidth * 0.5f),
             (windy::Display::getInstance().height * 0.5f) - (soundTestTextHeight * 0.5f) * 2));
@@ -178,10 +183,29 @@ bool TitleScene::init()
     this->_creditsText->setPosition(
         cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (creditsTextWidth * 0.5f),
             (windy::Display::getInstance().height * 0.5f) - (creditsTextHeight * 0.5f) * 10));
+#else
+    this->_aboutText->setPosition(
+        cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (aboutTextWidth * 0.5f),
+            (windy::Display::getInstance().height * 0.5f) - (aboutTextHeight * 0.5f) * 2));
+
+
+    this->_projectsText->setPosition(
+        cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (projectsTextWidth * 0.5f),
+            (windy::Display::getInstance().height * 0.5f) - (projectsTextHeight * 0.5f) * 6));
+
+
+    this->_creditsText->setPosition(
+        cocos2d::Point((windy::Display::getInstance().width * 0.5f) - (creditsTextWidth * 0.5f),
+            (windy::Display::getInstance().height * 0.5f) - (creditsTextHeight * 0.5f) * 8));
+#endif
 
     addChild(this->startText, 128);
     addChild(this->optionsText, 128);
+
+#if ENABLE_SOUND_TEST
     addChild(this->soundTestText, 128);
+#endif
+
     addChild(this->_aboutText, 128);
     addChild(this->_projectsText, 128);
     addChild(this->_creditsText, 128);
@@ -220,7 +244,9 @@ bool TitleScene::init()
 void TitleScene::selectStart() {
     this->startText->setTextColor(TitleSceneResources::textActiveColor);
     this->optionsText->setTextColor(TitleSceneResources::textInactiveColor);
+#if ENABLE_SOUND_TEST
     this->soundTestText->setTextColor(TitleSceneResources::textInactiveColor);
+#endif
     this->_aboutText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_projectsText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_creditsText->setTextColor(TitleSceneResources::textInactiveColor);
@@ -230,7 +256,9 @@ void TitleScene::selectStart() {
 void TitleScene::selectOptions() {
     this->startText->setTextColor(TitleSceneResources::textInactiveColor);
     this->optionsText->setTextColor(TitleSceneResources::textActiveColor);
+#if ENABLE_SOUND_TEST
     this->soundTestText->setTextColor(TitleSceneResources::textInactiveColor);
+#endif
     this->_aboutText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_projectsText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_creditsText->setTextColor(TitleSceneResources::textInactiveColor);
@@ -238,6 +266,7 @@ void TitleScene::selectOptions() {
     this->selectedOption = this->optionsText;
 }
 
+#if ENABLE_SOUND_TEST
 void TitleScene::selectSoundTest() {
     this->startText->setTextColor(TitleSceneResources::textInactiveColor);
     this->optionsText->setTextColor(TitleSceneResources::textInactiveColor);
@@ -248,12 +277,15 @@ void TitleScene::selectSoundTest() {
 
     this->selectedOption = this->soundTestText;
 }
-
+#endif
 
 void TitleScene::selectAbout() {
     this->startText->setTextColor(TitleSceneResources::textInactiveColor);
     this->optionsText->setTextColor(TitleSceneResources::textInactiveColor);
+
+#if ENABLE_SOUND_TEST
     this->soundTestText->setTextColor(TitleSceneResources::textInactiveColor);
+#endif
 
     this->_aboutText->setTextColor(TitleSceneResources::textActiveColor);
     this->_projectsText->setTextColor(TitleSceneResources::textInactiveColor);
@@ -267,8 +299,9 @@ void TitleScene::selectAbout() {
 void TitleScene::selectProjects() {
     this->startText->setTextColor(TitleSceneResources::textInactiveColor);
     this->optionsText->setTextColor(TitleSceneResources::textInactiveColor);
+#if ENABLE_SOUND_TEST
     this->soundTestText->setTextColor(TitleSceneResources::textInactiveColor);
-
+#endif
     this->_aboutText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_projectsText->setTextColor(TitleSceneResources::textActiveColor);
     this->_creditsText->setTextColor(TitleSceneResources::textInactiveColor);
@@ -278,8 +311,9 @@ void TitleScene::selectProjects() {
 void TitleScene::selectCredits() {
     this->startText->setTextColor(TitleSceneResources::textInactiveColor);
     this->optionsText->setTextColor(TitleSceneResources::textInactiveColor);
+#if ENABLE_SOUND_TEST
     this->soundTestText->setTextColor(TitleSceneResources::textInactiveColor);
-
+#endif
     this->_aboutText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_projectsText->setTextColor(TitleSceneResources::textInactiveColor);
     this->_creditsText->setTextColor(TitleSceneResources::textActiveColor);
@@ -308,12 +342,18 @@ void TitleScene::update(float dt)
             if (this->selectedOption == this->startText) {
                 this->selectOptions();
             }
+#if ENABLE_SOUND_TEST
             else if (this->selectedOption == this->optionsText) {
                 this->selectSoundTest();
             }
             else if (this->selectedOption == this->soundTestText) {
                 this->selectAbout();
             }
+#else
+            else if (this->selectedOption == this->optionsText) {
+                this->selectAbout();
+            }
+#endif
             else if (this->selectedOption == this->_aboutText) {
                 this->selectProjects();
             }
@@ -334,15 +374,23 @@ void TitleScene::update(float dt)
             else if (this->selectedOption == this->optionsText) {
                 this->selectStart();
             }
+#if ENABLE_SOUND_TEST
             else if (this->selectedOption == this->soundTestText) {
                 this->selectOptions();
             }
+
             else if (this->selectedOption == this->_aboutText) {
                 this->selectSoundTest();
             }
+#else
+            else if (this->selectedOption == this->_aboutText) {
+                this->selectOptions();
+            }
+#endif
             else if (this->selectedOption == this->_projectsText) {
                 this->selectAbout();
             }
+
             else if (this->selectedOption == this->_creditsText) {
                 this->selectProjects();
             }
@@ -363,9 +411,11 @@ void TitleScene::update(float dt)
                 else if (this->selectedOption == this->optionsText) {
                     GameStateMachine::getInstance().pushState(GameState::Options);
                 }
+#if ENABLE_SOUND_TEST
                 else if (this->selectedOption == this->soundTestText) {
                     GameStateMachine::getInstance().pushState(GameState::SoundTest);
                 }
+#endif
                 else if (this->selectedOption == this->_aboutText) {
                     GameStateMachine::getInstance().pushState(GameState::About);
                 }

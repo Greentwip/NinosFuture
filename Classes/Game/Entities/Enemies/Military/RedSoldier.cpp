@@ -76,7 +76,7 @@ void RedSoldier::fire() {
         }
 
         return bullet;
-    });
+    }, 512);
 
     level->objectManager->objectEntries.push_back(entry);
 }

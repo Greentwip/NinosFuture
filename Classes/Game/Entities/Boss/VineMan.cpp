@@ -47,7 +47,7 @@ void VineMan::fire(const cocos2d::Point& weaponSpeed) {
         bullet->fire(bulletPower, this->currentBrowner->getSpriteNormal(), this->weaponTag, weaponSpeed);
 
         return bullet;
-        });
+    }, 512);
 
     this->level->objectManager->objectEntries.push_back(entryA);
 }
