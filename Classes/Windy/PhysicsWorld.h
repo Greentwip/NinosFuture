@@ -24,6 +24,8 @@ namespace windy {
         virtual void onEnter();
         virtual void onExit();
 
+        void setUnderwater(bool underwater);
+
         virtual void update(float dt);
 
         static std::map<CollisionContact, bool> getCollisionResult(Logical* entity, Logical* landscapeEntity);

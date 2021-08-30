@@ -226,7 +226,8 @@ void GameLevelController::onUpdate(float dt) {
 			if (this->level->boss != nullptr) {
 				this->gui->bossHealthBar->setVisible(true);
 
-				//windy::AudioManager::playBgm(windy::Sounds::BossTheme);
+				windy::AudioManager::stopAll();
+				windy::AudioManager::playBgm(windy::Sounds::BossTheme);
 
 				this->levelState = LevelState::BossBattle;
 			}

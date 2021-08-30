@@ -13,6 +13,7 @@
 #include "Entities/Player.h"
 #include "Entities/Boss.h"
 #include "Entities/Enemy.h"
+#include "Entities/Spikes.h"
 #include "Entities/Item.h"
 #include "Entities/Ladder.h"
 #include "Entities/Scroll.h"
@@ -86,6 +87,9 @@ Level* Level::create(const std::string& resourcesRootPath,
         EntityFactory::getInstance().registerType<Scroll>("scroll");
         EntityFactory::getInstance().registerType<Passage>("hole");
         EntityFactory::getInstance().registerType<Teleporter>("teleporter");
+        EntityFactory::getInstance().registerType<Spikes>("spikes");
+        
+        EntityFactory::getInstance().registerTypeCollisionFunc<Spikes>("spikes");
 
     }
 
@@ -310,6 +314,28 @@ bool Level::init()
                 this->objectManager->objectEntries.push_back(entry);
 
             }
+            else if (name.compare("water") == 0) {
+
+                auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle(name, position, size);
+                auto entry = Logical::getEntry(entryCollisionBox, [=]() {
+                    return EntityFactory::getInstance().create(name, position, size, 16);
+                });
+
+                this->objectManager->objectEntries.push_back(entry);
+
+            }
+            else if (name.compare("spikes") == 0) {
+
+                auto entryCollisionBox = EntityFactory::getInstance().getEntryCollisionRectangle(name, position, size);
+                auto entry = Logical::getEntry(entryCollisionBox, [=]() {
+                    return EntityFactory::getInstance().create(name, position, size, 16);
+                    });
+
+                this->objectManager->objectEntries.push_back(entry);
+
+            }
+
+
         }
 
     }
@@ -573,10 +599,16 @@ void Level::setPaused(bool isPaused, bool freezePlayer) {
             auto enemy = dynamic_cast<Enemy*>(entity);
             
             if (isPaused) {
-                enemy->sprite->pause();
+                if (enemy->sprite != nullptr) {
+                    enemy->sprite->pause();
+                }
+                
             }
             else {
-                enemy->sprite->resume();
+                if (enemy->sprite != nullptr) {
+                    enemy->sprite->resume();
+                }
+                
             }
             
         }
@@ -641,6 +673,8 @@ void Level::resetGameplay() {
     this->player->onRestart();
 
     //this->camera->synchronizeWithBounds();
+
+    this->physicsWorld->setUnderwater(false);
 
     this->setPaused(false, true);
 

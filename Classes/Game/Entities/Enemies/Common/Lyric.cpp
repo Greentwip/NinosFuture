@@ -17,7 +17,7 @@ void Lyric::setup() {
     this->power = 3;
     this->maxHealth = 3;
     this->health = this->maxHealth;
-    this->moveSpeed = 1.0f;
+    this->moveSpeed = 16;
     this->attackState = AttackState::Attacking;
 
     Logical::composite<Lyric>(this);

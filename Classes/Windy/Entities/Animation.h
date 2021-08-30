@@ -16,7 +16,13 @@ namespace windy {
     {
     public:
         virtual bool init() override;
+
+        virtual void setup() = 0;
+
         virtual void parseBehavior(const cocos2d::ValueMap& behavior) override;
+
+        virtual void onUpdate(float dt) override;
+
 
     public:
         Sprite* sprite;

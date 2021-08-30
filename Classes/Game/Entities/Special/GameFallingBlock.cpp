@@ -138,7 +138,22 @@ void GameFallingBlock::onCollisionEnter(windy::Logical* collision) {
             }
 
         }
+        else if (collision->getTag() == windy::GameTags::Enemy || collision->getTag() == windy::GameTags::Item) {
+            if (windy::PhysicsWorld::getCollisionResult(collision, this)[windy::CollisionContact::Down]) {
+                if (_standingEntities.find(collision) == _standingEntities.end()) {
+                    _standingEntities.pushBack(collision);
 
+                    collision->ignoreGravity = true;
+                    collision->ignoreLandscapeCollision = true;
+
+                    collision->speed.y = 0;
+
+                    collision->setPositionY(this->getPositionY() + this->collisionBox->size.height * 0.5f + collision->collisionBox->size.height * 0.5f - 1);
+
+                }
+                
+            }
+        }
     }
 }
 
@@ -174,6 +189,30 @@ void GameFallingBlock::onCollision(windy::Logical* collision) {
                 
             }
         }
+        else if (collision->getTag() == windy::GameTags::Enemy || collision->getTag() == windy::GameTags::Item) {
+
+            if (collision->collisionBox->getMinY() >= this->collisionBox->getMaxY()) {
+
+                if (_standingEntities.find(collision) == _standingEntities.end()) {
+                    _standingEntities.pushBack(collision);
+
+                    collision->ignoreGravity = true;
+                    collision->ignoreLandscapeCollision = true;
+
+                }
+                
+
+            }
+            else {
+                auto collisionResult = windy::PhysicsWorld::getCollisionResult(collision, this);
+                if (collisionResult[windy::CollisionContact::Right] ||
+                    collisionResult[windy::CollisionContact::Left] ||
+                    collisionResult[windy::CollisionContact::Down]) {
+                    this->level->physicsWorld->alignCollisions(collision, this, false);
+                }
+
+            }
+        }
     }
 }
 
@@ -185,6 +224,13 @@ void GameFallingBlock::onCollisionExit(windy::Logical* collision) {
 
             _isPlayerStanding = false;
         }
+        else if (collision->getTag() == windy::GameTags::Enemy) {
+            if (_standingEntities.find(collision) != _standingEntities.end()) {
+                collision->ignoreGravity = false;
+                collision->ignoreLandscapeCollision = false;
+                _standingEntities.eraseObject(collision);
+            }
+        }
     }
     
 }
@@ -192,8 +238,7 @@ void GameFallingBlock::onCollisionExit(windy::Logical* collision) {
 void GameFallingBlock::onUpdate(float dt) {
 
     if (_isPlayerStanding && this->level->player->alive) {
-        auto playerPosition = this->level->player->getPosition();
-
+        
         this->level->player->setPositionY(this->getPositionY() + this->collisionBox->size.height * 0.5f + this->level->player->collisionBox->size.height * 0.5f);
         this->level->player->contacts[windy::CollisionContact::Down] = true;
 
@@ -207,6 +252,12 @@ void GameFallingBlock::onUpdate(float dt) {
             this->level->player->ignoreEntityCollision = true;
             this->level->physicsWorld->unregisterContact(this, this->level->player);
         }
+    }
 
+    for (int i = 0; i < _standingEntities.size(); ++i) {
+        auto standingEntity = _standingEntities.at(i);
+
+        standingEntity->setPositionY(this->getPositionY() + this->collisionBox->size.height * 0.5f + standingEntity->collisionBox->size.height * 0.5f);
+        standingEntity->contacts[windy::CollisionContact::Down] = true;
     }
 }

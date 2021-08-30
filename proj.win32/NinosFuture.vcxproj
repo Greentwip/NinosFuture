@@ -200,6 +200,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Game\Entities\Player\VioletBrowner.cpp" />
     <ClCompile Include="..\Classes\Game\Entities\Resources.cpp" />
     <ClCompile Include="..\Classes\Game\Entities\Scenery\General\GameExplosion.cpp" />
+    <ClCompile Include="..\Classes\Game\Entities\Scenery\General\GameSplash.cpp" />
+    <ClCompile Include="..\Classes\Game\Entities\Scenery\General\GameWater.cpp" />
     <ClCompile Include="..\Classes\Game\Entities\Scenery\Sheriff\Disk.cpp" />
     <ClCompile Include="..\Classes\Game\Entities\Special\GameFallingBlock.cpp" />
     <ClCompile Include="..\Classes\Game\Entities\Special\GameHorizontalDoor.cpp" />
@@ -264,7 +266,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Windy\Entities\Passage.cpp" />
     <ClCompile Include="..\Classes\Windy\Entities\Player.cpp" />
     <ClCompile Include="..\Classes\Windy\Entities\Scroll.cpp" />
+    <ClCompile Include="..\Classes\Windy\Entities\Spikes.cpp" />
     <ClCompile Include="..\Classes\Windy\Entities\Teleporter.cpp" />
+    <ClCompile Include="..\Classes\Windy\Entities\Water.cpp" />
     <ClCompile Include="..\Classes\Windy\Entities\Weapon.cpp" />
     <ClCompile Include="..\Classes\Windy\InfiniteParallax.cpp" />
     <ClCompile Include="..\Classes\Windy\Input.cpp" />
@@ -729,6 +733,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Game\Entities\Player\VioletBrowner.h" />
     <ClInclude Include="..\Classes\Game\Entities\Resources.h" />
     <ClInclude Include="..\Classes\Game\Entities\Scenery\General\GameExplosion.h" />
+    <ClInclude Include="..\Classes\Game\Entities\Scenery\General\GameSplash.h" />
+    <ClInclude Include="..\Classes\Game\Entities\Scenery\General\GameWater.h" />
     <ClInclude Include="..\Classes\Game\Entities\Scenery\Sheriff\Disk.h" />
     <ClInclude Include="..\Classes\Game\Entities\Special\GameFallingBlock.h" />
     <ClInclude Include="..\Classes\Game\Entities\Special\GameHorizontalDoor.h" />
@@ -799,8 +805,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Windy\Entities\Passage.h" />
     <ClInclude Include="..\Classes\Windy\Entities\Player.h" />
     <ClInclude Include="..\Classes\Windy\Entities\Scroll.h" />
+    <ClInclude Include="..\Classes\Windy\Entities\Spikes.h" />
     <ClInclude Include="..\Classes\Windy\Entities\Tags.h" />
     <ClInclude Include="..\Classes\Windy\Entities\Teleporter.h" />
+    <ClInclude Include="..\Classes\Windy\Entities\Water.h" />
     <ClInclude Include="..\Classes\Windy\Entities\Weapon.h" />
     <ClInclude Include="..\Classes\Windy\EntityFactory.h" />
     <ClInclude Include="..\Classes\Windy\GameTags.h" />

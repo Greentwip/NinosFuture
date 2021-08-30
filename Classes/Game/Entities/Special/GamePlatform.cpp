@@ -10,7 +10,7 @@
 #include "Windy/Level.h"
 #include "Windy/PhysicsWorld.h"
 #include "Windy/Entities/Player.h"
-
+#include "Windy/Entities/Camera.h"
 
 using namespace game;
 
@@ -90,6 +90,8 @@ void GamePlatform::onCollisionEnter(windy::Logical* collision) {
 
             this->level->player->speed.y = 0;
 
+            this->level->player->autoControlled = true;
+
             //this->level->physicsWorld->alignCollisions(this->level->player, this, false);
 
             //this->level->player->recomputeCollisionRectangles();
@@ -118,6 +120,8 @@ void GamePlatform::onCollision(windy::Logical* collision) {
             this->level->player->ignoreGravity = true;
             this->level->player->ignoreLandscapeCollision = true;
 
+            this->level->player->autoControlled = true;
+
             //this->level->player->speed.y = 0;
         }
         else {
@@ -136,6 +140,8 @@ void GamePlatform::onCollisionExit(windy::Logical* collision) {
         this->level->player->ignoreLandscapeCollision = false;
         //this->setTag(windy::GameTags::Block);
         _isPlayerStanding = false;
+        this->level->player->autoControlled = false;
+
     }
 }
 
@@ -163,6 +169,7 @@ void GamePlatform::onUpdate(float dt) {
     this->recomputeCollisionRectangles();
 
     if (_isPlayerStanding && this->level->player->alive) {
+
         auto playerPosition = this->level->player->getPosition();
 
         this->level->player->setPositionX(playerPosition.x + (newPosition.x - currentPosition.x));
@@ -172,14 +179,16 @@ void GamePlatform::onUpdate(float dt) {
         this->level->player->recomputeCollisionRectangles();
         this->level->player->recomputeCollisionRectangles();
 
+
         //this->level->physicsWorld->alignCollisions(this->level->player, this, false);
     }
     else if(!this->level->player->alive){
         if (_isPlayerStanding) {
             _isPlayerStanding = false;
+
             this->level->player->ignoreEntityCollision = true;
             this->level->physicsWorld->unregisterContact(this, this->level->player);
-        }
-        
+        }        
     }
+    
 }

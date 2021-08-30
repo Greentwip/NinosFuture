@@ -114,16 +114,16 @@
   <object id="124" x="3312" y="866" width="259" height="22"/>
  </objectgroup>
  <objectgroup id="7" name="items">
-  <object id="129" name="vineman-e-tank" type="e_tank" x="816" y="514" width="16" height="16"/>
-  <object id="125" name="vineman-m-tank" type="m_tank" x="1104" y="610" width="16" height="16"/>
-  <object id="128" name="chest" type="chest" x="1248" y="610" width="16" height="16"/>
-  <object id="133" name="vineman-life" type="life" x="731" y="360" width="8" height="10">
+  <object id="129" name="vineman-e-tank" type="e_tank" x="816" y="520" width="8" height="10"/>
+  <object id="125" name="vineman-m-tank" type="m_tank" x="1104" y="616" width="8" height="10"/>
+  <object id="128" name="chest" type="chest" x="1248" y="616" width="8" height="10"/>
+  <object id="133" name="vineman-life_a" type="life" x="731" y="360" width="8" height="10">
    <properties>
     <property name="direction" value="left"/>
     <property name="radius" value="32"/>
    </properties>
   </object>
-  <object id="137" name="vineman-life" type="life" x="814" y="280" width="8" height="10">
+  <object id="137" name="vineman-life_b" type="life" x="814" y="280" width="8" height="10">
    <properties>
     <property name="direction" value="left"/>
     <property name="radius" value="32"/>
@@ -144,7 +144,7 @@
   <object id="176" name="ladder" x="992" y="402" width="16" height="186"/>
   <object id="177" name="ladder" x="1520" y="290" width="16" height="86"/>
   <object id="178" name="scroll" type="right" x="1152" y="320" width="16" height="16"/>
-  <object id="179" name="scroll" type="left" x="2744" y="322" width="16" height="16"/>
+  <object id="179" name="scroll" type="left" x="2744" y="320" width="16" height="16"/>
   <object id="180" name="scroll" type="right" x="2712" y="768" width="16" height="16"/>
   <object id="181" name="ladder" x="3184" y="770" width="16" height="108"/>
   <object id="182" name="scroll" type="left" x="3512" y="768" width="16" height="16"/>
@@ -153,8 +153,8 @@
   <object id="150" name="teleporter" x="4096" y="850" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="5" name="special">
-  <object id="2" name="door" type="general" x="3624" y="834" width="16" height="16"/>
-  <object id="3" name="door" type="general" x="3880" y="834" width="16" height="16"/>
+  <object id="2" name="door" type="general" x="3616" y="802" width="32" height="48"/>
+  <object id="3" name="door" type="general" x="3872" y="802" width="32" height="48"/>
   <object id="14" name="water" type="general" x="560" y="320" width="16" height="16"/>
   <object id="15" name="water" type="general" x="576" y="320" width="16" height="16"/>
   <object id="31" name="water" type="general" x="800" y="352" width="16" height="16"/>

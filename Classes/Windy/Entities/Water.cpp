@@ -1,10 +1,10 @@
-#include "Animation.h"
+#include "Water.h"
 
 #include "./../GameTags.h"
 
 using namespace windy;
 
-bool Animation::init()
+bool Water::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -16,18 +16,10 @@ bool Animation::init()
     this->ignoreGravity = true;
     this->ignoreLandscapeCollision = true;
 
-    this->setTag(GameTags::Scenery::SpriteAnimation);
+    this->setTag(GameTags::General::Water);
 
     this->setup();
 
     return true;
 }
 
-
-void Animation::parseBehavior(const cocos2d::ValueMap& behavior) {
-
-}
-
-void Animation::onUpdate(float dt) {
-
-}

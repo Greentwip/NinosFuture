@@ -18,13 +18,13 @@
                 <key>size</key>
                 <string>{ 16.00000,16.00000 }</string>
                 <key>anchorpoint</key>
-                <string>{ 1.00000,0.00000 }</string>
+                <string>{ 0.50000,0.50000 }</string>
                 <key>is_dynamic</key>
-                <true/>
+                <false/>
                 <key>affected_by_gravity</key>
-                <true/>
+                <false/>
                 <key>allows_rotation</key>
-                <true/>
+                <false/>
                 <key>linear_damping</key>
                 <real>0</real>
                 <key>velocity_limit</key>
@@ -60,8 +60,8 @@
                         <array>
                             <array>
                                 <string>{ 8.00000,8.00000 }</string>
-                                <string>{ 8.00000,1.00000 }</string>
-                                <string>{ -8.00000,1.00000 }</string>
+                                <string>{ 8.00000,-8.00000 }</string>
+                                <string>{ -8.00000,-8.00000 }</string>
                                 <string>{ -8.00000,8.00000 }</string>
                             </array>
                         </array>

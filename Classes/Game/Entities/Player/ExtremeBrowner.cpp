@@ -82,8 +82,14 @@ void ExtremeBrowner::fire() {
 
     windy::AudioManager::playSfx(windy::Sounds::BusterHigh);
 
+    float bulletOffsetY = 4;
+
+    if (this->player->jumping) {
+        bulletOffsetY += 4;
+    }
+
     auto bulletPosition = cocos2d::Point(this->player->getPositionX() + (bulletOffset * this->getSpriteNormal()),
-        this->player->getPositionY());
+        this->player->getPositionY() + bulletOffsetY);
 
     auto entryCollisionBox = ExtremeBullet::getEntryCollisionRectangle(bulletPosition, cocos2d::Size(16, 16));
     auto entry = windy::Logical::getEntry(entryCollisionBox, [=]() {

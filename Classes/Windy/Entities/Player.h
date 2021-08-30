@@ -139,6 +139,8 @@ namespace windy {
         bool _morphing;
         bool onGround;
 
+        bool autoControlled;
+
         int walkSpeed;
         int climbSpeed;
         int slideSpeed;
@@ -168,6 +170,7 @@ namespace windy {
 
         float teleportTransitionSpeed;
         
+        cocos2d::Vector<Logical*> _waterAreas;
         
 
     };

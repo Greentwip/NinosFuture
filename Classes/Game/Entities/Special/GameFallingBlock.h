@@ -43,6 +43,8 @@ namespace game {
         bool _shouldFall;
 
         bool _isPlayerStanding;
+
+        cocos2d::Vector<Logical*> _standingEntities;
     };
 }
 

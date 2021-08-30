@@ -19,11 +19,12 @@ namespace windy {
 			Hole,
 			Door,
 			Ladder,
-			Platform
+			Platform,
+			Water
 		};
 
 		enum Weapon {
-			WeaponPlayer = 15,
+			WeaponPlayer = 16,
 			WeaponEnemy,
 			WeaponNone
 		};
@@ -31,28 +32,28 @@ namespace windy {
 		class Logic {
 		public:
 			enum Checkpoint {
-				First = 18,
+				First = 19,
 				Last
 			};
 		};
 		
 		enum Actions {
-			Animation = 20,
+			Animation = 21,
 			Color,
 			Visibility 
 		};
 
 		enum Camera {
-			FreeScroll = 23
+			FreeScroll = 24
 		};
 
 		enum Gui {
-			Interface = 24,
+			Interface = 25,
 			BarMeter
 		};
 
 		enum Scenery {
-			Particle = 26,
+			Particle = 27,
 			SpriteAnimation
 		};
 		

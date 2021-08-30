@@ -16,8 +16,8 @@ void Subeil::setup() {
     this->maxHealth = 1;
     this->health = this->maxHealth;
     this->attackState = AttackState::Scanning;
-    this->walkSpeed = 2;
-    this->jumpSpeed = cocos2d::Point(0.5f, 0.75f);
+    this->walkSpeed = 0.75f;
+    this->jumpSpeed = cocos2d::Point(1.0f, 2.0f);
 
     Logical::composite<Subeil>(this);
 
@@ -38,6 +38,7 @@ std::shared_ptr<cocos2d::Rect> Subeil::getEntryCollisionRectangle(const cocos2d:
 }
 
 void Subeil::attack(float dt) {
+
     switch (this->attackState) {
 
         case AttackState::Scanning: {
@@ -55,7 +56,7 @@ void Subeil::attack(float dt) {
                 windy::GeometryExtensions::rectIntersectsRect(playerCollisionBox, projectedCollisionBoxLeft)){
                 this->sprite->runAction("walk");
 
-                this->speed.x = static_cast<float>(this->walkSpeed * this->getSpriteNormal());
+                this->speed.x = static_cast<float>(this->walkSpeed * this->getSpriteNormal() * -1);
 
             }            
             else {
@@ -73,7 +74,7 @@ void Subeil::attack(float dt) {
         break;
 
         case AttackState::Jumping: {
-            this->speed.x = this->jumpSpeed.x * this->getSpriteNormal();
+            this->speed.x = this->jumpSpeed.x * this->getSpriteNormal() * -1;
             this->speed.y = this->jumpSpeed.y;
 
             this->sprite->stopActions();

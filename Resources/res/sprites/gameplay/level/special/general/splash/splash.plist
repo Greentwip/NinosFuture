@@ -4,75 +4,98 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>splash_none_0</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-7.5,6.5}</string>
+                <key>spriteSize</key>
+                <string>{3,3}</string>
+                <key>spriteSourceSize</key>
+                <string>{18,16}</string>
+                <key>textureRect</key>
+                <string>{{27,1},{3,3}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
             <key>splash_play_0</key>
             <dict>
-                <key>frame</key>
-                <string>{{1,1},{18,16}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{18,16}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,1}</string>
+                <key>spriteSize</key>
+                <string>{16,6}</string>
+                <key>spriteSourceSize</key>
                 <string>{18,16}</string>
+                <key>textureRect</key>
+                <string>{{19,13},{16,6}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>splash_play_1</key>
             <dict>
-                <key>frame</key>
-                <string>{{21,1},{18,16}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{18,16}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,3}</string>
+                <key>spriteSize</key>
+                <string>{18,10}</string>
+                <key>spriteSourceSize</key>
                 <string>{18,16}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{18,10}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>splash_play_2</key>
             <dict>
-                <key>frame</key>
-                <string>{{41,1},{18,16}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{18,16}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,2}</string>
+                <key>spriteSize</key>
+                <string>{18,8}</string>
+                <key>spriteSourceSize</key>
                 <string>{18,16}</string>
+                <key>textureRect</key>
+                <string>{{1,13},{18,8}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
             <key>splash_play_3</key>
             <dict>
-                <key>frame</key>
-                <string>{{61,1},{18,16}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{18,16}}</string>
-                <key>sourceSize</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,1}</string>
+                <key>spriteSize</key>
+                <string>{18,6}</string>
+                <key>spriteSourceSize</key>
                 <string>{18,16}</string>
+                <key>textureRect</key>
+                <string>{{11,13},{18,6}}</string>
+                <key>textureRotated</key>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
             <key>pixelFormat</key>
             <string>RGBA4444</string>
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
-            <string>splash-Halfe.pvr.ccz</string>
+            <string>splash.pvr.ccz</string>
             <key>size</key>
-            <string>{80,18}</string>
+            <string>{32,32}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:164733fbb3f2d6c45e2f5ec729592866:b15e451dbce31acbebb892a4af1c3bc2:e4a9322f1aa35bf04ce2d95ae5bbccc3$</string>
+            <string>$TexturePacker:SmartUpdate:ccec4cf0350055185b4f813f7dff33dd:954d829886d30f5fc6ea5424cd2ef634:6904dbe38b74b44aa45f7487aea7d43f$</string>
             <key>textureFileName</key>
-            <string>splash-Halfe.pvr.ccz</string>
+            <string>splash.pvr.ccz</string>
         </dict>
     </dict>
 </plist>

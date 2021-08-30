@@ -36,6 +36,7 @@ void Player::initVariables() {
     this->_morphing = false;
     this->onGround = false;
     this->vulnerable = true;
+    this->autoControlled = false;
 
     this->walkSpeed = 1;
     this->climbSpeed = 1;
@@ -74,6 +75,8 @@ void Player::initVariables() {
     this->ignoreEntityCollision = false;
     
     this->weaponTag = windy::GameTags::WeaponPlayer;
+
+    this->_waterAreas.clear();
 
 }
 
@@ -127,6 +130,10 @@ void Player::onCollisionEnter(Logical* collision) {
     else if (collision->getTag() == GameTags::General::Hole) {
         this->traversingPassage = true;
     }
+    else if (collision->getTag() == GameTags::General::Water) {
+        this->_waterAreas.pushBack(collision);
+        this->level->physicsWorld->setUnderwater(true);
+    }
 }
 
 void Player::onCollision(Logical* collision) {
@@ -157,6 +164,18 @@ void Player::onCollisionExit(Logical* collision) {
     }
     else if (collision->getTag() == GameTags::General::Hole) {
         this->traversingPassage = false;
+    }
+    else if (collision->getTag() == GameTags::General::Water) {
+        if (this->_waterAreas.find(collision) != this->_waterAreas.end()) {
+            this->_waterAreas.eraseObject(collision);
+        }
+
+        if (this->_waterAreas.size() == 0) {
+            if (this->getPositionY() > collision->getPositionY()) {
+                this->level->physicsWorld->setUnderwater(false);
+            }
+            
+        }
     }
 }
 
@@ -252,11 +271,17 @@ bool Player::slideCondition() {
 }
 
 bool Player::slideLeftCondition() {
-    return Input::keyPressed(InputKey::LB) && this->currentBrowner->canSlide;
+    return 
+        Input::keyPressed(InputKey::LB) && 
+        this->currentBrowner->canSlide && 
+        (this->currentBrowner->getSpriteNormal() == -1 || !this->walking);
 }
 
 bool Player::slideRightCondition() {
-    return Input::keyPressed(InputKey::RB) && this->currentBrowner->canSlide;
+    return 
+        Input::keyPressed(InputKey::RB) && 
+        this->currentBrowner->canSlide && 
+        (this->currentBrowner->getSpriteNormal() == 1 || !this->walking);
 }
 
 bool Player::climbUpCondition() {
@@ -618,7 +643,7 @@ void Player::climb() {
         else {
             if (this->stunned) {
                 this->currentBrowner->resumeActions();
-                this->speed.y = -12;
+                this->speed.y = -1;
             }
             else {
                 this->speed.y = 0;

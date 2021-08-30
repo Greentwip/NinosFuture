@@ -474,6 +474,18 @@
     <ClCompile Include="..\Classes\Game\Entities\Special\GameFallingBlock.cpp">
       <Filter>src\Game\Entities\Special</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Scenery\General\GameSplash.cpp">
+      <Filter>src\Game\Entities\Scenery\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Scenery\General\GameWater.cpp">
+      <Filter>src\Game\Entities\Scenery\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Spikes.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Windy\Entities\Water.cpp">
+      <Filter>src\Windy\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -2095,6 +2107,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Game\Entities\Special\GameFallingBlock.h">
       <Filter>src\Game\Entities\Special</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Scenery\General\GameSplash.h">
+      <Filter>src\Game\Entities\Scenery\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Scenery\General\GameWater.h">
+      <Filter>src\Game\Entities\Scenery\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Spikes.h">
+      <Filter>src\Windy\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Windy\Entities\Water.h">
+      <Filter>src\Windy\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

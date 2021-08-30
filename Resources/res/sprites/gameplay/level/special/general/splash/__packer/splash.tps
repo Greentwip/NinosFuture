@@ -9,9 +9,9 @@
         <array>
             <struct type="AutoSDSettings">
                 <key>scale</key>
-                <double>0.5</double>
+                <double>1</double>
                 <key>extension</key>
-                <string>Halfe</string>
+                <string></string>
                 <key>spriteFilter</key>
                 <string></string>
                 <key>acceptFractionalValues</key>
@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>cocos2d-v2</string>
+        <string>cocos2d-x</string>
         <key>textureFileName</key>
         <filename></filename>
         <key>flipPVR</key>
@@ -102,7 +102,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
@@ -132,7 +132,13 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../splash-{v}.plist</filename>
+                <filename>../splash.plist</filename>
+            </struct>
+            <key>header</key>
+            <key>source</key>
+            <struct type="DataFile">
+                <key>name</key>
+                <filename></filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -159,7 +165,7 @@
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
-            <double>1</double>
+            <double>0.5</double>
             <key>scaleMode</key>
             <enum type="ScaleMode">Fast</enum>
             <key>extrude</key>
@@ -169,7 +175,7 @@
             <key>trimMargin</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">None</enum>
+            <enum type="SpriteSettings::TrimMode">Trim</enum>
             <key>tracerTolerance</key>
             <int>200</int>
             <key>heuristicMask</key>
@@ -181,6 +187,7 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">splash_none_0.png</key>
             <key type="filename">splash_play_0.png</key>
             <key type="filename">splash_play_1.png</key>
             <key type="filename">splash_play_2.png</key>
@@ -206,6 +213,7 @@
             <filename>splash_play_1.png</filename>
             <filename>splash_play_2.png</filename>
             <filename>splash_play_3.png</filename>
+            <filename>splash_none_0.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

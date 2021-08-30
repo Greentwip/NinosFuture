@@ -41,6 +41,7 @@ namespace windy {
 		Land,
 		Explosion1,
 		EnemyHit,
+		Splash,
 		Roar,
 		Taban,
 		PlayerHit,

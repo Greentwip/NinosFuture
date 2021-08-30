@@ -27,6 +27,7 @@ std::map<windy::Sounds, std::string> windy::AudioManager::soundsKeyMap = {
 	{Sounds::Land, "sounds/sfx_land.mp3"},
 	{Sounds::Explosion1, "sounds/sfx_explosion1.mp3"},
 	{Sounds::EnemyHit, "sounds/sfx_enemyhit.mp3"},
+	{Sounds::Splash, "sounds/sfx_splash.mp3"},	
 	{Sounds::Roar, "sounds/sfx_roar.mp3"},
 	{Sounds::Taban, "sounds/sfx_taban.mp3"},
 	{Sounds::PlayerHit, "sounds/sfx_hit.mp3"},

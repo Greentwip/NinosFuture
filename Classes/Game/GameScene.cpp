@@ -70,6 +70,9 @@
 #include "Game/Entities/Special/GamePlatform.h"
 #include "Game/Entities/Special/GameFallingBlock.h"
 
+#include "Game/Entities/Scenery/General/GameSplash.h"
+#include "Game/Entities/Scenery/General/GameWater.h"
+
 #include "Game/Entities/UI/EnergyBar.h"
 #include "Game/Entities/UI/GameGui.h"
 #include "Game/Entities/UI/ReadyIndicator.h"
@@ -241,6 +244,9 @@ bool GameScene::init()
         
         DirectionalBullet::getResources().cache();
 
+        GameWater::getResources().cache();
+        GameSplash::getResources().cache();
+
         windy::AudioManager::cacheSound(windy::Sounds::VineMan);
         
         windy::EntityFactory::getInstance().registerType<Subeil>("subeil");
@@ -250,12 +256,16 @@ bool GameScene::init()
         windy::EntityFactory::getInstance().registerType<CannonJoe>("cannon_joe");
         windy::EntityFactory::getInstance().registerType<VineMan>("vine");
 
+        windy::EntityFactory::getInstance().registerType<GameWater>("water");
+
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Subeil>("subeil");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Lyric>("lyric");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Taban>("taban");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<Sumatran>("sumatran");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<CannonJoe>("cannon_joe");
         windy::EntityFactory::getInstance().registerTypeCollisionFunc<VineMan>("vine");
+
+        windy::EntityFactory::getInstance().registerTypeCollisionFunc<GameWater>("water");
     }
     else if (currentLevel && currentLevel->mug.compare("militaryman") == 0) {
 

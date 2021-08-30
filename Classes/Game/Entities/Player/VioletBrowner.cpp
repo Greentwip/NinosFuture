@@ -85,8 +85,15 @@ void VioletBrowner::fire() {
         windy::AudioManager::playSfx(windy::Sounds::BusterLow);
     }
 
+
+    float bulletOffsetY = 0;
+
+    if (this->player->jumping) {
+        bulletOffsetY = 4;
+    }
+
     auto bulletPosition = cocos2d::Point(this->player->getPositionX() + (bulletOffset * this->getSpriteNormal()),
-        this->player->getPositionY() - 4);
+        this->player->getPositionY() + bulletOffsetY);
 
 
     auto chargePower = this->chargePower;

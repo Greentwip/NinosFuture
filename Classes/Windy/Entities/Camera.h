@@ -24,6 +24,8 @@ namespace windy {
 
         virtual void recomputeCollisionRectangles() override;
 
+        virtual void onCollisionEnter(Logical* collision) override;
+
         virtual void onCollision(Logical* collision) override;
 
         void normalizeCollisionRectangles();
@@ -33,6 +35,10 @@ namespace windy {
         enum CameraFlags::CameraMode cameraMode;
         enum CameraFlags::CameraScroll scroll;
         enum CameraFlags::CameraShift shiftDirection;
+
+        int tolerance;
+
+        float catchupSpeed;
 
     private:
         int shiftSpeed;
@@ -46,7 +52,6 @@ namespace windy {
         cocos2d::Point childLastPosition;
 
         cocos2d::Point speed;
-        int tolerance;
         Logical* freeScroll;
         CameraScroll* fixedScroll;
     };

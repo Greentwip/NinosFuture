@@ -59,6 +59,17 @@ void PhysicsWorld::onExit()
     Node::onExit();
 }
 
+void PhysicsWorld::setUnderwater(bool underwater) {
+    if (underwater) {
+        this->gravity = -0.125;
+        this->maxFallSpeed = -3;
+    }
+    else {
+        this->gravity = -0.25;
+        this->maxFallSpeed = -6;
+    }
+}
+
 std::map<CollisionContact, bool> PhysicsWorld::getCollisionResult(Logical* entity, Logical* landscapeEntity) {
 
     std::map<CollisionContact, bool> result;
@@ -133,21 +144,31 @@ std::map<CollisionContact, bool> PhysicsWorld::getCollisionResult(Logical* entit
             bool hasOffsetY = false;
 
             if (k == 0) {
-                result[CollisionContact::Down] = true;
+                if (intersection.size.height != 0) {
+                    result[CollisionContact::Down] = true;
+                }
                 hasOffsetY = true;
             }
             else if (k == 1)
             {
-                result[CollisionContact::Up] = true;
+                if (intersection.size.height != 0) {
+                    result[CollisionContact::Up] = true;
+                }
+
                 hasOffsetY = true;
                 intersection.size.height *= -1;
             }
             else if (k == 2) {
-                result[CollisionContact::Left] = true;
+                if (intersection.size.width != 0) {
+                    result[CollisionContact::Left] = true;
+                }
                 hasOffsetX = true;
             }
             else if (k == 3) {
-                result[CollisionContact::Right] = true;
+                
+                if (intersection.size.width != 0) {
+                    result[CollisionContact::Right] = true;
+                }
                 hasOffsetX = true;
                 intersection.size.width *= -1;
             }
@@ -157,10 +178,16 @@ std::map<CollisionContact, bool> PhysicsWorld::getCollisionResult(Logical* entit
                     // Tile is diagonal, but resolving collision vertically
                     if (k == 4 || k == 5) {
                         intersection.size.height = -intersection.size.height;
-                        result[CollisionContact::Up] = true;
+                        if (intersection.size.height != 0) {
+                            result[CollisionContact::Up] = true;
+                        }
+                        
                     }
                     else {
-                        result[CollisionContact::Down] = true;
+                        if (intersection.size.height != 0) {
+                            result[CollisionContact::Down] = true;
+                        }
+                        
                     }
 
                     hasOffsetY = true;
@@ -169,11 +196,17 @@ std::map<CollisionContact, bool> PhysicsWorld::getCollisionResult(Logical* entit
                 else {
                     // Tile is diagonal, but resolving horizontally
                     if (k == 7 || k == 5) {
-                        result[CollisionContact::Right] = true;
+                        if (intersection.size.width != 0) {
+                            result[CollisionContact::Right] = true;
+                        }
+                        
                         intersection.size.width *= -1;
                     }
                     else {
-                        result[CollisionContact::Left] = true;
+                        if (intersection.size.width != 0) {
+                            result[CollisionContact::Left] = true;
+                        }
+                        
                     }
 
                     hasOffsetX = true;
@@ -291,20 +324,24 @@ void PhysicsWorld::alignCollisions(Logical* entity, Logical* landscapeEntity, bo
 
             if (k == 0) {
                 entity->contacts[CollisionContact::Down] = true;
+
                 hasOffsetY = true;
             }
             else if (k == 1)
             {
                 entity->contacts[CollisionContact::Up] = true;
+
                 hasOffsetY = true;
                 intersection.size.height *= -1;
             }
             else if (k == 2) {
                 entity->contacts[CollisionContact::Left] = true;
+
                 hasOffsetX = true;
             }
             else if (k == 3) {
                 entity->contacts[CollisionContact::Right] = true;
+
                 hasOffsetX = true;
                 intersection.size.width *= -1;
             }
@@ -314,10 +351,16 @@ void PhysicsWorld::alignCollisions(Logical* entity, Logical* landscapeEntity, bo
                     // Tile is diagonal, but resolving collision vertically
                     if (k == 4 || k == 5) {
                         intersection.size.height = -intersection.size.height;
-                        entity->contacts[CollisionContact::Up] = true;
+                        if (intersection.size.height != 0) {
+                            entity->contacts[CollisionContact::Up] = true;
+                        }
+                        
                     }
                     else {
-                        entity->contacts[CollisionContact::Down] = true;
+                        if (intersection.size.height != 0) {
+                            entity->contacts[CollisionContact::Down] = true;
+                        }
+                        
                     }
 
                     hasOffsetY = true;
@@ -326,11 +369,16 @@ void PhysicsWorld::alignCollisions(Logical* entity, Logical* landscapeEntity, bo
                 else {
                     // Tile is diagonal, but resolving horizontally
                     if (k == 7 || k == 5) {
-                        entity->contacts[CollisionContact::Right] = true;
+                        if (intersection.size.width != 0) {
+                            entity->contacts[CollisionContact::Right] = true;
+                        }
+                        
                         intersection.size.width *= -1;
                     }
                     else {
-                        entity->contacts[CollisionContact::Left] = true;
+                        if (intersection.size.width != 0) {
+                            entity->contacts[CollisionContact::Left] = true;
+                        }
                     }
 
                     hasOffsetX = true;
@@ -392,6 +440,7 @@ void PhysicsWorld::update(float dt)
            entity->getTag() == GameTags::General::Bounds       ||
            entity->getTag() == GameTags::General::Checkpoint   ||
            entity->getTag() == GameTags::General::Platform     ||
+           entity->getTag() == GameTags::General::Water        ||
            entity->getTag() == GameTags::Weapon::WeaponPlayer  ||
            entity->getTag() == GameTags::Weapon::WeaponEnemy   ||
            entity->getTag() == GameTags::Scenery::Particle) { 
@@ -435,7 +484,6 @@ void PhysicsWorld::update(float dt)
 
         entity->contacts.clear();
 
-
         if (entity->ignoreLandscapeCollision) {
             continue;
         }
@@ -466,6 +514,7 @@ void PhysicsWorld::update(float dt)
     }
 
     if (this->level->getPaused()) {
+        this->contactEventCollisions.clear();
         return;
     }
 
@@ -482,8 +531,8 @@ void PhysicsWorld::update(float dt)
             if (GeometryExtensions::rectIntersectsRect(*entity->collisionBox, *collidingEntity->collisionBox)) {
                 
                 auto iterator = 
-                    std::find_if(contactEventCollisions.begin(), 
-                                 contactEventCollisions.end(), [=](const std::pair<long long, std::pair<Logical*, Logical*>> contact) {
+                    std::find_if(this->contactEventCollisions.begin(),
+                                 this->contactEventCollisions.end(), [=](const std::pair<long long, std::pair<Logical*, Logical*>> contact) {
                             return contact.second.first == entity && contact.second.second == collidingEntity;
                     });
 
@@ -494,18 +543,17 @@ void PhysicsWorld::update(float dt)
 
                     bool indexFound = false;
 
-                    for (int k = 0; k < this->contactEventCollisionIndex; ++i) {
+                    for (long long k = 0; k <= this->contactEventCollisionIndex; ++k) {
                         
+                        indexFound = false;
 
-                        auto iterator = std::find_if(
-                            this->contactEventCollisions.begin(),
-                            this->contactEventCollisions.end(),
-                            [=](const std::pair<long long, std::pair<Logical*, Logical*>> contact) {
-                                return k == contact.first;
-                            });
+                        for (int l = 0; l < this->contactEventCollisions.size(); ++l) {
+                            auto contact = this->contactEventCollisions.at(l);
 
-                        if (iterator != this->contactEventCollisions.end()) {
-                            indexFound = true;
+                            if (contact.first == k) {
+                                indexFound = true;
+                                break;
+                            }
                         }
 
                         if (!indexFound) {
@@ -519,12 +567,13 @@ void PhysicsWorld::update(float dt)
                         contactIndex = emptyIndex;
                     }
                     else {
-                        contactIndex = this->contactEventCollisionIndex;
+                        contactIndex = this->contactEventCollisionIndex + 1;
                         this->contactEventCollisionIndex += 1;
                     }
 
                     this->contactEventCollisions.push_back({ contactIndex, { entity, collidingEntity } });
                     entity->onCollisionEnter(collidingEntity);
+
                 }
             }
         }
@@ -550,6 +599,8 @@ void PhysicsWorld::update(float dt)
         auto entity = contact.second.first;
         auto collidingEntity = contact.second.second;
 
+
+        long long collisionId = contact.first;
 
         if (GeometryExtensions::rectIntersectsRect(*entity->collisionBox, *collidingEntity->collisionBox)) {
 
