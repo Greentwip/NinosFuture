@@ -118,7 +118,7 @@ void ObjectManager::update(float dt)
 
     auto boundsCollisionBox = this->level->bounds->collisionBox;
     //auto inflatedBoundsCollisionBox = *this->level->bounds->collisionBox;
-    auto inflatedBoundsCollisionBox = this->level->bounds->inflate(cocos2d::Size(20, 20));
+    auto inflatedBoundsCollisionBox = this->level->bounds->inflate(cocos2d::Size(16, 16));
 
     for (int i = 0; i < this->objectEntries.size(); ++i) {
         auto entry = this->objectEntries[i];

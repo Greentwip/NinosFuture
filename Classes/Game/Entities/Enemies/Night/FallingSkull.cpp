@@ -32,6 +32,9 @@ void FallingSkull::setup() {
 
     this->ignoreGravity = true;
     this->ignoreLandscapeCollision = true;
+
+    this->collisionMaskFlags.push_back(windy::GameTags::General::Player);
+    this->collisionMaskFlags.push_back(windy::GameTags::Weapon::WeaponPlayer);
 }
 
 std::shared_ptr<cocos2d::Rect> FallingSkull::getEntryCollisionRectangle(const cocos2d::Point& position, const cocos2d::Size& size) {

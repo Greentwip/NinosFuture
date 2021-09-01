@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="A2488D1E-A992-4F30-97A0-6C68D4046731" Publisher="CN=dalestam" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="1547cf35-0745-41a4-b988-3534afbe2f39" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="59711Greentwip.NinosFutureBeta" Publisher="CN=20CC192E-7CE9-4070-8839-E1D1474BB0C4" Version="1.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="79ce62b1-d101-42c9-aecf-06302ebfb3bb" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>NinosFuture</DisplayName>
-    <PublisherDisplayName>"Microsoft Open Technologies, Inc."</PublisherDisplayName>
+    <DisplayName>Nino&apos;s Future Beta</DisplayName>
+    <PublisherDisplayName>Greentwip</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="NinosFuture.App">
-      <uap:VisualElements DisplayName="NinosFuture" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="NinosFuture" BackgroundColor="#464646">
+      <uap:VisualElements DisplayName="Nino&apos;s Future Beta" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="The Nino&apos;s Future game. Set in the distant future, fight against evil robots overtaking the world. This exciting 2D platform shooter requires high skills. Do you have what it takes to complete al the levels?" BackgroundColor="#464646">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />

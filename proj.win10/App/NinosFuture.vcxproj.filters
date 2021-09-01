@@ -397,12 +397,6 @@
     <ClCompile Include="..\..\Classes\Game\AboutScene.cpp">
       <Filter>Classes\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Classes\Game\ProjectsScene.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Classes\Game\CreditsScene.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Classes\Game\Entities\UI\Sound\SoundTestMenu.cpp">
       <Filter>Classes\Game\Entities\UI\Sound</Filter>
     </ClCompile>
@@ -501,6 +495,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Classes\Windy\Entities\Spikes.cpp">
       <Filter>Classes\Windy\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\CreditsScene.cpp">
+      <Filter>Classes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Game\ProjectsScene.cpp">
+      <Filter>Classes\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2031,12 +2031,6 @@
     <ClInclude Include="..\..\Classes\Game\AboutScene.h">
       <Filter>Classes\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Classes\Game\ProjectsScene.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Classes\Game\CreditsScene.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Classes\Game\Entities\UI\Sound\SoundTestMenu.h">
       <Filter>Classes\Game\Entities\UI\Sound</Filter>
     </ClInclude>
@@ -2136,6 +2130,12 @@
     <ClInclude Include="..\..\Classes\Windy\Entities\Spikes.h">
       <Filter>Classes\Windy\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\CreditsScene.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Game\ProjectsScene.h">
+      <Filter>Classes\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -2153,6 +2153,7 @@
     <None Include="$(OggBinPath)vorbis.dll" />
     <None Include="$(OggBinPath)vorbisfile.dll" />
     <None Include="$(WebsocketsBinPath)websockets.dll" />
+    <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Cocos2dEngine\OpenGLESPage.xaml">

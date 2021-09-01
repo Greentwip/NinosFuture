@@ -33,6 +33,8 @@ namespace windy {
 
         void unregisterContact(Logical* a, Logical* b);
 
+        void resetContactEventCollisions();
+
         float gravity;
 
     private:

@@ -103,6 +103,8 @@ namespace windy {
 
         cocos2d::Point lastPosition;
 
+        std::vector<int> collisionMaskFlags;
+
     protected:
         cocos2d::Point lastCollisionPosition;
         std::vector<std::shared_ptr<cocos2d::Rect>> collisionRectangles;

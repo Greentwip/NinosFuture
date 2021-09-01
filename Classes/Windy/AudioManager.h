@@ -59,6 +59,7 @@ namespace windy {
 		MilitaryMan,
 		VineMan,
 		NightMan,
+		GetWeapon,
 		NONE
 	};
 

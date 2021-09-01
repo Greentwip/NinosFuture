@@ -24,7 +24,7 @@ void SheriffBrowner::initConstraints() {
     this->canJumpShoot = false;
     this->canClimb = true;
     this->canCharge = false;
-    this->canSlide = false;
+    this->canSlide = true;
     this->canDashJump = false;
     this->canMorph = false;
     this->hasIntro = true;
@@ -45,6 +45,7 @@ void SheriffBrowner::loadActions() {
         windy::AnimationAction("walk",          "sheriff_walk",          true,    0.12f),
         windy::AnimationAction("standshoot",    "sheriff_standshoot",    false,   0.10f),
         windy::AnimationAction("climb",         "sheriff_climb",         true,    0.16f),
+        windy::AnimationAction("slide",         "sheriff_slide",         true,    0.10f),
         windy::AnimationAction("hurt",          "sheriff_hurt",          false,   0.02f)
     };
 

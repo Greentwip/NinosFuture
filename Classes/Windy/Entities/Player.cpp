@@ -999,6 +999,10 @@ void Player::onUpdate(float dt) {
             }
             
         }
+        else {
+            this->jumping = true;
+            this->dashJumping = false;
+        }
 
         this->slideTimer = 0;
 

@@ -530,6 +530,23 @@ void PhysicsWorld::update(float dt)
 
             if (GeometryExtensions::rectIntersectsRect(*entity->collisionBox, *collidingEntity->collisionBox)) {
                 
+                if (entity->collisionMaskFlags.size() != 0) {
+                    bool collisionMaskMatches = false;
+                    for (int i = 0; i < entity->collisionMaskFlags.size(); ++i) {
+                        int tag = entity->collisionMaskFlags[i];
+                        if (tag == collidingEntity->getTag()) {
+                            collisionMaskMatches = true;
+                            break;
+                        }
+                    }
+
+                    if (!collisionMaskMatches) {
+                        continue;
+                    }
+                }
+                
+
+
                 auto iterator = 
                     std::find_if(this->contactEventCollisions.begin(),
                                  this->contactEventCollisions.end(), [=](const std::pair<long long, std::pair<Logical*, Logical*>> contact) {
@@ -662,4 +679,8 @@ void PhysicsWorld::unregisterContact(Logical* a, Logical* b) {
             }),
         this->contactEventCollisions.end());
 
+}
+
+void PhysicsWorld::resetContactEventCollisions() {
+    this->contactEventCollisions.clear();
 }

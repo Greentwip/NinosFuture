@@ -13,6 +13,7 @@
 #include "Windy/GameTags.h"
 #include "Windy/AudioManager.h"
 #include "Windy/Input.h"
+#include "Windy/PhysicsWorld.h"
 
 #include "Windy/Entities/Player.h"
 #include "Windy/Entities/Boss.h"
@@ -46,6 +47,7 @@ bool GameLevelController::init()
 	GameManager::getInstance().browners.military->acquired = true;
 	GameManager::getInstance().browners.vine->acquired = true;
 	GameManager::getInstance().browners.night->acquired = true;
+	GameManager::getInstance().browners.helmet->acquired = true;
 	GameManager::getInstance().browners.extreme->acquired = true;
 
 	GameManager::getInstance().unlockables.boot->acquired = true;
@@ -136,7 +138,9 @@ void GameLevelController::onUpdate(float dt) {
 
 					if (state != GameState::GetWeapon) {
 						_readyIndicator = ReadyIndicator::create([this]() {
-							levelState = LevelState::Playing;
+
+							this->level->physicsWorld->resetContactEventCollisions();
+
 							this->level->setPaused(false, true);
 
 							_restartFader->removeFromParent();
@@ -144,7 +148,10 @@ void GameLevelController::onUpdate(float dt) {
 
 							_readyIndicator->removeFromParent();
 							_readyIndicator = nullptr;
-							});
+							
+							levelState = LevelState::Playing;
+
+						});
 
 						float indicatorPositionY = windy::Display::getInstance().height * 0.125f;
 						_readyIndicator->setPosition(cocos2d::Point(0, indicatorPositionY));

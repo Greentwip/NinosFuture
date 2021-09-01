@@ -24,7 +24,7 @@ void VineBrowner::initConstraints() {
     this->canJumpShoot = false;
     this->canClimb = true;
     this->canCharge = false;
-    this->canSlide = false;
+    this->canSlide = true;
     this->canDashJump = false;
     this->canMorph = false;
     this->hasIntro = true;
@@ -45,6 +45,7 @@ void VineBrowner::loadActions() {
         windy::AnimationAction("walk",          "vine_walk",          true,    0.12f),
         windy::AnimationAction("standshoot",    "vine_standshoot",    false,   0.10f),
         windy::AnimationAction("climb",         "vine_climb",         true,    0.16f),
+        windy::AnimationAction("slide",         "vine_slide",         true,    0.10f),
         windy::AnimationAction("hurt",          "vine_hurt",          false,   0.02f)
     };
 

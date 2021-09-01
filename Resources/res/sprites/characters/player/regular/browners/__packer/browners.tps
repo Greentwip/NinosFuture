@@ -310,6 +310,28 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">extreme/slide/extreme_slide_0.png</key>
+            <key type="filename">extreme/slide/extreme_slide_1.png</key>
+            <key type="filename">extreme/slide/extreme_slide_2.png</key>
+            <key type="filename">extreme/slide/extreme_slide_3.png</key>
+            <key type="filename">vine/slide/vine_slide_0.png</key>
+            <key type="filename">vine/slide/vine_slide_1.png</key>
+            <key type="filename">vine/slide/vine_slide_2.png</key>
+            <key type="filename">vine/slide/vine_slide_3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,7,32,14</rect>
+                <key>scale9Paddings</key>
+                <rect>16,7,32,14</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">extreme/stand/extreme_stand_0.png</key>
             <key type="filename">extreme/stand/extreme_stand_1.png</key>
             <key type="filename">extreme/stand/extreme_stand_10.png</key>
@@ -654,6 +676,24 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">military/slide/military_slide_0.png</key>
+            <key type="filename">military/slide/military_slide_1.png</key>
+            <key type="filename">military/slide/military_slide_2.png</key>
+            <key type="filename">military/slide/military_slide_3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>19,9,39,17</rect>
+                <key>scale9Paddings</key>
+                <rect>19,9,39,17</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">night/climb/night_climb_0.png</key>
             <key type="filename">night/climb/night_climb_1.png</key>
             <struct type="IndividualSpriteSettings">
@@ -742,6 +782,24 @@
                 <rect>23,14,47,28</rect>
                 <key>scale9Paddings</key>
                 <rect>23,14,47,28</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">night/slide/night_slide_0.png</key>
+            <key type="filename">night/slide/night_slide_1.png</key>
+            <key type="filename">night/slide/night_slide_2.png</key>
+            <key type="filename">night/slide/night_slide_3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>20,10,41,21</rect>
+                <key>scale9Paddings</key>
+                <rect>20,10,41,21</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -890,6 +948,24 @@
                 <rect>13,11,26,22</rect>
                 <key>scale9Paddings</key>
                 <rect>13,11,26,22</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">sheriff/slide/sheriff_slide_0.png</key>
+            <key type="filename">sheriff/slide/sheriff_slide_1.png</key>
+            <key type="filename">sheriff/slide/sheriff_slide_2.png</key>
+            <key type="filename">sheriff/slide/sheriff_slide_3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>20,8,39,17</rect>
+                <key>scale9Paddings</key>
+                <rect>20,8,39,17</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

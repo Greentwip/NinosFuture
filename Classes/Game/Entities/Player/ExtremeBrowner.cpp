@@ -24,7 +24,7 @@ void ExtremeBrowner::initConstraints() {
     this->canJumpShoot = true;
     this->canClimb = true;
     this->canCharge = false;
-    this->canSlide = false;
+    this->canSlide = true;
     this->canDashJump = true;
     this->canMorph = false;
     this->hasIntro = false;
@@ -45,8 +45,10 @@ void ExtremeBrowner::loadActions() {
         windy::AnimationAction("walk",          "extreme_walk",          true,    0.12f),
         windy::AnimationAction("standshoot",    "extreme_standshoot",    false,   0.10f),
         windy::AnimationAction("climb",         "extreme_climb",         true,    0.16f),
+        windy::AnimationAction("climbshoot",    "extreme_climbshoot",    true,    0.10f),
         windy::AnimationAction("walkshoot",     "extreme_walkshoot",     true,    0.12f),
         windy::AnimationAction("jumpshoot",     "extreme_jumpshoot",     true,    0.10f),
+        windy::AnimationAction("slide",         "extreme_slide",         true,    0.10f),
         windy::AnimationAction("hurt",          "extreme_hurt",          false,   0.02f)
     };
 
@@ -87,6 +89,11 @@ void ExtremeBrowner::fire() {
     if (this->player->jumping) {
         bulletOffsetY += 4;
     }
+
+    if (this->player->climbing) {
+        bulletOffsetY += 4;
+    }
+
 
     auto bulletPosition = cocos2d::Point(this->player->getPositionX() + (bulletOffset * this->getSpriteNormal()),
         this->player->getPositionY() + bulletOffsetY);

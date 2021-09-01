@@ -164,6 +164,8 @@ void Boss::checkHealth() {
 
         this->state = BossState::Defeated;
 
+        this->stopAllActions();
+
         this->currentBrowner->deactivate();
 
         this->health = 0;

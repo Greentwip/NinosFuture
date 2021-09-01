@@ -24,7 +24,7 @@ void NightBrowner::initConstraints() {
     this->canJumpShoot = false;
     this->canClimb = true;
     this->canCharge = false;
-    this->canSlide = false;
+    this->canSlide = true;
     this->canDashJump = false;
     this->canMorph = false;
     this->hasIntro = true;
@@ -45,6 +45,7 @@ void NightBrowner::loadActions() {
         windy::AnimationAction("walk",          "night_walk",          true,    0.12f),
         windy::AnimationAction("standshoot",    "night_standshoot",    false,   0.05f),
         windy::AnimationAction("climb",         "night_climb",         true,    0.16f),
+        windy::AnimationAction("slide",         "night_slide",         true,    0.10f),
         windy::AnimationAction("hurt",          "night_hurt",          false,   0.02f)
     };
 

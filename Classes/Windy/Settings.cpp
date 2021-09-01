@@ -102,7 +102,7 @@ std::map<std::string, float> windy::Settings::loadDefaultAmplitudeValues() {
 
 	auto soundKeyMap = windy::AudioManager::getSoundKeyMap();
 
-	for (int i = static_cast<int>(windy::Sounds::Intro); i <= static_cast<int>(windy::Sounds::NightMan); ++i) {
+	for (int i = static_cast<int>(windy::Sounds::Intro); i <= static_cast<int>(windy::Sounds::GetWeapon); ++i) {
 		amplitudes[soundKeyMap[static_cast<windy::Sounds>(i)]] = 1.0f;
 	}
 

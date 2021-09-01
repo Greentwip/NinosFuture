@@ -108,7 +108,7 @@ bool WeaponAcquireScene::init()
             WeaponAcquireSceneResources::resourcesRootPath,
             WeaponAcquireSceneResources::tilemapRootPath,
             "weapon",
-            windy::Sounds::NONE);
+            windy::Sounds::GetWeapon);
 
     this->addChild(level, 256);
 
@@ -222,7 +222,7 @@ void WeaponAcquireScene::update(float dt)
             });
             auto postMorphDelay = cocos2d::DelayTime::create(1);
             auto attackCallback = cocos2d::CallFunc::create([this]() {
-                _player->currentBrowner->timedShoot();
+                _player->currentBrowner->attack();
             });
             auto attackDelay = cocos2d::DelayTime::create(4);
             auto finalCallback = cocos2d::CallFunc::create([this]() {

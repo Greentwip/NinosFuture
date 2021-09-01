@@ -44,7 +44,8 @@ std::map<windy::Sounds, std::string> windy::AudioManager::soundsKeyMap = {
 	{Sounds::SheriffMan, "sounds/bgm_level_sheriffman.mp3"},
 	{Sounds::MilitaryMan, "sounds/bgm_level_militaryman.mp3"},
 	{Sounds::VineMan, "sounds/bgm_level_vineman.mp3"},
-	{Sounds::NightMan, "sounds/bgm_level_nightman.mp3"}
+	{Sounds::NightMan, "sounds/bgm_level_nightman.mp3"},
+	{Sounds::GetWeapon, "sounds/bgm_get_weapon.mp3"}
 
 };
 
