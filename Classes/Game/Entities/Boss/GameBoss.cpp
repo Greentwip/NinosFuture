@@ -7,6 +7,7 @@
 #include "Game/Entities/Player/NightBrowner.h"
 #include "Game/Entities/UI/EnergyBar.h"
 #include "Game/Entities/UI/GameGui.h"
+#include "Game/GameManager.h"
 #include "Windy/GameTags.h"
 #include "Windy/Entities/Browner.h"
 
@@ -130,6 +131,53 @@ void GameBoss::jump() {
 
 
 void GameBoss::kill(bool killAnimation) {
+
+    GameManager::getInstance().currentLevel->defeated = true;
+
+    auto browners = GameManager::getInstance().browners.collection;
+
+    for (int i = 0; i < browners.size(); ++i) {
+        auto browner = browners[i];
+        if (this->currentBrowner->brownerId == browner->id) {
+            browner->acquired = true;
+        }
+    }
+
+    auto slot = GameManager::getInstance().getDefaultSlot();
+
+    if (this->currentBrowner->brownerId == GameManager::getInstance().browners.sheriff->id) {
+        slot.sheriff = true;
+    }
+
+    if (this->currentBrowner->brownerId == GameManager::getInstance().browners.military->id) {
+        slot.military = true;
+    }
+
+    if (this->currentBrowner->brownerId == GameManager::getInstance().browners.vine->id) {
+        slot.vine = true;
+    }
+
+    if (this->currentBrowner->brownerId == GameManager::getInstance().browners.night->id) {
+        slot.night = true;
+    }
+
+    if (this->currentBrowner->brownerId == GameManager::getInstance().browners.boomer->id) {
+        slot.boomer = true;
+    }
+
+    if (this->currentBrowner->brownerId == GameManager::getInstance().browners.shield->id) {
+        slot.shield = true;
+    }
+
+    if (this->currentBrowner->brownerId == GameManager::getInstance().browners.torch->id) {
+        slot.torch = true;
+    }
+
+    if (this->currentBrowner->brownerId == GameManager::getInstance().browners.freezer->id) {
+        slot.freezer = true;
+    }
+
+    windy::SaveManager::saveSlot(windy::SaveManager::defaultSlot, slot);
 
     if (killAnimation) {
 

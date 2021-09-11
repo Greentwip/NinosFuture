@@ -3,6 +3,7 @@
 #include "ObjectManager.h"
 
 #include "Level.h"
+#include "PhysicsWorld.h"
 
 #include "Entities/Logical.h"
 #include "Entities/Bounds.h"
@@ -75,6 +76,7 @@ void ObjectManager::resetEntryTable(std::vector<std::shared_ptr<ObjectEntry>> ne
 
         if (entry->mappedInstance != nullptr) {
             this->level->entities.eraseObject(entry->mappedInstance);
+            this->level->physicsWorld->unregisterContact(entry->mappedInstance);
 
             entry->mappedInstance->onFinished();
             entry->mappedInstance->removeFromParent();
@@ -98,6 +100,8 @@ void ObjectManager::update(float dt)
                 entry->mappedInstance->onFinished();
 
                 this->level->entities.eraseObject(entry->mappedInstance);
+                this->level->physicsWorld->unregisterContact(entry->mappedInstance);
+
                 entry->mappedInstance->removeFromParent();
                 entry->mappedInstance = nullptr;
             }
@@ -127,6 +131,8 @@ void ObjectManager::update(float dt)
             entry->mappedInstance->onFinished();
 
             this->level->entities.eraseObject(entry->mappedInstance);
+            this->level->physicsWorld->unregisterContact(entry->mappedInstance);
+
             entry->mappedInstance->removeFromParent();
             entry->mappedInstance = nullptr;
 
@@ -155,6 +161,8 @@ void ObjectManager::update(float dt)
                     entry->mappedInstance->onFinished();
 
                     this->level->entities.eraseObject(entry->mappedInstance);
+                    this->level->physicsWorld->unregisterContact(entry->mappedInstance);
+
                     entry->mappedInstance->removeFromParent();
 
                     entry->mappedInstance = nullptr;
@@ -177,6 +185,8 @@ void ObjectManager::update(float dt)
                     entry->mappedInstance->onFinished();
 
                     this->level->entities.eraseObject(entry->mappedInstance);
+                    this->level->physicsWorld->unregisterContact(entry->mappedInstance);
+
                     entry->mappedInstance->removeFromParent();
 
                     entry->mappedInstance = nullptr;

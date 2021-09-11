@@ -157,6 +157,7 @@ bool GamePlayer::getAcquiringWeapon() {
 
 void GamePlayer::setAcquiringWeapon(bool acquiringWeapon) {
     _acquiringWeapon = acquiringWeapon;
+    this->acquiringWeapon = _acquiringWeapon;
 }
 
 

@@ -34,7 +34,7 @@ game::Resources& Tremor::getResources() {
 void Tremor::setup() {
     this->ignoreGravity = true;
     this->ignoreLandscapeCollision = true;
-    this->maxHealth = 5;
+    this->maxHealth = 60;
     this->health = this->maxHealth;
     this->power = 10;
     this->startPosition = this->getPosition();

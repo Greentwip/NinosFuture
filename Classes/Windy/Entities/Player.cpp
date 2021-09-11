@@ -37,6 +37,7 @@ void Player::initVariables() {
     this->onGround = false;
     this->vulnerable = true;
     this->autoControlled = false;
+    this->acquiringWeapon = false;
 
     this->walkSpeed = 1;
     this->climbSpeed = 1;
@@ -235,7 +236,7 @@ void Player::stun(int power) {
 }
 
 bool Player::attackCondition() {
-    return Input::keyPressed(InputKey::B) && this->currentBrowner->canAttack;
+    return (Input::keyPressed(InputKey::B) && this->currentBrowner->canAttack) || this->acquiringWeapon;
 }
 
 bool Player::chargeCondition() {

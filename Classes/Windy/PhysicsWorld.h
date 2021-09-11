@@ -32,6 +32,7 @@ namespace windy {
         static void alignCollisions(Logical* entity, Logical* landscapeEntity, bool clearContacts = false);
 
         void unregisterContact(Logical* a, Logical* b);
+        void unregisterContact(Logical* a);
 
         void resetContactEventCollisions();
 

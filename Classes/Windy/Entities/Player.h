@@ -138,6 +138,7 @@ namespace windy {
         bool flashing;
         bool _morphing;
         bool onGround;
+        bool acquiringWeapon;
 
         bool autoControlled;
 

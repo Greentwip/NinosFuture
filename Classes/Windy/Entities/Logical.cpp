@@ -28,6 +28,7 @@ void Logical::setup(const cocos2d::Point& position, const cocos2d::Size& size) {
     this->ignoreGravity = false;
     this->ignoreLandscapeCollision = false;
     this->ignoreEntityCollision = false;
+    this->ignorePlatforms = false;
 }
 
 

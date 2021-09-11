@@ -119,11 +119,6 @@ AudioEngineImpl::AudioEngineImpl()
 
 AudioEngineImpl::~AudioEngineImpl()
 {
-    if (_scheduler != nullptr)
-    {
-        _scheduler->unschedule(CC_SCHEDULE_SELECTOR(AudioEngineImpl::update), this);
-    }
-
     if (s_ALContext) {
         alDeleteSources(MAX_AUDIOINSTANCES, _alSources);
 

@@ -528,6 +528,11 @@ void PhysicsWorld::update(float dt)
                 continue;
             }
 
+            if (entity->ignorePlatforms && collidingEntity->getTag() == GameTags::Platform ||
+                collidingEntity->ignorePlatforms && entity->getTag() == GameTags::Platform) {
+                continue;
+            }
+
             if (GeometryExtensions::rectIntersectsRect(*entity->collisionBox, *collidingEntity->collisionBox)) {
                 
                 if (entity->collisionMaskFlags.size() != 0) {
@@ -680,6 +685,26 @@ void PhysicsWorld::unregisterContact(Logical* a, Logical* b) {
         this->contactEventCollisions.end());
 
 }
+
+void PhysicsWorld::unregisterContact(Logical* a) {
+    this->contactEventCollisions.erase(
+        std::remove_if(this->contactEventCollisions.begin(),
+            this->contactEventCollisions.end(),
+            [=](const std::pair<long long, std::pair<Logical*, Logical*>> contact) {
+
+                bool shouldRemove = false;
+                shouldRemove = (contact.second.first == a || contact.second.second == a);
+
+                if (shouldRemove) {
+                    contact.second.first->onCollisionExit(contact.second.second);
+                }
+
+                return shouldRemove;
+            }),
+        this->contactEventCollisions.end());
+
+}
+
 
 void PhysicsWorld::resetContactEventCollisions() {
     this->contactEventCollisions.clear();

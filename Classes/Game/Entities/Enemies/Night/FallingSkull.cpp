@@ -32,6 +32,7 @@ void FallingSkull::setup() {
 
     this->ignoreGravity = true;
     this->ignoreLandscapeCollision = true;
+    this->ignorePlatforms = true;
 
     this->collisionMaskFlags.push_back(windy::GameTags::General::Player);
     this->collisionMaskFlags.push_back(windy::GameTags::Weapon::WeaponPlayer);
