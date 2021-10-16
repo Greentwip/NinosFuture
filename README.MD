@@ -1,6 +1,6 @@
-Nino's Future is an open source game we coded to pay a tribute to Mega Man for the NES
+Nino's Future is an open source game coded to learn how to use the common Cocos2d-X features
 
-The Windy library built on top of Cocos2d-X can be of help to create games that share similar mechanics with Mega Man.
+The Windy library built on top of Cocos2d-X can be of help to create games that share similar mechanics with games such as Mario or Mega Man.
 
 It currently features transitions, stage select, 4 fully playable levels with bosses and an item collection mechanic used to unlock the most powerful armor in the game.
 
