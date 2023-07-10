@@ -13,3 +13,5 @@ a signature game.
 To edit the game assets you'll need Texture Packer and Physics Editor.
 
 Support is welcomed, we plan migrating to Cocos version 3.17.1, as it's the latest UWP version supported.
+
+Fully Licensed to Zilverk and Associates
